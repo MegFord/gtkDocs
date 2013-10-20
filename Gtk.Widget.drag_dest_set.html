@@ -1,0 +1,75 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Gtk.Widget.prototype.drag_dest_set</title>
+<link rel="stylesheet" type="text/css" href="C.css">
+<script type="text/javascript" src="jquery.js"></script><script type="text/javascript" src="jquery.syntax.js"></script><script type="text/javascript" src="yelp.js"></script>
+</head>
+<body><div class="page" role="main">
+<div class="header"><div class="trails" role="navigation"><div class="trail">
+<a class="trail" href="index.html" title="Index">Index</a> » <a class="trail" href="Gtk.Widget.html" title="Gtk.Widget">Gtk.Widget</a> » </div></div></div>
+<div class="body">
+<div class="hgroup"><h1 class="title"><span class="title">Gtk.Widget.prototype.drag_dest_set</span></h1></div>
+<div class="region">
+<div class="contents">
+<div class="synopsis"><div class="inner"><div class="region"><div class="contents"><div class="code"><pre class="contents ">function drag_dest_set(flags:Gtk.DestDefaults, targets:[Gtk.TargetEntry], actions:Gdk.DragAction):void {
+    // Gjs wrapper for gtk_drag_dest_set()
+}</pre></div></div></div></div></div>
+<p class="p">Sets a widget as a potential drop destination, and adds default behaviors.</p>
+<p class="p">The default behaviors listed in <span class=" code">flags</span> have an effect similar
+to installing default handlers for the widget's drag-and-drop signals
+(<span class=" link"><a href="Gtk.drag-motion.html" title="Gtk.drag-motion">Gtk.drag-motion</a></span>, <span class=" link"><a href="Gtk.drag-drop.html" title="Gtk.drag-drop">Gtk.drag-drop</a></span>, ...). They all exist
+for convenience. When passing #GTK_DEST_DEFAULT_ALL for instance it is
+sufficient to connect to the widget's <span class=" link"><a href="Gtk.drag-data-received.html" title="Gtk.drag-data-received">Gtk.drag-data-received</a></span>
+signal to get primitive, but consistent drag-and-drop support.</p>
+<p class="p">Things become more complicated when you try to preview the dragged data,
+as described in the documentation for <span class=" link"><a href="Gtk.drag-motion.html" title="Gtk.drag-motion">Gtk.drag-motion</a></span>. The default
+behaviors described by <span class=" code">flags</span> make some assumptions, that can conflict
+with your own signal handlers. For instance #GTK_DEST_DEFAULT_DROP causes
+invokations of <span class=" link"><a href="Gdk.drag_status.html" title="Gdk.drag_status">Gdk.drag_status</a></span> in the context of <span class=" link"><a href="Gtk.drag-motion.html" title="Gtk.drag-motion">Gtk.drag-motion</a></span>,
+and invokations of <span class=" link"><a href="Gtk.drag_finish.html" title="drag_finish">drag_finish</a></span> in <span class=" link"><a href="Gtk.drag-data-received.html" title="Gtk.drag-data-received">Gtk.drag-data-received</a></span>.
+Especially the later is dramatic, when your own <span class=" link"><a href="Gtk.drag-motion.html" title="Gtk.drag-motion">Gtk.drag-motion</a></span>
+handler calls <span class=" link"><a href="Gtk.drag_get_data.html" title="Gtk.drag_get_data">Gtk.drag_get_data</a></span> to inspect the dragged data.</p>
+<p class="p">There's no way to set a default action here, you can use the
+<span class=" link"><a href="Gtk.drag-motion.html" title="Gtk.drag-motion">Gtk.drag-motion</a></span> callback for that. Here's an example which selects
+the action to use depending on whether the control key is pressed or not:
+|[
+static void
+drag_motion (GtkWidget *widget,
+             GdkDragContext *context,
+             gint x,
+             gint y,
+             guint time)
+{
+  GdkModifierType mask;</p>
+<p class="p">  gdk_window_get_pointer (gtk_widget_get_window (widget),
+                          NULL, NULL, &amp;mask);
+  if (mask &amp; GDK_CONTROL_MASK)
+    gdk_drag_status (context, GDK_ACTION_COPY, time);
+  else
+    gdk_drag_status (context, GDK_ACTION_MOVE, time);
+}
+]|</p>
+<div class="terms"><div class="inner"><div class="region"><dl class="terms">
+<dt class="terms"><span class=" code">flags</span></dt>
+<dd class="terms"><p class="p">which types of default drag behavior to use</p></dd>
+<dt class="terms"><span class=" code">targets</span></dt>
+<dd class="terms"><p class="p">a pointer to an array of <span class=" link"><a href="Gtk.TargetEntry.html" title="Gtk.TargetEntry">Gtk.TargetEntry</a></span>&lt;!-- --&gt;s indicating the drop types that this <span class=" code">widget</span> will accept, or <span class=" code">null</span>. Later you can access the list with <span class=" link"><a href="Gtk.Widget.drag_dest_get_target_list.html" title="Gtk.Widget.prototype.drag_dest_get_target_list">Gtk.Widget.prototype.drag_dest_get_target_list</a></span> and <span class=" link"><a href="Gtk.Widget.drag_dest_find_target.html" title="Gtk.Widget.prototype.drag_dest_find_target">Gtk.Widget.prototype.drag_dest_find_target</a></span>.</p></dd>
+<dt class="terms"><span class=" code">actions</span></dt>
+<dd class="terms"><p class="p">a bitmask of possible actions for a drop onto this <span class=" code">widget</span>.</p></dd>
+</dl></div></div></div>
+</div>
+<div class="sect sect-links" role="navigation">
+<div class="hgroup"></div>
+<div class="contents"><div class="links guidelinks"><div class="inner">
+<div class="title"><h2><span class="title">More Information</span></h2></div>
+<div class="region"><ul><li class="links "><a href="Gtk.Widget.html" title="Gtk.Widget">Gtk.Widget</a></li></ul></div>
+</div></div></div>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="footer"></div>
+</div></body>
+</html>

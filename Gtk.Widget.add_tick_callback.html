@@ -1,0 +1,57 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Gtk.Widget.prototype.add_tick_callback</title>
+<link rel="stylesheet" type="text/css" href="C.css">
+<script type="text/javascript" src="jquery.js"></script><script type="text/javascript" src="jquery.syntax.js"></script><script type="text/javascript" src="yelp.js"></script>
+</head>
+<body><div class="page" role="main">
+<div class="header"><div class="trails" role="navigation"><div class="trail">
+<a class="trail" href="index.html" title="Index">Index</a> » <a class="trail" href="Gtk.Widget.html" title="Gtk.Widget">Gtk.Widget</a> » </div></div></div>
+<div class="body">
+<div class="hgroup"><h1 class="title"><span class="title">Gtk.Widget.prototype.add_tick_callback</span></h1></div>
+<div class="region">
+<div class="contents">
+<div class="synopsis"><div class="inner"><div class="region"><div class="contents"><div class="code"><pre class="contents ">function add_tick_callback(callback:Gtk.TickCallback):Number {
+    // Gjs wrapper for gtk_widget_add_tick_callback()
+}</pre></div></div></div></div></div>
+<p class="p">Queues an animation frame update and adds a callback to be called
+before each frame. Until the tick callback is removed, it will be
+called frequently (usually at the frame rate of the output device
+or as quickly as the application can be repainted, whichever is
+slower). For this reason, is most suitable for handling graphics
+that change every frame or every few frames. The tick callback does
+not automatically imply a relayout or repaint. If you want a
+repaint or relayout, and aren't changing widget properties that
+would trigger that (for example, changing the text of a <span class=" link"><a href="Gtk.Label.html" title="Gtk.Label">Gtk.Label</a></span>),
+then you will have to call <span class=" link"><a href="Gtk.queue_resize.html" title="Gtk.queue_resize">Gtk.queue_resize</a></span> or
+<span class=" link"><a href="Gtk.queue_draw_area.html" title="Gtk.queue_draw_area">Gtk.queue_draw_area</a></span> yourself.</p>
+<p class="p"><span class=" link"><a href="Gdk.get_frame_time.html" title="Gdk.get_frame_time">Gdk.get_frame_time</a></span> should generally be used for timing
+continuous animations and
+<span class=" link"><a href="Gdk.get_predicted_presentation_time.html" title="Gdk.get_predicted_presentation_time">Gdk.get_predicted_presentation_time</a></span> if you are
+trying to display isolated frames at particular times.</p>
+<p class="p">This is a more convenient alternative to connecting directly to the
+<span class=" link"><a href="Gdk.update.html" title="Gdk.update">Gdk.update</a></span> signal of <span class=" link"><a href="Gdk.FrameClock.html" title="Gdk.FrameClock">Gdk.FrameClock</a></span>, since you don't
+have to worry about when a <span class=" link"><a href="Gdk.FrameClock.html" title="Gdk.FrameClock">Gdk.FrameClock</a></span> is assigned to a widget.</p>
+<p class="p">Since 3.8</p>
+<div class="terms"><div class="inner"><div class="region"><dl class="terms">
+<dt class="terms"><span class=" code">callback</span></dt>
+<dd class="terms"><p class="p">function to call for updating animations</p></dd>
+<dt class="terms"><span class=" code">Returns</span></dt>
+<dd class="terms"><p class="p">an id for the connection of this callback. Remove the callback by passing it to <span class=" link"><a href="Gtk.remove_tick_callback.html" title="Gtk.remove_tick_callback">Gtk.remove_tick_callback</a></span></p></dd>
+</dl></div></div></div>
+</div>
+<div class="sect sect-links" role="navigation">
+<div class="hgroup"></div>
+<div class="contents"><div class="links guidelinks"><div class="inner">
+<div class="title"><h2><span class="title">More Information</span></h2></div>
+<div class="region"><ul><li class="links "><a href="Gtk.Widget.html" title="Gtk.Widget">Gtk.Widget</a></li></ul></div>
+</div></div></div>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="footer"></div>
+</div></body>
+</html>

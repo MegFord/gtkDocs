@@ -1,0 +1,105 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Gtk.Viewport</title>
+<link rel="stylesheet" type="text/css" href="C.css">
+<script type="text/javascript" src="jquery.js"></script><script type="text/javascript" src="jquery.syntax.js"></script><script type="text/javascript" src="yelp.js"></script>
+</head>
+<body><div class="page" role="main">
+<div class="header"><div class="trails" role="navigation"><div class="trail">
+<a class="trail" href="index.html" title="Index">Index</a> » </div></div></div>
+<div class="body">
+<div class="hgroup"><h1 class="title"><span class="title">Gtk.Viewport</span></h1></div>
+<div class="region">
+<div class="contents">
+<div class="synopsis"><div class="inner"><div class="region"><div class="contents"><div class="code"><pre class="contents ">const Gtk = imports.gi.Gtk;
+
+let viewport = new Gtk.Viewport({
+    <span class=" link"><a href="Gtk.Viewport-shadow-type.html" title="Gtk.Viewport:shadow-type">shadow_type</a></span>: value,
+});
+  </pre></div></div></div></div></div>
+<p class="p">The <span class=" link"><a href="Gtk.Viewport.html" title="Gtk.Viewport">Gtk.Viewport</a></span> widget acts as an adaptor class, implementing
+scrollability for child widgets that lack their own scrolling
+capabilities. Use <span class=" link"><a href="Gtk.Viewport.html" title="Gtk.Viewport">Gtk.Viewport</a></span> to scroll child widgets such as
+<span class=" link"><a href="Gtk.Grid.html" title="Gtk.Grid">Gtk.Grid</a></span>, <span class=" link"><a href="Gtk.Box.html" title="Gtk.Box">Gtk.Box</a></span>, and so on.</p>
+<p class="p">If a widget has native scrolling abilities, such as <span class=" link"><a href="Gtk.TextView.html" title="Gtk.TextView">Gtk.TextView</a></span>,
+<span class=" link"><a href="Gtk.TreeView.html" title="Gtk.TreeView">Gtk.TreeView</a></span> or <span class=" link"><a href="Gtk.IconView.html" title="Gtk.IconView">Gtk.IconView</a></span>, it can be added to a <span class=" link"><a href="Gtk.ScrolledWindow.html" title="Gtk.ScrolledWindow">Gtk.ScrolledWindow</a></span>
+with <span class=" link"><a href="Gtk.Container.add.html" title="Gtk.Container.prototype.add">Gtk.Container.prototype.add</a></span>. If a widget does not, you must first add the
+widget to a <span class=" link"><a href="Gtk.Viewport.html" title="Gtk.Viewport">Gtk.Viewport</a></span>, then add the viewport to the scrolled window.
+<span class=" link"><a href="Gtk.Container.add.html" title="Gtk.Container.prototype.add">Gtk.Container.prototype.add</a></span> does this automatically if a child that does not
+implement <span class=" link"><a href="Gtk.Scrollable.html" title="Gtk.Scrollable">Gtk.Scrollable</a></span> is added to a <span class=" link"><a href="Gtk.ScrolledWindow.html" title="Gtk.ScrolledWindow">Gtk.ScrolledWindow</a></span>, so you can
+ignore the presence of the viewport.</p>
+<p class="p">The <span class=" link"><a href="Gtk.Viewport.html" title="Gtk.Viewport">Gtk.Viewport</a></span> will start scrolling content only if allocated less
+than the child widget's minimum size in a given orientation.</p>
+<div class="synopsis"><div class="inner">
+<div class="title title-synopsis"><h2><span class="title">Hierarchy</span></h2></div>
+<div class="region"><div class="contents"><div class="tree"><div class="inner"><div class="region"><ul class="tree"><li class="tree">
+<div>
+        <span class=" code">GObject.Object</span>
+      
+      </div>
+<ul class="tree"><li class="tree">
+<div>
+        <span class=" code">GObject.InitiallyUnowned</span>
+      
+      </div>
+<ul class="tree"><li class="tree">
+<div>
+        <span class=" code">Gtk.Widget</span>
+      
+      </div>
+<ul class="tree"><li class="tree">
+<div>
+        <span class=" code">Gtk.Container</span>
+      
+      </div>
+<ul class="tree"><li class="tree">
+<div>
+        <span class=" code">Gtk.Bin</span>
+      
+      </div>
+<ul class="tree"><li class="tree"><div>
+        <span class=" code">Gtk.Viewport</span>
+      </div></li></ul>
+</li></ul>
+</li></ul>
+</li></ul>
+</li></ul>
+</li></ul></div></div></div></div></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Methods</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.Viewport.get_bin_window.html" title="Gtk.Viewport.prototype.get_bin_window">Gtk.Viewport.prototype.get_bin_window</a></li>
+<li class="links "><a href="Gtk.Viewport.get_hadjustment.html" title="Gtk.Viewport.prototype.get_hadjustment">Gtk.Viewport.prototype.get_hadjustment</a></li>
+<li class="links "><a href="Gtk.Viewport.get_shadow_type.html" title="Gtk.Viewport.prototype.get_shadow_type">Gtk.Viewport.prototype.get_shadow_type</a></li>
+<li class="links "><a href="Gtk.Viewport.get_vadjustment.html" title="Gtk.Viewport.prototype.get_vadjustment">Gtk.Viewport.prototype.get_vadjustment</a></li>
+<li class="links "><a href="Gtk.Viewport.get_view_window.html" title="Gtk.Viewport.prototype.get_view_window">Gtk.Viewport.prototype.get_view_window</a></li>
+<li class="links "><a href="Gtk.Viewport.set_hadjustment.html" title="Gtk.Viewport.prototype.set_hadjustment">Gtk.Viewport.prototype.set_hadjustment</a></li>
+<li class="links "><a href="Gtk.Viewport.set_shadow_type.html" title="Gtk.Viewport.prototype.set_shadow_type">Gtk.Viewport.prototype.set_shadow_type</a></li>
+<li class="links "><a href="Gtk.Viewport.set_vadjustment.html" title="Gtk.Viewport.prototype.set_vadjustment">Gtk.Viewport.prototype.set_vadjustment</a></li>
+</ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Properties</span></h2></div>
+<div class="region"><ul><li class="links "><a href="Gtk.Viewport-shadow-type.html" title="Gtk.Viewport:shadow-type">shadow-type</a></li></ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Other</span></h2></div>
+<div class="region"><ul><li class="links "><a href="Gtk.Viewport.new.html" title="Gtk.Viewport.new">Gtk.Viewport.new</a></li></ul></div>
+</div></div>
+</div>
+<div class="sect sect-links" role="navigation">
+<div class="hgroup"></div>
+<div class="contents"><div class="links guidelinks"><div class="inner">
+<div class="title"><h2><span class="title">More Information</span></h2></div>
+<div class="region"><ul><li class="links "><a href="index.html" title="Index">Index</a></li></ul></div>
+</div></div></div>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="footer"></div>
+</div></body>
+</html>

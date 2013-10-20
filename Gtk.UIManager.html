@@ -1,0 +1,336 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Gtk.UIManager</title>
+<link rel="stylesheet" type="text/css" href="C.css">
+<script type="text/javascript" src="jquery.js"></script><script type="text/javascript" src="jquery.syntax.js"></script><script type="text/javascript" src="yelp.js"></script>
+</head>
+<body><div class="page" role="main">
+<div class="header"><div class="trails" role="navigation"><div class="trail">
+<a class="trail" href="index.html" title="Index">Index</a> » </div></div></div>
+<div class="body">
+<div class="hgroup"><h1 class="title"><span class="title">Gtk.UIManager</span></h1></div>
+<div class="region">
+<div class="contents">
+<div class="synopsis"><div class="inner"><div class="region"><div class="contents"><div class="code"><pre class="contents ">const Gtk = imports.gi.Gtk;
+
+let u_i_manager = new Gtk.UIManager({
+    <span class=" link"><a href="Gtk.UIManager-add-tearoffs.html" title="Gtk.UIManager:add-tearoffs">add_tearoffs</a></span>: value,
+});
+  </pre></div></div></div></div></div>
+<p class="p">A <span class=" link"><a href="Gtk.UIManager.html" title="Gtk.UIManager">Gtk.UIManager</a></span> constructs a user interface (menus and toolbars) from
+one or more UI definitions, which reference actions from one or more
+action groups.</p>
+<p class="p">&lt;refsect2 id="XML-UI"&gt;
+&lt;title&gt;UI Definitions&lt;/title&gt;
+&lt;para&gt;
+The UI definitions are specified in an XML format which can be
+roughly described by the following DTD.</p>
+<p class="p">&lt;note&gt;&lt;para&gt;
+Do not confuse the GtkUIManager UI Definitions described here with
+the similarly named &lt;link linkend="BUILDER-UI"&gt;GtkBuilder UI
+Definitions&lt;/link&gt;.
+&lt;/para&gt;&lt;/note&gt;</p>
+<p class="p">&lt;programlisting&gt;
+&lt;![CDATA[
+&lt;!ELEMENT ui          (menubar|toolbar|popup|accelerator)* &gt;
+&lt;!ELEMENT menubar     (menuitem|separator|placeholder|menu)* &gt;
+&lt;!ELEMENT menu        (menuitem|separator|placeholder|menu)* &gt;
+&lt;!ELEMENT popup       (menuitem|separator|placeholder|menu)* &gt;
+&lt;!ELEMENT toolbar     (toolitem|separator|placeholder)* &gt;
+&lt;!ELEMENT placeholder (menuitem|toolitem|separator|placeholder|menu)* &gt;
+&lt;!ELEMENT menuitem     EMPTY &gt;
+&lt;!ELEMENT toolitem     (menu?) &gt;
+&lt;!ELEMENT separator    EMPTY &gt;
+&lt;!ELEMENT accelerator  EMPTY &gt;
+&lt;!ATTLIST menubar      name                      #IMPLIED
+                       action                    #IMPLIED &gt;
+&lt;!ATTLIST toolbar      name                      #IMPLIED
+                       action                    #IMPLIED &gt;
+&lt;!ATTLIST popup        name                      #IMPLIED
+                       action                    #IMPLIED
+                       accelerators (true|false) #IMPLIED &gt;
+&lt;!ATTLIST placeholder  name                      #IMPLIED
+                       action                    #IMPLIED &gt;
+&lt;!ATTLIST separator    name                      #IMPLIED
+                       action                    #IMPLIED
+                       expand       (true|false) #IMPLIED &gt;
+&lt;!ATTLIST menu         name                      #IMPLIED
+                       action                    #REQUIRED
+                       position     (top|bot)    #IMPLIED &gt;
+&lt;!ATTLIST menuitem     name                      #IMPLIED
+                       action                    #REQUIRED
+                       position     (top|bot)    #IMPLIED
+                       always-show-image (true|false) #IMPLIED &gt;
+&lt;!ATTLIST toolitem     name                      #IMPLIED
+                       action                    #REQUIRED
+                       position     (top|bot)    #IMPLIED &gt;
+&lt;!ATTLIST accelerator  name                      #IMPLIED
+                       action                    #REQUIRED &gt;
+]]&gt;
+&lt;/programlisting&gt;
+There are some additional restrictions beyond those specified in the
+DTD, e.g. every toolitem must have a toolbar in its anchestry and
+every menuitem must have a menubar or popup in its anchestry. Since
+a #GMarkup parser is used to parse the UI description, it must not only
+be valid XML, but valid #GMarkup.</p>
+<p class="p">If a name is not specified, it defaults to the action. If an action is
+not specified either, the element name is used. The name and action
+attributes must not contain '/' characters after parsing (since that
+would mess up path lookup) and must be usable as XML attributes when
+enclosed in doublequotes, thus they must not '"' characters or references
+to the &amp;quot; entity.</p>
+<p class="p">&lt;example&gt;
+&lt;title&gt;A UI definition&lt;/title&gt;
+&lt;programlisting&gt;&lt;![CDATA[
+&lt;ui&gt;
+  &lt;menubar&gt;
+    &lt;menu name="FileMenu" action="FileMenuAction"&gt;
+      &lt;menuitem name="New" action="New2Action" /&gt;
+      &lt;placeholder name="FileMenuAdditions" /&gt;
+    &lt;/menu&gt;
+    &lt;menu name="JustifyMenu" action="JustifyMenuAction"&gt;
+      &lt;menuitem name="Left" action="justify-left"/&gt;
+      &lt;menuitem name="Centre" action="justify-center"/&gt;
+      &lt;menuitem name="Right" action="justify-right"/&gt;
+      &lt;menuitem name="Fill" action="justify-fill"/&gt;
+    &lt;/menu&gt;
+  &lt;/menubar&gt;
+  &lt;toolbar action="toolbar1"&gt;
+    &lt;placeholder name="JustifyToolItems"&gt;
+      &lt;separator/&gt;
+      &lt;toolitem name="Left" action="justify-left"/&gt;
+      &lt;toolitem name="Centre" action="justify-center"/&gt;
+      &lt;toolitem name="Right" action="justify-right"/&gt;
+      &lt;toolitem name="Fill" action="justify-fill"/&gt;
+      &lt;separator/&gt;
+    &lt;/placeholder&gt;
+  &lt;/toolbar&gt;
+&lt;/ui&gt;
+]]&gt;&lt;/programlisting&gt;
+&lt;/example&gt;</p>
+<p class="p">The constructed widget hierarchy is very similar to the element tree
+of the XML, with the exception that placeholders are merged into their
+parents. The correspondence of XML elements to widgets should be
+almost obvious:
+&lt;variablelist&gt;
+&lt;varlistentry&gt;
+&lt;term&gt;menubar&lt;/term&gt;
+&lt;listitem&gt;&lt;para&gt;a <span class=" link"><a href="Gtk.MenuBar.html" title="Gtk.MenuBar">Gtk.MenuBar</a></span>&lt;/para&gt;&lt;/listitem&gt;
+&lt;/varlistentry&gt;
+&lt;varlistentry&gt;
+&lt;term&gt;toolbar&lt;/term&gt;
+&lt;listitem&gt;&lt;para&gt;a <span class=" link"><a href="Gtk.Toolbar.html" title="Gtk.Toolbar">Gtk.Toolbar</a></span>&lt;/para&gt;&lt;/listitem&gt;
+&lt;/varlistentry&gt;
+&lt;varlistentry&gt;
+&lt;term&gt;popup&lt;/term&gt;
+&lt;listitem&gt;&lt;para&gt;a toplevel <span class=" link"><a href="Gtk.Menu.html" title="Gtk.Menu">Gtk.Menu</a></span>&lt;/para&gt;&lt;/listitem&gt;
+&lt;/varlistentry&gt;
+&lt;varlistentry&gt;
+&lt;term&gt;menu&lt;/term&gt;
+&lt;listitem&gt;&lt;para&gt;a <span class=" link"><a href="Gtk.Menu.html" title="Gtk.Menu">Gtk.Menu</a></span> attached to a menuitem&lt;/para&gt;&lt;/listitem&gt;
+&lt;/varlistentry&gt;
+&lt;varlistentry&gt;
+&lt;term&gt;menuitem&lt;/term&gt;
+&lt;listitem&gt;&lt;para&gt;a <span class=" link"><a href="Gtk.MenuItem.html" title="Gtk.MenuItem">Gtk.MenuItem</a></span> subclass, the exact type depends on the
+action&lt;/para&gt;&lt;/listitem&gt;
+&lt;/varlistentry&gt;
+&lt;varlistentry&gt;
+&lt;term&gt;toolitem&lt;/term&gt;
+&lt;listitem&gt;&lt;para&gt;a <span class=" link"><a href="Gtk.ToolItem.html" title="Gtk.ToolItem">Gtk.ToolItem</a></span> subclass, the exact type depends on the
+action. Note that toolitem elements may contain a menu element, but only
+if their associated action specifies a <span class=" link"><a href="Gtk.MenuToolButton.html" title="Gtk.MenuToolButton">Gtk.MenuToolButton</a></span> as proxy.&lt;/para&gt;&lt;/listitem&gt;
+&lt;/varlistentry&gt;
+&lt;varlistentry&gt;
+&lt;term&gt;separator&lt;/term&gt;
+&lt;listitem&gt;&lt;para&gt;a <span class=" link"><a href="Gtk.SeparatorMenuItem.html" title="Gtk.SeparatorMenuItem">Gtk.SeparatorMenuItem</a></span> or
+<span class=" link"><a href="Gtk.SeparatorToolItem.html" title="Gtk.SeparatorToolItem">Gtk.SeparatorToolItem</a></span>&lt;/para&gt;&lt;/listitem&gt;
+&lt;/varlistentry&gt;
+&lt;varlistentry&gt;
+&lt;term&gt;accelerator&lt;/term&gt;
+&lt;listitem&gt;&lt;para&gt;a keyboard accelerator&lt;/para&gt;&lt;/listitem&gt;
+&lt;/varlistentry&gt;
+&lt;/variablelist&gt;</p>
+<p class="p">The "position" attribute determines where a constructed widget is positioned
+wrt. to its siblings in the partially constructed tree. If it is
+"top", the widget is prepended, otherwise it is appended.
+&lt;/para&gt;
+&lt;/refsect2&gt;
+&lt;refsect2 id="UI-Merging"&gt;
+&lt;title&gt;UI Merging&lt;/title&gt;
+&lt;para&gt;
+The most remarkable feature of <span class=" link"><a href="Gtk.UIManager.html" title="Gtk.UIManager">Gtk.UIManager</a></span> is that it can overlay a set
+of menuitems and toolitems over another one, and demerge them later.</p>
+<p class="p">Merging is done based on the names of the XML elements. Each element is
+identified by a path which consists of the names of its anchestors, separated
+by slashes. For example, the menuitem named "Left" in the example above
+has the path &lt;literal&gt;/ui/menubar/JustifyMenu/Left&lt;/literal&gt; and the
+toolitem with the same name has path
+&lt;literal&gt;/ui/toolbar1/JustifyToolItems/Left&lt;/literal&gt;.
+&lt;/para&gt;
+&lt;/refsect2&gt;
+&lt;refsect2&gt;
+&lt;title&gt;Accelerators&lt;/title&gt;
+&lt;para&gt;
+Every action has an accelerator path. Accelerators are installed together with
+menuitem proxies, but they can also be explicitly added with &amp;lt;accelerator&amp;gt;
+elements in the UI definition. This makes it possible to have accelerators for
+actions even if they have no visible proxies.
+&lt;/para&gt;
+&lt;/refsect2&gt;
+&lt;refsect2 id="Smart-Separators"&gt;
+&lt;title&gt;Smart Separators&lt;/title&gt;
+&lt;para&gt;
+The separators created by <span class=" link"><a href="Gtk.UIManager.html" title="Gtk.UIManager">Gtk.UIManager</a></span> are "smart", i.e. they do not show up
+in the UI unless they end up between two visible menu or tool items. Separators
+which are located at the very beginning or end of the menu or toolbar
+containing them, or multiple separators next to each other, are hidden. This
+is a useful feature, since the merging of UI elements from multiple sources
+can make it hard or impossible to determine in advance whether a separator
+will end up in such an unfortunate position.</p>
+<p class="p">For separators in toolbars, you can set &lt;literal&gt;expand="true"&lt;/literal&gt; to
+turn them from a small, visible separator to an expanding, invisible one.
+Toolitems following an expanding separator are effectively right-aligned.
+&lt;/para&gt;
+&lt;/refsect2&gt;
+&lt;refsect2&gt;
+&lt;title&gt;Empty Menus&lt;/title&gt;
+&lt;para&gt;
+Submenus pose similar problems to separators inconnection with merging. It is
+impossible to know in advance whether they will end up empty after merging.
+<span class=" link"><a href="Gtk.UIManager.html" title="Gtk.UIManager">Gtk.UIManager</a></span> offers two ways to treat empty submenus:
+&lt;itemizedlist&gt;
+&lt;listitem&gt;
+&lt;para&gt;make them disappear by hiding the menu item they're attached to&lt;/para&gt;
+&lt;/listitem&gt;
+&lt;listitem&gt;
+&lt;para&gt;add an insensitive "Empty" item&lt;/para&gt;
+&lt;/listitem&gt;
+&lt;/itemizedlist&gt;
+The behaviour is chosen based on the "hide_if_empty" property of the action
+to which the submenu is associated.
+&lt;/para&gt;
+&lt;/refsect2&gt;
+&lt;refsect2 id="GtkUIManager-BUILDER-UI"&gt;
+&lt;title&gt;GtkUIManager as GtkBuildable&lt;/title&gt;
+&lt;para&gt;
+The GtkUIManager implementation of the GtkBuildable interface accepts
+GtkActionGroup objects as &amp;lt;child&amp;gt; elements in UI definitions.</p>
+<p class="p">A GtkUIManager UI definition as described above can be embedded in
+an GtkUIManager &amp;lt;object&amp;gt; element in a GtkBuilder UI definition.</p>
+<p class="p">The widgets that are constructed by a GtkUIManager can be embedded in
+other parts of the constructed user interface with the help of the
+"constructor" attribute. See the example below.</p>
+<p class="p">&lt;example&gt;
+&lt;title&gt;An embedded GtkUIManager UI definition&lt;/title&gt;
+&lt;programlisting&gt;&lt;![CDATA[
+&lt;object class="GtkUIManager" id="uiman"&gt;
+  &lt;child&gt;
+    &lt;object class="GtkActionGroup" id="actiongroup"&gt;
+      &lt;child&gt;
+        &lt;object class="GtkAction" id="file"&gt;
+          &lt;property name="label"&gt;_File&lt;/property&gt;
+        &lt;/object&gt;
+      &lt;/child&gt;
+    &lt;/object&gt;
+  &lt;/child&gt;
+  &lt;ui&gt;
+    &lt;menubar name="menubar1"&gt;
+      &lt;menu action="file"&gt;
+      &lt;/menu&gt;
+    &lt;/menubar&gt;
+  &lt;/ui&gt;
+&lt;/object&gt;
+&lt;object class="GtkWindow" id="main-window"&gt;
+  &lt;child&gt;
+    &lt;object class="GtkMenuBar" id="menubar1" constructor="uiman"/&gt;
+  &lt;/child&gt;
+&lt;/object&gt;
+]]&gt;&lt;/programlisting&gt;
+&lt;/example&gt;
+&lt;/para&gt;
+&lt;/refsect2&gt;</p>
+<div class="synopsis"><div class="inner">
+<div class="title title-synopsis"><h2><span class="title">Hierarchy</span></h2></div>
+<div class="region"><div class="contents"><div class="tree"><div class="inner"><div class="region"><ul class="tree"><li class="tree">
+<div>
+        <span class=" code">GObject.Object</span>
+      
+      </div>
+<ul class="tree"><li class="tree"><div>
+        <span class=" code">Gtk.UIManager</span>
+      </div></li></ul>
+</li></ul></div></div></div></div></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Methods</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.UIManager.add_ui.html" title="Gtk.UIManager.prototype.add_ui">Gtk.UIManager.prototype.add_ui</a></li>
+<li class="links "><a href="Gtk.UIManager.add_ui_from_file.html" title="Gtk.UIManager.prototype.add_ui_from_file">Gtk.UIManager.prototype.add_ui_from_file</a></li>
+<li class="links "><a href="Gtk.UIManager.add_ui_from_resource.html" title="Gtk.UIManager.prototype.add_ui_from_resource">Gtk.UIManager.prototype.add_ui_from_resource</a></li>
+<li class="links "><a href="Gtk.UIManager.add_ui_from_string.html" title="Gtk.UIManager.prototype.add_ui_from_string">Gtk.UIManager.prototype.add_ui_from_string</a></li>
+<li class="links "><a href="Gtk.UIManager.ensure_update.html" title="Gtk.UIManager.prototype.ensure_update">Gtk.UIManager.prototype.ensure_update</a></li>
+<li class="links "><a href="Gtk.UIManager.get_accel_group.html" title="Gtk.UIManager.prototype.get_accel_group">Gtk.UIManager.prototype.get_accel_group</a></li>
+<li class="links "><a href="Gtk.UIManager.get_action.html" title="Gtk.UIManager.prototype.get_action">Gtk.UIManager.prototype.get_action</a></li>
+<li class="links "><a href="Gtk.UIManager.get_action_groups.html" title="Gtk.UIManager.prototype.get_action_groups">Gtk.UIManager.prototype.get_action_groups</a></li>
+<li class="links "><a href="Gtk.UIManager.get_add_tearoffs.html" title="Gtk.UIManager.prototype.get_add_tearoffs">Gtk.UIManager.prototype.get_add_tearoffs</a></li>
+<li class="links "><a href="Gtk.UIManager.get_toplevels.html" title="Gtk.UIManager.prototype.get_toplevels">Gtk.UIManager.prototype.get_toplevels</a></li>
+<li class="links "><a href="Gtk.UIManager.get_ui.html" title="Gtk.UIManager.prototype.get_ui">Gtk.UIManager.prototype.get_ui</a></li>
+<li class="links "><a href="Gtk.UIManager.get_widget.html" title="Gtk.UIManager.prototype.get_widget">Gtk.UIManager.prototype.get_widget</a></li>
+<li class="links "><a href="Gtk.UIManager.insert_action_group.html" title="Gtk.UIManager.prototype.insert_action_group">Gtk.UIManager.prototype.insert_action_group</a></li>
+<li class="links "><a href="Gtk.UIManager.new_merge_id.html" title="Gtk.UIManager.prototype.new_merge_id">Gtk.UIManager.prototype.new_merge_id</a></li>
+<li class="links "><a href="Gtk.UIManager.remove_action_group.html" title="Gtk.UIManager.prototype.remove_action_group">Gtk.UIManager.prototype.remove_action_group</a></li>
+<li class="links "><a href="Gtk.UIManager.remove_ui.html" title="Gtk.UIManager.prototype.remove_ui">Gtk.UIManager.prototype.remove_ui</a></li>
+<li class="links "><a href="Gtk.UIManager.set_add_tearoffs.html" title="Gtk.UIManager.prototype.set_add_tearoffs">Gtk.UIManager.prototype.set_add_tearoffs</a></li>
+</ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Properties</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.UIManager-add-tearoffs.html" title="Gtk.UIManager:add-tearoffs">add-tearoffs</a></li>
+<li class="links "><a href="Gtk.UIManager-ui.html" title="Gtk.UIManager:ui">ui</a></li>
+</ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Signals</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.UIManager-actions-changed.html" title="Gtk.UIManager::actions-changed">actions-changed</a></li>
+<li class="links "><a href="Gtk.UIManager-add-widget.html" title="Gtk.UIManager::add-widget">add-widget</a></li>
+<li class="links "><a href="Gtk.UIManager-connect-proxy.html" title="Gtk.UIManager::connect-proxy">connect-proxy</a></li>
+<li class="links "><a href="Gtk.UIManager-disconnect-proxy.html" title="Gtk.UIManager::disconnect-proxy">disconnect-proxy</a></li>
+<li class="links "><a href="Gtk.UIManager-post-activate.html" title="Gtk.UIManager::post-activate">post-activate</a></li>
+<li class="links "><a href="Gtk.UIManager-pre-activate.html" title="Gtk.UIManager::pre-activate">pre-activate</a></li>
+</ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Virtual functions</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.UIManager-actions_changed.html" title="Gtk.UIManager::actions_changed">Gtk.UIManager::actions_changed</a></li>
+<li class="links "><a href="Gtk.UIManager-add_widget.html" title="Gtk.UIManager::add_widget">Gtk.UIManager::add_widget</a></li>
+<li class="links "><a href="Gtk.UIManager-connect_proxy.html" title="Gtk.UIManager::connect_proxy">Gtk.UIManager::connect_proxy</a></li>
+<li class="links "><a href="Gtk.UIManager-disconnect_proxy.html" title="Gtk.UIManager::disconnect_proxy">Gtk.UIManager::disconnect_proxy</a></li>
+<li class="links "><a href="Gtk.UIManager-get_action.html" title="Gtk.UIManager::get_action">Gtk.UIManager::get_action</a></li>
+<li class="links "><a href="Gtk.UIManager-get_widget.html" title="Gtk.UIManager::get_widget">Gtk.UIManager::get_widget</a></li>
+<li class="links "><a href="Gtk.UIManager-post_activate.html" title="Gtk.UIManager::post_activate">Gtk.UIManager::post_activate</a></li>
+<li class="links "><a href="Gtk.UIManager-pre_activate.html" title="Gtk.UIManager::pre_activate">Gtk.UIManager::pre_activate</a></li>
+</ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Other</span></h2></div>
+<div class="region"><ul><li class="links "><a href="Gtk.UIManager.new.html" title="Gtk.UIManager.new">Gtk.UIManager.new</a></li></ul></div>
+</div></div>
+</div>
+<div class="sect sect-links" role="navigation">
+<div class="hgroup"></div>
+<div class="contents"><div class="links guidelinks"><div class="inner">
+<div class="title"><h2><span class="title">More Information</span></h2></div>
+<div class="region"><ul><li class="links "><a href="index.html" title="Index">Index</a></li></ul></div>
+</div></div></div>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="footer"></div>
+</div></body>
+</html>

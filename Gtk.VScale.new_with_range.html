@@ -1,0 +1,49 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Gtk.VScale.new_with_range</title>
+<link rel="stylesheet" type="text/css" href="C.css">
+<script type="text/javascript" src="jquery.js"></script><script type="text/javascript" src="jquery.syntax.js"></script><script type="text/javascript" src="yelp.js"></script>
+</head>
+<body><div class="page" role="main">
+<div class="header"><div class="trails" role="navigation"><div class="trail">
+<a class="trail" href="index.html" title="Index">Index</a> » <a class="trail" href="Gtk.VScale.html" title="Gtk.VScale">Gtk.VScale</a> » </div></div></div>
+<div class="body">
+<div class="hgroup"><h1 class="title"><span class="title">Gtk.VScale.new_with_range</span></h1></div>
+<div class="region">
+<div class="contents">
+<div class="synopsis"><div class="inner"><div class="region"><div class="contents"><div class="code"><pre class="contents ">function new_with_range(min:Number, max:Number, step:Number):Gtk.Widget {
+    // Gjs wrapper for gtk_vscale_new_with_range()
+}</pre></div></div></div></div></div>
+<p class="p">Creates a new vertical scale widget that lets the user input a
+number between <span class=" code">min</span> and <span class=" code">max</span> (including <span class=" code">min</span> and <span class=" code">max</span>) with the
+increment <span class=" code">step</span>.  <span class=" code">step</span> must be nonzero; it's the distance the
+slider moves when using the arrow keys to adjust the scale value.</p>
+<p class="p">Note that the way in which the precision is derived works best if <span class=" code">step</span>
+is a power of ten. If the resulting precision is not suitable for your
+needs, use <span class=" link"><a href="Gtk.Scale.set_digits.html" title="Gtk.Scale.prototype.set_digits">Gtk.Scale.prototype.set_digits</a></span> to correct it.</p>
+<div class="terms"><div class="inner"><div class="region"><dl class="terms">
+<dt class="terms"><span class=" code">min</span></dt>
+<dd class="terms"><p class="p">minimum value</p></dd>
+<dt class="terms"><span class=" code">max</span></dt>
+<dd class="terms"><p class="p">maximum value</p></dd>
+<dt class="terms"><span class=" code">step</span></dt>
+<dd class="terms"><p class="p">step increment (tick size) used with keyboard shortcuts</p></dd>
+<dt class="terms"><span class=" code">Returns</span></dt>
+<dd class="terms"><p class="p">a new <span class=" link"><a href="Gtk.VScale.html" title="Gtk.VScale">Gtk.VScale</a></span></p></dd>
+</dl></div></div></div>
+</div>
+<div class="sect sect-links" role="navigation">
+<div class="hgroup"></div>
+<div class="contents"><div class="links guidelinks"><div class="inner">
+<div class="title"><h2><span class="title">More Information</span></h2></div>
+<div class="region"><ul><li class="links "><a href="Gtk.VScale.html" title="Gtk.VScale">Gtk.VScale</a></li></ul></div>
+</div></div></div>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="footer"></div>
+</div></body>
+</html>

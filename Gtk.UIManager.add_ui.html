@@ -1,0 +1,54 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Gtk.UIManager.prototype.add_ui</title>
+<link rel="stylesheet" type="text/css" href="C.css">
+<script type="text/javascript" src="jquery.js"></script><script type="text/javascript" src="jquery.syntax.js"></script><script type="text/javascript" src="yelp.js"></script>
+</head>
+<body><div class="page" role="main">
+<div class="header"><div class="trails" role="navigation"><div class="trail">
+<a class="trail" href="index.html" title="Index">Index</a> » <a class="trail" href="Gtk.UIManager.html" title="Gtk.UIManager">Gtk.UIManager</a> » </div></div></div>
+<div class="body">
+<div class="hgroup"><h1 class="title"><span class="title">Gtk.UIManager.prototype.add_ui</span></h1></div>
+<div class="region">
+<div class="contents">
+<div class="synopsis"><div class="inner"><div class="region"><div class="contents"><div class="code"><pre class="contents ">function add_ui(merge_id:Number, path:String, name:String, action:String, type:Gtk.UIManagerItemType, top:Boolean):void {
+    // Gjs wrapper for gtk_ui_manager_add_ui()
+}</pre></div></div></div></div></div>
+<p class="p">Adds a UI element to the current contents of <span class=" code">manager</span>. </p>
+<p class="p">If <span class=" code">type</span> is <span class=" link"><a href="Gtk.UIManagerItemType.html" title="Gtk.UIManagerItemType">Gtk.UIManagerItemType</a></span>.auto, GTK+ inserts a menuitem, toolitem or 
+separator if such an element can be inserted at the place determined by 
+<span class=" code">path</span>. Otherwise <span class=" code">type</span> must indicate an element that can be inserted at 
+the place determined by <span class=" code">path</span>.</p>
+<p class="p">If <span class=" code">path</span> points to a menuitem or toolitem, the new element will be inserted
+before or after this item, depending on <span class=" code">top</span>.</p>
+<p class="p">Since 2.4</p>
+<div class="terms"><div class="inner"><div class="region"><dl class="terms">
+<dt class="terms"><span class=" code">merge_id</span></dt>
+<dd class="terms"><p class="p">the merge id for the merged UI, see <span class=" link"><a href="Gtk.new_merge_id.html" title="Gtk.new_merge_id">Gtk.new_merge_id</a></span></p></dd>
+<dt class="terms"><span class=" code">path</span></dt>
+<dd class="terms"><p class="p">a path</p></dd>
+<dt class="terms"><span class=" code">name</span></dt>
+<dd class="terms"><p class="p">the name for the added UI element</p></dd>
+<dt class="terms"><span class=" code">action</span></dt>
+<dd class="terms"><p class="p">the name of the action to be proxied, or <span class=" code">null</span> to add a separator</p></dd>
+<dt class="terms"><span class=" code">type</span></dt>
+<dd class="terms"><p class="p">the type of UI element to add.</p></dd>
+<dt class="terms"><span class=" code">top</span></dt>
+<dd class="terms"><p class="p">if <span class=" code">true</span>, the UI element is added before its siblings, otherwise it is added after its siblings.</p></dd>
+</dl></div></div></div>
+</div>
+<div class="sect sect-links" role="navigation">
+<div class="hgroup"></div>
+<div class="contents"><div class="links guidelinks"><div class="inner">
+<div class="title"><h2><span class="title">More Information</span></h2></div>
+<div class="region"><ul><li class="links "><a href="Gtk.UIManager.html" title="Gtk.UIManager">Gtk.UIManager</a></li></ul></div>
+</div></div></div>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="footer"></div>
+</div></body>
+</html>

@@ -1,0 +1,91 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Gtk.VBox</title>
+<link rel="stylesheet" type="text/css" href="C.css">
+<script type="text/javascript" src="jquery.js"></script><script type="text/javascript" src="jquery.syntax.js"></script><script type="text/javascript" src="yelp.js"></script>
+</head>
+<body><div class="page" role="main">
+<div class="header"><div class="trails" role="navigation"><div class="trail">
+<a class="trail" href="index.html" title="Index">Index</a> » </div></div></div>
+<div class="body">
+<div class="hgroup"><h1 class="title"><span class="title">Gtk.VBox</span></h1></div>
+<div class="region">
+<div class="contents">
+<div class="synopsis"><div class="inner"><div class="region"><div class="contents"><div class="code"><pre class="contents ">const Gtk = imports.gi.Gtk;
+
+let v_box = new Gtk.VBox();
+  </pre></div></div></div></div></div>
+<p class="p">A <span class=" link"><a href="Gtk.VBox.html" title="Gtk.VBox">Gtk.VBox</a></span> is a container that organizes child widgets into a single column.</p>
+<p class="p">Use the <span class=" link"><a href="Gtk.Box.html" title="Gtk.Box">Gtk.Box</a></span> packing interface to determine the arrangement,
+spacing, height, and alignment of <span class=" link"><a href="Gtk.VBox.html" title="Gtk.VBox">Gtk.VBox</a></span> children.</p>
+<p class="p">All children are allocated the same width.</p>
+<p class="p">GtkVBox has been deprecated. You can use <span class=" link"><a href="Gtk.Box.html" title="Gtk.Box">Gtk.Box</a></span> instead, which is a
+very quick and easy change. If you have derived your own classes from
+GtkVBox, you can simply change the inheritance to derive directly
+from <span class=" link"><a href="Gtk.Box.html" title="Gtk.Box">Gtk.Box</a></span>, and set the <span class=" link"><a href="Gtk.orientation.html" title="Gtk.orientation">Gtk.orientation</a></span> property to
+<span class=" link"><a href="Gtk.Orientation.html" title="Gtk.Orientation">Gtk.Orientation</a></span>.vertical in your instance init function, with a
+call like:
+|[
+  gtk_orientable_set_orientation (GTK_ORIENTABLE (object),
+                                  GTK_ORIENTATION_VERTICAL);
+]|
+If you want your code to be future-proof, the recommendation is to
+switch to <span class=" link"><a href="Gtk.Grid.html" title="Gtk.Grid">Gtk.Grid</a></span>, since <span class=" link"><a href="Gtk.Box.html" title="Gtk.Box">Gtk.Box</a></span> is going to be deprecated in favor
+of the more flexible grid widget eventually. For more information
+about migrating to <span class=" link"><a href="Gtk.Grid.html" title="Gtk.Grid">Gtk.Grid</a></span>, see &lt;xref linkend="gtk-migrating-GtkGrid"/&gt;.</p>
+<div class="synopsis"><div class="inner">
+<div class="title title-synopsis"><h2><span class="title">Hierarchy</span></h2></div>
+<div class="region"><div class="contents"><div class="tree"><div class="inner"><div class="region"><ul class="tree"><li class="tree">
+<div>
+        <span class=" code">GObject.Object</span>
+      
+      </div>
+<ul class="tree"><li class="tree">
+<div>
+        <span class=" code">GObject.InitiallyUnowned</span>
+      
+      </div>
+<ul class="tree"><li class="tree">
+<div>
+        <span class=" code">Gtk.Widget</span>
+      
+      </div>
+<ul class="tree"><li class="tree">
+<div>
+        <span class=" code">Gtk.Container</span>
+      
+      </div>
+<ul class="tree"><li class="tree">
+<div>
+        <span class=" code">Gtk.Box</span>
+      
+      </div>
+<ul class="tree"><li class="tree"><div>
+        <span class=" code">Gtk.VBox</span>
+      </div></li></ul>
+</li></ul>
+</li></ul>
+</li></ul>
+</li></ul>
+</li></ul></div></div></div></div></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Other</span></h2></div>
+<div class="region"><ul><li class="links "><a href="Gtk.VBox.new.html" title="Gtk.VBox.new">Gtk.VBox.new</a></li></ul></div>
+</div></div>
+</div>
+<div class="sect sect-links" role="navigation">
+<div class="hgroup"></div>
+<div class="contents"><div class="links guidelinks"><div class="inner">
+<div class="title"><h2><span class="title">More Information</span></h2></div>
+<div class="region"><ul><li class="links "><a href="index.html" title="Index">Index</a></li></ul></div>
+</div></div></div>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="footer"></div>
+</div></body>
+</html>

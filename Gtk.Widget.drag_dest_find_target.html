@@ -1,0 +1,47 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Gtk.Widget.prototype.drag_dest_find_target</title>
+<link rel="stylesheet" type="text/css" href="C.css">
+<script type="text/javascript" src="jquery.js"></script><script type="text/javascript" src="jquery.syntax.js"></script><script type="text/javascript" src="yelp.js"></script>
+</head>
+<body><div class="page" role="main">
+<div class="header"><div class="trails" role="navigation"><div class="trail">
+<a class="trail" href="index.html" title="Index">Index</a> » <a class="trail" href="Gtk.Widget.html" title="Gtk.Widget">Gtk.Widget</a> » </div></div></div>
+<div class="body">
+<div class="hgroup"><h1 class="title"><span class="title">Gtk.Widget.prototype.drag_dest_find_target</span></h1></div>
+<div class="region">
+<div class="contents">
+<div class="synopsis"><div class="inner"><div class="region"><div class="contents"><div class="code"><pre class="contents ">function drag_dest_find_target(context:Gdk.DragContext, target_list:Gtk.TargetList):Gdk.Atom {
+    // Gjs wrapper for gtk_drag_dest_find_target()
+}</pre></div></div></div></div></div>
+<p class="p">Looks for a match between the supported targets of <span class=" code">context</span> and the
+@dest_target_list, returning the first matching target, otherwise
+returning %GDK_NONE. @dest_target_list should usually be the return
+value from <span class=" link"><a href="Gtk.drag_dest_get_target_list.html" title="Gtk.drag_dest_get_target_list">Gtk.drag_dest_get_target_list</a></span>, but some widgets may
+have different valid targets for different parts of the widget; in
+that case, they will have to implement a drag_motion handler that
+passes the correct target list to this function.</p>
+<div class="terms"><div class="inner"><div class="region"><dl class="terms">
+<dt class="terms"><span class=" code">context</span></dt>
+<dd class="terms"><p class="p">drag context</p></dd>
+<dt class="terms"><span class=" code">target_list</span></dt>
+<dd class="terms"><p class="p">list of droppable targets, or <span class=" code">null</span> to use gtk_drag_dest_get_target_list (<span class=" code">widget</span>).</p></dd>
+<dt class="terms"><span class=" code">Returns</span></dt>
+<dd class="terms"><p class="p">first target that the source offers and the dest can accept, or %GDK_NONE</p></dd>
+</dl></div></div></div>
+</div>
+<div class="sect sect-links" role="navigation">
+<div class="hgroup"></div>
+<div class="contents"><div class="links guidelinks"><div class="inner">
+<div class="title"><h2><span class="title">More Information</span></h2></div>
+<div class="region"><ul><li class="links "><a href="Gtk.Widget.html" title="Gtk.Widget">Gtk.Widget</a></li></ul></div>
+</div></div></div>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="footer"></div>
+</div></body>
+</html>
