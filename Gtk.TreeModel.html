@@ -1,0 +1,267 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Gtk.TreeModel</title>
+<link rel="stylesheet" type="text/css" href="C.css">
+<script type="text/javascript" src="jquery.js"></script><script type="text/javascript" src="jquery.syntax.js"></script><script type="text/javascript" src="yelp.js"></script>
+</head>
+<body><div class="page" role="main">
+<div class="header"><div class="trails" role="navigation"><div class="trail">
+<a class="trail" href="index.html" title="Index">Index</a> » </div></div></div>
+<div class="body">
+<div class="hgroup"><h1 class="title"><span class="title">Gtk.TreeModel</span></h1></div>
+<div class="region">
+<div class="contents">
+<div class="synopsis"><div class="inner"><div class="region"><div class="contents"><div class="code"><pre class="contents ">const Gtk = imports.gi.Gtk;
+
+let tree_model = new Gtk.TreeModel();
+  </pre></div></div></div></div></div>
+<p class="p">The <span class=" link"><a href="Gtk.TreeModel.html" title="Gtk.TreeModel">Gtk.TreeModel</a></span> interface defines a generic tree interface for
+use by the <span class=" link"><a href="Gtk.TreeView.html" title="Gtk.TreeView">Gtk.TreeView</a></span> widget. It is an abstract interface, and
+is designed to be usable with any appropriate data structure. The
+programmer just has to implement this interface on their own data
+type for it to be viewable by a <span class=" link"><a href="Gtk.TreeView.html" title="Gtk.TreeView">Gtk.TreeView</a></span> widget.</p>
+<p class="p">The model is represented as a hierarchical tree of strongly-typed,
+columned data. In other words, the model can be seen as a tree where
+every node has different values depending on which column is being
+queried. The type of data found in a column is determined by using
+the GType system (ie. #G_TYPE_INT, #GTK_TYPE_BUTTON, #G_TYPE_POINTER,
+etc). The types are homogeneous per column across all nodes. It is
+important to note that this interface only provides a way of examining
+a model and observing changes. The implementation of each individual
+model decides how and if changes are made.</p>
+<p class="p">In order to make life simpler for programmers who do not need to
+write their own specialized model, two generic models are provided
+&amp;mdash; the <span class=" link"><a href="Gtk.TreeStore.html" title="Gtk.TreeStore">Gtk.TreeStore</a></span> and the <span class=" link"><a href="Gtk.ListStore.html" title="Gtk.ListStore">Gtk.ListStore</a></span>. To use these, the
+developer simply pushes data into these models as necessary. These
+models provide the data structure as well as all appropriate tree
+interfaces. As a result, implementing drag and drop, sorting, and
+storing data is trivial. For the vast majority of trees and lists,
+these two models are sufficient.</p>
+<p class="p">Models are accessed on a node/column level of granularity. One can
+query for the value of a model at a certain node and a certain
+column on that node. There are two structures used to reference
+a particular node in a model. They are the <span class=" link"><a href="Gtk.TreePath.html" title="Gtk.TreePath">Gtk.TreePath</a></span> and the
+<span class=" link"><a href="Gtk.TreeIter.html" title="Gtk.TreeIter">Gtk.TreeIter</a></span>&lt;footnote&gt;&lt;para&gt;Here, &lt;abbrev&gt;iter&lt;/abbrev&gt; is short
+for &lt;quote&gt;iterator&lt;/quote&gt;&lt;/para&gt;&lt;/footnote&gt;. Most of the interface
+consists of operations on a <span class=" link"><a href="Gtk.TreeIter.html" title="Gtk.TreeIter">Gtk.TreeIter</a></span>.</p>
+<p class="p">A path is essentially a potential node. It is a location on a model
+that may or may not actually correspond to a node on a specific
+model. The <span class=" link"><a href="Gtk.TreePath.html" title="Gtk.TreePath">Gtk.TreePath</a></span> struct can be converted into either an
+array of unsigned integers or a string. The string form is a list
+of numbers separated by a colon. Each number refers to the offset
+at that level. Thus, the path &lt;quote&gt;0&lt;/quote&gt; refers to the root
+node and the path &lt;quote&gt;2:4&lt;/quote&gt; refers to the fifth child of
+the third node.</p>
+<p class="p">By contrast, a <span class=" link"><a href="Gtk.TreeIter.html" title="Gtk.TreeIter">Gtk.TreeIter</a></span> is a reference to a specific node on
+a specific model. It is a generic struct with an integer and three
+generic pointers. These are filled in by the model in a model-specific
+way. One can convert a path to an iterator by calling
+<span class=" link"><a href="Gtk.get_iter.html" title="Gtk.get_iter">Gtk.get_iter</a></span>. These iterators are the primary way
+of accessing a model and are similar to the iterators used by
+<span class=" link"><a href="Gtk.TextBuffer.html" title="Gtk.TextBuffer">Gtk.TextBuffer</a></span>. They are generally statically allocated on the
+stack and only used for a short time. The model interface defines
+a set of operations using them for navigating the model.</p>
+<p class="p">It is expected that models fill in the iterator with private data.
+For example, the <span class=" link"><a href="Gtk.ListStore.html" title="Gtk.ListStore">Gtk.ListStore</a></span> model, which is internally a simple
+linked list, stores a list node in one of the pointers. The
+<span class=" link"><a href="Gtk.TreeModelSort.html" title="Gtk.TreeModelSort">Gtk.TreeModelSort</a></span> stores an array and an offset in two of the
+pointers. Additionally, there is an integer field. This field is
+generally filled with a unique stamp per model. This stamp is for
+catching errors resulting from using invalid iterators with a model.</p>
+<p class="p">The lifecycle of an iterator can be a little confusing at first.
+Iterators are expected to always be valid for as long as the model
+is unchanged (and doesn't emit a signal). The model is considered
+to own all outstanding iterators and nothing needs to be done to
+free them from the user's point of view. Additionally, some models
+guarantee that an iterator is valid for as long as the node it refers
+to is valid (most notably the <span class=" link"><a href="Gtk.TreeStore.html" title="Gtk.TreeStore">Gtk.TreeStore</a></span> and <span class=" link"><a href="Gtk.ListStore.html" title="Gtk.ListStore">Gtk.ListStore</a></span>).
+Although generally uninteresting, as one always has to allow for
+the case where iterators do not persist beyond a signal, some very
+important performance enhancements were made in the sort model.
+As a result, the #GTK_TREE_MODEL_ITERS_PERSIST flag was added to
+indicate this behavior.</p>
+<p class="p">To help show some common operation of a model, some examples are
+provided. The first example shows three ways of getting the iter at
+the location &lt;quote&gt;3:2:5&lt;/quote&gt;. While the first method shown is
+easier, the second is much more common, as you often get paths from
+callbacks.</p>
+<p class="p">&lt;example&gt;
+&lt;title&gt;Acquiring a &lt;structname&gt;GtkTreeIter&lt;/structname&gt;&lt;/title&gt;
+&lt;programlisting&gt;
+ /&amp;ast; Three ways of getting the iter pointing to the location &amp;ast;/
+GtkTreePath *path;
+GtkTreeIter iter;
+GtkTreeIter parent_iter;</p>
+<p class="p">/&amp;ast; get the iterator from a string &amp;ast;/
+gtk_tree_model_get_iter_from_string (model, &amp;amp;iter, "3:2:5");</p>
+<p class="p">/&amp;ast; get the iterator from a path &amp;ast;/
+path = gtk_tree_path_new_from_string ("3:2:5");
+gtk_tree_model_get_iter (model, &amp;amp;iter, path);
+gtk_tree_path_free (path);</p>
+<p class="p">/&amp;ast; walk the tree to find the iterator &amp;ast;/
+gtk_tree_model_iter_nth_child (model, &amp;amp;iter, NULL, 3);
+parent_iter = iter;
+gtk_tree_model_iter_nth_child (model, &amp;amp;iter, &amp;amp;parent_iter, 2);
+parent_iter = iter;
+gtk_tree_model_iter_nth_child (model, &amp;amp;iter, &amp;amp;parent_iter, 5);
+&lt;/programlisting&gt;
+&lt;/example&gt;</p>
+<p class="p">This second example shows a quick way of iterating through a list
+and getting a string and an integer from each row. The
+&lt;function&gt;populate_model&lt;/function&gt; function used below is not
+shown, as it is specific to the <span class=" link"><a href="Gtk.ListStore.html" title="Gtk.ListStore">Gtk.ListStore</a></span>. For information on
+how to write such a function, see the <span class=" link"><a href="Gtk.ListStore.html" title="Gtk.ListStore">Gtk.ListStore</a></span> documentation.</p>
+<p class="p">&lt;example&gt;
+&lt;title&gt;Reading data from a &lt;structname&gt;GtkTreeModel&lt;/structname&gt;&lt;/title&gt;
+&lt;programlisting&gt;
+enum
+{
+  STRING_COLUMN,
+  INT_COLUMN,
+  N_COLUMNS
+};</p>
+<p class="p">...</p>
+<p class="p">GtkTreeModel *list_store;
+GtkTreeIter iter;
+gboolean valid;
+gint row_count = 0;</p>
+<p class="p">/&amp;ast; make a new list_store &amp;ast;/
+list_store = gtk_list_store_new (N_COLUMNS, G_TYPE_STRING, G_TYPE_INT);</p>
+<p class="p">/&amp;ast; Fill the list store with data &amp;ast;/
+populate_model (list_store);</p>
+<p class="p">/&amp;ast; Get the first iter in the list, check it is valid and walk
+ &amp;ast; through the list, reading each row. &amp;ast;/
+for (valid = gtk_tree_model_get_iter_first (list_store, &amp;amp;iter);
+     valid;
+     valid = gtk_tree_model_iter_next (list_store, &amp;amp;iter))
+ {
+   gchar *str_data;
+   gint   int_data;</p>
+<p class="p">   /&amp;ast; Make sure you terminate calls to <span class=" link"><a href="Gtk.get.html" title="Gtk.get">Gtk.get</a></span>
+    &amp;ast; with a '-1' value
+    &amp;ast;/
+   gtk_tree_model_get (list_store, &amp;amp;iter,
+                       STRING_COLUMN, &amp;amp;str_data,
+                       INT_COLUMN, &amp;amp;int_data,
+                       -1);</p>
+<p class="p">   /&amp;ast; Do something with the data &amp;ast;/
+   g_print ("Row &amp;percnt;d: (&amp;percnt;s,&amp;percnt;d)\n", row_count, str_data, int_data);
+   g_free (str_data);</p>
+<p class="p">   row_count++;
+ }
+&lt;/programlisting&gt;
+&lt;/example&gt;</p>
+<p class="p">The <span class=" link"><a href="Gtk.TreeModel.html" title="Gtk.TreeModel">Gtk.TreeModel</a></span> interface contains two methods for reference
+counting: <span class=" link"><a href="Gtk.ref_node.html" title="Gtk.ref_node">Gtk.ref_node</a></span> and <span class=" link"><a href="Gtk.unref_node.html" title="Gtk.unref_node">Gtk.unref_node</a></span>.
+These two methods are optional to implement. The reference counting
+is meant as a way for views to let models know when nodes are being
+displayed. <span class=" link"><a href="Gtk.TreeView.html" title="Gtk.TreeView">Gtk.TreeView</a></span> will take a reference on a node when it is
+visible, which means the node is either in the toplevel or expanded.
+Being displayed does not mean that the node is currently directly
+visible to the user in the viewport. Based on this reference counting
+scheme a caching model, for example, can decide whether or not to cache
+a node based on the reference count. A file-system based model would
+not want to keep the entire file hierarchy in memory, but just the
+folders that are currently expanded in every current view.</p>
+<p class="p">When working with reference counting, the following rules must be taken
+into account:
+&lt;itemizedlist&gt;
+&lt;listitem&gt;&lt;para&gt;Never take a reference on a node without owning a
+reference on its parent. This means that all parent nodes of a referenced
+node must be referenced as well.&lt;/para&gt;&lt;/listitem&gt;
+&lt;listitem&gt;&lt;para&gt;Outstanding references on a deleted node are not released.
+This is not possible because the node has already been deleted by the
+time the row-deleted signal is received.
+&lt;/para&gt;&lt;/listitem&gt;
+&lt;listitem&gt;&lt;para&gt;Models are not obligated to emit a signal on rows of
+which none of its siblings are referenced. To phrase this differently,
+signals are only required for levels in which nodes are referenced. For
+the root level however, signals must be emitted at all times (however the
+root level is always referenced when any view is attached).
+&lt;/para&gt;&lt;/listitem&gt;
+&lt;/itemizedlist&gt;</p>
+<div class="synopsis"><div class="inner">
+<div class="title title-synopsis"><h2><span class="title">Hierarchy</span></h2></div>
+<div class="region"><div class="contents"><div class="tree"><div class="inner"><div class="region"><ul class="tree"><li class="tree"><div>
+        <span class=" code">Gtk.TreeModel</span>
+      </div></li></ul></div></div></div></div></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Methods</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.TreeModel.filter_new.html" title="Gtk.TreeModel.prototype.filter_new">Gtk.TreeModel.prototype.filter_new</a></li>
+<li class="links "><a href="Gtk.TreeModel.foreach.html" title="Gtk.TreeModel.prototype.foreach">Gtk.TreeModel.prototype.foreach</a></li>
+<li class="links "><a href="Gtk.TreeModel.get_column_type.html" title="Gtk.TreeModel.prototype.get_column_type">Gtk.TreeModel.prototype.get_column_type</a></li>
+<li class="links "><a href="Gtk.TreeModel.get_flags.html" title="Gtk.TreeModel.prototype.get_flags">Gtk.TreeModel.prototype.get_flags</a></li>
+<li class="links "><a href="Gtk.TreeModel.get_iter.html" title="Gtk.TreeModel.prototype.get_iter">Gtk.TreeModel.prototype.get_iter</a></li>
+<li class="links "><a href="Gtk.TreeModel.get_iter_first.html" title="Gtk.TreeModel.prototype.get_iter_first">Gtk.TreeModel.prototype.get_iter_first</a></li>
+<li class="links "><a href="Gtk.TreeModel.get_iter_from_string.html" title="Gtk.TreeModel.prototype.get_iter_from_string">Gtk.TreeModel.prototype.get_iter_from_string</a></li>
+<li class="links "><a href="Gtk.TreeModel.get_n_columns.html" title="Gtk.TreeModel.prototype.get_n_columns">Gtk.TreeModel.prototype.get_n_columns</a></li>
+<li class="links "><a href="Gtk.TreeModel.get_path.html" title="Gtk.TreeModel.prototype.get_path">Gtk.TreeModel.prototype.get_path</a></li>
+<li class="links "><a href="Gtk.TreeModel.get_string_from_iter.html" title="Gtk.TreeModel.prototype.get_string_from_iter">Gtk.TreeModel.prototype.get_string_from_iter</a></li>
+<li class="links "><a href="Gtk.TreeModel.get_value.html" title="Gtk.TreeModel.prototype.get_value">Gtk.TreeModel.prototype.get_value</a></li>
+<li class="links "><a href="Gtk.TreeModel.iter_children.html" title="Gtk.TreeModel.prototype.iter_children">Gtk.TreeModel.prototype.iter_children</a></li>
+<li class="links "><a href="Gtk.TreeModel.iter_has_child.html" title="Gtk.TreeModel.prototype.iter_has_child">Gtk.TreeModel.prototype.iter_has_child</a></li>
+<li class="links "><a href="Gtk.TreeModel.iter_n_children.html" title="Gtk.TreeModel.prototype.iter_n_children">Gtk.TreeModel.prototype.iter_n_children</a></li>
+<li class="links "><a href="Gtk.TreeModel.iter_next.html" title="Gtk.TreeModel.prototype.iter_next">Gtk.TreeModel.prototype.iter_next</a></li>
+<li class="links "><a href="Gtk.TreeModel.iter_nth_child.html" title="Gtk.TreeModel.prototype.iter_nth_child">Gtk.TreeModel.prototype.iter_nth_child</a></li>
+<li class="links "><a href="Gtk.TreeModel.iter_parent.html" title="Gtk.TreeModel.prototype.iter_parent">Gtk.TreeModel.prototype.iter_parent</a></li>
+<li class="links "><a href="Gtk.TreeModel.iter_previous.html" title="Gtk.TreeModel.prototype.iter_previous">Gtk.TreeModel.prototype.iter_previous</a></li>
+<li class="links "><a href="Gtk.TreeModel.ref_node.html" title="Gtk.TreeModel.prototype.ref_node">Gtk.TreeModel.prototype.ref_node</a></li>
+<li class="links "><a href="Gtk.TreeModel.row_changed.html" title="Gtk.TreeModel.prototype.row_changed">Gtk.TreeModel.prototype.row_changed</a></li>
+<li class="links "><a href="Gtk.TreeModel.row_deleted.html" title="Gtk.TreeModel.prototype.row_deleted">Gtk.TreeModel.prototype.row_deleted</a></li>
+<li class="links "><a href="Gtk.TreeModel.row_has_child_toggled.html" title="Gtk.TreeModel.prototype.row_has_child_toggled">Gtk.TreeModel.prototype.row_has_child_toggled</a></li>
+<li class="links "><a href="Gtk.TreeModel.row_inserted.html" title="Gtk.TreeModel.prototype.row_inserted">Gtk.TreeModel.prototype.row_inserted</a></li>
+<li class="links "><a href="Gtk.TreeModel.sort_new_with_model.html" title="Gtk.TreeModel.prototype.sort_new_with_model">Gtk.TreeModel.prototype.sort_new_with_model</a></li>
+<li class="links "><a href="Gtk.TreeModel.unref_node.html" title="Gtk.TreeModel.prototype.unref_node">Gtk.TreeModel.prototype.unref_node</a></li>
+</ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Signals</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.TreeModel-row-changed.html" title="Gtk.TreeModel::row-changed">row-changed</a></li>
+<li class="links "><a href="Gtk.TreeModel-row-deleted.html" title="Gtk.TreeModel::row-deleted">row-deleted</a></li>
+<li class="links "><a href="Gtk.TreeModel-row-has-child-toggled.html" title="Gtk.TreeModel::row-has-child-toggled">row-has-child-toggled</a></li>
+<li class="links "><a href="Gtk.TreeModel-row-inserted.html" title="Gtk.TreeModel::row-inserted">row-inserted</a></li>
+</ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Virtual functions</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.TreeModel-get_column_type.html" title="Gtk.TreeModel::get_column_type">Gtk.TreeModel::get_column_type</a></li>
+<li class="links "><a href="Gtk.TreeModel-get_flags.html" title="Gtk.TreeModel::get_flags">Gtk.TreeModel::get_flags</a></li>
+<li class="links "><a href="Gtk.TreeModel-get_iter.html" title="Gtk.TreeModel::get_iter">Gtk.TreeModel::get_iter</a></li>
+<li class="links "><a href="Gtk.TreeModel-get_n_columns.html" title="Gtk.TreeModel::get_n_columns">Gtk.TreeModel::get_n_columns</a></li>
+<li class="links "><a href="Gtk.TreeModel-get_path.html" title="Gtk.TreeModel::get_path">Gtk.TreeModel::get_path</a></li>
+<li class="links "><a href="Gtk.TreeModel-get_value.html" title="Gtk.TreeModel::get_value">Gtk.TreeModel::get_value</a></li>
+<li class="links "><a href="Gtk.TreeModel-iter_children.html" title="Gtk.TreeModel::iter_children">Gtk.TreeModel::iter_children</a></li>
+<li class="links "><a href="Gtk.TreeModel-iter_has_child.html" title="Gtk.TreeModel::iter_has_child">Gtk.TreeModel::iter_has_child</a></li>
+<li class="links "><a href="Gtk.TreeModel-iter_n_children.html" title="Gtk.TreeModel::iter_n_children">Gtk.TreeModel::iter_n_children</a></li>
+<li class="links "><a href="Gtk.TreeModel-iter_next.html" title="Gtk.TreeModel::iter_next">Gtk.TreeModel::iter_next</a></li>
+<li class="links "><a href="Gtk.TreeModel-iter_nth_child.html" title="Gtk.TreeModel::iter_nth_child">Gtk.TreeModel::iter_nth_child</a></li>
+<li class="links "><a href="Gtk.TreeModel-iter_parent.html" title="Gtk.TreeModel::iter_parent">Gtk.TreeModel::iter_parent</a></li>
+<li class="links "><a href="Gtk.TreeModel-iter_previous.html" title="Gtk.TreeModel::iter_previous">Gtk.TreeModel::iter_previous</a></li>
+<li class="links "><a href="Gtk.TreeModel-ref_node.html" title="Gtk.TreeModel::ref_node">Gtk.TreeModel::ref_node</a></li>
+<li class="links "><a href="Gtk.TreeModel-row_changed.html" title="Gtk.TreeModel::row_changed">Gtk.TreeModel::row_changed</a></li>
+<li class="links "><a href="Gtk.TreeModel-row_deleted.html" title="Gtk.TreeModel::row_deleted">Gtk.TreeModel::row_deleted</a></li>
+<li class="links "><a href="Gtk.TreeModel-row_has_child_toggled.html" title="Gtk.TreeModel::row_has_child_toggled">Gtk.TreeModel::row_has_child_toggled</a></li>
+<li class="links "><a href="Gtk.TreeModel-row_inserted.html" title="Gtk.TreeModel::row_inserted">Gtk.TreeModel::row_inserted</a></li>
+<li class="links "><a href="Gtk.TreeModel-unref_node.html" title="Gtk.TreeModel::unref_node">Gtk.TreeModel::unref_node</a></li>
+</ul></div>
+</div></div>
+</div>
+<div class="sect sect-links" role="navigation">
+<div class="hgroup"></div>
+<div class="contents"><div class="links guidelinks"><div class="inner">
+<div class="title"><h2><span class="title">More Information</span></h2></div>
+<div class="region"><ul><li class="links "><a href="index.html" title="Index">Index</a></li></ul></div>
+</div></div></div>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="footer"></div>
+</div></body>
+</html>

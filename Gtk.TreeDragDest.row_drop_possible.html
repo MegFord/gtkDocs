@@ -1,0 +1,45 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Gtk.TreeDragDest.prototype.row_drop_possible</title>
+<link rel="stylesheet" type="text/css" href="C.css">
+<script type="text/javascript" src="jquery.js"></script><script type="text/javascript" src="jquery.syntax.js"></script><script type="text/javascript" src="yelp.js"></script>
+</head>
+<body><div class="page" role="main">
+<div class="header"><div class="trails" role="navigation"><div class="trail">
+<a class="trail" href="index.html" title="Index">Index</a> » <a class="trail" href="Gtk.TreeDragDest.html" title="Gtk.TreeDragDest">Gtk.TreeDragDest</a> » </div></div></div>
+<div class="body">
+<div class="hgroup"><h1 class="title"><span class="title">Gtk.TreeDragDest.prototype.row_drop_possible</span></h1></div>
+<div class="region">
+<div class="contents">
+<div class="synopsis"><div class="inner"><div class="region"><div class="contents"><div class="code"><pre class="contents ">function row_drop_possible(dest_path:Gtk.TreePath, selection_data:Gtk.SelectionData):Boolean {
+    // Gjs wrapper for gtk_tree_drag_dest_row_drop_possible()
+}</pre></div></div></div></div></div>
+<p class="p">Determines whether a drop is possible before the given <span class=" code">dest_path</span>,
+at the same depth as <span class=" code">dest_path</span>. i.e., can we drop the data in
+<span class=" code">selection_data</span> at that location. <span class=" code">dest_path</span> does not have to
+exist; the return value will almost certainly be <span class=" code">false</span> if the
+parent of <span class=" code">dest_path</span> doesn't exist, though.</p>
+<div class="terms"><div class="inner"><div class="region"><dl class="terms">
+<dt class="terms"><span class=" code">dest_path</span></dt>
+<dd class="terms"><p class="p">destination row</p></dd>
+<dt class="terms"><span class=" code">selection_data</span></dt>
+<dd class="terms"><p class="p">the data being dragged</p></dd>
+<dt class="terms"><span class=" code">Returns</span></dt>
+<dd class="terms"><p class="p"><span class=" code">true</span> if a drop is possible before <span class=" code">dest_path</span></p></dd>
+</dl></div></div></div>
+</div>
+<div class="sect sect-links" role="navigation">
+<div class="hgroup"></div>
+<div class="contents"><div class="links guidelinks"><div class="inner">
+<div class="title"><h2><span class="title">More Information</span></h2></div>
+<div class="region"><ul><li class="links "><a href="Gtk.TreeDragDest.html" title="Gtk.TreeDragDest">Gtk.TreeDragDest</a></li></ul></div>
+</div></div></div>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="footer"></div>
+</div></body>
+</html>

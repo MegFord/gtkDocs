@@ -1,0 +1,163 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Gtk.ToolPalette</title>
+<link rel="stylesheet" type="text/css" href="C.css">
+<script type="text/javascript" src="jquery.js"></script><script type="text/javascript" src="jquery.syntax.js"></script><script type="text/javascript" src="yelp.js"></script>
+</head>
+<body><div class="page" role="main">
+<div class="header"><div class="trails" role="navigation"><div class="trail">
+<a class="trail" href="index.html" title="Index">Index</a> » </div></div></div>
+<div class="body">
+<div class="hgroup"><h1 class="title"><span class="title">Gtk.ToolPalette</span></h1></div>
+<div class="region">
+<div class="contents">
+<div class="synopsis"><div class="inner"><div class="region"><div class="contents"><div class="code"><pre class="contents ">const Gtk = imports.gi.Gtk;
+
+let tool_palette = new Gtk.ToolPalette({
+    <span class=" link"><a href="Gtk.ToolPalette-icon-size.html" title="Gtk.ToolPalette:icon-size">icon_size</a></span>: value,
+    <span class=" link"><a href="Gtk.ToolPalette-icon-size-set.html" title="Gtk.ToolPalette:icon-size-set">icon_size_set</a></span>: value,
+    <span class=" link"><a href="Gtk.ToolPalette-toolbar-style.html" title="Gtk.ToolPalette:toolbar-style">toolbar_style</a></span>: value,
+});
+  </pre></div></div></div></div></div>
+<p class="p">A <span class=" link"><a href="Gtk.ToolPalette.html" title="Gtk.ToolPalette">Gtk.ToolPalette</a></span> allows you to add <span class=" link"><a href="Gtk.ToolItem.html" title="Gtk.ToolItem">Gtk.ToolItem</a></span>&lt;!-- --&gt;s to a palette-like
+container with different categories and drag and drop support.</p>
+<p class="p">A <span class=" link"><a href="Gtk.ToolPalette.html" title="Gtk.ToolPalette">Gtk.ToolPalette</a></span> is created with a call to <span class=" link"><a href="Gtk.new.html" title="Gtk.new">Gtk.new</a></span>.</p>
+<p class="p"><span class=" link"><a href="Gtk.ToolItem.html" title="Gtk.ToolItem">Gtk.ToolItem</a></span>&lt;!-- --&gt;s cannot be added directly to a <span class=" link"><a href="Gtk.ToolPalette.html" title="Gtk.ToolPalette">Gtk.ToolPalette</a></span> - 
+instead they are added to a <span class=" link"><a href="Gtk.ToolItemGroup.html" title="Gtk.ToolItemGroup">Gtk.ToolItemGroup</a></span> which can than be added
+to a <span class=" link"><a href="Gtk.ToolPalette.html" title="Gtk.ToolPalette">Gtk.ToolPalette</a></span>. To add a <span class=" link"><a href="Gtk.ToolItemGroup.html" title="Gtk.ToolItemGroup">Gtk.ToolItemGroup</a></span> to a <span class=" link"><a href="Gtk.ToolPalette.html" title="Gtk.ToolPalette">Gtk.ToolPalette</a></span>,
+use <span class=" link"><a href="Gtk.Container.add.html" title="Gtk.Container.prototype.add">Gtk.Container.prototype.add</a></span>.</p>
+<p class="p">|[
+GtkWidget *palette, *group;
+GtkToolItem *item;</p>
+<p class="p">palette = gtk_tool_palette_new ();
+group = gtk_tool_item_group_new (_("Test Category"));
+gtk_container_add (GTK_CONTAINER (palette), group);</p>
+<p class="p">item = gtk_tool_button_new_new (NULL, _("_Open"));
+gtk_tool_button_set_icon_name (GTK_TOOL_BUTTON (item), "document-open");
+gtk_tool_item_group_insert (GTK_TOOL_ITEM_GROUP (group), item, -1);
+]|</p>
+<p class="p">The easiest way to use drag and drop with <span class=" link"><a href="Gtk.ToolPalette.html" title="Gtk.ToolPalette">Gtk.ToolPalette</a></span> is to call
+<span class=" link"><a href="Gtk.add_drag_dest.html" title="Gtk.add_drag_dest">Gtk.add_drag_dest</a></span> with the desired drag source @palette
+and the desired drag target @widget. Then <span class=" link"><a href="Gtk.get_drag_item.html" title="Gtk.get_drag_item">Gtk.get_drag_item</a></span>
+can be used to get the dragged item in the <span class=" link"><a href="Gtk.drag-data-received.html" title="Gtk.drag-data-received">Gtk.drag-data-received</a></span>
+signal handler of the drag target.</p>
+<p class="p">|[
+static void
+passive_canvas_drag_data_received (GtkWidget        *widget,
+                                   GdkDragContext   *context,
+                                   gint              x,
+                                   gint              y,
+                                   GtkSelectionData *selection,
+                                   guint             info,
+                                   guint             time,
+                                   gpointer          data)
+{
+  GtkWidget *palette;
+  GtkWidget *item;</p>
+<p class="p">  /&lt;!-- --&gt;* Get the dragged item *&lt;!-- --&gt;/
+  palette = gtk_widget_get_ancestor (gtk_drag_get_source_widget (context),
+                                     GTK_TYPE_TOOL_PALETTE);
+  if (palette != NULL)
+    item = gtk_tool_palette_get_drag_item (GTK_TOOL_PALETTE (palette),
+                                           selection);</p>
+<p class="p">  /&lt;!-- --&gt;* Do something with item *&lt;!-- --&gt;/
+}</p>
+<p class="p">GtkWidget *target, palette;</p>
+<p class="p">palette = gtk_tool_palette_new ();
+target = gtk_drawing_area_new ();</p>
+<p class="p">g_signal_connect (G_OBJECT (target), "drag-data-received",
+                  G_CALLBACK (passive_canvas_drag_data_received), NULL);
+gtk_tool_palette_add_drag_dest (GTK_TOOL_PALETTE (palette), target,
+                                GTK_DEST_DEFAULT_ALL,
+                                GTK_TOOL_PALETTE_DRAG_ITEMS,
+                                GDK_ACTION_COPY);
+]|</p>
+<div class="synopsis"><div class="inner">
+<div class="title title-synopsis"><h2><span class="title">Hierarchy</span></h2></div>
+<div class="region"><div class="contents"><div class="tree"><div class="inner"><div class="region"><ul class="tree"><li class="tree">
+<div>
+        <span class=" code">GObject.Object</span>
+      
+      </div>
+<ul class="tree"><li class="tree">
+<div>
+        <span class=" code">GObject.InitiallyUnowned</span>
+      
+      </div>
+<ul class="tree"><li class="tree">
+<div>
+        <span class=" code">Gtk.Widget</span>
+      
+      </div>
+<ul class="tree"><li class="tree">
+<div>
+        <span class=" code">Gtk.Container</span>
+      
+      </div>
+<ul class="tree"><li class="tree"><div>
+        <span class=" code">Gtk.ToolPalette</span>
+      </div></li></ul>
+</li></ul>
+</li></ul>
+</li></ul>
+</li></ul></div></div></div></div></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Methods</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.ToolPalette.add_drag_dest.html" title="Gtk.ToolPalette.prototype.add_drag_dest">Gtk.ToolPalette.prototype.add_drag_dest</a></li>
+<li class="links "><a href="Gtk.ToolPalette.get_drag_item.html" title="Gtk.ToolPalette.prototype.get_drag_item">Gtk.ToolPalette.prototype.get_drag_item</a></li>
+<li class="links "><a href="Gtk.ToolPalette.get_drop_group.html" title="Gtk.ToolPalette.prototype.get_drop_group">Gtk.ToolPalette.prototype.get_drop_group</a></li>
+<li class="links "><a href="Gtk.ToolPalette.get_drop_item.html" title="Gtk.ToolPalette.prototype.get_drop_item">Gtk.ToolPalette.prototype.get_drop_item</a></li>
+<li class="links "><a href="Gtk.ToolPalette.get_exclusive.html" title="Gtk.ToolPalette.prototype.get_exclusive">Gtk.ToolPalette.prototype.get_exclusive</a></li>
+<li class="links "><a href="Gtk.ToolPalette.get_expand.html" title="Gtk.ToolPalette.prototype.get_expand">Gtk.ToolPalette.prototype.get_expand</a></li>
+<li class="links "><a href="Gtk.ToolPalette.get_group_position.html" title="Gtk.ToolPalette.prototype.get_group_position">Gtk.ToolPalette.prototype.get_group_position</a></li>
+<li class="links "><a href="Gtk.ToolPalette.get_hadjustment.html" title="Gtk.ToolPalette.prototype.get_hadjustment">Gtk.ToolPalette.prototype.get_hadjustment</a></li>
+<li class="links "><a href="Gtk.ToolPalette.get_icon_size.html" title="Gtk.ToolPalette.prototype.get_icon_size">Gtk.ToolPalette.prototype.get_icon_size</a></li>
+<li class="links "><a href="Gtk.ToolPalette.get_style.html" title="Gtk.ToolPalette.prototype.get_style">Gtk.ToolPalette.prototype.get_style</a></li>
+<li class="links "><a href="Gtk.ToolPalette.get_vadjustment.html" title="Gtk.ToolPalette.prototype.get_vadjustment">Gtk.ToolPalette.prototype.get_vadjustment</a></li>
+<li class="links "><a href="Gtk.ToolPalette.set_drag_source.html" title="Gtk.ToolPalette.prototype.set_drag_source">Gtk.ToolPalette.prototype.set_drag_source</a></li>
+<li class="links "><a href="Gtk.ToolPalette.set_exclusive.html" title="Gtk.ToolPalette.prototype.set_exclusive">Gtk.ToolPalette.prototype.set_exclusive</a></li>
+<li class="links "><a href="Gtk.ToolPalette.set_expand.html" title="Gtk.ToolPalette.prototype.set_expand">Gtk.ToolPalette.prototype.set_expand</a></li>
+<li class="links "><a href="Gtk.ToolPalette.set_group_position.html" title="Gtk.ToolPalette.prototype.set_group_position">Gtk.ToolPalette.prototype.set_group_position</a></li>
+<li class="links "><a href="Gtk.ToolPalette.set_icon_size.html" title="Gtk.ToolPalette.prototype.set_icon_size">Gtk.ToolPalette.prototype.set_icon_size</a></li>
+<li class="links "><a href="Gtk.ToolPalette.set_style.html" title="Gtk.ToolPalette.prototype.set_style">Gtk.ToolPalette.prototype.set_style</a></li>
+<li class="links "><a href="Gtk.ToolPalette.unset_icon_size.html" title="Gtk.ToolPalette.prototype.unset_icon_size">Gtk.ToolPalette.prototype.unset_icon_size</a></li>
+<li class="links "><a href="Gtk.ToolPalette.unset_style.html" title="Gtk.ToolPalette.prototype.unset_style">Gtk.ToolPalette.prototype.unset_style</a></li>
+</ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Functions</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.ToolPalette.get_drag_target_group.html" title="get_drag_target_group">get_drag_target_group</a></li>
+<li class="links "><a href="Gtk.ToolPalette.get_drag_target_item.html" title="get_drag_target_item">get_drag_target_item</a></li>
+</ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Properties</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.ToolPalette-icon-size.html" title="Gtk.ToolPalette:icon-size">icon-size</a></li>
+<li class="links "><a href="Gtk.ToolPalette-icon-size-set.html" title="Gtk.ToolPalette:icon-size-set">icon-size-set</a></li>
+<li class="links "><a href="Gtk.ToolPalette-toolbar-style.html" title="Gtk.ToolPalette:toolbar-style">toolbar-style</a></li>
+</ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Other</span></h2></div>
+<div class="region"><ul><li class="links "><a href="Gtk.ToolPalette.new.html" title="Gtk.ToolPalette.new">Gtk.ToolPalette.new</a></li></ul></div>
+</div></div>
+</div>
+<div class="sect sect-links" role="navigation">
+<div class="hgroup"></div>
+<div class="contents"><div class="links guidelinks"><div class="inner">
+<div class="title"><h2><span class="title">More Information</span></h2></div>
+<div class="region"><ul><li class="links "><a href="index.html" title="Index">Index</a></li></ul></div>
+</div></div></div>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="footer"></div>
+</div></body>
+</html>

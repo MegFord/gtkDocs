@@ -1,0 +1,44 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Gtk.TreeDragSource.prototype.drag_data_get</title>
+<link rel="stylesheet" type="text/css" href="C.css">
+<script type="text/javascript" src="jquery.js"></script><script type="text/javascript" src="jquery.syntax.js"></script><script type="text/javascript" src="yelp.js"></script>
+</head>
+<body><div class="page" role="main">
+<div class="header"><div class="trails" role="navigation"><div class="trail">
+<a class="trail" href="index.html" title="Index">Index</a> » <a class="trail" href="Gtk.TreeDragSource.html" title="Gtk.TreeDragSource">Gtk.TreeDragSource</a> » </div></div></div>
+<div class="body">
+<div class="hgroup"><h1 class="title"><span class="title">Gtk.TreeDragSource.prototype.drag_data_get</span></h1></div>
+<div class="region">
+<div class="contents">
+<div class="synopsis"><div class="inner"><div class="region"><div class="contents"><div class="code"><pre class="contents ">function drag_data_get(path:Gtk.TreePath, selection_data:Gtk.SelectionData):Boolean {
+    // Gjs wrapper for gtk_tree_drag_source_drag_data_get()
+}</pre></div></div></div></div></div>
+<p class="p">Asks the <span class=" link"><a href="Gtk.TreeDragSource.html" title="Gtk.TreeDragSource">Gtk.TreeDragSource</a></span> to fill in <span class=" code">selection_data</span> with a
+representation of the row at <span class=" code">path</span>. <span class=" code">selection_data</span>-&gt;target gives
+the required type of the data.  Should robustly handle a <span class=" code">path</span> no
+longer found in the model!</p>
+<div class="terms"><div class="inner"><div class="region"><dl class="terms">
+<dt class="terms"><span class=" code">path</span></dt>
+<dd class="terms"><p class="p">row that was dragged</p></dd>
+<dt class="terms"><span class=" code">selection_data</span></dt>
+<dd class="terms"><p class="p">a <span class=" link"><a href="Gtk.SelectionData.html" title="Gtk.SelectionData">Gtk.SelectionData</a></span> to fill with data from the dragged row</p></dd>
+<dt class="terms"><span class=" code">Returns</span></dt>
+<dd class="terms"><p class="p"><span class=" code">true</span> if data of the required type was provided</p></dd>
+</dl></div></div></div>
+</div>
+<div class="sect sect-links" role="navigation">
+<div class="hgroup"></div>
+<div class="contents"><div class="links guidelinks"><div class="inner">
+<div class="title"><h2><span class="title">More Information</span></h2></div>
+<div class="region"><ul><li class="links "><a href="Gtk.TreeDragSource.html" title="Gtk.TreeDragSource">Gtk.TreeDragSource</a></li></ul></div>
+</div></div></div>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="footer"></div>
+</div></body>
+</html>

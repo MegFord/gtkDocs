@@ -1,0 +1,118 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Gtk.Tooltip</title>
+<link rel="stylesheet" type="text/css" href="C.css">
+<script type="text/javascript" src="jquery.js"></script><script type="text/javascript" src="jquery.syntax.js"></script><script type="text/javascript" src="yelp.js"></script>
+</head>
+<body><div class="page" role="main">
+<div class="header"><div class="trails" role="navigation"><div class="trail">
+<a class="trail" href="index.html" title="Index">Index</a> » </div></div></div>
+<div class="body">
+<div class="hgroup"><h1 class="title"><span class="title">Gtk.Tooltip</span></h1></div>
+<div class="region">
+<div class="contents">
+<div class="synopsis"><div class="inner"><div class="region"><div class="contents"><div class="code"><pre class="contents ">const Gtk = imports.gi.Gtk;
+
+let tooltip = new Gtk.Tooltip();
+  </pre></div></div></div></div></div>
+<p class="p">Basic tooltips can be realized simply by using <span class=" link"><a href="Gtk.set_tooltip_text.html" title="Gtk.set_tooltip_text">Gtk.set_tooltip_text</a></span>
+or <span class=" link"><a href="Gtk.set_tooltip_markup.html" title="Gtk.set_tooltip_markup">Gtk.set_tooltip_markup</a></span> without any explicit tooltip object.</p>
+<p class="p">When you need a tooltip with a little more fancy contents, like adding an
+image, or you want the tooltip to have different contents per <span class=" link"><a href="Gtk.TreeView.html" title="Gtk.TreeView">Gtk.TreeView</a></span>
+row or cell, you will have to do a little more work:
+&lt;itemizedlist&gt;
+&lt;listitem&gt;
+&lt;para&gt;
+Set the <span class=" link"><a href="Gtk.has-tooltip.html" title="Gtk.has-tooltip">Gtk.has-tooltip</a></span> property to <span class=" code">true</span>, this will make GTK+
+monitor the widget for motion and related events which are needed to
+determine when and where to show a tooltip.
+&lt;/para&gt;
+&lt;/listitem&gt;
+&lt;listitem&gt;
+&lt;para&gt;
+Connect to the <span class=" link"><a href="Gtk.query-tooltip.html" title="Gtk.query-tooltip">Gtk.query-tooltip</a></span> signal.  This signal will be
+emitted when a tooltip is supposed to be shown. One of the arguments passed
+to the signal handler is a GtkTooltip object. This is the object that we
+are about to display as a tooltip, and can be manipulated in your callback
+using functions like <span class=" link"><a href="Gtk.set_icon.html" title="Gtk.set_icon">Gtk.set_icon</a></span>. There are functions for setting
+the tooltip's markup, setting an image from a named icon, or even putting in
+a custom widget.
+&lt;/para&gt;
+&lt;/listitem&gt;
+&lt;listitem&gt;
+&lt;para&gt;
+Return <span class=" code">true</span> from your query-tooltip handler. This causes the tooltip to be
+show. If you return <span class=" code">false</span>, it will not be shown.
+&lt;/para&gt;
+&lt;/listitem&gt;
+&lt;/itemizedlist&gt;</p>
+<p class="p">In the probably rare case where you want to have even more control over the
+tooltip that is about to be shown, you can set your own <span class=" link"><a href="Gtk.Window.html" title="Gtk.Window">Gtk.Window</a></span> which
+will be used as tooltip window.  This works as follows:
+&lt;itemizedlist&gt;
+&lt;listitem&gt;
+&lt;para&gt;
+Set <span class=" link"><a href="Gtk.has-tooltip.html" title="Gtk.has-tooltip">Gtk.has-tooltip</a></span> and connect to <span class=" link"><a href="Gtk.query-tooltip.html" title="Gtk.query-tooltip">Gtk.query-tooltip</a></span> as
+before.
+&lt;/para&gt;
+&lt;/listitem&gt;
+&lt;listitem&gt;
+&lt;para&gt;
+Use <span class=" link"><a href="Gtk.set_tooltip_window.html" title="Gtk.set_tooltip_window">Gtk.set_tooltip_window</a></span> to set a <span class=" link"><a href="Gtk.Window.html" title="Gtk.Window">Gtk.Window</a></span> created by you as
+tooltip window.
+&lt;/para&gt;
+&lt;/listitem&gt;
+&lt;listitem&gt;
+&lt;para&gt;
+In the <span class=" link"><a href="Gtk.query-tooltip.html" title="Gtk.query-tooltip">Gtk.query-tooltip</a></span> callback you can access your window using
+<span class=" link"><a href="Gtk.get_tooltip_window.html" title="Gtk.get_tooltip_window">Gtk.get_tooltip_window</a></span> and manipulate as you wish. The semantics of
+the return value are exactly as before, return <span class=" code">true</span> to show the window,
+<span class=" code">false</span> to not show it.
+&lt;/para&gt;
+&lt;/listitem&gt;
+&lt;/itemizedlist&gt;</p>
+<div class="synopsis"><div class="inner">
+<div class="title title-synopsis"><h2><span class="title">Hierarchy</span></h2></div>
+<div class="region"><div class="contents"><div class="tree"><div class="inner"><div class="region"><ul class="tree"><li class="tree">
+<div>
+        <span class=" code">GObject.Object</span>
+      
+      </div>
+<ul class="tree"><li class="tree"><div>
+        <span class=" code">Gtk.Tooltip</span>
+      </div></li></ul>
+</li></ul></div></div></div></div></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Methods</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.Tooltip.set_custom.html" title="Gtk.Tooltip.prototype.set_custom">Gtk.Tooltip.prototype.set_custom</a></li>
+<li class="links "><a href="Gtk.Tooltip.set_icon.html" title="Gtk.Tooltip.prototype.set_icon">Gtk.Tooltip.prototype.set_icon</a></li>
+<li class="links "><a href="Gtk.Tooltip.set_icon_from_gicon.html" title="Gtk.Tooltip.prototype.set_icon_from_gicon">Gtk.Tooltip.prototype.set_icon_from_gicon</a></li>
+<li class="links "><a href="Gtk.Tooltip.set_icon_from_icon_name.html" title="Gtk.Tooltip.prototype.set_icon_from_icon_name">Gtk.Tooltip.prototype.set_icon_from_icon_name</a></li>
+<li class="links "><a href="Gtk.Tooltip.set_icon_from_stock.html" title="Gtk.Tooltip.prototype.set_icon_from_stock">Gtk.Tooltip.prototype.set_icon_from_stock</a></li>
+<li class="links "><a href="Gtk.Tooltip.set_markup.html" title="Gtk.Tooltip.prototype.set_markup">Gtk.Tooltip.prototype.set_markup</a></li>
+<li class="links "><a href="Gtk.Tooltip.set_text.html" title="Gtk.Tooltip.prototype.set_text">Gtk.Tooltip.prototype.set_text</a></li>
+<li class="links "><a href="Gtk.Tooltip.set_tip_area.html" title="Gtk.Tooltip.prototype.set_tip_area">Gtk.Tooltip.prototype.set_tip_area</a></li>
+</ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Functions</span></h2></div>
+<div class="region"><ul><li class="links "><a href="Gtk.Tooltip.trigger_tooltip_query.html" title="trigger_tooltip_query">trigger_tooltip_query</a></li></ul></div>
+</div></div>
+</div>
+<div class="sect sect-links" role="navigation">
+<div class="hgroup"></div>
+<div class="contents"><div class="links guidelinks"><div class="inner">
+<div class="title"><h2><span class="title">More Information</span></h2></div>
+<div class="region"><ul><li class="links "><a href="index.html" title="Index">Index</a></li></ul></div>
+</div></div></div>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="footer"></div>
+</div></body>
+</html>

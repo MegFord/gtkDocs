@@ -1,0 +1,139 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Gtk.ToolItem</title>
+<link rel="stylesheet" type="text/css" href="C.css">
+<script type="text/javascript" src="jquery.js"></script><script type="text/javascript" src="jquery.syntax.js"></script><script type="text/javascript" src="yelp.js"></script>
+</head>
+<body><div class="page" role="main">
+<div class="header"><div class="trails" role="navigation"><div class="trail">
+<a class="trail" href="index.html" title="Index">Index</a> » </div></div></div>
+<div class="body">
+<div class="hgroup"><h1 class="title"><span class="title">Gtk.ToolItem</span></h1></div>
+<div class="region">
+<div class="contents">
+<div class="synopsis"><div class="inner"><div class="region"><div class="contents"><div class="code"><pre class="contents ">const Gtk = imports.gi.Gtk;
+
+let tool_item = new Gtk.ToolItem({
+    <span class=" link"><a href="Gtk.ToolItem-is-important.html" title="Gtk.ToolItem:is-important">is_important</a></span>: value,
+    <span class=" link"><a href="Gtk.ToolItem-visible-horizontal.html" title="Gtk.ToolItem:visible-horizontal">visible_horizontal</a></span>: value,
+    <span class=" link"><a href="Gtk.ToolItem-visible-vertical.html" title="Gtk.ToolItem:visible-vertical">visible_vertical</a></span>: value,
+});
+  </pre></div></div></div></div></div>
+<p class="p"><span class=" link"><a href="Gtk.ToolItem.html" title="Gtk.ToolItem">Gtk.ToolItem</a></span>&lt;!-- --&gt;s are widgets that can appear on a toolbar. To
+create a toolbar item that contain something else than a button, use
+<span class=" link"><a href="Gtk.new.html" title="Gtk.new">Gtk.new</a></span>. Use <span class=" link"><a href="Gtk.Container.add.html" title="Gtk.Container.prototype.add">Gtk.Container.prototype.add</a></span> to add a child
+widget to the tool item.</p>
+<p class="p">For toolbar items that contain buttons, see the <span class=" link"><a href="Gtk.ToolButton.html" title="Gtk.ToolButton">Gtk.ToolButton</a></span>,
+<span class=" link"><a href="Gtk.ToggleToolButton.html" title="Gtk.ToggleToolButton">Gtk.ToggleToolButton</a></span> and <span class=" link"><a href="Gtk.RadioToolButton.html" title="Gtk.RadioToolButton">Gtk.RadioToolButton</a></span> classes.</p>
+<p class="p">See the <span class=" link"><a href="Gtk.Toolbar.html" title="Gtk.Toolbar">Gtk.Toolbar</a></span> class for a description of the toolbar widget, and
+<span class=" link"><a href="Gtk.ToolShell.html" title="Gtk.ToolShell">Gtk.ToolShell</a></span> for a description of the tool shell interface.</p>
+<div class="synopsis"><div class="inner">
+<div class="title title-synopsis"><h2><span class="title">Hierarchy</span></h2></div>
+<div class="region"><div class="contents"><div class="tree"><div class="inner"><div class="region"><ul class="tree"><li class="tree">
+<div>
+        <span class=" code">GObject.Object</span>
+      
+      </div>
+<ul class="tree"><li class="tree">
+<div>
+        <span class=" code">GObject.InitiallyUnowned</span>
+      
+      </div>
+<ul class="tree"><li class="tree">
+<div>
+        <span class=" code">Gtk.Widget</span>
+      
+      </div>
+<ul class="tree"><li class="tree">
+<div>
+        <span class=" code">Gtk.Container</span>
+      
+      </div>
+<ul class="tree"><li class="tree">
+<div>
+        <span class=" code">Gtk.Bin</span>
+      
+      </div>
+<ul class="tree"><li class="tree"><div>
+        <span class=" code">Gtk.ToolItem</span>
+      </div></li></ul>
+</li></ul>
+</li></ul>
+</li></ul>
+</li></ul>
+</li></ul></div></div></div></div></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Methods</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.ToolItem.get_ellipsize_mode.html" title="Gtk.ToolItem.prototype.get_ellipsize_mode">Gtk.ToolItem.prototype.get_ellipsize_mode</a></li>
+<li class="links "><a href="Gtk.ToolItem.get_expand.html" title="Gtk.ToolItem.prototype.get_expand">Gtk.ToolItem.prototype.get_expand</a></li>
+<li class="links "><a href="Gtk.ToolItem.get_homogeneous.html" title="Gtk.ToolItem.prototype.get_homogeneous">Gtk.ToolItem.prototype.get_homogeneous</a></li>
+<li class="links "><a href="Gtk.ToolItem.get_icon_size.html" title="Gtk.ToolItem.prototype.get_icon_size">Gtk.ToolItem.prototype.get_icon_size</a></li>
+<li class="links "><a href="Gtk.ToolItem.get_is_important.html" title="Gtk.ToolItem.prototype.get_is_important">Gtk.ToolItem.prototype.get_is_important</a></li>
+<li class="links "><a href="Gtk.ToolItem.get_orientation.html" title="Gtk.ToolItem.prototype.get_orientation">Gtk.ToolItem.prototype.get_orientation</a></li>
+<li class="links "><a href="Gtk.ToolItem.get_proxy_menu_item.html" title="Gtk.ToolItem.prototype.get_proxy_menu_item">Gtk.ToolItem.prototype.get_proxy_menu_item</a></li>
+<li class="links "><a href="Gtk.ToolItem.get_relief_style.html" title="Gtk.ToolItem.prototype.get_relief_style">Gtk.ToolItem.prototype.get_relief_style</a></li>
+<li class="links "><a href="Gtk.ToolItem.get_text_alignment.html" title="Gtk.ToolItem.prototype.get_text_alignment">Gtk.ToolItem.prototype.get_text_alignment</a></li>
+<li class="links "><a href="Gtk.ToolItem.get_text_orientation.html" title="Gtk.ToolItem.prototype.get_text_orientation">Gtk.ToolItem.prototype.get_text_orientation</a></li>
+<li class="links "><a href="Gtk.ToolItem.get_text_size_group.html" title="Gtk.ToolItem.prototype.get_text_size_group">Gtk.ToolItem.prototype.get_text_size_group</a></li>
+<li class="links "><a href="Gtk.ToolItem.get_toolbar_style.html" title="Gtk.ToolItem.prototype.get_toolbar_style">Gtk.ToolItem.prototype.get_toolbar_style</a></li>
+<li class="links "><a href="Gtk.ToolItem.get_use_drag_window.html" title="Gtk.ToolItem.prototype.get_use_drag_window">Gtk.ToolItem.prototype.get_use_drag_window</a></li>
+<li class="links "><a href="Gtk.ToolItem.get_visible_horizontal.html" title="Gtk.ToolItem.prototype.get_visible_horizontal">Gtk.ToolItem.prototype.get_visible_horizontal</a></li>
+<li class="links "><a href="Gtk.ToolItem.get_visible_vertical.html" title="Gtk.ToolItem.prototype.get_visible_vertical">Gtk.ToolItem.prototype.get_visible_vertical</a></li>
+<li class="links "><a href="Gtk.ToolItem.rebuild_menu.html" title="Gtk.ToolItem.prototype.rebuild_menu">Gtk.ToolItem.prototype.rebuild_menu</a></li>
+<li class="links "><a href="Gtk.ToolItem.retrieve_proxy_menu_item.html" title="Gtk.ToolItem.prototype.retrieve_proxy_menu_item">Gtk.ToolItem.prototype.retrieve_proxy_menu_item</a></li>
+<li class="links "><a href="Gtk.ToolItem.set_expand.html" title="Gtk.ToolItem.prototype.set_expand">Gtk.ToolItem.prototype.set_expand</a></li>
+<li class="links "><a href="Gtk.ToolItem.set_homogeneous.html" title="Gtk.ToolItem.prototype.set_homogeneous">Gtk.ToolItem.prototype.set_homogeneous</a></li>
+<li class="links "><a href="Gtk.ToolItem.set_is_important.html" title="Gtk.ToolItem.prototype.set_is_important">Gtk.ToolItem.prototype.set_is_important</a></li>
+<li class="links "><a href="Gtk.ToolItem.set_proxy_menu_item.html" title="Gtk.ToolItem.prototype.set_proxy_menu_item">Gtk.ToolItem.prototype.set_proxy_menu_item</a></li>
+<li class="links "><a href="Gtk.ToolItem.set_tooltip_markup.html" title="Gtk.ToolItem.prototype.set_tooltip_markup">Gtk.ToolItem.prototype.set_tooltip_markup</a></li>
+<li class="links "><a href="Gtk.ToolItem.set_tooltip_text.html" title="Gtk.ToolItem.prototype.set_tooltip_text">Gtk.ToolItem.prototype.set_tooltip_text</a></li>
+<li class="links "><a href="Gtk.ToolItem.set_use_drag_window.html" title="Gtk.ToolItem.prototype.set_use_drag_window">Gtk.ToolItem.prototype.set_use_drag_window</a></li>
+<li class="links "><a href="Gtk.ToolItem.set_visible_horizontal.html" title="Gtk.ToolItem.prototype.set_visible_horizontal">Gtk.ToolItem.prototype.set_visible_horizontal</a></li>
+<li class="links "><a href="Gtk.ToolItem.set_visible_vertical.html" title="Gtk.ToolItem.prototype.set_visible_vertical">Gtk.ToolItem.prototype.set_visible_vertical</a></li>
+<li class="links "><a href="Gtk.ToolItem.toolbar_reconfigured.html" title="Gtk.ToolItem.prototype.toolbar_reconfigured">Gtk.ToolItem.prototype.toolbar_reconfigured</a></li>
+</ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Properties</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.ToolItem-is-important.html" title="Gtk.ToolItem:is-important">is-important</a></li>
+<li class="links "><a href="Gtk.ToolItem-visible-horizontal.html" title="Gtk.ToolItem:visible-horizontal">visible-horizontal</a></li>
+<li class="links "><a href="Gtk.ToolItem-visible-vertical.html" title="Gtk.ToolItem:visible-vertical">visible-vertical</a></li>
+</ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Signals</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.ToolItem-create-menu-proxy.html" title="Gtk.ToolItem::create-menu-proxy">create-menu-proxy</a></li>
+<li class="links "><a href="Gtk.ToolItem-toolbar-reconfigured.html" title="Gtk.ToolItem::toolbar-reconfigured">toolbar-reconfigured</a></li>
+</ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Virtual functions</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.ToolItem-create_menu_proxy.html" title="Gtk.ToolItem::create_menu_proxy">Gtk.ToolItem::create_menu_proxy</a></li>
+<li class="links "><a href="Gtk.ToolItem-toolbar_reconfigured.html" title="Gtk.ToolItem::toolbar_reconfigured">Gtk.ToolItem::toolbar_reconfigured</a></li>
+</ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Other</span></h2></div>
+<div class="region"><ul><li class="links "><a href="Gtk.ToolItem.new.html" title="Gtk.ToolItem.new">Gtk.ToolItem.new</a></li></ul></div>
+</div></div>
+</div>
+<div class="sect sect-links" role="navigation">
+<div class="hgroup"></div>
+<div class="contents"><div class="links guidelinks"><div class="inner">
+<div class="title"><h2><span class="title">More Information</span></h2></div>
+<div class="region"><ul><li class="links "><a href="index.html" title="Index">Index</a></li></ul></div>
+</div></div></div>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="footer"></div>
+</div></body>
+</html>
