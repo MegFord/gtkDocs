@@ -1,0 +1,129 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Gtk.Toolbar</title>
+<link rel="stylesheet" type="text/css" href="C.css">
+<script type="text/javascript" src="jquery.js"></script><script type="text/javascript" src="jquery.syntax.js"></script><script type="text/javascript" src="yelp.js"></script>
+</head>
+<body><div class="page" role="main">
+<div class="header"><div class="trails" role="navigation"><div class="trail">
+<a class="trail" href="index.html" title="Index">Index</a> » </div></div></div>
+<div class="body">
+<div class="hgroup"><h1 class="title"><span class="title">Gtk.Toolbar</span></h1></div>
+<div class="region">
+<div class="contents">
+<div class="synopsis"><div class="inner"><div class="region"><div class="contents"><div class="code"><pre class="contents ">const Gtk = imports.gi.Gtk;
+
+let toolbar = new Gtk.Toolbar({
+    <span class=" link"><a href="Gtk.Toolbar-icon-size.html" title="Gtk.Toolbar:icon-size">icon_size</a></span>: value,
+    <span class=" link"><a href="Gtk.Toolbar-icon-size-set.html" title="Gtk.Toolbar:icon-size-set">icon_size_set</a></span>: value,
+    <span class=" link"><a href="Gtk.Toolbar-show-arrow.html" title="Gtk.Toolbar:show-arrow">show_arrow</a></span>: value,
+    <span class=" link"><a href="Gtk.Toolbar-toolbar-style.html" title="Gtk.Toolbar:toolbar-style">toolbar_style</a></span>: value,
+});
+  </pre></div></div></div></div></div>
+<p class="p">A toolbar is created with a call to <span class=" link"><a href="Gtk.new.html" title="Gtk.new">Gtk.new</a></span>.</p>
+<p class="p">A toolbar can contain instances of a subclass of <span class=" link"><a href="Gtk.ToolItem.html" title="Gtk.ToolItem">Gtk.ToolItem</a></span>. To add
+a <span class=" link"><a href="Gtk.ToolItem.html" title="Gtk.ToolItem">Gtk.ToolItem</a></span> to the a toolbar, use <span class=" link"><a href="Gtk.insert.html" title="Gtk.insert">Gtk.insert</a></span>. To remove
+an item from the toolbar use <span class=" link"><a href="Gtk.Container.remove.html" title="Gtk.Container.prototype.remove">Gtk.Container.prototype.remove</a></span>. To add a button
+to the toolbar, add an instance of <span class=" link"><a href="Gtk.ToolButton.html" title="Gtk.ToolButton">Gtk.ToolButton</a></span>.</p>
+<p class="p">Toolbar items can be visually grouped by adding instances of
+<span class=" link"><a href="Gtk.SeparatorToolItem.html" title="Gtk.SeparatorToolItem">Gtk.SeparatorToolItem</a></span> to the toolbar. If the GtkToolbar child property
+"expand" is #TRUE and the property <span class=" link"><a href="Gtk.SeparatorToolItem-draw.html" title="Gtk.SeparatorToolItem:draw">Gtk.SeparatorToolItem:draw</a></span> is set to
+#FALSE, the effect is to force all following items to the end of the toolbar.</p>
+<p class="p">Creating a context menu for the toolbar can be done by connecting to
+the <span class=" link"><a href="Gtk.popup-context-menu.html" title="Gtk.popup-context-menu">Gtk.popup-context-menu</a></span> signal.</p>
+<div class="synopsis"><div class="inner">
+<div class="title title-synopsis"><h2><span class="title">Hierarchy</span></h2></div>
+<div class="region"><div class="contents"><div class="tree"><div class="inner"><div class="region"><ul class="tree"><li class="tree">
+<div>
+        <span class=" code">GObject.Object</span>
+      
+      </div>
+<ul class="tree"><li class="tree">
+<div>
+        <span class=" code">GObject.InitiallyUnowned</span>
+      
+      </div>
+<ul class="tree"><li class="tree">
+<div>
+        <span class=" code">Gtk.Widget</span>
+      
+      </div>
+<ul class="tree"><li class="tree">
+<div>
+        <span class=" code">Gtk.Container</span>
+      
+      </div>
+<ul class="tree"><li class="tree"><div>
+        <span class=" code">Gtk.Toolbar</span>
+      </div></li></ul>
+</li></ul>
+</li></ul>
+</li></ul>
+</li></ul></div></div></div></div></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Methods</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.Toolbar.get_drop_index.html" title="Gtk.Toolbar.prototype.get_drop_index">Gtk.Toolbar.prototype.get_drop_index</a></li>
+<li class="links "><a href="Gtk.Toolbar.get_icon_size.html" title="Gtk.Toolbar.prototype.get_icon_size">Gtk.Toolbar.prototype.get_icon_size</a></li>
+<li class="links "><a href="Gtk.Toolbar.get_item_index.html" title="Gtk.Toolbar.prototype.get_item_index">Gtk.Toolbar.prototype.get_item_index</a></li>
+<li class="links "><a href="Gtk.Toolbar.get_n_items.html" title="Gtk.Toolbar.prototype.get_n_items">Gtk.Toolbar.prototype.get_n_items</a></li>
+<li class="links "><a href="Gtk.Toolbar.get_nth_item.html" title="Gtk.Toolbar.prototype.get_nth_item">Gtk.Toolbar.prototype.get_nth_item</a></li>
+<li class="links "><a href="Gtk.Toolbar.get_relief_style.html" title="Gtk.Toolbar.prototype.get_relief_style">Gtk.Toolbar.prototype.get_relief_style</a></li>
+<li class="links "><a href="Gtk.Toolbar.get_show_arrow.html" title="Gtk.Toolbar.prototype.get_show_arrow">Gtk.Toolbar.prototype.get_show_arrow</a></li>
+<li class="links "><a href="Gtk.Toolbar.get_style.html" title="Gtk.Toolbar.prototype.get_style">Gtk.Toolbar.prototype.get_style</a></li>
+<li class="links "><a href="Gtk.Toolbar.insert.html" title="Gtk.Toolbar.prototype.insert">Gtk.Toolbar.prototype.insert</a></li>
+<li class="links "><a href="Gtk.Toolbar.set_drop_highlight_item.html" title="Gtk.Toolbar.prototype.set_drop_highlight_item">Gtk.Toolbar.prototype.set_drop_highlight_item</a></li>
+<li class="links "><a href="Gtk.Toolbar.set_icon_size.html" title="Gtk.Toolbar.prototype.set_icon_size">Gtk.Toolbar.prototype.set_icon_size</a></li>
+<li class="links "><a href="Gtk.Toolbar.set_show_arrow.html" title="Gtk.Toolbar.prototype.set_show_arrow">Gtk.Toolbar.prototype.set_show_arrow</a></li>
+<li class="links "><a href="Gtk.Toolbar.set_style.html" title="Gtk.Toolbar.prototype.set_style">Gtk.Toolbar.prototype.set_style</a></li>
+<li class="links "><a href="Gtk.Toolbar.unset_icon_size.html" title="Gtk.Toolbar.prototype.unset_icon_size">Gtk.Toolbar.prototype.unset_icon_size</a></li>
+<li class="links "><a href="Gtk.Toolbar.unset_style.html" title="Gtk.Toolbar.prototype.unset_style">Gtk.Toolbar.prototype.unset_style</a></li>
+</ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Properties</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.Toolbar-icon-size.html" title="Gtk.Toolbar:icon-size">icon-size</a></li>
+<li class="links "><a href="Gtk.Toolbar-icon-size-set.html" title="Gtk.Toolbar:icon-size-set">icon-size-set</a></li>
+<li class="links "><a href="Gtk.Toolbar-show-arrow.html" title="Gtk.Toolbar:show-arrow">show-arrow</a></li>
+<li class="links "><a href="Gtk.Toolbar-toolbar-style.html" title="Gtk.Toolbar:toolbar-style">toolbar-style</a></li>
+</ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Signals</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.Toolbar-focus-home-or-end.html" title="Gtk.Toolbar::focus-home-or-end">focus-home-or-end</a></li>
+<li class="links "><a href="Gtk.Toolbar-orientation-changed.html" title="Gtk.Toolbar::orientation-changed">orientation-changed</a></li>
+<li class="links "><a href="Gtk.Toolbar-popup-context-menu.html" title="Gtk.Toolbar::popup-context-menu">popup-context-menu</a></li>
+<li class="links "><a href="Gtk.Toolbar-style-changed.html" title="Gtk.Toolbar::style-changed">style-changed</a></li>
+</ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Virtual functions</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.Toolbar-orientation_changed.html" title="Gtk.Toolbar::orientation_changed">Gtk.Toolbar::orientation_changed</a></li>
+<li class="links "><a href="Gtk.Toolbar-popup_context_menu.html" title="Gtk.Toolbar::popup_context_menu">Gtk.Toolbar::popup_context_menu</a></li>
+<li class="links "><a href="Gtk.Toolbar-style_changed.html" title="Gtk.Toolbar::style_changed">Gtk.Toolbar::style_changed</a></li>
+</ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Other</span></h2></div>
+<div class="region"><ul><li class="links "><a href="Gtk.Toolbar.new.html" title="Gtk.Toolbar.new">Gtk.Toolbar.new</a></li></ul></div>
+</div></div>
+</div>
+<div class="sect sect-links" role="navigation">
+<div class="hgroup"></div>
+<div class="contents"><div class="links guidelinks"><div class="inner">
+<div class="title"><h2><span class="title">More Information</span></h2></div>
+<div class="region"><ul><li class="links "><a href="index.html" title="Index">Index</a></li></ul></div>
+</div></div></div>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="footer"></div>
+</div></body>
+</html>

@@ -1,0 +1,136 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Gtk.ToolButton</title>
+<link rel="stylesheet" type="text/css" href="C.css">
+<script type="text/javascript" src="jquery.js"></script><script type="text/javascript" src="jquery.syntax.js"></script><script type="text/javascript" src="yelp.js"></script>
+</head>
+<body><div class="page" role="main">
+<div class="header"><div class="trails" role="navigation"><div class="trail">
+<a class="trail" href="index.html" title="Index">Index</a> » </div></div></div>
+<div class="body">
+<div class="hgroup"><h1 class="title"><span class="title">Gtk.ToolButton</span></h1></div>
+<div class="region">
+<div class="contents">
+<div class="synopsis"><div class="inner"><div class="region"><div class="contents"><div class="code"><pre class="contents ">const Gtk = imports.gi.Gtk;
+
+let tool_button = new Gtk.ToolButton({
+    <span class=" link"><a href="Gtk.ToolButton-icon-name.html" title="Gtk.ToolButton:icon-name">icon_name</a></span>: value,
+    <span class=" link"><a href="Gtk.ToolButton-icon-widget.html" title="Gtk.ToolButton:icon-widget">icon_widget</a></span>: value,
+    <span class=" link"><a href="Gtk.ToolButton-label.html" title="Gtk.ToolButton:label">label</a></span>: value,
+    <span class=" link"><a href="Gtk.ToolButton-label-widget.html" title="Gtk.ToolButton:label-widget">label_widget</a></span>: value,
+    <span class=" link"><a href="Gtk.ToolButton-stock-id.html" title="Gtk.ToolButton:stock-id">stock_id</a></span>: value,
+    <span class=" link"><a href="Gtk.ToolButton-use-underline.html" title="Gtk.ToolButton:use-underline">use_underline</a></span>: value,
+});
+  </pre></div></div></div></div></div>
+<p class="p"><span class=" link"><a href="Gtk.ToolButton.html" title="Gtk.ToolButton">Gtk.ToolButton</a></span>&lt;!-- --&gt;s are #GtkToolItems containing buttons.</p>
+<p class="p">Use <span class=" link"><a href="Gtk.new.html" title="Gtk.new">Gtk.new</a></span> to create a new <span class=" link"><a href="Gtk.ToolButton.html" title="Gtk.ToolButton">Gtk.ToolButton</a></span>.</p>
+<p class="p">The label of a <span class=" link"><a href="Gtk.ToolButton.html" title="Gtk.ToolButton">Gtk.ToolButton</a></span> is determined by the properties
+<span class=" link"><a href="Gtk.label-widget.html" title="Gtk.label-widget">Gtk.label-widget</a></span>, <span class=" link"><a href="Gtk.label.html" title="Gtk.label">Gtk.label</a></span>, and
+<span class=" link"><a href="Gtk.stock-id.html" title="Gtk.stock-id">Gtk.stock-id</a></span>. If <span class=" link"><a href="Gtk.label-widget.html" title="Gtk.label-widget">Gtk.label-widget</a></span> is
+non-<span class=" code">null</span>, then that widget is used as the label. Otherwise, if
+<span class=" link"><a href="Gtk.label.html" title="Gtk.label">Gtk.label</a></span> is non-<span class=" code">null</span>, that string is used as the label.
+Otherwise, if <span class=" link"><a href="Gtk.stock-id.html" title="Gtk.stock-id">Gtk.stock-id</a></span> is non-<span class=" code">null</span>, the label is
+determined by the stock item. Otherwise, the button does not have a label.</p>
+<p class="p">The icon of a <span class=" link"><a href="Gtk.ToolButton.html" title="Gtk.ToolButton">Gtk.ToolButton</a></span> is determined by the properties
+<span class=" link"><a href="Gtk.icon-widget.html" title="Gtk.icon-widget">Gtk.icon-widget</a></span> and <span class=" link"><a href="Gtk.stock-id.html" title="Gtk.stock-id">Gtk.stock-id</a></span>. If
+<span class=" link"><a href="Gtk.icon-widget.html" title="Gtk.icon-widget">Gtk.icon-widget</a></span> is non-<span class=" code">null</span>, then
+that widget is used as the icon. Otherwise, if <span class=" link"><a href="Gtk.stock-id.html" title="Gtk.stock-id">Gtk.stock-id</a></span> is
+non-<span class=" code">null</span>, the icon is determined by the stock item. Otherwise,
+the button does not have a icon.</p>
+<div class="synopsis"><div class="inner">
+<div class="title title-synopsis"><h2><span class="title">Hierarchy</span></h2></div>
+<div class="region"><div class="contents"><div class="tree"><div class="inner"><div class="region"><ul class="tree"><li class="tree">
+<div>
+        <span class=" code">GObject.Object</span>
+      
+      </div>
+<ul class="tree"><li class="tree">
+<div>
+        <span class=" code">GObject.InitiallyUnowned</span>
+      
+      </div>
+<ul class="tree"><li class="tree">
+<div>
+        <span class=" code">Gtk.Widget</span>
+      
+      </div>
+<ul class="tree"><li class="tree">
+<div>
+        <span class=" code">Gtk.Container</span>
+      
+      </div>
+<ul class="tree"><li class="tree">
+<div>
+        <span class=" code">Gtk.Bin</span>
+      
+      </div>
+<ul class="tree"><li class="tree">
+<div>
+        <span class=" code">Gtk.ToolItem</span>
+      
+      </div>
+<ul class="tree"><li class="tree"><div>
+        <span class=" code">Gtk.ToolButton</span>
+      </div></li></ul>
+</li></ul>
+</li></ul>
+</li></ul>
+</li></ul>
+</li></ul>
+</li></ul></div></div></div></div></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Methods</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.ToolButton.get_icon_name.html" title="Gtk.ToolButton.prototype.get_icon_name">Gtk.ToolButton.prototype.get_icon_name</a></li>
+<li class="links "><a href="Gtk.ToolButton.get_icon_widget.html" title="Gtk.ToolButton.prototype.get_icon_widget">Gtk.ToolButton.prototype.get_icon_widget</a></li>
+<li class="links "><a href="Gtk.ToolButton.get_label.html" title="Gtk.ToolButton.prototype.get_label">Gtk.ToolButton.prototype.get_label</a></li>
+<li class="links "><a href="Gtk.ToolButton.get_label_widget.html" title="Gtk.ToolButton.prototype.get_label_widget">Gtk.ToolButton.prototype.get_label_widget</a></li>
+<li class="links "><a href="Gtk.ToolButton.get_stock_id.html" title="Gtk.ToolButton.prototype.get_stock_id">Gtk.ToolButton.prototype.get_stock_id</a></li>
+<li class="links "><a href="Gtk.ToolButton.get_use_underline.html" title="Gtk.ToolButton.prototype.get_use_underline">Gtk.ToolButton.prototype.get_use_underline</a></li>
+<li class="links "><a href="Gtk.ToolButton.set_icon_name.html" title="Gtk.ToolButton.prototype.set_icon_name">Gtk.ToolButton.prototype.set_icon_name</a></li>
+<li class="links "><a href="Gtk.ToolButton.set_icon_widget.html" title="Gtk.ToolButton.prototype.set_icon_widget">Gtk.ToolButton.prototype.set_icon_widget</a></li>
+<li class="links "><a href="Gtk.ToolButton.set_label.html" title="Gtk.ToolButton.prototype.set_label">Gtk.ToolButton.prototype.set_label</a></li>
+<li class="links "><a href="Gtk.ToolButton.set_label_widget.html" title="Gtk.ToolButton.prototype.set_label_widget">Gtk.ToolButton.prototype.set_label_widget</a></li>
+<li class="links "><a href="Gtk.ToolButton.set_stock_id.html" title="Gtk.ToolButton.prototype.set_stock_id">Gtk.ToolButton.prototype.set_stock_id</a></li>
+<li class="links "><a href="Gtk.ToolButton.set_use_underline.html" title="Gtk.ToolButton.prototype.set_use_underline">Gtk.ToolButton.prototype.set_use_underline</a></li>
+</ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Properties</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.ToolButton-icon-name.html" title="Gtk.ToolButton:icon-name">icon-name</a></li>
+<li class="links "><a href="Gtk.ToolButton-icon-widget.html" title="Gtk.ToolButton:icon-widget">icon-widget</a></li>
+<li class="links "><a href="Gtk.ToolButton-label.html" title="Gtk.ToolButton:label">label</a></li>
+<li class="links "><a href="Gtk.ToolButton-label-widget.html" title="Gtk.ToolButton:label-widget">label-widget</a></li>
+<li class="links "><a href="Gtk.ToolButton-stock-id.html" title="Gtk.ToolButton:stock-id">stock-id</a></li>
+<li class="links "><a href="Gtk.ToolButton-use-underline.html" title="Gtk.ToolButton:use-underline">use-underline</a></li>
+</ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Signals</span></h2></div>
+<div class="region"><ul><li class="links "><a href="Gtk.ToolButton-clicked.html" title="Gtk.ToolButton::clicked">clicked</a></li></ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Other</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.ToolButton.new.html" title="Gtk.ToolButton.new">Gtk.ToolButton.new</a></li>
+<li class="links "><a href="Gtk.ToolButton.new_from_stock.html" title="Gtk.ToolButton.new_from_stock">Gtk.ToolButton.new_from_stock</a></li>
+</ul></div>
+</div></div>
+</div>
+<div class="sect sect-links" role="navigation">
+<div class="hgroup"></div>
+<div class="contents"><div class="links guidelinks"><div class="inner">
+<div class="title"><h2><span class="title">More Information</span></h2></div>
+<div class="region"><ul><li class="links "><a href="index.html" title="Index">Index</a></li></ul></div>
+</div></div></div>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="footer"></div>
+</div></body>
+</html>

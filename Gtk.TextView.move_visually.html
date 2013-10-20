@@ -1,0 +1,50 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Gtk.TextView.prototype.move_visually</title>
+<link rel="stylesheet" type="text/css" href="C.css">
+<script type="text/javascript" src="jquery.js"></script><script type="text/javascript" src="jquery.syntax.js"></script><script type="text/javascript" src="yelp.js"></script>
+</head>
+<body><div class="page" role="main">
+<div class="header"><div class="trails" role="navigation"><div class="trail">
+<a class="trail" href="index.html" title="Index">Index</a> » <a class="trail" href="Gtk.TextView.html" title="Gtk.TextView">Gtk.TextView</a> » </div></div></div>
+<div class="body">
+<div class="hgroup"><h1 class="title"><span class="title">Gtk.TextView.prototype.move_visually</span></h1></div>
+<div class="region">
+<div class="contents">
+<div class="synopsis"><div class="inner"><div class="region"><div class="contents"><div class="code"><pre class="contents ">function move_visually(iter:Gtk.TextIter, count:Number):Boolean {
+    // Gjs wrapper for gtk_text_view_move_visually()
+}</pre></div></div></div></div></div>
+<p class="p">Move the iterator a given number of characters visually, treating
+it as the strong cursor position. If <span class=" code">count</span> is positive, then the
+new strong cursor position will be <span class=" code">count</span> positions to the right of
+the old cursor position. If <span class=" code">count</span> is negative then the new strong
+cursor position will be <span class=" code">count</span> positions to the left of the old
+cursor position.</p>
+<p class="p">In the presence of bi-directional text, the correspondence
+between logical and visual order will depend on the direction
+of the current run, and there may be jumps when the cursor
+is moved off of the end of a run.</p>
+<div class="terms"><div class="inner"><div class="region"><dl class="terms">
+<dt class="terms"><span class=" code">iter</span></dt>
+<dd class="terms"><p class="p">a <span class=" link"><a href="Gtk.TextIter.html" title="Gtk.TextIter">Gtk.TextIter</a></span></p></dd>
+<dt class="terms"><span class=" code">count</span></dt>
+<dd class="terms"><p class="p">number of characters to move (negative moves left, positive moves right)</p></dd>
+<dt class="terms"><span class=" code">Returns</span></dt>
+<dd class="terms"><p class="p"><span class=" code">true</span> if <span class=" code">iter</span> moved and is not on the end iterator</p></dd>
+</dl></div></div></div>
+</div>
+<div class="sect sect-links" role="navigation">
+<div class="hgroup"></div>
+<div class="contents"><div class="links guidelinks"><div class="inner">
+<div class="title"><h2><span class="title">More Information</span></h2></div>
+<div class="region"><ul><li class="links "><a href="Gtk.TextView.html" title="Gtk.TextView">Gtk.TextView</a></li></ul></div>
+</div></div></div>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="footer"></div>
+</div></body>
+</html>

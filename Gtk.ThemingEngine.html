@@ -1,0 +1,110 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Gtk.ThemingEngine</title>
+<link rel="stylesheet" type="text/css" href="C.css">
+<script type="text/javascript" src="jquery.js"></script><script type="text/javascript" src="jquery.syntax.js"></script><script type="text/javascript" src="yelp.js"></script>
+</head>
+<body><div class="page" role="main">
+<div class="header"><div class="trails" role="navigation"><div class="trail">
+<a class="trail" href="index.html" title="Index">Index</a> » </div></div></div>
+<div class="body">
+<div class="hgroup"><h1 class="title"><span class="title">Gtk.ThemingEngine</span></h1></div>
+<div class="region">
+<div class="contents">
+<div class="synopsis"><div class="inner"><div class="region"><div class="contents"><div class="code"><pre class="contents ">const Gtk = imports.gi.Gtk;
+
+let theming_engine = new Gtk.ThemingEngine({
+    <span class=" link"><a href="Gtk.ThemingEngine-name.html" title="Gtk.ThemingEngine:name">name</a></span>: value,
+});
+  </pre></div></div></div></div></div>
+<p class="p"><span class=" link"><a href="Gtk.ThemingEngine.html" title="Gtk.ThemingEngine">Gtk.ThemingEngine</a></span> is the object used for rendering themed content
+in GTK+ widgets. Even though GTK+ has a default implementation,
+it can be overridden in CSS files by enforcing a <span class=" link"><a href="Gtk.ThemingEngine.html" title="Gtk.ThemingEngine">Gtk.ThemingEngine</a></span>
+object to be loaded as a module.</p>
+<p class="p">In order to implement a theming engine, a <span class=" link"><a href="Gtk.ThemingEngine.html" title="Gtk.ThemingEngine">Gtk.ThemingEngine</a></span> subclass
+must be created, alongside the CSS file that will reference it, the
+theming engine would be created as an .so library, and installed in
+$(gtk-modules-dir)/theming-engines/.</p>
+<p class="p"><span class=" link"><a href="Gtk.ThemingEngine.html" title="Gtk.ThemingEngine">Gtk.ThemingEngine</a></span>&lt;!-- --&gt;s have limited access to the object they are
+rendering, the <span class=" link"><a href="Gtk.ThemingEngine.html" title="Gtk.ThemingEngine">Gtk.ThemingEngine</a></span> API has read-only accessors to the
+style information contained in the rendered object's <span class=" link"><a href="Gtk.StyleContext.html" title="Gtk.StyleContext">Gtk.StyleContext</a></span>.</p>
+<div class="synopsis"><div class="inner">
+<div class="title title-synopsis"><h2><span class="title">Hierarchy</span></h2></div>
+<div class="region"><div class="contents"><div class="tree"><div class="inner"><div class="region"><ul class="tree"><li class="tree">
+<div>
+        <span class=" code">GObject.Object</span>
+      
+      </div>
+<ul class="tree"><li class="tree"><div>
+        <span class=" code">Gtk.ThemingEngine</span>
+      </div></li></ul>
+</li></ul></div></div></div></div></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Methods</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.ThemingEngine.get_background_color.html" title="Gtk.ThemingEngine.prototype.get_background_color">Gtk.ThemingEngine.prototype.get_background_color</a></li>
+<li class="links "><a href="Gtk.ThemingEngine.get_border.html" title="Gtk.ThemingEngine.prototype.get_border">Gtk.ThemingEngine.prototype.get_border</a></li>
+<li class="links "><a href="Gtk.ThemingEngine.get_border_color.html" title="Gtk.ThemingEngine.prototype.get_border_color">Gtk.ThemingEngine.prototype.get_border_color</a></li>
+<li class="links "><a href="Gtk.ThemingEngine.get_color.html" title="Gtk.ThemingEngine.prototype.get_color">Gtk.ThemingEngine.prototype.get_color</a></li>
+<li class="links "><a href="Gtk.ThemingEngine.get_direction.html" title="Gtk.ThemingEngine.prototype.get_direction">Gtk.ThemingEngine.prototype.get_direction</a></li>
+<li class="links "><a href="Gtk.ThemingEngine.get_font.html" title="Gtk.ThemingEngine.prototype.get_font">Gtk.ThemingEngine.prototype.get_font</a></li>
+<li class="links "><a href="Gtk.ThemingEngine.get_junction_sides.html" title="Gtk.ThemingEngine.prototype.get_junction_sides">Gtk.ThemingEngine.prototype.get_junction_sides</a></li>
+<li class="links "><a href="Gtk.ThemingEngine.get_margin.html" title="Gtk.ThemingEngine.prototype.get_margin">Gtk.ThemingEngine.prototype.get_margin</a></li>
+<li class="links "><a href="Gtk.ThemingEngine.get_padding.html" title="Gtk.ThemingEngine.prototype.get_padding">Gtk.ThemingEngine.prototype.get_padding</a></li>
+<li class="links "><a href="Gtk.ThemingEngine.get_path.html" title="Gtk.ThemingEngine.prototype.get_path">Gtk.ThemingEngine.prototype.get_path</a></li>
+<li class="links "><a href="Gtk.ThemingEngine.get_property.html" title="Gtk.ThemingEngine.prototype.get_property">Gtk.ThemingEngine.prototype.get_property</a></li>
+<li class="links "><a href="Gtk.ThemingEngine.get_screen.html" title="Gtk.ThemingEngine.prototype.get_screen">Gtk.ThemingEngine.prototype.get_screen</a></li>
+<li class="links "><a href="Gtk.ThemingEngine.get_state.html" title="Gtk.ThemingEngine.prototype.get_state">Gtk.ThemingEngine.prototype.get_state</a></li>
+<li class="links "><a href="Gtk.ThemingEngine.get_style_property.html" title="Gtk.ThemingEngine.prototype.get_style_property">Gtk.ThemingEngine.prototype.get_style_property</a></li>
+<li class="links "><a href="Gtk.ThemingEngine.has_class.html" title="Gtk.ThemingEngine.prototype.has_class">Gtk.ThemingEngine.prototype.has_class</a></li>
+<li class="links "><a href="Gtk.ThemingEngine.has_region.html" title="Gtk.ThemingEngine.prototype.has_region">Gtk.ThemingEngine.prototype.has_region</a></li>
+<li class="links "><a href="Gtk.ThemingEngine.lookup_color.html" title="Gtk.ThemingEngine.prototype.lookup_color">Gtk.ThemingEngine.prototype.lookup_color</a></li>
+<li class="links "><a href="Gtk.ThemingEngine.state_is_running.html" title="Gtk.ThemingEngine.prototype.state_is_running">Gtk.ThemingEngine.prototype.state_is_running</a></li>
+</ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Functions</span></h2></div>
+<div class="region"><ul><li class="links "><a href="Gtk.ThemingEngine.load.html" title="load">load</a></li></ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Properties</span></h2></div>
+<div class="region"><ul><li class="links "><a href="Gtk.ThemingEngine-name.html" title="Gtk.ThemingEngine:name">name</a></li></ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Virtual functions</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.ThemingEngine-render_activity.html" title="Gtk.ThemingEngine::render_activity">Gtk.ThemingEngine::render_activity</a></li>
+<li class="links "><a href="Gtk.ThemingEngine-render_arrow.html" title="Gtk.ThemingEngine::render_arrow">Gtk.ThemingEngine::render_arrow</a></li>
+<li class="links "><a href="Gtk.ThemingEngine-render_background.html" title="Gtk.ThemingEngine::render_background">Gtk.ThemingEngine::render_background</a></li>
+<li class="links "><a href="Gtk.ThemingEngine-render_check.html" title="Gtk.ThemingEngine::render_check">Gtk.ThemingEngine::render_check</a></li>
+<li class="links "><a href="Gtk.ThemingEngine-render_expander.html" title="Gtk.ThemingEngine::render_expander">Gtk.ThemingEngine::render_expander</a></li>
+<li class="links "><a href="Gtk.ThemingEngine-render_extension.html" title="Gtk.ThemingEngine::render_extension">Gtk.ThemingEngine::render_extension</a></li>
+<li class="links "><a href="Gtk.ThemingEngine-render_focus.html" title="Gtk.ThemingEngine::render_focus">Gtk.ThemingEngine::render_focus</a></li>
+<li class="links "><a href="Gtk.ThemingEngine-render_frame.html" title="Gtk.ThemingEngine::render_frame">Gtk.ThemingEngine::render_frame</a></li>
+<li class="links "><a href="Gtk.ThemingEngine-render_frame_gap.html" title="Gtk.ThemingEngine::render_frame_gap">Gtk.ThemingEngine::render_frame_gap</a></li>
+<li class="links "><a href="Gtk.ThemingEngine-render_handle.html" title="Gtk.ThemingEngine::render_handle">Gtk.ThemingEngine::render_handle</a></li>
+<li class="links "><a href="Gtk.ThemingEngine-render_icon.html" title="Gtk.ThemingEngine::render_icon">Gtk.ThemingEngine::render_icon</a></li>
+<li class="links "><a href="Gtk.ThemingEngine-render_icon_surface.html" title="Gtk.ThemingEngine::render_icon_surface">Gtk.ThemingEngine::render_icon_surface</a></li>
+<li class="links "><a href="Gtk.ThemingEngine-render_layout.html" title="Gtk.ThemingEngine::render_layout">Gtk.ThemingEngine::render_layout</a></li>
+<li class="links "><a href="Gtk.ThemingEngine-render_line.html" title="Gtk.ThemingEngine::render_line">Gtk.ThemingEngine::render_line</a></li>
+<li class="links "><a href="Gtk.ThemingEngine-render_option.html" title="Gtk.ThemingEngine::render_option">Gtk.ThemingEngine::render_option</a></li>
+<li class="links "><a href="Gtk.ThemingEngine-render_slider.html" title="Gtk.ThemingEngine::render_slider">Gtk.ThemingEngine::render_slider</a></li>
+</ul></div>
+</div></div>
+</div>
+<div class="sect sect-links" role="navigation">
+<div class="hgroup"></div>
+<div class="contents"><div class="links guidelinks"><div class="inner">
+<div class="title"><h2><span class="title">More Information</span></h2></div>
+<div class="region"><ul><li class="links "><a href="index.html" title="Index">Index</a></li></ul></div>
+</div></div></div>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="footer"></div>
+</div></body>
+</html>
