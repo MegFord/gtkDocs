@@ -1,0 +1,118 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Gtk.Style</title>
+<link rel="stylesheet" type="text/css" href="C.css">
+<script type="text/javascript" src="jquery.js"></script><script type="text/javascript" src="jquery.syntax.js"></script><script type="text/javascript" src="yelp.js"></script>
+</head>
+<body><div class="page" role="main">
+<div class="header"><div class="trails" role="navigation"><div class="trail">
+<a class="trail" href="index.html" title="Index">Index</a> » </div></div></div>
+<div class="body">
+<div class="hgroup"><h1 class="title"><span class="title">Gtk.Style</span></h1></div>
+<div class="region">
+<div class="contents">
+<div class="synopsis"><div class="inner"><div class="region"><div class="contents"><div class="code"><pre class="contents ">const Gtk = imports.gi.Gtk;
+
+let style = new Gtk.Style({
+    <span class=" link"><a href="Gtk.Style-context.html" title="Gtk.Style:context">context</a></span>: value,
+});
+  </pre></div></div></div></div></div>
+<p class="p">A <span class=" link"><a href="Gtk.Style.html" title="Gtk.Style">Gtk.Style</a></span> object encapsulates the information that provides the look and
+feel for a widget.</p>
+<p class="p">&lt;warning&gt;
+In GTK+ 3.0, GtkStyle has been deprecated and replaced by <span class=" link"><a href="Gtk.StyleContext.html" title="Gtk.StyleContext">Gtk.StyleContext</a></span>.
+&lt;/warning&gt;</p>
+<p class="p">Each <span class=" link"><a href="Gtk.Widget.html" title="Gtk.Widget">Gtk.Widget</a></span> has an associated <span class=" link"><a href="Gtk.Style.html" title="Gtk.Style">Gtk.Style</a></span> object that is used when
+rendering that widget. Also, a <span class=" link"><a href="Gtk.Style.html" title="Gtk.Style">Gtk.Style</a></span> holds information for the five
+possible widget states though not every widget supports all five
+states; see <span class=" link"><a href="Gtk.StateType.html" title="Gtk.StateType">Gtk.StateType</a></span>.</p>
+<p class="p">Usually the <span class=" link"><a href="Gtk.Style.html" title="Gtk.Style">Gtk.Style</a></span> for a widget is the same as the default style that
+is set by GTK+ and modified the theme engine.</p>
+<p class="p">Usually applications should not need to use or modify the <span class=" link"><a href="Gtk.Style.html" title="Gtk.Style">Gtk.Style</a></span> of
+their widgets.</p>
+<div class="synopsis"><div class="inner">
+<div class="title title-synopsis"><h2><span class="title">Hierarchy</span></h2></div>
+<div class="region"><div class="contents"><div class="tree"><div class="inner"><div class="region"><ul class="tree"><li class="tree">
+<div>
+        <span class=" code">GObject.Object</span>
+      
+      </div>
+<ul class="tree"><li class="tree"><div>
+        <span class=" code">Gtk.Style</span>
+      </div></li></ul>
+</li></ul></div></div></div></div></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Methods</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.Style.apply_default_background.html" title="Gtk.Style.prototype.apply_default_background">Gtk.Style.prototype.apply_default_background</a></li>
+<li class="links "><a href="Gtk.Style.copy.html" title="Gtk.Style.prototype.copy">Gtk.Style.prototype.copy</a></li>
+<li class="links "><a href="Gtk.Style.detach.html" title="Gtk.Style.prototype.detach">Gtk.Style.prototype.detach</a></li>
+<li class="links "><a href="Gtk.Style.get_style_property.html" title="Gtk.Style.prototype.get_style_property">Gtk.Style.prototype.get_style_property</a></li>
+<li class="links "><a href="Gtk.Style.has_context.html" title="Gtk.Style.prototype.has_context">Gtk.Style.prototype.has_context</a></li>
+<li class="links "><a href="Gtk.Style.lookup_color.html" title="Gtk.Style.prototype.lookup_color">Gtk.Style.prototype.lookup_color</a></li>
+<li class="links "><a href="Gtk.Style.lookup_icon_set.html" title="Gtk.Style.prototype.lookup_icon_set">Gtk.Style.prototype.lookup_icon_set</a></li>
+<li class="links "><a href="Gtk.Style.render_icon.html" title="Gtk.Style.prototype.render_icon">Gtk.Style.prototype.render_icon</a></li>
+<li class="links "><a href="Gtk.Style.set_background.html" title="Gtk.Style.prototype.set_background">Gtk.Style.prototype.set_background</a></li>
+</ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Properties</span></h2></div>
+<div class="region"><ul><li class="links "><a href="Gtk.Style-context.html" title="Gtk.Style:context">context</a></li></ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Signals</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.Style-realize.html" title="Gtk.Style::realize">realize</a></li>
+<li class="links "><a href="Gtk.Style-unrealize.html" title="Gtk.Style::unrealize">unrealize</a></li>
+</ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Virtual functions</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.Style-copy.html" title="Gtk.Style::copy">Gtk.Style::copy</a></li>
+<li class="links "><a href="Gtk.Style-draw_arrow.html" title="Gtk.Style::draw_arrow">Gtk.Style::draw_arrow</a></li>
+<li class="links "><a href="Gtk.Style-draw_box.html" title="Gtk.Style::draw_box">Gtk.Style::draw_box</a></li>
+<li class="links "><a href="Gtk.Style-draw_box_gap.html" title="Gtk.Style::draw_box_gap">Gtk.Style::draw_box_gap</a></li>
+<li class="links "><a href="Gtk.Style-draw_check.html" title="Gtk.Style::draw_check">Gtk.Style::draw_check</a></li>
+<li class="links "><a href="Gtk.Style-draw_diamond.html" title="Gtk.Style::draw_diamond">Gtk.Style::draw_diamond</a></li>
+<li class="links "><a href="Gtk.Style-draw_expander.html" title="Gtk.Style::draw_expander">Gtk.Style::draw_expander</a></li>
+<li class="links "><a href="Gtk.Style-draw_extension.html" title="Gtk.Style::draw_extension">Gtk.Style::draw_extension</a></li>
+<li class="links "><a href="Gtk.Style-draw_flat_box.html" title="Gtk.Style::draw_flat_box">Gtk.Style::draw_flat_box</a></li>
+<li class="links "><a href="Gtk.Style-draw_focus.html" title="Gtk.Style::draw_focus">Gtk.Style::draw_focus</a></li>
+<li class="links "><a href="Gtk.Style-draw_handle.html" title="Gtk.Style::draw_handle">Gtk.Style::draw_handle</a></li>
+<li class="links "><a href="Gtk.Style-draw_hline.html" title="Gtk.Style::draw_hline">Gtk.Style::draw_hline</a></li>
+<li class="links "><a href="Gtk.Style-draw_layout.html" title="Gtk.Style::draw_layout">Gtk.Style::draw_layout</a></li>
+<li class="links "><a href="Gtk.Style-draw_option.html" title="Gtk.Style::draw_option">Gtk.Style::draw_option</a></li>
+<li class="links "><a href="Gtk.Style-draw_resize_grip.html" title="Gtk.Style::draw_resize_grip">Gtk.Style::draw_resize_grip</a></li>
+<li class="links "><a href="Gtk.Style-draw_shadow.html" title="Gtk.Style::draw_shadow">Gtk.Style::draw_shadow</a></li>
+<li class="links "><a href="Gtk.Style-draw_shadow_gap.html" title="Gtk.Style::draw_shadow_gap">Gtk.Style::draw_shadow_gap</a></li>
+<li class="links "><a href="Gtk.Style-draw_slider.html" title="Gtk.Style::draw_slider">Gtk.Style::draw_slider</a></li>
+<li class="links "><a href="Gtk.Style-draw_spinner.html" title="Gtk.Style::draw_spinner">Gtk.Style::draw_spinner</a></li>
+<li class="links "><a href="Gtk.Style-draw_tab.html" title="Gtk.Style::draw_tab">Gtk.Style::draw_tab</a></li>
+<li class="links "><a href="Gtk.Style-draw_vline.html" title="Gtk.Style::draw_vline">Gtk.Style::draw_vline</a></li>
+<li class="links "><a href="Gtk.Style-init_from_rc.html" title="Gtk.Style::init_from_rc">Gtk.Style::init_from_rc</a></li>
+<li class="links "><a href="Gtk.Style-render_icon.html" title="Gtk.Style::render_icon">Gtk.Style::render_icon</a></li>
+<li class="links "><a href="Gtk.Style-set_background.html" title="Gtk.Style::set_background">Gtk.Style::set_background</a></li>
+</ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Other</span></h2></div>
+<div class="region"><ul><li class="links "><a href="Gtk.Style.new.html" title="Gtk.Style.new">Gtk.Style.new</a></li></ul></div>
+</div></div>
+</div>
+<div class="sect sect-links" role="navigation">
+<div class="hgroup"></div>
+<div class="contents"><div class="links guidelinks"><div class="inner">
+<div class="title"><h2><span class="title">More Information</span></h2></div>
+<div class="region"><ul><li class="links "><a href="index.html" title="Index">Index</a></li></ul></div>
+</div></div></div>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="footer"></div>
+</div></body>
+</html>

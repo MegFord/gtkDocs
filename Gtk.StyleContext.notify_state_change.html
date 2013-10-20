@@ -1,0 +1,76 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Gtk.StyleContext.prototype.notify_state_change</title>
+<link rel="stylesheet" type="text/css" href="C.css">
+<script type="text/javascript" src="jquery.js"></script><script type="text/javascript" src="jquery.syntax.js"></script><script type="text/javascript" src="yelp.js"></script>
+</head>
+<body><div class="page" role="main">
+<div class="header"><div class="trails" role="navigation"><div class="trail">
+<a class="trail" href="index.html" title="Index">Index</a> » <a class="trail" href="Gtk.StyleContext.html" title="Gtk.StyleContext">Gtk.StyleContext</a> » </div></div></div>
+<div class="body">
+<div class="hgroup"><h1 class="title"><span class="title">Gtk.StyleContext.prototype.notify_state_change</span></h1></div>
+<div class="region">
+<div class="contents">
+<div class="synopsis"><div class="inner"><div class="region"><div class="contents"><div class="code"><pre class="contents ">function notify_state_change(window:Gdk.Window, region_id:gpointer, state:Gtk.StateType, state_value:Boolean):void {
+    // Gjs wrapper for gtk_style_context_notify_state_change()
+}</pre></div></div></div></div></div>
+<p class="p">Notifies a state change on <span class=" code">context</span>, so if the current style makes use
+of transition animations, one will be started so all rendered elements
+under <span class=" code">region_id</span> are animated for state <span class=" code">state</span> being set to value
+<span class=" code">state_value</span>.</p>
+<p class="p">The <span class=" code">window</span> parameter is used in order to invalidate the rendered area
+as the animation runs, so make sure it is the same window that is being
+rendered on by the gtk_render_*() functions.</p>
+<p class="p">If <span class=" code">region_id</span> is <span class=" code">null</span>, all rendered elements using <span class=" code">context</span> will be
+affected by this state transition.</p>
+<p class="p">As a practical example, a <span class=" link"><a href="Gtk.Button.html" title="Gtk.Button">Gtk.Button</a></span> notifying a state transition on
+the prelight state:
+&lt;programlisting&gt;
+gtk_style_context_notify_state_change (context,
+                                       gtk_widget_get_window (widget),
+                                       NULL,
+                                       GTK_STATE_PRELIGHT,
+                                       button-&gt;in_button);
+&lt;/programlisting&gt;</p>
+<p class="p">Can be handled in the CSS file like this:
+&lt;programlisting&gt;
+GtkButton {
+    background-color: &amp;num;f00
+}</p>
+<p class="p">GtkButton:hover {
+    background-color: &amp;num;fff;
+    transition: 200ms linear
+}
+&lt;/programlisting&gt;</p>
+<p class="p">This combination will animate the button background from red to white
+if a pointer enters the button, and back to red if the pointer leaves
+the button.</p>
+<p class="p">Note that <span class=" code">state</span> is used when finding the transition parameters, which
+is why the style places the transition under the :hover pseudo-class.</p>
+<p class="p">Since 3.0</p>
+<div class="terms"><div class="inner"><div class="region"><dl class="terms">
+<dt class="terms"><span class=" code">window</span></dt>
+<dd class="terms"><p class="p">a <span class=" link"><a href="Gdk.Window.html" title="Gdk.Window">Gdk.Window</a></span></p></dd>
+<dt class="terms"><span class=" code">region_id</span></dt>
+<dd class="terms"><p class="p">animatable region to notify on, or <span class=" code">null</span>. See <span class=" link"><a href="Gtk.push_animatable_region.html" title="Gtk.push_animatable_region">Gtk.push_animatable_region</a></span></p></dd>
+<dt class="terms"><span class=" code">state</span></dt>
+<dd class="terms"><p class="p">state to trigger transition for</p></dd>
+<dt class="terms"><span class=" code">state_value</span></dt>
+<dd class="terms"><p class="p"><span class=" code">true</span> if <span class=" code">state</span> is the state we are changing to, <span class=" code">false</span> if we are changing away from it</p></dd>
+</dl></div></div></div>
+</div>
+<div class="sect sect-links" role="navigation">
+<div class="hgroup"></div>
+<div class="contents"><div class="links guidelinks"><div class="inner">
+<div class="title"><h2><span class="title">More Information</span></h2></div>
+<div class="region"><ul><li class="links "><a href="Gtk.StyleContext.html" title="Gtk.StyleContext">Gtk.StyleContext</a></li></ul></div>
+</div></div></div>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="footer"></div>
+</div></body>
+</html>

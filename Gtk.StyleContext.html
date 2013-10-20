@@ -1,0 +1,370 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Gtk.StyleContext</title>
+<link rel="stylesheet" type="text/css" href="C.css">
+<script type="text/javascript" src="jquery.js"></script><script type="text/javascript" src="jquery.syntax.js"></script><script type="text/javascript" src="yelp.js"></script>
+</head>
+<body><div class="page" role="main">
+<div class="header"><div class="trails" role="navigation"><div class="trail">
+<a class="trail" href="index.html" title="Index">Index</a> » </div></div></div>
+<div class="body">
+<div class="hgroup"><h1 class="title"><span class="title">Gtk.StyleContext</span></h1></div>
+<div class="region">
+<div class="contents">
+<div class="synopsis"><div class="inner"><div class="region"><div class="contents"><div class="code"><pre class="contents ">const Gtk = imports.gi.Gtk;
+
+let style_context = new Gtk.StyleContext({
+    <span class=" link"><a href="Gtk.StyleContext-direction.html" title="Gtk.StyleContext:direction">direction</a></span>: value,
+    <span class=" link"><a href="Gtk.StyleContext-paint-clock.html" title="Gtk.StyleContext:paint-clock">paint_clock</a></span>: value,
+    <span class=" link"><a href="Gtk.StyleContext-parent.html" title="Gtk.StyleContext:parent">parent</a></span>: value,
+    <span class=" link"><a href="Gtk.StyleContext-screen.html" title="Gtk.StyleContext:screen">screen</a></span>: value,
+});
+  </pre></div></div></div></div></div>
+<p class="p"><span class=" link"><a href="Gtk.StyleContext.html" title="Gtk.StyleContext">Gtk.StyleContext</a></span> is an object that stores styling information affecting
+a widget defined by <span class=" link"><a href="Gtk.WidgetPath.html" title="Gtk.WidgetPath">Gtk.WidgetPath</a></span>.</p>
+<p class="p">In order to construct the final style information, <span class=" link"><a href="Gtk.StyleContext.html" title="Gtk.StyleContext">Gtk.StyleContext</a></span>
+queries information from all attached #GtkStyleProviders. Style providers
+can be either attached explicitly to the context through
+<span class=" link"><a href="Gtk.add_provider.html" title="Gtk.add_provider">Gtk.add_provider</a></span>, or to the screen through
+<span class=" link"><a href="Gtk.add_provider_for_screen.html" title="Gtk.add_provider_for_screen">Gtk.add_provider_for_screen</a></span>. The resulting style is a
+combination of all providers' information in priority order.</p>
+<p class="p">For GTK+ widgets, any <span class=" link"><a href="Gtk.StyleContext.html" title="Gtk.StyleContext">Gtk.StyleContext</a></span> returned by
+<span class=" link"><a href="Gtk.get_style_context.html" title="Gtk.get_style_context">Gtk.get_style_context</a></span> will already have a <span class=" link"><a href="Gtk.WidgetPath.html" title="Gtk.WidgetPath">Gtk.WidgetPath</a></span>, a
+<span class=" link"><a href="Gdk.Screen.html" title="Gdk.Screen">Gdk.Screen</a></span> and RTL/LTR information set. The style context will be also
+updated automatically if any of these settings change on the widget.</p>
+<p class="p">If you are using the theming layer standalone, you will need to set a
+widget path and a screen yourself to the created style context through
+<span class=" link"><a href="Gtk.set_path.html" title="Gtk.set_path">Gtk.set_path</a></span> and <span class=" link"><a href="Gtk.set_screen.html" title="Gtk.set_screen">Gtk.set_screen</a></span>, as well
+as updating the context yourself using <span class=" link"><a href="Gtk.invalidate.html" title="Gtk.invalidate">Gtk.invalidate</a></span>
+whenever any of the conditions change, such as a change in the
+<span class=" link"><a href="Gtk.Settings-gtk-theme-name.html" title="Gtk.Settings:gtk-theme-name">Gtk.Settings:gtk-theme-name</a></span> setting or a hierarchy change in the rendered
+widget.</p>
+<p class="p">&lt;refsect2 id="gtkstylecontext-animations"&gt;
+&lt;title&gt;Transition animations&lt;/title&gt;
+&lt;para&gt;
+<span class=" link"><a href="Gtk.StyleContext.html" title="Gtk.StyleContext">Gtk.StyleContext</a></span> has built-in support for state change transitions.
+Note that these animations respect the <span class=" link"><a href="Gtk.Settings-gtk-enable-animations.html" title="Gtk.Settings:gtk-enable-animations">Gtk.Settings:gtk-enable-animations</a></span>
+setting.
+&lt;/para&gt;
+&lt;para&gt;
+For simple widgets where state changes affect the whole widget area,
+calling <span class=" link"><a href="Gtk.notify_state_change.html" title="Gtk.notify_state_change">Gtk.notify_state_change</a></span> with a <span class=" code">null</span> region
+is sufficient to trigger the transition animation. And GTK+ already
+does that when <span class=" link"><a href="Gtk.set_state.html" title="Gtk.set_state">Gtk.set_state</a></span> or <span class=" link"><a href="Gtk.set_state_flags.html" title="Gtk.set_state_flags">Gtk.set_state_flags</a></span>
+are called.
+&lt;/para&gt;
+&lt;para&gt;
+If a widget needs to declare several animatable regions (i.e. not
+affecting the whole widget area), its <span class=" link"><a href="Gtk.draw.html" title="Gtk.draw">Gtk.draw</a></span> signal handler
+needs to wrap the render operations for the different regions with
+calls to <span class=" link"><a href="Gtk.push_animatable_region.html" title="Gtk.push_animatable_region">Gtk.push_animatable_region</a></span> and
+<span class=" link"><a href="Gtk.pop_animatable_region.html" title="Gtk.pop_animatable_region">Gtk.pop_animatable_region</a></span>. These functions take an
+identifier for the region which must be unique within the style context.
+For simple widgets with a fixed set of animatable regions, using an
+enumeration works well:
+&lt;/para&gt;
+&lt;example&gt;
+&lt;title&gt;Using an enumeration to identify  animatable regions&lt;/title&gt;
+&lt;programlisting&gt;
+enum {
+  REGION_ENTRY,
+  REGION_BUTTON_UP,
+  REGION_BUTTON_DOWN
+};</p>
+<p class="p">...</p>
+<p class="p">gboolean
+spin_button_draw (GtkWidget *widget,
+                  cairo_t   *cr)
+{
+  GtkStyleContext *context;</p>
+<p class="p">  context = gtk_widget_get_style_context (widget);</p>
+<p class="p">  gtk_style_context_push_animatable_region (context,
+                                            GUINT_TO_POINTER (REGION_ENTRY));</p>
+<p class="p">  gtk_render_background (cr, 0, 0, 100, 30);
+  gtk_render_frame (cr, 0, 0, 100, 30);</p>
+<p class="p">  gtk_style_context_pop_animatable_region (context);</p>
+<p class="p">  ...
+}
+&lt;/programlisting&gt;
+&lt;/example&gt;
+&lt;para&gt;
+For complex widgets with an arbitrary number of animatable regions, it
+is up to the implementation to come up with a way to uniquely identify
+each animatable region. Using pointers to internal structs is one way
+to achieve this:
+&lt;/para&gt;
+&lt;example&gt;
+&lt;title&gt;Using struct pointers to identify animatable regions&lt;/title&gt;
+&lt;programlisting&gt;
+void
+notebook_draw_tab (GtkWidget    *widget,
+                   NotebookPage *page,
+                   cairo_t      *cr)
+{
+  gtk_style_context_push_animatable_region (context, page);
+  gtk_render_extension (cr, page-&gt;x, page-&gt;y, page-&gt;width, page-&gt;height);
+  gtk_style_context_pop_animatable_region (context);
+}
+&lt;/programlisting&gt;
+&lt;/example&gt;
+&lt;para&gt;
+The widget also needs to notify the style context about a state change
+for a given animatable region so the animation is triggered.
+&lt;/para&gt;
+&lt;example&gt;
+&lt;title&gt;Triggering a state change animation on a region&lt;/title&gt;
+&lt;programlisting&gt;
+gboolean
+notebook_motion_notify (GtkWidget      *widget,
+                        GdkEventMotion *event)
+{
+  GtkStyleContext *context;
+  NotebookPage *page;</p>
+<p class="p">  context = gtk_widget_get_style_context (widget);
+  page = find_page_under_pointer (widget, event);
+  gtk_style_context_notify_state_change (context,
+                                         gtk_widget_get_window (widget),
+                                         page,
+                                         GTK_STATE_PRELIGHT,
+                                         TRUE);
+  ...
+}
+&lt;/programlisting&gt;
+&lt;/example&gt;
+&lt;para&gt;
+<span class=" link"><a href="Gtk.notify_state_change.html" title="Gtk.notify_state_change">Gtk.notify_state_change</a></span> accepts <span class=" code">null</span> region IDs as a
+special value, in this case, the whole widget area will be updated
+by the animation.
+&lt;/para&gt;
+&lt;/refsect2&gt;
+&lt;refsect2 id="gtkstylecontext-classes"&gt;
+&lt;title&gt;Style classes and regions&lt;/title&gt;
+&lt;para&gt;
+Widgets can add style classes to their context, which can be used
+to associate different styles by class (see &lt;xref linkend="gtkcssprovider-selectors"/&gt;). Theme engines can also use style classes to vary their
+rendering. GTK+ has a number of predefined style classes:
+#GTK_STYLE_CLASS_CELL,
+#GTK_STYLE_CLASS_ENTRY,
+#GTK_STYLE_CLASS_BUTTON,
+#GTK_STYLE_CLASS_COMBOBOX_ENTRY,
+#GTK_STYLE_CLASS_CALENDAR,
+#GTK_STYLE_CLASS_SLIDER,
+#GTK_STYLE_CLASS_BACKGROUND,
+#GTK_STYLE_CLASS_RUBBERBAND,
+#GTK_STYLE_CLASS_TOOLTIP,
+#GTK_STYLE_CLASS_MENU,
+#GTK_STYLE_CLASS_MENUBAR,
+#GTK_STYLE_CLASS_MENUITEM,
+#GTK_STYLE_CLASS_TOOLBAR,
+#GTK_STYLE_CLASS_PRIMARY_TOOLBAR,
+#GTK_STYLE_CLASS_INLINE_TOOLBAR,
+#GTK_STYLE_CLASS_RADIO,
+#GTK_STYLE_CLASS_CHECK,
+#GTK_STYLE_CLASS_TROUGH,
+#GTK_STYLE_CLASS_SCROLLBAR,
+#GTK_STYLE_CLASS_SCALE,
+#GTK_STYLE_CLASS_SCALE_HAS_MARKS_ABOVE,
+#GTK_STYLE_CLASS_SCALE_HAS_MARKS_BELOW,
+#GTK_STYLE_CLASS_HEADER,
+#GTK_STYLE_CLASS_ACCELERATOR,
+#GTK_STYLE_CLASS_GRIP,
+#GTK_STYLE_CLASS_DOCK,
+#GTK_STYLE_CLASS_PROGRESSBAR,
+#GTK_STYLE_CLASS_SPINNER,
+#GTK_STYLE_CLASS_EXPANDER,
+#GTK_STYLE_CLASS_SPINBUTTON,
+#GTK_STYLE_CLASS_NOTEBOOK,
+#GTK_STYLE_CLASS_VIEW,
+#GTK_STYLE_CLASS_SIDEBAR,
+#GTK_STYLE_CLASS_IMAGE,
+#GTK_STYLE_CLASS_HIGHLIGHT,
+#GTK_STYLE_CLASS_FRAME,
+#GTK_STYLE_CLASS_DND,
+#GTK_STYLE_CLASS_PANE_SEPARATOR,
+#GTK_STYLE_CLASS_SEPARATOR,
+#GTK_STYLE_CLASS_INFO,
+#GTK_STYLE_CLASS_WARNING,
+#GTK_STYLE_CLASS_QUESTION,
+#GTK_STYLE_CLASS_ERROR,
+#GTK_STYLE_CLASS_HORIZONTAL,
+#GTK_STYLE_CLASS_VERTICAL,
+#GTK_STYLE_CLASS_TOP,
+#GTK_STYLE_CLASS_BOTTOM,
+#GTK_STYLE_CLASS_LEFT,
+#GTK_STYLE_CLASS_RIGHT,
+&lt;/para&gt;
+&lt;para&gt;
+Widgets can also add regions with flags to their context.
+The regions used by GTK+ widgets are:
+&lt;informaltable&gt;
+  &lt;tgroup cols="4"&gt;
+    &lt;thead&gt;
+      &lt;row&gt;
+        &lt;entry&gt;Region&lt;/entry&gt;
+        &lt;entry&gt;Flags&lt;/entry&gt;
+        &lt;entry&gt;Macro&lt;/entry&gt;
+        &lt;entry&gt;Used by&lt;/entry&gt;
+      &lt;/row&gt;
+    &lt;/thead&gt;
+    &lt;tbody&gt;
+      &lt;row&gt;
+        &lt;entry&gt;row&lt;/entry&gt;
+        &lt;entry&gt;even, odd&lt;/entry&gt;
+        &lt;entry&gt;GTK_STYLE_REGION_ROW&lt;/entry&gt;
+        &lt;entry&gt;<span class=" link"><a href="Gtk.TreeView.html" title="Gtk.TreeView">Gtk.TreeView</a></span>&lt;/entry&gt;
+      &lt;/row&gt;
+      &lt;row&gt;
+        &lt;entry&gt;column&lt;/entry&gt;
+        &lt;entry&gt;first, last, sorted&lt;/entry&gt;
+        &lt;entry&gt;GTK_STYLE_REGION_COLUMN&lt;/entry&gt;
+        &lt;entry&gt;<span class=" link"><a href="Gtk.TreeView.html" title="Gtk.TreeView">Gtk.TreeView</a></span>&lt;/entry&gt;
+      &lt;/row&gt;
+      &lt;row&gt;
+        &lt;entry&gt;column-header&lt;/entry&gt;
+        &lt;entry&gt;&lt;/entry&gt;
+        &lt;entry&gt;GTK_STYLE_REGION_COLUMN_HEADER&lt;/entry&gt;
+        &lt;entry&gt;&lt;/entry&gt;
+      &lt;/row&gt;
+      &lt;row&gt;
+        &lt;entry&gt;tab&lt;/entry&gt;
+        &lt;entry&gt;even, odd, first, last&lt;/entry&gt;
+        &lt;entry&gt;GTK_STYLE_REGION_TAB&lt;/entry&gt;
+        &lt;entry&gt;<span class=" link"><a href="Gtk.Notebook.html" title="Gtk.Notebook">Gtk.Notebook</a></span>&lt;/entry&gt;
+      &lt;/row&gt;
+    &lt;/tbody&gt;
+  &lt;/tgroup&gt;
+&lt;/informaltable&gt;
+&lt;/para&gt;
+&lt;/refsect2&gt;
+&lt;refsect2 id="gtkstylecontext-custom-styling"&gt;
+&lt;title&gt;Custom styling in UI libraries and applications&lt;/title&gt;
+&lt;para&gt;
+If you are developing a library with custom <span class=" link"><a href="Gtk.Widget.html" title="Gtk.Widget">Gtk.Widget</a></span>&lt;!-- --&gt;s that
+render differently than standard components, you may need to add a
+<span class=" link"><a href="Gtk.StyleProvider.html" title="Gtk.StyleProvider">Gtk.StyleProvider</a></span> yourself with the %GTK_STYLE_PROVIDER_PRIORITY_FALLBACK
+priority, either a <span class=" link"><a href="Gtk.CssProvider.html" title="Gtk.CssProvider">Gtk.CssProvider</a></span> or a custom object implementing the
+<span class=" link"><a href="Gtk.StyleProvider.html" title="Gtk.StyleProvider">Gtk.StyleProvider</a></span> interface. This way theming engines may still attempt
+to style your UI elements in a different way if needed so.
+&lt;/para&gt;
+&lt;para&gt;
+If you are using custom styling on an applications, you probably want then
+to make your style information prevail to the theme's, so you must use
+a <span class=" link"><a href="Gtk.StyleProvider.html" title="Gtk.StyleProvider">Gtk.StyleProvider</a></span> with the %GTK_STYLE_PROVIDER_PRIORITY_APPLICATION
+priority, keep in mind that the user settings in
+&lt;filename&gt;&lt;replaceable&gt;XDG_CONFIG_HOME&lt;/replaceable&gt;/gtk-3.0/gtk.css&lt;/filename&gt; will
+still take precedence over your changes, as it uses the
+%GTK_STYLE_PROVIDER_PRIORITY_USER priority.
+&lt;/para&gt;
+&lt;para&gt;
+If a custom theming engine is needed, you probably want to implement a
+<span class=" link"><a href="Gtk.StyleProvider.html" title="Gtk.StyleProvider">Gtk.StyleProvider</a></span> yourself so it points to your <span class=" link"><a href="Gtk.ThemingEngine.html" title="Gtk.ThemingEngine">Gtk.ThemingEngine</a></span>
+implementation, as <span class=" link"><a href="Gtk.CssProvider.html" title="Gtk.CssProvider">Gtk.CssProvider</a></span> uses <span class=" link"><a href="Gtk.load.html" title="Gtk.load">Gtk.load</a></span>
+which loads the theming engine module from the standard paths.
+&lt;/para&gt;
+&lt;/refsect2&gt;</p>
+<div class="synopsis"><div class="inner">
+<div class="title title-synopsis"><h2><span class="title">Hierarchy</span></h2></div>
+<div class="region"><div class="contents"><div class="tree"><div class="inner"><div class="region"><ul class="tree"><li class="tree">
+<div>
+        <span class=" code">GObject.Object</span>
+      
+      </div>
+<ul class="tree"><li class="tree"><div>
+        <span class=" code">Gtk.StyleContext</span>
+      </div></li></ul>
+</li></ul></div></div></div></div></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Methods</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.StyleContext.add_class.html" title="Gtk.StyleContext.prototype.add_class">Gtk.StyleContext.prototype.add_class</a></li>
+<li class="links "><a href="Gtk.StyleContext.add_provider.html" title="Gtk.StyleContext.prototype.add_provider">Gtk.StyleContext.prototype.add_provider</a></li>
+<li class="links "><a href="Gtk.StyleContext.add_region.html" title="Gtk.StyleContext.prototype.add_region">Gtk.StyleContext.prototype.add_region</a></li>
+<li class="links "><a href="Gtk.StyleContext.cancel_animations.html" title="Gtk.StyleContext.prototype.cancel_animations">Gtk.StyleContext.prototype.cancel_animations</a></li>
+<li class="links "><a href="Gtk.StyleContext.get_background_color.html" title="Gtk.StyleContext.prototype.get_background_color">Gtk.StyleContext.prototype.get_background_color</a></li>
+<li class="links "><a href="Gtk.StyleContext.get_border.html" title="Gtk.StyleContext.prototype.get_border">Gtk.StyleContext.prototype.get_border</a></li>
+<li class="links "><a href="Gtk.StyleContext.get_border_color.html" title="Gtk.StyleContext.prototype.get_border_color">Gtk.StyleContext.prototype.get_border_color</a></li>
+<li class="links "><a href="Gtk.StyleContext.get_color.html" title="Gtk.StyleContext.prototype.get_color">Gtk.StyleContext.prototype.get_color</a></li>
+<li class="links "><a href="Gtk.StyleContext.get_direction.html" title="Gtk.StyleContext.prototype.get_direction">Gtk.StyleContext.prototype.get_direction</a></li>
+<li class="links "><a href="Gtk.StyleContext.get_font.html" title="Gtk.StyleContext.prototype.get_font">Gtk.StyleContext.prototype.get_font</a></li>
+<li class="links "><a href="Gtk.StyleContext.get_frame_clock.html" title="Gtk.StyleContext.prototype.get_frame_clock">Gtk.StyleContext.prototype.get_frame_clock</a></li>
+<li class="links "><a href="Gtk.StyleContext.get_junction_sides.html" title="Gtk.StyleContext.prototype.get_junction_sides">Gtk.StyleContext.prototype.get_junction_sides</a></li>
+<li class="links "><a href="Gtk.StyleContext.get_margin.html" title="Gtk.StyleContext.prototype.get_margin">Gtk.StyleContext.prototype.get_margin</a></li>
+<li class="links "><a href="Gtk.StyleContext.get_padding.html" title="Gtk.StyleContext.prototype.get_padding">Gtk.StyleContext.prototype.get_padding</a></li>
+<li class="links "><a href="Gtk.StyleContext.get_parent.html" title="Gtk.StyleContext.prototype.get_parent">Gtk.StyleContext.prototype.get_parent</a></li>
+<li class="links "><a href="Gtk.StyleContext.get_path.html" title="Gtk.StyleContext.prototype.get_path">Gtk.StyleContext.prototype.get_path</a></li>
+<li class="links "><a href="Gtk.StyleContext.get_property.html" title="Gtk.StyleContext.prototype.get_property">Gtk.StyleContext.prototype.get_property</a></li>
+<li class="links "><a href="Gtk.StyleContext.get_scale.html" title="Gtk.StyleContext.prototype.get_scale">Gtk.StyleContext.prototype.get_scale</a></li>
+<li class="links "><a href="Gtk.StyleContext.get_screen.html" title="Gtk.StyleContext.prototype.get_screen">Gtk.StyleContext.prototype.get_screen</a></li>
+<li class="links "><a href="Gtk.StyleContext.get_section.html" title="Gtk.StyleContext.prototype.get_section">Gtk.StyleContext.prototype.get_section</a></li>
+<li class="links "><a href="Gtk.StyleContext.get_state.html" title="Gtk.StyleContext.prototype.get_state">Gtk.StyleContext.prototype.get_state</a></li>
+<li class="links "><a href="Gtk.StyleContext.get_style_property.html" title="Gtk.StyleContext.prototype.get_style_property">Gtk.StyleContext.prototype.get_style_property</a></li>
+<li class="links "><a href="Gtk.StyleContext.has_class.html" title="Gtk.StyleContext.prototype.has_class">Gtk.StyleContext.prototype.has_class</a></li>
+<li class="links "><a href="Gtk.StyleContext.has_region.html" title="Gtk.StyleContext.prototype.has_region">Gtk.StyleContext.prototype.has_region</a></li>
+<li class="links "><a href="Gtk.StyleContext.invalidate.html" title="Gtk.StyleContext.prototype.invalidate">Gtk.StyleContext.prototype.invalidate</a></li>
+<li class="links "><a href="Gtk.StyleContext.list_classes.html" title="Gtk.StyleContext.prototype.list_classes">Gtk.StyleContext.prototype.list_classes</a></li>
+<li class="links "><a href="Gtk.StyleContext.list_regions.html" title="Gtk.StyleContext.prototype.list_regions">Gtk.StyleContext.prototype.list_regions</a></li>
+<li class="links "><a href="Gtk.StyleContext.lookup_color.html" title="Gtk.StyleContext.prototype.lookup_color">Gtk.StyleContext.prototype.lookup_color</a></li>
+<li class="links "><a href="Gtk.StyleContext.lookup_icon_set.html" title="Gtk.StyleContext.prototype.lookup_icon_set">Gtk.StyleContext.prototype.lookup_icon_set</a></li>
+<li class="links "><a href="Gtk.StyleContext.notify_state_change.html" title="Gtk.StyleContext.prototype.notify_state_change">Gtk.StyleContext.prototype.notify_state_change</a></li>
+<li class="links "><a href="Gtk.StyleContext.pop_animatable_region.html" title="Gtk.StyleContext.prototype.pop_animatable_region">Gtk.StyleContext.prototype.pop_animatable_region</a></li>
+<li class="links "><a href="Gtk.StyleContext.push_animatable_region.html" title="Gtk.StyleContext.prototype.push_animatable_region">Gtk.StyleContext.prototype.push_animatable_region</a></li>
+<li class="links "><a href="Gtk.StyleContext.remove_class.html" title="Gtk.StyleContext.prototype.remove_class">Gtk.StyleContext.prototype.remove_class</a></li>
+<li class="links "><a href="Gtk.StyleContext.remove_provider.html" title="Gtk.StyleContext.prototype.remove_provider">Gtk.StyleContext.prototype.remove_provider</a></li>
+<li class="links "><a href="Gtk.StyleContext.remove_region.html" title="Gtk.StyleContext.prototype.remove_region">Gtk.StyleContext.prototype.remove_region</a></li>
+<li class="links "><a href="Gtk.StyleContext.restore.html" title="Gtk.StyleContext.prototype.restore">Gtk.StyleContext.prototype.restore</a></li>
+<li class="links "><a href="Gtk.StyleContext.save.html" title="Gtk.StyleContext.prototype.save">Gtk.StyleContext.prototype.save</a></li>
+<li class="links "><a href="Gtk.StyleContext.scroll_animations.html" title="Gtk.StyleContext.prototype.scroll_animations">Gtk.StyleContext.prototype.scroll_animations</a></li>
+<li class="links "><a href="Gtk.StyleContext.set_background.html" title="Gtk.StyleContext.prototype.set_background">Gtk.StyleContext.prototype.set_background</a></li>
+<li class="links "><a href="Gtk.StyleContext.set_direction.html" title="Gtk.StyleContext.prototype.set_direction">Gtk.StyleContext.prototype.set_direction</a></li>
+<li class="links "><a href="Gtk.StyleContext.set_frame_clock.html" title="Gtk.StyleContext.prototype.set_frame_clock">Gtk.StyleContext.prototype.set_frame_clock</a></li>
+<li class="links "><a href="Gtk.StyleContext.set_junction_sides.html" title="Gtk.StyleContext.prototype.set_junction_sides">Gtk.StyleContext.prototype.set_junction_sides</a></li>
+<li class="links "><a href="Gtk.StyleContext.set_parent.html" title="Gtk.StyleContext.prototype.set_parent">Gtk.StyleContext.prototype.set_parent</a></li>
+<li class="links "><a href="Gtk.StyleContext.set_path.html" title="Gtk.StyleContext.prototype.set_path">Gtk.StyleContext.prototype.set_path</a></li>
+<li class="links "><a href="Gtk.StyleContext.set_scale.html" title="Gtk.StyleContext.prototype.set_scale">Gtk.StyleContext.prototype.set_scale</a></li>
+<li class="links "><a href="Gtk.StyleContext.set_screen.html" title="Gtk.StyleContext.prototype.set_screen">Gtk.StyleContext.prototype.set_screen</a></li>
+<li class="links "><a href="Gtk.StyleContext.set_state.html" title="Gtk.StyleContext.prototype.set_state">Gtk.StyleContext.prototype.set_state</a></li>
+<li class="links "><a href="Gtk.StyleContext.state_is_running.html" title="Gtk.StyleContext.prototype.state_is_running">Gtk.StyleContext.prototype.state_is_running</a></li>
+</ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Functions</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.StyleContext.add_provider_for_screen.html" title="add_provider_for_screen">add_provider_for_screen</a></li>
+<li class="links "><a href="Gtk.StyleContext.remove_provider_for_screen.html" title="remove_provider_for_screen">remove_provider_for_screen</a></li>
+<li class="links "><a href="Gtk.StyleContext.reset_widgets.html" title="reset_widgets">reset_widgets</a></li>
+</ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Properties</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.StyleContext-direction.html" title="Gtk.StyleContext:direction">direction</a></li>
+<li class="links "><a href="Gtk.StyleContext-paint-clock.html" title="Gtk.StyleContext:paint-clock">paint-clock</a></li>
+<li class="links "><a href="Gtk.StyleContext-parent.html" title="Gtk.StyleContext:parent">parent</a></li>
+<li class="links "><a href="Gtk.StyleContext-screen.html" title="Gtk.StyleContext:screen">screen</a></li>
+</ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Signals</span></h2></div>
+<div class="region"><ul><li class="links "><a href="Gtk.StyleContext-changed.html" title="Gtk.StyleContext::changed">changed</a></li></ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Other</span></h2></div>
+<div class="region"><ul><li class="links "><a href="Gtk.StyleContext.new.html" title="Gtk.StyleContext.new">Gtk.StyleContext.new</a></li></ul></div>
+</div></div>
+</div>
+<div class="sect sect-links" role="navigation">
+<div class="hgroup"></div>
+<div class="contents"><div class="links guidelinks"><div class="inner">
+<div class="title"><h2><span class="title">More Information</span></h2></div>
+<div class="region"><ul><li class="links "><a href="index.html" title="Index">Index</a></li></ul></div>
+</div></div></div>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="footer"></div>
+</div></body>
+</html>

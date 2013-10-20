@@ -1,0 +1,165 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Gtk.StatusIcon</title>
+<link rel="stylesheet" type="text/css" href="C.css">
+<script type="text/javascript" src="jquery.js"></script><script type="text/javascript" src="jquery.syntax.js"></script><script type="text/javascript" src="yelp.js"></script>
+</head>
+<body><div class="page" role="main">
+<div class="header"><div class="trails" role="navigation"><div class="trail">
+<a class="trail" href="index.html" title="Index">Index</a> » </div></div></div>
+<div class="body">
+<div class="hgroup"><h1 class="title"><span class="title">Gtk.StatusIcon</span></h1></div>
+<div class="region">
+<div class="contents">
+<div class="synopsis"><div class="inner"><div class="region"><div class="contents"><div class="code"><pre class="contents ">const Gtk = imports.gi.Gtk;
+
+let status_icon = new Gtk.StatusIcon({
+    <span class=" link"><a href="Gtk.StatusIcon-file.html" title="Gtk.StatusIcon:file">file</a></span>: value,
+    <span class=" link"><a href="Gtk.StatusIcon-gicon.html" title="Gtk.StatusIcon:gicon">gicon</a></span>: value,
+    <span class=" link"><a href="Gtk.StatusIcon-has-tooltip.html" title="Gtk.StatusIcon:has-tooltip">has_tooltip</a></span>: value,
+    <span class=" link"><a href="Gtk.StatusIcon-icon-name.html" title="Gtk.StatusIcon:icon-name">icon_name</a></span>: value,
+    <span class=" link"><a href="Gtk.StatusIcon-pixbuf.html" title="Gtk.StatusIcon:pixbuf">pixbuf</a></span>: value,
+    <span class=" link"><a href="Gtk.StatusIcon-screen.html" title="Gtk.StatusIcon:screen">screen</a></span>: value,
+    <span class=" link"><a href="Gtk.StatusIcon-stock.html" title="Gtk.StatusIcon:stock">stock</a></span>: value,
+    <span class=" link"><a href="Gtk.StatusIcon-title.html" title="Gtk.StatusIcon:title">title</a></span>: value,
+    <span class=" link"><a href="Gtk.StatusIcon-tooltip-markup.html" title="Gtk.StatusIcon:tooltip-markup">tooltip_markup</a></span>: value,
+    <span class=" link"><a href="Gtk.StatusIcon-tooltip-text.html" title="Gtk.StatusIcon:tooltip-text">tooltip_text</a></span>: value,
+    <span class=" link"><a href="Gtk.StatusIcon-visible.html" title="Gtk.StatusIcon:visible">visible</a></span>: value,
+});
+  </pre></div></div></div></div></div>
+<p class="p">The "system tray" or notification area is normally used for transient icons
+that indicate some special state. For example, a system tray icon might
+appear to tell the user that they have new mail, or have an incoming instant
+message, or something along those lines. The basic idea is that creating an
+icon in the notification area is less annoying than popping up a dialog.</p>
+<p class="p">A <span class=" link"><a href="Gtk.StatusIcon.html" title="Gtk.StatusIcon">Gtk.StatusIcon</a></span> object can be used to display an icon in a "system tray".
+The icon can have a tooltip, and the user can interact with it by
+activating it or popping up a context menu. Critical information should
+not solely be displayed in a <span class=" link"><a href="Gtk.StatusIcon.html" title="Gtk.StatusIcon">Gtk.StatusIcon</a></span>, since it may not be
+visible (e.g. when the user doesn't have a notification area on his panel).
+This can be checked with <span class=" link"><a href="Gtk.is_embedded.html" title="Gtk.is_embedded">Gtk.is_embedded</a></span>.</p>
+<p class="p">On X11, the implementation follows the freedesktop.org "System Tray"
+&lt;ulink url="http://www.freedesktop.org/wiki/Specifications/systemtray-spec"&gt;specification&lt;/ulink&gt;.
+Implementations of the "tray" side of this specification can
+be found e.g. in the GNOME 2 and KDE panel applications.</p>
+<p class="p">Note that a GtkStatusIcon is &lt;emphasis&gt;not&lt;/emphasis&gt; a widget, but just
+a <span class=" link"><a href="GObject.Object.html" title="GObject.Object">GObject.Object</a></span>. Making it a widget would be impractical, since the system tray
+on Win32 doesn't allow to embed arbitrary widgets.</p>
+<div class="synopsis"><div class="inner">
+<div class="title title-synopsis"><h2><span class="title">Hierarchy</span></h2></div>
+<div class="region"><div class="contents"><div class="tree"><div class="inner"><div class="region"><ul class="tree"><li class="tree">
+<div>
+        <span class=" code">GObject.Object</span>
+      
+      </div>
+<ul class="tree"><li class="tree"><div>
+        <span class=" code">Gtk.StatusIcon</span>
+      </div></li></ul>
+</li></ul></div></div></div></div></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Methods</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.StatusIcon.get_geometry.html" title="Gtk.StatusIcon.prototype.get_geometry">Gtk.StatusIcon.prototype.get_geometry</a></li>
+<li class="links "><a href="Gtk.StatusIcon.get_gicon.html" title="Gtk.StatusIcon.prototype.get_gicon">Gtk.StatusIcon.prototype.get_gicon</a></li>
+<li class="links "><a href="Gtk.StatusIcon.get_has_tooltip.html" title="Gtk.StatusIcon.prototype.get_has_tooltip">Gtk.StatusIcon.prototype.get_has_tooltip</a></li>
+<li class="links "><a href="Gtk.StatusIcon.get_icon_name.html" title="Gtk.StatusIcon.prototype.get_icon_name">Gtk.StatusIcon.prototype.get_icon_name</a></li>
+<li class="links "><a href="Gtk.StatusIcon.get_pixbuf.html" title="Gtk.StatusIcon.prototype.get_pixbuf">Gtk.StatusIcon.prototype.get_pixbuf</a></li>
+<li class="links "><a href="Gtk.StatusIcon.get_screen.html" title="Gtk.StatusIcon.prototype.get_screen">Gtk.StatusIcon.prototype.get_screen</a></li>
+<li class="links "><a href="Gtk.StatusIcon.get_size.html" title="Gtk.StatusIcon.prototype.get_size">Gtk.StatusIcon.prototype.get_size</a></li>
+<li class="links "><a href="Gtk.StatusIcon.get_stock.html" title="Gtk.StatusIcon.prototype.get_stock">Gtk.StatusIcon.prototype.get_stock</a></li>
+<li class="links "><a href="Gtk.StatusIcon.get_storage_type.html" title="Gtk.StatusIcon.prototype.get_storage_type">Gtk.StatusIcon.prototype.get_storage_type</a></li>
+<li class="links "><a href="Gtk.StatusIcon.get_title.html" title="Gtk.StatusIcon.prototype.get_title">Gtk.StatusIcon.prototype.get_title</a></li>
+<li class="links "><a href="Gtk.StatusIcon.get_tooltip_markup.html" title="Gtk.StatusIcon.prototype.get_tooltip_markup">Gtk.StatusIcon.prototype.get_tooltip_markup</a></li>
+<li class="links "><a href="Gtk.StatusIcon.get_tooltip_text.html" title="Gtk.StatusIcon.prototype.get_tooltip_text">Gtk.StatusIcon.prototype.get_tooltip_text</a></li>
+<li class="links "><a href="Gtk.StatusIcon.get_visible.html" title="Gtk.StatusIcon.prototype.get_visible">Gtk.StatusIcon.prototype.get_visible</a></li>
+<li class="links "><a href="Gtk.StatusIcon.get_x11_window_id.html" title="Gtk.StatusIcon.prototype.get_x11_window_id">Gtk.StatusIcon.prototype.get_x11_window_id</a></li>
+<li class="links "><a href="Gtk.StatusIcon.is_embedded.html" title="Gtk.StatusIcon.prototype.is_embedded">Gtk.StatusIcon.prototype.is_embedded</a></li>
+<li class="links "><a href="Gtk.StatusIcon.set_from_file.html" title="Gtk.StatusIcon.prototype.set_from_file">Gtk.StatusIcon.prototype.set_from_file</a></li>
+<li class="links "><a href="Gtk.StatusIcon.set_from_gicon.html" title="Gtk.StatusIcon.prototype.set_from_gicon">Gtk.StatusIcon.prototype.set_from_gicon</a></li>
+<li class="links "><a href="Gtk.StatusIcon.set_from_icon_name.html" title="Gtk.StatusIcon.prototype.set_from_icon_name">Gtk.StatusIcon.prototype.set_from_icon_name</a></li>
+<li class="links "><a href="Gtk.StatusIcon.set_from_pixbuf.html" title="Gtk.StatusIcon.prototype.set_from_pixbuf">Gtk.StatusIcon.prototype.set_from_pixbuf</a></li>
+<li class="links "><a href="Gtk.StatusIcon.set_from_stock.html" title="Gtk.StatusIcon.prototype.set_from_stock">Gtk.StatusIcon.prototype.set_from_stock</a></li>
+<li class="links "><a href="Gtk.StatusIcon.set_has_tooltip.html" title="Gtk.StatusIcon.prototype.set_has_tooltip">Gtk.StatusIcon.prototype.set_has_tooltip</a></li>
+<li class="links "><a href="Gtk.StatusIcon.set_name.html" title="Gtk.StatusIcon.prototype.set_name">Gtk.StatusIcon.prototype.set_name</a></li>
+<li class="links "><a href="Gtk.StatusIcon.set_screen.html" title="Gtk.StatusIcon.prototype.set_screen">Gtk.StatusIcon.prototype.set_screen</a></li>
+<li class="links "><a href="Gtk.StatusIcon.set_title.html" title="Gtk.StatusIcon.prototype.set_title">Gtk.StatusIcon.prototype.set_title</a></li>
+<li class="links "><a href="Gtk.StatusIcon.set_tooltip_markup.html" title="Gtk.StatusIcon.prototype.set_tooltip_markup">Gtk.StatusIcon.prototype.set_tooltip_markup</a></li>
+<li class="links "><a href="Gtk.StatusIcon.set_tooltip_text.html" title="Gtk.StatusIcon.prototype.set_tooltip_text">Gtk.StatusIcon.prototype.set_tooltip_text</a></li>
+<li class="links "><a href="Gtk.StatusIcon.set_visible.html" title="Gtk.StatusIcon.prototype.set_visible">Gtk.StatusIcon.prototype.set_visible</a></li>
+</ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Functions</span></h2></div>
+<div class="region"><ul><li class="links "><a href="Gtk.StatusIcon.position_menu.html" title="position_menu">position_menu</a></li></ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Properties</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.StatusIcon-embedded.html" title="Gtk.StatusIcon:embedded">embedded</a></li>
+<li class="links "><a href="Gtk.StatusIcon-file.html" title="Gtk.StatusIcon:file">file</a></li>
+<li class="links "><a href="Gtk.StatusIcon-gicon.html" title="Gtk.StatusIcon:gicon">gicon</a></li>
+<li class="links "><a href="Gtk.StatusIcon-has-tooltip.html" title="Gtk.StatusIcon:has-tooltip">has-tooltip</a></li>
+<li class="links "><a href="Gtk.StatusIcon-icon-name.html" title="Gtk.StatusIcon:icon-name">icon-name</a></li>
+<li class="links "><a href="Gtk.StatusIcon-orientation.html" title="Gtk.StatusIcon:orientation">orientation</a></li>
+<li class="links "><a href="Gtk.StatusIcon-pixbuf.html" title="Gtk.StatusIcon:pixbuf">pixbuf</a></li>
+<li class="links "><a href="Gtk.StatusIcon-screen.html" title="Gtk.StatusIcon:screen">screen</a></li>
+<li class="links "><a href="Gtk.StatusIcon-size.html" title="Gtk.StatusIcon:size">size</a></li>
+<li class="links "><a href="Gtk.StatusIcon-stock.html" title="Gtk.StatusIcon:stock">stock</a></li>
+<li class="links "><a href="Gtk.StatusIcon-storage-type.html" title="Gtk.StatusIcon:storage-type">storage-type</a></li>
+<li class="links "><a href="Gtk.StatusIcon-title.html" title="Gtk.StatusIcon:title">title</a></li>
+<li class="links "><a href="Gtk.StatusIcon-tooltip-markup.html" title="Gtk.StatusIcon:tooltip-markup">tooltip-markup</a></li>
+<li class="links "><a href="Gtk.StatusIcon-tooltip-text.html" title="Gtk.StatusIcon:tooltip-text">tooltip-text</a></li>
+<li class="links "><a href="Gtk.StatusIcon-visible.html" title="Gtk.StatusIcon:visible">visible</a></li>
+</ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Signals</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.StatusIcon-activate.html" title="Gtk.StatusIcon::activate">activate</a></li>
+<li class="links "><a href="Gtk.StatusIcon-button-press-event.html" title="Gtk.StatusIcon::button-press-event">button-press-event</a></li>
+<li class="links "><a href="Gtk.StatusIcon-button-release-event.html" title="Gtk.StatusIcon::button-release-event">button-release-event</a></li>
+<li class="links "><a href="Gtk.StatusIcon-popup-menu.html" title="Gtk.StatusIcon::popup-menu">popup-menu</a></li>
+<li class="links "><a href="Gtk.StatusIcon-query-tooltip.html" title="Gtk.StatusIcon::query-tooltip">query-tooltip</a></li>
+<li class="links "><a href="Gtk.StatusIcon-scroll-event.html" title="Gtk.StatusIcon::scroll-event">scroll-event</a></li>
+<li class="links "><a href="Gtk.StatusIcon-size-changed.html" title="Gtk.StatusIcon::size-changed">size-changed</a></li>
+</ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Virtual functions</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.StatusIcon-button_press_event.html" title="Gtk.StatusIcon::button_press_event">Gtk.StatusIcon::button_press_event</a></li>
+<li class="links "><a href="Gtk.StatusIcon-button_release_event.html" title="Gtk.StatusIcon::button_release_event">Gtk.StatusIcon::button_release_event</a></li>
+<li class="links "><a href="Gtk.StatusIcon-popup_menu.html" title="Gtk.StatusIcon::popup_menu">Gtk.StatusIcon::popup_menu</a></li>
+<li class="links "><a href="Gtk.StatusIcon-query_tooltip.html" title="Gtk.StatusIcon::query_tooltip">Gtk.StatusIcon::query_tooltip</a></li>
+<li class="links "><a href="Gtk.StatusIcon-scroll_event.html" title="Gtk.StatusIcon::scroll_event">Gtk.StatusIcon::scroll_event</a></li>
+<li class="links "><a href="Gtk.StatusIcon-size_changed.html" title="Gtk.StatusIcon::size_changed">Gtk.StatusIcon::size_changed</a></li>
+</ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Other</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.StatusIcon.new.html" title="Gtk.StatusIcon.new">Gtk.StatusIcon.new</a></li>
+<li class="links "><a href="Gtk.StatusIcon.new_from_file.html" title="Gtk.StatusIcon.new_from_file">Gtk.StatusIcon.new_from_file</a></li>
+<li class="links "><a href="Gtk.StatusIcon.new_from_gicon.html" title="Gtk.StatusIcon.new_from_gicon">Gtk.StatusIcon.new_from_gicon</a></li>
+<li class="links "><a href="Gtk.StatusIcon.new_from_icon_name.html" title="Gtk.StatusIcon.new_from_icon_name">Gtk.StatusIcon.new_from_icon_name</a></li>
+<li class="links "><a href="Gtk.StatusIcon.new_from_pixbuf.html" title="Gtk.StatusIcon.new_from_pixbuf">Gtk.StatusIcon.new_from_pixbuf</a></li>
+<li class="links "><a href="Gtk.StatusIcon.new_from_stock.html" title="Gtk.StatusIcon.new_from_stock">Gtk.StatusIcon.new_from_stock</a></li>
+</ul></div>
+</div></div>
+</div>
+<div class="sect sect-links" role="navigation">
+<div class="hgroup"></div>
+<div class="contents"><div class="links guidelinks"><div class="inner">
+<div class="title"><h2><span class="title">More Information</span></h2></div>
+<div class="region"><ul><li class="links "><a href="index.html" title="Index">Index</a></li></ul></div>
+</div></div></div>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="footer"></div>
+</div></body>
+</html>
