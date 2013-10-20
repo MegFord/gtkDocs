@@ -1,0 +1,84 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Gtk.FileChooser::confirm-overwrite</title>
+<link rel="stylesheet" type="text/css" href="C.css">
+<script type="text/javascript" src="jquery.js"></script><script type="text/javascript" src="jquery.syntax.js"></script><script type="text/javascript" src="yelp.js"></script>
+</head>
+<body><div class="page" role="main">
+<div class="header"><div class="trails" role="navigation"><div class="trail">
+<a class="trail" href="index.html" title="Index">Index</a> » <a class="trail" href="Gtk.FileChooser.html" title="Gtk.FileChooser">Gtk.FileChooser</a> » </div></div></div>
+<div class="body">
+<div class="hgroup"><h1 class="title"><span class="title">Gtk.FileChooser::confirm-overwrite</span></h1></div>
+<div class="region">
+<div class="contents">
+<div class="synopsis"><div class="inner"><div class="region"><div class="contents"><div class="code"><pre class="contents syntax brush-python">function callback(file_chooser, ):Gtk.FileChooserConfirmation;</pre></div></div></div></div></div>
+<p class="p">This signal gets emitted whenever it is appropriate to present a
+confirmation dialog when the user has selected a file name that
+already exists.  The signal only gets emitted when the file
+chooser is in <span class=" link"><a href="Gtk.FileChooserAction.html" title="Gtk.FileChooserAction">Gtk.FileChooserAction</a></span>.save mode.</p>
+<p class="p">Most applications just need to turn on the
+<span class=" link"><a href="Gtk.do-overwrite-confirmation.html" title="Gtk.do-overwrite-confirmation">Gtk.do-overwrite-confirmation</a></span> property (or call the
+<span class=" link"><a href="Gtk.FileChooser.set_do_overwrite_confirmation.html" title="Gtk.FileChooser.prototype.set_do_overwrite_confirmation">Gtk.FileChooser.prototype.set_do_overwrite_confirmation</a></span> function), and
+they will automatically get a stock confirmation dialog.
+Applications which need to customize this behavior should do
+that, and also connect to the <span class=" link"><a href="Gtk.FileChooser-confirm-overwrite.html" title="Gtk.FileChooser::confirm-overwrite">Gtk.FileChooser::confirm-overwrite</a></span>
+signal.</p>
+<p class="p">A signal handler for this signal must return a
+<span class=" link"><a href="Gtk.FileChooserConfirmation.html" title="Gtk.FileChooserConfirmation">Gtk.FileChooserConfirmation</a></span> value, which indicates the action to
+take.  If the handler determines that the user wants to select a
+different filename, it should return
+<span class=" link"><a href="Gtk.FileChooserConfirmation.html" title="Gtk.FileChooserConfirmation">Gtk.FileChooserConfirmation</a></span>.select_again.  If it determines
+that the user is satisfied with his choice of file name, it
+should return <span class=" link"><a href="Gtk.FileChooserConfirmation.html" title="Gtk.FileChooserConfirmation">Gtk.FileChooserConfirmation</a></span>.accept_filename.
+On the other hand, if it determines that the stock confirmation
+dialog should be used, it should return
+<span class=" link"><a href="Gtk.FileChooserConfirmation.html" title="Gtk.FileChooserConfirmation">Gtk.FileChooserConfirmation</a></span>.confirm. The following example
+illustrates this.
+&lt;example id="gtkfilechooser-confirmation"&gt;
+&lt;title&gt;Custom confirmation&lt;/title&gt;
+&lt;programlisting&gt;
+static GtkFileChooserConfirmation
+confirm_overwrite_callback (GtkFileChooser *chooser, gpointer data)
+{
+  char *uri;</p>
+<p class="p">  uri = gtk_file_chooser_get_uri (chooser);</p>
+<p class="p">  if (is_uri_read_only (uri))
+    {
+      if (user_wants_to_replace_read_only_file (uri))
+        return GTK_FILE_CHOOSER_CONFIRMATION_ACCEPT_FILENAME;
+      else
+        return GTK_FILE_CHOOSER_CONFIRMATION_SELECT_AGAIN;
+    } else
+      return GTK_FILE_CHOOSER_CONFIRMATION_CONFIRM; // fall back to the default dialog
+}</p>
+<p class="p">...</p>
+<p class="p">chooser = gtk_file_chooser_dialog_new (...);</p>
+<p class="p">gtk_file_chooser_set_do_overwrite_confirmation (GTK_FILE_CHOOSER (dialog), TRUE);
+g_signal_connect (chooser, "confirm-overwrite",
+                  G_CALLBACK (confirm_overwrite_callback), NULL);</p>
+<p class="p">if (gtk_dialog_run (chooser) == GTK_RESPONSE_ACCEPT)
+        save_to_file (gtk_file_chooser_get_filename (GTK_FILE_CHOOSER (chooser));</p>
+<p class="p">gtk_widget_destroy (chooser);
+&lt;/programlisting&gt;
+&lt;/example&gt;</p>
+<p class="p">Since 2.8</p>
+<div class="terms"><div class="inner"><div class="region"><dl class="terms">
+<dt class="terms"><span class=" code">file_chooser</span></dt>
+<dd class="terms"><p class="p">instance of <span class=" link"><a href="Gtk.FileChooser.html" title="Gtk.FileChooser">Gtk.FileChooser</a></span> that is emitting the signal</p></dd>
+</dl></div></div></div>
+</div>
+<div class="sect sect-links" role="navigation">
+<div class="hgroup"></div>
+<div class="contents"><div class="links guidelinks"><div class="inner">
+<div class="title"><h2><span class="title">More Information</span></h2></div>
+<div class="region"><ul><li class="links "><a href="Gtk.FileChooser.html" title="Gtk.FileChooser">Gtk.FileChooser</a></li></ul></div>
+</div></div></div>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="footer"></div>
+</div></body>
+</html>

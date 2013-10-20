@@ -1,0 +1,188 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Gtk.Expander</title>
+<link rel="stylesheet" type="text/css" href="C.css">
+<script type="text/javascript" src="jquery.js"></script><script type="text/javascript" src="jquery.syntax.js"></script><script type="text/javascript" src="yelp.js"></script>
+</head>
+<body><div class="page" role="main">
+<div class="header"><div class="trails" role="navigation"><div class="trail">
+<a class="trail" href="index.html" title="Index">Index</a> » </div></div></div>
+<div class="body">
+<div class="hgroup"><h1 class="title"><span class="title">Gtk.Expander</span></h1></div>
+<div class="region">
+<div class="contents">
+<div class="synopsis"><div class="inner"><div class="region"><div class="contents"><div class="code"><pre class="contents ">const Gtk = imports.gi.Gtk;
+
+let expander = new Gtk.Expander({
+    <span class=" link"><a href="Gtk.Expander-expanded.html" title="Gtk.Expander:expanded">expanded</a></span>: value,
+    <span class=" link"><a href="Gtk.Expander-label.html" title="Gtk.Expander:label">label</a></span>: value,
+    <span class=" link"><a href="Gtk.Expander-label-fill.html" title="Gtk.Expander:label-fill">label_fill</a></span>: value,
+    <span class=" link"><a href="Gtk.Expander-label-widget.html" title="Gtk.Expander:label-widget">label_widget</a></span>: value,
+    <span class=" link"><a href="Gtk.Expander-resize-toplevel.html" title="Gtk.Expander:resize-toplevel">resize_toplevel</a></span>: value,
+    <span class=" link"><a href="Gtk.Expander-spacing.html" title="Gtk.Expander:spacing">spacing</a></span>: value,
+    <span class=" link"><a href="Gtk.Expander-use-markup.html" title="Gtk.Expander:use-markup">use_markup</a></span>: value,
+    <span class=" link"><a href="Gtk.Expander-use-underline.html" title="Gtk.Expander:use-underline">use_underline</a></span>: value,
+});
+  </pre></div></div></div></div></div>
+<p class="p">A <span class=" link"><a href="Gtk.Expander.html" title="Gtk.Expander">Gtk.Expander</a></span> allows the user to hide or show its child by clicking
+on an expander triangle similar to the triangles used in a <span class=" link"><a href="Gtk.TreeView.html" title="Gtk.TreeView">Gtk.TreeView</a></span>.</p>
+<p class="p">Normally you use an expander as you would use any other descendant
+of <span class=" link"><a href="Gtk.Bin.html" title="Gtk.Bin">Gtk.Bin</a></span>; you create the child widget and use <span class=" link"><a href="Gtk.Container.add.html" title="Gtk.Container.prototype.add">Gtk.Container.prototype.add</a></span>
+to add it to the expander. When the expander is toggled, it will take
+care of showing and hiding the child automatically.</p>
+<p class="p">&lt;refsect2 id="expander-special-usage"&gt;
+&lt;title&gt;Special Usage&lt;/title&gt;
+&lt;para&gt;
+There are situations in which you may prefer to show and hide the
+expanded widget yourself, such as when you want to actually create
+the widget at expansion time. In this case, create a <span class=" link"><a href="Gtk.Expander.html" title="Gtk.Expander">Gtk.Expander</a></span>
+but do not add a child to it. The expander widget has an
+<span class=" link"><a href="Gtk.expanded.html" title="Gtk.expanded">Gtk.expanded</a></span> property which can be used to monitor
+its expansion state. You should watch this property with a signal
+connection as follows:
+&lt;/para&gt;
+&lt;informalexample&gt;
+&lt;programlisting id="expander-callback-example"&gt;
+expander = gtk_expander_new_with_mnemonic ("_More Options");
+g_signal_connect (expander, "notify::expanded",
+                  G_CALLBACK (expander_callback), NULL);</p>
+<p class="p">...</p>
+<p class="p">static void
+expander_callback (GObject    *object,
+                   GParamSpec *param_spec,
+                   gpointer    user_data)
+{
+  GtkExpander *expander;</p>
+<p class="p">  expander = GTK_EXPANDER (object);</p>
+<p class="p">  if (gtk_expander_get_expanded (expander))
+    {
+      /&amp;ast; Show or create widgets &amp;ast;/
+    }
+  else
+    {
+      /&amp;ast; Hide or destroy widgets &amp;ast;/
+    }
+}
+&lt;/programlisting&gt;
+&lt;/informalexample&gt;
+&lt;/refsect2&gt;
+&lt;refsect2 id="GtkExpander-BUILDER-UI"&gt;
+&lt;title&gt;GtkExpander as GtkBuildable&lt;/title&gt;
+&lt;para&gt;
+The GtkExpander implementation of the GtkBuildable interface
+supports placing a child in the label position by specifying
+"label" as the "type" attribute of a &amp;lt;child&amp;gt; element.
+A normal content child can be specified without specifying
+a &amp;lt;child&amp;gt; type attribute.
+&lt;/para&gt;
+&lt;example&gt;
+&lt;title&gt;A UI definition fragment with GtkExpander&lt;/title&gt;
+&lt;programlisting&gt;&lt;![CDATA[
+&lt;object class="GtkExpander"&gt;
+  &lt;child type="label"&gt;
+    &lt;object class="GtkLabel" id="expander-label"/&gt;
+  &lt;/child&gt;
+  &lt;child&gt;
+    &lt;object class="GtkEntry" id="expander-content"/&gt;
+  &lt;/child&gt;
+&lt;/object&gt;
+]]&gt;&lt;/programlisting&gt;
+&lt;/example&gt;
+&lt;/refsect2&gt;</p>
+<div class="synopsis"><div class="inner">
+<div class="title title-synopsis"><h2><span class="title">Hierarchy</span></h2></div>
+<div class="region"><div class="contents"><div class="tree"><div class="inner"><div class="region"><ul class="tree"><li class="tree">
+<div>
+        <span class=" code">GObject.Object</span>
+      
+      </div>
+<ul class="tree"><li class="tree">
+<div>
+        <span class=" code">GObject.InitiallyUnowned</span>
+      
+      </div>
+<ul class="tree"><li class="tree">
+<div>
+        <span class=" code">Gtk.Widget</span>
+      
+      </div>
+<ul class="tree"><li class="tree">
+<div>
+        <span class=" code">Gtk.Container</span>
+      
+      </div>
+<ul class="tree"><li class="tree">
+<div>
+        <span class=" code">Gtk.Bin</span>
+      
+      </div>
+<ul class="tree"><li class="tree"><div>
+        <span class=" code">Gtk.Expander</span>
+      </div></li></ul>
+</li></ul>
+</li></ul>
+</li></ul>
+</li></ul>
+</li></ul></div></div></div></div></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Methods</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.Expander.get_expanded.html" title="Gtk.Expander.prototype.get_expanded">Gtk.Expander.prototype.get_expanded</a></li>
+<li class="links "><a href="Gtk.Expander.get_label.html" title="Gtk.Expander.prototype.get_label">Gtk.Expander.prototype.get_label</a></li>
+<li class="links "><a href="Gtk.Expander.get_label_fill.html" title="Gtk.Expander.prototype.get_label_fill">Gtk.Expander.prototype.get_label_fill</a></li>
+<li class="links "><a href="Gtk.Expander.get_label_widget.html" title="Gtk.Expander.prototype.get_label_widget">Gtk.Expander.prototype.get_label_widget</a></li>
+<li class="links "><a href="Gtk.Expander.get_resize_toplevel.html" title="Gtk.Expander.prototype.get_resize_toplevel">Gtk.Expander.prototype.get_resize_toplevel</a></li>
+<li class="links "><a href="Gtk.Expander.get_spacing.html" title="Gtk.Expander.prototype.get_spacing">Gtk.Expander.prototype.get_spacing</a></li>
+<li class="links "><a href="Gtk.Expander.get_use_markup.html" title="Gtk.Expander.prototype.get_use_markup">Gtk.Expander.prototype.get_use_markup</a></li>
+<li class="links "><a href="Gtk.Expander.get_use_underline.html" title="Gtk.Expander.prototype.get_use_underline">Gtk.Expander.prototype.get_use_underline</a></li>
+<li class="links "><a href="Gtk.Expander.set_expanded.html" title="Gtk.Expander.prototype.set_expanded">Gtk.Expander.prototype.set_expanded</a></li>
+<li class="links "><a href="Gtk.Expander.set_label.html" title="Gtk.Expander.prototype.set_label">Gtk.Expander.prototype.set_label</a></li>
+<li class="links "><a href="Gtk.Expander.set_label_fill.html" title="Gtk.Expander.prototype.set_label_fill">Gtk.Expander.prototype.set_label_fill</a></li>
+<li class="links "><a href="Gtk.Expander.set_label_widget.html" title="Gtk.Expander.prototype.set_label_widget">Gtk.Expander.prototype.set_label_widget</a></li>
+<li class="links "><a href="Gtk.Expander.set_resize_toplevel.html" title="Gtk.Expander.prototype.set_resize_toplevel">Gtk.Expander.prototype.set_resize_toplevel</a></li>
+<li class="links "><a href="Gtk.Expander.set_spacing.html" title="Gtk.Expander.prototype.set_spacing">Gtk.Expander.prototype.set_spacing</a></li>
+<li class="links "><a href="Gtk.Expander.set_use_markup.html" title="Gtk.Expander.prototype.set_use_markup">Gtk.Expander.prototype.set_use_markup</a></li>
+<li class="links "><a href="Gtk.Expander.set_use_underline.html" title="Gtk.Expander.prototype.set_use_underline">Gtk.Expander.prototype.set_use_underline</a></li>
+</ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Properties</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.Expander-expanded.html" title="Gtk.Expander:expanded">expanded</a></li>
+<li class="links "><a href="Gtk.Expander-label.html" title="Gtk.Expander:label">label</a></li>
+<li class="links "><a href="Gtk.Expander-label-fill.html" title="Gtk.Expander:label-fill">label-fill</a></li>
+<li class="links "><a href="Gtk.Expander-label-widget.html" title="Gtk.Expander:label-widget">label-widget</a></li>
+<li class="links "><a href="Gtk.Expander-resize-toplevel.html" title="Gtk.Expander:resize-toplevel">resize-toplevel</a></li>
+<li class="links "><a href="Gtk.Expander-spacing.html" title="Gtk.Expander:spacing">spacing</a></li>
+<li class="links "><a href="Gtk.Expander-use-markup.html" title="Gtk.Expander:use-markup">use-markup</a></li>
+<li class="links "><a href="Gtk.Expander-use-underline.html" title="Gtk.Expander:use-underline">use-underline</a></li>
+</ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Signals</span></h2></div>
+<div class="region"><ul><li class="links "><a href="Gtk.Expander-activate.html" title="Gtk.Expander::activate">activate</a></li></ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Other</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.Expander.new.html" title="Gtk.Expander.new">Gtk.Expander.new</a></li>
+<li class="links "><a href="Gtk.Expander.new_with_mnemonic.html" title="Gtk.Expander.new_with_mnemonic">Gtk.Expander.new_with_mnemonic</a></li>
+</ul></div>
+</div></div>
+</div>
+<div class="sect sect-links" role="navigation">
+<div class="hgroup"></div>
+<div class="contents"><div class="links guidelinks"><div class="inner">
+<div class="title"><h2><span class="title">More Information</span></h2></div>
+<div class="region"><ul><li class="links "><a href="index.html" title="Index">Index</a></li></ul></div>
+</div></div></div>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="footer"></div>
+</div></body>
+</html>

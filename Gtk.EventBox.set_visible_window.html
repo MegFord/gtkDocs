@@ -1,0 +1,67 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Gtk.EventBox.prototype.set_visible_window</title>
+<link rel="stylesheet" type="text/css" href="C.css">
+<script type="text/javascript" src="jquery.js"></script><script type="text/javascript" src="jquery.syntax.js"></script><script type="text/javascript" src="yelp.js"></script>
+</head>
+<body><div class="page" role="main">
+<div class="header"><div class="trails" role="navigation"><div class="trail">
+<a class="trail" href="index.html" title="Index">Index</a> » <a class="trail" href="Gtk.EventBox.html" title="Gtk.EventBox">Gtk.EventBox</a> » </div></div></div>
+<div class="body">
+<div class="hgroup"><h1 class="title"><span class="title">Gtk.EventBox.prototype.set_visible_window</span></h1></div>
+<div class="region">
+<div class="contents">
+<div class="synopsis"><div class="inner"><div class="region"><div class="contents"><div class="code"><pre class="contents ">function set_visible_window(visible_window:Boolean):void {
+    // Gjs wrapper for gtk_event_box_set_visible_window()
+}</pre></div></div></div></div></div>
+<p class="p">Set whether the event box uses a visible or invisible child
+window. The default is to use visible windows.</p>
+<p class="p">In an invisible window event box, the window that the
+event box creates is a <span class=" link"><a href="Gdk.WindowWindowClass.html" title="Gdk.WindowWindowClass">Gdk.WindowWindowClass</a></span>.input_only window, which
+means that it is invisible and only serves to receive
+events.</p>
+<p class="p">A visible window event box creates a visible (<span class=" link"><a href="Gdk.WindowWindowClass.html" title="Gdk.WindowWindowClass">Gdk.WindowWindowClass</a></span>.input_output)
+window that acts as the parent window for all the widgets
+contained in the event box.</p>
+<p class="p">You should generally make your event box invisible if
+you just want to trap events. Creating a visible window
+may cause artifacts that are visible to the user, especially
+if the user is using a theme with gradients or pixmaps.</p>
+<p class="p">The main reason to create a non input-only event box is if
+you want to set the background to a different color or
+draw on it.</p>
+<p class="p">&lt;note&gt;&lt;para&gt;
+There is one unexpected issue for an invisible event box that has its
+window below the child. (See <span class=" link"><a href="Gtk.EventBox.set_above_child.html" title="Gtk.EventBox.prototype.set_above_child">Gtk.EventBox.prototype.set_above_child</a></span>.)
+Since the input-only window is not an ancestor window of any windows
+that descendent widgets of the event box create, events on these
+windows aren't propagated up by the windowing system, but only by GTK+.
+The practical effect of this is if an event isn't in the event
+mask for the descendant window (see <span class=" link"><a href="Gtk.add_events.html" title="Gtk.add_events">Gtk.add_events</a></span>),
+it won't be received by the event box.
+&lt;/para&gt;&lt;para&gt;
+This problem doesn't occur for visible event boxes, because in
+that case, the event box window is actually the ancestor of the
+descendant windows, not just at the same place on the screen.
+&lt;/para&gt;&lt;/note&gt;</p>
+<p class="p">Since 2.4</p>
+<div class="terms"><div class="inner"><div class="region"><dl class="terms">
+<dt class="terms"><span class=" code">visible_window</span></dt>
+<dd class="terms"><p class="p"><span class=" code">true</span> to make the event box have a visible window</p></dd>
+</dl></div></div></div>
+</div>
+<div class="sect sect-links" role="navigation">
+<div class="hgroup"></div>
+<div class="contents"><div class="links guidelinks"><div class="inner">
+<div class="title"><h2><span class="title">More Information</span></h2></div>
+<div class="region"><ul><li class="links "><a href="Gtk.EventBox.html" title="Gtk.EventBox">Gtk.EventBox</a></li></ul></div>
+</div></div></div>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="footer"></div>
+</div></body>
+</html>

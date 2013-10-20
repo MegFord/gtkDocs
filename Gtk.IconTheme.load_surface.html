@@ -1,0 +1,55 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Gtk.IconTheme.prototype.load_surface</title>
+<link rel="stylesheet" type="text/css" href="C.css">
+<script type="text/javascript" src="jquery.js"></script><script type="text/javascript" src="jquery.syntax.js"></script><script type="text/javascript" src="yelp.js"></script>
+</head>
+<body><div class="page" role="main">
+<div class="header"><div class="trails" role="navigation"><div class="trail">
+<a class="trail" href="index.html" title="Index">Index</a> » <a class="trail" href="Gtk.IconTheme.html" title="Gtk.IconTheme">Gtk.IconTheme</a> » </div></div></div>
+<div class="body">
+<div class="hgroup"><h1 class="title"><span class="title">Gtk.IconTheme.prototype.load_surface</span></h1></div>
+<div class="region">
+<div class="contents">
+<div class="synopsis"><div class="inner"><div class="region"><div class="contents"><div class="code"><pre class="contents ">function load_surface(icon_name:String, size:Number, scale:Number, for_window:Gdk.Window, flags:Gtk.IconLookupFlags):cairo.Surface {
+    // Gjs wrapper for gtk_icon_theme_load_surface()
+}</pre></div></div></div></div></div>
+<p class="p">Looks up an icon in an icon theme for a particular window scale,
+scales it to the given size and renders it into a cairo surface. This is a
+convenience function; if more details about the icon are needed,
+use <span class=" link"><a href="Gtk.lookup_icon.html" title="Gtk.lookup_icon">Gtk.lookup_icon</a></span> followed by
+<span class=" link"><a href="Gtk.IconInfo.load_surface.html" title="Gtk.IconInfo.prototype.load_surface">Gtk.IconInfo.prototype.load_surface</a></span>.</p>
+<p class="p">Note that you probably want to listen for icon theme changes and
+update the icon. This is usually done by connecting to the
+GtkWidget::style-set signal.</p>
+<p class="p">Since 3.10</p>
+<div class="terms"><div class="inner"><div class="region"><dl class="terms">
+<dt class="terms"><span class=" code">icon_name</span></dt>
+<dd class="terms"><p class="p">the name of the icon to lookup</p></dd>
+<dt class="terms"><span class=" code">size</span></dt>
+<dd class="terms"><p class="p">the desired icon size. The resulting icon may not be exactly this size; see <span class=" link"><a href="Gtk.IconInfo.load_icon.html" title="Gtk.IconInfo.prototype.load_icon">Gtk.IconInfo.prototype.load_icon</a></span>.</p></dd>
+<dt class="terms"><span class=" code">scale</span></dt>
+<dd class="terms"><p class="p">desired scale</p></dd>
+<dt class="terms"><span class=" code">for_window</span></dt>
+<dd class="terms"><p class="p"><span class=" link"><a href="Gdk.Window.html" title="Gdk.Window">Gdk.Window</a></span> to optimize drawing for, or <span class=" code">null</span></p></dd>
+<dt class="terms"><span class=" code">flags</span></dt>
+<dd class="terms"><p class="p">flags modifying the behavior of the icon lookup</p></dd>
+<dt class="terms"><span class=" code">Returns</span></dt>
+<dd class="terms"><p class="p">the rendered icon; this may be a newly created icon or a new reference to an internal icon, so you must not modify the icon. Use cairo_surface_destroy() to release your reference to the icon. <span class=" code">null</span> if the icon isn't found.</p></dd>
+</dl></div></div></div>
+</div>
+<div class="sect sect-links" role="navigation">
+<div class="hgroup"></div>
+<div class="contents"><div class="links guidelinks"><div class="inner">
+<div class="title"><h2><span class="title">More Information</span></h2></div>
+<div class="region"><ul><li class="links "><a href="Gtk.IconTheme.html" title="Gtk.IconTheme">Gtk.IconTheme</a></li></ul></div>
+</div></div></div>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="footer"></div>
+</div></body>
+</html>

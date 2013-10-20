@@ -1,0 +1,151 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Gtk.IconFactory</title>
+<link rel="stylesheet" type="text/css" href="C.css">
+<script type="text/javascript" src="jquery.js"></script><script type="text/javascript" src="jquery.syntax.js"></script><script type="text/javascript" src="yelp.js"></script>
+</head>
+<body><div class="page" role="main">
+<div class="header"><div class="trails" role="navigation"><div class="trail">
+<a class="trail" href="index.html" title="Index">Index</a> » </div></div></div>
+<div class="body">
+<div class="hgroup"><h1 class="title"><span class="title">Gtk.IconFactory</span></h1></div>
+<div class="region">
+<div class="contents">
+<div class="synopsis"><div class="inner"><div class="region"><div class="contents"><div class="code"><pre class="contents ">const Gtk = imports.gi.Gtk;
+
+let icon_factory = new Gtk.IconFactory();
+  </pre></div></div></div></div></div>
+<p class="p">Browse the available stock icons in the list of stock IDs found &lt;link
+linkend="gtk-Stock-Items"&gt;here&lt;/link&gt;. You can also use
+the &lt;application&gt;gtk-demo&lt;/application&gt; application for this purpose.</p>
+<p class="p">An icon factory manages a collection of <span class=" link"><a href="Gtk.IconSet.html" title="Gtk.IconSet">Gtk.IconSet</a></span>; a <span class=" link"><a href="Gtk.IconSet.html" title="Gtk.IconSet">Gtk.IconSet</a></span> manages a
+set of variants of a particular icon (i.e. a <span class=" link"><a href="Gtk.IconSet.html" title="Gtk.IconSet">Gtk.IconSet</a></span> contains variants for
+different sizes and widget states). Icons in an icon factory are named by a
+stock ID, which is a simple string identifying the icon. Each <span class=" link"><a href="Gtk.Style.html" title="Gtk.Style">Gtk.Style</a></span> has a
+list of <span class=" link"><a href="Gtk.IconFactory.html" title="Gtk.IconFactory">Gtk.IconFactory</a></span> derived from the current theme; those icon factories
+are consulted first when searching for an icon. If the theme doesn't set a
+particular icon, GTK+ looks for the icon in a list of default icon factories,
+maintained by <span class=" link"><a href="Gtk.add_default.html" title="Gtk.add_default">Gtk.add_default</a></span> and
+<span class=" link"><a href="Gtk.remove_default.html" title="Gtk.remove_default">Gtk.remove_default</a></span>. Applications with icons should add a default
+icon factory with their icons, which will allow themes to override the icons
+for the application.</p>
+<p class="p">To display an icon, always use <span class=" link"><a href="Gtk.lookup_icon_set.html" title="Gtk.lookup_icon_set">Gtk.lookup_icon_set</a></span> on the widget that
+will display the icon, or the convenience function
+<span class=" link"><a href="Gtk.render_icon.html" title="render_icon">render_icon</a></span>. These functions take the theme into account when
+looking up the icon to use for a given stock ID.</p>
+<p class="p">&lt;refsect2 id="GtkIconFactory-BUILDER-UI"&gt;
+&lt;title&gt;GtkIconFactory as GtkBuildable&lt;/title&gt;
+&lt;para&gt;
+GtkIconFactory supports a custom &amp;lt;sources&amp;gt; element, which can contain
+multiple &amp;lt;source&amp;gt; elements.
+The following attributes are allowed:
+&lt;variablelist&gt;
+&lt;varlistentry&gt;
+&lt;term&gt;stock-id&lt;/term&gt;
+&lt;listitem&gt;&lt;para&gt;
+The stock id of the source, a string.
+This attribute is mandatory
+&lt;/para&gt;&lt;/listitem&gt;
+&lt;/varlistentry&gt;
+&lt;varlistentry&gt;
+&lt;term&gt;filename&lt;/term&gt;
+&lt;listitem&gt;&lt;para&gt;
+The filename of the source, a string.
+This attribute is optional
+&lt;/para&gt;&lt;/listitem&gt;
+&lt;/varlistentry&gt;
+&lt;varlistentry&gt;
+&lt;term&gt;icon-name&lt;/term&gt;
+&lt;listitem&gt;&lt;para&gt;
+The icon name for the source, a string.
+This attribute is optional.
+&lt;/para&gt;&lt;/listitem&gt;
+&lt;/varlistentry&gt;
+&lt;varlistentry&gt;
+&lt;term&gt;size&lt;/term&gt;
+&lt;listitem&gt;&lt;para&gt;
+Size of the icon, a <span class=" link"><a href="Gtk.IconSize.html" title="Gtk.IconSize">Gtk.IconSize</a></span> enum value.
+This attribute is optional.
+&lt;/para&gt;&lt;/listitem&gt;
+&lt;/varlistentry&gt;
+&lt;varlistentry&gt;
+&lt;term&gt;direction&lt;/term&gt;
+&lt;listitem&gt;&lt;para&gt;
+Direction of the source, a <span class=" link"><a href="Gtk.TextDirection.html" title="Gtk.TextDirection">Gtk.TextDirection</a></span> enum value.
+This attribute is optional.
+&lt;/para&gt;&lt;/listitem&gt;
+&lt;/varlistentry&gt;
+&lt;varlistentry&gt;
+&lt;term&gt;state&lt;/term&gt;
+&lt;listitem&gt;&lt;para&gt;
+State of the source, a <span class=" link"><a href="Gtk.StateType.html" title="Gtk.StateType">Gtk.StateType</a></span> enum value.
+This attribute is optional.
+&lt;/para&gt;&lt;/listitem&gt;
+&lt;/varlistentry&gt;
+&lt;/variablelist&gt;
+&lt;example&gt;
+&lt;title&gt;A <span class=" link"><a href="Gtk.IconFactory.html" title="Gtk.IconFactory">Gtk.IconFactory</a></span> UI definition fragment.&lt;/title&gt;
+&lt;programlisting&gt;&lt;![CDATA[
+&lt;object class="GtkIconFactory" id="iconfactory1"&gt;
+  &lt;sources&gt;
+    &lt;source stock-id="apple-red" filename="apple-red.png"/&gt;
+  &lt;/sources&gt;
+&lt;/object&gt;
+&lt;object class="GtkWindow" id="window1"&gt;
+  &lt;child&gt;
+    &lt;object class="GtkButton" id="apple_button"&gt;
+      &lt;property name="label"&gt;apple-red&lt;/property&gt;
+      &lt;property name="use-stock"&gt;True&lt;/property&gt;
+    &lt;/object&gt;
+  &lt;/child&gt;
+&lt;/object&gt;
+]]&gt;
+&lt;/programlisting&gt;
+&lt;/example&gt;
+&lt;/para&gt;
+&lt;/refsect2&gt;</p>
+<div class="synopsis"><div class="inner">
+<div class="title title-synopsis"><h2><span class="title">Hierarchy</span></h2></div>
+<div class="region"><div class="contents"><div class="tree"><div class="inner"><div class="region"><ul class="tree"><li class="tree">
+<div>
+        <span class=" code">GObject.Object</span>
+      
+      </div>
+<ul class="tree"><li class="tree"><div>
+        <span class=" code">Gtk.IconFactory</span>
+      </div></li></ul>
+</li></ul></div></div></div></div></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Methods</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.IconFactory.add.html" title="Gtk.IconFactory.prototype.add">Gtk.IconFactory.prototype.add</a></li>
+<li class="links "><a href="Gtk.IconFactory.add_default.html" title="Gtk.IconFactory.prototype.add_default">Gtk.IconFactory.prototype.add_default</a></li>
+<li class="links "><a href="Gtk.IconFactory.lookup.html" title="Gtk.IconFactory.prototype.lookup">Gtk.IconFactory.prototype.lookup</a></li>
+<li class="links "><a href="Gtk.IconFactory.remove_default.html" title="Gtk.IconFactory.prototype.remove_default">Gtk.IconFactory.prototype.remove_default</a></li>
+</ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Functions</span></h2></div>
+<div class="region"><ul><li class="links "><a href="Gtk.IconFactory.lookup_default.html" title="lookup_default">lookup_default</a></li></ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Other</span></h2></div>
+<div class="region"><ul><li class="links "><a href="Gtk.IconFactory.new.html" title="Gtk.IconFactory.new">Gtk.IconFactory.new</a></li></ul></div>
+</div></div>
+</div>
+<div class="sect sect-links" role="navigation">
+<div class="hgroup"></div>
+<div class="contents"><div class="links guidelinks"><div class="inner">
+<div class="title"><h2><span class="title">More Information</span></h2></div>
+<div class="region"><ul><li class="links "><a href="index.html" title="Index">Index</a></li></ul></div>
+</div></div></div>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="footer"></div>
+</div></body>
+</html>

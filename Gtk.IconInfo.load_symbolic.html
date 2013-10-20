@@ -1,0 +1,57 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Gtk.IconInfo.prototype.load_symbolic</title>
+<link rel="stylesheet" type="text/css" href="C.css">
+<script type="text/javascript" src="jquery.js"></script><script type="text/javascript" src="jquery.syntax.js"></script><script type="text/javascript" src="yelp.js"></script>
+</head>
+<body><div class="page" role="main">
+<div class="header"><div class="trails" role="navigation"><div class="trail">
+<a class="trail" href="index.html" title="Index">Index</a> » <a class="trail" href="Gtk.IconInfo.html" title="Gtk.IconInfo">Gtk.IconInfo</a> » </div></div></div>
+<div class="body">
+<div class="hgroup"><h1 class="title"><span class="title">Gtk.IconInfo.prototype.load_symbolic</span></h1></div>
+<div class="region">
+<div class="contents">
+<div class="synopsis"><div class="inner"><div class="region"><div class="contents"><div class="code"><pre class="contents ">function load_symbolic(fg:Gdk.RGBA, success_color:Gdk.RGBA, warning_color:Gdk.RGBA, error_color:Gdk.RGBA):GdkPixbuf.Pixbuf {
+    // Gjs wrapper for gtk_icon_info_load_symbolic()
+}</pre></div></div></div></div></div>
+<p class="p">Loads an icon, modifying it to match the system colours for the foreground,
+success, warning and error colors provided. If the icon is not a symbolic
+one, the function will return the result from <span class=" link"><a href="Gtk.IconInfo.load_icon.html" title="Gtk.IconInfo.prototype.load_icon">Gtk.IconInfo.prototype.load_icon</a></span>.</p>
+<p class="p">This allows loading symbolic icons that will match the system theme.</p>
+<p class="p">Unless you are implementing a widget, you will want to use
+g_themed_icon_new_with_default_fallbacks() to load the icon.</p>
+<p class="p">As implementation details, the icon loaded needs to be of SVG type,
+contain the "symbolic" term as the last component of the icon name,
+and use the 'fg', 'success', 'warning' and 'error' CSS styles in the
+SVG file itself.</p>
+<p class="p">See the &lt;ulink url="http://www.freedesktop.org/wiki/SymbolicIcons"&gt;Symbolic Icons spec&lt;/ulink&gt;
+for more information about symbolic icons.</p>
+<p class="p">Since 3.0</p>
+<div class="terms"><div class="inner"><div class="region"><dl class="terms">
+<dt class="terms"><span class=" code">fg</span></dt>
+<dd class="terms"><p class="p">a <span class=" link"><a href="Gdk.RGBA.html" title="Gdk.RGBA">Gdk.RGBA</a></span> representing the foreground color of the icon</p></dd>
+<dt class="terms"><span class=" code">success_color</span></dt>
+<dd class="terms"><p class="p">a <span class=" link"><a href="Gdk.RGBA.html" title="Gdk.RGBA">Gdk.RGBA</a></span> representing the warning color of the icon or <span class=" code">null</span> to use the default color</p></dd>
+<dt class="terms"><span class=" code">warning_color</span></dt>
+<dd class="terms"><p class="p">a <span class=" link"><a href="Gdk.RGBA.html" title="Gdk.RGBA">Gdk.RGBA</a></span> representing the warning color of the icon or <span class=" code">null</span> to use the default color</p></dd>
+<dt class="terms"><span class=" code">error_color</span></dt>
+<dd class="terms"><p class="p">a <span class=" link"><a href="Gdk.RGBA.html" title="Gdk.RGBA">Gdk.RGBA</a></span> representing the error color of the icon or <span class=" code">null</span> to use the default color (allow-none)</p></dd>
+<dt class="terms"><span class=" code">Returns</span></dt>
+<dd class="terms"><p class="p">a <span class=" link"><a href="GdkPixbuf.Pixbuf.html" title="GdkPixbuf.Pixbuf">GdkPixbuf.Pixbuf</a></span> representing the loaded icon</p></dd>
+</dl></div></div></div>
+</div>
+<div class="sect sect-links" role="navigation">
+<div class="hgroup"></div>
+<div class="contents"><div class="links guidelinks"><div class="inner">
+<div class="title"><h2><span class="title">More Information</span></h2></div>
+<div class="region"><ul><li class="links "><a href="Gtk.IconInfo.html" title="Gtk.IconInfo">Gtk.IconInfo</a></li></ul></div>
+</div></div></div>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="footer"></div>
+</div></body>
+</html>

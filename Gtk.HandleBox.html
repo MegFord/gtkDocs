@@ -1,0 +1,135 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Gtk.HandleBox</title>
+<link rel="stylesheet" type="text/css" href="C.css">
+<script type="text/javascript" src="jquery.js"></script><script type="text/javascript" src="jquery.syntax.js"></script><script type="text/javascript" src="yelp.js"></script>
+</head>
+<body><div class="page" role="main">
+<div class="header"><div class="trails" role="navigation"><div class="trail">
+<a class="trail" href="index.html" title="Index">Index</a> » </div></div></div>
+<div class="body">
+<div class="hgroup"><h1 class="title"><span class="title">Gtk.HandleBox</span></h1></div>
+<div class="region">
+<div class="contents">
+<div class="synopsis"><div class="inner"><div class="region"><div class="contents"><div class="code"><pre class="contents ">const Gtk = imports.gi.Gtk;
+
+let handle_box = new Gtk.HandleBox({
+    <span class=" link"><a href="Gtk.HandleBox-handle-position.html" title="Gtk.HandleBox:handle-position">handle_position</a></span>: value,
+    <span class=" link"><a href="Gtk.HandleBox-shadow-type.html" title="Gtk.HandleBox:shadow-type">shadow_type</a></span>: value,
+    <span class=" link"><a href="Gtk.HandleBox-snap-edge.html" title="Gtk.HandleBox:snap-edge">snap_edge</a></span>: value,
+    <span class=" link"><a href="Gtk.HandleBox-snap-edge-set.html" title="Gtk.HandleBox:snap-edge-set">snap_edge_set</a></span>: value,
+});
+  </pre></div></div></div></div></div>
+<p class="p">The <span class=" link"><a href="Gtk.HandleBox.html" title="Gtk.HandleBox">Gtk.HandleBox</a></span> widget allows a portion of a window to be "torn
+off". It is a bin widget which displays its child and a handle that
+the user can drag to tear off a separate window (the &lt;firstterm&gt;float
+window&lt;/firstterm&gt;) containing the child widget. A thin
+&lt;firstterm&gt;ghost&lt;/firstterm&gt; is drawn in the original location of the
+handlebox. By dragging the separate window back to its original
+location, it can be reattached.</p>
+<p class="p">When reattaching, the ghost and float window, must be aligned
+along one of the edges, the &lt;firstterm&gt;snap edge&lt;/firstterm&gt;.
+This either can be specified by the application programmer
+explicitely, or GTK+ will pick a reasonable default based
+on the handle position.</p>
+<p class="p">To make detaching and reattaching the handlebox as minimally confusing
+as possible to the user, it is important to set the snap edge so that
+the snap edge does not move when the handlebox is deattached. For
+instance, if the handlebox is packed at the bottom of a VBox, then
+when the handlebox is detached, the bottom edge of the handlebox's
+allocation will remain fixed as the height of the handlebox shrinks,
+so the snap edge should be set to <span class=" link"><a href="Gtk.PositionType.html" title="Gtk.PositionType">Gtk.PositionType</a></span>.bottom.</p>
+<p class="p">&lt;note&gt;
+<span class=" link"><a href="Gtk.HandleBox.html" title="Gtk.HandleBox">Gtk.HandleBox</a></span> has been deprecated. It is very specialized, lacks features
+to make it useful and most importantly does not fit well into modern
+application design. Do not use it. There is no replacement.
+&lt;/note&gt;</p>
+<div class="synopsis"><div class="inner">
+<div class="title title-synopsis"><h2><span class="title">Hierarchy</span></h2></div>
+<div class="region"><div class="contents"><div class="tree"><div class="inner"><div class="region"><ul class="tree"><li class="tree">
+<div>
+        <span class=" code">GObject.Object</span>
+      
+      </div>
+<ul class="tree"><li class="tree">
+<div>
+        <span class=" code">GObject.InitiallyUnowned</span>
+      
+      </div>
+<ul class="tree"><li class="tree">
+<div>
+        <span class=" code">Gtk.Widget</span>
+      
+      </div>
+<ul class="tree"><li class="tree">
+<div>
+        <span class=" code">Gtk.Container</span>
+      
+      </div>
+<ul class="tree"><li class="tree">
+<div>
+        <span class=" code">Gtk.Bin</span>
+      
+      </div>
+<ul class="tree"><li class="tree"><div>
+        <span class=" code">Gtk.HandleBox</span>
+      </div></li></ul>
+</li></ul>
+</li></ul>
+</li></ul>
+</li></ul>
+</li></ul></div></div></div></div></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Methods</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.HandleBox.get_child_detached.html" title="Gtk.HandleBox.prototype.get_child_detached">Gtk.HandleBox.prototype.get_child_detached</a></li>
+<li class="links "><a href="Gtk.HandleBox.get_handle_position.html" title="Gtk.HandleBox.prototype.get_handle_position">Gtk.HandleBox.prototype.get_handle_position</a></li>
+<li class="links "><a href="Gtk.HandleBox.get_shadow_type.html" title="Gtk.HandleBox.prototype.get_shadow_type">Gtk.HandleBox.prototype.get_shadow_type</a></li>
+<li class="links "><a href="Gtk.HandleBox.get_snap_edge.html" title="Gtk.HandleBox.prototype.get_snap_edge">Gtk.HandleBox.prototype.get_snap_edge</a></li>
+<li class="links "><a href="Gtk.HandleBox.set_handle_position.html" title="Gtk.HandleBox.prototype.set_handle_position">Gtk.HandleBox.prototype.set_handle_position</a></li>
+<li class="links "><a href="Gtk.HandleBox.set_shadow_type.html" title="Gtk.HandleBox.prototype.set_shadow_type">Gtk.HandleBox.prototype.set_shadow_type</a></li>
+<li class="links "><a href="Gtk.HandleBox.set_snap_edge.html" title="Gtk.HandleBox.prototype.set_snap_edge">Gtk.HandleBox.prototype.set_snap_edge</a></li>
+</ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Properties</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.HandleBox-child-detached.html" title="Gtk.HandleBox:child-detached">child-detached</a></li>
+<li class="links "><a href="Gtk.HandleBox-handle-position.html" title="Gtk.HandleBox:handle-position">handle-position</a></li>
+<li class="links "><a href="Gtk.HandleBox-shadow-type.html" title="Gtk.HandleBox:shadow-type">shadow-type</a></li>
+<li class="links "><a href="Gtk.HandleBox-snap-edge.html" title="Gtk.HandleBox:snap-edge">snap-edge</a></li>
+<li class="links "><a href="Gtk.HandleBox-snap-edge-set.html" title="Gtk.HandleBox:snap-edge-set">snap-edge-set</a></li>
+</ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Signals</span></h2></div>
+<div class="region"><ul><li class="links "><a href="Gtk.HandleBox-child-attached.html" title="Gtk.HandleBox::child-attached">child-attached</a></li></ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Virtual functions</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.HandleBox-child_attached.html" title="Gtk.HandleBox::child_attached">Gtk.HandleBox::child_attached</a></li>
+<li class="links "><a href="Gtk.HandleBox-child_detached.html" title="Gtk.HandleBox::child_detached">Gtk.HandleBox::child_detached</a></li>
+</ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Other</span></h2></div>
+<div class="region"><ul><li class="links "><a href="Gtk.HandleBox.new.html" title="Gtk.HandleBox.new">Gtk.HandleBox.new</a></li></ul></div>
+</div></div>
+</div>
+<div class="sect sect-links" role="navigation">
+<div class="hgroup"></div>
+<div class="contents"><div class="links guidelinks"><div class="inner">
+<div class="title"><h2><span class="title">More Information</span></h2></div>
+<div class="region"><ul><li class="links "><a href="index.html" title="Index">Index</a></li></ul></div>
+</div></div></div>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="footer"></div>
+</div></body>
+</html>

@@ -1,0 +1,46 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Gtk.Image.new_from_animation</title>
+<link rel="stylesheet" type="text/css" href="C.css">
+<script type="text/javascript" src="jquery.js"></script><script type="text/javascript" src="jquery.syntax.js"></script><script type="text/javascript" src="yelp.js"></script>
+</head>
+<body><div class="page" role="main">
+<div class="header"><div class="trails" role="navigation"><div class="trail">
+<a class="trail" href="index.html" title="Index">Index</a> » <a class="trail" href="Gtk.Image.html" title="Gtk.Image">Gtk.Image</a> » </div></div></div>
+<div class="body">
+<div class="hgroup"><h1 class="title"><span class="title">Gtk.Image.new_from_animation</span></h1></div>
+<div class="region">
+<div class="contents">
+<div class="synopsis"><div class="inner"><div class="region"><div class="contents"><div class="code"><pre class="contents ">function new_from_animation(animation:GdkPixbuf.PixbufAnimation):Gtk.Widget {
+    // Gjs wrapper for gtk_image_new_from_animation()
+}</pre></div></div></div></div></div>
+<p class="p">Creates a <span class=" link"><a href="Gtk.Image.html" title="Gtk.Image">Gtk.Image</a></span> displaying the given animation.
+The <span class=" link"><a href="Gtk.Image.html" title="Gtk.Image">Gtk.Image</a></span> does not assume a reference to the
+animation; you still need to unref it if you own references.
+<span class=" link"><a href="Gtk.Image.html" title="Gtk.Image">Gtk.Image</a></span> will add its own reference rather than adopting yours.</p>
+<p class="p">Note that the animation frames are shown using a timeout with
+#G_PRIORITY_DEFAULT. When using animations to indicate busyness,
+keep in mind that the animation will only be shown if the main loop
+is not busy with something that has a higher priority.</p>
+<div class="terms"><div class="inner"><div class="region"><dl class="terms">
+<dt class="terms"><span class=" code">animation</span></dt>
+<dd class="terms"><p class="p">an animation</p></dd>
+<dt class="terms"><span class=" code">Returns</span></dt>
+<dd class="terms"><p class="p">a new <span class=" link"><a href="Gtk.Image.html" title="Gtk.Image">Gtk.Image</a></span> widget</p></dd>
+</dl></div></div></div>
+</div>
+<div class="sect sect-links" role="navigation">
+<div class="hgroup"></div>
+<div class="contents"><div class="links guidelinks"><div class="inner">
+<div class="title"><h2><span class="title">More Information</span></h2></div>
+<div class="region"><ul><li class="links "><a href="Gtk.Image.html" title="Gtk.Image">Gtk.Image</a></li></ul></div>
+</div></div></div>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="footer"></div>
+</div></body>
+</html>

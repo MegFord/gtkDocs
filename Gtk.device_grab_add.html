@@ -1,0 +1,45 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>device_grab_add</title>
+<link rel="stylesheet" type="text/css" href="C.css">
+<script type="text/javascript" src="jquery.js"></script><script type="text/javascript" src="jquery.syntax.js"></script><script type="text/javascript" src="yelp.js"></script>
+</head>
+<body><div class="page" role="main">
+<div class="header"><div class="trails" role="navigation"><div class="trail">
+<a class="trail" href="index.html" title="Index">Index</a> » </div></div></div>
+<div class="body">
+<div class="hgroup"><h1 class="title"><span class="title">device_grab_add</span></h1></div>
+<div class="region">
+<div class="contents">
+<div class="synopsis"><div class="inner"><div class="region"><div class="contents"><div class="code"><pre class="contents ">function device_grab_add(widget:Gtk.Widget, device:Gdk.Device, block_others:Boolean):void {
+    // Gjs wrapper for gtk_device_grab_add()
+}</pre></div></div></div></div></div>
+<p class="p">Adds a GTK+ grab on <span class=" code">device</span>, so all the events on <span class=" code">device</span> and its
+associated pointer or keyboard (if any) are delivered to <span class=" code">widget</span>.
+If the <span class=" code">block_others</span> parameter is <span class=" code">true</span>, any other devices will be
+unable to interact with <span class=" code">widget</span> during the grab.</p>
+<p class="p">Since 3.0</p>
+<div class="terms"><div class="inner"><div class="region"><dl class="terms">
+<dt class="terms"><span class=" code">widget</span></dt>
+<dd class="terms"><p class="p">a <span class=" link"><a href="Gtk.Widget.html" title="Gtk.Widget">Gtk.Widget</a></span></p></dd>
+<dt class="terms"><span class=" code">device</span></dt>
+<dd class="terms"><p class="p">a <span class=" link"><a href="Gdk.Device.html" title="Gdk.Device">Gdk.Device</a></span> to grab on.</p></dd>
+<dt class="terms"><span class=" code">block_others</span></dt>
+<dd class="terms"><p class="p"><span class=" code">true</span> to prevent other devices to interact with <span class=" code">widget</span>.</p></dd>
+</dl></div></div></div>
+</div>
+<div class="sect sect-links" role="navigation">
+<div class="hgroup"></div>
+<div class="contents"><div class="links guidelinks"><div class="inner">
+<div class="title"><h2><span class="title">More Information</span></h2></div>
+<div class="region"><ul><li class="links "><a href="index.html" title="Index">Index</a></li></ul></div>
+</div></div></div>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="footer"></div>
+</div></body>
+</html>

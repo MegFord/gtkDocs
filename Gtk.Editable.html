@@ -1,0 +1,109 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Gtk.Editable</title>
+<link rel="stylesheet" type="text/css" href="C.css">
+<script type="text/javascript" src="jquery.js"></script><script type="text/javascript" src="jquery.syntax.js"></script><script type="text/javascript" src="yelp.js"></script>
+</head>
+<body><div class="page" role="main">
+<div class="header"><div class="trails" role="navigation"><div class="trail">
+<a class="trail" href="index.html" title="Index">Index</a> » </div></div></div>
+<div class="body">
+<div class="hgroup"><h1 class="title"><span class="title">Gtk.Editable</span></h1></div>
+<div class="region">
+<div class="contents">
+<div class="synopsis"><div class="inner"><div class="region"><div class="contents"><div class="code"><pre class="contents ">const Gtk = imports.gi.Gtk;
+
+let editable = new Gtk.Editable();
+  </pre></div></div></div></div></div>
+<p class="p">The <span class=" link"><a href="Gtk.Editable.html" title="Gtk.Editable">Gtk.Editable</a></span> interface is an interface which should be implemented by
+text editing widgets, such as <span class=" link"><a href="Gtk.Entry.html" title="Gtk.Entry">Gtk.Entry</a></span> and <span class=" link"><a href="Gtk.SpinButton.html" title="Gtk.SpinButton">Gtk.SpinButton</a></span>. It contains functions
+for generically manipulating an editable widget, a large number of action
+signals used for key bindings, and several signals that an application can
+connect to to modify the behavior of a widget.</p>
+<p class="p">As an example of the latter usage, by connecting
+the following handler to <span class=" link"><a href="Gtk.insert-text.html" title="Gtk.insert-text">Gtk.insert-text</a></span>, an application
+can convert all entry into a widget into uppercase.</p>
+<p class="p">&lt;example&gt;
+&lt;title&gt;Forcing entry to uppercase.&lt;/title&gt;
+&lt;programlisting&gt;
+#include &amp;lt;ctype.h&amp;gt;</p>
+<p class="p">void
+insert_text_handler (GtkEditable &amp;ast;editable,
+                     const gchar &amp;ast;text,
+                     gint         length,
+                     gint        &amp;ast;position,
+                     gpointer     data)
+{
+  gchar &amp;ast;result = g_utf8_strup (text, length);</p>
+<p class="p">  g_signal_handlers_block_by_func (editable,
+                               (gpointer) insert_text_handler, data);
+  gtk_editable_insert_text (editable, result, length, position);
+  g_signal_handlers_unblock_by_func (editable,
+                                     (gpointer) insert_text_handler, data);</p>
+<p class="p">  g_signal_stop_emission_by_name (editable, "insert_text");</p>
+<p class="p">  g_free (result);
+}
+&lt;/programlisting&gt;
+&lt;/example&gt;</p>
+<div class="synopsis"><div class="inner">
+<div class="title title-synopsis"><h2><span class="title">Hierarchy</span></h2></div>
+<div class="region"><div class="contents"><div class="tree"><div class="inner"><div class="region"><ul class="tree"><li class="tree"><div>
+        <span class=" code">Gtk.Editable</span>
+      </div></li></ul></div></div></div></div></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Methods</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.Editable.copy_clipboard.html" title="Gtk.Editable.prototype.copy_clipboard">Gtk.Editable.prototype.copy_clipboard</a></li>
+<li class="links "><a href="Gtk.Editable.cut_clipboard.html" title="Gtk.Editable.prototype.cut_clipboard">Gtk.Editable.prototype.cut_clipboard</a></li>
+<li class="links "><a href="Gtk.Editable.delete_selection.html" title="Gtk.Editable.prototype.delete_selection">Gtk.Editable.prototype.delete_selection</a></li>
+<li class="links "><a href="Gtk.Editable.delete_text.html" title="Gtk.Editable.prototype.delete_text">Gtk.Editable.prototype.delete_text</a></li>
+<li class="links "><a href="Gtk.Editable.get_chars.html" title="Gtk.Editable.prototype.get_chars">Gtk.Editable.prototype.get_chars</a></li>
+<li class="links "><a href="Gtk.Editable.get_editable.html" title="Gtk.Editable.prototype.get_editable">Gtk.Editable.prototype.get_editable</a></li>
+<li class="links "><a href="Gtk.Editable.get_position.html" title="Gtk.Editable.prototype.get_position">Gtk.Editable.prototype.get_position</a></li>
+<li class="links "><a href="Gtk.Editable.get_selection_bounds.html" title="Gtk.Editable.prototype.get_selection_bounds">Gtk.Editable.prototype.get_selection_bounds</a></li>
+<li class="links "><a href="Gtk.Editable.insert_text.html" title="Gtk.Editable.prototype.insert_text">Gtk.Editable.prototype.insert_text</a></li>
+<li class="links "><a href="Gtk.Editable.paste_clipboard.html" title="Gtk.Editable.prototype.paste_clipboard">Gtk.Editable.prototype.paste_clipboard</a></li>
+<li class="links "><a href="Gtk.Editable.select_region.html" title="Gtk.Editable.prototype.select_region">Gtk.Editable.prototype.select_region</a></li>
+<li class="links "><a href="Gtk.Editable.set_editable.html" title="Gtk.Editable.prototype.set_editable">Gtk.Editable.prototype.set_editable</a></li>
+<li class="links "><a href="Gtk.Editable.set_position.html" title="Gtk.Editable.prototype.set_position">Gtk.Editable.prototype.set_position</a></li>
+</ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Signals</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.Editable-changed.html" title="Gtk.Editable::changed">changed</a></li>
+<li class="links "><a href="Gtk.Editable-delete-text.html" title="Gtk.Editable::delete-text">delete-text</a></li>
+<li class="links "><a href="Gtk.Editable-insert-text.html" title="Gtk.Editable::insert-text">insert-text</a></li>
+</ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Virtual functions</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.Editable-delete_text.html" title="Gtk.Editable::delete_text">Gtk.Editable::delete_text</a></li>
+<li class="links "><a href="Gtk.Editable-do_delete_text.html" title="Gtk.Editable::do_delete_text">Gtk.Editable::do_delete_text</a></li>
+<li class="links "><a href="Gtk.Editable-do_insert_text.html" title="Gtk.Editable::do_insert_text">Gtk.Editable::do_insert_text</a></li>
+<li class="links "><a href="Gtk.Editable-get_chars.html" title="Gtk.Editable::get_chars">Gtk.Editable::get_chars</a></li>
+<li class="links "><a href="Gtk.Editable-get_position.html" title="Gtk.Editable::get_position">Gtk.Editable::get_position</a></li>
+<li class="links "><a href="Gtk.Editable-get_selection_bounds.html" title="Gtk.Editable::get_selection_bounds">Gtk.Editable::get_selection_bounds</a></li>
+<li class="links "><a href="Gtk.Editable-insert_text.html" title="Gtk.Editable::insert_text">Gtk.Editable::insert_text</a></li>
+<li class="links "><a href="Gtk.Editable-set_position.html" title="Gtk.Editable::set_position">Gtk.Editable::set_position</a></li>
+<li class="links "><a href="Gtk.Editable-set_selection_bounds.html" title="Gtk.Editable::set_selection_bounds">Gtk.Editable::set_selection_bounds</a></li>
+</ul></div>
+</div></div>
+</div>
+<div class="sect sect-links" role="navigation">
+<div class="hgroup"></div>
+<div class="contents"><div class="links guidelinks"><div class="inner">
+<div class="title"><h2><span class="title">More Information</span></h2></div>
+<div class="region"><ul><li class="links "><a href="index.html" title="Index">Index</a></li></ul></div>
+</div></div></div>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="footer"></div>
+</div></body>
+</html>

@@ -1,0 +1,73 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Gtk.Dialog.prototype.run</title>
+<link rel="stylesheet" type="text/css" href="C.css">
+<script type="text/javascript" src="jquery.js"></script><script type="text/javascript" src="jquery.syntax.js"></script><script type="text/javascript" src="yelp.js"></script>
+</head>
+<body><div class="page" role="main">
+<div class="header"><div class="trails" role="navigation"><div class="trail">
+<a class="trail" href="index.html" title="Index">Index</a> » <a class="trail" href="Gtk.Dialog.html" title="Gtk.Dialog">Gtk.Dialog</a> » </div></div></div>
+<div class="body">
+<div class="hgroup"><h1 class="title"><span class="title">Gtk.Dialog.prototype.run</span></h1></div>
+<div class="region">
+<div class="contents">
+<div class="synopsis"><div class="inner"><div class="region"><div class="contents"><div class="code"><pre class="contents ">function run():Number {
+    // Gjs wrapper for gtk_dialog_run()
+}</pre></div></div></div></div></div>
+<p class="p">Blocks in a recursive main loop until the <span class=" code">dialog</span> either emits the
+<span class=" link"><a href="Gtk.response.html" title="Gtk.response">Gtk.response</a></span> signal, or is destroyed. If the dialog is
+destroyed during the call to <span class=" link"><a href="Gtk.Dialog.run.html" title="Gtk.Dialog.prototype.run">Gtk.Dialog.prototype.run</a></span>, <span class=" link"><a href="Gtk.Dialog.run.html" title="Gtk.Dialog.prototype.run">Gtk.Dialog.prototype.run</a></span> returns
+#GTK_RESPONSE_NONE. Otherwise, it returns the response ID from the
+::response signal emission.</p>
+<p class="p">Before entering the recursive main loop, <span class=" link"><a href="Gtk.Dialog.run.html" title="Gtk.Dialog.prototype.run">Gtk.Dialog.prototype.run</a></span> calls
+<span class=" link"><a href="Gtk.show.html" title="Gtk.show">Gtk.show</a></span> on the dialog for you. Note that you still
+need to show any children of the dialog yourself.</p>
+<p class="p">During <span class=" link"><a href="Gtk.Dialog.run.html" title="Gtk.Dialog.prototype.run">Gtk.Dialog.prototype.run</a></span>, the default behavior of <span class=" link"><a href="Gtk.delete-event.html" title="Gtk.delete-event">Gtk.delete-event</a></span>
+is disabled; if the dialog receives ::delete_event, it will not be
+destroyed as windows usually are, and <span class=" link"><a href="Gtk.Dialog.run.html" title="Gtk.Dialog.prototype.run">Gtk.Dialog.prototype.run</a></span> will return
+#GTK_RESPONSE_DELETE_EVENT. Also, during <span class=" link"><a href="Gtk.Dialog.run.html" title="Gtk.Dialog.prototype.run">Gtk.Dialog.prototype.run</a></span> the dialog
+will be modal. You can force <span class=" link"><a href="Gtk.Dialog.run.html" title="Gtk.Dialog.prototype.run">Gtk.Dialog.prototype.run</a></span> to return at any time by
+calling <span class=" link"><a href="Gtk.Dialog.response.html" title="Gtk.Dialog.prototype.response">Gtk.Dialog.prototype.response</a></span> to emit the ::response signal. Destroying
+the dialog during <span class=" link"><a href="Gtk.Dialog.run.html" title="Gtk.Dialog.prototype.run">Gtk.Dialog.prototype.run</a></span> is a very bad idea, because your
+post-run code won't know whether the dialog was destroyed or not.</p>
+<p class="p">After <span class=" link"><a href="Gtk.Dialog.run.html" title="Gtk.Dialog.prototype.run">Gtk.Dialog.prototype.run</a></span> returns, you are responsible for hiding or
+destroying the dialog if you wish to do so.</p>
+<p class="p">Typical usage of this function might be:
+|[
+  gint result = gtk_dialog_run (GTK_DIALOG (dialog));
+  switch (result)
+    {
+      case GTK_RESPONSE_ACCEPT:
+         do_application_specific_something ();
+         break;
+      default:
+         do_nothing_since_dialog_was_cancelled ();
+         break;
+    }
+  gtk_widget_destroy (dialog);
+]|</p>
+<p class="p">Note that even though the recursive main loop gives the effect of a
+modal dialog (it prevents the user from interacting with other
+windows in the same window group while the dialog is run), callbacks
+such as timeouts, IO channel watches, DND drops, etc, &lt;emphasis&gt;will&lt;/emphasis&gt;
+be triggered during a <span class=" link"><a href="Gtk.Dialog.run.html" title="Gtk.Dialog.prototype.run">Gtk.Dialog.prototype.run</a></span> call.</p>
+<div class="terms"><div class="inner"><div class="region"><dl class="terms">
+<dt class="terms"><span class=" code">Returns</span></dt>
+<dd class="terms"><p class="p">response ID</p></dd>
+</dl></div></div></div>
+</div>
+<div class="sect sect-links" role="navigation">
+<div class="hgroup"></div>
+<div class="contents"><div class="links guidelinks"><div class="inner">
+<div class="title"><h2><span class="title">More Information</span></h2></div>
+<div class="region"><ul><li class="links "><a href="Gtk.Dialog.html" title="Gtk.Dialog">Gtk.Dialog</a></li></ul></div>
+</div></div></div>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="footer"></div>
+</div></body>
+</html>

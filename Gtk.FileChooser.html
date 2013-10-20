@@ -1,0 +1,604 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Gtk.FileChooser</title>
+<link rel="stylesheet" type="text/css" href="C.css">
+<script type="text/javascript" src="jquery.js"></script><script type="text/javascript" src="jquery.syntax.js"></script><script type="text/javascript" src="yelp.js"></script>
+</head>
+<body><div class="page" role="main">
+<div class="header"><div class="trails" role="navigation"><div class="trail">
+<a class="trail" href="index.html" title="Index">Index</a> » </div></div></div>
+<div class="body">
+<div class="hgroup"><h1 class="title"><span class="title">Gtk.FileChooser</span></h1></div>
+<div class="region">
+<div class="contents">
+<div class="synopsis"><div class="inner"><div class="region"><div class="contents"><div class="code"><pre class="contents ">const Gtk = imports.gi.Gtk;
+
+let file_chooser = new Gtk.FileChooser({
+    <span class=" link"><a href="Gtk.FileChooser-action.html" title="Gtk.FileChooser-action">action</a></span>: value,
+    <span class=" link"><a href="Gtk.FileChooser-create-folders.html" title="Gtk.FileChooser-create-folders">create_folders</a></span>: value,
+    <span class=" link"><a href="Gtk.FileChooser-do-overwrite-confirmation.html" title="Gtk.FileChooser-do-overwrite-confirmation">do_overwrite_confirmation</a></span>: value,
+    <span class=" link"><a href="Gtk.FileChooser-extra-widget.html" title="Gtk.FileChooser-extra-widget">extra_widget</a></span>: value,
+    <span class=" link"><a href="Gtk.FileChooser-filter.html" title="Gtk.FileChooser-filter">filter</a></span>: value,
+    <span class=" link"><a href="Gtk.FileChooser-local-only.html" title="Gtk.FileChooser-local-only">local_only</a></span>: value,
+    <span class=" link"><a href="Gtk.FileChooser-preview-widget.html" title="Gtk.FileChooser-preview-widget">preview_widget</a></span>: value,
+    <span class=" link"><a href="Gtk.FileChooser-preview-widget-active.html" title="Gtk.FileChooser-preview-widget-active">preview_widget_active</a></span>: value,
+    <span class=" link"><a href="Gtk.FileChooser-select-multiple.html" title="Gtk.FileChooser-select-multiple">select_multiple</a></span>: value,
+    <span class=" link"><a href="Gtk.FileChooser-show-hidden.html" title="Gtk.FileChooser-show-hidden">show_hidden</a></span>: value,
+    <span class=" link"><a href="Gtk.FileChooser-use-preview-label.html" title="Gtk.FileChooser-use-preview-label">use_preview_label</a></span>: value,
+});
+  </pre></div></div></div></div></div>
+<p class="p"><span class=" link"><a href="Gtk.FileChooser.html" title="Gtk.FileChooser">Gtk.FileChooser</a></span> is an interface that can be implemented by file
+selection widgets.  In GTK+, the main objects that implement this
+interface are <span class=" link"><a href="Gtk.FileChooserWidget.html" title="Gtk.FileChooserWidget">Gtk.FileChooserWidget</a></span>, <span class=" link"><a href="Gtk.FileChooserDialog.html" title="Gtk.FileChooserDialog">Gtk.FileChooserDialog</a></span>, and
+<span class=" link"><a href="Gtk.FileChooserButton.html" title="Gtk.FileChooserButton">Gtk.FileChooserButton</a></span>.  You do not need to write an object that
+implements the <span class=" link"><a href="Gtk.FileChooser.html" title="Gtk.FileChooser">Gtk.FileChooser</a></span> interface unless you are trying to
+adapt an existing file selector to expose a standard programming
+interface.</p>
+<p class="p"><span class=" link"><a href="Gtk.FileChooser.html" title="Gtk.FileChooser">Gtk.FileChooser</a></span> allows for shortcuts to various places in the filesystem.
+In the default implementation these are displayed in the left pane. It
+may be a bit confusing at first that these shortcuts come from various
+sources and in various flavours, so lets explain the terminology here:
+&lt;variablelist&gt;
+   &lt;varlistentry&gt;
+      &lt;term&gt;Bookmarks&lt;/term&gt;
+      &lt;listitem&gt;
+         are created by the user, by dragging folders from the
+         right pane to the left pane, or by using the "Add". Bookmarks
+         can be renamed and deleted by the user.
+      &lt;/listitem&gt;
+   &lt;/varlistentry&gt;
+   &lt;varlistentry&gt;
+      &lt;term&gt;Shortcuts&lt;/term&gt;
+      &lt;listitem&gt;
+         can be provided by the application.  For example, a Paint program may
+         want to add a shortcut for a Clipart folder.  Shortcuts cannot be modified by the
+         user.
+      &lt;/listitem&gt;
+   &lt;/varlistentry&gt;
+   &lt;varlistentry&gt;
+      &lt;term&gt;Volumes&lt;/term&gt;
+      &lt;listitem&gt;
+         are provided by the underlying filesystem abstraction. They are
+         the "roots" of the filesystem.
+      &lt;/listitem&gt;
+   &lt;/varlistentry&gt;
+&lt;/variablelist&gt;</p>
+<p class="p">&lt;refsect2 id="gtkfilechooser-encodings"&gt;
+&lt;title&gt;File Names and Encodings&lt;/title&gt;
+When the user is finished selecting files in a
+<span class=" link"><a href="Gtk.FileChooser.html" title="Gtk.FileChooser">Gtk.FileChooser</a></span>, your program can get the selected names
+either as filenames or as URIs.  For URIs, the normal escaping
+rules are applied if the URI contains non-ASCII characters.
+However, filenames are &lt;emphasis&gt;always&lt;/emphasis&gt; returned in
+the character set specified by the
+&lt;envar&gt;G_FILENAME_ENCODING&lt;/envar&gt; environment variable.
+Please see the GLib documentation for more details about this
+variable.
+&lt;note&gt;
+   This means that while you can pass the result of
+   <span class=" link"><a href="Gtk.get_filename.html" title="Gtk.get_filename">Gtk.get_filename</a></span> to
+   &lt;function&gt;open(2)&lt;/function&gt; or
+   &lt;function&gt;fopen(3)&lt;/function&gt;, you may not be able to
+   directly set it as the text of a <span class=" link"><a href="Gtk.Label.html" title="Gtk.Label">Gtk.Label</a></span> widget unless you
+   convert it first to UTF-8, which all GTK+ widgets expect.
+   You should use g_filename_to_utf8() to convert filenames
+   into strings that can be passed to GTK+ widgets.
+&lt;/note&gt;
+&lt;/refsect2&gt;
+&lt;refsect2 id="gtkfilechooser-preview"&gt;
+&lt;title&gt;Adding a Preview Widget&lt;/title&gt;
+&lt;para&gt;
+You can add a custom preview widget to a file chooser and then
+get notification about when the preview needs to be updated.
+To install a preview widget, use
+<span class=" link"><a href="Gtk.set_preview_widget.html" title="Gtk.set_preview_widget">Gtk.set_preview_widget</a></span>.  Then, connect to the
+<span class=" link"><a href="Gtk.update-preview.html" title="Gtk.update-preview">Gtk.update-preview</a></span> signal to get notified when
+you need to update the contents of the preview.
+&lt;/para&gt;
+&lt;para&gt;
+Your callback should use
+<span class=" link"><a href="Gtk.get_preview_filename.html" title="Gtk.get_preview_filename">Gtk.get_preview_filename</a></span> to see what needs
+previewing.  Once you have generated the preview for the
+corresponding file, you must call
+<span class=" link"><a href="Gtk.set_preview_widget_active.html" title="Gtk.set_preview_widget_active">Gtk.set_preview_widget_active</a></span> with a boolean
+flag that indicates whether your callback could successfully
+generate a preview.
+&lt;/para&gt;
+&lt;example id="example-gtkfilechooser-preview"&gt;
+&lt;title&gt;Sample Usage&lt;/title&gt;
+&lt;programlisting&gt;
+{
+  GtkImage *preview;</p>
+<p class="p">  ...</p>
+<p class="p">  preview = gtk_image_new (&lt;!-- --&gt;);</p>
+<p class="p">  gtk_file_chooser_set_preview_widget (my_file_chooser, preview);
+  g_signal_connect (my_file_chooser, "update-preview",
+		    G_CALLBACK (update_preview_cb), preview);
+}</p>
+<p class="p">static void
+update_preview_cb (GtkFileChooser *file_chooser, gpointer data)
+{
+  GtkWidget *preview;
+  char *filename;
+  GdkPixbuf *pixbuf;
+  gboolean have_preview;</p>
+<p class="p">  preview = GTK_WIDGET (data);
+  filename = gtk_file_chooser_get_preview_filename (file_chooser);</p>
+<p class="p">  pixbuf = gdk_pixbuf_new_from_file_at_size (filename, 128, 128, NULL);
+  have_preview = (pixbuf != NULL);
+  g_free (filename);</p>
+<p class="p">  gtk_image_set_from_pixbuf (GTK_IMAGE (preview), pixbuf);
+  if (pixbuf)
+    g_object_unref (pixbuf);</p>
+<p class="p">  gtk_file_chooser_set_preview_widget_active (file_chooser, have_preview);
+}
+&lt;/programlisting&gt;
+&lt;/example&gt;
+&lt;/refsect2&gt;
+&lt;refsect2 id="gtkfilechooser-extra"&gt;
+&lt;title&gt;Adding Extra Widgets&lt;/title&gt;
+&lt;para&gt;
+You can add extra widgets to a file chooser to provide options
+that are not present in the default design.  For example, you
+can add a toggle button to give the user the option to open a
+file in read-only mode.  You can use
+<span class=" link"><a href="Gtk.set_extra_widget.html" title="Gtk.set_extra_widget">Gtk.set_extra_widget</a></span> to insert additional
+widgets in a file chooser.
+&lt;/para&gt;
+&lt;example id="example-gtkfilechooser-extra"&gt;
+&lt;title&gt;Sample Usage&lt;/title&gt;
+&lt;programlisting&gt;</p>
+<p class="p">  GtkWidget *toggle;</p>
+<p class="p">  ...</p>
+<p class="p">  toggle = gtk_check_button_new_with_label ("Open file read-only");
+  gtk_widget_show (toggle);
+  gtk_file_chooser_set_extra_widget (my_file_chooser, toggle);
+}
+&lt;/programlisting&gt;
+&lt;/example&gt;
+&lt;note&gt;
+   If you want to set more than one extra widget in the file
+   chooser, you can a container such as a <span class=" link"><a href="Gtk.Box.html" title="Gtk.Box">Gtk.Box</a></span> or a <span class=" link"><a href="Gtk.Grid.html" title="Gtk.Grid">Gtk.Grid</a></span>
+   and include your widgets in it.  Then, set the container as
+   the whole extra widget.
+&lt;/note&gt;
+&lt;/refsect2&gt;
+&lt;refsect2 id="gtkfilechooser-key-bindings"&gt;
+&lt;title&gt;Key Bindings&lt;/title&gt;
+&lt;para&gt;
+Internally, GTK+ implements a file chooser's graphical user
+interface with the private
+&lt;classname&gt;GtkFileChooserDefaultClass&lt;/classname&gt;.  This
+widget has several &lt;link linkend="gtk-Bindings"&gt;key
+bindings&lt;/link&gt; and their associated signals.  This section
+describes the available key binding signals.
+&lt;/para&gt;
+&lt;example id="gtkfilechooser-key-binding-example"&gt;
+&lt;title&gt;GtkFileChooser key binding example&lt;/title&gt;
+&lt;para&gt;
+The default keys that activate the key-binding signals in
+&lt;classname&gt;GtkFileChooserDefaultClass&lt;/classname&gt; are as
+follows:
+&lt;/para&gt;
+	&lt;informaltable&gt;
+	  &lt;tgroup cols="2"&gt;
+	    &lt;tbody&gt;
+	      &lt;row&gt;
+		&lt;entry&gt;Signal name&lt;/entry&gt;
+		&lt;entry&gt;Default key combinations&lt;/entry&gt;
+	      &lt;/row&gt;
+	      &lt;row&gt;
+		&lt;entry&gt;location-popup&lt;/entry&gt;
+		&lt;entry&gt;
+		  &lt;keycombo&gt;&lt;keycap&gt;Control&lt;/keycap&gt;&lt;keycap&gt;L&lt;/keycap&gt;&lt;/keycombo&gt; (empty path);
+		  &lt;keycap&gt;/&lt;/keycap&gt; (path of "/")
+               &lt;footnote&gt;
+		      Both the individual &lt;keycap&gt;/&lt;/keycap&gt; key and the
+		      numeric keypad's "divide" key are supported.
+		  &lt;/footnote&gt;;
+		  &lt;keycap&gt;~&lt;/keycap&gt; (path of "~")
+		&lt;/entry&gt;
+	      &lt;/row&gt;
+	      &lt;row&gt;
+		&lt;entry&gt;up-folder&lt;/entry&gt;
+		&lt;entry&gt;
+		  &lt;keycombo&gt;&lt;keycap&gt;Alt&lt;/keycap&gt;&lt;keycap&gt;Up&lt;/keycap&gt;&lt;/keycombo&gt;;
+               &lt;keycombo&gt;&lt;keycap&gt;Alt&lt;/keycap&gt;&lt;keycap&gt;Shift&lt;/keycap&gt;&lt;keycap&gt;Up&lt;/keycap&gt;&lt;/keycombo&gt;
+               &lt;footnote&gt;
+		      Both the individual Up key and the numeric
+		      keypad's Up key are supported.
+		  &lt;/footnote&gt;;
+		  &lt;keycap&gt;Backspace&lt;/keycap&gt;
+		&lt;/entry&gt;
+	      &lt;/row&gt;
+	      &lt;row&gt;
+		&lt;entry&gt;down-folder&lt;/entry&gt;
+		&lt;entry&gt;
+               &lt;keycombo&gt;&lt;keycap&gt;Alt&lt;/keycap&gt;&lt;keycap&gt;Down&lt;/keycap&gt;&lt;/keycombo&gt;;
+               &lt;keycombo&gt;&lt;keycap&gt;Alt&lt;/keycap&gt;&lt;keycap&gt;Shift&lt;/keycap&gt;&lt;keycap&gt;Down&lt;/keycap&gt;&lt;/keycombo&gt;
+               &lt;footnote&gt;
+		      Both the individual Down key and the numeric
+		      keypad's Down key are supported.
+		  &lt;/footnote&gt;
+             &lt;/entry&gt;
+	      &lt;/row&gt;
+	      &lt;row&gt;
+		&lt;entry&gt;home-folder&lt;/entry&gt;
+		&lt;entry&gt;&lt;keycombo&gt;&lt;keycap&gt;Alt&lt;/keycap&gt;&lt;keycap&gt;Home&lt;/keycap&gt;&lt;/keycombo&gt;&lt;/entry&gt;
+	      &lt;/row&gt;
+	      &lt;row&gt;
+		&lt;entry&gt;desktop-folder&lt;/entry&gt;
+		&lt;entry&gt;&lt;keycombo&gt;&lt;keycap&gt;Alt&lt;/keycap&gt;&lt;keycap&gt;D&lt;/keycap&gt;&lt;/keycombo&gt;&lt;/entry&gt;
+	      &lt;/row&gt;
+	      &lt;row&gt;
+		&lt;entry&gt;quick-bookmark&lt;/entry&gt;
+		&lt;entry&gt;&lt;keycombo&gt;&lt;keycap&gt;Alt&lt;/keycap&gt;&lt;keycap&gt;1&lt;/keycap&gt;&lt;/keycombo&gt; through &lt;keycombo&gt;&lt;keycap&gt;Alt&lt;/keycap&gt;&lt;keycap&gt;0&lt;/keycap&gt;&lt;/keycombo&gt;&lt;/entry&gt;
+	      &lt;/row&gt;
+	    &lt;/tbody&gt;
+	  &lt;/tgroup&gt;
+	&lt;/informaltable&gt;
+&lt;para&gt;
+You can change these defaults to something else.  For
+example, to add a &lt;keycap&gt;Shift&lt;/keycap&gt; modifier to a few
+of the default bindings, you can include the following
+fragment in your &lt;filename&gt;.config/gtk-3.0/gtk.css&lt;/filename&gt; file:
+&lt;/para&gt;
+&lt;programlisting&gt;
+@binding-set MyOwnFilechooserBindings
+{
+  bind "&amp;lt;Alt&amp;gt;&amp;lt;Shift&amp;gt;Up" { "up-folder" () }
+  bind "&amp;lt;Alt&amp;gt;&amp;lt;Shift&amp;gt;Down" { "down-folder" () }
+  bind "&amp;lt;Alt&amp;gt;&amp;lt;Shift&amp;gt;Home" { "home-folder" () }
+}</p>
+<p class="p">GtkFileChooserDefault
+{
+   gtk-key-bindings: MyOwnFilechooserBindings
+}
+&lt;/programlisting&gt;
+&lt;/example&gt;
+&lt;refsect3 id="GtkFileChooserDefault-location-popup"&gt;
+&lt;title&gt;The &amp;quot;GtkFileChooserDefault::location-popup&amp;quot; signal&lt;/title&gt;
+&lt;programlisting&gt;
+   void user_function (GtkFileChooserDefault *chooser,
+                       const char            *path,
+&lt;link linkend="gpointer"&gt;gpointer&lt;/link&gt;      user_data);
+&lt;/programlisting&gt;
+&lt;para&gt;
+This is used to make the file chooser show a "Location"
+dialog which the user can use to manually type the name of
+the file he wishes to select.  The
+&lt;parameter&gt;path&lt;/parameter&gt; argument is a string that gets
+put in the text entry for the file name.  By default this is bound to
+&lt;keycombo&gt;&lt;keycap&gt;Control&lt;/keycap&gt;&lt;keycap&gt;L&lt;/keycap&gt;&lt;/keycombo&gt;
+with a &lt;parameter&gt;path&lt;/parameter&gt; string of "" (the empty
+string).  It is also bound to &lt;keycap&gt;/&lt;/keycap&gt; with a
+&lt;parameter&gt;path&lt;/parameter&gt; string of "&lt;literal&gt;/&lt;/literal&gt;"
+(a slash):  this lets you type &lt;keycap&gt;/&lt;/keycap&gt; and
+immediately type a path name.  On Unix systems, this is bound to
+&lt;keycap&gt;~&lt;/keycap&gt; (tilde) with a &lt;parameter&gt;path&lt;/parameter&gt; string
+of "~" itself for access to home directories.
+&lt;/para&gt;
+	&lt;variablelist role="params"&gt;
+	  &lt;varlistentry&gt;
+	    &lt;term&gt;&lt;parameter&gt;chooser&lt;/parameter&gt;&amp;nbsp;:&lt;/term&gt;
+	    &lt;listitem&gt;
+	      &lt;simpara&gt;
+		the object which received the signal.
+	      &lt;/simpara&gt;
+	    &lt;/listitem&gt;
+	  &lt;/varlistentry&gt;
+	  &lt;varlistentry&gt;
+	    &lt;term&gt;&lt;parameter&gt;path&lt;/parameter&gt;&amp;nbsp;:&lt;/term&gt;
+	    &lt;listitem&gt;
+	      &lt;simpara&gt;
+		default contents for the text entry for the file name
+	      &lt;/simpara&gt;
+	    &lt;/listitem&gt;
+	  &lt;/varlistentry&gt;
+	  &lt;varlistentry&gt;
+	    &lt;term&gt;&lt;parameter&gt;user_data&lt;/parameter&gt;&amp;nbsp;:&lt;/term&gt;
+	    &lt;listitem&gt;
+	      &lt;simpara&gt;
+		user data set when the signal handler was connected.
+	      &lt;/simpara&gt;
+	    &lt;/listitem&gt;
+	  &lt;/varlistentry&gt;
+	&lt;/variablelist&gt;
+&lt;note&gt;
+   You can create your own bindings for the
+   #GtkFileChooserDefault::location-popup signal with custom
+   &lt;parameter&gt;path&lt;/parameter&gt; strings, and have a crude form
+   of easily-to-type bookmarks.  For example, say you access
+   the path &lt;filename&gt;/home/username/misc&lt;/filename&gt; very
+   frequently.  You could then create an &lt;keycombo&gt;
+   &lt;keycap&gt;Alt&lt;/keycap&gt; &lt;keycap&gt;M&lt;/keycap&gt; &lt;/keycombo&gt;
+   shortcut by including the following in your
+   &lt;filename&gt;.config/gtk-3.0/gtk.css&lt;/filename&gt;:
+   &lt;programlisting&gt;
+   @binding-set MiscShortcut
+   {
+     bind "&amp;lt;Alt&amp;gt;M" { "location-popup" ("/home/username/misc") }
+   }</p>
+<p class="p">   GtkFileChooserDefault
+   {
+     gtk-key-bindings: MiscShortcut
+   }
+   &lt;/programlisting&gt;
+&lt;/note&gt;
+&lt;/refsect3&gt;
+&lt;refsect3 id="GtkFileChooserDefault-up-folder"&gt;
+&lt;title&gt;The &amp;quot;GtkFileChooserDefault::up-folder&amp;quot; signal&lt;/title&gt;
+&lt;programlisting&gt;
+          void user_function (GtkFileChooserDefault *chooser,
+                              &lt;link linkend="gpointer"&gt;gpointer&lt;/link&gt; user_data);
+&lt;/programlisting&gt;
+&lt;para&gt;
+This is used to make the file chooser go to the parent of
+the current folder in the file hierarchy.  By default this
+is bound to &lt;keycap&gt;Backspace&lt;/keycap&gt; and
+&lt;keycombo&gt;&lt;keycap&gt;Alt&lt;/keycap&gt;&lt;keycap&gt;Up&lt;/keycap&gt;&lt;/keycombo&gt;
+(the Up key in the numeric keypad also works).
+&lt;/para&gt;
+	&lt;variablelist role="params"&gt;
+	  &lt;varlistentry&gt;
+	    &lt;term&gt;&lt;parameter&gt;chooser&lt;/parameter&gt;&amp;nbsp;:&lt;/term&gt;
+	    &lt;listitem&gt;
+	      &lt;simpara&gt;
+		the object which received the signal.
+	      &lt;/simpara&gt;
+	    &lt;/listitem&gt;
+	  &lt;/varlistentry&gt;
+	  &lt;varlistentry&gt;
+	    &lt;term&gt;&lt;parameter&gt;user_data&lt;/parameter&gt;&amp;nbsp;:&lt;/term&gt;
+	    &lt;listitem&gt;
+	      &lt;simpara&gt;
+		user data set when the signal handler was connected.
+	      &lt;/simpara&gt;
+	    &lt;/listitem&gt;
+	  &lt;/varlistentry&gt;
+	&lt;/variablelist&gt;
+&lt;/refsect3&gt;
+&lt;refsect3 id="GtkFileChooserDefault-down-folder"&gt;
+&lt;title&gt;The &amp;quot;GtkFileChooserDefault::down-folder&amp;quot; signal&lt;/title&gt;
+&lt;programlisting&gt;
+          void user_function (GtkFileChooserDefault *chooser,
+                              &lt;link linkend="gpointer"&gt;gpointer&lt;/link&gt; user_data);
+&lt;/programlisting&gt;
+&lt;para&gt;
+This is used to make the file chooser go to a child of the
+current folder in the file hierarchy.  The subfolder that
+will be used is displayed in the path bar widget of the file
+chooser.  For example, if the path bar is showing
+"/foo/&lt;emphasis&gt;bar/&lt;/emphasis&gt;baz", then this will cause
+the file chooser to switch to the "baz" subfolder.  By
+default this is bound to
+&lt;keycombo&gt;&lt;keycap&gt;Alt&lt;/keycap&gt;&lt;keycap&gt;Down&lt;/keycap&gt;&lt;/keycombo&gt;
+(the Down key in the numeric keypad also works).
+&lt;/para&gt;
+	&lt;variablelist role="params"&gt;
+	  &lt;varlistentry&gt;
+	    &lt;term&gt;&lt;parameter&gt;chooser&lt;/parameter&gt;&amp;nbsp;:&lt;/term&gt;
+	    &lt;listitem&gt;
+	      &lt;simpara&gt;
+		the object which received the signal.
+	      &lt;/simpara&gt;
+	    &lt;/listitem&gt;
+	  &lt;/varlistentry&gt;
+	  &lt;varlistentry&gt;
+	    &lt;term&gt;&lt;parameter&gt;user_data&lt;/parameter&gt;&amp;nbsp;:&lt;/term&gt;
+	    &lt;listitem&gt;
+	      &lt;simpara&gt;
+		user data set when the signal handler was connected.
+	      &lt;/simpara&gt;
+	    &lt;/listitem&gt;
+	  &lt;/varlistentry&gt;
+	&lt;/variablelist&gt;
+&lt;/refsect3&gt;
+&lt;refsect3 id="GtkFileChooserDefault-home-folder"&gt;
+&lt;title&gt;The &amp;quot;GtkFileChooserDefault::home-folder&amp;quot; signal&lt;/title&gt;
+&lt;programlisting&gt;
+          void user_function (GtkFileChooserDefault *chooser,
+                              &lt;link linkend="gpointer"&gt;gpointer&lt;/link&gt; user_data);
+&lt;/programlisting&gt;
+&lt;para&gt;
+This is used to make the file chooser show the user's home
+folder in the file list.  By default this is bound to
+&lt;keycombo&gt;&lt;keycap&gt;Alt&lt;/keycap&gt;&lt;keycap&gt;Home&lt;/keycap&gt;&lt;/keycombo&gt;
+(the Home key in the numeric keypad also works).
+&lt;/para&gt;
+	&lt;variablelist role="params"&gt;
+	  &lt;varlistentry&gt;
+	    &lt;term&gt;&lt;parameter&gt;chooser&lt;/parameter&gt;&amp;nbsp;:&lt;/term&gt;
+	    &lt;listitem&gt;
+	      &lt;simpara&gt;
+		the object which received the signal.
+	      &lt;/simpara&gt;
+	    &lt;/listitem&gt;
+	  &lt;/varlistentry&gt;
+	  &lt;varlistentry&gt;
+	    &lt;term&gt;&lt;parameter&gt;user_data&lt;/parameter&gt;&amp;nbsp;:&lt;/term&gt;
+	    &lt;listitem&gt;
+	      &lt;simpara&gt;
+		user data set when the signal handler was connected.
+	      &lt;/simpara&gt;
+	    &lt;/listitem&gt;
+	  &lt;/varlistentry&gt;
+	&lt;/variablelist&gt;
+&lt;/refsect3&gt;
+&lt;refsect3 id="GtkFileChooserDefault-desktop-folder"&gt;
+&lt;title&gt;The &amp;quot;GtkFileChooserDefault::desktop-folder&amp;quot; signal&lt;/title&gt;
+&lt;programlisting&gt;
+          void user_function (GtkFileChooserDefault *chooser,
+                              &lt;link linkend="gpointer"&gt;gpointer&lt;/link&gt; user_data);
+&lt;/programlisting&gt;
+&lt;para&gt;
+This is used to make the file chooser show the user's Desktop
+folder in the file list.  By default this is bound to
+&lt;keycombo&gt;&lt;keycap&gt;Alt&lt;/keycap&gt;&lt;keycap&gt;D&lt;/keycap&gt;&lt;/keycombo&gt;.
+&lt;/para&gt;
+	&lt;variablelist role="params"&gt;
+	  &lt;varlistentry&gt;
+	    &lt;term&gt;&lt;parameter&gt;chooser&lt;/parameter&gt;&amp;nbsp;:&lt;/term&gt;
+	    &lt;listitem&gt;
+	      &lt;simpara&gt;
+		the object which received the signal.
+	      &lt;/simpara&gt;
+	    &lt;/listitem&gt;
+	  &lt;/varlistentry&gt;
+	  &lt;varlistentry&gt;
+	    &lt;term&gt;&lt;parameter&gt;user_data&lt;/parameter&gt;&amp;nbsp;:&lt;/term&gt;
+	    &lt;listitem&gt;
+	      &lt;simpara&gt;
+		user data set when the signal handler was connected.
+	      &lt;/simpara&gt;
+	    &lt;/listitem&gt;
+	  &lt;/varlistentry&gt;
+	&lt;/variablelist&gt;
+&lt;/refsect3&gt;
+&lt;refsect3 id="GtkFileChooserDefault-quick-bookmark"&gt;
+&lt;title&gt;The &amp;quot;GtkFileChooserDefault::quick-bookmark&amp;quot; signal&lt;/title&gt;
+&lt;programlisting&gt;
+          void user_function (GtkFileChooserDefault *chooser,
+                              gint bookmark_index,
+                              &lt;link linkend="gpointer"&gt;gpointer&lt;/link&gt; user_data);
+&lt;/programlisting&gt;
+&lt;para&gt;
+This is used to make the file chooser switch to the bookmark
+specified in the &lt;parameter&gt;bookmark_index&lt;/parameter&gt; parameter.
+For example, if you have three bookmarks, you can pass 0, 1, 2 to
+this signal to switch to each of them, respectively.  By default this is bound to
+&lt;keycombo&gt;&lt;keycap&gt;Alt&lt;/keycap&gt;&lt;keycap&gt;1&lt;/keycap&gt;&lt;/keycombo&gt;,
+&lt;keycombo&gt;&lt;keycap&gt;Alt&lt;/keycap&gt;&lt;keycap&gt;2&lt;/keycap&gt;&lt;/keycombo&gt;,
+etc. until
+&lt;keycombo&gt;&lt;keycap&gt;Alt&lt;/keycap&gt;&lt;keycap&gt;0&lt;/keycap&gt;&lt;/keycombo&gt;.  Note
+that in the default binding,
+that &lt;keycombo&gt;&lt;keycap&gt;Alt&lt;/keycap&gt;&lt;keycap&gt;1&lt;/keycap&gt;&lt;/keycombo&gt; is
+actually defined to switch to the bookmark at index 0, and so on
+successively;
+&lt;keycombo&gt;&lt;keycap&gt;Alt&lt;/keycap&gt;&lt;keycap&gt;0&lt;/keycap&gt;&lt;/keycombo&gt; is
+defined to switch to the bookmark at index 10.
+&lt;/para&gt;
+	&lt;variablelist role="params"&gt;
+	  &lt;varlistentry&gt;
+	    &lt;term&gt;&lt;parameter&gt;chooser&lt;/parameter&gt;&amp;nbsp;:&lt;/term&gt;
+	    &lt;listitem&gt;
+	      &lt;simpara&gt;
+		the object which received the signal.
+	      &lt;/simpara&gt;
+	    &lt;/listitem&gt;
+	  &lt;/varlistentry&gt;
+	  &lt;varlistentry&gt;
+	    &lt;term&gt;&lt;parameter&gt;bookmark_indes&lt;/parameter&gt;&amp;nbsp;:&lt;/term&gt;
+	    &lt;listitem&gt;
+	      &lt;simpara&gt;
+		index of the bookmark to switch to; the indices start at 0.
+	      &lt;/simpara&gt;
+	    &lt;/listitem&gt;
+	  &lt;/varlistentry&gt;
+	  &lt;varlistentry&gt;
+	    &lt;term&gt;&lt;parameter&gt;user_data&lt;/parameter&gt;&amp;nbsp;:&lt;/term&gt;
+	    &lt;listitem&gt;
+	      &lt;simpara&gt;
+		user data set when the signal handler was connected.
+	      &lt;/simpara&gt;
+	    &lt;/listitem&gt;
+	  &lt;/varlistentry&gt;
+	&lt;/variablelist&gt;
+&lt;/refsect3&gt;
+&lt;/refsect2&gt;</p>
+<div class="synopsis"><div class="inner">
+<div class="title title-synopsis"><h2><span class="title">Hierarchy</span></h2></div>
+<div class="region"><div class="contents"><div class="tree"><div class="inner"><div class="region"><ul class="tree"><li class="tree"><div>
+        <span class=" code">Gtk.FileChooser</span>
+      </div></li></ul></div></div></div></div></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Methods</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.FileChooser.add_filter.html" title="Gtk.FileChooser.prototype.add_filter">Gtk.FileChooser.prototype.add_filter</a></li>
+<li class="links "><a href="Gtk.FileChooser.add_shortcut_folder.html" title="Gtk.FileChooser.prototype.add_shortcut_folder">Gtk.FileChooser.prototype.add_shortcut_folder</a></li>
+<li class="links "><a href="Gtk.FileChooser.add_shortcut_folder_uri.html" title="Gtk.FileChooser.prototype.add_shortcut_folder_uri">Gtk.FileChooser.prototype.add_shortcut_folder_uri</a></li>
+<li class="links "><a href="Gtk.FileChooser.get_action.html" title="Gtk.FileChooser.prototype.get_action">Gtk.FileChooser.prototype.get_action</a></li>
+<li class="links "><a href="Gtk.FileChooser.get_create_folders.html" title="Gtk.FileChooser.prototype.get_create_folders">Gtk.FileChooser.prototype.get_create_folders</a></li>
+<li class="links "><a href="Gtk.FileChooser.get_current_folder.html" title="Gtk.FileChooser.prototype.get_current_folder">Gtk.FileChooser.prototype.get_current_folder</a></li>
+<li class="links "><a href="Gtk.FileChooser.get_current_folder_file.html" title="Gtk.FileChooser.prototype.get_current_folder_file">Gtk.FileChooser.prototype.get_current_folder_file</a></li>
+<li class="links "><a href="Gtk.FileChooser.get_current_folder_uri.html" title="Gtk.FileChooser.prototype.get_current_folder_uri">Gtk.FileChooser.prototype.get_current_folder_uri</a></li>
+<li class="links "><a href="Gtk.FileChooser.get_current_name.html" title="Gtk.FileChooser.prototype.get_current_name">Gtk.FileChooser.prototype.get_current_name</a></li>
+<li class="links "><a href="Gtk.FileChooser.get_do_overwrite_confirmation.html" title="Gtk.FileChooser.prototype.get_do_overwrite_confirmation">Gtk.FileChooser.prototype.get_do_overwrite_confirmation</a></li>
+<li class="links "><a href="Gtk.FileChooser.get_extra_widget.html" title="Gtk.FileChooser.prototype.get_extra_widget">Gtk.FileChooser.prototype.get_extra_widget</a></li>
+<li class="links "><a href="Gtk.FileChooser.get_file.html" title="Gtk.FileChooser.prototype.get_file">Gtk.FileChooser.prototype.get_file</a></li>
+<li class="links "><a href="Gtk.FileChooser.get_filename.html" title="Gtk.FileChooser.prototype.get_filename">Gtk.FileChooser.prototype.get_filename</a></li>
+<li class="links "><a href="Gtk.FileChooser.get_filenames.html" title="Gtk.FileChooser.prototype.get_filenames">Gtk.FileChooser.prototype.get_filenames</a></li>
+<li class="links "><a href="Gtk.FileChooser.get_files.html" title="Gtk.FileChooser.prototype.get_files">Gtk.FileChooser.prototype.get_files</a></li>
+<li class="links "><a href="Gtk.FileChooser.get_filter.html" title="Gtk.FileChooser.prototype.get_filter">Gtk.FileChooser.prototype.get_filter</a></li>
+<li class="links "><a href="Gtk.FileChooser.get_local_only.html" title="Gtk.FileChooser.prototype.get_local_only">Gtk.FileChooser.prototype.get_local_only</a></li>
+<li class="links "><a href="Gtk.FileChooser.get_preview_file.html" title="Gtk.FileChooser.prototype.get_preview_file">Gtk.FileChooser.prototype.get_preview_file</a></li>
+<li class="links "><a href="Gtk.FileChooser.get_preview_filename.html" title="Gtk.FileChooser.prototype.get_preview_filename">Gtk.FileChooser.prototype.get_preview_filename</a></li>
+<li class="links "><a href="Gtk.FileChooser.get_preview_uri.html" title="Gtk.FileChooser.prototype.get_preview_uri">Gtk.FileChooser.prototype.get_preview_uri</a></li>
+<li class="links "><a href="Gtk.FileChooser.get_preview_widget.html" title="Gtk.FileChooser.prototype.get_preview_widget">Gtk.FileChooser.prototype.get_preview_widget</a></li>
+<li class="links "><a href="Gtk.FileChooser.get_preview_widget_active.html" title="Gtk.FileChooser.prototype.get_preview_widget_active">Gtk.FileChooser.prototype.get_preview_widget_active</a></li>
+<li class="links "><a href="Gtk.FileChooser.get_select_multiple.html" title="Gtk.FileChooser.prototype.get_select_multiple">Gtk.FileChooser.prototype.get_select_multiple</a></li>
+<li class="links "><a href="Gtk.FileChooser.get_show_hidden.html" title="Gtk.FileChooser.prototype.get_show_hidden">Gtk.FileChooser.prototype.get_show_hidden</a></li>
+<li class="links "><a href="Gtk.FileChooser.get_uri.html" title="Gtk.FileChooser.prototype.get_uri">Gtk.FileChooser.prototype.get_uri</a></li>
+<li class="links "><a href="Gtk.FileChooser.get_uris.html" title="Gtk.FileChooser.prototype.get_uris">Gtk.FileChooser.prototype.get_uris</a></li>
+<li class="links "><a href="Gtk.FileChooser.get_use_preview_label.html" title="Gtk.FileChooser.prototype.get_use_preview_label">Gtk.FileChooser.prototype.get_use_preview_label</a></li>
+<li class="links "><a href="Gtk.FileChooser.list_filters.html" title="Gtk.FileChooser.prototype.list_filters">Gtk.FileChooser.prototype.list_filters</a></li>
+<li class="links "><a href="Gtk.FileChooser.list_shortcut_folder_uris.html" title="Gtk.FileChooser.prototype.list_shortcut_folder_uris">Gtk.FileChooser.prototype.list_shortcut_folder_uris</a></li>
+<li class="links "><a href="Gtk.FileChooser.list_shortcut_folders.html" title="Gtk.FileChooser.prototype.list_shortcut_folders">Gtk.FileChooser.prototype.list_shortcut_folders</a></li>
+<li class="links "><a href="Gtk.FileChooser.remove_filter.html" title="Gtk.FileChooser.prototype.remove_filter">Gtk.FileChooser.prototype.remove_filter</a></li>
+<li class="links "><a href="Gtk.FileChooser.remove_shortcut_folder.html" title="Gtk.FileChooser.prototype.remove_shortcut_folder">Gtk.FileChooser.prototype.remove_shortcut_folder</a></li>
+<li class="links "><a href="Gtk.FileChooser.remove_shortcut_folder_uri.html" title="Gtk.FileChooser.prototype.remove_shortcut_folder_uri">Gtk.FileChooser.prototype.remove_shortcut_folder_uri</a></li>
+<li class="links "><a href="Gtk.FileChooser.select_all.html" title="Gtk.FileChooser.prototype.select_all">Gtk.FileChooser.prototype.select_all</a></li>
+<li class="links "><a href="Gtk.FileChooser.select_file.html" title="Gtk.FileChooser.prototype.select_file">Gtk.FileChooser.prototype.select_file</a></li>
+<li class="links "><a href="Gtk.FileChooser.select_filename.html" title="Gtk.FileChooser.prototype.select_filename">Gtk.FileChooser.prototype.select_filename</a></li>
+<li class="links "><a href="Gtk.FileChooser.select_uri.html" title="Gtk.FileChooser.prototype.select_uri">Gtk.FileChooser.prototype.select_uri</a></li>
+<li class="links "><a href="Gtk.FileChooser.set_action.html" title="Gtk.FileChooser.prototype.set_action">Gtk.FileChooser.prototype.set_action</a></li>
+<li class="links "><a href="Gtk.FileChooser.set_create_folders.html" title="Gtk.FileChooser.prototype.set_create_folders">Gtk.FileChooser.prototype.set_create_folders</a></li>
+<li class="links "><a href="Gtk.FileChooser.set_current_folder.html" title="Gtk.FileChooser.prototype.set_current_folder">Gtk.FileChooser.prototype.set_current_folder</a></li>
+<li class="links "><a href="Gtk.FileChooser.set_current_folder_file.html" title="Gtk.FileChooser.prototype.set_current_folder_file">Gtk.FileChooser.prototype.set_current_folder_file</a></li>
+<li class="links "><a href="Gtk.FileChooser.set_current_folder_uri.html" title="Gtk.FileChooser.prototype.set_current_folder_uri">Gtk.FileChooser.prototype.set_current_folder_uri</a></li>
+<li class="links "><a href="Gtk.FileChooser.set_current_name.html" title="Gtk.FileChooser.prototype.set_current_name">Gtk.FileChooser.prototype.set_current_name</a></li>
+<li class="links "><a href="Gtk.FileChooser.set_do_overwrite_confirmation.html" title="Gtk.FileChooser.prototype.set_do_overwrite_confirmation">Gtk.FileChooser.prototype.set_do_overwrite_confirmation</a></li>
+<li class="links "><a href="Gtk.FileChooser.set_extra_widget.html" title="Gtk.FileChooser.prototype.set_extra_widget">Gtk.FileChooser.prototype.set_extra_widget</a></li>
+<li class="links "><a href="Gtk.FileChooser.set_file.html" title="Gtk.FileChooser.prototype.set_file">Gtk.FileChooser.prototype.set_file</a></li>
+<li class="links "><a href="Gtk.FileChooser.set_filename.html" title="Gtk.FileChooser.prototype.set_filename">Gtk.FileChooser.prototype.set_filename</a></li>
+<li class="links "><a href="Gtk.FileChooser.set_filter.html" title="Gtk.FileChooser.prototype.set_filter">Gtk.FileChooser.prototype.set_filter</a></li>
+<li class="links "><a href="Gtk.FileChooser.set_local_only.html" title="Gtk.FileChooser.prototype.set_local_only">Gtk.FileChooser.prototype.set_local_only</a></li>
+<li class="links "><a href="Gtk.FileChooser.set_preview_widget.html" title="Gtk.FileChooser.prototype.set_preview_widget">Gtk.FileChooser.prototype.set_preview_widget</a></li>
+<li class="links "><a href="Gtk.FileChooser.set_preview_widget_active.html" title="Gtk.FileChooser.prototype.set_preview_widget_active">Gtk.FileChooser.prototype.set_preview_widget_active</a></li>
+<li class="links "><a href="Gtk.FileChooser.set_select_multiple.html" title="Gtk.FileChooser.prototype.set_select_multiple">Gtk.FileChooser.prototype.set_select_multiple</a></li>
+<li class="links "><a href="Gtk.FileChooser.set_show_hidden.html" title="Gtk.FileChooser.prototype.set_show_hidden">Gtk.FileChooser.prototype.set_show_hidden</a></li>
+<li class="links "><a href="Gtk.FileChooser.set_uri.html" title="Gtk.FileChooser.prototype.set_uri">Gtk.FileChooser.prototype.set_uri</a></li>
+<li class="links "><a href="Gtk.FileChooser.set_use_preview_label.html" title="Gtk.FileChooser.prototype.set_use_preview_label">Gtk.FileChooser.prototype.set_use_preview_label</a></li>
+<li class="links "><a href="Gtk.FileChooser.unselect_all.html" title="Gtk.FileChooser.prototype.unselect_all">Gtk.FileChooser.prototype.unselect_all</a></li>
+<li class="links "><a href="Gtk.FileChooser.unselect_file.html" title="Gtk.FileChooser.prototype.unselect_file">Gtk.FileChooser.prototype.unselect_file</a></li>
+<li class="links "><a href="Gtk.FileChooser.unselect_filename.html" title="Gtk.FileChooser.prototype.unselect_filename">Gtk.FileChooser.prototype.unselect_filename</a></li>
+<li class="links "><a href="Gtk.FileChooser.unselect_uri.html" title="Gtk.FileChooser.prototype.unselect_uri">Gtk.FileChooser.prototype.unselect_uri</a></li>
+</ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Signals</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.FileChooser-confirm-overwrite.html" title="Gtk.FileChooser::confirm-overwrite">confirm-overwrite</a></li>
+<li class="links "><a href="Gtk.FileChooser-current-folder-changed.html" title="Gtk.FileChooser::current-folder-changed">current-folder-changed</a></li>
+<li class="links "><a href="Gtk.FileChooser-file-activated.html" title="Gtk.FileChooser::file-activated">file-activated</a></li>
+<li class="links "><a href="Gtk.FileChooser-selection-changed.html" title="Gtk.FileChooser::selection-changed">selection-changed</a></li>
+<li class="links "><a href="Gtk.FileChooser-update-preview.html" title="Gtk.FileChooser::update-preview">update-preview</a></li>
+</ul></div>
+</div></div>
+</div>
+<div class="sect sect-links" role="navigation">
+<div class="hgroup"></div>
+<div class="contents"><div class="links guidelinks"><div class="inner">
+<div class="title"><h2><span class="title">More Information</span></h2></div>
+<div class="region"><ul><li class="links "><a href="index.html" title="Index">Index</a></li></ul></div>
+</div></div></div>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="footer"></div>
+</div></body>
+</html>

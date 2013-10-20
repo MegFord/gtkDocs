@@ -1,0 +1,53 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Gtk.Gradient</title>
+<link rel="stylesheet" type="text/css" href="C.css">
+<script type="text/javascript" src="jquery.js"></script><script type="text/javascript" src="jquery.syntax.js"></script><script type="text/javascript" src="yelp.js"></script>
+</head>
+<body><div class="page" role="main">
+<div class="header"><div class="trails" role="navigation"><div class="trail">
+<a class="trail" href="index.html" title="Index">Index</a> » </div></div></div>
+<div class="body">
+<div class="hgroup"><h1 class="title"><span class="title">Gtk.Gradient</span></h1></div>
+<div class="region">
+<div class="contents">
+<p class="p">GtkGradient is a boxed type that represents a gradient.
+It is the result of parsing a
+&lt;link linkend="gtkcssprovider-gradients"&gt;gradient expression&lt;/link&gt;.
+To obtain the gradient represented by a GtkGradient, it has to
+be resolved with <span class=" link"><a href="Gtk.resolve.html" title="Gtk.resolve">Gtk.resolve</a></span>, which replaces all
+symbolic color references by the colors they refer to (in a given
+context) and constructs a #cairo_pattern_t value.</p>
+<p class="p">It is not normally necessary to deal directly with #GtkGradients,
+since they are mostly used behind the scenes by <span class=" link"><a href="Gtk.StyleContext.html" title="Gtk.StyleContext">Gtk.StyleContext</a></span> and
+<span class=" link"><a href="Gtk.CssProvider.html" title="Gtk.CssProvider">Gtk.CssProvider</a></span>.</p>
+<p class="p"><span class=" link"><a href="Gtk.Gradient.html" title="Gtk.Gradient">Gtk.Gradient</a></span> is deprecated. It was used internally by GTK's CSS engine
+to represent gradients. As its handling is not conforming to modern
+web standards, it is not used anymore. If you want to use gradients in
+your own code, please use Cairo directly.</p>
+<div class="links topiclinks"><div class="inner"><div class="region">
+<div class="linkdiv "><a class="linkdiv" href="Gtk.Gradient.new_linear.html" title="Gtk.Gradient.new_linear"><span class="title">Gtk.Gradient.new_linear</span></a></div>
+<div class="linkdiv "><a class="linkdiv" href="Gtk.Gradient.new_radial.html" title="Gtk.Gradient.new_radial"><span class="title">Gtk.Gradient.new_radial</span></a></div>
+<div class="linkdiv "><a class="linkdiv" href="Gtk.Gradient.add_color_stop.html" title="Gtk.Gradient.prototype.add_color_stop"><span class="title">Gtk.Gradient.prototype.add_color_stop</span></a></div>
+<div class="linkdiv "><a class="linkdiv" href="Gtk.Gradient.ref.html" title="Gtk.Gradient.prototype.ref"><span class="title">Gtk.Gradient.prototype.ref</span></a></div>
+<div class="linkdiv "><a class="linkdiv" href="Gtk.Gradient.resolve.html" title="Gtk.Gradient.prototype.resolve"><span class="title">Gtk.Gradient.prototype.resolve</span></a></div>
+<div class="linkdiv "><a class="linkdiv" href="Gtk.Gradient.resolve_for_context.html" title="Gtk.Gradient.prototype.resolve_for_context"><span class="title">Gtk.Gradient.prototype.resolve_for_context</span></a></div>
+<div class="linkdiv "><a class="linkdiv" href="Gtk.Gradient.to_string.html" title="Gtk.Gradient.prototype.to_string"><span class="title">Gtk.Gradient.prototype.to_string</span></a></div>
+<div class="linkdiv "><a class="linkdiv" href="Gtk.Gradient.unref.html" title="Gtk.Gradient.prototype.unref"><span class="title">Gtk.Gradient.prototype.unref</span></a></div>
+</div></div></div>
+</div>
+<div class="sect sect-links" role="navigation">
+<div class="hgroup"></div>
+<div class="contents"><div class="links guidelinks"><div class="inner">
+<div class="title"><h2><span class="title">More Information</span></h2></div>
+<div class="region"><ul><li class="links "><a href="index.html" title="Index">Index</a></li></ul></div>
+</div></div></div>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="footer"></div>
+</div></body>
+</html>

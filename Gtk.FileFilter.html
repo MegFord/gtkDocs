@@ -1,0 +1,106 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Gtk.FileFilter</title>
+<link rel="stylesheet" type="text/css" href="C.css">
+<script type="text/javascript" src="jquery.js"></script><script type="text/javascript" src="jquery.syntax.js"></script><script type="text/javascript" src="yelp.js"></script>
+</head>
+<body><div class="page" role="main">
+<div class="header"><div class="trails" role="navigation"><div class="trail">
+<a class="trail" href="index.html" title="Index">Index</a> » </div></div></div>
+<div class="body">
+<div class="hgroup"><h1 class="title"><span class="title">Gtk.FileFilter</span></h1></div>
+<div class="region">
+<div class="contents">
+<div class="synopsis"><div class="inner"><div class="region"><div class="contents"><div class="code"><pre class="contents ">const Gtk = imports.gi.Gtk;
+
+let file_filter = new Gtk.FileFilter();
+  </pre></div></div></div></div></div>
+<p class="p">A GtkFileFilter can be used to restrict the files being shown in a
+<span class=" link"><a href="Gtk.FileChooser.html" title="Gtk.FileChooser">Gtk.FileChooser</a></span>. Files can be filtered based on their name (with
+<span class=" link"><a href="Gtk.add_pattern.html" title="Gtk.add_pattern">Gtk.add_pattern</a></span>), on their mime type (with
+<span class=" link"><a href="Gtk.add_mime_type.html" title="Gtk.add_mime_type">Gtk.add_mime_type</a></span>), or by a custom filter function
+(with <span class=" link"><a href="Gtk.add_custom.html" title="Gtk.add_custom">Gtk.add_custom</a></span>).</p>
+<p class="p">Filtering by mime types handles aliasing and subclassing of mime
+types; e.g. a filter for text/plain also matches a file with mime
+type application/rtf, since application/rtf is a subclass of
+text/plain. Note that <span class=" link"><a href="Gtk.FileFilter.html" title="Gtk.FileFilter">Gtk.FileFilter</a></span> allows wildcards for the
+subtype of a mime type, so you can e.g. filter for image/&amp;ast;.</p>
+<p class="p">Normally, filters are used by adding them to a <span class=" link"><a href="Gtk.FileChooser.html" title="Gtk.FileChooser">Gtk.FileChooser</a></span>,
+see <span class=" link"><a href="Gtk.FileChooser.add_filter.html" title="Gtk.FileChooser.prototype.add_filter">Gtk.FileChooser.prototype.add_filter</a></span>, but it is also possible
+to manually use a filter on a file with <span class=" link"><a href="Gtk.filter.html" title="Gtk.filter">Gtk.filter</a></span>.</p>
+<p class="p">&lt;refsect2 id="GtkFileFilter-BUILDER-UI"&gt;
+&lt;title&gt;GtkFileFilter as GtkBuildable&lt;/title&gt;
+&lt;para&gt;
+The GtkFileFilter implementation of the GtkBuildable interface
+supports adding rules using the &amp;lt;mime-types&amp;gt;, &amp;lt;patterns&amp;gt; and
+&amp;lt;applications&amp;gt; elements and listing the rules within. Specifying
+a &amp;lt;mime-type&amp;gt; or &amp;lt;pattern&amp;gt; is the same
+as calling <span class=" link"><a href="Gtk.add_mime_type.html" title="Gtk.add_mime_type">Gtk.add_mime_type</a></span> or <span class=" link"><a href="Gtk.add_pattern.html" title="Gtk.add_pattern">Gtk.add_pattern</a></span></p>
+<p class="p">&lt;example&gt;
+&lt;title&gt;A UI definition fragment specifying GtkFileFilter rules&lt;/title&gt;
+&lt;programlisting&gt;&lt;![CDATA[
+&lt;object class="GtkFileFilter"&gt;
+  &lt;mime-types&gt;
+    &lt;mime-type&gt;text/plain&lt;/mime-type&gt;
+    &lt;mime-type&gt;image/&amp;ast;&lt;/mime-type&gt;
+  &lt;/mime-types&gt;
+  &lt;patterns&gt;
+    &lt;pattern&gt;*.txt&lt;/pattern&gt;
+    &lt;pattern&gt;*.png&lt;/pattern&gt;
+  &lt;/patterns&gt;
+&lt;/object&gt;
+]]&gt;&lt;/programlisting&gt;
+&lt;/example&gt;
+&lt;/para&gt;
+&lt;/refsect2&gt;</p>
+<div class="synopsis"><div class="inner">
+<div class="title title-synopsis"><h2><span class="title">Hierarchy</span></h2></div>
+<div class="region"><div class="contents"><div class="tree"><div class="inner"><div class="region"><ul class="tree"><li class="tree">
+<div>
+        <span class=" code">GObject.Object</span>
+      
+      </div>
+<ul class="tree"><li class="tree">
+<div>
+        <span class=" code">GObject.InitiallyUnowned</span>
+      
+      </div>
+<ul class="tree"><li class="tree"><div>
+        <span class=" code">Gtk.FileFilter</span>
+      </div></li></ul>
+</li></ul>
+</li></ul></div></div></div></div></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Methods</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.FileFilter.add_custom.html" title="Gtk.FileFilter.prototype.add_custom">Gtk.FileFilter.prototype.add_custom</a></li>
+<li class="links "><a href="Gtk.FileFilter.add_mime_type.html" title="Gtk.FileFilter.prototype.add_mime_type">Gtk.FileFilter.prototype.add_mime_type</a></li>
+<li class="links "><a href="Gtk.FileFilter.add_pattern.html" title="Gtk.FileFilter.prototype.add_pattern">Gtk.FileFilter.prototype.add_pattern</a></li>
+<li class="links "><a href="Gtk.FileFilter.add_pixbuf_formats.html" title="Gtk.FileFilter.prototype.add_pixbuf_formats">Gtk.FileFilter.prototype.add_pixbuf_formats</a></li>
+<li class="links "><a href="Gtk.FileFilter.filter.html" title="Gtk.FileFilter.prototype.filter">Gtk.FileFilter.prototype.filter</a></li>
+<li class="links "><a href="Gtk.FileFilter.get_name.html" title="Gtk.FileFilter.prototype.get_name">Gtk.FileFilter.prototype.get_name</a></li>
+<li class="links "><a href="Gtk.FileFilter.get_needed.html" title="Gtk.FileFilter.prototype.get_needed">Gtk.FileFilter.prototype.get_needed</a></li>
+<li class="links "><a href="Gtk.FileFilter.set_name.html" title="Gtk.FileFilter.prototype.set_name">Gtk.FileFilter.prototype.set_name</a></li>
+</ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Other</span></h2></div>
+<div class="region"><ul><li class="links "><a href="Gtk.FileFilter.new.html" title="Gtk.FileFilter.new">Gtk.FileFilter.new</a></li></ul></div>
+</div></div>
+</div>
+<div class="sect sect-links" role="navigation">
+<div class="hgroup"></div>
+<div class="contents"><div class="links guidelinks"><div class="inner">
+<div class="title"><h2><span class="title">More Information</span></h2></div>
+<div class="region"><ul><li class="links "><a href="index.html" title="Index">Index</a></li></ul></div>
+</div></div></div>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="footer"></div>
+</div></body>
+</html>

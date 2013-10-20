@@ -1,0 +1,113 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Gtk.ImageMenuItem</title>
+<link rel="stylesheet" type="text/css" href="C.css">
+<script type="text/javascript" src="jquery.js"></script><script type="text/javascript" src="jquery.syntax.js"></script><script type="text/javascript" src="yelp.js"></script>
+</head>
+<body><div class="page" role="main">
+<div class="header"><div class="trails" role="navigation"><div class="trail">
+<a class="trail" href="index.html" title="Index">Index</a> » </div></div></div>
+<div class="body">
+<div class="hgroup"><h1 class="title"><span class="title">Gtk.ImageMenuItem</span></h1></div>
+<div class="region">
+<div class="contents">
+<div class="synopsis"><div class="inner"><div class="region"><div class="contents"><div class="code"><pre class="contents ">const Gtk = imports.gi.Gtk;
+
+let image_menu_item = new Gtk.ImageMenuItem({
+    <span class=" link"><a href="Gtk.ImageMenuItem-accel-group.html" title="Gtk.ImageMenuItem:accel-group">accel_group</a></span>: value,
+    <span class=" link"><a href="Gtk.ImageMenuItem-always-show-image.html" title="Gtk.ImageMenuItem:always-show-image">always_show_image</a></span>: value,
+    <span class=" link"><a href="Gtk.ImageMenuItem-image.html" title="Gtk.ImageMenuItem:image">image</a></span>: value,
+    <span class=" link"><a href="Gtk.ImageMenuItem-use-stock.html" title="Gtk.ImageMenuItem:use-stock">use_stock</a></span>: value,
+});
+  </pre></div></div></div></div></div>
+<p class="p">A GtkImageMenuItem is a menu item which has an icon next to the text label.</p>
+<p class="p">Note that the user can disable display of menu icons, so make sure to still
+fill in the text label.</p>
+<div class="synopsis"><div class="inner">
+<div class="title title-synopsis"><h2><span class="title">Hierarchy</span></h2></div>
+<div class="region"><div class="contents"><div class="tree"><div class="inner"><div class="region"><ul class="tree"><li class="tree">
+<div>
+        <span class=" code">GObject.Object</span>
+      
+      </div>
+<ul class="tree"><li class="tree">
+<div>
+        <span class=" code">GObject.InitiallyUnowned</span>
+      
+      </div>
+<ul class="tree"><li class="tree">
+<div>
+        <span class=" code">Gtk.Widget</span>
+      
+      </div>
+<ul class="tree"><li class="tree">
+<div>
+        <span class=" code">Gtk.Container</span>
+      
+      </div>
+<ul class="tree"><li class="tree">
+<div>
+        <span class=" code">Gtk.Bin</span>
+      
+      </div>
+<ul class="tree"><li class="tree">
+<div>
+        <span class=" code">Gtk.MenuItem</span>
+      
+      </div>
+<ul class="tree"><li class="tree"><div>
+        <span class=" code">Gtk.ImageMenuItem</span>
+      </div></li></ul>
+</li></ul>
+</li></ul>
+</li></ul>
+</li></ul>
+</li></ul>
+</li></ul></div></div></div></div></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Methods</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.ImageMenuItem.get_always_show_image.html" title="Gtk.ImageMenuItem.prototype.get_always_show_image">Gtk.ImageMenuItem.prototype.get_always_show_image</a></li>
+<li class="links "><a href="Gtk.ImageMenuItem.get_image.html" title="Gtk.ImageMenuItem.prototype.get_image">Gtk.ImageMenuItem.prototype.get_image</a></li>
+<li class="links "><a href="Gtk.ImageMenuItem.get_use_stock.html" title="Gtk.ImageMenuItem.prototype.get_use_stock">Gtk.ImageMenuItem.prototype.get_use_stock</a></li>
+<li class="links "><a href="Gtk.ImageMenuItem.set_accel_group.html" title="Gtk.ImageMenuItem.prototype.set_accel_group">Gtk.ImageMenuItem.prototype.set_accel_group</a></li>
+<li class="links "><a href="Gtk.ImageMenuItem.set_always_show_image.html" title="Gtk.ImageMenuItem.prototype.set_always_show_image">Gtk.ImageMenuItem.prototype.set_always_show_image</a></li>
+<li class="links "><a href="Gtk.ImageMenuItem.set_image.html" title="Gtk.ImageMenuItem.prototype.set_image">Gtk.ImageMenuItem.prototype.set_image</a></li>
+<li class="links "><a href="Gtk.ImageMenuItem.set_use_stock.html" title="Gtk.ImageMenuItem.prototype.set_use_stock">Gtk.ImageMenuItem.prototype.set_use_stock</a></li>
+</ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Properties</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.ImageMenuItem-accel-group.html" title="Gtk.ImageMenuItem:accel-group">accel-group</a></li>
+<li class="links "><a href="Gtk.ImageMenuItem-always-show-image.html" title="Gtk.ImageMenuItem:always-show-image">always-show-image</a></li>
+<li class="links "><a href="Gtk.ImageMenuItem-image.html" title="Gtk.ImageMenuItem:image">image</a></li>
+<li class="links "><a href="Gtk.ImageMenuItem-use-stock.html" title="Gtk.ImageMenuItem:use-stock">use-stock</a></li>
+</ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Other</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.ImageMenuItem.new.html" title="Gtk.ImageMenuItem.new">Gtk.ImageMenuItem.new</a></li>
+<li class="links "><a href="Gtk.ImageMenuItem.new_from_stock.html" title="Gtk.ImageMenuItem.new_from_stock">Gtk.ImageMenuItem.new_from_stock</a></li>
+<li class="links "><a href="Gtk.ImageMenuItem.new_with_label.html" title="Gtk.ImageMenuItem.new_with_label">Gtk.ImageMenuItem.new_with_label</a></li>
+<li class="links "><a href="Gtk.ImageMenuItem.new_with_mnemonic.html" title="Gtk.ImageMenuItem.new_with_mnemonic">Gtk.ImageMenuItem.new_with_mnemonic</a></li>
+</ul></div>
+</div></div>
+</div>
+<div class="sect sect-links" role="navigation">
+<div class="hgroup"></div>
+<div class="contents"><div class="links guidelinks"><div class="inner">
+<div class="title"><h2><span class="title">More Information</span></h2></div>
+<div class="region"><ul><li class="links "><a href="index.html" title="Index">Index</a></li></ul></div>
+</div></div></div>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="footer"></div>
+</div></body>
+</html>

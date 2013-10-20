@@ -1,0 +1,207 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Gtk.Dialog</title>
+<link rel="stylesheet" type="text/css" href="C.css">
+<script type="text/javascript" src="jquery.js"></script><script type="text/javascript" src="jquery.syntax.js"></script><script type="text/javascript" src="yelp.js"></script>
+</head>
+<body><div class="page" role="main">
+<div class="header"><div class="trails" role="navigation"><div class="trail">
+<a class="trail" href="index.html" title="Index">Index</a> » </div></div></div>
+<div class="body">
+<div class="hgroup"><h1 class="title"><span class="title">Gtk.Dialog</span></h1></div>
+<div class="region">
+<div class="contents">
+<div class="synopsis"><div class="inner"><div class="region"><div class="contents"><div class="code"><pre class="contents ">const Gtk = imports.gi.Gtk;
+
+let dialog = new Gtk.Dialog();
+  </pre></div></div></div></div></div>
+<p class="p">Dialog boxes are a convenient way to prompt the user for a small amount
+of input, e.g. to display a message, ask a question, or anything else
+that does not require extensive effort on the user's part.</p>
+<p class="p">GTK+ treats a dialog as a window split vertically. The top section is a
+<span class=" link"><a href="Gtk.VBox.html" title="Gtk.VBox">Gtk.VBox</a></span>, and is where widgets such as a <span class=" link"><a href="Gtk.Label.html" title="Gtk.Label">Gtk.Label</a></span> or a <span class=" link"><a href="Gtk.Entry.html" title="Gtk.Entry">Gtk.Entry</a></span> should
+be packed. The bottom area is known as the
+&lt;structfield&gt;action_area&lt;/structfield&gt;. This is generally used for
+packing buttons into the dialog which may perform functions such as
+cancel, ok, or apply.</p>
+<p class="p"><span class=" link"><a href="Gtk.Dialog.html" title="Gtk.Dialog">Gtk.Dialog</a></span> boxes are created with a call to <span class=" link"><a href="Gtk.new.html" title="Gtk.new">Gtk.new</a></span> or
+<span class=" link"><a href="Gtk.new_with_buttons.html" title="Gtk.new_with_buttons">Gtk.new_with_buttons</a></span>. <span class=" link"><a href="Gtk.new_with_buttons.html" title="Gtk.new_with_buttons">Gtk.new_with_buttons</a></span> is
+recommended; it allows you to set the dialog title, some convenient flags,
+and add simple buttons.</p>
+<p class="p">If 'dialog' is a newly created dialog, the two primary areas of the
+window can be accessed through <span class=" link"><a href="Gtk.get_content_area.html" title="Gtk.get_content_area">Gtk.get_content_area</a></span> and
+<span class=" link"><a href="Gtk.get_action_area.html" title="Gtk.get_action_area">Gtk.get_action_area</a></span>, as can be seen from the example below.</p>
+<p class="p">A 'modal' dialog (that is, one which freezes the rest of the application
+from user input), can be created by calling <span class=" link"><a href="Gtk.set_modal.html" title="Gtk.set_modal">Gtk.set_modal</a></span> on the
+dialog. Use the GTK_WINDOW() macro to cast the widget returned from
+<span class=" link"><a href="Gtk.new.html" title="Gtk.new">Gtk.new</a></span> into a <span class=" link"><a href="Gtk.Window.html" title="Gtk.Window">Gtk.Window</a></span>. When using <span class=" link"><a href="Gtk.new_with_buttons.html" title="Gtk.new_with_buttons">Gtk.new_with_buttons</a></span>
+you can also pass the #GTK_DIALOG_MODAL flag to make a dialog modal.</p>
+<p class="p">If you add buttons to <span class=" link"><a href="Gtk.Dialog.html" title="Gtk.Dialog">Gtk.Dialog</a></span> using <span class=" link"><a href="Gtk.new_with_buttons.html" title="Gtk.new_with_buttons">Gtk.new_with_buttons</a></span>,
+<span class=" link"><a href="Gtk.add_button.html" title="Gtk.add_button">Gtk.add_button</a></span>, <span class=" link"><a href="Gtk.add_buttons.html" title="Gtk.add_buttons">Gtk.add_buttons</a></span>, or
+<span class=" link"><a href="Gtk.add_action_widget.html" title="Gtk.add_action_widget">Gtk.add_action_widget</a></span>, clicking the button will emit a signal
+called <span class=" link"><a href="Gtk.response.html" title="Gtk.response">Gtk.response</a></span> with a response ID that you specified. GTK+
+will never assign a meaning to positive response IDs; these are entirely
+user-defined. But for convenience, you can use the response IDs in the
+<span class=" link"><a href="Gtk.ResponseType.html" title="Gtk.ResponseType">Gtk.ResponseType</a></span> enumeration (these all have values less than zero). If
+a dialog receives a delete event, the <span class=" link"><a href="Gtk.response.html" title="Gtk.response">Gtk.response</a></span> signal will
+be emitted with a response ID of #GTK_RESPONSE_DELETE_EVENT.</p>
+<p class="p">If you want to block waiting for a dialog to return before returning
+control flow to your code, you can call <span class=" link"><a href="Gtk.run.html" title="Gtk.run">Gtk.run</a></span>. This function
+enters a recursive main loop and waits for the user to respond to the
+dialog, returning the response ID corresponding to the button the user
+clicked.</p>
+<p class="p">For the simple dialog in the following example, in reality you'd probably
+use <span class=" link"><a href="Gtk.MessageDialog.html" title="Gtk.MessageDialog">Gtk.MessageDialog</a></span> to save yourself some effort. But you'd need to
+create the dialog contents manually if you had more than a simple message
+in the dialog.
+&lt;example&gt;
+&lt;title&gt;Simple GtkDialog usage&lt;/title&gt;
+&lt;programlisting&gt;
+/&amp;ast; Function to open a dialog box displaying the message provided. &amp;ast;/
+void
+quick_message (gchar *message)
+{
+   GtkWidget *dialog, *label, *content_area;</p>
+<p class="p">   /&amp;ast; Create the widgets &amp;ast;/
+   dialog = gtk_dialog_new_with_buttons ("Message",
+                                         main_application_window,
+                                         GTK_DIALOG_DESTROY_WITH_PARENT,
+                                         _("_OK"),
+                                         GTK_RESPONSE_NONE,
+                                         NULL);
+   content_area = gtk_dialog_get_content_area (GTK_DIALOG (dialog));
+   label = gtk_label_new (message);</p>
+<p class="p">   /&amp;ast; Ensure that the dialog box is destroyed when the user responds &amp;ast;/
+   g_signal_connect_swapped (dialog,
+                             "response",
+                             G_CALLBACK (gtk_widget_destroy),
+                             dialog);</p>
+<p class="p">   /&amp;ast; Add the label, and show everything we've added to the dialog &amp;ast;/</p>
+<p class="p">   gtk_container_add (GTK_CONTAINER (content_area), label);
+   gtk_widget_show_all (dialog);
+}
+&lt;/programlisting&gt;
+&lt;/example&gt;</p>
+<p class="p">&lt;refsect2 id="GtkDialog-BUILDER-UI"&gt;&lt;title&gt;GtkDialog as GtkBuildable&lt;/title&gt;
+&lt;para&gt;
+The GtkDialog implementation of the <span class=" link"><a href="Gtk.Buildable.html" title="Gtk.Buildable">Gtk.Buildable</a></span> interface exposes the
+@vbox and @action_area as internal children with the names "vbox" and
+"action_area".
+&lt;/para&gt;
+&lt;para&gt;
+GtkDialog supports a custom &amp;lt;action-widgets&amp;gt; element, which
+can contain multiple &amp;lt;action-widget&amp;gt; elements. The "response"
+attribute specifies a numeric response, and the content of the element
+is the id of widget (which should be a child of the dialogs @action_area).
+&lt;/para&gt;
+&lt;example&gt;
+&lt;title&gt;A &lt;structname&gt;GtkDialog&lt;/structname&gt; UI definition fragment.&lt;/title&gt;
+&lt;programlisting&gt;&lt;![CDATA[
+&lt;object class="GtkDialog" id="dialog1"&gt;
+  &lt;child internal-child="vbox"&gt;"
+    &lt;object class="GtkVBox" id="vbox"&gt;
+      &lt;child internal-child="action_area"&gt;
+        &lt;object class="GtkHButtonBox" id="button_box"&gt;
+          &lt;child&gt;
+            &lt;object class="GtkButton" id="button_cancel"/&gt;
+          &lt;/child&gt;
+          &lt;child&gt;
+            &lt;object class="GtkButton" id="button_ok"/&gt;
+          &lt;/child&gt;
+        &lt;/object&gt;
+      &lt;/child&gt;
+    &lt;/object&gt;
+  &lt;/child&gt;
+  &lt;action-widgets&gt;
+    &lt;action-widget response="3"&gt;button_ok&lt;/action-widget&gt;
+    &lt;action-widget response="-5"&gt;button_cancel&lt;/action-widget&gt;
+  &lt;/action-widgets&gt;
+&lt;/object&gt;
+]]&gt;&lt;/programlisting&gt;
+&lt;/example&gt;
+&lt;/refsect2&gt;</p>
+<div class="synopsis"><div class="inner">
+<div class="title title-synopsis"><h2><span class="title">Hierarchy</span></h2></div>
+<div class="region"><div class="contents"><div class="tree"><div class="inner"><div class="region"><ul class="tree"><li class="tree">
+<div>
+        <span class=" code">GObject.Object</span>
+      
+      </div>
+<ul class="tree"><li class="tree">
+<div>
+        <span class=" code">GObject.InitiallyUnowned</span>
+      
+      </div>
+<ul class="tree"><li class="tree">
+<div>
+        <span class=" code">Gtk.Widget</span>
+      
+      </div>
+<ul class="tree"><li class="tree">
+<div>
+        <span class=" code">Gtk.Container</span>
+      
+      </div>
+<ul class="tree"><li class="tree">
+<div>
+        <span class=" code">Gtk.Bin</span>
+      
+      </div>
+<ul class="tree"><li class="tree">
+<div>
+        <span class=" code">Gtk.Window</span>
+      
+      </div>
+<ul class="tree"><li class="tree"><div>
+        <span class=" code">Gtk.Dialog</span>
+      </div></li></ul>
+</li></ul>
+</li></ul>
+</li></ul>
+</li></ul>
+</li></ul>
+</li></ul></div></div></div></div></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Methods</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.Dialog.add_action_widget.html" title="Gtk.Dialog.prototype.add_action_widget">Gtk.Dialog.prototype.add_action_widget</a></li>
+<li class="links "><a href="Gtk.Dialog.add_button.html" title="Gtk.Dialog.prototype.add_button">Gtk.Dialog.prototype.add_button</a></li>
+<li class="links "><a href="Gtk.Dialog.get_action_area.html" title="Gtk.Dialog.prototype.get_action_area">Gtk.Dialog.prototype.get_action_area</a></li>
+<li class="links "><a href="Gtk.Dialog.get_content_area.html" title="Gtk.Dialog.prototype.get_content_area">Gtk.Dialog.prototype.get_content_area</a></li>
+<li class="links "><a href="Gtk.Dialog.get_response_for_widget.html" title="Gtk.Dialog.prototype.get_response_for_widget">Gtk.Dialog.prototype.get_response_for_widget</a></li>
+<li class="links "><a href="Gtk.Dialog.get_widget_for_response.html" title="Gtk.Dialog.prototype.get_widget_for_response">Gtk.Dialog.prototype.get_widget_for_response</a></li>
+<li class="links "><a href="Gtk.Dialog.response.html" title="Gtk.Dialog.prototype.response">Gtk.Dialog.prototype.response</a></li>
+<li class="links "><a href="Gtk.Dialog.run.html" title="Gtk.Dialog.prototype.run">Gtk.Dialog.prototype.run</a></li>
+<li class="links "><a href="Gtk.Dialog.set_alternative_button_order_from_array.html" title="Gtk.Dialog.prototype.set_alternative_button_order_from_array">Gtk.Dialog.prototype.set_alternative_button_order_from_array</a></li>
+<li class="links "><a href="Gtk.Dialog.set_default_response.html" title="Gtk.Dialog.prototype.set_default_response">Gtk.Dialog.prototype.set_default_response</a></li>
+<li class="links "><a href="Gtk.Dialog.set_response_sensitive.html" title="Gtk.Dialog.prototype.set_response_sensitive">Gtk.Dialog.prototype.set_response_sensitive</a></li>
+</ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Signals</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.Dialog-close.html" title="Gtk.Dialog::close">close</a></li>
+<li class="links "><a href="Gtk.Dialog-response.html" title="Gtk.Dialog::response">response</a></li>
+</ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Other</span></h2></div>
+<div class="region"><ul><li class="links "><a href="Gtk.Dialog.new.html" title="Gtk.Dialog.new">Gtk.Dialog.new</a></li></ul></div>
+</div></div>
+</div>
+<div class="sect sect-links" role="navigation">
+<div class="hgroup"></div>
+<div class="contents"><div class="links guidelinks"><div class="inner">
+<div class="title"><h2><span class="title">More Information</span></h2></div>
+<div class="region"><ul><li class="links "><a href="index.html" title="Index">Index</a></li></ul></div>
+</div></div></div>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="footer"></div>
+</div></body>
+</html>

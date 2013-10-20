@@ -1,0 +1,120 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Gtk.Grid</title>
+<link rel="stylesheet" type="text/css" href="C.css">
+<script type="text/javascript" src="jquery.js"></script><script type="text/javascript" src="jquery.syntax.js"></script><script type="text/javascript" src="yelp.js"></script>
+</head>
+<body><div class="page" role="main">
+<div class="header"><div class="trails" role="navigation"><div class="trail">
+<a class="trail" href="index.html" title="Index">Index</a> » </div></div></div>
+<div class="body">
+<div class="hgroup"><h1 class="title"><span class="title">Gtk.Grid</span></h1></div>
+<div class="region">
+<div class="contents">
+<div class="synopsis"><div class="inner"><div class="region"><div class="contents"><div class="code"><pre class="contents ">const Gtk = imports.gi.Gtk;
+
+let grid = new Gtk.Grid({
+    <span class=" link"><a href="Gtk.Grid-baseline-row.html" title="Gtk.Grid:baseline-row">baseline_row</a></span>: value,
+    <span class=" link"><a href="Gtk.Grid-column-homogeneous.html" title="Gtk.Grid:column-homogeneous">column_homogeneous</a></span>: value,
+    <span class=" link"><a href="Gtk.Grid-column-spacing.html" title="Gtk.Grid:column-spacing">column_spacing</a></span>: value,
+    <span class=" link"><a href="Gtk.Grid-row-homogeneous.html" title="Gtk.Grid:row-homogeneous">row_homogeneous</a></span>: value,
+    <span class=" link"><a href="Gtk.Grid-row-spacing.html" title="Gtk.Grid:row-spacing">row_spacing</a></span>: value,
+});
+  </pre></div></div></div></div></div>
+<p class="p">GtkGrid is a container which arranges its child widgets in
+rows and columns. It is a very similar to <span class=" link"><a href="Gtk.Table.html" title="Gtk.Table">Gtk.Table</a></span> and <span class=" link"><a href="Gtk.Box.html" title="Gtk.Box">Gtk.Box</a></span>,
+but it consistently uses <span class=" link"><a href="Gtk.Widget.html" title="Gtk.Widget">Gtk.Widget</a></span>'s <span class=" link"><a href="Gtk.margin.html" title="Gtk.margin">Gtk.margin</a></span> and <span class=" link"><a href="Gtk.expand.html" title="Gtk.expand">Gtk.expand</a></span>
+properties instead of custom child properties, and it fully supports
+&lt;link linkend="geometry-management"&gt;height-for-width geometry management&lt;/link&gt;.</p>
+<p class="p">Children are added using <span class=" link"><a href="Gtk.attach.html" title="Gtk.attach">Gtk.attach</a></span>. They can span multiple
+rows or columns. It is also possible to add a child next to an
+existing child, using <span class=" link"><a href="Gtk.attach_next_to.html" title="Gtk.attach_next_to">Gtk.attach_next_to</a></span>. The behaviour of
+GtkGrid when several children occupy the same grid cell is undefined.</p>
+<p class="p">GtkGrid can be used like a <span class=" link"><a href="Gtk.Box.html" title="Gtk.Box">Gtk.Box</a></span> by just using <span class=" link"><a href="Gtk.Container.add.html" title="Gtk.Container.prototype.add">Gtk.Container.prototype.add</a></span>,
+which will place children next to each other in the direction determined
+by the <span class=" link"><a href="Gtk.orientation.html" title="Gtk.orientation">Gtk.orientation</a></span> property.</p>
+<div class="synopsis"><div class="inner">
+<div class="title title-synopsis"><h2><span class="title">Hierarchy</span></h2></div>
+<div class="region"><div class="contents"><div class="tree"><div class="inner"><div class="region"><ul class="tree"><li class="tree">
+<div>
+        <span class=" code">GObject.Object</span>
+      
+      </div>
+<ul class="tree"><li class="tree">
+<div>
+        <span class=" code">GObject.InitiallyUnowned</span>
+      
+      </div>
+<ul class="tree"><li class="tree">
+<div>
+        <span class=" code">Gtk.Widget</span>
+      
+      </div>
+<ul class="tree"><li class="tree">
+<div>
+        <span class=" code">Gtk.Container</span>
+      
+      </div>
+<ul class="tree"><li class="tree"><div>
+        <span class=" code">Gtk.Grid</span>
+      </div></li></ul>
+</li></ul>
+</li></ul>
+</li></ul>
+</li></ul></div></div></div></div></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Methods</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.Grid.attach.html" title="Gtk.Grid.prototype.attach">Gtk.Grid.prototype.attach</a></li>
+<li class="links "><a href="Gtk.Grid.attach_next_to.html" title="Gtk.Grid.prototype.attach_next_to">Gtk.Grid.prototype.attach_next_to</a></li>
+<li class="links "><a href="Gtk.Grid.get_baseline_row.html" title="Gtk.Grid.prototype.get_baseline_row">Gtk.Grid.prototype.get_baseline_row</a></li>
+<li class="links "><a href="Gtk.Grid.get_child_at.html" title="Gtk.Grid.prototype.get_child_at">Gtk.Grid.prototype.get_child_at</a></li>
+<li class="links "><a href="Gtk.Grid.get_column_homogeneous.html" title="Gtk.Grid.prototype.get_column_homogeneous">Gtk.Grid.prototype.get_column_homogeneous</a></li>
+<li class="links "><a href="Gtk.Grid.get_column_spacing.html" title="Gtk.Grid.prototype.get_column_spacing">Gtk.Grid.prototype.get_column_spacing</a></li>
+<li class="links "><a href="Gtk.Grid.get_row_baseline_position.html" title="Gtk.Grid.prototype.get_row_baseline_position">Gtk.Grid.prototype.get_row_baseline_position</a></li>
+<li class="links "><a href="Gtk.Grid.get_row_homogeneous.html" title="Gtk.Grid.prototype.get_row_homogeneous">Gtk.Grid.prototype.get_row_homogeneous</a></li>
+<li class="links "><a href="Gtk.Grid.get_row_spacing.html" title="Gtk.Grid.prototype.get_row_spacing">Gtk.Grid.prototype.get_row_spacing</a></li>
+<li class="links "><a href="Gtk.Grid.insert_column.html" title="Gtk.Grid.prototype.insert_column">Gtk.Grid.prototype.insert_column</a></li>
+<li class="links "><a href="Gtk.Grid.insert_next_to.html" title="Gtk.Grid.prototype.insert_next_to">Gtk.Grid.prototype.insert_next_to</a></li>
+<li class="links "><a href="Gtk.Grid.insert_row.html" title="Gtk.Grid.prototype.insert_row">Gtk.Grid.prototype.insert_row</a></li>
+<li class="links "><a href="Gtk.Grid.remove_column.html" title="Gtk.Grid.prototype.remove_column">Gtk.Grid.prototype.remove_column</a></li>
+<li class="links "><a href="Gtk.Grid.remove_row.html" title="Gtk.Grid.prototype.remove_row">Gtk.Grid.prototype.remove_row</a></li>
+<li class="links "><a href="Gtk.Grid.set_baseline_row.html" title="Gtk.Grid.prototype.set_baseline_row">Gtk.Grid.prototype.set_baseline_row</a></li>
+<li class="links "><a href="Gtk.Grid.set_column_homogeneous.html" title="Gtk.Grid.prototype.set_column_homogeneous">Gtk.Grid.prototype.set_column_homogeneous</a></li>
+<li class="links "><a href="Gtk.Grid.set_column_spacing.html" title="Gtk.Grid.prototype.set_column_spacing">Gtk.Grid.prototype.set_column_spacing</a></li>
+<li class="links "><a href="Gtk.Grid.set_row_baseline_position.html" title="Gtk.Grid.prototype.set_row_baseline_position">Gtk.Grid.prototype.set_row_baseline_position</a></li>
+<li class="links "><a href="Gtk.Grid.set_row_homogeneous.html" title="Gtk.Grid.prototype.set_row_homogeneous">Gtk.Grid.prototype.set_row_homogeneous</a></li>
+<li class="links "><a href="Gtk.Grid.set_row_spacing.html" title="Gtk.Grid.prototype.set_row_spacing">Gtk.Grid.prototype.set_row_spacing</a></li>
+</ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Properties</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.Grid-baseline-row.html" title="Gtk.Grid:baseline-row">baseline-row</a></li>
+<li class="links "><a href="Gtk.Grid-column-homogeneous.html" title="Gtk.Grid:column-homogeneous">column-homogeneous</a></li>
+<li class="links "><a href="Gtk.Grid-column-spacing.html" title="Gtk.Grid:column-spacing">column-spacing</a></li>
+<li class="links "><a href="Gtk.Grid-row-homogeneous.html" title="Gtk.Grid:row-homogeneous">row-homogeneous</a></li>
+<li class="links "><a href="Gtk.Grid-row-spacing.html" title="Gtk.Grid:row-spacing">row-spacing</a></li>
+</ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Other</span></h2></div>
+<div class="region"><ul><li class="links "><a href="Gtk.Grid.new.html" title="Gtk.Grid.new">Gtk.Grid.new</a></li></ul></div>
+</div></div>
+</div>
+<div class="sect sect-links" role="navigation">
+<div class="hgroup"></div>
+<div class="contents"><div class="links guidelinks"><div class="inner">
+<div class="title"><h2><span class="title">More Information</span></h2></div>
+<div class="region"><ul><li class="links "><a href="index.html" title="Index">Index</a></li></ul></div>
+</div></div></div>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="footer"></div>
+</div></body>
+</html>

@@ -1,0 +1,134 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Gtk.Frame</title>
+<link rel="stylesheet" type="text/css" href="C.css">
+<script type="text/javascript" src="jquery.js"></script><script type="text/javascript" src="jquery.syntax.js"></script><script type="text/javascript" src="yelp.js"></script>
+</head>
+<body><div class="page" role="main">
+<div class="header"><div class="trails" role="navigation"><div class="trail">
+<a class="trail" href="index.html" title="Index">Index</a> » </div></div></div>
+<div class="body">
+<div class="hgroup"><h1 class="title"><span class="title">Gtk.Frame</span></h1></div>
+<div class="region">
+<div class="contents">
+<div class="synopsis"><div class="inner"><div class="region"><div class="contents"><div class="code"><pre class="contents ">const Gtk = imports.gi.Gtk;
+
+let frame = new Gtk.Frame({
+    <span class=" link"><a href="Gtk.Frame-label.html" title="Gtk.Frame:label">label</a></span>: value,
+    <span class=" link"><a href="Gtk.Frame-label-widget.html" title="Gtk.Frame:label-widget">label_widget</a></span>: value,
+    <span class=" link"><a href="Gtk.Frame-label-xalign.html" title="Gtk.Frame:label-xalign">label_xalign</a></span>: value,
+    <span class=" link"><a href="Gtk.Frame-label-yalign.html" title="Gtk.Frame:label-yalign">label_yalign</a></span>: value,
+    <span class=" link"><a href="Gtk.Frame-shadow-type.html" title="Gtk.Frame:shadow-type">shadow_type</a></span>: value,
+});
+  </pre></div></div></div></div></div>
+<p class="p">The frame widget is a Bin that surrounds its child
+with a decorative frame and an optional label.
+If present, the label is drawn in a gap in the
+top side of the frame. The position of the
+label can be controlled with <span class=" link"><a href="Gtk.set_label_align.html" title="Gtk.set_label_align">Gtk.set_label_align</a></span>.</p>
+<p class="p">&lt;refsect2 id="GtkFrame-BUILDER-UI"&gt;
+&lt;title&gt;GtkFrame as GtkBuildable&lt;/title&gt;
+&lt;para&gt;
+The GtkFrame implementation of the GtkBuildable interface
+supports placing a child in the label position by specifying
+"label" as the "type" attribute of a &amp;lt;child&amp;gt; element.
+A normal content child can be specified without specifying
+a &amp;lt;child&amp;gt; type attribute.
+&lt;/para&gt;
+&lt;example&gt;
+&lt;title&gt;A UI definition fragment with GtkFrame&lt;/title&gt;
+&lt;programlisting&gt;&lt;![CDATA[
+&lt;object class="GtkFrame"&gt;
+  &lt;child type="label"&gt;
+    &lt;object class="GtkLabel" id="frame-label"/&gt;
+  &lt;/child&gt;
+  &lt;child&gt;
+    &lt;object class="GtkEntry" id="frame-content"/&gt;
+  &lt;/child&gt;
+&lt;/object&gt;
+]]&gt;&lt;/programlisting&gt;
+&lt;/example&gt;
+&lt;/refsect2&gt;</p>
+<div class="synopsis"><div class="inner">
+<div class="title title-synopsis"><h2><span class="title">Hierarchy</span></h2></div>
+<div class="region"><div class="contents"><div class="tree"><div class="inner"><div class="region"><ul class="tree"><li class="tree">
+<div>
+        <span class=" code">GObject.Object</span>
+      
+      </div>
+<ul class="tree"><li class="tree">
+<div>
+        <span class=" code">GObject.InitiallyUnowned</span>
+      
+      </div>
+<ul class="tree"><li class="tree">
+<div>
+        <span class=" code">Gtk.Widget</span>
+      
+      </div>
+<ul class="tree"><li class="tree">
+<div>
+        <span class=" code">Gtk.Container</span>
+      
+      </div>
+<ul class="tree"><li class="tree">
+<div>
+        <span class=" code">Gtk.Bin</span>
+      
+      </div>
+<ul class="tree"><li class="tree"><div>
+        <span class=" code">Gtk.Frame</span>
+      </div></li></ul>
+</li></ul>
+</li></ul>
+</li></ul>
+</li></ul>
+</li></ul></div></div></div></div></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Methods</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.Frame.get_label.html" title="Gtk.Frame.prototype.get_label">Gtk.Frame.prototype.get_label</a></li>
+<li class="links "><a href="Gtk.Frame.get_label_align.html" title="Gtk.Frame.prototype.get_label_align">Gtk.Frame.prototype.get_label_align</a></li>
+<li class="links "><a href="Gtk.Frame.get_label_widget.html" title="Gtk.Frame.prototype.get_label_widget">Gtk.Frame.prototype.get_label_widget</a></li>
+<li class="links "><a href="Gtk.Frame.get_shadow_type.html" title="Gtk.Frame.prototype.get_shadow_type">Gtk.Frame.prototype.get_shadow_type</a></li>
+<li class="links "><a href="Gtk.Frame.set_label.html" title="Gtk.Frame.prototype.set_label">Gtk.Frame.prototype.set_label</a></li>
+<li class="links "><a href="Gtk.Frame.set_label_align.html" title="Gtk.Frame.prototype.set_label_align">Gtk.Frame.prototype.set_label_align</a></li>
+<li class="links "><a href="Gtk.Frame.set_label_widget.html" title="Gtk.Frame.prototype.set_label_widget">Gtk.Frame.prototype.set_label_widget</a></li>
+<li class="links "><a href="Gtk.Frame.set_shadow_type.html" title="Gtk.Frame.prototype.set_shadow_type">Gtk.Frame.prototype.set_shadow_type</a></li>
+</ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Properties</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.Frame-label.html" title="Gtk.Frame:label">label</a></li>
+<li class="links "><a href="Gtk.Frame-label-widget.html" title="Gtk.Frame:label-widget">label-widget</a></li>
+<li class="links "><a href="Gtk.Frame-label-xalign.html" title="Gtk.Frame:label-xalign">label-xalign</a></li>
+<li class="links "><a href="Gtk.Frame-label-yalign.html" title="Gtk.Frame:label-yalign">label-yalign</a></li>
+<li class="links "><a href="Gtk.Frame-shadow-type.html" title="Gtk.Frame:shadow-type">shadow-type</a></li>
+</ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Virtual functions</span></h2></div>
+<div class="region"><ul><li class="links "><a href="Gtk.Frame-compute_child_allocation.html" title="Gtk.Frame::compute_child_allocation">Gtk.Frame::compute_child_allocation</a></li></ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Other</span></h2></div>
+<div class="region"><ul><li class="links "><a href="Gtk.Frame.new.html" title="Gtk.Frame.new">Gtk.Frame.new</a></li></ul></div>
+</div></div>
+</div>
+<div class="sect sect-links" role="navigation">
+<div class="hgroup"></div>
+<div class="contents"><div class="links guidelinks"><div class="inner">
+<div class="title"><h2><span class="title">More Information</span></h2></div>
+<div class="region"><ul><li class="links "><a href="index.html" title="Index">Index</a></li></ul></div>
+</div></div></div>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="footer"></div>
+</div></body>
+</html>

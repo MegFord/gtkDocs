@@ -1,0 +1,57 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Gtk.IconSet.prototype.add_source</title>
+<link rel="stylesheet" type="text/css" href="C.css">
+<script type="text/javascript" src="jquery.js"></script><script type="text/javascript" src="jquery.syntax.js"></script><script type="text/javascript" src="yelp.js"></script>
+</head>
+<body><div class="page" role="main">
+<div class="header"><div class="trails" role="navigation"><div class="trail">
+<a class="trail" href="index.html" title="Index">Index</a> » <a class="trail" href="Gtk.IconSet.html" title="Gtk.IconSet">Gtk.IconSet</a> » </div></div></div>
+<div class="body">
+<div class="hgroup"><h1 class="title"><span class="title">Gtk.IconSet.prototype.add_source</span></h1></div>
+<div class="region">
+<div class="contents">
+<div class="synopsis"><div class="inner"><div class="region"><div class="contents"><div class="code"><pre class="contents ">function add_source(source:Gtk.IconSource):void {
+    // Gjs wrapper for gtk_icon_set_add_source()
+}</pre></div></div></div></div></div>
+<p class="p">Icon sets have a list of <span class=" link"><a href="Gtk.IconSource.html" title="Gtk.IconSource">Gtk.IconSource</a></span>, which they use as base
+icons for rendering icons in different states and sizes. Icons are
+scaled, made to look insensitive, etc. in
+<span class=" link"><a href="Gtk.render_icon.html" title="render_icon">render_icon</a></span>, but <span class=" link"><a href="Gtk.IconSet.html" title="Gtk.IconSet">Gtk.IconSet</a></span> needs base images to
+work with. The base images and when to use them are described by
+a <span class=" link"><a href="Gtk.IconSource.html" title="Gtk.IconSource">Gtk.IconSource</a></span>.</p>
+<p class="p">This function copies <span class=" code">source</span>, so you can reuse the same source immediately
+without affecting the icon set.</p>
+<p class="p">An example of when you'd use this function: a web browser's "Back
+to Previous Page" icon might point in a different direction in
+Hebrew and in English; it might look different when insensitive;
+and it might change size depending on toolbar mode (small/large
+icons). So a single icon set would contain all those variants of
+the icon, and you might add a separate source for each one.</p>
+<p class="p">You should nearly always add a "default" icon source with all
+fields wildcarded, which will be used as a fallback if no more
+specific source matches. <span class=" link"><a href="Gtk.IconSet.html" title="Gtk.IconSet">Gtk.IconSet</a></span> always prefers more specific
+icon sources to more generic icon sources. The order in which you
+add the sources to the icon set does not matter.</p>
+<p class="p"><span class=" link"><a href="Gtk.IconSet.new_from_pixbuf.html" title="Gtk.IconSet.new_from_pixbuf">Gtk.IconSet.new_from_pixbuf</a></span> creates a new icon set with a
+default icon source based on the given pixbuf.</p>
+<div class="terms"><div class="inner"><div class="region"><dl class="terms">
+<dt class="terms"><span class=" code">source</span></dt>
+<dd class="terms"><p class="p">a <span class=" link"><a href="Gtk.IconSource.html" title="Gtk.IconSource">Gtk.IconSource</a></span></p></dd>
+</dl></div></div></div>
+</div>
+<div class="sect sect-links" role="navigation">
+<div class="hgroup"></div>
+<div class="contents"><div class="links guidelinks"><div class="inner">
+<div class="title"><h2><span class="title">More Information</span></h2></div>
+<div class="region"><ul><li class="links "><a href="Gtk.IconSet.html" title="Gtk.IconSet">Gtk.IconSet</a></li></ul></div>
+</div></div></div>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="footer"></div>
+</div></body>
+</html>

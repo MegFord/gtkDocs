@@ -1,0 +1,45 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Gtk.EntryCompletion.prototype.set_text_column</title>
+<link rel="stylesheet" type="text/css" href="C.css">
+<script type="text/javascript" src="jquery.js"></script><script type="text/javascript" src="jquery.syntax.js"></script><script type="text/javascript" src="yelp.js"></script>
+</head>
+<body><div class="page" role="main">
+<div class="header"><div class="trails" role="navigation"><div class="trail">
+<a class="trail" href="index.html" title="Index">Index</a> » <a class="trail" href="Gtk.EntryCompletion.html" title="Gtk.EntryCompletion">Gtk.EntryCompletion</a> » </div></div></div>
+<div class="body">
+<div class="hgroup"><h1 class="title"><span class="title">Gtk.EntryCompletion.prototype.set_text_column</span></h1></div>
+<div class="region">
+<div class="contents">
+<div class="synopsis"><div class="inner"><div class="region"><div class="contents"><div class="code"><pre class="contents ">function set_text_column(column:Number):void {
+    // Gjs wrapper for gtk_entry_completion_set_text_column()
+}</pre></div></div></div></div></div>
+<p class="p">Convenience function for setting up the most used case of this code: a
+completion list with just strings. This function will set up <span class=" code">completion</span>
+to have a list displaying all (and just) strings in the completion list,
+and to get those strings from <span class=" code">column</span> in the model of <span class=" code">completion</span>.</p>
+<p class="p">This functions creates and adds a <span class=" link"><a href="Gtk.CellRendererText.html" title="Gtk.CellRendererText">Gtk.CellRendererText</a></span> for the selected
+column. If you need to set the text column, but don't want the cell
+renderer, use g_object_set() to set the <span class=" link"><a href="Gtk.text-column.html" title="Gtk.text-column">Gtk.text-column</a></span>
+property directly.</p>
+<p class="p">Since 2.4</p>
+<div class="terms"><div class="inner"><div class="region"><dl class="terms">
+<dt class="terms"><span class=" code">column</span></dt>
+<dd class="terms"><p class="p">the column in the model of <span class=" code">completion</span> to get strings from</p></dd>
+</dl></div></div></div>
+</div>
+<div class="sect sect-links" role="navigation">
+<div class="hgroup"></div>
+<div class="contents"><div class="links guidelinks"><div class="inner">
+<div class="title"><h2><span class="title">More Information</span></h2></div>
+<div class="region"><ul><li class="links "><a href="Gtk.EntryCompletion.html" title="Gtk.EntryCompletion">Gtk.EntryCompletion</a></li></ul></div>
+</div></div></div>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="footer"></div>
+</div></body>
+</html>

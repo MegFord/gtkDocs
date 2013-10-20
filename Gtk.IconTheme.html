@@ -1,0 +1,161 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Gtk.IconTheme</title>
+<link rel="stylesheet" type="text/css" href="C.css">
+<script type="text/javascript" src="jquery.js"></script><script type="text/javascript" src="jquery.syntax.js"></script><script type="text/javascript" src="yelp.js"></script>
+</head>
+<body><div class="page" role="main">
+<div class="header"><div class="trails" role="navigation"><div class="trail">
+<a class="trail" href="index.html" title="Index">Index</a> » </div></div></div>
+<div class="body">
+<div class="hgroup"><h1 class="title"><span class="title">Gtk.IconTheme</span></h1></div>
+<div class="region">
+<div class="contents">
+<div class="synopsis"><div class="inner"><div class="region"><div class="contents"><div class="code"><pre class="contents ">const Gtk = imports.gi.Gtk;
+
+let icon_theme = new Gtk.IconTheme();
+  </pre></div></div></div></div></div>
+<p class="p"><span class=" link"><a href="Gtk.IconTheme.html" title="Gtk.IconTheme">Gtk.IconTheme</a></span> provides a facility for looking up icons by name
+and size. The main reason for using a name rather than simply
+providing a filename is to allow different icons to be used
+depending on what &lt;firstterm&gt;icon theme&lt;/firstterm&gt; is selected
+by the user. The operation of icon themes on Linux and Unix
+follows the &lt;ulink
+url="http://www.freedesktop.org/Standards/icon-theme-spec"&gt;Icon
+Theme Specification&lt;/ulink&gt;. There is a default icon theme,
+named &lt;literal&gt;hicolor&lt;/literal&gt; where applications should install
+their icons, but more additional application themes can be
+installed as operating system vendors and users choose.</p>
+<p class="p">Named icons are similar to the &lt;xref linkend="gtk3-Themeable-Stock-Images"/&gt;
+facility, and the distinction between the two may be a bit confusing.
+A few things to keep in mind:
+&lt;itemizedlist&gt;
+&lt;listitem&gt;
+Stock images usually are used in conjunction with
+&lt;xref linkend="gtk3-Stock-Items"/&gt;, such as %GTK_STOCK_OK or
+%GTK_STOCK_OPEN. Named icons are easier to set up and therefore
+are more useful for new icons that an application wants to
+add, such as application icons or window icons.
+&lt;/listitem&gt;
+&lt;listitem&gt;
+Stock images can only be loaded at the symbolic sizes defined
+by the <span class=" link"><a href="Gtk.IconSize.html" title="Gtk.IconSize">Gtk.IconSize</a></span> enumeration, or by custom sizes defined
+by <span class=" link"><a href="Gtk.icon_size_register.html" title="Gtk.icon_size_register">Gtk.icon_size_register</a></span>, while named icons are more flexible
+and any pixel size can be specified.
+&lt;/listitem&gt;
+&lt;listitem&gt;
+Because stock images are closely tied to stock items, and thus
+to actions in the user interface, stock images may come in
+multiple variants for different widget states or writing
+directions.
+&lt;/listitem&gt;
+&lt;/itemizedlist&gt;
+A good rule of thumb is that if there is a stock image for what
+you want to use, use it, otherwise use a named icon. It turns
+out that internally stock images are generally defined in
+terms of one or more named icons. (An example of the
+more than one case is icons that depend on writing direction;
+%GTK_STOCK_GO_FORWARD uses the two themed icons
+"gtk-stock-go-forward-ltr" and "gtk-stock-go-forward-rtl".)</p>
+<p class="p">In many cases, named themes are used indirectly, via <span class=" link"><a href="Gtk.Image.html" title="Gtk.Image">Gtk.Image</a></span>
+or stock items, rather than directly, but looking up icons
+directly is also simple. The <span class=" link"><a href="Gtk.IconTheme.html" title="Gtk.IconTheme">Gtk.IconTheme</a></span> object acts
+as a database of all the icons in the current theme. You
+can create new <span class=" link"><a href="Gtk.IconTheme.html" title="Gtk.IconTheme">Gtk.IconTheme</a></span> objects, but it's much more
+efficient to use the standard icon theme for the <span class=" link"><a href="Gdk.Screen.html" title="Gdk.Screen">Gdk.Screen</a></span>
+so that the icon information is shared with other people
+looking up icons. In the case where the default screen is
+being used, looking up an icon can be as simple as:
+&lt;informalexample&gt;
+&lt;programlisting&gt;
+GError *error = NULL;
+GtkIconTheme *icon_theme;
+GdkPixbuf *pixbuf;</p>
+<p class="p">icon_theme = gtk_icon_theme_get_default ();
+pixbuf = gtk_icon_theme_load_icon (icon_theme,
+                                   "my-icon-name", // icon name
+                                   48, // size
+                                   0,  // flags
+                                   &amp;error);
+if (!pixbuf)
+  {
+    g_warning ("Couldn't load icon: &amp;percnt;s", error-&gt;message);
+    g_error_free (error);
+  }
+else
+  {
+    // Use the pixbuf
+    g_object_unref (pixbuf);
+  }
+&lt;/programlisting&gt;
+&lt;/informalexample&gt;</p>
+<div class="synopsis"><div class="inner">
+<div class="title title-synopsis"><h2><span class="title">Hierarchy</span></h2></div>
+<div class="region"><div class="contents"><div class="tree"><div class="inner"><div class="region"><ul class="tree"><li class="tree">
+<div>
+        <span class=" code">GObject.Object</span>
+      
+      </div>
+<ul class="tree"><li class="tree"><div>
+        <span class=" code">Gtk.IconTheme</span>
+      </div></li></ul>
+</li></ul></div></div></div></div></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Methods</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.IconTheme.append_search_path.html" title="Gtk.IconTheme.prototype.append_search_path">Gtk.IconTheme.prototype.append_search_path</a></li>
+<li class="links "><a href="Gtk.IconTheme.choose_icon.html" title="Gtk.IconTheme.prototype.choose_icon">Gtk.IconTheme.prototype.choose_icon</a></li>
+<li class="links "><a href="Gtk.IconTheme.choose_icon_for_scale.html" title="Gtk.IconTheme.prototype.choose_icon_for_scale">Gtk.IconTheme.prototype.choose_icon_for_scale</a></li>
+<li class="links "><a href="Gtk.IconTheme.get_example_icon_name.html" title="Gtk.IconTheme.prototype.get_example_icon_name">Gtk.IconTheme.prototype.get_example_icon_name</a></li>
+<li class="links "><a href="Gtk.IconTheme.get_icon_sizes.html" title="Gtk.IconTheme.prototype.get_icon_sizes">Gtk.IconTheme.prototype.get_icon_sizes</a></li>
+<li class="links "><a href="Gtk.IconTheme.get_search_path.html" title="Gtk.IconTheme.prototype.get_search_path">Gtk.IconTheme.prototype.get_search_path</a></li>
+<li class="links "><a href="Gtk.IconTheme.has_icon.html" title="Gtk.IconTheme.prototype.has_icon">Gtk.IconTheme.prototype.has_icon</a></li>
+<li class="links "><a href="Gtk.IconTheme.list_contexts.html" title="Gtk.IconTheme.prototype.list_contexts">Gtk.IconTheme.prototype.list_contexts</a></li>
+<li class="links "><a href="Gtk.IconTheme.list_icons.html" title="Gtk.IconTheme.prototype.list_icons">Gtk.IconTheme.prototype.list_icons</a></li>
+<li class="links "><a href="Gtk.IconTheme.load_icon.html" title="Gtk.IconTheme.prototype.load_icon">Gtk.IconTheme.prototype.load_icon</a></li>
+<li class="links "><a href="Gtk.IconTheme.load_icon_for_scale.html" title="Gtk.IconTheme.prototype.load_icon_for_scale">Gtk.IconTheme.prototype.load_icon_for_scale</a></li>
+<li class="links "><a href="Gtk.IconTheme.load_surface.html" title="Gtk.IconTheme.prototype.load_surface">Gtk.IconTheme.prototype.load_surface</a></li>
+<li class="links "><a href="Gtk.IconTheme.lookup_by_gicon.html" title="Gtk.IconTheme.prototype.lookup_by_gicon">Gtk.IconTheme.prototype.lookup_by_gicon</a></li>
+<li class="links "><a href="Gtk.IconTheme.lookup_by_gicon_for_scale.html" title="Gtk.IconTheme.prototype.lookup_by_gicon_for_scale">Gtk.IconTheme.prototype.lookup_by_gicon_for_scale</a></li>
+<li class="links "><a href="Gtk.IconTheme.lookup_icon.html" title="Gtk.IconTheme.prototype.lookup_icon">Gtk.IconTheme.prototype.lookup_icon</a></li>
+<li class="links "><a href="Gtk.IconTheme.lookup_icon_for_scale.html" title="Gtk.IconTheme.prototype.lookup_icon_for_scale">Gtk.IconTheme.prototype.lookup_icon_for_scale</a></li>
+<li class="links "><a href="Gtk.IconTheme.prepend_search_path.html" title="Gtk.IconTheme.prototype.prepend_search_path">Gtk.IconTheme.prototype.prepend_search_path</a></li>
+<li class="links "><a href="Gtk.IconTheme.rescan_if_needed.html" title="Gtk.IconTheme.prototype.rescan_if_needed">Gtk.IconTheme.prototype.rescan_if_needed</a></li>
+<li class="links "><a href="Gtk.IconTheme.set_custom_theme.html" title="Gtk.IconTheme.prototype.set_custom_theme">Gtk.IconTheme.prototype.set_custom_theme</a></li>
+<li class="links "><a href="Gtk.IconTheme.set_screen.html" title="Gtk.IconTheme.prototype.set_screen">Gtk.IconTheme.prototype.set_screen</a></li>
+<li class="links "><a href="Gtk.IconTheme.set_search_path.html" title="Gtk.IconTheme.prototype.set_search_path">Gtk.IconTheme.prototype.set_search_path</a></li>
+</ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Functions</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.IconTheme.add_builtin_icon.html" title="add_builtin_icon">add_builtin_icon</a></li>
+<li class="links "><a href="Gtk.IconTheme.get_default.html" title="get_default">get_default</a></li>
+<li class="links "><a href="Gtk.IconTheme.get_for_screen.html" title="get_for_screen">get_for_screen</a></li>
+</ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Signals</span></h2></div>
+<div class="region"><ul><li class="links "><a href="Gtk.IconTheme-changed.html" title="Gtk.IconTheme::changed">changed</a></li></ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Other</span></h2></div>
+<div class="region"><ul><li class="links "><a href="Gtk.IconTheme.new.html" title="Gtk.IconTheme.new">Gtk.IconTheme.new</a></li></ul></div>
+</div></div>
+</div>
+<div class="sect sect-links" role="navigation">
+<div class="hgroup"></div>
+<div class="contents"><div class="links guidelinks"><div class="inner">
+<div class="title"><h2><span class="title">More Information</span></h2></div>
+<div class="region"><ul><li class="links "><a href="index.html" title="Index">Index</a></li></ul></div>
+</div></div></div>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="footer"></div>
+</div></body>
+</html>

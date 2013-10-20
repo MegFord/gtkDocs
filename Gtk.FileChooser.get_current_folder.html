@@ -1,0 +1,46 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Gtk.FileChooser.prototype.get_current_folder</title>
+<link rel="stylesheet" type="text/css" href="C.css">
+<script type="text/javascript" src="jquery.js"></script><script type="text/javascript" src="jquery.syntax.js"></script><script type="text/javascript" src="yelp.js"></script>
+</head>
+<body><div class="page" role="main">
+<div class="header"><div class="trails" role="navigation"><div class="trail">
+<a class="trail" href="index.html" title="Index">Index</a> » <a class="trail" href="Gtk.FileChooser.html" title="Gtk.FileChooser">Gtk.FileChooser</a> » </div></div></div>
+<div class="body">
+<div class="hgroup"><h1 class="title"><span class="title">Gtk.FileChooser.prototype.get_current_folder</span></h1></div>
+<div class="region">
+<div class="contents">
+<div class="synopsis"><div class="inner"><div class="region"><div class="contents"><div class="code"><pre class="contents ">function get_current_folder():filename {
+    // Gjs wrapper for gtk_file_chooser_get_current_folder()
+}</pre></div></div></div></div></div>
+<p class="p">Gets the current folder of <span class=" code">chooser</span> as a local filename.
+See <span class=" link"><a href="Gtk.set_current_folder.html" title="Gtk.set_current_folder">Gtk.set_current_folder</a></span>.</p>
+<p class="p">Note that this is the folder that the file chooser is currently displaying
+(e.g. "/home/username/Documents"), which is &lt;emphasis&gt;not the same&lt;/emphasis&gt;
+as the currently-selected folder if the chooser is in
+<span class=" link"><a href="Gtk.FileChooserAction.html" title="Gtk.FileChooserAction">Gtk.FileChooserAction</a></span>.select_folder mode
+(e.g. "/home/username/Documents/selected-folder/".  To get the
+currently-selected folder in that mode, use <span class=" link"><a href="Gtk.get_uri.html" title="Gtk.get_uri">Gtk.get_uri</a></span> as the
+usual way to get the selection.</p>
+<p class="p">Since 2.4</p>
+<div class="terms"><div class="inner"><div class="region"><dl class="terms">
+<dt class="terms"><span class=" code">Returns</span></dt>
+<dd class="terms"><p class="p">the full path of the current folder, or <span class=" code">null</span> if the current path cannot be represented as a local filename.  Free with g_free().  This function will also return <span class=" code">null</span> if the file chooser was unable to load the last folder that was requested from it; for example, as would be for calling <span class=" link"><a href="Gtk.set_current_folder.html" title="Gtk.set_current_folder">Gtk.set_current_folder</a></span> on a nonexistent folder.</p></dd>
+</dl></div></div></div>
+</div>
+<div class="sect sect-links" role="navigation">
+<div class="hgroup"></div>
+<div class="contents"><div class="links guidelinks"><div class="inner">
+<div class="title"><h2><span class="title">More Information</span></h2></div>
+<div class="region"><ul><li class="links "><a href="Gtk.FileChooser.html" title="Gtk.FileChooser">Gtk.FileChooser</a></li></ul></div>
+</div></div></div>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="footer"></div>
+</div></body>
+</html>

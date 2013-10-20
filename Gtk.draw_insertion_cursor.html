@@ -1,0 +1,49 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>draw_insertion_cursor</title>
+<link rel="stylesheet" type="text/css" href="C.css">
+<script type="text/javascript" src="jquery.js"></script><script type="text/javascript" src="jquery.syntax.js"></script><script type="text/javascript" src="yelp.js"></script>
+</head>
+<body><div class="page" role="main">
+<div class="header"><div class="trails" role="navigation"><div class="trail">
+<a class="trail" href="index.html" title="Index">Index</a> » </div></div></div>
+<div class="body">
+<div class="hgroup"><h1 class="title"><span class="title">draw_insertion_cursor</span></h1></div>
+<div class="region">
+<div class="contents">
+<div class="synopsis"><div class="inner"><div class="region"><div class="contents"><div class="code"><pre class="contents ">function draw_insertion_cursor(widget:Gtk.Widget, cr:cairo.Context, location:Gdk.Rectangle, is_primary:Boolean, direction:Gtk.TextDirection, draw_arrow:Boolean):void {
+    // Gjs wrapper for gtk_draw_insertion_cursor()
+}</pre></div></div></div></div></div>
+<p class="p">Draws a text caret on <span class=" code">cr</span> at <span class=" code">location</span>. This is not a style function
+but merely a convenience function for drawing the standard cursor shape.</p>
+<p class="p">Since 3.0</p>
+<div class="terms"><div class="inner"><div class="region"><dl class="terms">
+<dt class="terms"><span class=" code">widget</span></dt>
+<dd class="terms"><p class="p">a <span class=" link"><a href="Gtk.Widget.html" title="Gtk.Widget">Gtk.Widget</a></span></p></dd>
+<dt class="terms"><span class=" code">cr</span></dt>
+<dd class="terms"><p class="p">cairo context to draw to</p></dd>
+<dt class="terms"><span class=" code">location</span></dt>
+<dd class="terms"><p class="p">location where to draw the cursor (<span class=" code">location</span>-&gt;width is ignored)</p></dd>
+<dt class="terms"><span class=" code">is_primary</span></dt>
+<dd class="terms"><p class="p">if the cursor should be the primary cursor color.</p></dd>
+<dt class="terms"><span class=" code">direction</span></dt>
+<dd class="terms"><p class="p">whether the cursor is left-to-right or right-to-left. Should never be #GTK_TEXT_DIR_NONE</p></dd>
+<dt class="terms"><span class=" code">draw_arrow</span></dt>
+<dd class="terms"><p class="p"><span class=" code">true</span> to draw a directional arrow on the cursor. Should be <span class=" code">false</span> unless the cursor is split.</p></dd>
+</dl></div></div></div>
+</div>
+<div class="sect sect-links" role="navigation">
+<div class="hgroup"></div>
+<div class="contents"><div class="links guidelinks"><div class="inner">
+<div class="title"><h2><span class="title">More Information</span></h2></div>
+<div class="region"><ul><li class="links "><a href="index.html" title="Index">Index</a></li></ul></div>
+</div></div></div>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="footer"></div>
+</div></body>
+</html>

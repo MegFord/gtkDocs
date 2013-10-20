@@ -1,0 +1,49 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Gtk.FileChooser.prototype.set_local_only</title>
+<link rel="stylesheet" type="text/css" href="C.css">
+<script type="text/javascript" src="jquery.js"></script><script type="text/javascript" src="jquery.syntax.js"></script><script type="text/javascript" src="yelp.js"></script>
+</head>
+<body><div class="page" role="main">
+<div class="header"><div class="trails" role="navigation"><div class="trail">
+<a class="trail" href="index.html" title="Index">Index</a> » <a class="trail" href="Gtk.FileChooser.html" title="Gtk.FileChooser">Gtk.FileChooser</a> » </div></div></div>
+<div class="body">
+<div class="hgroup"><h1 class="title"><span class="title">Gtk.FileChooser.prototype.set_local_only</span></h1></div>
+<div class="region">
+<div class="contents">
+<div class="synopsis"><div class="inner"><div class="region"><div class="contents"><div class="code"><pre class="contents ">function set_local_only(local_only:Boolean):void {
+    // Gjs wrapper for gtk_file_chooser_set_local_only()
+}</pre></div></div></div></div></div>
+<p class="p">Sets whether only local files can be selected in the
+file selector. If <span class=" code">local_only</span> is <span class=" code">true</span> (the default),
+then the selected file are files are guaranteed to be
+accessible through the operating systems native file
+file system and therefore the application only
+needs to worry about the filename functions in
+<span class=" link"><a href="Gtk.FileChooser.html" title="Gtk.FileChooser">Gtk.FileChooser</a></span>, like <span class=" link"><a href="Gtk.FileChooser.get_filename.html" title="Gtk.FileChooser.prototype.get_filename">Gtk.FileChooser.prototype.get_filename</a></span>,
+rather than the URI functions like
+<span class=" link"><a href="Gtk.FileChooser.get_uri.html" title="Gtk.FileChooser.prototype.get_uri">Gtk.FileChooser.prototype.get_uri</a></span>,</p>
+<p class="p">On some systems non-native files may still be
+available using the native filesystem via a userspace
+filesystem (FUSE).</p>
+<p class="p">Since 2.4</p>
+<div class="terms"><div class="inner"><div class="region"><dl class="terms">
+<dt class="terms"><span class=" code">local_only</span></dt>
+<dd class="terms"><p class="p"><span class=" code">true</span> if only local files can be selected</p></dd>
+</dl></div></div></div>
+</div>
+<div class="sect sect-links" role="navigation">
+<div class="hgroup"></div>
+<div class="contents"><div class="links guidelinks"><div class="inner">
+<div class="title"><h2><span class="title">More Information</span></h2></div>
+<div class="region"><ul><li class="links "><a href="Gtk.FileChooser.html" title="Gtk.FileChooser">Gtk.FileChooser</a></li></ul></div>
+</div></div></div>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="footer"></div>
+</div></body>
+</html>

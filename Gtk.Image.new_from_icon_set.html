@@ -1,0 +1,50 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Gtk.Image.new_from_icon_set</title>
+<link rel="stylesheet" type="text/css" href="C.css">
+<script type="text/javascript" src="jquery.js"></script><script type="text/javascript" src="jquery.syntax.js"></script><script type="text/javascript" src="yelp.js"></script>
+</head>
+<body><div class="page" role="main">
+<div class="header"><div class="trails" role="navigation"><div class="trail">
+<a class="trail" href="index.html" title="Index">Index</a> » <a class="trail" href="Gtk.Image.html" title="Gtk.Image">Gtk.Image</a> » </div></div></div>
+<div class="body">
+<div class="hgroup"><h1 class="title"><span class="title">Gtk.Image.new_from_icon_set</span></h1></div>
+<div class="region">
+<div class="contents">
+<div class="synopsis"><div class="inner"><div class="region"><div class="contents"><div class="code"><pre class="contents ">function new_from_icon_set(icon_set:Gtk.IconSet, size:Number):Gtk.Widget {
+    // Gjs wrapper for gtk_image_new_from_icon_set()
+}</pre></div></div></div></div></div>
+<p class="p">Creates a <span class=" link"><a href="Gtk.Image.html" title="Gtk.Image">Gtk.Image</a></span> displaying an icon set. Sample stock sizes are
+#GTK_ICON_SIZE_MENU, #GTK_ICON_SIZE_SMALL_TOOLBAR. Instead of using
+this function, usually it's better to create a <span class=" link"><a href="Gtk.IconFactory.html" title="Gtk.IconFactory">Gtk.IconFactory</a></span>, put
+your icon sets in the icon factory, add the icon factory to the
+list of default factories with <span class=" link"><a href="Gtk.IconFactory.add_default.html" title="Gtk.IconFactory.prototype.add_default">Gtk.IconFactory.prototype.add_default</a></span>, and
+then use <span class=" link"><a href="Gtk.new_from_stock.html" title="Gtk.new_from_stock">Gtk.new_from_stock</a></span>. This will allow themes to
+override the icon you ship with your application.</p>
+<p class="p">The <span class=" link"><a href="Gtk.Image.html" title="Gtk.Image">Gtk.Image</a></span> does not assume a reference to the
+icon set; you still need to unref it if you own references.
+<span class=" link"><a href="Gtk.Image.html" title="Gtk.Image">Gtk.Image</a></span> will add its own reference rather than adopting yours.</p>
+<div class="terms"><div class="inner"><div class="region"><dl class="terms">
+<dt class="terms"><span class=" code">icon_set</span></dt>
+<dd class="terms"><p class="p">a <span class=" link"><a href="Gtk.IconSet.html" title="Gtk.IconSet">Gtk.IconSet</a></span></p></dd>
+<dt class="terms"><span class=" code">size</span></dt>
+<dd class="terms"><p class="p">a stock icon size</p></dd>
+<dt class="terms"><span class=" code">Returns</span></dt>
+<dd class="terms"><p class="p">a new <span class=" link"><a href="Gtk.Image.html" title="Gtk.Image">Gtk.Image</a></span></p></dd>
+</dl></div></div></div>
+</div>
+<div class="sect sect-links" role="navigation">
+<div class="hgroup"></div>
+<div class="contents"><div class="links guidelinks"><div class="inner">
+<div class="title"><h2><span class="title">More Information</span></h2></div>
+<div class="region"><ul><li class="links "><a href="Gtk.Image.html" title="Gtk.Image">Gtk.Image</a></li></ul></div>
+</div></div></div>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="footer"></div>
+</div></body>
+</html>

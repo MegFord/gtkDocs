@@ -1,0 +1,203 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Gtk.Image</title>
+<link rel="stylesheet" type="text/css" href="C.css">
+<script type="text/javascript" src="jquery.js"></script><script type="text/javascript" src="jquery.syntax.js"></script><script type="text/javascript" src="yelp.js"></script>
+</head>
+<body><div class="page" role="main">
+<div class="header"><div class="trails" role="navigation"><div class="trail">
+<a class="trail" href="index.html" title="Index">Index</a> » </div></div></div>
+<div class="body">
+<div class="hgroup"><h1 class="title"><span class="title">Gtk.Image</span></h1></div>
+<div class="region">
+<div class="contents">
+<div class="synopsis"><div class="inner"><div class="region"><div class="contents"><div class="code"><pre class="contents ">const Gtk = imports.gi.Gtk;
+
+let image = new Gtk.Image({
+    <span class=" link"><a href="Gtk.Image-file.html" title="Gtk.Image:file">file</a></span>: value,
+    <span class=" link"><a href="Gtk.Image-gicon.html" title="Gtk.Image:gicon">gicon</a></span>: value,
+    <span class=" link"><a href="Gtk.Image-icon-name.html" title="Gtk.Image:icon-name">icon_name</a></span>: value,
+    <span class=" link"><a href="Gtk.Image-icon-set.html" title="Gtk.Image:icon-set">icon_set</a></span>: value,
+    <span class=" link"><a href="Gtk.Image-icon-size.html" title="Gtk.Image:icon-size">icon_size</a></span>: value,
+    <span class=" link"><a href="Gtk.Image-pixbuf.html" title="Gtk.Image:pixbuf">pixbuf</a></span>: value,
+    <span class=" link"><a href="Gtk.Image-pixbuf-animation.html" title="Gtk.Image:pixbuf-animation">pixbuf_animation</a></span>: value,
+    <span class=" link"><a href="Gtk.Image-pixel-size.html" title="Gtk.Image:pixel-size">pixel_size</a></span>: value,
+    <span class=" link"><a href="Gtk.Image-resource.html" title="Gtk.Image:resource">resource</a></span>: value,
+    <span class=" link"><a href="Gtk.Image-stock.html" title="Gtk.Image:stock">stock</a></span>: value,
+    <span class=" link"><a href="Gtk.Image-surface.html" title="Gtk.Image:surface">surface</a></span>: value,
+    <span class=" link"><a href="Gtk.Image-use-fallback.html" title="Gtk.Image:use-fallback">use_fallback</a></span>: value,
+});
+  </pre></div></div></div></div></div>
+<p class="p">The <span class=" link"><a href="Gtk.Image.html" title="Gtk.Image">Gtk.Image</a></span> widget displays an image. Various kinds of object
+can be displayed as an image; most typically, you would load a
+<span class=" link"><a href="GdkPixbuf.Pixbuf.html" title="GdkPixbuf.Pixbuf">GdkPixbuf.Pixbuf</a></span> ("pixel buffer") from a file, and then display that.
+There's a convenience function to do this, <span class=" link"><a href="Gtk.new_from_file.html" title="Gtk.new_from_file">Gtk.new_from_file</a></span>,
+used as follows:
+&lt;informalexample&gt;&lt;programlisting&gt;
+  GtkWidget *image;
+  image = gtk_image_new_from_file ("myfile.png");
+&lt;/programlisting&gt;&lt;/informalexample&gt;
+If the file isn't loaded successfully, the image will contain a
+"broken image" icon similar to that used in many web browsers.
+If you want to handle errors in loading the file yourself,
+for example by displaying an error message, then load the image with
+gdk_pixbuf_new_from_file(), then create the <span class=" link"><a href="Gtk.Image.html" title="Gtk.Image">Gtk.Image</a></span> with
+<span class=" link"><a href="Gtk.new_from_pixbuf.html" title="Gtk.new_from_pixbuf">Gtk.new_from_pixbuf</a></span>.</p>
+<p class="p">The image file may contain an animation, if so the <span class=" link"><a href="Gtk.Image.html" title="Gtk.Image">Gtk.Image</a></span> will
+display an animation (<span class=" link"><a href="GdkPixbuf.PixbufAnimation.html" title="GdkPixbuf.PixbufAnimation">GdkPixbuf.PixbufAnimation</a></span>) instead of a static image.</p>
+<p class="p"><span class=" link"><a href="Gtk.Image.html" title="Gtk.Image">Gtk.Image</a></span> is a subclass of <span class=" link"><a href="Gtk.Misc.html" title="Gtk.Misc">Gtk.Misc</a></span>, which implies that you can
+align it (center, left, right) and add padding to it, using
+<span class=" link"><a href="Gtk.Misc.html" title="Gtk.Misc">Gtk.Misc</a></span> methods.</p>
+<p class="p"><span class=" link"><a href="Gtk.Image.html" title="Gtk.Image">Gtk.Image</a></span> is a "no window" widget (has no <span class=" link"><a href="Gdk.Window.html" title="Gdk.Window">Gdk.Window</a></span> of its own),
+so by default does not receive events. If you want to receive events
+on the image, such as button clicks, place the image inside a
+<span class=" link"><a href="Gtk.EventBox.html" title="Gtk.EventBox">Gtk.EventBox</a></span>, then connect to the event signals on the event box.
+&lt;example&gt;
+&lt;title&gt;Handling button press events on a
+&lt;structname&gt;GtkImage&lt;/structname&gt;.&lt;/title&gt;
+&lt;programlisting&gt;
+  static gboolean
+  button_press_callback (GtkWidget      *event_box,
+                         GdkEventButton *event,
+                         gpointer        data)
+  {
+    g_print ("Event box clicked at coordinates &amp;percnt;f,&amp;percnt;f\n",
+             event-&gt;x, event-&gt;y);</p>
+<p class="p">    /&lt;!----&gt;* Returning TRUE means we handled the event, so the signal
+     * emission should be stopped (don't call any further
+     * callbacks that may be connected). Return FALSE
+     * to continue invoking callbacks.
+     *&lt;!----&gt;/
+    return TRUE;
+  }</p>
+<p class="p">  static GtkWidget*
+  create_image (void)
+  {
+    GtkWidget *image;
+    GtkWidget *event_box;</p>
+<p class="p">    image = gtk_image_new_from_file ("myfile.png");</p>
+<p class="p">    event_box = gtk_event_box_new (&lt;!-- --&gt;);</p>
+<p class="p">    gtk_container_add (GTK_CONTAINER (event_box), image);</p>
+<p class="p">    g_signal_connect (G_OBJECT (event_box),
+                      "button_press_event",
+                      G_CALLBACK (button_press_callback),
+                      image);</p>
+<p class="p">    return image;
+  }
+&lt;/programlisting&gt;
+&lt;/example&gt;</p>
+<p class="p">When handling events on the event box, keep in mind that coordinates
+in the image may be different from event box coordinates due to
+the alignment and padding settings on the image (see <span class=" link"><a href="Gtk.Misc.html" title="Gtk.Misc">Gtk.Misc</a></span>).
+The simplest way to solve this is to set the alignment to 0.0
+(left/top), and set the padding to zero. Then the origin of
+the image will be the same as the origin of the event box.</p>
+<p class="p">Sometimes an application will want to avoid depending on external data
+files, such as image files. GTK+ comes with a program to avoid this,
+called &lt;application&gt;gdk-pixbuf-csource&lt;/application&gt;. This library
+allows you to convert an image into a C variable declaration, which
+can then be loaded into a <span class=" link"><a href="GdkPixbuf.Pixbuf.html" title="GdkPixbuf.Pixbuf">GdkPixbuf.Pixbuf</a></span> using
+gdk_pixbuf_new_from_inline().</p>
+<div class="synopsis"><div class="inner">
+<div class="title title-synopsis"><h2><span class="title">Hierarchy</span></h2></div>
+<div class="region"><div class="contents"><div class="tree"><div class="inner"><div class="region"><ul class="tree"><li class="tree">
+<div>
+        <span class=" code">GObject.Object</span>
+      
+      </div>
+<ul class="tree"><li class="tree">
+<div>
+        <span class=" code">GObject.InitiallyUnowned</span>
+      
+      </div>
+<ul class="tree"><li class="tree">
+<div>
+        <span class=" code">Gtk.Widget</span>
+      
+      </div>
+<ul class="tree"><li class="tree">
+<div>
+        <span class=" code">Gtk.Misc</span>
+      
+      </div>
+<ul class="tree"><li class="tree"><div>
+        <span class=" code">Gtk.Image</span>
+      </div></li></ul>
+</li></ul>
+</li></ul>
+</li></ul>
+</li></ul></div></div></div></div></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Methods</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.Image.clear.html" title="Gtk.Image.prototype.clear">Gtk.Image.prototype.clear</a></li>
+<li class="links "><a href="Gtk.Image.get_animation.html" title="Gtk.Image.prototype.get_animation">Gtk.Image.prototype.get_animation</a></li>
+<li class="links "><a href="Gtk.Image.get_gicon.html" title="Gtk.Image.prototype.get_gicon">Gtk.Image.prototype.get_gicon</a></li>
+<li class="links "><a href="Gtk.Image.get_icon_name.html" title="Gtk.Image.prototype.get_icon_name">Gtk.Image.prototype.get_icon_name</a></li>
+<li class="links "><a href="Gtk.Image.get_icon_set.html" title="Gtk.Image.prototype.get_icon_set">Gtk.Image.prototype.get_icon_set</a></li>
+<li class="links "><a href="Gtk.Image.get_pixbuf.html" title="Gtk.Image.prototype.get_pixbuf">Gtk.Image.prototype.get_pixbuf</a></li>
+<li class="links "><a href="Gtk.Image.get_pixel_size.html" title="Gtk.Image.prototype.get_pixel_size">Gtk.Image.prototype.get_pixel_size</a></li>
+<li class="links "><a href="Gtk.Image.get_stock.html" title="Gtk.Image.prototype.get_stock">Gtk.Image.prototype.get_stock</a></li>
+<li class="links "><a href="Gtk.Image.get_storage_type.html" title="Gtk.Image.prototype.get_storage_type">Gtk.Image.prototype.get_storage_type</a></li>
+<li class="links "><a href="Gtk.Image.set_from_animation.html" title="Gtk.Image.prototype.set_from_animation">Gtk.Image.prototype.set_from_animation</a></li>
+<li class="links "><a href="Gtk.Image.set_from_file.html" title="Gtk.Image.prototype.set_from_file">Gtk.Image.prototype.set_from_file</a></li>
+<li class="links "><a href="Gtk.Image.set_from_gicon.html" title="Gtk.Image.prototype.set_from_gicon">Gtk.Image.prototype.set_from_gicon</a></li>
+<li class="links "><a href="Gtk.Image.set_from_icon_name.html" title="Gtk.Image.prototype.set_from_icon_name">Gtk.Image.prototype.set_from_icon_name</a></li>
+<li class="links "><a href="Gtk.Image.set_from_icon_set.html" title="Gtk.Image.prototype.set_from_icon_set">Gtk.Image.prototype.set_from_icon_set</a></li>
+<li class="links "><a href="Gtk.Image.set_from_pixbuf.html" title="Gtk.Image.prototype.set_from_pixbuf">Gtk.Image.prototype.set_from_pixbuf</a></li>
+<li class="links "><a href="Gtk.Image.set_from_resource.html" title="Gtk.Image.prototype.set_from_resource">Gtk.Image.prototype.set_from_resource</a></li>
+<li class="links "><a href="Gtk.Image.set_from_stock.html" title="Gtk.Image.prototype.set_from_stock">Gtk.Image.prototype.set_from_stock</a></li>
+<li class="links "><a href="Gtk.Image.set_from_surface.html" title="Gtk.Image.prototype.set_from_surface">Gtk.Image.prototype.set_from_surface</a></li>
+<li class="links "><a href="Gtk.Image.set_pixel_size.html" title="Gtk.Image.prototype.set_pixel_size">Gtk.Image.prototype.set_pixel_size</a></li>
+</ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Properties</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.Image-file.html" title="Gtk.Image:file">file</a></li>
+<li class="links "><a href="Gtk.Image-gicon.html" title="Gtk.Image:gicon">gicon</a></li>
+<li class="links "><a href="Gtk.Image-icon-name.html" title="Gtk.Image:icon-name">icon-name</a></li>
+<li class="links "><a href="Gtk.Image-icon-set.html" title="Gtk.Image:icon-set">icon-set</a></li>
+<li class="links "><a href="Gtk.Image-icon-size.html" title="Gtk.Image:icon-size">icon-size</a></li>
+<li class="links "><a href="Gtk.Image-pixbuf.html" title="Gtk.Image:pixbuf">pixbuf</a></li>
+<li class="links "><a href="Gtk.Image-pixbuf-animation.html" title="Gtk.Image:pixbuf-animation">pixbuf-animation</a></li>
+<li class="links "><a href="Gtk.Image-pixel-size.html" title="Gtk.Image:pixel-size">pixel-size</a></li>
+<li class="links "><a href="Gtk.Image-resource.html" title="Gtk.Image:resource">resource</a></li>
+<li class="links "><a href="Gtk.Image-stock.html" title="Gtk.Image:stock">stock</a></li>
+<li class="links "><a href="Gtk.Image-storage-type.html" title="Gtk.Image:storage-type">storage-type</a></li>
+<li class="links "><a href="Gtk.Image-surface.html" title="Gtk.Image:surface">surface</a></li>
+<li class="links "><a href="Gtk.Image-use-fallback.html" title="Gtk.Image:use-fallback">use-fallback</a></li>
+</ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Other</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.Image.new.html" title="Gtk.Image.new">Gtk.Image.new</a></li>
+<li class="links "><a href="Gtk.Image.new_from_animation.html" title="Gtk.Image.new_from_animation">Gtk.Image.new_from_animation</a></li>
+<li class="links "><a href="Gtk.Image.new_from_file.html" title="Gtk.Image.new_from_file">Gtk.Image.new_from_file</a></li>
+<li class="links "><a href="Gtk.Image.new_from_gicon.html" title="Gtk.Image.new_from_gicon">Gtk.Image.new_from_gicon</a></li>
+<li class="links "><a href="Gtk.Image.new_from_icon_name.html" title="Gtk.Image.new_from_icon_name">Gtk.Image.new_from_icon_name</a></li>
+<li class="links "><a href="Gtk.Image.new_from_icon_set.html" title="Gtk.Image.new_from_icon_set">Gtk.Image.new_from_icon_set</a></li>
+<li class="links "><a href="Gtk.Image.new_from_pixbuf.html" title="Gtk.Image.new_from_pixbuf">Gtk.Image.new_from_pixbuf</a></li>
+<li class="links "><a href="Gtk.Image.new_from_resource.html" title="Gtk.Image.new_from_resource">Gtk.Image.new_from_resource</a></li>
+<li class="links "><a href="Gtk.Image.new_from_stock.html" title="Gtk.Image.new_from_stock">Gtk.Image.new_from_stock</a></li>
+<li class="links "><a href="Gtk.Image.new_from_surface.html" title="Gtk.Image.new_from_surface">Gtk.Image.new_from_surface</a></li>
+</ul></div>
+</div></div>
+</div>
+<div class="sect sect-links" role="navigation">
+<div class="hgroup"></div>
+<div class="contents"><div class="links guidelinks"><div class="inner">
+<div class="title"><h2><span class="title">More Information</span></h2></div>
+<div class="region"><ul><li class="links "><a href="index.html" title="Index">Index</a></li></ul></div>
+</div></div></div>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="footer"></div>
+</div></body>
+</html>

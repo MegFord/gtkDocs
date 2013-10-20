@@ -1,0 +1,68 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Gtk.FileChooser.prototype.set_uri</title>
+<link rel="stylesheet" type="text/css" href="C.css">
+<script type="text/javascript" src="jquery.js"></script><script type="text/javascript" src="jquery.syntax.js"></script><script type="text/javascript" src="yelp.js"></script>
+</head>
+<body><div class="page" role="main">
+<div class="header"><div class="trails" role="navigation"><div class="trail">
+<a class="trail" href="index.html" title="Index">Index</a> » <a class="trail" href="Gtk.FileChooser.html" title="Gtk.FileChooser">Gtk.FileChooser</a> » </div></div></div>
+<div class="body">
+<div class="hgroup"><h1 class="title"><span class="title">Gtk.FileChooser.prototype.set_uri</span></h1></div>
+<div class="region">
+<div class="contents">
+<div class="synopsis"><div class="inner"><div class="region"><div class="contents"><div class="code"><pre class="contents ">function set_uri(uri:String):Boolean {
+    // Gjs wrapper for gtk_file_chooser_set_uri()
+}</pre></div></div></div></div></div>
+<p class="p">Sets the file referred to by <span class=" code">uri</span> as the current file for the file chooser,
+by changing to the URI's parent folder and actually selecting the URI in the
+list.  If the <span class=" code">chooser</span> is <span class=" link"><a href="Gtk.FileChooserAction.html" title="Gtk.FileChooserAction">Gtk.FileChooserAction</a></span>.save mode, the URI's base
+name will also appear in the dialog's file name entry.</p>
+<p class="p">Note that the URI must exist, or nothing will be done except for the 
+directory change.</p>
+<p class="p">You should use this function only when implementing a &lt;guimenuitem&gt;File/Save
+As...&lt;/guimenuitem&gt; dialog for which you already have a file name to which
+the user may save.  For example, whenthe user opens an existing file and then
+does &lt;guimenuitem&gt;File/Save As...&lt;/guimenuitem&gt; on it to save a copy or a
+modified version.  If you don't have a file name already &amp;mdash; for example,
+if the user just created a new file and is saving it for the first time, do
+not call this function.  Instead, use something similar to this:
+|[
+if (document_is_new)
+  {
+    /&amp;ast; the user just created a new document &amp;ast;/
+    gtk_file_chooser_set_current_name (chooser, "Untitled document");
+  }
+else
+  {
+    /&amp;ast; the user edited an existing document &amp;ast;/ 
+    gtk_file_chooser_set_uri (chooser, existing_uri);
+  }
+]|</p>
+<p class="p">
+In the first case, the file chooser will present the user with useful suggestions
+as to where to save his new file.  In the second case, the file's existing location
+is already known, so the file chooser will use it.</p>
+<p class="p">Since 2.4</p>
+<div class="terms"><div class="inner"><div class="region"><dl class="terms">
+<dt class="terms"><span class=" code">uri</span></dt>
+<dd class="terms"><p class="p">the URI to set as current</p></dd>
+<dt class="terms"><span class=" code">Returns</span></dt>
+<dd class="terms"><p class="p">Not useful.</p></dd>
+</dl></div></div></div>
+</div>
+<div class="sect sect-links" role="navigation">
+<div class="hgroup"></div>
+<div class="contents"><div class="links guidelinks"><div class="inner">
+<div class="title"><h2><span class="title">More Information</span></h2></div>
+<div class="region"><ul><li class="links "><a href="Gtk.FileChooser.html" title="Gtk.FileChooser">Gtk.FileChooser</a></li></ul></div>
+</div></div></div>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="footer"></div>
+</div></body>
+</html>

@@ -1,0 +1,47 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Gtk.FileChooserButton.new_with_dialog</title>
+<link rel="stylesheet" type="text/css" href="C.css">
+<script type="text/javascript" src="jquery.js"></script><script type="text/javascript" src="jquery.syntax.js"></script><script type="text/javascript" src="yelp.js"></script>
+</head>
+<body><div class="page" role="main">
+<div class="header"><div class="trails" role="navigation"><div class="trail">
+<a class="trail" href="index.html" title="Index">Index</a> » <a class="trail" href="Gtk.FileChooserButton.html" title="Gtk.FileChooserButton">Gtk.FileChooserButton</a> » </div></div></div>
+<div class="body">
+<div class="hgroup"><h1 class="title"><span class="title">Gtk.FileChooserButton.new_with_dialog</span></h1></div>
+<div class="region">
+<div class="contents">
+<div class="synopsis"><div class="inner"><div class="region"><div class="contents"><div class="code"><pre class="contents ">function new_with_dialog(dialog:Gtk.Widget):Gtk.Widget {
+    // Gjs wrapper for gtk_file_chooser_button_new_with_dialog()
+}</pre></div></div></div></div></div>
+<p class="p">Creates a <span class=" link"><a href="Gtk.FileChooserButton.html" title="Gtk.FileChooserButton">Gtk.FileChooserButton</a></span> widget which uses <span class=" code">dialog</span> as its
+file-picking window.</p>
+<p class="p">Note that <span class=" code">dialog</span> must be a <span class=" link"><a href="Gtk.Dialog.html" title="Gtk.Dialog">Gtk.Dialog</a></span> (or subclass) which
+implements the <span class=" link"><a href="Gtk.FileChooser.html" title="Gtk.FileChooser">Gtk.FileChooser</a></span> interface and must not have
+<span class=" link"><a href="Gtk.DialogFlags.html" title="Gtk.DialogFlags">Gtk.DialogFlags</a></span>.destroy_with_parent set.</p>
+<p class="p">Also note that the dialog needs to have its confirmative button
+added with response <span class=" link"><a href="Gtk.ResponseType.html" title="Gtk.ResponseType">Gtk.ResponseType</a></span>.accept or <span class=" link"><a href="Gtk.ResponseType.html" title="Gtk.ResponseType">Gtk.ResponseType</a></span>.ok in
+order for the button to take over the file selected in the dialog.</p>
+<p class="p">Since 2.6</p>
+<div class="terms"><div class="inner"><div class="region"><dl class="terms">
+<dt class="terms"><span class=" code">dialog</span></dt>
+<dd class="terms"><p class="p">the widget to use as dialog</p></dd>
+<dt class="terms"><span class=" code">Returns</span></dt>
+<dd class="terms"><p class="p">a new button widget.</p></dd>
+</dl></div></div></div>
+</div>
+<div class="sect sect-links" role="navigation">
+<div class="hgroup"></div>
+<div class="contents"><div class="links guidelinks"><div class="inner">
+<div class="title"><h2><span class="title">More Information</span></h2></div>
+<div class="region"><ul><li class="links "><a href="Gtk.FileChooserButton.html" title="Gtk.FileChooserButton">Gtk.FileChooserButton</a></li></ul></div>
+</div></div></div>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="footer"></div>
+</div></body>
+</html>

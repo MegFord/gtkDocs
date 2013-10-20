@@ -1,0 +1,142 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Gtk.DrawingArea</title>
+<link rel="stylesheet" type="text/css" href="C.css">
+<script type="text/javascript" src="jquery.js"></script><script type="text/javascript" src="jquery.syntax.js"></script><script type="text/javascript" src="yelp.js"></script>
+</head>
+<body><div class="page" role="main">
+<div class="header"><div class="trails" role="navigation"><div class="trail">
+<a class="trail" href="index.html" title="Index">Index</a> » </div></div></div>
+<div class="body">
+<div class="hgroup"><h1 class="title"><span class="title">Gtk.DrawingArea</span></h1></div>
+<div class="region">
+<div class="contents">
+<div class="synopsis"><div class="inner"><div class="region"><div class="contents"><div class="code"><pre class="contents ">const Gtk = imports.gi.Gtk;
+
+let drawing_area = new Gtk.DrawingArea();
+  </pre></div></div></div></div></div>
+<p class="p">The <span class=" link"><a href="Gtk.DrawingArea.html" title="Gtk.DrawingArea">Gtk.DrawingArea</a></span> widget is used for creating custom user interface
+elements. It's essentially a blank widget; you can draw on it. After
+creating a drawing area, the application may want to connect to:</p>
+<p class="p">&lt;itemizedlist&gt;
+  &lt;listitem&gt;
+    &lt;para&gt;
+    Mouse and button press signals to respond to input from
+    the user. (Use <span class=" link"><a href="Gtk.add_events.html" title="Gtk.add_events">Gtk.add_events</a></span> to enable events
+    you wish to receive.)
+    &lt;/para&gt;
+  &lt;/listitem&gt;
+  &lt;listitem&gt;
+    &lt;para&gt;
+    The <span class=" link"><a href="Gtk.realize.html" title="Gtk.realize">Gtk.realize</a></span> signal to take any necessary actions
+    when the widget is instantiated on a particular display.
+    (Create GDK resources in response to this signal.)
+    &lt;/para&gt;
+  &lt;/listitem&gt;
+  &lt;listitem&gt;
+    &lt;para&gt;
+    The <span class=" link"><a href="Gtk.configure-event.html" title="Gtk.configure-event">Gtk.configure-event</a></span> signal to take any necessary
+    actions when the widget changes size.
+    &lt;/para&gt;
+  &lt;/listitem&gt;
+  &lt;listitem&gt;
+    &lt;para&gt;
+    The <span class=" link"><a href="Gtk.draw.html" title="Gtk.draw">Gtk.draw</a></span> signal to handle redrawing the
+    contents of the widget.
+    &lt;/para&gt;
+  &lt;/listitem&gt;
+&lt;/itemizedlist&gt;</p>
+<p class="p">The following code portion demonstrates using a drawing
+area to display a circle in the normal widget foreground
+color.</p>
+<p class="p">Note that GDK automatically clears the exposed area to the
+background color before sending the expose event, and that
+drawing is implicitly clipped to the exposed area.</p>
+<p class="p">&lt;example&gt;
+&lt;title&gt;Simple GtkDrawingArea usage&lt;/title&gt;
+&lt;programlisting&gt;
+gboolean
+draw_callback (GtkWidget *widget, cairo_t *cr, gpointer data)
+{
+  guint width, height;
+  GdkRGBA color;</p>
+<p class="p">  width = gtk_widget_get_allocated_width (widget);
+  height = gtk_widget_get_allocated_height (widget);
+  cairo_arc (cr,
+             width / 2.0, height / 2.0,
+             MIN (width, height) / 2.0,
+             0, 2 * G_PI);</p>
+<p class="p">  gtk_style_context_get_color (gtk_widget_get_style_context (widget),
+                               0,
+                               &amp;amp;color);
+  gdk_cairo_set_source_rgba (cr, &amp;amp;color);</p>
+<p class="p">  cairo_fill (cr);</p>
+<p class="p"> return FALSE;
+}
+[...]
+  GtkWidget &amp;ast;drawing_area = gtk_drawing_area_new (&lt;!-- --&gt;);
+  gtk_widget_set_size_request (drawing_area, 100, 100);
+  g_signal_connect (G_OBJECT (drawing_area), "draw",
+                    G_CALLBACK (draw_callback), NULL);
+&lt;/programlisting&gt;
+&lt;/example&gt;</p>
+<p class="p">Draw signals are normally delivered when a drawing area first comes
+onscreen, or when it's covered by another window and then uncovered.
+You can also force an expose event by adding to the "damage region"
+of the drawing area's window; <span class=" link"><a href="Gtk.queue_draw_area.html" title="Gtk.queue_draw_area">Gtk.queue_draw_area</a></span> and
+<span class=" link"><a href="Gdk.invalidate_rect.html" title="Gdk.invalidate_rect">Gdk.invalidate_rect</a></span> are equally good ways to do this.
+You'll then get a draw signal for the invalid region.</p>
+<p class="p">The available routines for drawing are documented on the &lt;link
+linkend="gdk3-Cairo-Interaction"&gt;GDK Drawing Primitives&lt;/link&gt; page
+and the cairo documentation.</p>
+<p class="p">To receive mouse events on a drawing area, you will need to enable
+them with <span class=" link"><a href="Gtk.add_events.html" title="Gtk.add_events">Gtk.add_events</a></span>. To receive keyboard events, you
+will need to set the "can-focus" property on the drawing area, and you
+should probably draw some user-visible indication that the drawing
+area is focused. Use <span class=" link"><a href="Gtk.has_focus.html" title="Gtk.has_focus">Gtk.has_focus</a></span> in your expose event
+handler to decide whether to draw the focus indicator. See
+<span class=" link"><a href="Gtk.render_focus.html" title="render_focus">render_focus</a></span> for one way to draw focus.</p>
+<div class="synopsis"><div class="inner">
+<div class="title title-synopsis"><h2><span class="title">Hierarchy</span></h2></div>
+<div class="region"><div class="contents"><div class="tree"><div class="inner"><div class="region"><ul class="tree"><li class="tree">
+<div>
+        <span class=" code">GObject.Object</span>
+      
+      </div>
+<ul class="tree"><li class="tree">
+<div>
+        <span class=" code">GObject.InitiallyUnowned</span>
+      
+      </div>
+<ul class="tree"><li class="tree">
+<div>
+        <span class=" code">Gtk.Widget</span>
+      
+      </div>
+<ul class="tree"><li class="tree"><div>
+        <span class=" code">Gtk.DrawingArea</span>
+      </div></li></ul>
+</li></ul>
+</li></ul>
+</li></ul></div></div></div></div></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Other</span></h2></div>
+<div class="region"><ul><li class="links "><a href="Gtk.DrawingArea.new.html" title="Gtk.DrawingArea.new">Gtk.DrawingArea.new</a></li></ul></div>
+</div></div>
+</div>
+<div class="sect sect-links" role="navigation">
+<div class="hgroup"></div>
+<div class="contents"><div class="links guidelinks"><div class="inner">
+<div class="title"><h2><span class="title">More Information</span></h2></div>
+<div class="region"><ul><li class="links "><a href="index.html" title="Index">Index</a></li></ul></div>
+</div></div></div>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="footer"></div>
+</div></body>
+</html>

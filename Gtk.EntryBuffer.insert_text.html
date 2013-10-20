@@ -1,0 +1,50 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Gtk.EntryBuffer.prototype.insert_text</title>
+<link rel="stylesheet" type="text/css" href="C.css">
+<script type="text/javascript" src="jquery.js"></script><script type="text/javascript" src="jquery.syntax.js"></script><script type="text/javascript" src="yelp.js"></script>
+</head>
+<body><div class="page" role="main">
+<div class="header"><div class="trails" role="navigation"><div class="trail">
+<a class="trail" href="index.html" title="Index">Index</a> » <a class="trail" href="Gtk.EntryBuffer.html" title="Gtk.EntryBuffer">Gtk.EntryBuffer</a> » </div></div></div>
+<div class="body">
+<div class="hgroup"><h1 class="title"><span class="title">Gtk.EntryBuffer.prototype.insert_text</span></h1></div>
+<div class="region">
+<div class="contents">
+<div class="synopsis"><div class="inner"><div class="region"><div class="contents"><div class="code"><pre class="contents ">function insert_text(position:Number, chars:String, n_chars:Number):Number {
+    // Gjs wrapper for gtk_entry_buffer_insert_text()
+}</pre></div></div></div></div></div>
+<p class="p">Inserts <span class=" code">n_chars</span> characters of <span class=" code">chars</span> into the contents of the
+buffer, at position <span class=" code">position</span>.</p>
+<p class="p">If <span class=" code">n_chars</span> is negative, then characters from chars will be inserted
+until a null-terminator is found. If <span class=" code">position</span> or <span class=" code">n_chars</span> are out of
+bounds, or the maximum buffer text length is exceeded, then they are
+coerced to sane values.</p>
+<p class="p">Note that the position and length are in characters, not in bytes.</p>
+<p class="p">Since 2.18</p>
+<div class="terms"><div class="inner"><div class="region"><dl class="terms">
+<dt class="terms"><span class=" code">position</span></dt>
+<dd class="terms"><p class="p">the position at which to insert text.</p></dd>
+<dt class="terms"><span class=" code">chars</span></dt>
+<dd class="terms"><p class="p">the text to insert into the buffer.</p></dd>
+<dt class="terms"><span class=" code">n_chars</span></dt>
+<dd class="terms"><p class="p">the length of the text in characters, or -1</p></dd>
+<dt class="terms"><span class=" code">Returns</span></dt>
+<dd class="terms"><p class="p">The number of characters actually inserted.</p></dd>
+</dl></div></div></div>
+</div>
+<div class="sect sect-links" role="navigation">
+<div class="hgroup"></div>
+<div class="contents"><div class="links guidelinks"><div class="inner">
+<div class="title"><h2><span class="title">More Information</span></h2></div>
+<div class="region"><ul><li class="links "><a href="Gtk.EntryBuffer.html" title="Gtk.EntryBuffer">Gtk.EntryBuffer</a></li></ul></div>
+</div></div></div>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="footer"></div>
+</div></body>
+</html>
