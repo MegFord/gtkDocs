@@ -1,0 +1,149 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Gtk.TreeModelSort</title>
+<link rel="stylesheet" type="text/css" href="C.css">
+<script type="text/javascript" src="jquery.js"></script><script type="text/javascript" src="jquery.syntax.js"></script><script type="text/javascript" src="yelp.js"></script>
+</head>
+<body><div class="page" role="main">
+<div class="header"><div class="trails" role="navigation"><div class="trail">
+<a class="trail" href="index.html" title="Index">Index</a> » </div></div></div>
+<div class="body">
+<div class="hgroup"><h1 class="title"><span class="title">Gtk.TreeModelSort</span></h1></div>
+<div class="region">
+<div class="contents">
+<div class="synopsis"><div class="inner"><div class="region"><div class="contents"><div class="code"><pre class="contents ">const Gtk = imports.gi.Gtk;
+
+let tree_model_sort = new Gtk.TreeModelSort({
+    <span class=" link"><a href="Gtk.TreeModelSort-model.html" title="Gtk.TreeModelSort:model">model</a></span>: value,
+});
+  </pre></div></div></div></div></div>
+<p class="p">The <span class=" link"><a href="Gtk.TreeModelSort.html" title="Gtk.TreeModelSort">Gtk.TreeModelSort</a></span> is a model which implements the <span class=" link"><a href="Gtk.TreeSortable.html" title="Gtk.TreeSortable">Gtk.TreeSortable</a></span>
+interface.  It does not hold any data itself, but rather is created with
+a child model and proxies its data.  It has identical column types to
+this child model, and the changes in the child are propagated.  The
+primary purpose of this model is to provide a way to sort a different
+model without modifying it. Note that the sort function used by
+<span class=" link"><a href="Gtk.TreeModelSort.html" title="Gtk.TreeModelSort">Gtk.TreeModelSort</a></span> is not guaranteed to be stable.</p>
+<p class="p">The use of this is best demonstrated through an example.  In the
+following sample code we create two <span class=" link"><a href="Gtk.TreeView.html" title="Gtk.TreeView">Gtk.TreeView</a></span> widgets each with a
+view of the same data.  As the model is wrapped here by a
+<span class=" link"><a href="Gtk.TreeModelSort.html" title="Gtk.TreeModelSort">Gtk.TreeModelSort</a></span>, the two <span class=" link"><a href="Gtk.TreeView.html" title="Gtk.TreeView">Gtk.TreeView</a></span>&lt;!-- --&gt;s can each sort their
+view of the data without affecting the other.  By contrast, if we
+simply put the same model in each widget, then sorting the first would
+sort the second.</p>
+<p class="p">&lt;example&gt;
+&lt;title&gt;Using a &lt;structname&gt;GtkTreeModelSort&lt;/structname&gt;&lt;/title&gt;
+&lt;programlisting&gt;
+{
+  GtkTreeView *tree_view1;
+  GtkTreeView *tree_view2;
+  GtkTreeModel *sort_model1;
+  GtkTreeModel *sort_model2;
+  GtkTreeModel *child_model;</p>
+<p class="p">  // get the child model
+  child_model = get_my_model ();</p>
+<p class="p">  // Create the first tree
+  sort_model1 = gtk_tree_model_sort_new_with_model (child_model);
+  tree_view1 = gtk_tree_view_new_with_model (sort_model1);</p>
+<p class="p">  // Create the second tree
+  sort_model2 = gtk_tree_model_sort_new_with_model (child_model);
+  tree_view2 = gtk_tree_view_new_with_model (sort_model2);</p>
+<p class="p">  // Now we can sort the two models independently
+  gtk_tree_sortable_set_sort_column_id (GTK_TREE_SORTABLE (sort_model1),
+                                        COLUMN_1, GTK_SORT_ASCENDING);
+  gtk_tree_sortable_set_sort_column_id (GTK_TREE_SORTABLE (sort_model2),
+                                        COLUMN_1, GTK_SORT_DESCENDING);
+}
+&lt;/programlisting&gt;
+&lt;/example&gt;</p>
+<p class="p">To demonstrate how to access the underlying child model from the sort
+model, the next example will be a callback for the <span class=" link"><a href="Gtk.TreeSelection.html" title="Gtk.TreeSelection">Gtk.TreeSelection</a></span>
+<span class=" link"><a href="Gtk.changed.html" title="Gtk.changed">Gtk.changed</a></span> signal.  In this callback, we get a string
+from COLUMN_1 of the model.  We then modify the string, find the same
+selected row on the child model, and change the row there.</p>
+<p class="p">&lt;example&gt;
+&lt;title&gt;Accessing the child model of in a selection changed callback&lt;/title&gt;
+&lt;programlisting&gt;
+void
+selection_changed (GtkTreeSelection *selection, gpointer data)
+{
+  GtkTreeModel *sort_model = NULL;
+  GtkTreeModel *child_model;
+  GtkTreeIter sort_iter;
+  GtkTreeIter child_iter;
+  char *some_data = NULL;
+  char *modified_data;</p>
+<p class="p">  // Get the current selected row and the model.
+  if (! gtk_tree_selection_get_selected (selection,
+                                         &amp;sort_model,
+                                         &amp;sort_iter))
+    return;</p>
+<p class="p">  /&lt;!----&gt;* Look up the current value on the selected row and get a new value
+   * to change it to.
+   *&lt;!----&gt;/
+  gtk_tree_model_get (GTK_TREE_MODEL (sort_model), &amp;sort_iter,
+                      COLUMN_1, &amp;some_data,
+                      -1);</p>
+<p class="p">  modified_data = change_the_data (some_data);
+  g_free (some_data);</p>
+<p class="p">  // Get an iterator on the child model, instead of the sort model.
+  gtk_tree_model_sort_convert_iter_to_child_iter (GTK_TREE_MODEL_SORT (sort_model),
+                                                  &amp;child_iter,
+                                                  &amp;sort_iter);</p>
+<p class="p">  /&lt;!----&gt;* Get the child model and change the value of the row.  In this
+   * example, the child model is a GtkListStore.  It could be any other
+   * type of model, though.
+   *&lt;!----&gt;/
+  child_model = gtk_tree_model_sort_get_model (GTK_TREE_MODEL_SORT (sort_model));
+  gtk_list_store_set (GTK_LIST_STORE (child_model), &amp;child_iter,
+                      COLUMN_1, &amp;modified_data,
+                      -1);
+  g_free (modified_data);
+}
+&lt;/programlisting&gt;
+&lt;/example&gt;</p>
+<div class="synopsis"><div class="inner">
+<div class="title title-synopsis"><h2><span class="title">Hierarchy</span></h2></div>
+<div class="region"><div class="contents"><div class="tree"><div class="inner"><div class="region"><ul class="tree"><li class="tree">
+<div>
+        <span class=" code">GObject.Object</span>
+      
+      </div>
+<ul class="tree"><li class="tree"><div>
+        <span class=" code">Gtk.TreeModelSort</span>
+      </div></li></ul>
+</li></ul></div></div></div></div></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Methods</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.TreeModelSort.clear_cache.html" title="Gtk.TreeModelSort.prototype.clear_cache">Gtk.TreeModelSort.prototype.clear_cache</a></li>
+<li class="links "><a href="Gtk.TreeModelSort.convert_child_iter_to_iter.html" title="Gtk.TreeModelSort.prototype.convert_child_iter_to_iter">Gtk.TreeModelSort.prototype.convert_child_iter_to_iter</a></li>
+<li class="links "><a href="Gtk.TreeModelSort.convert_child_path_to_path.html" title="Gtk.TreeModelSort.prototype.convert_child_path_to_path">Gtk.TreeModelSort.prototype.convert_child_path_to_path</a></li>
+<li class="links "><a href="Gtk.TreeModelSort.convert_iter_to_child_iter.html" title="Gtk.TreeModelSort.prototype.convert_iter_to_child_iter">Gtk.TreeModelSort.prototype.convert_iter_to_child_iter</a></li>
+<li class="links "><a href="Gtk.TreeModelSort.convert_path_to_child_path.html" title="Gtk.TreeModelSort.prototype.convert_path_to_child_path">Gtk.TreeModelSort.prototype.convert_path_to_child_path</a></li>
+<li class="links "><a href="Gtk.TreeModelSort.get_model.html" title="Gtk.TreeModelSort.prototype.get_model">Gtk.TreeModelSort.prototype.get_model</a></li>
+<li class="links "><a href="Gtk.TreeModelSort.iter_is_valid.html" title="Gtk.TreeModelSort.prototype.iter_is_valid">Gtk.TreeModelSort.prototype.iter_is_valid</a></li>
+<li class="links "><a href="Gtk.TreeModelSort.reset_default_sort_func.html" title="Gtk.TreeModelSort.prototype.reset_default_sort_func">Gtk.TreeModelSort.prototype.reset_default_sort_func</a></li>
+</ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Properties</span></h2></div>
+<div class="region"><ul><li class="links "><a href="Gtk.TreeModelSort-model.html" title="Gtk.TreeModelSort:model">model</a></li></ul></div>
+</div></div>
+</div>
+<div class="sect sect-links" role="navigation">
+<div class="hgroup"></div>
+<div class="contents"><div class="links guidelinks"><div class="inner">
+<div class="title"><h2><span class="title">More Information</span></h2></div>
+<div class="region"><ul><li class="links "><a href="index.html" title="Index">Index</a></li></ul></div>
+</div></div></div>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="footer"></div>
+</div></body>
+</html>

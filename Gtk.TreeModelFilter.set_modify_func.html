@@ -1,0 +1,46 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Gtk.TreeModelFilter.prototype.set_modify_func</title>
+<link rel="stylesheet" type="text/css" href="C.css">
+<script type="text/javascript" src="jquery.js"></script><script type="text/javascript" src="jquery.syntax.js"></script><script type="text/javascript" src="yelp.js"></script>
+</head>
+<body><div class="page" role="main">
+<div class="header"><div class="trails" role="navigation"><div class="trail">
+<a class="trail" href="index.html" title="Index">Index</a> » <a class="trail" href="Gtk.TreeModelFilter.html" title="Gtk.TreeModelFilter">Gtk.TreeModelFilter</a> » </div></div></div>
+<div class="body">
+<div class="hgroup"><h1 class="title"><span class="title">Gtk.TreeModelFilter.prototype.set_modify_func</span></h1></div>
+<div class="region">
+<div class="contents">
+<div class="synopsis"><div class="inner"><div class="region"><div class="contents"><div class="code"><pre class="contents ">function set_modify_func(types:[GType], func:Gtk.TreeModelFilterModifyFunc):void {
+    // Gjs wrapper for gtk_tree_model_filter_set_modify_func()
+}</pre></div></div></div></div></div>
+<p class="p">With the <span class=" code">n_columns</span> and <span class=" code">types</span> parameters, you give an array of column
+types for this model (which will be exposed to the parent model/view).
+The <span class=" code">func</span>, <span class=" code">data</span> and <span class=" code">destroy</span> parameters are for specifying the modify
+function. The modify function will get called for &lt;emphasis&gt;each&lt;/emphasis&gt;
+data access, the goal of the modify function is to return the data which 
+should be displayed at the location specified using the parameters of the 
+modify function.</p>
+<p class="p">Since 2.4</p>
+<div class="terms"><div class="inner"><div class="region"><dl class="terms">
+<dt class="terms"><span class=" code">types</span></dt>
+<dd class="terms"><p class="p">The <span class=" link"><a href="GLib.Type.html" title="GLib.Type">GLib.Type</a></span>&lt;!-- --&gt;s of the columns.</p></dd>
+<dt class="terms"><span class=" code">func</span></dt>
+<dd class="terms"><p class="p">A <span class=" link"><a href="Gtk.TreeModelFilterModifyFunc.html" title="Gtk.TreeModelFilterModifyFunc">Gtk.TreeModelFilterModifyFunc</a></span></p></dd>
+</dl></div></div></div>
+</div>
+<div class="sect sect-links" role="navigation">
+<div class="hgroup"></div>
+<div class="contents"><div class="links guidelinks"><div class="inner">
+<div class="title"><h2><span class="title">More Information</span></h2></div>
+<div class="region"><ul><li class="links "><a href="Gtk.TreeModelFilter.html" title="Gtk.TreeModelFilter">Gtk.TreeModelFilter</a></li></ul></div>
+</div></div></div>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="footer"></div>
+</div></body>
+</html>

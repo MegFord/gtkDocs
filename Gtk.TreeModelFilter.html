@@ -1,0 +1,140 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Gtk.TreeModelFilter</title>
+<link rel="stylesheet" type="text/css" href="C.css">
+<script type="text/javascript" src="jquery.js"></script><script type="text/javascript" src="jquery.syntax.js"></script><script type="text/javascript" src="yelp.js"></script>
+</head>
+<body><div class="page" role="main">
+<div class="header"><div class="trails" role="navigation"><div class="trail">
+<a class="trail" href="index.html" title="Index">Index</a> » </div></div></div>
+<div class="body">
+<div class="hgroup"><h1 class="title"><span class="title">Gtk.TreeModelFilter</span></h1></div>
+<div class="region">
+<div class="contents">
+<div class="synopsis"><div class="inner"><div class="region"><div class="contents"><div class="code"><pre class="contents ">const Gtk = imports.gi.Gtk;
+
+let tree_model_filter = new Gtk.TreeModelFilter({
+    <span class=" link"><a href="Gtk.TreeModelFilter-child-model.html" title="Gtk.TreeModelFilter:child-model">child_model</a></span>: value,
+    <span class=" link"><a href="Gtk.TreeModelFilter-virtual-root.html" title="Gtk.TreeModelFilter:virtual-root">virtual_root</a></span>: value,
+});
+  </pre></div></div></div></div></div>
+<p class="p">A <span class=" link"><a href="Gtk.TreeModelFilter.html" title="Gtk.TreeModelFilter">Gtk.TreeModelFilter</a></span> is a tree model which wraps another tree model,
+and can do the following things:
+&lt;itemizedlist&gt;
+&lt;listitem&gt;&lt;para&gt;
+Filter specific rows, based on data from a "visible column", a column
+storing booleans indicating whether the row should be filtered or not,
+or based on the return value of a "visible function", which gets a
+model, iter and user_data and returns a boolean indicating whether the
+row should be filtered or not.
+&lt;/para&gt;&lt;/listitem&gt;
+&lt;listitem&gt;&lt;para&gt;
+Modify the "appearance" of the model, using a modify function.
+This is extremely powerful and allows for just changing
+some values and also for creating a completely different model based on
+the given child model.
+&lt;/para&gt;&lt;/listitem&gt;
+&lt;listitem&gt;&lt;para&gt;
+Set a different root node, also known as a "virtual root". You can pass in
+a <span class=" link"><a href="Gtk.TreePath.html" title="Gtk.TreePath">Gtk.TreePath</a></span> indicating the root node for the filter at construction time.
+&lt;/para&gt;&lt;/listitem&gt;
+&lt;/itemizedlist&gt;</p>
+<p class="p">The basic API is similar to <span class=" link"><a href="Gtk.TreeModelSort.html" title="Gtk.TreeModelSort">Gtk.TreeModelSort</a></span>. For an example on its usage,
+see the section on <span class=" link"><a href="Gtk.TreeModelSort.html" title="Gtk.TreeModelSort">Gtk.TreeModelSort</a></span>.</p>
+<p class="p">When using <span class=" link"><a href="Gtk.TreeModelFilter.html" title="Gtk.TreeModelFilter">Gtk.TreeModelFilter</a></span>, it is important to realize that
+<span class=" link"><a href="Gtk.TreeModelFilter.html" title="Gtk.TreeModelFilter">Gtk.TreeModelFilter</a></span> maintains an internal cache of all nodes which are
+visible in its clients. The cache is likely to be a subtree of the tree
+exposed by the child model. <span class=" link"><a href="Gtk.TreeModelFilter.html" title="Gtk.TreeModelFilter">Gtk.TreeModelFilter</a></span> will not cache the entire
+child model when unnecessary to not compromise the caching mechanism
+that is exposed by the reference counting scheme. If the child model
+implements reference counting, unnecessary signals may not be emitted
+because of reference counting rule 3, see the <span class=" link"><a href="Gtk.TreeModel.html" title="Gtk.TreeModel">Gtk.TreeModel</a></span>
+documentation. (Note that e.g. <span class=" link"><a href="Gtk.TreeStore.html" title="Gtk.TreeStore">Gtk.TreeStore</a></span> does not implement
+reference counting and will always emit all signals, even when
+the receiving node is not visible).</p>
+<p class="p">Because of this, limitations for possible visible functions do apply.
+In general, visible functions should only use data or properties from
+the node for which the visibility state must be determined, its siblings
+or its parents. Usually, having a dependency on the state of any child
+node is not possible, unless references are taken on these explicitly.
+When no such reference exists, no signals may be received for these child
+nodes (see reference couting rule number 3 in the <span class=" link"><a href="Gtk.TreeModel.html" title="Gtk.TreeModel">Gtk.TreeModel</a></span> section).</p>
+<p class="p">Determining the visibility state of a given node based on the state
+of its child nodes is a frequently occurring use case. Therefore,
+<span class=" link"><a href="Gtk.TreeModelFilter.html" title="Gtk.TreeModelFilter">Gtk.TreeModelFilter</a></span> explicitly supports this. For example, when a node
+does not have any children, you might not want the node to be visible.
+As soon as the first row is added to the node's child level (or the
+last row removed), the node's visibility should be updated.</p>
+<p class="p">This introduces a dependency from the node on its child nodes. In order
+to accommodate this, <span class=" link"><a href="Gtk.TreeModelFilter.html" title="Gtk.TreeModelFilter">Gtk.TreeModelFilter</a></span> must make sure the necesary
+signals are received from the child model. This is achieved by building,
+for all nodes which are exposed as visible nodes to <span class=" link"><a href="Gtk.TreeModelFilter.html" title="Gtk.TreeModelFilter">Gtk.TreeModelFilter</a></span>'s
+clients, the child level (if any) and take a reference on the first node
+in this level. Furthermore, for every row-inserted, row-changed or
+row-deleted signal (also these which were not handled because the node
+was not cached), <span class=" link"><a href="Gtk.TreeModelFilter.html" title="Gtk.TreeModelFilter">Gtk.TreeModelFilter</a></span> will check if the visibility state
+of any parent node has changed.</p>
+<p class="p">Beware, however, that this explicit support is limited to these two
+cases. For example, if you want a node to be visible only if two nodes
+in a child's child level (2 levels deeper) are visible, you are on your
+own. In this case, either rely on <span class=" link"><a href="Gtk.TreeStore.html" title="Gtk.TreeStore">Gtk.TreeStore</a></span> to emit all signals
+because it does not implement reference counting, or for models that
+do implement reference counting, obtain references on these child levels
+yourself.</p>
+<div class="synopsis"><div class="inner">
+<div class="title title-synopsis"><h2><span class="title">Hierarchy</span></h2></div>
+<div class="region"><div class="contents"><div class="tree"><div class="inner"><div class="region"><ul class="tree"><li class="tree">
+<div>
+        <span class=" code">GObject.Object</span>
+      
+      </div>
+<ul class="tree"><li class="tree"><div>
+        <span class=" code">Gtk.TreeModelFilter</span>
+      </div></li></ul>
+</li></ul></div></div></div></div></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Methods</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.TreeModelFilter.clear_cache.html" title="Gtk.TreeModelFilter.prototype.clear_cache">Gtk.TreeModelFilter.prototype.clear_cache</a></li>
+<li class="links "><a href="Gtk.TreeModelFilter.convert_child_iter_to_iter.html" title="Gtk.TreeModelFilter.prototype.convert_child_iter_to_iter">Gtk.TreeModelFilter.prototype.convert_child_iter_to_iter</a></li>
+<li class="links "><a href="Gtk.TreeModelFilter.convert_child_path_to_path.html" title="Gtk.TreeModelFilter.prototype.convert_child_path_to_path">Gtk.TreeModelFilter.prototype.convert_child_path_to_path</a></li>
+<li class="links "><a href="Gtk.TreeModelFilter.convert_iter_to_child_iter.html" title="Gtk.TreeModelFilter.prototype.convert_iter_to_child_iter">Gtk.TreeModelFilter.prototype.convert_iter_to_child_iter</a></li>
+<li class="links "><a href="Gtk.TreeModelFilter.convert_path_to_child_path.html" title="Gtk.TreeModelFilter.prototype.convert_path_to_child_path">Gtk.TreeModelFilter.prototype.convert_path_to_child_path</a></li>
+<li class="links "><a href="Gtk.TreeModelFilter.get_model.html" title="Gtk.TreeModelFilter.prototype.get_model">Gtk.TreeModelFilter.prototype.get_model</a></li>
+<li class="links "><a href="Gtk.TreeModelFilter.refilter.html" title="Gtk.TreeModelFilter.prototype.refilter">Gtk.TreeModelFilter.prototype.refilter</a></li>
+<li class="links "><a href="Gtk.TreeModelFilter.set_modify_func.html" title="Gtk.TreeModelFilter.prototype.set_modify_func">Gtk.TreeModelFilter.prototype.set_modify_func</a></li>
+<li class="links "><a href="Gtk.TreeModelFilter.set_visible_column.html" title="Gtk.TreeModelFilter.prototype.set_visible_column">Gtk.TreeModelFilter.prototype.set_visible_column</a></li>
+<li class="links "><a href="Gtk.TreeModelFilter.set_visible_func.html" title="Gtk.TreeModelFilter.prototype.set_visible_func">Gtk.TreeModelFilter.prototype.set_visible_func</a></li>
+</ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Properties</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.TreeModelFilter-child-model.html" title="Gtk.TreeModelFilter:child-model">child-model</a></li>
+<li class="links "><a href="Gtk.TreeModelFilter-virtual-root.html" title="Gtk.TreeModelFilter:virtual-root">virtual-root</a></li>
+</ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Virtual functions</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.TreeModelFilter-modify.html" title="Gtk.TreeModelFilter::modify">Gtk.TreeModelFilter::modify</a></li>
+<li class="links "><a href="Gtk.TreeModelFilter-visible.html" title="Gtk.TreeModelFilter::visible">Gtk.TreeModelFilter::visible</a></li>
+</ul></div>
+</div></div>
+</div>
+<div class="sect sect-links" role="navigation">
+<div class="hgroup"></div>
+<div class="contents"><div class="links guidelinks"><div class="inner">
+<div class="title"><h2><span class="title">More Information</span></h2></div>
+<div class="region"><ul><li class="links "><a href="index.html" title="Index">Index</a></li></ul></div>
+</div></div></div>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="footer"></div>
+</div></body>
+</html>

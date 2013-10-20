@@ -1,0 +1,319 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Gtk.TreeView</title>
+<link rel="stylesheet" type="text/css" href="C.css">
+<script type="text/javascript" src="jquery.js"></script><script type="text/javascript" src="jquery.syntax.js"></script><script type="text/javascript" src="yelp.js"></script>
+</head>
+<body><div class="page" role="main">
+<div class="header"><div class="trails" role="navigation"><div class="trail">
+<a class="trail" href="index.html" title="Index">Index</a> » </div></div></div>
+<div class="body">
+<div class="hgroup"><h1 class="title"><span class="title">Gtk.TreeView</span></h1></div>
+<div class="region">
+<div class="contents">
+<div class="synopsis"><div class="inner"><div class="region"><div class="contents"><div class="code"><pre class="contents ">const Gtk = imports.gi.Gtk;
+
+let tree_view = new Gtk.TreeView({
+    <span class=" link"><a href="Gtk.TreeView-activate-on-single-click.html" title="Gtk.TreeView:activate-on-single-click">activate_on_single_click</a></span>: value,
+    <span class=" link"><a href="Gtk.TreeView-enable-grid-lines.html" title="Gtk.TreeView:enable-grid-lines">enable_grid_lines</a></span>: value,
+    <span class=" link"><a href="Gtk.TreeView-enable-search.html" title="Gtk.TreeView:enable-search">enable_search</a></span>: value,
+    <span class=" link"><a href="Gtk.TreeView-enable-tree-lines.html" title="Gtk.TreeView:enable-tree-lines">enable_tree_lines</a></span>: value,
+    <span class=" link"><a href="Gtk.TreeView-expander-column.html" title="Gtk.TreeView:expander-column">expander_column</a></span>: value,
+    <span class=" link"><a href="Gtk.TreeView-fixed-height-mode.html" title="Gtk.TreeView:fixed-height-mode">fixed_height_mode</a></span>: value,
+    <span class=" link"><a href="Gtk.TreeView-headers-clickable.html" title="Gtk.TreeView:headers-clickable">headers_clickable</a></span>: value,
+    <span class=" link"><a href="Gtk.TreeView-headers-visible.html" title="Gtk.TreeView:headers-visible">headers_visible</a></span>: value,
+    <span class=" link"><a href="Gtk.TreeView-hover-expand.html" title="Gtk.TreeView:hover-expand">hover_expand</a></span>: value,
+    <span class=" link"><a href="Gtk.TreeView-hover-selection.html" title="Gtk.TreeView:hover-selection">hover_selection</a></span>: value,
+    <span class=" link"><a href="Gtk.TreeView-level-indentation.html" title="Gtk.TreeView:level-indentation">level_indentation</a></span>: value,
+    <span class=" link"><a href="Gtk.TreeView-model.html" title="Gtk.TreeView:model">model</a></span>: value,
+    <span class=" link"><a href="Gtk.TreeView-reorderable.html" title="Gtk.TreeView:reorderable">reorderable</a></span>: value,
+    <span class=" link"><a href="Gtk.TreeView-rubber-banding.html" title="Gtk.TreeView:rubber-banding">rubber_banding</a></span>: value,
+    <span class=" link"><a href="Gtk.TreeView-rules-hint.html" title="Gtk.TreeView:rules-hint">rules_hint</a></span>: value,
+    <span class=" link"><a href="Gtk.TreeView-search-column.html" title="Gtk.TreeView:search-column">search_column</a></span>: value,
+    <span class=" link"><a href="Gtk.TreeView-show-expanders.html" title="Gtk.TreeView:show-expanders">show_expanders</a></span>: value,
+    <span class=" link"><a href="Gtk.TreeView-tooltip-column.html" title="Gtk.TreeView:tooltip-column">tooltip_column</a></span>: value,
+});
+  </pre></div></div></div></div></div>
+<p class="p">Widget that displays any object that implements the <span class=" link"><a href="Gtk.TreeModel.html" title="Gtk.TreeModel">Gtk.TreeModel</a></span> interface.</p>
+<p class="p">Please refer to the &lt;link linkend="TreeWidget"&gt;tree widget conceptual
+overview&lt;/link&gt; for an overview of all the objects and data types related
+to the tree widget and how they work together.</p>
+<p class="p">Several different coordinate systems are exposed in the GtkTreeView API.
+These are:</p>
+<p class="p">&lt;inlinegraphic fileref="tree-view-coordinates.png" format="PNG"&gt;&lt;/inlinegraphic&gt;
+&lt;variablelist&gt;&lt;title&gt;Coordinate systems in GtkTreeView API&lt;/title&gt;
+&lt;varlistentry&gt;&lt;term&gt;Widget coordinates&lt;/term&gt;
+&lt;listitem&gt;
+&lt;para&gt;
+Coordinates relative to the widget (usually &lt;literal&gt;widget-&gt;window&lt;/literal&gt;).
+&lt;/para&gt;
+&lt;/listitem&gt;
+&lt;/varlistentry&gt;
+&lt;varlistentry&gt;&lt;term&gt;Bin window coordinates&lt;/term&gt;
+&lt;listitem&gt;
+&lt;para&gt;
+Coordinates relative to the window that GtkTreeView renders to.
+&lt;/para&gt;
+&lt;/listitem&gt;
+&lt;/varlistentry&gt;
+&lt;varlistentry&gt;&lt;term&gt;Tree coordinates&lt;/term&gt;
+&lt;listitem&gt;
+&lt;para&gt;
+Coordinates relative to the entire scrollable area of GtkTreeView. These
+coordinates start at (0, 0) for row 0 of the tree.
+&lt;/para&gt;
+&lt;/listitem&gt;
+&lt;/varlistentry&gt;
+&lt;/variablelist&gt;</p>
+<p class="p">Several functions are available for converting between the different
+coordinate systems.  The most common translations are between widget and bin
+window coordinates and between bin window and tree coordinates. For the
+former you can use <span class=" link"><a href="Gtk.convert_widget_to_bin_window_coords.html" title="Gtk.convert_widget_to_bin_window_coords">Gtk.convert_widget_to_bin_window_coords</a></span>
+(and vice versa), for the latter <span class=" link"><a href="Gtk.convert_bin_window_to_tree_coords.html" title="Gtk.convert_bin_window_to_tree_coords">Gtk.convert_bin_window_to_tree_coords</a></span>
+(and vice versa).</p>
+<p class="p">&lt;refsect2 id="GtkTreeView-BUILDER-UI"&gt;
+&lt;title&gt;GtkTreeView as GtkBuildable&lt;/title&gt;
+The GtkTreeView implementation of the GtkBuildable interface accepts
+<span class=" link"><a href="Gtk.TreeViewColumn.html" title="Gtk.TreeViewColumn">Gtk.TreeViewColumn</a></span> objects as &amp;lt;child&amp;gt; elements and exposes the
+internal <span class=" link"><a href="Gtk.TreeSelection.html" title="Gtk.TreeSelection">Gtk.TreeSelection</a></span> in UI definitions.
+&lt;example&gt;
+&lt;title&gt;A UI definition fragment with GtkTreeView&lt;/title&gt;
+&lt;programlisting&gt;&lt;![CDATA[
+&lt;object class="GtkTreeView" id="treeview"&gt;
+  &lt;property name="model"&gt;liststore1&lt;/property&gt;
+  &lt;child&gt;
+    &lt;object class="GtkTreeViewColumn" id="test-column"&gt;
+      &lt;property name="title"&gt;Test&lt;/property&gt;
+      &lt;child&gt;
+        &lt;object class="GtkCellRendererText" id="test-renderer"/&gt;
+        &lt;attributes&gt;
+          &lt;attribute name="text"&gt;1&lt;/attribute&gt;
+        &lt;/attributes&gt;
+      &lt;/child&gt;
+    &lt;/object&gt;
+  &lt;/child&gt;
+  &lt;child internal-child="selection"&gt;
+    &lt;object class="GtkTreeSelection" id="selection"&gt;
+      &lt;signal name="changed" handler="on_treeview_selection_changed"/&gt;
+    &lt;/object&gt;
+  &lt;/child&gt;
+&lt;/object&gt;
+]]&gt;&lt;/programlisting&gt;
+&lt;/example&gt;
+&lt;/refsect2&gt;</p>
+<div class="synopsis"><div class="inner">
+<div class="title title-synopsis"><h2><span class="title">Hierarchy</span></h2></div>
+<div class="region"><div class="contents"><div class="tree"><div class="inner"><div class="region"><ul class="tree"><li class="tree">
+<div>
+        <span class=" code">GObject.Object</span>
+      
+      </div>
+<ul class="tree"><li class="tree">
+<div>
+        <span class=" code">GObject.InitiallyUnowned</span>
+      
+      </div>
+<ul class="tree"><li class="tree">
+<div>
+        <span class=" code">Gtk.Widget</span>
+      
+      </div>
+<ul class="tree"><li class="tree">
+<div>
+        <span class=" code">Gtk.Container</span>
+      
+      </div>
+<ul class="tree"><li class="tree"><div>
+        <span class=" code">Gtk.TreeView</span>
+      </div></li></ul>
+</li></ul>
+</li></ul>
+</li></ul>
+</li></ul></div></div></div></div></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Methods</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.TreeView.append_column.html" title="Gtk.TreeView.prototype.append_column">Gtk.TreeView.prototype.append_column</a></li>
+<li class="links "><a href="Gtk.TreeView.collapse_all.html" title="Gtk.TreeView.prototype.collapse_all">Gtk.TreeView.prototype.collapse_all</a></li>
+<li class="links "><a href="Gtk.TreeView.collapse_row.html" title="Gtk.TreeView.prototype.collapse_row">Gtk.TreeView.prototype.collapse_row</a></li>
+<li class="links "><a href="Gtk.TreeView.columns_autosize.html" title="Gtk.TreeView.prototype.columns_autosize">Gtk.TreeView.prototype.columns_autosize</a></li>
+<li class="links "><a href="Gtk.TreeView.convert_bin_window_to_tree_coords.html" title="Gtk.TreeView.prototype.convert_bin_window_to_tree_coords">Gtk.TreeView.prototype.convert_bin_window_to_tree_coords</a></li>
+<li class="links "><a href="Gtk.TreeView.convert_bin_window_to_widget_coords.html" title="Gtk.TreeView.prototype.convert_bin_window_to_widget_coords">Gtk.TreeView.prototype.convert_bin_window_to_widget_coords</a></li>
+<li class="links "><a href="Gtk.TreeView.convert_tree_to_bin_window_coords.html" title="Gtk.TreeView.prototype.convert_tree_to_bin_window_coords">Gtk.TreeView.prototype.convert_tree_to_bin_window_coords</a></li>
+<li class="links "><a href="Gtk.TreeView.convert_tree_to_widget_coords.html" title="Gtk.TreeView.prototype.convert_tree_to_widget_coords">Gtk.TreeView.prototype.convert_tree_to_widget_coords</a></li>
+<li class="links "><a href="Gtk.TreeView.convert_widget_to_bin_window_coords.html" title="Gtk.TreeView.prototype.convert_widget_to_bin_window_coords">Gtk.TreeView.prototype.convert_widget_to_bin_window_coords</a></li>
+<li class="links "><a href="Gtk.TreeView.convert_widget_to_tree_coords.html" title="Gtk.TreeView.prototype.convert_widget_to_tree_coords">Gtk.TreeView.prototype.convert_widget_to_tree_coords</a></li>
+<li class="links "><a href="Gtk.TreeView.create_row_drag_icon.html" title="Gtk.TreeView.prototype.create_row_drag_icon">Gtk.TreeView.prototype.create_row_drag_icon</a></li>
+<li class="links "><a href="Gtk.TreeView.enable_model_drag_dest.html" title="Gtk.TreeView.prototype.enable_model_drag_dest">Gtk.TreeView.prototype.enable_model_drag_dest</a></li>
+<li class="links "><a href="Gtk.TreeView.enable_model_drag_source.html" title="Gtk.TreeView.prototype.enable_model_drag_source">Gtk.TreeView.prototype.enable_model_drag_source</a></li>
+<li class="links "><a href="Gtk.TreeView.expand_all.html" title="Gtk.TreeView.prototype.expand_all">Gtk.TreeView.prototype.expand_all</a></li>
+<li class="links "><a href="Gtk.TreeView.expand_row.html" title="Gtk.TreeView.prototype.expand_row">Gtk.TreeView.prototype.expand_row</a></li>
+<li class="links "><a href="Gtk.TreeView.expand_to_path.html" title="Gtk.TreeView.prototype.expand_to_path">Gtk.TreeView.prototype.expand_to_path</a></li>
+<li class="links "><a href="Gtk.TreeView.get_activate_on_single_click.html" title="Gtk.TreeView.prototype.get_activate_on_single_click">Gtk.TreeView.prototype.get_activate_on_single_click</a></li>
+<li class="links "><a href="Gtk.TreeView.get_background_area.html" title="Gtk.TreeView.prototype.get_background_area">Gtk.TreeView.prototype.get_background_area</a></li>
+<li class="links "><a href="Gtk.TreeView.get_bin_window.html" title="Gtk.TreeView.prototype.get_bin_window">Gtk.TreeView.prototype.get_bin_window</a></li>
+<li class="links "><a href="Gtk.TreeView.get_cell_area.html" title="Gtk.TreeView.prototype.get_cell_area">Gtk.TreeView.prototype.get_cell_area</a></li>
+<li class="links "><a href="Gtk.TreeView.get_column.html" title="Gtk.TreeView.prototype.get_column">Gtk.TreeView.prototype.get_column</a></li>
+<li class="links "><a href="Gtk.TreeView.get_columns.html" title="Gtk.TreeView.prototype.get_columns">Gtk.TreeView.prototype.get_columns</a></li>
+<li class="links "><a href="Gtk.TreeView.get_cursor.html" title="Gtk.TreeView.prototype.get_cursor">Gtk.TreeView.prototype.get_cursor</a></li>
+<li class="links "><a href="Gtk.TreeView.get_dest_row_at_pos.html" title="Gtk.TreeView.prototype.get_dest_row_at_pos">Gtk.TreeView.prototype.get_dest_row_at_pos</a></li>
+<li class="links "><a href="Gtk.TreeView.get_drag_dest_row.html" title="Gtk.TreeView.prototype.get_drag_dest_row">Gtk.TreeView.prototype.get_drag_dest_row</a></li>
+<li class="links "><a href="Gtk.TreeView.get_enable_search.html" title="Gtk.TreeView.prototype.get_enable_search">Gtk.TreeView.prototype.get_enable_search</a></li>
+<li class="links "><a href="Gtk.TreeView.get_enable_tree_lines.html" title="Gtk.TreeView.prototype.get_enable_tree_lines">Gtk.TreeView.prototype.get_enable_tree_lines</a></li>
+<li class="links "><a href="Gtk.TreeView.get_expander_column.html" title="Gtk.TreeView.prototype.get_expander_column">Gtk.TreeView.prototype.get_expander_column</a></li>
+<li class="links "><a href="Gtk.TreeView.get_fixed_height_mode.html" title="Gtk.TreeView.prototype.get_fixed_height_mode">Gtk.TreeView.prototype.get_fixed_height_mode</a></li>
+<li class="links "><a href="Gtk.TreeView.get_grid_lines.html" title="Gtk.TreeView.prototype.get_grid_lines">Gtk.TreeView.prototype.get_grid_lines</a></li>
+<li class="links "><a href="Gtk.TreeView.get_hadjustment.html" title="Gtk.TreeView.prototype.get_hadjustment">Gtk.TreeView.prototype.get_hadjustment</a></li>
+<li class="links "><a href="Gtk.TreeView.get_headers_clickable.html" title="Gtk.TreeView.prototype.get_headers_clickable">Gtk.TreeView.prototype.get_headers_clickable</a></li>
+<li class="links "><a href="Gtk.TreeView.get_headers_visible.html" title="Gtk.TreeView.prototype.get_headers_visible">Gtk.TreeView.prototype.get_headers_visible</a></li>
+<li class="links "><a href="Gtk.TreeView.get_hover_expand.html" title="Gtk.TreeView.prototype.get_hover_expand">Gtk.TreeView.prototype.get_hover_expand</a></li>
+<li class="links "><a href="Gtk.TreeView.get_hover_selection.html" title="Gtk.TreeView.prototype.get_hover_selection">Gtk.TreeView.prototype.get_hover_selection</a></li>
+<li class="links "><a href="Gtk.TreeView.get_level_indentation.html" title="Gtk.TreeView.prototype.get_level_indentation">Gtk.TreeView.prototype.get_level_indentation</a></li>
+<li class="links "><a href="Gtk.TreeView.get_model.html" title="Gtk.TreeView.prototype.get_model">Gtk.TreeView.prototype.get_model</a></li>
+<li class="links "><a href="Gtk.TreeView.get_n_columns.html" title="Gtk.TreeView.prototype.get_n_columns">Gtk.TreeView.prototype.get_n_columns</a></li>
+<li class="links "><a href="Gtk.TreeView.get_path_at_pos.html" title="Gtk.TreeView.prototype.get_path_at_pos">Gtk.TreeView.prototype.get_path_at_pos</a></li>
+<li class="links "><a href="Gtk.TreeView.get_reorderable.html" title="Gtk.TreeView.prototype.get_reorderable">Gtk.TreeView.prototype.get_reorderable</a></li>
+<li class="links "><a href="Gtk.TreeView.get_rubber_banding.html" title="Gtk.TreeView.prototype.get_rubber_banding">Gtk.TreeView.prototype.get_rubber_banding</a></li>
+<li class="links "><a href="Gtk.TreeView.get_rules_hint.html" title="Gtk.TreeView.prototype.get_rules_hint">Gtk.TreeView.prototype.get_rules_hint</a></li>
+<li class="links "><a href="Gtk.TreeView.get_search_column.html" title="Gtk.TreeView.prototype.get_search_column">Gtk.TreeView.prototype.get_search_column</a></li>
+<li class="links "><a href="Gtk.TreeView.get_search_entry.html" title="Gtk.TreeView.prototype.get_search_entry">Gtk.TreeView.prototype.get_search_entry</a></li>
+<li class="links "><a href="Gtk.TreeView.get_selection.html" title="Gtk.TreeView.prototype.get_selection">Gtk.TreeView.prototype.get_selection</a></li>
+<li class="links "><a href="Gtk.TreeView.get_show_expanders.html" title="Gtk.TreeView.prototype.get_show_expanders">Gtk.TreeView.prototype.get_show_expanders</a></li>
+<li class="links "><a href="Gtk.TreeView.get_tooltip_column.html" title="Gtk.TreeView.prototype.get_tooltip_column">Gtk.TreeView.prototype.get_tooltip_column</a></li>
+<li class="links "><a href="Gtk.TreeView.get_tooltip_context.html" title="Gtk.TreeView.prototype.get_tooltip_context">Gtk.TreeView.prototype.get_tooltip_context</a></li>
+<li class="links "><a href="Gtk.TreeView.get_vadjustment.html" title="Gtk.TreeView.prototype.get_vadjustment">Gtk.TreeView.prototype.get_vadjustment</a></li>
+<li class="links "><a href="Gtk.TreeView.get_visible_range.html" title="Gtk.TreeView.prototype.get_visible_range">Gtk.TreeView.prototype.get_visible_range</a></li>
+<li class="links "><a href="Gtk.TreeView.get_visible_rect.html" title="Gtk.TreeView.prototype.get_visible_rect">Gtk.TreeView.prototype.get_visible_rect</a></li>
+<li class="links "><a href="Gtk.TreeView.insert_column.html" title="Gtk.TreeView.prototype.insert_column">Gtk.TreeView.prototype.insert_column</a></li>
+<li class="links "><a href="Gtk.TreeView.insert_column_with_data_func.html" title="Gtk.TreeView.prototype.insert_column_with_data_func">Gtk.TreeView.prototype.insert_column_with_data_func</a></li>
+<li class="links "><a href="Gtk.TreeView.is_blank_at_pos.html" title="Gtk.TreeView.prototype.is_blank_at_pos">Gtk.TreeView.prototype.is_blank_at_pos</a></li>
+<li class="links "><a href="Gtk.TreeView.is_rubber_banding_active.html" title="Gtk.TreeView.prototype.is_rubber_banding_active">Gtk.TreeView.prototype.is_rubber_banding_active</a></li>
+<li class="links "><a href="Gtk.TreeView.map_expanded_rows.html" title="Gtk.TreeView.prototype.map_expanded_rows">Gtk.TreeView.prototype.map_expanded_rows</a></li>
+<li class="links "><a href="Gtk.TreeView.move_column_after.html" title="Gtk.TreeView.prototype.move_column_after">Gtk.TreeView.prototype.move_column_after</a></li>
+<li class="links "><a href="Gtk.TreeView.remove_column.html" title="Gtk.TreeView.prototype.remove_column">Gtk.TreeView.prototype.remove_column</a></li>
+<li class="links "><a href="Gtk.TreeView.row_activated.html" title="Gtk.TreeView.prototype.row_activated">Gtk.TreeView.prototype.row_activated</a></li>
+<li class="links "><a href="Gtk.TreeView.row_expanded.html" title="Gtk.TreeView.prototype.row_expanded">Gtk.TreeView.prototype.row_expanded</a></li>
+<li class="links "><a href="Gtk.TreeView.scroll_to_cell.html" title="Gtk.TreeView.prototype.scroll_to_cell">Gtk.TreeView.prototype.scroll_to_cell</a></li>
+<li class="links "><a href="Gtk.TreeView.scroll_to_point.html" title="Gtk.TreeView.prototype.scroll_to_point">Gtk.TreeView.prototype.scroll_to_point</a></li>
+<li class="links "><a href="Gtk.TreeView.set_activate_on_single_click.html" title="Gtk.TreeView.prototype.set_activate_on_single_click">Gtk.TreeView.prototype.set_activate_on_single_click</a></li>
+<li class="links "><a href="Gtk.TreeView.set_column_drag_function.html" title="Gtk.TreeView.prototype.set_column_drag_function">Gtk.TreeView.prototype.set_column_drag_function</a></li>
+<li class="links "><a href="Gtk.TreeView.set_cursor.html" title="Gtk.TreeView.prototype.set_cursor">Gtk.TreeView.prototype.set_cursor</a></li>
+<li class="links "><a href="Gtk.TreeView.set_cursor_on_cell.html" title="Gtk.TreeView.prototype.set_cursor_on_cell">Gtk.TreeView.prototype.set_cursor_on_cell</a></li>
+<li class="links "><a href="Gtk.TreeView.set_destroy_count_func.html" title="Gtk.TreeView.prototype.set_destroy_count_func">Gtk.TreeView.prototype.set_destroy_count_func</a></li>
+<li class="links "><a href="Gtk.TreeView.set_drag_dest_row.html" title="Gtk.TreeView.prototype.set_drag_dest_row">Gtk.TreeView.prototype.set_drag_dest_row</a></li>
+<li class="links "><a href="Gtk.TreeView.set_enable_search.html" title="Gtk.TreeView.prototype.set_enable_search">Gtk.TreeView.prototype.set_enable_search</a></li>
+<li class="links "><a href="Gtk.TreeView.set_enable_tree_lines.html" title="Gtk.TreeView.prototype.set_enable_tree_lines">Gtk.TreeView.prototype.set_enable_tree_lines</a></li>
+<li class="links "><a href="Gtk.TreeView.set_expander_column.html" title="Gtk.TreeView.prototype.set_expander_column">Gtk.TreeView.prototype.set_expander_column</a></li>
+<li class="links "><a href="Gtk.TreeView.set_fixed_height_mode.html" title="Gtk.TreeView.prototype.set_fixed_height_mode">Gtk.TreeView.prototype.set_fixed_height_mode</a></li>
+<li class="links "><a href="Gtk.TreeView.set_grid_lines.html" title="Gtk.TreeView.prototype.set_grid_lines">Gtk.TreeView.prototype.set_grid_lines</a></li>
+<li class="links "><a href="Gtk.TreeView.set_hadjustment.html" title="Gtk.TreeView.prototype.set_hadjustment">Gtk.TreeView.prototype.set_hadjustment</a></li>
+<li class="links "><a href="Gtk.TreeView.set_headers_clickable.html" title="Gtk.TreeView.prototype.set_headers_clickable">Gtk.TreeView.prototype.set_headers_clickable</a></li>
+<li class="links "><a href="Gtk.TreeView.set_headers_visible.html" title="Gtk.TreeView.prototype.set_headers_visible">Gtk.TreeView.prototype.set_headers_visible</a></li>
+<li class="links "><a href="Gtk.TreeView.set_hover_expand.html" title="Gtk.TreeView.prototype.set_hover_expand">Gtk.TreeView.prototype.set_hover_expand</a></li>
+<li class="links "><a href="Gtk.TreeView.set_hover_selection.html" title="Gtk.TreeView.prototype.set_hover_selection">Gtk.TreeView.prototype.set_hover_selection</a></li>
+<li class="links "><a href="Gtk.TreeView.set_level_indentation.html" title="Gtk.TreeView.prototype.set_level_indentation">Gtk.TreeView.prototype.set_level_indentation</a></li>
+<li class="links "><a href="Gtk.TreeView.set_model.html" title="Gtk.TreeView.prototype.set_model">Gtk.TreeView.prototype.set_model</a></li>
+<li class="links "><a href="Gtk.TreeView.set_reorderable.html" title="Gtk.TreeView.prototype.set_reorderable">Gtk.TreeView.prototype.set_reorderable</a></li>
+<li class="links "><a href="Gtk.TreeView.set_row_separator_func.html" title="Gtk.TreeView.prototype.set_row_separator_func">Gtk.TreeView.prototype.set_row_separator_func</a></li>
+<li class="links "><a href="Gtk.TreeView.set_rubber_banding.html" title="Gtk.TreeView.prototype.set_rubber_banding">Gtk.TreeView.prototype.set_rubber_banding</a></li>
+<li class="links "><a href="Gtk.TreeView.set_rules_hint.html" title="Gtk.TreeView.prototype.set_rules_hint">Gtk.TreeView.prototype.set_rules_hint</a></li>
+<li class="links "><a href="Gtk.TreeView.set_search_column.html" title="Gtk.TreeView.prototype.set_search_column">Gtk.TreeView.prototype.set_search_column</a></li>
+<li class="links "><a href="Gtk.TreeView.set_search_entry.html" title="Gtk.TreeView.prototype.set_search_entry">Gtk.TreeView.prototype.set_search_entry</a></li>
+<li class="links "><a href="Gtk.TreeView.set_search_equal_func.html" title="Gtk.TreeView.prototype.set_search_equal_func">Gtk.TreeView.prototype.set_search_equal_func</a></li>
+<li class="links "><a href="Gtk.TreeView.set_search_position_func.html" title="Gtk.TreeView.prototype.set_search_position_func">Gtk.TreeView.prototype.set_search_position_func</a></li>
+<li class="links "><a href="Gtk.TreeView.set_show_expanders.html" title="Gtk.TreeView.prototype.set_show_expanders">Gtk.TreeView.prototype.set_show_expanders</a></li>
+<li class="links "><a href="Gtk.TreeView.set_tooltip_cell.html" title="Gtk.TreeView.prototype.set_tooltip_cell">Gtk.TreeView.prototype.set_tooltip_cell</a></li>
+<li class="links "><a href="Gtk.TreeView.set_tooltip_column.html" title="Gtk.TreeView.prototype.set_tooltip_column">Gtk.TreeView.prototype.set_tooltip_column</a></li>
+<li class="links "><a href="Gtk.TreeView.set_tooltip_row.html" title="Gtk.TreeView.prototype.set_tooltip_row">Gtk.TreeView.prototype.set_tooltip_row</a></li>
+<li class="links "><a href="Gtk.TreeView.set_vadjustment.html" title="Gtk.TreeView.prototype.set_vadjustment">Gtk.TreeView.prototype.set_vadjustment</a></li>
+<li class="links "><a href="Gtk.TreeView.unset_rows_drag_dest.html" title="Gtk.TreeView.prototype.unset_rows_drag_dest">Gtk.TreeView.prototype.unset_rows_drag_dest</a></li>
+<li class="links "><a href="Gtk.TreeView.unset_rows_drag_source.html" title="Gtk.TreeView.prototype.unset_rows_drag_source">Gtk.TreeView.prototype.unset_rows_drag_source</a></li>
+</ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Properties</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.TreeView-activate-on-single-click.html" title="Gtk.TreeView:activate-on-single-click">activate-on-single-click</a></li>
+<li class="links "><a href="Gtk.TreeView-enable-grid-lines.html" title="Gtk.TreeView:enable-grid-lines">enable-grid-lines</a></li>
+<li class="links "><a href="Gtk.TreeView-enable-search.html" title="Gtk.TreeView:enable-search">enable-search</a></li>
+<li class="links "><a href="Gtk.TreeView-enable-tree-lines.html" title="Gtk.TreeView:enable-tree-lines">enable-tree-lines</a></li>
+<li class="links "><a href="Gtk.TreeView-expander-column.html" title="Gtk.TreeView:expander-column">expander-column</a></li>
+<li class="links "><a href="Gtk.TreeView-fixed-height-mode.html" title="Gtk.TreeView:fixed-height-mode">fixed-height-mode</a></li>
+<li class="links "><a href="Gtk.TreeView-headers-clickable.html" title="Gtk.TreeView:headers-clickable">headers-clickable</a></li>
+<li class="links "><a href="Gtk.TreeView-headers-visible.html" title="Gtk.TreeView:headers-visible">headers-visible</a></li>
+<li class="links "><a href="Gtk.TreeView-hover-expand.html" title="Gtk.TreeView:hover-expand">hover-expand</a></li>
+<li class="links "><a href="Gtk.TreeView-hover-selection.html" title="Gtk.TreeView:hover-selection">hover-selection</a></li>
+<li class="links "><a href="Gtk.TreeView-level-indentation.html" title="Gtk.TreeView:level-indentation">level-indentation</a></li>
+<li class="links "><a href="Gtk.TreeView-model.html" title="Gtk.TreeView:model">model</a></li>
+<li class="links "><a href="Gtk.TreeView-reorderable.html" title="Gtk.TreeView:reorderable">reorderable</a></li>
+<li class="links "><a href="Gtk.TreeView-rubber-banding.html" title="Gtk.TreeView:rubber-banding">rubber-banding</a></li>
+<li class="links "><a href="Gtk.TreeView-rules-hint.html" title="Gtk.TreeView:rules-hint">rules-hint</a></li>
+<li class="links "><a href="Gtk.TreeView-search-column.html" title="Gtk.TreeView:search-column">search-column</a></li>
+<li class="links "><a href="Gtk.TreeView-show-expanders.html" title="Gtk.TreeView:show-expanders">show-expanders</a></li>
+<li class="links "><a href="Gtk.TreeView-tooltip-column.html" title="Gtk.TreeView:tooltip-column">tooltip-column</a></li>
+</ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Signals</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.TreeView-columns-changed.html" title="Gtk.TreeView::columns-changed">columns-changed</a></li>
+<li class="links "><a href="Gtk.TreeView-cursor-changed.html" title="Gtk.TreeView::cursor-changed">cursor-changed</a></li>
+<li class="links "><a href="Gtk.TreeView-expand-collapse-cursor-row.html" title="Gtk.TreeView::expand-collapse-cursor-row">expand-collapse-cursor-row</a></li>
+<li class="links "><a href="Gtk.TreeView-move-cursor.html" title="Gtk.TreeView::move-cursor">move-cursor</a></li>
+<li class="links "><a href="Gtk.TreeView-row-activated.html" title="Gtk.TreeView::row-activated">row-activated</a></li>
+<li class="links "><a href="Gtk.TreeView-row-collapsed.html" title="Gtk.TreeView::row-collapsed">row-collapsed</a></li>
+<li class="links "><a href="Gtk.TreeView-row-expanded.html" title="Gtk.TreeView::row-expanded">row-expanded</a></li>
+<li class="links "><a href="Gtk.TreeView-select-all.html" title="Gtk.TreeView::select-all">select-all</a></li>
+<li class="links "><a href="Gtk.TreeView-select-cursor-parent.html" title="Gtk.TreeView::select-cursor-parent">select-cursor-parent</a></li>
+<li class="links "><a href="Gtk.TreeView-select-cursor-row.html" title="Gtk.TreeView::select-cursor-row">select-cursor-row</a></li>
+<li class="links "><a href="Gtk.TreeView-start-interactive-search.html" title="Gtk.TreeView::start-interactive-search">start-interactive-search</a></li>
+<li class="links "><a href="Gtk.TreeView-test-collapse-row.html" title="Gtk.TreeView::test-collapse-row">test-collapse-row</a></li>
+<li class="links "><a href="Gtk.TreeView-test-expand-row.html" title="Gtk.TreeView::test-expand-row">test-expand-row</a></li>
+<li class="links "><a href="Gtk.TreeView-toggle-cursor-row.html" title="Gtk.TreeView::toggle-cursor-row">toggle-cursor-row</a></li>
+<li class="links "><a href="Gtk.TreeView-unselect-all.html" title="Gtk.TreeView::unselect-all">unselect-all</a></li>
+</ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Virtual functions</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.TreeView-columns_changed.html" title="Gtk.TreeView::columns_changed">Gtk.TreeView::columns_changed</a></li>
+<li class="links "><a href="Gtk.TreeView-cursor_changed.html" title="Gtk.TreeView::cursor_changed">Gtk.TreeView::cursor_changed</a></li>
+<li class="links "><a href="Gtk.TreeView-expand_collapse_cursor_row.html" title="Gtk.TreeView::expand_collapse_cursor_row">Gtk.TreeView::expand_collapse_cursor_row</a></li>
+<li class="links "><a href="Gtk.TreeView-move_cursor.html" title="Gtk.TreeView::move_cursor">Gtk.TreeView::move_cursor</a></li>
+<li class="links "><a href="Gtk.TreeView-row_activated.html" title="Gtk.TreeView::row_activated">Gtk.TreeView::row_activated</a></li>
+<li class="links "><a href="Gtk.TreeView-row_collapsed.html" title="Gtk.TreeView::row_collapsed">Gtk.TreeView::row_collapsed</a></li>
+<li class="links "><a href="Gtk.TreeView-row_expanded.html" title="Gtk.TreeView::row_expanded">Gtk.TreeView::row_expanded</a></li>
+<li class="links "><a href="Gtk.TreeView-select_all.html" title="Gtk.TreeView::select_all">Gtk.TreeView::select_all</a></li>
+<li class="links "><a href="Gtk.TreeView-select_cursor_parent.html" title="Gtk.TreeView::select_cursor_parent">Gtk.TreeView::select_cursor_parent</a></li>
+<li class="links "><a href="Gtk.TreeView-select_cursor_row.html" title="Gtk.TreeView::select_cursor_row">Gtk.TreeView::select_cursor_row</a></li>
+<li class="links "><a href="Gtk.TreeView-start_interactive_search.html" title="Gtk.TreeView::start_interactive_search">Gtk.TreeView::start_interactive_search</a></li>
+<li class="links "><a href="Gtk.TreeView-test_collapse_row.html" title="Gtk.TreeView::test_collapse_row">Gtk.TreeView::test_collapse_row</a></li>
+<li class="links "><a href="Gtk.TreeView-test_expand_row.html" title="Gtk.TreeView::test_expand_row">Gtk.TreeView::test_expand_row</a></li>
+<li class="links "><a href="Gtk.TreeView-toggle_cursor_row.html" title="Gtk.TreeView::toggle_cursor_row">Gtk.TreeView::toggle_cursor_row</a></li>
+<li class="links "><a href="Gtk.TreeView-unselect_all.html" title="Gtk.TreeView::unselect_all">Gtk.TreeView::unselect_all</a></li>
+</ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Other</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.TreeView.new.html" title="Gtk.TreeView.new">Gtk.TreeView.new</a></li>
+<li class="links "><a href="Gtk.TreeView.new_with_model.html" title="Gtk.TreeView.new_with_model">Gtk.TreeView.new_with_model</a></li>
+</ul></div>
+</div></div>
+</div>
+<div class="sect sect-links" role="navigation">
+<div class="hgroup"></div>
+<div class="contents"><div class="links guidelinks"><div class="inner">
+<div class="title"><h2><span class="title">More Information</span></h2></div>
+<div class="region"><ul><li class="links "><a href="index.html" title="Index">Index</a></li></ul></div>
+</div></div></div>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="footer"></div>
+</div></body>
+</html>

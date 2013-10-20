@@ -1,0 +1,62 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Gtk.TreeRowReference.new_proxy</title>
+<link rel="stylesheet" type="text/css" href="C.css">
+<script type="text/javascript" src="jquery.js"></script><script type="text/javascript" src="jquery.syntax.js"></script><script type="text/javascript" src="yelp.js"></script>
+</head>
+<body><div class="page" role="main">
+<div class="header"><div class="trails" role="navigation"><div class="trail">
+<a class="trail" href="index.html" title="Index">Index</a> » <a class="trail" href="Gtk.TreeRowReference.html" title="Gtk.TreeRowReference">Gtk.TreeRowReference</a> » </div></div></div>
+<div class="body">
+<div class="hgroup"><h1 class="title"><span class="title">Gtk.TreeRowReference.new_proxy</span></h1></div>
+<div class="region">
+<div class="contents">
+<div class="synopsis"><div class="inner"><div class="region"><div class="contents"><div class="code"><pre class="contents ">function new_proxy(proxy:GObject.Object, model:Gtk.TreeModel, path:Gtk.TreePath):Gtk.TreeRowReference {
+    // Gjs wrapper for gtk_tree_row_reference_new_proxy()
+}</pre></div></div></div></div></div>
+<p class="p">You do not need to use this function.</p>
+<p class="p">Creates a row reference based on <span class=" code">path</span>.</p>
+<p class="p">This reference will keep pointing to the node pointed to
+by <span class=" code">path</span>, so long as it exists. If <span class=" code">path</span> isn't a valid
+path in <span class=" code">model</span>, then <span class=" code">null</span> is returned. However, unlike
+references created with <span class=" link"><a href="Gtk.TreeRowReference.new.html" title="Gtk.TreeRowReference.new">Gtk.TreeRowReference.new</a></span>, it
+does not listen to the model for changes. The creator of
+the row reference must do this explicitly using
+<span class=" link"><a href="Gtk.tree_row_reference_inserted.html" title="Gtk.tree_row_reference_inserted">Gtk.tree_row_reference_inserted</a></span>, <span class=" link"><a href="Gtk.tree_row_reference_deleted.html" title="Gtk.tree_row_reference_deleted">Gtk.tree_row_reference_deleted</a></span>,
+<span class=" link"><a href="Gtk.tree_row_reference_reordered.html" title="Gtk.tree_row_reference_reordered">Gtk.tree_row_reference_reordered</a></span>.</p>
+<p class="p">These functions must be called exactly once per proxy when the
+corresponding signal on the model is emitted. This single call
+updates all row references for that proxy. Since built-in GTK+
+objects like <span class=" link"><a href="Gtk.TreeView.html" title="Gtk.TreeView">Gtk.TreeView</a></span> already use this mechanism internally,
+using them as the proxy object will produce unpredictable results.
+Further more, passing the same object as <span class=" code">model</span> and <span class=" code">proxy</span>
+doesn't work for reasons of internal implementation.</p>
+<p class="p">This type of row reference is primarily meant by structures that
+need to carefully monitor exactly when a row reference updates
+itself, and is not generally needed by most applications.</p>
+<div class="terms"><div class="inner"><div class="region"><dl class="terms">
+<dt class="terms"><span class=" code">proxy</span></dt>
+<dd class="terms"><p class="p">a proxy <span class=" link"><a href="GObject.Object.html" title="GObject.Object">GObject.Object</a></span></p></dd>
+<dt class="terms"><span class=" code">model</span></dt>
+<dd class="terms"><p class="p">a <span class=" link"><a href="Gtk.TreeModel.html" title="Gtk.TreeModel">Gtk.TreeModel</a></span></p></dd>
+<dt class="terms"><span class=" code">path</span></dt>
+<dd class="terms"><p class="p">a valid <span class=" link"><a href="Gtk.TreePath.html" title="Gtk.TreePath">Gtk.TreePath</a></span> to monitor</p></dd>
+<dt class="terms"><span class=" code">Returns</span></dt>
+<dd class="terms"><p class="p">a newly allocated <span class=" link"><a href="Gtk.TreeRowReference.html" title="Gtk.TreeRowReference">Gtk.TreeRowReference</a></span>, or <span class=" code">null</span></p></dd>
+</dl></div></div></div>
+</div>
+<div class="sect sect-links" role="navigation">
+<div class="hgroup"></div>
+<div class="contents"><div class="links guidelinks"><div class="inner">
+<div class="title"><h2><span class="title">More Information</span></h2></div>
+<div class="region"><ul><li class="links "><a href="Gtk.TreeRowReference.html" title="Gtk.TreeRowReference">Gtk.TreeRowReference</a></li></ul></div>
+</div></div></div>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="footer"></div>
+</div></body>
+</html>
