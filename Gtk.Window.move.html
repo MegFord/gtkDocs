@@ -1,0 +1,68 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Gtk.Window.prototype.move</title>
+<link rel="stylesheet" type="text/css" href="C.css">
+<script type="text/javascript" src="jquery.js"></script><script type="text/javascript" src="jquery.syntax.js"></script><script type="text/javascript" src="yelp.js"></script>
+</head>
+<body><div class="page" role="main">
+<div class="header"><div class="trails" role="navigation"><div class="trail">
+<a class="trail" href="index.html" title="Index">Index</a> » <a class="trail" href="Gtk.Window.html" title="Gtk.Window">Gtk.Window</a> » </div></div></div>
+<div class="body">
+<div class="hgroup"><h1 class="title"><span class="title">Gtk.Window.prototype.move</span></h1></div>
+<div class="region">
+<div class="contents">
+<div class="synopsis"><div class="inner"><div class="region"><div class="contents"><div class="code"><pre class="contents ">function move(x:Number, y:Number):void {
+    // Gjs wrapper for gtk_window_move()
+}</pre></div></div></div></div></div>
+<p class="p">Asks the &lt;link linkend="gtk-X11-arch"&gt;window manager&lt;/link&gt; to move
+<span class=" code">window</span> to the given position.  Window managers are free to ignore
+this; most window managers ignore requests for initial window
+positions (instead using a user-defined placement algorithm) and
+honor requests after the window has already been shown.</p>
+<p class="p">Note: the position is the position of the gravity-determined
+reference point for the window. The gravity determines two things:
+first, the location of the reference point in root window
+coordinates; and second, which point on the window is positioned at
+the reference point.</p>
+<p class="p">By default the gravity is #GDK_GRAVITY_NORTH_WEST, so the reference
+point is simply the <span class=" code">x</span>, <span class=" code">y</span> supplied to <span class=" link"><a href="Gtk.Window.move.html" title="Gtk.Window.prototype.move">Gtk.Window.prototype.move</a></span>. The
+top-left corner of the window decorations (aka window frame or
+border) will be placed at <span class=" code">x</span>, <span class=" code">y</span>.  Therefore, to position a window
+at the top left of the screen, you want to use the default gravity
+(which is #GDK_GRAVITY_NORTH_WEST) and move the window to 0,0.</p>
+<p class="p">To position a window at the bottom right corner of the screen, you
+would set #GDK_GRAVITY_SOUTH_EAST, which means that the reference
+point is at <span class=" code">x</span> + the window width and <span class=" code">y</span> + the window height, and
+the bottom-right corner of the window border will be placed at that
+reference point. So, to place a window in the bottom right corner
+you would first set gravity to south east, then write:
+&lt;literal&gt;gtk_window_move (window, gdk_screen_width () - window_width,
+gdk_screen_height () - window_height)&lt;/literal&gt; (note that this
+example does not take multi-head scenarios into account).</p>
+<p class="p">The Extended Window Manager Hints specification at &lt;ulink
+url="http://www.freedesktop.org/Standards/wm-spec"&gt;
+http://www.freedesktop.org/Standards/wm-spec&lt;/ulink&gt; has a
+nice table of gravities in the "implementation notes" section.</p>
+<p class="p">The <span class=" link"><a href="Gtk.Window.get_position.html" title="Gtk.Window.prototype.get_position">Gtk.Window.prototype.get_position</a></span> documentation may also be relevant.</p>
+<div class="terms"><div class="inner"><div class="region"><dl class="terms">
+<dt class="terms"><span class=" code">x</span></dt>
+<dd class="terms"><p class="p">X coordinate to move window to</p></dd>
+<dt class="terms"><span class=" code">y</span></dt>
+<dd class="terms"><p class="p">Y coordinate to move window to</p></dd>
+</dl></div></div></div>
+</div>
+<div class="sect sect-links" role="navigation">
+<div class="hgroup"></div>
+<div class="contents"><div class="links guidelinks"><div class="inner">
+<div class="title"><h2><span class="title">More Information</span></h2></div>
+<div class="region"><ul><li class="links "><a href="Gtk.Window.html" title="Gtk.Window">Gtk.Window</a></li></ul></div>
+</div></div></div>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="footer"></div>
+</div></body>
+</html>

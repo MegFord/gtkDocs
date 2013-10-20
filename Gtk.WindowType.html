@@ -1,0 +1,48 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Gtk.WindowType</title>
+<link rel="stylesheet" type="text/css" href="C.css">
+<script type="text/javascript" src="jquery.js"></script><script type="text/javascript" src="jquery.syntax.js"></script><script type="text/javascript" src="yelp.js"></script>
+</head>
+<body><div class="page" role="main">
+<div class="header"><div class="trails" role="navigation"><div class="trail">
+<a class="trail" href="index.html" title="Index">Index</a> » </div></div></div>
+<div class="body">
+<div class="hgroup"><h1 class="title"><span class="title">Gtk.WindowType</span></h1></div>
+<div class="region">
+<div class="contents">
+<p class="p">A <span class=" link"><a href="Gtk.Window.html" title="Gtk.Window">Gtk.Window</a></span> can be one of these types. Most things you'd consider a
+"window" should have type #GTK_WINDOW_TOPLEVEL; windows with this type
+are managed by the window manager and have a frame by default (call
+<span class=" link"><a href="Gtk.Window.set_decorated.html" title="Gtk.Window.prototype.set_decorated">Gtk.Window.prototype.set_decorated</a></span> to toggle the frame).  Windows with type
+#GTK_WINDOW_POPUP are ignored by the window manager; window manager
+keybindings won't work on them, the window manager won't decorate the
+window with a frame, many GTK+ features that rely on the window
+manager will not work (e.g. resize grips and
+maximization/minimization). #GTK_WINDOW_POPUP is used to implement
+widgets such as <span class=" link"><a href="Gtk.Menu.html" title="Gtk.Menu">Gtk.Menu</a></span> or tooltips that you normally don't think of
+as windows per se. Nearly all windows should be #GTK_WINDOW_TOPLEVEL.
+In particular, do not use #GTK_WINDOW_POPUP just to turn off
+the window borders; use <span class=" link"><a href="Gtk.Window.set_decorated.html" title="Gtk.Window.prototype.set_decorated">Gtk.Window.prototype.set_decorated</a></span> for that.</p>
+<div class="terms"><div class="inner"><div class="region"><dl class="terms">
+<dt class="terms"><span class=" code">WindowType.TOPLEVEL</span></dt>
+<dd class="terms"><p class="p">A regular window, such as a dialog.</p></dd>
+<dt class="terms"><span class=" code">WindowType.POPUP</span></dt>
+<dd class="terms"><p class="p">A special window such as a tooltip.</p></dd>
+</dl></div></div></div>
+</div>
+<div class="sect sect-links" role="navigation">
+<div class="hgroup"></div>
+<div class="contents"><div class="links guidelinks"><div class="inner">
+<div class="title"><h2><span class="title">More Information</span></h2></div>
+<div class="region"><ul><li class="links "><a href="index.html" title="Index">Index</a></li></ul></div>
+</div></div></div>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="footer"></div>
+</div></body>
+</html>

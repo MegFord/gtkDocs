@@ -1,0 +1,55 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Gtk.Window.prototype.set_icon_list</title>
+<link rel="stylesheet" type="text/css" href="C.css">
+<script type="text/javascript" src="jquery.js"></script><script type="text/javascript" src="jquery.syntax.js"></script><script type="text/javascript" src="yelp.js"></script>
+</head>
+<body><div class="page" role="main">
+<div class="header"><div class="trails" role="navigation"><div class="trail">
+<a class="trail" href="index.html" title="Index">Index</a> » <a class="trail" href="Gtk.Window.html" title="Gtk.Window">Gtk.Window</a> » </div></div></div>
+<div class="body">
+<div class="hgroup"><h1 class="title"><span class="title">Gtk.Window.prototype.set_icon_list</span></h1></div>
+<div class="region">
+<div class="contents">
+<div class="synopsis"><div class="inner"><div class="region"><div class="contents"><div class="code"><pre class="contents ">function set_icon_list(list:[GdkPixbuf.Pixbuf]):void {
+    // Gjs wrapper for gtk_window_set_icon_list()
+}</pre></div></div></div></div></div>
+<p class="p">Sets up the icon representing a <span class=" link"><a href="Gtk.Window.html" title="Gtk.Window">Gtk.Window</a></span>. The icon is used when
+the window is minimized (also known as iconified).  Some window
+managers or desktop environments may also place it in the window
+frame, or display it in other contexts.</p>
+<p class="p"><span class=" link"><a href="Gtk.Window.set_icon_list.html" title="Gtk.Window.prototype.set_icon_list">Gtk.Window.prototype.set_icon_list</a></span> allows you to pass in the same icon in
+several hand-drawn sizes. The list should contain the natural sizes
+your icon is available in; that is, don't scale the image before
+passing it to GTK+. Scaling is postponed until the last minute,
+when the desired final size is known, to allow best quality.</p>
+<p class="p">By passing several sizes, you may improve the final image quality
+of the icon, by reducing or eliminating automatic image scaling.</p>
+<p class="p">Recommended sizes to provide: 16x16, 32x32, 48x48 at minimum, and
+larger images (64x64, 128x128) if you have them.</p>
+<p class="p">See also <span class=" link"><a href="Gtk.set_default_icon_list.html" title="Gtk.set_default_icon_list">Gtk.set_default_icon_list</a></span> to set the icon
+for all windows in your application in one go.</p>
+<p class="p">Note that transient windows (those who have been set transient for another
+window using <span class=" link"><a href="Gtk.set_transient_for.html" title="Gtk.set_transient_for">Gtk.set_transient_for</a></span>) will inherit their
+icon from their transient parent. So there's no need to explicitly
+set the icon on transient windows.</p>
+<div class="terms"><div class="inner"><div class="region"><dl class="terms">
+<dt class="terms"><span class=" code">list</span></dt>
+<dd class="terms"><p class="p">list of <span class=" link"><a href="GdkPixbuf.Pixbuf.html" title="GdkPixbuf.Pixbuf">GdkPixbuf.Pixbuf</a></span></p></dd>
+</dl></div></div></div>
+</div>
+<div class="sect sect-links" role="navigation">
+<div class="hgroup"></div>
+<div class="contents"><div class="links guidelinks"><div class="inner">
+<div class="title"><h2><span class="title">More Information</span></h2></div>
+<div class="region"><ul><li class="links "><a href="Gtk.Window.html" title="Gtk.Window">Gtk.Window</a></li></ul></div>
+</div></div></div>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="footer"></div>
+</div></body>
+</html>

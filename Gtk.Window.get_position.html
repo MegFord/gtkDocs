@@ -1,0 +1,64 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Gtk.Window.prototype.get_position</title>
+<link rel="stylesheet" type="text/css" href="C.css">
+<script type="text/javascript" src="jquery.js"></script><script type="text/javascript" src="jquery.syntax.js"></script><script type="text/javascript" src="yelp.js"></script>
+</head>
+<body><div class="page" role="main">
+<div class="header"><div class="trails" role="navigation"><div class="trail">
+<a class="trail" href="index.html" title="Index">Index</a> » <a class="trail" href="Gtk.Window.html" title="Gtk.Window">Gtk.Window</a> » </div></div></div>
+<div class="body">
+<div class="hgroup"><h1 class="title"><span class="title">Gtk.Window.prototype.get_position</span></h1></div>
+<div class="region">
+<div class="contents">
+<div class="synopsis"><div class="inner"><div class="region"><div class="contents"><div class="code"><pre class="contents ">function get_position():void {
+    // Gjs wrapper for gtk_window_get_position()
+}</pre></div></div></div></div></div>
+<p class="p">This function returns the position you need to pass to
+<span class=" link"><a href="Gtk.move.html" title="Gtk.move">Gtk.move</a></span> to keep <span class=" code">window</span> in its current position.
+This means that the meaning of the returned value varies with
+window gravity. See <span class=" link"><a href="Gtk.move.html" title="Gtk.move">Gtk.move</a></span> for more details.</p>
+<p class="p">If you haven't changed the window gravity, its gravity will be
+#GDK_GRAVITY_NORTH_WEST. This means that <span class=" link"><a href="Gtk.Window.get_position.html" title="Gtk.Window.prototype.get_position">Gtk.Window.prototype.get_position</a></span>
+gets the position of the top-left corner of the window manager
+frame for the window. <span class=" link"><a href="Gtk.move.html" title="Gtk.move">Gtk.move</a></span> sets the position of this
+same top-left corner.</p>
+<p class="p"><span class=" link"><a href="Gtk.Window.get_position.html" title="Gtk.Window.prototype.get_position">Gtk.Window.prototype.get_position</a></span> is not 100% reliable because the X Window System
+does not specify a way to obtain the geometry of the
+decorations placed on a window by the window manager.
+Thus GTK+ is using a "best guess" that works with most
+window managers.</p>
+<p class="p">Moreover, nearly all window managers are historically broken with
+respect to their handling of window gravity. So moving a window to
+its current position as returned by <span class=" link"><a href="Gtk.Window.get_position.html" title="Gtk.Window.prototype.get_position">Gtk.Window.prototype.get_position</a></span> tends
+to result in moving the window slightly. Window managers are
+slowly getting better over time.</p>
+<p class="p">If a window has gravity #GDK_GRAVITY_STATIC the window manager
+frame is not relevant, and thus <span class=" link"><a href="Gtk.Window.get_position.html" title="Gtk.Window.prototype.get_position">Gtk.Window.prototype.get_position</a></span> will
+always produce accurate results. However you can't use static
+gravity to do things like place a window in a corner of the screen,
+because static gravity ignores the window manager decorations.</p>
+<p class="p">If you are saving and restoring your application's window
+positions, you should know that it's impossible for applications to
+do this without getting it somewhat wrong because applications do
+not have sufficient knowledge of window manager state. The Correct
+Mechanism is to support the session management protocol (see the
+"GnomeClient" object in the GNOME libraries for example) and allow
+the window manager to save your window sizes and positions.</p>
+<div class="terms"><div class="inner"><div class="region"><dl class="terms"></dl></div></div></div>
+</div>
+<div class="sect sect-links" role="navigation">
+<div class="hgroup"></div>
+<div class="contents"><div class="links guidelinks"><div class="inner">
+<div class="title"><h2><span class="title">More Information</span></h2></div>
+<div class="region"><ul><li class="links "><a href="Gtk.Window.html" title="Gtk.Window">Gtk.Window</a></li></ul></div>
+</div></div></div>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="footer"></div>
+</div></body>
+</html>

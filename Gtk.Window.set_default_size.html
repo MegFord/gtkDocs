@@ -1,0 +1,61 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Gtk.Window.prototype.set_default_size</title>
+<link rel="stylesheet" type="text/css" href="C.css">
+<script type="text/javascript" src="jquery.js"></script><script type="text/javascript" src="jquery.syntax.js"></script><script type="text/javascript" src="yelp.js"></script>
+</head>
+<body><div class="page" role="main">
+<div class="header"><div class="trails" role="navigation"><div class="trail">
+<a class="trail" href="index.html" title="Index">Index</a> » <a class="trail" href="Gtk.Window.html" title="Gtk.Window">Gtk.Window</a> » </div></div></div>
+<div class="body">
+<div class="hgroup"><h1 class="title"><span class="title">Gtk.Window.prototype.set_default_size</span></h1></div>
+<div class="region">
+<div class="contents">
+<div class="synopsis"><div class="inner"><div class="region"><div class="contents"><div class="code"><pre class="contents ">function set_default_size(width:Number, height:Number):void {
+    // Gjs wrapper for gtk_window_set_default_size()
+}</pre></div></div></div></div></div>
+<p class="p">Sets the default size of a window. If the window's "natural" size
+(its size request) is larger than the default, the default will be
+ignored. More generally, if the default size does not obey the
+geometry hints for the window (<span class=" link"><a href="Gtk.set_geometry_hints.html" title="Gtk.set_geometry_hints">Gtk.set_geometry_hints</a></span> can
+be used to set these explicitly), the default size will be clamped
+to the nearest permitted size.</p>
+<p class="p">Unlike <span class=" link"><a href="Gtk.Widget.set_size_request.html" title="Gtk.Widget.prototype.set_size_request">Gtk.Widget.prototype.set_size_request</a></span>, which sets a size request for
+a widget and thus would keep users from shrinking the window, this
+function only sets the initial size, just as if the user had
+resized the window themselves. Users can still shrink the window
+again as they normally would. Setting a default size of -1 means to
+use the "natural" default size (the size request of the window).</p>
+<p class="p">For more control over a window's initial size and how resizing works,
+investigate <span class=" link"><a href="Gtk.set_geometry_hints.html" title="Gtk.set_geometry_hints">Gtk.set_geometry_hints</a></span>.</p>
+<p class="p">For some uses, <span class=" link"><a href="Gtk.Window.resize.html" title="Gtk.Window.prototype.resize">Gtk.Window.prototype.resize</a></span> is a more appropriate function.
+<span class=" link"><a href="Gtk.Window.resize.html" title="Gtk.Window.prototype.resize">Gtk.Window.prototype.resize</a></span> changes the current size of the window, rather
+than the size to be used on initial display. <span class=" link"><a href="Gtk.Window.resize.html" title="Gtk.Window.prototype.resize">Gtk.Window.prototype.resize</a></span> always
+affects the window itself, not the geometry widget.</p>
+<p class="p">The default size of a window only affects the first time a window is
+shown; if a window is hidden and re-shown, it will remember the size
+it had prior to hiding, rather than using the default size.</p>
+<p class="p">Windows can't actually be 0x0 in size, they must be at least 1x1, but
+passing 0 for <span class=" code">width</span> and <span class=" code">height</span> is OK, resulting in a 1x1 default size.</p>
+<div class="terms"><div class="inner"><div class="region"><dl class="terms">
+<dt class="terms"><span class=" code">width</span></dt>
+<dd class="terms"><p class="p">width in pixels, or -1 to unset the default width</p></dd>
+<dt class="terms"><span class=" code">height</span></dt>
+<dd class="terms"><p class="p">height in pixels, or -1 to unset the default height</p></dd>
+</dl></div></div></div>
+</div>
+<div class="sect sect-links" role="navigation">
+<div class="hgroup"></div>
+<div class="contents"><div class="links guidelinks"><div class="inner">
+<div class="title"><h2><span class="title">More Information</span></h2></div>
+<div class="region"><ul><li class="links "><a href="Gtk.Window.html" title="Gtk.Window">Gtk.Window</a></li></ul></div>
+</div></div></div>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="footer"></div>
+</div></body>
+</html>
