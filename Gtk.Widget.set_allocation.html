@@ -1,0 +1,45 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Gtk.Widget.prototype.set_allocation</title>
+<link rel="stylesheet" type="text/css" href="C.css">
+<script type="text/javascript" src="jquery.js"></script><script type="text/javascript" src="jquery.syntax.js"></script><script type="text/javascript" src="yelp.js"></script>
+</head>
+<body><div class="page" role="main">
+<div class="header"><div class="trails" role="navigation"><div class="trail">
+<a class="trail" href="index.html" title="Index">Index</a> » <a class="trail" href="Gtk.Widget.html" title="Gtk.Widget">Gtk.Widget</a> » </div></div></div>
+<div class="body">
+<div class="hgroup"><h1 class="title"><span class="title">Gtk.Widget.prototype.set_allocation</span></h1></div>
+<div class="region">
+<div class="contents">
+<div class="synopsis"><div class="inner"><div class="region"><div class="contents"><div class="code"><pre class="contents ">function set_allocation(allocation:Gtk.Allocation):void {
+    // Gjs wrapper for gtk_widget_set_allocation()
+}</pre></div></div></div></div></div>
+<p class="p">Sets the widget's allocation.  This should not be used
+directly, but from within a widget's size_allocate method.</p>
+<p class="p">The allocation set should be the "adjusted" or actual
+allocation. If you're implementing a <span class=" link"><a href="Gtk.Container.html" title="Gtk.Container">Gtk.Container</a></span>, you want to use
+<span class=" link"><a href="Gtk.size_allocate.html" title="Gtk.size_allocate">Gtk.size_allocate</a></span> instead of <span class=" link"><a href="Gtk.Widget.set_allocation.html" title="Gtk.Widget.prototype.set_allocation">Gtk.Widget.prototype.set_allocation</a></span>.
+The GtkWidgetClass::adjust_size_allocation virtual method adjusts the
+allocation inside <span class=" link"><a href="Gtk.size_allocate.html" title="Gtk.size_allocate">Gtk.size_allocate</a></span> to create an adjusted
+allocation.</p>
+<p class="p">Since 2.18</p>
+<div class="terms"><div class="inner"><div class="region"><dl class="terms">
+<dt class="terms"><span class=" code">allocation</span></dt>
+<dd class="terms"><p class="p">a pointer to a <span class=" link"><a href="Gtk.Allocation.html" title="Gtk.Allocation">Gtk.Allocation</a></span> to copy from</p></dd>
+</dl></div></div></div>
+</div>
+<div class="sect sect-links" role="navigation">
+<div class="hgroup"></div>
+<div class="contents"><div class="links guidelinks"><div class="inner">
+<div class="title"><h2><span class="title">More Information</span></h2></div>
+<div class="region"><ul><li class="links "><a href="Gtk.Widget.html" title="Gtk.Widget">Gtk.Widget</a></li></ul></div>
+</div></div></div>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="footer"></div>
+</div></body>
+</html>

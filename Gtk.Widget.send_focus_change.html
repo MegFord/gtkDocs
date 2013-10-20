@@ -1,0 +1,56 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Gtk.Widget.prototype.send_focus_change</title>
+<link rel="stylesheet" type="text/css" href="C.css">
+<script type="text/javascript" src="jquery.js"></script><script type="text/javascript" src="jquery.syntax.js"></script><script type="text/javascript" src="yelp.js"></script>
+</head>
+<body><div class="page" role="main">
+<div class="header"><div class="trails" role="navigation"><div class="trail">
+<a class="trail" href="index.html" title="Index">Index</a> » <a class="trail" href="Gtk.Widget.html" title="Gtk.Widget">Gtk.Widget</a> » </div></div></div>
+<div class="body">
+<div class="hgroup"><h1 class="title"><span class="title">Gtk.Widget.prototype.send_focus_change</span></h1></div>
+<div class="region">
+<div class="contents">
+<div class="synopsis"><div class="inner"><div class="region"><div class="contents"><div class="code"><pre class="contents ">function send_focus_change(event:Gdk.Event):Boolean {
+    // Gjs wrapper for gtk_widget_send_focus_change()
+}</pre></div></div></div></div></div>
+<p class="p">Sends the focus change <span class=" code">event</span> to <span class=" code">widget</span></p>
+<p class="p">This function is not meant to be used by applications. The only time it
+should be used is when it is necessary for a <span class=" link"><a href="Gtk.Widget.html" title="Gtk.Widget">Gtk.Widget</a></span> to assign focus
+to a widget that is semantically owned by the first widget even though
+it's not a direct child - for instance, a search entry in a floating
+window similar to the quick search in <span class=" link"><a href="Gtk.TreeView.html" title="Gtk.TreeView">Gtk.TreeView</a></span>.</p>
+<p class="p">An example of its usage is:</p>
+<p class="p">|[
+  GdkEvent *fevent = gdk_event_new (GDK_FOCUS_CHANGE);</p>
+<p class="p">  fevent-&gt;focus_change.type = GDK_FOCUS_CHANGE;
+  fevent-&gt;focus_change.in = TRUE;
+  fevent-&gt;focus_change.window = gtk_widget_get_window (widget);
+  if (fevent-&gt;focus_change.window != NULL)
+    g_object_ref (fevent-&gt;focus_change.window);</p>
+<p class="p">  gtk_widget_send_focus_change (widget, fevent);</p>
+<p class="p">  gdk_event_free (event);
+]|</p>
+<p class="p">Since 2.20</p>
+<div class="terms"><div class="inner"><div class="region"><dl class="terms">
+<dt class="terms"><span class=" code">event</span></dt>
+<dd class="terms"><p class="p">a <span class=" link"><a href="Gdk.Event.html" title="Gdk.Event">Gdk.Event</a></span> of type GDK_FOCUS_CHANGE</p></dd>
+<dt class="terms"><span class=" code">Returns</span></dt>
+<dd class="terms"><p class="p">the return value from the event signal emission: <span class=" code">true</span> if the event was handled, and <span class=" code">false</span> otherwise</p></dd>
+</dl></div></div></div>
+</div>
+<div class="sect sect-links" role="navigation">
+<div class="hgroup"></div>
+<div class="contents"><div class="links guidelinks"><div class="inner">
+<div class="title"><h2><span class="title">More Information</span></h2></div>
+<div class="region"><ul><li class="links "><a href="Gtk.Widget.html" title="Gtk.Widget">Gtk.Widget</a></li></ul></div>
+</div></div></div>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="footer"></div>
+</div></body>
+</html>

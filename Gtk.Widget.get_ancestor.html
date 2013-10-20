@@ -1,0 +1,46 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Gtk.Widget.prototype.get_ancestor</title>
+<link rel="stylesheet" type="text/css" href="C.css">
+<script type="text/javascript" src="jquery.js"></script><script type="text/javascript" src="jquery.syntax.js"></script><script type="text/javascript" src="yelp.js"></script>
+</head>
+<body><div class="page" role="main">
+<div class="header"><div class="trails" role="navigation"><div class="trail">
+<a class="trail" href="index.html" title="Index">Index</a> » <a class="trail" href="Gtk.Widget.html" title="Gtk.Widget">Gtk.Widget</a> » </div></div></div>
+<div class="body">
+<div class="hgroup"><h1 class="title"><span class="title">Gtk.Widget.prototype.get_ancestor</span></h1></div>
+<div class="region">
+<div class="contents">
+<div class="synopsis"><div class="inner"><div class="region"><div class="contents"><div class="code"><pre class="contents ">function get_ancestor(widget_type:GType):Gtk.Widget {
+    // Gjs wrapper for gtk_widget_get_ancestor()
+}</pre></div></div></div></div></div>
+<p class="p">Gets the first ancestor of <span class=" code">widget</span> with type <span class=" code">widget_type</span>. For example,
+&lt;literal&gt;gtk_widget_get_ancestor (widget, GTK_TYPE_BOX)&lt;/literal&gt; gets
+the first <span class=" link"><a href="Gtk.Box.html" title="Gtk.Box">Gtk.Box</a></span> that's an ancestor of <span class=" code">widget</span>. No reference will be
+added to the returned widget; it should not be unreferenced. See note
+about checking for a toplevel <span class=" link"><a href="Gtk.Window.html" title="Gtk.Window">Gtk.Window</a></span> in the docs for
+<span class=" link"><a href="Gtk.get_toplevel.html" title="Gtk.get_toplevel">Gtk.get_toplevel</a></span>.</p>
+<p class="p">Note that unlike <span class=" link"><a href="Gtk.is_ancestor.html" title="Gtk.is_ancestor">Gtk.is_ancestor</a></span>, <span class=" link"><a href="Gtk.Widget.get_ancestor.html" title="Gtk.Widget.prototype.get_ancestor">Gtk.Widget.prototype.get_ancestor</a></span>
+considers <span class=" code">widget</span> to be an ancestor of itself.</p>
+<div class="terms"><div class="inner"><div class="region"><dl class="terms">
+<dt class="terms"><span class=" code">widget_type</span></dt>
+<dd class="terms"><p class="p">ancestor type</p></dd>
+<dt class="terms"><span class=" code">Returns</span></dt>
+<dd class="terms"><p class="p">the ancestor widget, or <span class=" code">null</span> if not found</p></dd>
+</dl></div></div></div>
+</div>
+<div class="sect sect-links" role="navigation">
+<div class="hgroup"></div>
+<div class="contents"><div class="links guidelinks"><div class="inner">
+<div class="title"><h2><span class="title">More Information</span></h2></div>
+<div class="region"><ul><li class="links "><a href="Gtk.Widget.html" title="Gtk.Widget">Gtk.Widget</a></li></ul></div>
+</div></div></div>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="footer"></div>
+</div></body>
+</html>

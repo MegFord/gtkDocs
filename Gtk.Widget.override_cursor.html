@@ -1,0 +1,45 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Gtk.Widget.prototype.override_cursor</title>
+<link rel="stylesheet" type="text/css" href="C.css">
+<script type="text/javascript" src="jquery.js"></script><script type="text/javascript" src="jquery.syntax.js"></script><script type="text/javascript" src="yelp.js"></script>
+</head>
+<body><div class="page" role="main">
+<div class="header"><div class="trails" role="navigation"><div class="trail">
+<a class="trail" href="index.html" title="Index">Index</a> » <a class="trail" href="Gtk.Widget.html" title="Gtk.Widget">Gtk.Widget</a> » </div></div></div>
+<div class="body">
+<div class="hgroup"><h1 class="title"><span class="title">Gtk.Widget.prototype.override_cursor</span></h1></div>
+<div class="region">
+<div class="contents">
+<div class="synopsis"><div class="inner"><div class="region"><div class="contents"><div class="code"><pre class="contents ">function override_cursor(cursor:Gdk.RGBA, secondary_cursor:Gdk.RGBA):void {
+    // Gjs wrapper for gtk_widget_override_cursor()
+}</pre></div></div></div></div></div>
+<p class="p">Sets the cursor color to use in a widget, overriding the
+#GtkWidget:cursor-color and #GtkWidget:secondary-cursor-color
+style properties. All other style values are left untouched.
+See also <span class=" link"><a href="Gtk.Widget.modify_style.html" title="Gtk.Widget.prototype.modify_style">Gtk.Widget.prototype.modify_style</a></span>.</p>
+<p class="p">Note that the underlying properties have the <span class=" link"><a href="Gdk.Color.html" title="Gdk.Color">Gdk.Color</a></span> type,
+so the alpha value in @primary and @secondary will be ignored.</p>
+<p class="p">Since 3.0</p>
+<div class="terms"><div class="inner"><div class="region"><dl class="terms">
+<dt class="terms"><span class=" code">cursor</span></dt>
+<dd class="terms"><p class="p">the color to use for primary cursor (does not need to be allocated), or <span class=" code">null</span> to undo the effect of previous calls to of <span class=" link"><a href="Gtk.Widget.override_cursor.html" title="Gtk.Widget.prototype.override_cursor">Gtk.Widget.prototype.override_cursor</a></span>.</p></dd>
+<dt class="terms"><span class=" code">secondary_cursor</span></dt>
+<dd class="terms"><p class="p">the color to use for secondary cursor (does not need to be allocated), or <span class=" code">null</span> to undo the effect of previous calls to of <span class=" link"><a href="Gtk.Widget.override_cursor.html" title="Gtk.Widget.prototype.override_cursor">Gtk.Widget.prototype.override_cursor</a></span>.</p></dd>
+</dl></div></div></div>
+</div>
+<div class="sect sect-links" role="navigation">
+<div class="hgroup"></div>
+<div class="contents"><div class="links guidelinks"><div class="inner">
+<div class="title"><h2><span class="title">More Information</span></h2></div>
+<div class="region"><ul><li class="links "><a href="Gtk.Widget.html" title="Gtk.Widget">Gtk.Widget</a></li></ul></div>
+</div></div></div>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="footer"></div>
+</div></body>
+</html>

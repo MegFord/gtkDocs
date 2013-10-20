@@ -1,0 +1,57 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Gtk.Widget.prototype.set_hexpand</title>
+<link rel="stylesheet" type="text/css" href="C.css">
+<script type="text/javascript" src="jquery.js"></script><script type="text/javascript" src="jquery.syntax.js"></script><script type="text/javascript" src="yelp.js"></script>
+</head>
+<body><div class="page" role="main">
+<div class="header"><div class="trails" role="navigation"><div class="trail">
+<a class="trail" href="index.html" title="Index">Index</a> » <a class="trail" href="Gtk.Widget.html" title="Gtk.Widget">Gtk.Widget</a> » </div></div></div>
+<div class="body">
+<div class="hgroup"><h1 class="title"><span class="title">Gtk.Widget.prototype.set_hexpand</span></h1></div>
+<div class="region">
+<div class="contents">
+<div class="synopsis"><div class="inner"><div class="region"><div class="contents"><div class="code"><pre class="contents ">function set_hexpand(expand:Boolean):void {
+    // Gjs wrapper for gtk_widget_set_hexpand()
+}</pre></div></div></div></div></div>
+<p class="p">Sets whether the widget would like any available extra horizontal
+space. When a user resizes a <span class=" link"><a href="Gtk.Window.html" title="Gtk.Window">Gtk.Window</a></span>, widgets with expand=TRUE
+generally receive the extra space. For example, a list or
+scrollable area or document in your window would often be set to
+expand.</p>
+<p class="p">Call this function to set the expand flag if you would like your
+widget to become larger horizontally when the window has extra
+room.</p>
+<p class="p">By default, widgets automatically expand if any of their children
+want to expand. (To see if a widget will automatically expand given
+its current children and state, call <span class=" link"><a href="Gtk.Widget.compute_expand.html" title="Gtk.Widget.prototype.compute_expand">Gtk.Widget.prototype.compute_expand</a></span>. A
+container can decide how the expandability of children affects the
+expansion of the container by overriding the compute_expand virtual
+method on <span class=" link"><a href="Gtk.Widget.html" title="Gtk.Widget">Gtk.Widget</a></span>.).</p>
+<p class="p">Setting hexpand explicitly with this function will override the
+automatic expand behavior.</p>
+<p class="p">This function forces the widget to expand or not to expand,
+regardless of children.  The override occurs because
+<span class=" link"><a href="Gtk.Widget.set_hexpand.html" title="Gtk.Widget.prototype.set_hexpand">Gtk.Widget.prototype.set_hexpand</a></span> sets the hexpand-set property (see
+<span class=" link"><a href="Gtk.set_hexpand_set.html" title="Gtk.set_hexpand_set">Gtk.set_hexpand_set</a></span>) which causes the widget's hexpand
+value to be used, rather than looking at children and widget state.</p>
+<div class="terms"><div class="inner"><div class="region"><dl class="terms">
+<dt class="terms"><span class=" code">expand</span></dt>
+<dd class="terms"><p class="p">whether to expand</p></dd>
+</dl></div></div></div>
+</div>
+<div class="sect sect-links" role="navigation">
+<div class="hgroup"></div>
+<div class="contents"><div class="links guidelinks"><div class="inner">
+<div class="title"><h2><span class="title">More Information</span></h2></div>
+<div class="region"><ul><li class="links "><a href="Gtk.Widget.html" title="Gtk.Widget">Gtk.Widget</a></li></ul></div>
+</div></div></div>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="footer"></div>
+</div></body>
+</html>

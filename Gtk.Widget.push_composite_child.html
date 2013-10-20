@@ -1,0 +1,50 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>push_composite_child</title>
+<link rel="stylesheet" type="text/css" href="C.css">
+<script type="text/javascript" src="jquery.js"></script><script type="text/javascript" src="jquery.syntax.js"></script><script type="text/javascript" src="yelp.js"></script>
+</head>
+<body><div class="page" role="main">
+<div class="header"><div class="trails" role="navigation"><div class="trail">
+<a class="trail" href="index.html" title="Index">Index</a> » <a class="trail" href="Gtk.Widget.html" title="Gtk.Widget">Gtk.Widget</a> » </div></div></div>
+<div class="body">
+<div class="hgroup"><h1 class="title"><span class="title">push_composite_child</span></h1></div>
+<div class="region">
+<div class="contents">
+<div class="synopsis"><div class="inner"><div class="region"><div class="contents"><div class="code"><pre class="contents ">function push_composite_child():void {
+    // Gjs wrapper for gtk_widget_push_composite_child()
+}</pre></div></div></div></div></div>
+<p class="p">Makes all newly-created widgets as composite children until
+the corresponding <span class=" link"><a href="Gtk.Widget.pop_composite_child.html" title="pop_composite_child">pop_composite_child</a></span> call.</p>
+<p class="p">A composite child is a child that's an implementation detail of the
+container it's inside and should not be visible to people using the
+container. Composite children aren't treated differently by GTK (but
+see <span class=" link"><a href="Gtk.Container.foreach.html" title="Gtk.Container.prototype.foreach">Gtk.Container.prototype.foreach</a></span> vs. <span class=" link"><a href="Gtk.Container.forall.html" title="Gtk.Container.prototype.forall">Gtk.Container.prototype.forall</a></span>), but e.g. GUI
+builders might want to treat them in a different way.</p>
+<p class="p">Here is a simple example:
+|[
+  gtk_widget_push_composite_child ();
+  scrolled_window-&gt;hscrollbar = gtk_scrollbar_new (GTK_ORIENTATION_HORIZONTAL, hadjustment);
+  gtk_widget_set_composite_name (scrolled_window-&gt;hscrollbar, "hscrollbar");
+  gtk_widget_pop_composite_child ();
+  gtk_widget_set_parent (scrolled_window-&gt;hscrollbar,
+                         GTK_WIDGET (scrolled_window));
+  g_object_ref (scrolled_window-&gt;hscrollbar);
+]|</p>
+<div class="terms"><div class="inner"><div class="region"><dl class="terms"></dl></div></div></div>
+</div>
+<div class="sect sect-links" role="navigation">
+<div class="hgroup"></div>
+<div class="contents"><div class="links guidelinks"><div class="inner">
+<div class="title"><h2><span class="title">More Information</span></h2></div>
+<div class="region"><ul><li class="links "><a href="Gtk.Widget.html" title="Gtk.Widget">Gtk.Widget</a></li></ul></div>
+</div></div></div>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="footer"></div>
+</div></body>
+</html>

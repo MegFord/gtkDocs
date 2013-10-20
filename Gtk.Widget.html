@@ -1,0 +1,825 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Gtk.Widget</title>
+<link rel="stylesheet" type="text/css" href="C.css">
+<script type="text/javascript" src="jquery.js"></script><script type="text/javascript" src="jquery.syntax.js"></script><script type="text/javascript" src="yelp.js"></script>
+</head>
+<body><div class="page" role="main">
+<div class="header"><div class="trails" role="navigation"><div class="trail">
+<a class="trail" href="index.html" title="Index">Index</a> » </div></div></div>
+<div class="body">
+<div class="hgroup"><h1 class="title"><span class="title">Gtk.Widget</span></h1></div>
+<div class="region">
+<div class="contents">
+<div class="synopsis"><div class="inner"><div class="region"><div class="contents"><div class="code"><pre class="contents ">const Gtk = imports.gi.Gtk;
+
+let widget = new Gtk.Widget({
+    <span class=" link"><a href="Gtk.Widget-app-paintable.html" title="Gtk.Widget:app-paintable">app_paintable</a></span>: value,
+    <span class=" link"><a href="Gtk.Widget-can-default.html" title="Gtk.Widget:can-default">can_default</a></span>: value,
+    <span class=" link"><a href="Gtk.Widget-can-focus.html" title="Gtk.Widget:can-focus">can_focus</a></span>: value,
+    <span class=" link"><a href="Gtk.Widget-double-buffered.html" title="Gtk.Widget:double-buffered">double_buffered</a></span>: value,
+    <span class=" link"><a href="Gtk.Widget-events.html" title="Gtk.Widget:events">events</a></span>: value,
+    <span class=" link"><a href="Gtk.Widget-expand.html" title="Gtk.Widget:expand">expand</a></span>: value,
+    <span class=" link"><a href="Gtk.Widget-halign.html" title="Gtk.Widget:halign">halign</a></span>: value,
+    <span class=" link"><a href="Gtk.Widget-has-default.html" title="Gtk.Widget:has-default">has_default</a></span>: value,
+    <span class=" link"><a href="Gtk.Widget-has-focus.html" title="Gtk.Widget:has-focus">has_focus</a></span>: value,
+    <span class=" link"><a href="Gtk.Widget-has-tooltip.html" title="Gtk.Widget:has-tooltip">has_tooltip</a></span>: value,
+    <span class=" link"><a href="Gtk.Widget-height-request.html" title="Gtk.Widget:height-request">height_request</a></span>: value,
+    <span class=" link"><a href="Gtk.Widget-hexpand.html" title="Gtk.Widget:hexpand">hexpand</a></span>: value,
+    <span class=" link"><a href="Gtk.Widget-hexpand-set.html" title="Gtk.Widget:hexpand-set">hexpand_set</a></span>: value,
+    <span class=" link"><a href="Gtk.Widget-is-focus.html" title="Gtk.Widget:is-focus">is_focus</a></span>: value,
+    <span class=" link"><a href="Gtk.Widget-margin.html" title="Gtk.Widget:margin">margin</a></span>: value,
+    <span class=" link"><a href="Gtk.Widget-margin-bottom.html" title="Gtk.Widget:margin-bottom">margin_bottom</a></span>: value,
+    <span class=" link"><a href="Gtk.Widget-margin-left.html" title="Gtk.Widget:margin-left">margin_left</a></span>: value,
+    <span class=" link"><a href="Gtk.Widget-margin-right.html" title="Gtk.Widget:margin-right">margin_right</a></span>: value,
+    <span class=" link"><a href="Gtk.Widget-margin-top.html" title="Gtk.Widget:margin-top">margin_top</a></span>: value,
+    <span class=" link"><a href="Gtk.Widget-name.html" title="Gtk.Widget:name">name</a></span>: value,
+    <span class=" link"><a href="Gtk.Widget-no-show-all.html" title="Gtk.Widget:no-show-all">no_show_all</a></span>: value,
+    <span class=" link"><a href="Gtk.Widget-opacity.html" title="Gtk.Widget:opacity">opacity</a></span>: value,
+    <span class=" link"><a href="Gtk.Widget-parent.html" title="Gtk.Widget:parent">parent</a></span>: value,
+    <span class=" link"><a href="Gtk.Widget-receives-default.html" title="Gtk.Widget:receives-default">receives_default</a></span>: value,
+    <span class=" link"><a href="Gtk.Widget-sensitive.html" title="Gtk.Widget:sensitive">sensitive</a></span>: value,
+    <span class=" link"><a href="Gtk.Widget-style.html" title="Gtk.Widget:style">style</a></span>: value,
+    <span class=" link"><a href="Gtk.Widget-tooltip-markup.html" title="Gtk.Widget:tooltip-markup">tooltip_markup</a></span>: value,
+    <span class=" link"><a href="Gtk.Widget-tooltip-text.html" title="Gtk.Widget:tooltip-text">tooltip_text</a></span>: value,
+    <span class=" link"><a href="Gtk.Widget-valign.html" title="Gtk.Widget:valign">valign</a></span>: value,
+    <span class=" link"><a href="Gtk.Widget-vexpand.html" title="Gtk.Widget:vexpand">vexpand</a></span>: value,
+    <span class=" link"><a href="Gtk.Widget-vexpand-set.html" title="Gtk.Widget:vexpand-set">vexpand_set</a></span>: value,
+    <span class=" link"><a href="Gtk.Widget-visible.html" title="Gtk.Widget:visible">visible</a></span>: value,
+    <span class=" link"><a href="Gtk.Widget-width-request.html" title="Gtk.Widget:width-request">width_request</a></span>: value,
+});
+  </pre></div></div></div></div></div>
+<p class="p">GtkWidget is the base class all widgets in GTK+ derive from. It manages the
+widget lifecycle, states and style.</p>
+<p class="p">&lt;refsect2 id="geometry-management"&gt;
+&lt;title&gt;Height-for-width Geometry Management&lt;/title&gt;
+&lt;para&gt;
+GTK+ uses a height-for-width (and width-for-height) geometry management
+system. Height-for-width means that a widget can change how much
+vertical space it needs, depending on the amount of horizontal space
+that it is given (and similar for width-for-height). The most common
+example is a label that reflows to fill up the available width, wraps
+to fewer lines, and therefore needs less height.</p>
+<p class="p">Height-for-width geometry management is implemented in GTK+ by way
+of five virtual methods:
+&lt;itemizedlist&gt;
+  &lt;listitem&gt;<span class=" link"><a href="Gtk.WidgetClass.html" title="Gtk.WidgetClass">Gtk.WidgetClass</a></span>.get_request_mode()&lt;/listitem&gt;
+  &lt;listitem&gt;<span class=" link"><a href="Gtk.WidgetClass.html" title="Gtk.WidgetClass">Gtk.WidgetClass</a></span>.get_preferred_width()&lt;/listitem&gt;
+  &lt;listitem&gt;<span class=" link"><a href="Gtk.WidgetClass.html" title="Gtk.WidgetClass">Gtk.WidgetClass</a></span>.get_preferred_height()&lt;/listitem&gt;
+  &lt;listitem&gt;<span class=" link"><a href="Gtk.WidgetClass.html" title="Gtk.WidgetClass">Gtk.WidgetClass</a></span>.get_preferred_height_for_width()&lt;/listitem&gt;
+  &lt;listitem&gt;<span class=" link"><a href="Gtk.WidgetClass.html" title="Gtk.WidgetClass">Gtk.WidgetClass</a></span>.get_preferred_width_for_height()&lt;/listitem&gt;
+  &lt;listitem&gt;<span class=" link"><a href="Gtk.WidgetClass.html" title="Gtk.WidgetClass">Gtk.WidgetClass</a></span>.get_preferred_height_and_baseline_for_width()&lt;/listitem&gt;
+&lt;/itemizedlist&gt;</p>
+<p class="p">There are some important things to keep in mind when implementing
+height-for-width and when using it in container implementations.</p>
+<p class="p">The geometry management system will query a widget hierarchy in
+only one orientation at a time. When widgets are initially queried
+for their minimum sizes it is generally done in two initial passes
+in the <span class=" link"><a href="Gtk.SizeRequestMode.html" title="Gtk.SizeRequestMode">Gtk.SizeRequestMode</a></span> chosen by the toplevel.</p>
+<p class="p">For example, when queried in the normal
+<span class=" link"><a href="Gtk.SizeRequestMode.html" title="Gtk.SizeRequestMode">Gtk.SizeRequestMode</a></span>.height_for_width mode:
+First, the default minimum and natural width for each widget
+in the interface will be computed using <span class=" link"><a href="Gtk.get_preferred_width.html" title="Gtk.get_preferred_width">Gtk.get_preferred_width</a></span>.
+Because the preferred widths for each container depend on the preferred
+widths of their children, this information propagates up the hierarchy,
+and finally a minimum and natural width is determined for the entire
+toplevel. Next, the toplevel will use the minimum width to query for the
+minimum height contextual to that width using
+<span class=" link"><a href="Gtk.get_preferred_height_for_width.html" title="Gtk.get_preferred_height_for_width">Gtk.get_preferred_height_for_width</a></span>, which will also be a highly
+recursive operation. The minimum height for the minimum width is normally
+used to set the minimum size constraint on the toplevel
+(unless <span class=" link"><a href="Gtk.set_geometry_hints.html" title="Gtk.set_geometry_hints">Gtk.set_geometry_hints</a></span> is explicitly used instead).</p>
+<p class="p">After the toplevel window has initially requested its size in both
+dimensions it can go on to allocate itself a reasonable size (or a size
+previously specified with <span class=" link"><a href="Gtk.set_default_size.html" title="Gtk.set_default_size">Gtk.set_default_size</a></span>). During the
+recursive allocation process it's important to note that request cycles
+will be recursively executed while container widgets allocate their children.
+Each container widget, once allocated a size, will go on to first share the
+space in one orientation among its children and then request each child's
+height for its target allocated width or its width for allocated height,
+depending. In this way a <span class=" link"><a href="Gtk.Widget.html" title="Gtk.Widget">Gtk.Widget</a></span> will typically be requested its size
+a number of times before actually being allocated a size. The size a
+widget is finally allocated can of course differ from the size it has
+requested. For this reason, <span class=" link"><a href="Gtk.Widget.html" title="Gtk.Widget">Gtk.Widget</a></span> caches a  small number of results
+to avoid re-querying for the same sizes in one allocation cycle.</p>
+<p class="p">See &lt;link linkend="container-geometry-management"&gt;GtkContainer's
+geometry management section&lt;/link&gt;
+to learn more about how height-for-width allocations are performed
+by container widgets.</p>
+<p class="p">If a widget does move content around to intelligently use up the
+allocated size then it must support the request in both
+#GtkSizeRequestModes even if the widget in question only
+trades sizes in a single orientation.</p>
+<p class="p">For instance, a <span class=" link"><a href="Gtk.Label.html" title="Gtk.Label">Gtk.Label</a></span> that does height-for-width word wrapping
+will not expect to have <span class=" link"><a href="Gtk.WidgetClass.html" title="Gtk.WidgetClass">Gtk.WidgetClass</a></span>.get_preferred_height() called
+because that call is specific to a width-for-height request. In this
+case the label must return the height required for its own minimum
+possible width. By following this rule any widget that handles
+height-for-width or width-for-height requests will always be allocated
+at least enough space to fit its own content.</p>
+<p class="p">Here are some examples of how a <span class=" link"><a href="Gtk.SizeRequestMode.html" title="Gtk.SizeRequestMode">Gtk.SizeRequestMode</a></span>.height_for_width widget
+generally deals with width-for-height requests, for <span class=" link"><a href="Gtk.WidgetClass.html" title="Gtk.WidgetClass">Gtk.WidgetClass</a></span>.get_preferred_height()
+it will do:
+&lt;programlisting&gt;&lt;![CDATA[
+static void
+foo_widget_get_preferred_height (GtkWidget *widget, gint *min_height, gint *nat_height)
+{
+   if (i_am_in_height_for_width_mode)
+     {
+       gint min_width;</p>
+<p class="p">       GTK_WIDGET_GET_CLASS (widget)-&gt;get_preferred_width (widget, &amp;min_width, NULL);
+       GTK_WIDGET_GET_CLASS (widget)-&gt;get_preferred_height_for_width (widget, min_width,
+                                                                     min_height, nat_height);
+     }
+   else
+     {
+        ... some widgets do both. For instance, if a GtkLabel is rotated to 90 degrees
+        it will return the minimum and natural height for the rotated label here.
+     }
+}
+]]&gt;&lt;/programlisting&gt;</p>
+<p class="p">And in <span class=" link"><a href="Gtk.WidgetClass.html" title="Gtk.WidgetClass">Gtk.WidgetClass</a></span>.get_preferred_width_for_height() it will simply return
+the minimum and natural width:</p>
+<p class="p">&lt;programlisting&gt;&lt;![CDATA[
+static void
+foo_widget_get_preferred_width_for_height (GtkWidget *widget, gint for_height,
+                                           gint *min_width, gint *nat_width)
+{
+   if (i_am_in_height_for_width_mode)
+     {
+       GTK_WIDGET_GET_CLASS (widget)-&gt;get_preferred_width (widget, min_width, nat_width);
+     }
+   else
+     {
+        ... again if a widget is sometimes operating in width-for-height mode
+        (like a rotated GtkLabel) it can go ahead and do its real width for
+        height calculation here.
+     }
+}
+]]&gt;&lt;/programlisting&gt;</p>
+<p class="p">Often a widget needs to get its own request during size request or
+allocation. For example, when computing height it may need to also
+compute width. Or when deciding how to use an allocation, the widget
+may need to know its natural size. In these cases, the widget should
+be careful to call its virtual methods directly, like this:
+&lt;example&gt;
+  &lt;title&gt;Widget calling its own size request method.&lt;/title&gt;
+  &lt;programlisting&gt;
+GTK_WIDGET_GET_CLASS(widget)-&amp;gt;get_preferred_width (widget),
+                                 &amp;min, &amp;natural);
+  &lt;/programlisting&gt;
+&lt;/example&gt;</p>
+<p class="p">It will not work to use the wrapper functions, such as
+<span class=" link"><a href="Gtk.get_preferred_width.html" title="Gtk.get_preferred_width">Gtk.get_preferred_width</a></span> inside your own size request
+implementation. These return a request adjusted by <span class=" link"><a href="Gtk.SizeGroup.html" title="Gtk.SizeGroup">Gtk.SizeGroup</a></span>
+and by the <span class=" link"><a href="Gtk.WidgetClass.html" title="Gtk.WidgetClass">Gtk.WidgetClass</a></span>.adjust_size_request() virtual method. If a
+widget used the wrappers inside its virtual method implementations,
+then the adjustments (such as widget margins) would be applied
+twice. GTK+ therefore does not allow this and will warn if you try
+to do it.</p>
+<p class="p">Of course if you are getting the size request for
+&lt;emphasis&gt;another&lt;/emphasis&gt; widget, such as a child of a
+container, you &lt;emphasis&gt;must&lt;/emphasis&gt; use the wrapper APIs.
+Otherwise, you would not properly consider widget margins,
+<span class=" link"><a href="Gtk.SizeGroup.html" title="Gtk.SizeGroup">Gtk.SizeGroup</a></span>, and so forth.</p>
+<p class="p">Since 3.10 Gtk+ also supports baseline vertical alignment of widgets. This
+means that widgets are positioned such that the typographical baseline of
+widgets in the same row are aligned. This happens if a widget supports baselines,
+has a vertical alignment of <span class=" link"><a href="Gtk.Align.html" title="Gtk.Align">Gtk.Align</a></span>.baseline, and is inside a container
+that supports baselines and has a natural "row" that it aligns to the baseline,
+or a baseline assigned to it by the grandparent.</p>
+<p class="p">Baseline alignment support for a widget is done by the <span class=" link"><a href="Gtk.WidgetClass.html" title="Gtk.WidgetClass">Gtk.WidgetClass</a></span>.get_preferred_height_and_baseline_for_width()
+virtual function. It allows you to report a baseline in combination with the
+minimum and natural height. If there is no baseline you can return -1 to indicate
+this. The default implementation of this virtual function calls into the
+<span class=" link"><a href="Gtk.WidgetClass.html" title="Gtk.WidgetClass">Gtk.WidgetClass</a></span>.get_preferred_height() and <span class=" link"><a href="Gtk.WidgetClass.html" title="Gtk.WidgetClass">Gtk.WidgetClass</a></span>.get_preferred_height_for_width(),
+so if baselines are not supported it doesn't need to be implemented.</p>
+<p class="p">If a widget ends up baseline aligned it will be allocated all the space in the parent
+as if it was <span class=" link"><a href="Gtk.Align.html" title="Gtk.Align">Gtk.Align</a></span>.fill, but the selected baseline can be found via <span class=" link"><a href="Gtk.get_allocated_baseline.html" title="Gtk.get_allocated_baseline">Gtk.get_allocated_baseline</a></span>.
+If this has a value other than -1 you need to align the widget such that the baseline
+appears at the position.</p>
+<p class="p">&lt;/para&gt;
+&lt;/refsect2&gt;
+&lt;refsect2 id="style-properties"&gt;
+&lt;title&gt;Style Properties&lt;/title&gt;
+&lt;para&gt;
+&lt;structname&gt;GtkWidget&lt;/structname&gt; introduces &lt;firstterm&gt;style
+properties&lt;/firstterm&gt; - these are basically object properties that are stored
+not on the object, but in the style object associated to the widget. Style
+properties are set in &lt;link linkend="gtk-Resource-Files"&gt;resource files&lt;/link&gt;.
+This mechanism is used for configuring such things as the location of the
+scrollbar arrows through the theme, giving theme authors more control over the
+look of applications without the need to write a theme engine in C.
+&lt;/para&gt;
+&lt;para&gt;
+Use <span class=" link"><a href="Gtk.install_style_property.html" title="Gtk.install_style_property">Gtk.install_style_property</a></span> to install style properties for
+a widget class, <span class=" link"><a href="Gtk.find_style_property.html" title="Gtk.find_style_property">Gtk.find_style_property</a></span> or
+<span class=" link"><a href="Gtk.list_style_properties.html" title="Gtk.list_style_properties">Gtk.list_style_properties</a></span> to get information about existing
+style properties and <span class=" link"><a href="Gtk.style_get_property.html" title="Gtk.style_get_property">Gtk.style_get_property</a></span>, <span class=" link"><a href="Gtk.style_get.html" title="Gtk.style_get">Gtk.style_get</a></span> or
+<span class=" link"><a href="Gtk.style_get_valist.html" title="Gtk.style_get_valist">Gtk.style_get_valist</a></span> to obtain the value of a style property.
+&lt;/para&gt;
+&lt;/refsect2&gt;
+&lt;refsect2 id="GtkWidget-BUILDER-UI"&gt;
+&lt;title&gt;GtkWidget as GtkBuildable&lt;/title&gt;
+&lt;para&gt;
+The GtkWidget implementation of the GtkBuildable interface supports a
+custom &amp;lt;accelerator&amp;gt; element, which has attributes named key,
+modifiers and signal and allows to specify accelerators.
+&lt;/para&gt;
+&lt;example&gt;
+&lt;title&gt;A UI definition fragment specifying an accelerator&lt;/title&gt;
+&lt;programlisting&gt;&lt;![CDATA[
+&lt;object class="GtkButton"&gt;
+  &lt;accelerator key="q" modifiers="GDK_CONTROL_MASK" signal="clicked"/&gt;
+&lt;/object&gt;
+]]&gt;&lt;/programlisting&gt;
+&lt;/example&gt;
+&lt;para&gt;
+In addition to accelerators, &lt;structname&gt;GtkWidget&lt;/structname&gt; also support a
+custom &amp;lt;accessible&amp;gt; element, which supports actions and relations.
+Properties on the accessible implementation of an object can be set by accessing the
+internal child "accessible" of a &lt;structname&gt;GtkWidget&lt;/structname&gt;.
+&lt;/para&gt;
+&lt;example&gt;
+&lt;title&gt;A UI definition fragment specifying an accessible&lt;/title&gt;
+&lt;programlisting&gt;&lt;![CDATA[
+&lt;object class="GtkButton" id="label1"/&gt;
+  &lt;property name="label"&gt;I am a Label for a Button&lt;/property&gt;
+&lt;/object&gt;
+&lt;object class="GtkButton" id="button1"&gt;
+  &lt;accessibility&gt;
+    &lt;action action_name="click" translatable="yes"&gt;Click the button.&lt;/action&gt;
+    &lt;relation target="label1" type="labelled-by"/&gt;
+  &lt;/accessibility&gt;
+  &lt;child internal-child="accessible"&gt;
+    &lt;object class="AtkObject" id="a11y-button1"&gt;
+      &lt;property name="accessible-name"&gt;Clickable Button&lt;/property&gt;
+    &lt;/object&gt;
+  &lt;/child&gt;
+&lt;/object&gt;
+]]&gt;&lt;/programlisting&gt;
+&lt;/example&gt;
+&lt;para&gt;
+Finally, GtkWidget allows style information such as style classes to
+be associated with widgets, using the custom &amp;lt;style&amp;gt; element:
+&lt;example&gt;
+&lt;title&gt;A UI definition fragment specifying an style class&lt;/title&gt;
+&lt;programlisting&gt;&lt;![CDATA[
+&lt;object class="GtkButton" id="button1"&gt;
+  &lt;style&gt;
+    &lt;class name="my-special-button-class"/&gt;
+    &lt;class name="dark-button"/&gt;
+  &lt;/style&gt;
+&lt;/object&gt;
+]]&gt;&lt;/programlisting&gt;
+&lt;/example&gt;
+&lt;/para&gt;
+&lt;/refsect2&gt;
+&lt;refsect2 id="GtkWidget-BUILDER-TEMPLATES"&gt;
+&lt;title&gt;Building composite widgets from template XML&lt;/title&gt;
+&lt;para&gt;
+GtkWidget exposes some facilities to automate the proceedure
+of creating composite widgets using <span class=" link"><a href="Gtk.Builder.html" title="Gtk.Builder">Gtk.Builder</a></span> interface description
+language.
+&lt;/para&gt;
+&lt;para&gt;
+To create composite widgets with <span class=" link"><a href="Gtk.Builder.html" title="Gtk.Builder">Gtk.Builder</a></span> XML, one must associate
+the interface description with the widget class at class initialization
+time using <span class=" link"><a href="Gtk.set_template.html" title="Gtk.set_template">Gtk.set_template</a></span>.
+&lt;/para&gt;
+&lt;para&gt;
+The interface description semantics expected in composite template descriptions
+is slightly different from regulare <span class=" link"><a href="Gtk.Builder.html" title="Gtk.Builder">Gtk.Builder</a></span> XML.
+&lt;/para&gt;
+&lt;para&gt;
+Unlike regular interface descriptions, <span class=" link"><a href="Gtk.set_template.html" title="Gtk.set_template">Gtk.set_template</a></span> will expect a
+&amp;lt;template&amp;gt; tag as a direct child of the toplevel &amp;lt;interface&amp;gt;
+tag. The &amp;lt;template&amp;gt; tag must specify the "class" attribute which
+must be the type name of the widget. Optionally, the "parent" attribute
+may be specified to specify the direct parent type of the widget type, this
+is ignored by the GtkBuilder but required for Glade to introspect what kind
+of properties and internal children exist for a given type when the actual
+type does not exist.
+&lt;/para&gt;
+&lt;para&gt;
+The XML which is contained inside the &amp;lt;template&amp;gt; tag behaves as if
+it were added to the &amp;lt;object&amp;gt; tag defining @widget itself. You may set
+properties on @widget by inserting &amp;lt;property&amp;gt; tags into the &amp;lt;template&amp;gt; 
+tag, and also add &amp;lt;child&amp;gt; tags to add children and extend @widget in the
+normal way you would with &amp;lt;object&amp;gt; tags.
+&lt;/para&gt;
+&lt;para&gt;
+Additionally, &amp;lt;object&amp;gt; tags can also be added before and
+after the initial &amp;lt;template&amp;gt; tag in the normal way, allowing
+one to define auxilary objects which might be referenced by other
+widgets declared as children of the &amp;lt;template&amp;gt; tag.
+&lt;/para&gt;
+&lt;para&gt;
+&lt;example&gt;
+&lt;title&gt;A GtkBuilder Template Definition&lt;/title&gt;
+&lt;programlisting&gt;&lt;![CDATA[
+&lt;interface&gt;
+  &lt;template class="FooWidget" parent="GtkBox"&gt;
+    &lt;property name="orientation"&gt;GTK_ORIENTATION_HORIZONTAL&lt;/property&gt;
+    &lt;property name="spacing"&gt;4&lt;/property&gt;
+    &lt;child&gt;
+      &lt;object class="GtkButton" id="hello_button"&gt;
+        &lt;property name="label"&gt;Hello World&lt;/property&gt;
+      &lt;/object&gt;
+    &lt;/child&gt;
+    &lt;child&gt;
+      &lt;object class="GtkButton" id="goodbye_button"&gt;
+        &lt;property name="label"&gt;Goodbye World&lt;/property&gt;
+      &lt;/object&gt;
+    &lt;/child&gt;
+  &lt;/template&gt;
+&lt;/interface&gt;
+]]&gt;&lt;/programlisting&gt;
+&lt;/example&gt;
+&lt;/para&gt;
+&lt;/refsect2&gt;</p>
+<div class="synopsis"><div class="inner">
+<div class="title title-synopsis"><h2><span class="title">Hierarchy</span></h2></div>
+<div class="region"><div class="contents"><div class="tree"><div class="inner"><div class="region"><ul class="tree"><li class="tree">
+<div>
+        <span class=" code">GObject.Object</span>
+      
+      </div>
+<ul class="tree"><li class="tree">
+<div>
+        <span class=" code">GObject.InitiallyUnowned</span>
+      
+      </div>
+<ul class="tree"><li class="tree"><div>
+        <span class=" code">Gtk.Widget</span>
+      </div></li></ul>
+</li></ul>
+</li></ul></div></div></div></div></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Methods</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.Widget.activate.html" title="Gtk.Widget.prototype.activate">Gtk.Widget.prototype.activate</a></li>
+<li class="links "><a href="Gtk.Widget.add_accelerator.html" title="Gtk.Widget.prototype.add_accelerator">Gtk.Widget.prototype.add_accelerator</a></li>
+<li class="links "><a href="Gtk.Widget.add_device_events.html" title="Gtk.Widget.prototype.add_device_events">Gtk.Widget.prototype.add_device_events</a></li>
+<li class="links "><a href="Gtk.Widget.add_events.html" title="Gtk.Widget.prototype.add_events">Gtk.Widget.prototype.add_events</a></li>
+<li class="links "><a href="Gtk.Widget.add_mnemonic_label.html" title="Gtk.Widget.prototype.add_mnemonic_label">Gtk.Widget.prototype.add_mnemonic_label</a></li>
+<li class="links "><a href="Gtk.Widget.add_tick_callback.html" title="Gtk.Widget.prototype.add_tick_callback">Gtk.Widget.prototype.add_tick_callback</a></li>
+<li class="links "><a href="Gtk.Widget.can_activate_accel.html" title="Gtk.Widget.prototype.can_activate_accel">Gtk.Widget.prototype.can_activate_accel</a></li>
+<li class="links "><a href="Gtk.Widget.child_focus.html" title="Gtk.Widget.prototype.child_focus">Gtk.Widget.prototype.child_focus</a></li>
+<li class="links "><a href="Gtk.Widget.child_notify.html" title="Gtk.Widget.prototype.child_notify">Gtk.Widget.prototype.child_notify</a></li>
+<li class="links "><a href="Gtk.Widget.class_path.html" title="Gtk.Widget.prototype.class_path">Gtk.Widget.prototype.class_path</a></li>
+<li class="links "><a href="Gtk.Widget.compute_expand.html" title="Gtk.Widget.prototype.compute_expand">Gtk.Widget.prototype.compute_expand</a></li>
+<li class="links "><a href="Gtk.Widget.create_pango_context.html" title="Gtk.Widget.prototype.create_pango_context">Gtk.Widget.prototype.create_pango_context</a></li>
+<li class="links "><a href="Gtk.Widget.create_pango_layout.html" title="Gtk.Widget.prototype.create_pango_layout">Gtk.Widget.prototype.create_pango_layout</a></li>
+<li class="links "><a href="Gtk.Widget.destroy.html" title="Gtk.Widget.prototype.destroy">Gtk.Widget.prototype.destroy</a></li>
+<li class="links "><a href="Gtk.Widget.destroyed.html" title="Gtk.Widget.prototype.destroyed">Gtk.Widget.prototype.destroyed</a></li>
+<li class="links "><a href="Gtk.Widget.device_is_shadowed.html" title="Gtk.Widget.prototype.device_is_shadowed">Gtk.Widget.prototype.device_is_shadowed</a></li>
+<li class="links "><a href="Gtk.Widget.drag_begin.html" title="Gtk.Widget.prototype.drag_begin">Gtk.Widget.prototype.drag_begin</a></li>
+<li class="links "><a href="Gtk.Widget.drag_check_threshold.html" title="Gtk.Widget.prototype.drag_check_threshold">Gtk.Widget.prototype.drag_check_threshold</a></li>
+<li class="links "><a href="Gtk.Widget.drag_dest_add_image_targets.html" title="Gtk.Widget.prototype.drag_dest_add_image_targets">Gtk.Widget.prototype.drag_dest_add_image_targets</a></li>
+<li class="links "><a href="Gtk.Widget.drag_dest_add_text_targets.html" title="Gtk.Widget.prototype.drag_dest_add_text_targets">Gtk.Widget.prototype.drag_dest_add_text_targets</a></li>
+<li class="links "><a href="Gtk.Widget.drag_dest_add_uri_targets.html" title="Gtk.Widget.prototype.drag_dest_add_uri_targets">Gtk.Widget.prototype.drag_dest_add_uri_targets</a></li>
+<li class="links "><a href="Gtk.Widget.drag_dest_find_target.html" title="Gtk.Widget.prototype.drag_dest_find_target">Gtk.Widget.prototype.drag_dest_find_target</a></li>
+<li class="links "><a href="Gtk.Widget.drag_dest_get_target_list.html" title="Gtk.Widget.prototype.drag_dest_get_target_list">Gtk.Widget.prototype.drag_dest_get_target_list</a></li>
+<li class="links "><a href="Gtk.Widget.drag_dest_get_track_motion.html" title="Gtk.Widget.prototype.drag_dest_get_track_motion">Gtk.Widget.prototype.drag_dest_get_track_motion</a></li>
+<li class="links "><a href="Gtk.Widget.drag_dest_set.html" title="Gtk.Widget.prototype.drag_dest_set">Gtk.Widget.prototype.drag_dest_set</a></li>
+<li class="links "><a href="Gtk.Widget.drag_dest_set_proxy.html" title="Gtk.Widget.prototype.drag_dest_set_proxy">Gtk.Widget.prototype.drag_dest_set_proxy</a></li>
+<li class="links "><a href="Gtk.Widget.drag_dest_set_target_list.html" title="Gtk.Widget.prototype.drag_dest_set_target_list">Gtk.Widget.prototype.drag_dest_set_target_list</a></li>
+<li class="links "><a href="Gtk.Widget.drag_dest_set_track_motion.html" title="Gtk.Widget.prototype.drag_dest_set_track_motion">Gtk.Widget.prototype.drag_dest_set_track_motion</a></li>
+<li class="links "><a href="Gtk.Widget.drag_dest_unset.html" title="Gtk.Widget.prototype.drag_dest_unset">Gtk.Widget.prototype.drag_dest_unset</a></li>
+<li class="links "><a href="Gtk.Widget.drag_get_data.html" title="Gtk.Widget.prototype.drag_get_data">Gtk.Widget.prototype.drag_get_data</a></li>
+<li class="links "><a href="Gtk.Widget.drag_highlight.html" title="Gtk.Widget.prototype.drag_highlight">Gtk.Widget.prototype.drag_highlight</a></li>
+<li class="links "><a href="Gtk.Widget.drag_source_add_image_targets.html" title="Gtk.Widget.prototype.drag_source_add_image_targets">Gtk.Widget.prototype.drag_source_add_image_targets</a></li>
+<li class="links "><a href="Gtk.Widget.drag_source_add_text_targets.html" title="Gtk.Widget.prototype.drag_source_add_text_targets">Gtk.Widget.prototype.drag_source_add_text_targets</a></li>
+<li class="links "><a href="Gtk.Widget.drag_source_add_uri_targets.html" title="Gtk.Widget.prototype.drag_source_add_uri_targets">Gtk.Widget.prototype.drag_source_add_uri_targets</a></li>
+<li class="links "><a href="Gtk.Widget.drag_source_get_target_list.html" title="Gtk.Widget.prototype.drag_source_get_target_list">Gtk.Widget.prototype.drag_source_get_target_list</a></li>
+<li class="links "><a href="Gtk.Widget.drag_source_set.html" title="Gtk.Widget.prototype.drag_source_set">Gtk.Widget.prototype.drag_source_set</a></li>
+<li class="links "><a href="Gtk.Widget.drag_source_set_icon_gicon.html" title="Gtk.Widget.prototype.drag_source_set_icon_gicon">Gtk.Widget.prototype.drag_source_set_icon_gicon</a></li>
+<li class="links "><a href="Gtk.Widget.drag_source_set_icon_name.html" title="Gtk.Widget.prototype.drag_source_set_icon_name">Gtk.Widget.prototype.drag_source_set_icon_name</a></li>
+<li class="links "><a href="Gtk.Widget.drag_source_set_icon_pixbuf.html" title="Gtk.Widget.prototype.drag_source_set_icon_pixbuf">Gtk.Widget.prototype.drag_source_set_icon_pixbuf</a></li>
+<li class="links "><a href="Gtk.Widget.drag_source_set_icon_stock.html" title="Gtk.Widget.prototype.drag_source_set_icon_stock">Gtk.Widget.prototype.drag_source_set_icon_stock</a></li>
+<li class="links "><a href="Gtk.Widget.drag_source_set_target_list.html" title="Gtk.Widget.prototype.drag_source_set_target_list">Gtk.Widget.prototype.drag_source_set_target_list</a></li>
+<li class="links "><a href="Gtk.Widget.drag_source_unset.html" title="Gtk.Widget.prototype.drag_source_unset">Gtk.Widget.prototype.drag_source_unset</a></li>
+<li class="links "><a href="Gtk.Widget.drag_unhighlight.html" title="Gtk.Widget.prototype.drag_unhighlight">Gtk.Widget.prototype.drag_unhighlight</a></li>
+<li class="links "><a href="Gtk.Widget.draw.html" title="Gtk.Widget.prototype.draw">Gtk.Widget.prototype.draw</a></li>
+<li class="links "><a href="Gtk.Widget.ensure_style.html" title="Gtk.Widget.prototype.ensure_style">Gtk.Widget.prototype.ensure_style</a></li>
+<li class="links "><a href="Gtk.Widget.error_bell.html" title="Gtk.Widget.prototype.error_bell">Gtk.Widget.prototype.error_bell</a></li>
+<li class="links "><a href="Gtk.Widget.event.html" title="Gtk.Widget.prototype.event">Gtk.Widget.prototype.event</a></li>
+<li class="links "><a href="Gtk.Widget.freeze_child_notify.html" title="Gtk.Widget.prototype.freeze_child_notify">Gtk.Widget.prototype.freeze_child_notify</a></li>
+<li class="links "><a href="Gtk.Widget.get_accessible.html" title="Gtk.Widget.prototype.get_accessible">Gtk.Widget.prototype.get_accessible</a></li>
+<li class="links "><a href="Gtk.Widget.get_allocated_baseline.html" title="Gtk.Widget.prototype.get_allocated_baseline">Gtk.Widget.prototype.get_allocated_baseline</a></li>
+<li class="links "><a href="Gtk.Widget.get_allocated_height.html" title="Gtk.Widget.prototype.get_allocated_height">Gtk.Widget.prototype.get_allocated_height</a></li>
+<li class="links "><a href="Gtk.Widget.get_allocated_width.html" title="Gtk.Widget.prototype.get_allocated_width">Gtk.Widget.prototype.get_allocated_width</a></li>
+<li class="links "><a href="Gtk.Widget.get_allocation.html" title="Gtk.Widget.prototype.get_allocation">Gtk.Widget.prototype.get_allocation</a></li>
+<li class="links "><a href="Gtk.Widget.get_ancestor.html" title="Gtk.Widget.prototype.get_ancestor">Gtk.Widget.prototype.get_ancestor</a></li>
+<li class="links "><a href="Gtk.Widget.get_app_paintable.html" title="Gtk.Widget.prototype.get_app_paintable">Gtk.Widget.prototype.get_app_paintable</a></li>
+<li class="links "><a href="Gtk.Widget.get_automated_child.html" title="Gtk.Widget.prototype.get_automated_child">Gtk.Widget.prototype.get_automated_child</a></li>
+<li class="links "><a href="Gtk.Widget.get_can_default.html" title="Gtk.Widget.prototype.get_can_default">Gtk.Widget.prototype.get_can_default</a></li>
+<li class="links "><a href="Gtk.Widget.get_can_focus.html" title="Gtk.Widget.prototype.get_can_focus">Gtk.Widget.prototype.get_can_focus</a></li>
+<li class="links "><a href="Gtk.Widget.get_child_requisition.html" title="Gtk.Widget.prototype.get_child_requisition">Gtk.Widget.prototype.get_child_requisition</a></li>
+<li class="links "><a href="Gtk.Widget.get_child_visible.html" title="Gtk.Widget.prototype.get_child_visible">Gtk.Widget.prototype.get_child_visible</a></li>
+<li class="links "><a href="Gtk.Widget.get_clipboard.html" title="Gtk.Widget.prototype.get_clipboard">Gtk.Widget.prototype.get_clipboard</a></li>
+<li class="links "><a href="Gtk.Widget.get_composite_name.html" title="Gtk.Widget.prototype.get_composite_name">Gtk.Widget.prototype.get_composite_name</a></li>
+<li class="links "><a href="Gtk.Widget.get_device_enabled.html" title="Gtk.Widget.prototype.get_device_enabled">Gtk.Widget.prototype.get_device_enabled</a></li>
+<li class="links "><a href="Gtk.Widget.get_device_events.html" title="Gtk.Widget.prototype.get_device_events">Gtk.Widget.prototype.get_device_events</a></li>
+<li class="links "><a href="Gtk.Widget.get_direction.html" title="Gtk.Widget.prototype.get_direction">Gtk.Widget.prototype.get_direction</a></li>
+<li class="links "><a href="Gtk.Widget.get_display.html" title="Gtk.Widget.prototype.get_display">Gtk.Widget.prototype.get_display</a></li>
+<li class="links "><a href="Gtk.Widget.get_double_buffered.html" title="Gtk.Widget.prototype.get_double_buffered">Gtk.Widget.prototype.get_double_buffered</a></li>
+<li class="links "><a href="Gtk.Widget.get_events.html" title="Gtk.Widget.prototype.get_events">Gtk.Widget.prototype.get_events</a></li>
+<li class="links "><a href="Gtk.Widget.get_frame_clock.html" title="Gtk.Widget.prototype.get_frame_clock">Gtk.Widget.prototype.get_frame_clock</a></li>
+<li class="links "><a href="Gtk.Widget.get_halign.html" title="Gtk.Widget.prototype.get_halign">Gtk.Widget.prototype.get_halign</a></li>
+<li class="links "><a href="Gtk.Widget.get_has_tooltip.html" title="Gtk.Widget.prototype.get_has_tooltip">Gtk.Widget.prototype.get_has_tooltip</a></li>
+<li class="links "><a href="Gtk.Widget.get_has_window.html" title="Gtk.Widget.prototype.get_has_window">Gtk.Widget.prototype.get_has_window</a></li>
+<li class="links "><a href="Gtk.Widget.get_hexpand.html" title="Gtk.Widget.prototype.get_hexpand">Gtk.Widget.prototype.get_hexpand</a></li>
+<li class="links "><a href="Gtk.Widget.get_hexpand_set.html" title="Gtk.Widget.prototype.get_hexpand_set">Gtk.Widget.prototype.get_hexpand_set</a></li>
+<li class="links "><a href="Gtk.Widget.get_mapped.html" title="Gtk.Widget.prototype.get_mapped">Gtk.Widget.prototype.get_mapped</a></li>
+<li class="links "><a href="Gtk.Widget.get_margin_bottom.html" title="Gtk.Widget.prototype.get_margin_bottom">Gtk.Widget.prototype.get_margin_bottom</a></li>
+<li class="links "><a href="Gtk.Widget.get_margin_left.html" title="Gtk.Widget.prototype.get_margin_left">Gtk.Widget.prototype.get_margin_left</a></li>
+<li class="links "><a href="Gtk.Widget.get_margin_right.html" title="Gtk.Widget.prototype.get_margin_right">Gtk.Widget.prototype.get_margin_right</a></li>
+<li class="links "><a href="Gtk.Widget.get_margin_top.html" title="Gtk.Widget.prototype.get_margin_top">Gtk.Widget.prototype.get_margin_top</a></li>
+<li class="links "><a href="Gtk.Widget.get_modifier_mask.html" title="Gtk.Widget.prototype.get_modifier_mask">Gtk.Widget.prototype.get_modifier_mask</a></li>
+<li class="links "><a href="Gtk.Widget.get_modifier_style.html" title="Gtk.Widget.prototype.get_modifier_style">Gtk.Widget.prototype.get_modifier_style</a></li>
+<li class="links "><a href="Gtk.Widget.get_name.html" title="Gtk.Widget.prototype.get_name">Gtk.Widget.prototype.get_name</a></li>
+<li class="links "><a href="Gtk.Widget.get_no_show_all.html" title="Gtk.Widget.prototype.get_no_show_all">Gtk.Widget.prototype.get_no_show_all</a></li>
+<li class="links "><a href="Gtk.Widget.get_opacity.html" title="Gtk.Widget.prototype.get_opacity">Gtk.Widget.prototype.get_opacity</a></li>
+<li class="links "><a href="Gtk.Widget.get_pango_context.html" title="Gtk.Widget.prototype.get_pango_context">Gtk.Widget.prototype.get_pango_context</a></li>
+<li class="links "><a href="Gtk.Widget.get_parent.html" title="Gtk.Widget.prototype.get_parent">Gtk.Widget.prototype.get_parent</a></li>
+<li class="links "><a href="Gtk.Widget.get_parent_window.html" title="Gtk.Widget.prototype.get_parent_window">Gtk.Widget.prototype.get_parent_window</a></li>
+<li class="links "><a href="Gtk.Widget.get_path.html" title="Gtk.Widget.prototype.get_path">Gtk.Widget.prototype.get_path</a></li>
+<li class="links "><a href="Gtk.Widget.get_pointer.html" title="Gtk.Widget.prototype.get_pointer">Gtk.Widget.prototype.get_pointer</a></li>
+<li class="links "><a href="Gtk.Widget.get_preferred_height.html" title="Gtk.Widget.prototype.get_preferred_height">Gtk.Widget.prototype.get_preferred_height</a></li>
+<li class="links "><a href="Gtk.Widget.get_preferred_height_and_baseline_for_width.html" title="Gtk.Widget.prototype.get_preferred_height_and_baseline_for_width">Gtk.Widget.prototype.get_preferred_height_and_baseline_for_width</a></li>
+<li class="links "><a href="Gtk.Widget.get_preferred_height_for_width.html" title="Gtk.Widget.prototype.get_preferred_height_for_width">Gtk.Widget.prototype.get_preferred_height_for_width</a></li>
+<li class="links "><a href="Gtk.Widget.get_preferred_size.html" title="Gtk.Widget.prototype.get_preferred_size">Gtk.Widget.prototype.get_preferred_size</a></li>
+<li class="links "><a href="Gtk.Widget.get_preferred_width.html" title="Gtk.Widget.prototype.get_preferred_width">Gtk.Widget.prototype.get_preferred_width</a></li>
+<li class="links "><a href="Gtk.Widget.get_preferred_width_for_height.html" title="Gtk.Widget.prototype.get_preferred_width_for_height">Gtk.Widget.prototype.get_preferred_width_for_height</a></li>
+<li class="links "><a href="Gtk.Widget.get_realized.html" title="Gtk.Widget.prototype.get_realized">Gtk.Widget.prototype.get_realized</a></li>
+<li class="links "><a href="Gtk.Widget.get_receives_default.html" title="Gtk.Widget.prototype.get_receives_default">Gtk.Widget.prototype.get_receives_default</a></li>
+<li class="links "><a href="Gtk.Widget.get_request_mode.html" title="Gtk.Widget.prototype.get_request_mode">Gtk.Widget.prototype.get_request_mode</a></li>
+<li class="links "><a href="Gtk.Widget.get_requisition.html" title="Gtk.Widget.prototype.get_requisition">Gtk.Widget.prototype.get_requisition</a></li>
+<li class="links "><a href="Gtk.Widget.get_root_window.html" title="Gtk.Widget.prototype.get_root_window">Gtk.Widget.prototype.get_root_window</a></li>
+<li class="links "><a href="Gtk.Widget.get_scale_factor.html" title="Gtk.Widget.prototype.get_scale_factor">Gtk.Widget.prototype.get_scale_factor</a></li>
+<li class="links "><a href="Gtk.Widget.get_screen.html" title="Gtk.Widget.prototype.get_screen">Gtk.Widget.prototype.get_screen</a></li>
+<li class="links "><a href="Gtk.Widget.get_sensitive.html" title="Gtk.Widget.prototype.get_sensitive">Gtk.Widget.prototype.get_sensitive</a></li>
+<li class="links "><a href="Gtk.Widget.get_settings.html" title="Gtk.Widget.prototype.get_settings">Gtk.Widget.prototype.get_settings</a></li>
+<li class="links "><a href="Gtk.Widget.get_size_request.html" title="Gtk.Widget.prototype.get_size_request">Gtk.Widget.prototype.get_size_request</a></li>
+<li class="links "><a href="Gtk.Widget.get_state.html" title="Gtk.Widget.prototype.get_state">Gtk.Widget.prototype.get_state</a></li>
+<li class="links "><a href="Gtk.Widget.get_state_flags.html" title="Gtk.Widget.prototype.get_state_flags">Gtk.Widget.prototype.get_state_flags</a></li>
+<li class="links "><a href="Gtk.Widget.get_style.html" title="Gtk.Widget.prototype.get_style">Gtk.Widget.prototype.get_style</a></li>
+<li class="links "><a href="Gtk.Widget.get_style_context.html" title="Gtk.Widget.prototype.get_style_context">Gtk.Widget.prototype.get_style_context</a></li>
+<li class="links "><a href="Gtk.Widget.get_support_multidevice.html" title="Gtk.Widget.prototype.get_support_multidevice">Gtk.Widget.prototype.get_support_multidevice</a></li>
+<li class="links "><a href="Gtk.Widget.get_tooltip_markup.html" title="Gtk.Widget.prototype.get_tooltip_markup">Gtk.Widget.prototype.get_tooltip_markup</a></li>
+<li class="links "><a href="Gtk.Widget.get_tooltip_text.html" title="Gtk.Widget.prototype.get_tooltip_text">Gtk.Widget.prototype.get_tooltip_text</a></li>
+<li class="links "><a href="Gtk.Widget.get_tooltip_window.html" title="Gtk.Widget.prototype.get_tooltip_window">Gtk.Widget.prototype.get_tooltip_window</a></li>
+<li class="links "><a href="Gtk.Widget.get_toplevel.html" title="Gtk.Widget.prototype.get_toplevel">Gtk.Widget.prototype.get_toplevel</a></li>
+<li class="links "><a href="Gtk.Widget.get_valign.html" title="Gtk.Widget.prototype.get_valign">Gtk.Widget.prototype.get_valign</a></li>
+<li class="links "><a href="Gtk.Widget.get_valign_with_baseline.html" title="Gtk.Widget.prototype.get_valign_with_baseline">Gtk.Widget.prototype.get_valign_with_baseline</a></li>
+<li class="links "><a href="Gtk.Widget.get_vexpand.html" title="Gtk.Widget.prototype.get_vexpand">Gtk.Widget.prototype.get_vexpand</a></li>
+<li class="links "><a href="Gtk.Widget.get_vexpand_set.html" title="Gtk.Widget.prototype.get_vexpand_set">Gtk.Widget.prototype.get_vexpand_set</a></li>
+<li class="links "><a href="Gtk.Widget.get_visible.html" title="Gtk.Widget.prototype.get_visible">Gtk.Widget.prototype.get_visible</a></li>
+<li class="links "><a href="Gtk.Widget.get_visual.html" title="Gtk.Widget.prototype.get_visual">Gtk.Widget.prototype.get_visual</a></li>
+<li class="links "><a href="Gtk.Widget.get_window.html" title="Gtk.Widget.prototype.get_window">Gtk.Widget.prototype.get_window</a></li>
+<li class="links "><a href="Gtk.Widget.grab_add.html" title="Gtk.Widget.prototype.grab_add">Gtk.Widget.prototype.grab_add</a></li>
+<li class="links "><a href="Gtk.Widget.grab_default.html" title="Gtk.Widget.prototype.grab_default">Gtk.Widget.prototype.grab_default</a></li>
+<li class="links "><a href="Gtk.Widget.grab_focus.html" title="Gtk.Widget.prototype.grab_focus">Gtk.Widget.prototype.grab_focus</a></li>
+<li class="links "><a href="Gtk.Widget.grab_remove.html" title="Gtk.Widget.prototype.grab_remove">Gtk.Widget.prototype.grab_remove</a></li>
+<li class="links "><a href="Gtk.Widget.has_default.html" title="Gtk.Widget.prototype.has_default">Gtk.Widget.prototype.has_default</a></li>
+<li class="links "><a href="Gtk.Widget.has_focus.html" title="Gtk.Widget.prototype.has_focus">Gtk.Widget.prototype.has_focus</a></li>
+<li class="links "><a href="Gtk.Widget.has_grab.html" title="Gtk.Widget.prototype.has_grab">Gtk.Widget.prototype.has_grab</a></li>
+<li class="links "><a href="Gtk.Widget.has_rc_style.html" title="Gtk.Widget.prototype.has_rc_style">Gtk.Widget.prototype.has_rc_style</a></li>
+<li class="links "><a href="Gtk.Widget.has_screen.html" title="Gtk.Widget.prototype.has_screen">Gtk.Widget.prototype.has_screen</a></li>
+<li class="links "><a href="Gtk.Widget.has_visible_focus.html" title="Gtk.Widget.prototype.has_visible_focus">Gtk.Widget.prototype.has_visible_focus</a></li>
+<li class="links "><a href="Gtk.Widget.hide.html" title="Gtk.Widget.prototype.hide">Gtk.Widget.prototype.hide</a></li>
+<li class="links "><a href="Gtk.Widget.hide_on_delete.html" title="Gtk.Widget.prototype.hide_on_delete">Gtk.Widget.prototype.hide_on_delete</a></li>
+<li class="links "><a href="Gtk.Widget.in_destruction.html" title="Gtk.Widget.prototype.in_destruction">Gtk.Widget.prototype.in_destruction</a></li>
+<li class="links "><a href="Gtk.Widget.init_template.html" title="Gtk.Widget.prototype.init_template">Gtk.Widget.prototype.init_template</a></li>
+<li class="links "><a href="Gtk.Widget.input_shape_combine_region.html" title="Gtk.Widget.prototype.input_shape_combine_region">Gtk.Widget.prototype.input_shape_combine_region</a></li>
+<li class="links "><a href="Gtk.Widget.insert_action_group.html" title="Gtk.Widget.prototype.insert_action_group">Gtk.Widget.prototype.insert_action_group</a></li>
+<li class="links "><a href="Gtk.Widget.intersect.html" title="Gtk.Widget.prototype.intersect">Gtk.Widget.prototype.intersect</a></li>
+<li class="links "><a href="Gtk.Widget.is_ancestor.html" title="Gtk.Widget.prototype.is_ancestor">Gtk.Widget.prototype.is_ancestor</a></li>
+<li class="links "><a href="Gtk.Widget.is_composited.html" title="Gtk.Widget.prototype.is_composited">Gtk.Widget.prototype.is_composited</a></li>
+<li class="links "><a href="Gtk.Widget.is_drawable.html" title="Gtk.Widget.prototype.is_drawable">Gtk.Widget.prototype.is_drawable</a></li>
+<li class="links "><a href="Gtk.Widget.is_focus.html" title="Gtk.Widget.prototype.is_focus">Gtk.Widget.prototype.is_focus</a></li>
+<li class="links "><a href="Gtk.Widget.is_sensitive.html" title="Gtk.Widget.prototype.is_sensitive">Gtk.Widget.prototype.is_sensitive</a></li>
+<li class="links "><a href="Gtk.Widget.is_toplevel.html" title="Gtk.Widget.prototype.is_toplevel">Gtk.Widget.prototype.is_toplevel</a></li>
+<li class="links "><a href="Gtk.Widget.is_visible.html" title="Gtk.Widget.prototype.is_visible">Gtk.Widget.prototype.is_visible</a></li>
+<li class="links "><a href="Gtk.Widget.keynav_failed.html" title="Gtk.Widget.prototype.keynav_failed">Gtk.Widget.prototype.keynav_failed</a></li>
+<li class="links "><a href="Gtk.Widget.list_accel_closures.html" title="Gtk.Widget.prototype.list_accel_closures">Gtk.Widget.prototype.list_accel_closures</a></li>
+<li class="links "><a href="Gtk.Widget.list_mnemonic_labels.html" title="Gtk.Widget.prototype.list_mnemonic_labels">Gtk.Widget.prototype.list_mnemonic_labels</a></li>
+<li class="links "><a href="Gtk.Widget.map.html" title="Gtk.Widget.prototype.map">Gtk.Widget.prototype.map</a></li>
+<li class="links "><a href="Gtk.Widget.mnemonic_activate.html" title="Gtk.Widget.prototype.mnemonic_activate">Gtk.Widget.prototype.mnemonic_activate</a></li>
+<li class="links "><a href="Gtk.Widget.modify_base.html" title="Gtk.Widget.prototype.modify_base">Gtk.Widget.prototype.modify_base</a></li>
+<li class="links "><a href="Gtk.Widget.modify_bg.html" title="Gtk.Widget.prototype.modify_bg">Gtk.Widget.prototype.modify_bg</a></li>
+<li class="links "><a href="Gtk.Widget.modify_cursor.html" title="Gtk.Widget.prototype.modify_cursor">Gtk.Widget.prototype.modify_cursor</a></li>
+<li class="links "><a href="Gtk.Widget.modify_fg.html" title="Gtk.Widget.prototype.modify_fg">Gtk.Widget.prototype.modify_fg</a></li>
+<li class="links "><a href="Gtk.Widget.modify_font.html" title="Gtk.Widget.prototype.modify_font">Gtk.Widget.prototype.modify_font</a></li>
+<li class="links "><a href="Gtk.Widget.modify_style.html" title="Gtk.Widget.prototype.modify_style">Gtk.Widget.prototype.modify_style</a></li>
+<li class="links "><a href="Gtk.Widget.modify_text.html" title="Gtk.Widget.prototype.modify_text">Gtk.Widget.prototype.modify_text</a></li>
+<li class="links "><a href="Gtk.Widget.override_background_color.html" title="Gtk.Widget.prototype.override_background_color">Gtk.Widget.prototype.override_background_color</a></li>
+<li class="links "><a href="Gtk.Widget.override_color.html" title="Gtk.Widget.prototype.override_color">Gtk.Widget.prototype.override_color</a></li>
+<li class="links "><a href="Gtk.Widget.override_cursor.html" title="Gtk.Widget.prototype.override_cursor">Gtk.Widget.prototype.override_cursor</a></li>
+<li class="links "><a href="Gtk.Widget.override_font.html" title="Gtk.Widget.prototype.override_font">Gtk.Widget.prototype.override_font</a></li>
+<li class="links "><a href="Gtk.Widget.override_symbolic_color.html" title="Gtk.Widget.prototype.override_symbolic_color">Gtk.Widget.prototype.override_symbolic_color</a></li>
+<li class="links "><a href="Gtk.Widget.path.html" title="Gtk.Widget.prototype.path">Gtk.Widget.prototype.path</a></li>
+<li class="links "><a href="Gtk.Widget.queue_compute_expand.html" title="Gtk.Widget.prototype.queue_compute_expand">Gtk.Widget.prototype.queue_compute_expand</a></li>
+<li class="links "><a href="Gtk.Widget.queue_draw.html" title="Gtk.Widget.prototype.queue_draw">Gtk.Widget.prototype.queue_draw</a></li>
+<li class="links "><a href="Gtk.Widget.queue_draw_area.html" title="Gtk.Widget.prototype.queue_draw_area">Gtk.Widget.prototype.queue_draw_area</a></li>
+<li class="links "><a href="Gtk.Widget.queue_draw_region.html" title="Gtk.Widget.prototype.queue_draw_region">Gtk.Widget.prototype.queue_draw_region</a></li>
+<li class="links "><a href="Gtk.Widget.queue_resize.html" title="Gtk.Widget.prototype.queue_resize">Gtk.Widget.prototype.queue_resize</a></li>
+<li class="links "><a href="Gtk.Widget.queue_resize_no_redraw.html" title="Gtk.Widget.prototype.queue_resize_no_redraw">Gtk.Widget.prototype.queue_resize_no_redraw</a></li>
+<li class="links "><a href="Gtk.Widget.realize.html" title="Gtk.Widget.prototype.realize">Gtk.Widget.prototype.realize</a></li>
+<li class="links "><a href="Gtk.Widget.region_intersect.html" title="Gtk.Widget.prototype.region_intersect">Gtk.Widget.prototype.region_intersect</a></li>
+<li class="links "><a href="Gtk.Widget.register_window.html" title="Gtk.Widget.prototype.register_window">Gtk.Widget.prototype.register_window</a></li>
+<li class="links "><a href="Gtk.Widget.remove_accelerator.html" title="Gtk.Widget.prototype.remove_accelerator">Gtk.Widget.prototype.remove_accelerator</a></li>
+<li class="links "><a href="Gtk.Widget.remove_mnemonic_label.html" title="Gtk.Widget.prototype.remove_mnemonic_label">Gtk.Widget.prototype.remove_mnemonic_label</a></li>
+<li class="links "><a href="Gtk.Widget.remove_tick_callback.html" title="Gtk.Widget.prototype.remove_tick_callback">Gtk.Widget.prototype.remove_tick_callback</a></li>
+<li class="links "><a href="Gtk.Widget.render_icon.html" title="Gtk.Widget.prototype.render_icon">Gtk.Widget.prototype.render_icon</a></li>
+<li class="links "><a href="Gtk.Widget.render_icon_pixbuf.html" title="Gtk.Widget.prototype.render_icon_pixbuf">Gtk.Widget.prototype.render_icon_pixbuf</a></li>
+<li class="links "><a href="Gtk.Widget.reparent.html" title="Gtk.Widget.prototype.reparent">Gtk.Widget.prototype.reparent</a></li>
+<li class="links "><a href="Gtk.Widget.reset_rc_styles.html" title="Gtk.Widget.prototype.reset_rc_styles">Gtk.Widget.prototype.reset_rc_styles</a></li>
+<li class="links "><a href="Gtk.Widget.reset_style.html" title="Gtk.Widget.prototype.reset_style">Gtk.Widget.prototype.reset_style</a></li>
+<li class="links "><a href="Gtk.Widget.send_expose.html" title="Gtk.Widget.prototype.send_expose">Gtk.Widget.prototype.send_expose</a></li>
+<li class="links "><a href="Gtk.Widget.send_focus_change.html" title="Gtk.Widget.prototype.send_focus_change">Gtk.Widget.prototype.send_focus_change</a></li>
+<li class="links "><a href="Gtk.Widget.set_accel_path.html" title="Gtk.Widget.prototype.set_accel_path">Gtk.Widget.prototype.set_accel_path</a></li>
+<li class="links "><a href="Gtk.Widget.set_allocation.html" title="Gtk.Widget.prototype.set_allocation">Gtk.Widget.prototype.set_allocation</a></li>
+<li class="links "><a href="Gtk.Widget.set_app_paintable.html" title="Gtk.Widget.prototype.set_app_paintable">Gtk.Widget.prototype.set_app_paintable</a></li>
+<li class="links "><a href="Gtk.Widget.set_can_default.html" title="Gtk.Widget.prototype.set_can_default">Gtk.Widget.prototype.set_can_default</a></li>
+<li class="links "><a href="Gtk.Widget.set_can_focus.html" title="Gtk.Widget.prototype.set_can_focus">Gtk.Widget.prototype.set_can_focus</a></li>
+<li class="links "><a href="Gtk.Widget.set_child_visible.html" title="Gtk.Widget.prototype.set_child_visible">Gtk.Widget.prototype.set_child_visible</a></li>
+<li class="links "><a href="Gtk.Widget.set_composite_name.html" title="Gtk.Widget.prototype.set_composite_name">Gtk.Widget.prototype.set_composite_name</a></li>
+<li class="links "><a href="Gtk.Widget.set_device_enabled.html" title="Gtk.Widget.prototype.set_device_enabled">Gtk.Widget.prototype.set_device_enabled</a></li>
+<li class="links "><a href="Gtk.Widget.set_device_events.html" title="Gtk.Widget.prototype.set_device_events">Gtk.Widget.prototype.set_device_events</a></li>
+<li class="links "><a href="Gtk.Widget.set_direction.html" title="Gtk.Widget.prototype.set_direction">Gtk.Widget.prototype.set_direction</a></li>
+<li class="links "><a href="Gtk.Widget.set_double_buffered.html" title="Gtk.Widget.prototype.set_double_buffered">Gtk.Widget.prototype.set_double_buffered</a></li>
+<li class="links "><a href="Gtk.Widget.set_events.html" title="Gtk.Widget.prototype.set_events">Gtk.Widget.prototype.set_events</a></li>
+<li class="links "><a href="Gtk.Widget.set_halign.html" title="Gtk.Widget.prototype.set_halign">Gtk.Widget.prototype.set_halign</a></li>
+<li class="links "><a href="Gtk.Widget.set_has_tooltip.html" title="Gtk.Widget.prototype.set_has_tooltip">Gtk.Widget.prototype.set_has_tooltip</a></li>
+<li class="links "><a href="Gtk.Widget.set_has_window.html" title="Gtk.Widget.prototype.set_has_window">Gtk.Widget.prototype.set_has_window</a></li>
+<li class="links "><a href="Gtk.Widget.set_hexpand.html" title="Gtk.Widget.prototype.set_hexpand">Gtk.Widget.prototype.set_hexpand</a></li>
+<li class="links "><a href="Gtk.Widget.set_hexpand_set.html" title="Gtk.Widget.prototype.set_hexpand_set">Gtk.Widget.prototype.set_hexpand_set</a></li>
+<li class="links "><a href="Gtk.Widget.set_mapped.html" title="Gtk.Widget.prototype.set_mapped">Gtk.Widget.prototype.set_mapped</a></li>
+<li class="links "><a href="Gtk.Widget.set_margin_bottom.html" title="Gtk.Widget.prototype.set_margin_bottom">Gtk.Widget.prototype.set_margin_bottom</a></li>
+<li class="links "><a href="Gtk.Widget.set_margin_left.html" title="Gtk.Widget.prototype.set_margin_left">Gtk.Widget.prototype.set_margin_left</a></li>
+<li class="links "><a href="Gtk.Widget.set_margin_right.html" title="Gtk.Widget.prototype.set_margin_right">Gtk.Widget.prototype.set_margin_right</a></li>
+<li class="links "><a href="Gtk.Widget.set_margin_top.html" title="Gtk.Widget.prototype.set_margin_top">Gtk.Widget.prototype.set_margin_top</a></li>
+<li class="links "><a href="Gtk.Widget.set_name.html" title="Gtk.Widget.prototype.set_name">Gtk.Widget.prototype.set_name</a></li>
+<li class="links "><a href="Gtk.Widget.set_no_show_all.html" title="Gtk.Widget.prototype.set_no_show_all">Gtk.Widget.prototype.set_no_show_all</a></li>
+<li class="links "><a href="Gtk.Widget.set_opacity.html" title="Gtk.Widget.prototype.set_opacity">Gtk.Widget.prototype.set_opacity</a></li>
+<li class="links "><a href="Gtk.Widget.set_parent.html" title="Gtk.Widget.prototype.set_parent">Gtk.Widget.prototype.set_parent</a></li>
+<li class="links "><a href="Gtk.Widget.set_parent_window.html" title="Gtk.Widget.prototype.set_parent_window">Gtk.Widget.prototype.set_parent_window</a></li>
+<li class="links "><a href="Gtk.Widget.set_realized.html" title="Gtk.Widget.prototype.set_realized">Gtk.Widget.prototype.set_realized</a></li>
+<li class="links "><a href="Gtk.Widget.set_receives_default.html" title="Gtk.Widget.prototype.set_receives_default">Gtk.Widget.prototype.set_receives_default</a></li>
+<li class="links "><a href="Gtk.Widget.set_redraw_on_allocate.html" title="Gtk.Widget.prototype.set_redraw_on_allocate">Gtk.Widget.prototype.set_redraw_on_allocate</a></li>
+<li class="links "><a href="Gtk.Widget.set_sensitive.html" title="Gtk.Widget.prototype.set_sensitive">Gtk.Widget.prototype.set_sensitive</a></li>
+<li class="links "><a href="Gtk.Widget.set_size_request.html" title="Gtk.Widget.prototype.set_size_request">Gtk.Widget.prototype.set_size_request</a></li>
+<li class="links "><a href="Gtk.Widget.set_state.html" title="Gtk.Widget.prototype.set_state">Gtk.Widget.prototype.set_state</a></li>
+<li class="links "><a href="Gtk.Widget.set_state_flags.html" title="Gtk.Widget.prototype.set_state_flags">Gtk.Widget.prototype.set_state_flags</a></li>
+<li class="links "><a href="Gtk.Widget.set_style.html" title="Gtk.Widget.prototype.set_style">Gtk.Widget.prototype.set_style</a></li>
+<li class="links "><a href="Gtk.Widget.set_support_multidevice.html" title="Gtk.Widget.prototype.set_support_multidevice">Gtk.Widget.prototype.set_support_multidevice</a></li>
+<li class="links "><a href="Gtk.Widget.set_tooltip_markup.html" title="Gtk.Widget.prototype.set_tooltip_markup">Gtk.Widget.prototype.set_tooltip_markup</a></li>
+<li class="links "><a href="Gtk.Widget.set_tooltip_text.html" title="Gtk.Widget.prototype.set_tooltip_text">Gtk.Widget.prototype.set_tooltip_text</a></li>
+<li class="links "><a href="Gtk.Widget.set_tooltip_window.html" title="Gtk.Widget.prototype.set_tooltip_window">Gtk.Widget.prototype.set_tooltip_window</a></li>
+<li class="links "><a href="Gtk.Widget.set_valign.html" title="Gtk.Widget.prototype.set_valign">Gtk.Widget.prototype.set_valign</a></li>
+<li class="links "><a href="Gtk.Widget.set_vexpand.html" title="Gtk.Widget.prototype.set_vexpand">Gtk.Widget.prototype.set_vexpand</a></li>
+<li class="links "><a href="Gtk.Widget.set_vexpand_set.html" title="Gtk.Widget.prototype.set_vexpand_set">Gtk.Widget.prototype.set_vexpand_set</a></li>
+<li class="links "><a href="Gtk.Widget.set_visible.html" title="Gtk.Widget.prototype.set_visible">Gtk.Widget.prototype.set_visible</a></li>
+<li class="links "><a href="Gtk.Widget.set_visual.html" title="Gtk.Widget.prototype.set_visual">Gtk.Widget.prototype.set_visual</a></li>
+<li class="links "><a href="Gtk.Widget.set_window.html" title="Gtk.Widget.prototype.set_window">Gtk.Widget.prototype.set_window</a></li>
+<li class="links "><a href="Gtk.Widget.shape_combine_region.html" title="Gtk.Widget.prototype.shape_combine_region">Gtk.Widget.prototype.shape_combine_region</a></li>
+<li class="links "><a href="Gtk.Widget.show.html" title="Gtk.Widget.prototype.show">Gtk.Widget.prototype.show</a></li>
+<li class="links "><a href="Gtk.Widget.show_all.html" title="Gtk.Widget.prototype.show_all">Gtk.Widget.prototype.show_all</a></li>
+<li class="links "><a href="Gtk.Widget.show_now.html" title="Gtk.Widget.prototype.show_now">Gtk.Widget.prototype.show_now</a></li>
+<li class="links "><a href="Gtk.Widget.size_allocate.html" title="Gtk.Widget.prototype.size_allocate">Gtk.Widget.prototype.size_allocate</a></li>
+<li class="links "><a href="Gtk.Widget.size_allocate_with_baseline.html" title="Gtk.Widget.prototype.size_allocate_with_baseline">Gtk.Widget.prototype.size_allocate_with_baseline</a></li>
+<li class="links "><a href="Gtk.Widget.size_request.html" title="Gtk.Widget.prototype.size_request">Gtk.Widget.prototype.size_request</a></li>
+<li class="links "><a href="Gtk.Widget.style_attach.html" title="Gtk.Widget.prototype.style_attach">Gtk.Widget.prototype.style_attach</a></li>
+<li class="links "><a href="Gtk.Widget.style_get_property.html" title="Gtk.Widget.prototype.style_get_property">Gtk.Widget.prototype.style_get_property</a></li>
+<li class="links "><a href="Gtk.Widget.thaw_child_notify.html" title="Gtk.Widget.prototype.thaw_child_notify">Gtk.Widget.prototype.thaw_child_notify</a></li>
+<li class="links "><a href="Gtk.Widget.translate_coordinates.html" title="Gtk.Widget.prototype.translate_coordinates">Gtk.Widget.prototype.translate_coordinates</a></li>
+<li class="links "><a href="Gtk.Widget.trigger_tooltip_query.html" title="Gtk.Widget.prototype.trigger_tooltip_query">Gtk.Widget.prototype.trigger_tooltip_query</a></li>
+<li class="links "><a href="Gtk.Widget.unmap.html" title="Gtk.Widget.prototype.unmap">Gtk.Widget.prototype.unmap</a></li>
+<li class="links "><a href="Gtk.Widget.unparent.html" title="Gtk.Widget.prototype.unparent">Gtk.Widget.prototype.unparent</a></li>
+<li class="links "><a href="Gtk.Widget.unrealize.html" title="Gtk.Widget.prototype.unrealize">Gtk.Widget.prototype.unrealize</a></li>
+<li class="links "><a href="Gtk.Widget.unregister_window.html" title="Gtk.Widget.prototype.unregister_window">Gtk.Widget.prototype.unregister_window</a></li>
+<li class="links "><a href="Gtk.Widget.unset_state_flags.html" title="Gtk.Widget.prototype.unset_state_flags">Gtk.Widget.prototype.unset_state_flags</a></li>
+</ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Functions</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.Widget.get_default_direction.html" title="get_default_direction">get_default_direction</a></li>
+<li class="links "><a href="Gtk.Widget.get_default_style.html" title="get_default_style">get_default_style</a></li>
+<li class="links "><a href="Gtk.Widget.pop_composite_child.html" title="pop_composite_child">pop_composite_child</a></li>
+<li class="links "><a href="Gtk.Widget.push_composite_child.html" title="push_composite_child">push_composite_child</a></li>
+<li class="links "><a href="Gtk.Widget.set_default_direction.html" title="set_default_direction">set_default_direction</a></li>
+</ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Properties</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.Widget-app-paintable.html" title="Gtk.Widget:app-paintable">app-paintable</a></li>
+<li class="links "><a href="Gtk.Widget-can-default.html" title="Gtk.Widget:can-default">can-default</a></li>
+<li class="links "><a href="Gtk.Widget-can-focus.html" title="Gtk.Widget:can-focus">can-focus</a></li>
+<li class="links "><a href="Gtk.Widget-composite-child.html" title="Gtk.Widget:composite-child">composite-child</a></li>
+<li class="links "><a href="Gtk.Widget-double-buffered.html" title="Gtk.Widget:double-buffered">double-buffered</a></li>
+<li class="links "><a href="Gtk.Widget-events.html" title="Gtk.Widget:events">events</a></li>
+<li class="links "><a href="Gtk.Widget-expand.html" title="Gtk.Widget:expand">expand</a></li>
+<li class="links "><a href="Gtk.Widget-halign.html" title="Gtk.Widget:halign">halign</a></li>
+<li class="links "><a href="Gtk.Widget-has-default.html" title="Gtk.Widget:has-default">has-default</a></li>
+<li class="links "><a href="Gtk.Widget-has-focus.html" title="Gtk.Widget:has-focus">has-focus</a></li>
+<li class="links "><a href="Gtk.Widget-has-tooltip.html" title="Gtk.Widget:has-tooltip">has-tooltip</a></li>
+<li class="links "><a href="Gtk.Widget-height-request.html" title="Gtk.Widget:height-request">height-request</a></li>
+<li class="links "><a href="Gtk.Widget-hexpand.html" title="Gtk.Widget:hexpand">hexpand</a></li>
+<li class="links "><a href="Gtk.Widget-hexpand-set.html" title="Gtk.Widget:hexpand-set">hexpand-set</a></li>
+<li class="links "><a href="Gtk.Widget-is-focus.html" title="Gtk.Widget:is-focus">is-focus</a></li>
+<li class="links "><a href="Gtk.Widget-margin.html" title="Gtk.Widget:margin">margin</a></li>
+<li class="links "><a href="Gtk.Widget-margin-bottom.html" title="Gtk.Widget:margin-bottom">margin-bottom</a></li>
+<li class="links "><a href="Gtk.Widget-margin-left.html" title="Gtk.Widget:margin-left">margin-left</a></li>
+<li class="links "><a href="Gtk.Widget-margin-right.html" title="Gtk.Widget:margin-right">margin-right</a></li>
+<li class="links "><a href="Gtk.Widget-margin-top.html" title="Gtk.Widget:margin-top">margin-top</a></li>
+<li class="links "><a href="Gtk.Widget-name.html" title="Gtk.Widget:name">name</a></li>
+<li class="links "><a href="Gtk.Widget-no-show-all.html" title="Gtk.Widget:no-show-all">no-show-all</a></li>
+<li class="links "><a href="Gtk.Widget-opacity.html" title="Gtk.Widget:opacity">opacity</a></li>
+<li class="links "><a href="Gtk.Widget-parent.html" title="Gtk.Widget:parent">parent</a></li>
+<li class="links "><a href="Gtk.Widget-receives-default.html" title="Gtk.Widget:receives-default">receives-default</a></li>
+<li class="links "><a href="Gtk.Widget-scale-factor.html" title="Gtk.Widget:scale-factor">scale-factor</a></li>
+<li class="links "><a href="Gtk.Widget-sensitive.html" title="Gtk.Widget:sensitive">sensitive</a></li>
+<li class="links "><a href="Gtk.Widget-style.html" title="Gtk.Widget:style">style</a></li>
+<li class="links "><a href="Gtk.Widget-tooltip-markup.html" title="Gtk.Widget:tooltip-markup">tooltip-markup</a></li>
+<li class="links "><a href="Gtk.Widget-tooltip-text.html" title="Gtk.Widget:tooltip-text">tooltip-text</a></li>
+<li class="links "><a href="Gtk.Widget-valign.html" title="Gtk.Widget:valign">valign</a></li>
+<li class="links "><a href="Gtk.Widget-vexpand.html" title="Gtk.Widget:vexpand">vexpand</a></li>
+<li class="links "><a href="Gtk.Widget-vexpand-set.html" title="Gtk.Widget:vexpand-set">vexpand-set</a></li>
+<li class="links "><a href="Gtk.Widget-visible.html" title="Gtk.Widget:visible">visible</a></li>
+<li class="links "><a href="Gtk.Widget-width-request.html" title="Gtk.Widget:width-request">width-request</a></li>
+<li class="links "><a href="Gtk.Widget-window.html" title="Gtk.Widget:window">window</a></li>
+</ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Signals</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.Widget-accel-closures-changed.html" title="Gtk.Widget::accel-closures-changed">accel-closures-changed</a></li>
+<li class="links "><a href="Gtk.Widget-button-press-event.html" title="Gtk.Widget::button-press-event">button-press-event</a></li>
+<li class="links "><a href="Gtk.Widget-button-release-event.html" title="Gtk.Widget::button-release-event">button-release-event</a></li>
+<li class="links "><a href="Gtk.Widget-can-activate-accel.html" title="Gtk.Widget::can-activate-accel">can-activate-accel</a></li>
+<li class="links "><a href="Gtk.Widget-child-notify.html" title="Gtk.Widget::child-notify">child-notify</a></li>
+<li class="links "><a href="Gtk.Widget-composited-changed.html" title="Gtk.Widget::composited-changed">composited-changed</a></li>
+<li class="links "><a href="Gtk.Widget-configure-event.html" title="Gtk.Widget::configure-event">configure-event</a></li>
+<li class="links "><a href="Gtk.Widget-damage-event.html" title="Gtk.Widget::damage-event">damage-event</a></li>
+<li class="links "><a href="Gtk.Widget-delete-event.html" title="Gtk.Widget::delete-event">delete-event</a></li>
+<li class="links "><a href="Gtk.Widget-destroy.html" title="Gtk.Widget::destroy">destroy</a></li>
+<li class="links "><a href="Gtk.Widget-destroy-event.html" title="Gtk.Widget::destroy-event">destroy-event</a></li>
+<li class="links "><a href="Gtk.Widget-direction-changed.html" title="Gtk.Widget::direction-changed">direction-changed</a></li>
+<li class="links "><a href="Gtk.Widget-drag-begin.html" title="Gtk.Widget::drag-begin">drag-begin</a></li>
+<li class="links "><a href="Gtk.Widget-drag-data-delete.html" title="Gtk.Widget::drag-data-delete">drag-data-delete</a></li>
+<li class="links "><a href="Gtk.Widget-drag-data-get.html" title="Gtk.Widget::drag-data-get">drag-data-get</a></li>
+<li class="links "><a href="Gtk.Widget-drag-data-received.html" title="Gtk.Widget::drag-data-received">drag-data-received</a></li>
+<li class="links "><a href="Gtk.Widget-drag-drop.html" title="Gtk.Widget::drag-drop">drag-drop</a></li>
+<li class="links "><a href="Gtk.Widget-drag-end.html" title="Gtk.Widget::drag-end">drag-end</a></li>
+<li class="links "><a href="Gtk.Widget-drag-failed.html" title="Gtk.Widget::drag-failed">drag-failed</a></li>
+<li class="links "><a href="Gtk.Widget-drag-leave.html" title="Gtk.Widget::drag-leave">drag-leave</a></li>
+<li class="links "><a href="Gtk.Widget-drag-motion.html" title="Gtk.Widget::drag-motion">drag-motion</a></li>
+<li class="links "><a href="Gtk.Widget-draw.html" title="Gtk.Widget::draw">draw</a></li>
+<li class="links "><a href="Gtk.Widget-enter-notify-event.html" title="Gtk.Widget::enter-notify-event">enter-notify-event</a></li>
+<li class="links "><a href="Gtk.Widget-event.html" title="Gtk.Widget::event">event</a></li>
+<li class="links "><a href="Gtk.Widget-event-after.html" title="Gtk.Widget::event-after">event-after</a></li>
+<li class="links "><a href="Gtk.Widget-focus.html" title="Gtk.Widget::focus">focus</a></li>
+<li class="links "><a href="Gtk.Widget-focus-in-event.html" title="Gtk.Widget::focus-in-event">focus-in-event</a></li>
+<li class="links "><a href="Gtk.Widget-focus-out-event.html" title="Gtk.Widget::focus-out-event">focus-out-event</a></li>
+<li class="links "><a href="Gtk.Widget-grab-broken-event.html" title="Gtk.Widget::grab-broken-event">grab-broken-event</a></li>
+<li class="links "><a href="Gtk.Widget-grab-focus.html" title="Gtk.Widget::grab-focus">grab-focus</a></li>
+<li class="links "><a href="Gtk.Widget-grab-notify.html" title="Gtk.Widget::grab-notify">grab-notify</a></li>
+<li class="links "><a href="Gtk.Widget-hide.html" title="Gtk.Widget::hide">hide</a></li>
+<li class="links "><a href="Gtk.Widget-hierarchy-changed.html" title="Gtk.Widget::hierarchy-changed">hierarchy-changed</a></li>
+<li class="links "><a href="Gtk.Widget-key-press-event.html" title="Gtk.Widget::key-press-event">key-press-event</a></li>
+<li class="links "><a href="Gtk.Widget-key-release-event.html" title="Gtk.Widget::key-release-event">key-release-event</a></li>
+<li class="links "><a href="Gtk.Widget-keynav-failed.html" title="Gtk.Widget::keynav-failed">keynav-failed</a></li>
+<li class="links "><a href="Gtk.Widget-leave-notify-event.html" title="Gtk.Widget::leave-notify-event">leave-notify-event</a></li>
+<li class="links "><a href="Gtk.Widget-map.html" title="Gtk.Widget::map">map</a></li>
+<li class="links "><a href="Gtk.Widget-map-event.html" title="Gtk.Widget::map-event">map-event</a></li>
+<li class="links "><a href="Gtk.Widget-mnemonic-activate.html" title="Gtk.Widget::mnemonic-activate">mnemonic-activate</a></li>
+<li class="links "><a href="Gtk.Widget-motion-notify-event.html" title="Gtk.Widget::motion-notify-event">motion-notify-event</a></li>
+<li class="links "><a href="Gtk.Widget-move-focus.html" title="Gtk.Widget::move-focus">move-focus</a></li>
+<li class="links "><a href="Gtk.Widget-parent-set.html" title="Gtk.Widget::parent-set">parent-set</a></li>
+<li class="links "><a href="Gtk.Widget-popup-menu.html" title="Gtk.Widget::popup-menu">popup-menu</a></li>
+<li class="links "><a href="Gtk.Widget-property-notify-event.html" title="Gtk.Widget::property-notify-event">property-notify-event</a></li>
+<li class="links "><a href="Gtk.Widget-proximity-in-event.html" title="Gtk.Widget::proximity-in-event">proximity-in-event</a></li>
+<li class="links "><a href="Gtk.Widget-proximity-out-event.html" title="Gtk.Widget::proximity-out-event">proximity-out-event</a></li>
+<li class="links "><a href="Gtk.Widget-query-tooltip.html" title="Gtk.Widget::query-tooltip">query-tooltip</a></li>
+<li class="links "><a href="Gtk.Widget-realize.html" title="Gtk.Widget::realize">realize</a></li>
+<li class="links "><a href="Gtk.Widget-screen-changed.html" title="Gtk.Widget::screen-changed">screen-changed</a></li>
+<li class="links "><a href="Gtk.Widget-scroll-event.html" title="Gtk.Widget::scroll-event">scroll-event</a></li>
+<li class="links "><a href="Gtk.Widget-selection-clear-event.html" title="Gtk.Widget::selection-clear-event">selection-clear-event</a></li>
+<li class="links "><a href="Gtk.Widget-selection-get.html" title="Gtk.Widget::selection-get">selection-get</a></li>
+<li class="links "><a href="Gtk.Widget-selection-notify-event.html" title="Gtk.Widget::selection-notify-event">selection-notify-event</a></li>
+<li class="links "><a href="Gtk.Widget-selection-received.html" title="Gtk.Widget::selection-received">selection-received</a></li>
+<li class="links "><a href="Gtk.Widget-selection-request-event.html" title="Gtk.Widget::selection-request-event">selection-request-event</a></li>
+<li class="links "><a href="Gtk.Widget-show.html" title="Gtk.Widget::show">show</a></li>
+<li class="links "><a href="Gtk.Widget-show-help.html" title="Gtk.Widget::show-help">show-help</a></li>
+<li class="links "><a href="Gtk.Widget-size-allocate.html" title="Gtk.Widget::size-allocate">size-allocate</a></li>
+<li class="links "><a href="Gtk.Widget-state-changed.html" title="Gtk.Widget::state-changed">state-changed</a></li>
+<li class="links "><a href="Gtk.Widget-state-flags-changed.html" title="Gtk.Widget::state-flags-changed">state-flags-changed</a></li>
+<li class="links "><a href="Gtk.Widget-style-set.html" title="Gtk.Widget::style-set">style-set</a></li>
+<li class="links "><a href="Gtk.Widget-style-updated.html" title="Gtk.Widget::style-updated">style-updated</a></li>
+<li class="links "><a href="Gtk.Widget-touch-event.html" title="Gtk.Widget::touch-event">touch-event</a></li>
+<li class="links "><a href="Gtk.Widget-unmap.html" title="Gtk.Widget::unmap">unmap</a></li>
+<li class="links "><a href="Gtk.Widget-unmap-event.html" title="Gtk.Widget::unmap-event">unmap-event</a></li>
+<li class="links "><a href="Gtk.Widget-unrealize.html" title="Gtk.Widget::unrealize">unrealize</a></li>
+<li class="links "><a href="Gtk.Widget-visibility-notify-event.html" title="Gtk.Widget::visibility-notify-event">visibility-notify-event</a></li>
+<li class="links "><a href="Gtk.Widget-window-state-event.html" title="Gtk.Widget::window-state-event">window-state-event</a></li>
+</ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Virtual functions</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.Widget-adjust_baseline_allocation.html" title="Gtk.Widget::adjust_baseline_allocation">Gtk.Widget::adjust_baseline_allocation</a></li>
+<li class="links "><a href="Gtk.Widget-adjust_baseline_request.html" title="Gtk.Widget::adjust_baseline_request">Gtk.Widget::adjust_baseline_request</a></li>
+<li class="links "><a href="Gtk.Widget-adjust_size_allocation.html" title="Gtk.Widget::adjust_size_allocation">Gtk.Widget::adjust_size_allocation</a></li>
+<li class="links "><a href="Gtk.Widget-adjust_size_request.html" title="Gtk.Widget::adjust_size_request">Gtk.Widget::adjust_size_request</a></li>
+<li class="links "><a href="Gtk.Widget-button_press_event.html" title="Gtk.Widget::button_press_event">Gtk.Widget::button_press_event</a></li>
+<li class="links "><a href="Gtk.Widget-button_release_event.html" title="Gtk.Widget::button_release_event">Gtk.Widget::button_release_event</a></li>
+<li class="links "><a href="Gtk.Widget-can_activate_accel.html" title="Gtk.Widget::can_activate_accel">Gtk.Widget::can_activate_accel</a></li>
+<li class="links "><a href="Gtk.Widget-child_notify.html" title="Gtk.Widget::child_notify">Gtk.Widget::child_notify</a></li>
+<li class="links "><a href="Gtk.Widget-composited_changed.html" title="Gtk.Widget::composited_changed">Gtk.Widget::composited_changed</a></li>
+<li class="links "><a href="Gtk.Widget-compute_expand.html" title="Gtk.Widget::compute_expand">Gtk.Widget::compute_expand</a></li>
+<li class="links "><a href="Gtk.Widget-configure_event.html" title="Gtk.Widget::configure_event">Gtk.Widget::configure_event</a></li>
+<li class="links "><a href="Gtk.Widget-damage_event.html" title="Gtk.Widget::damage_event">Gtk.Widget::damage_event</a></li>
+<li class="links "><a href="Gtk.Widget-delete_event.html" title="Gtk.Widget::delete_event">Gtk.Widget::delete_event</a></li>
+<li class="links "><a href="Gtk.Widget-destroy_event.html" title="Gtk.Widget::destroy_event">Gtk.Widget::destroy_event</a></li>
+<li class="links "><a href="Gtk.Widget-direction_changed.html" title="Gtk.Widget::direction_changed">Gtk.Widget::direction_changed</a></li>
+<li class="links "><a href="Gtk.Widget-dispatch_child_properties_changed.html" title="Gtk.Widget::dispatch_child_properties_changed">Gtk.Widget::dispatch_child_properties_changed</a></li>
+<li class="links "><a href="Gtk.Widget-drag_begin.html" title="Gtk.Widget::drag_begin">Gtk.Widget::drag_begin</a></li>
+<li class="links "><a href="Gtk.Widget-drag_data_delete.html" title="Gtk.Widget::drag_data_delete">Gtk.Widget::drag_data_delete</a></li>
+<li class="links "><a href="Gtk.Widget-drag_data_get.html" title="Gtk.Widget::drag_data_get">Gtk.Widget::drag_data_get</a></li>
+<li class="links "><a href="Gtk.Widget-drag_data_received.html" title="Gtk.Widget::drag_data_received">Gtk.Widget::drag_data_received</a></li>
+<li class="links "><a href="Gtk.Widget-drag_drop.html" title="Gtk.Widget::drag_drop">Gtk.Widget::drag_drop</a></li>
+<li class="links "><a href="Gtk.Widget-drag_end.html" title="Gtk.Widget::drag_end">Gtk.Widget::drag_end</a></li>
+<li class="links "><a href="Gtk.Widget-drag_failed.html" title="Gtk.Widget::drag_failed">Gtk.Widget::drag_failed</a></li>
+<li class="links "><a href="Gtk.Widget-drag_leave.html" title="Gtk.Widget::drag_leave">Gtk.Widget::drag_leave</a></li>
+<li class="links "><a href="Gtk.Widget-drag_motion.html" title="Gtk.Widget::drag_motion">Gtk.Widget::drag_motion</a></li>
+<li class="links "><a href="Gtk.Widget-enter_notify_event.html" title="Gtk.Widget::enter_notify_event">Gtk.Widget::enter_notify_event</a></li>
+<li class="links "><a href="Gtk.Widget-focus_in_event.html" title="Gtk.Widget::focus_in_event">Gtk.Widget::focus_in_event</a></li>
+<li class="links "><a href="Gtk.Widget-focus_out_event.html" title="Gtk.Widget::focus_out_event">Gtk.Widget::focus_out_event</a></li>
+<li class="links "><a href="Gtk.Widget-get_accessible.html" title="Gtk.Widget::get_accessible">Gtk.Widget::get_accessible</a></li>
+<li class="links "><a href="Gtk.Widget-get_preferred_height.html" title="Gtk.Widget::get_preferred_height">Gtk.Widget::get_preferred_height</a></li>
+<li class="links "><a href="Gtk.Widget-get_preferred_height_and_baseline_for_width.html" title="Gtk.Widget::get_preferred_height_and_baseline_for_width">Gtk.Widget::get_preferred_height_and_baseline_for_width</a></li>
+<li class="links "><a href="Gtk.Widget-get_preferred_height_for_width.html" title="Gtk.Widget::get_preferred_height_for_width">Gtk.Widget::get_preferred_height_for_width</a></li>
+<li class="links "><a href="Gtk.Widget-get_preferred_width.html" title="Gtk.Widget::get_preferred_width">Gtk.Widget::get_preferred_width</a></li>
+<li class="links "><a href="Gtk.Widget-get_preferred_width_for_height.html" title="Gtk.Widget::get_preferred_width_for_height">Gtk.Widget::get_preferred_width_for_height</a></li>
+<li class="links "><a href="Gtk.Widget-get_request_mode.html" title="Gtk.Widget::get_request_mode">Gtk.Widget::get_request_mode</a></li>
+<li class="links "><a href="Gtk.Widget-grab_broken_event.html" title="Gtk.Widget::grab_broken_event">Gtk.Widget::grab_broken_event</a></li>
+<li class="links "><a href="Gtk.Widget-grab_focus.html" title="Gtk.Widget::grab_focus">Gtk.Widget::grab_focus</a></li>
+<li class="links "><a href="Gtk.Widget-grab_notify.html" title="Gtk.Widget::grab_notify">Gtk.Widget::grab_notify</a></li>
+<li class="links "><a href="Gtk.Widget-hierarchy_changed.html" title="Gtk.Widget::hierarchy_changed">Gtk.Widget::hierarchy_changed</a></li>
+<li class="links "><a href="Gtk.Widget-key_press_event.html" title="Gtk.Widget::key_press_event">Gtk.Widget::key_press_event</a></li>
+<li class="links "><a href="Gtk.Widget-key_release_event.html" title="Gtk.Widget::key_release_event">Gtk.Widget::key_release_event</a></li>
+<li class="links "><a href="Gtk.Widget-keynav_failed.html" title="Gtk.Widget::keynav_failed">Gtk.Widget::keynav_failed</a></li>
+<li class="links "><a href="Gtk.Widget-leave_notify_event.html" title="Gtk.Widget::leave_notify_event">Gtk.Widget::leave_notify_event</a></li>
+<li class="links "><a href="Gtk.Widget-map_event.html" title="Gtk.Widget::map_event">Gtk.Widget::map_event</a></li>
+<li class="links "><a href="Gtk.Widget-mnemonic_activate.html" title="Gtk.Widget::mnemonic_activate">Gtk.Widget::mnemonic_activate</a></li>
+<li class="links "><a href="Gtk.Widget-motion_notify_event.html" title="Gtk.Widget::motion_notify_event">Gtk.Widget::motion_notify_event</a></li>
+<li class="links "><a href="Gtk.Widget-move_focus.html" title="Gtk.Widget::move_focus">Gtk.Widget::move_focus</a></li>
+<li class="links "><a href="Gtk.Widget-parent_set.html" title="Gtk.Widget::parent_set">Gtk.Widget::parent_set</a></li>
+<li class="links "><a href="Gtk.Widget-popup_menu.html" title="Gtk.Widget::popup_menu">Gtk.Widget::popup_menu</a></li>
+<li class="links "><a href="Gtk.Widget-property_notify_event.html" title="Gtk.Widget::property_notify_event">Gtk.Widget::property_notify_event</a></li>
+<li class="links "><a href="Gtk.Widget-proximity_in_event.html" title="Gtk.Widget::proximity_in_event">Gtk.Widget::proximity_in_event</a></li>
+<li class="links "><a href="Gtk.Widget-proximity_out_event.html" title="Gtk.Widget::proximity_out_event">Gtk.Widget::proximity_out_event</a></li>
+<li class="links "><a href="Gtk.Widget-query_tooltip.html" title="Gtk.Widget::query_tooltip">Gtk.Widget::query_tooltip</a></li>
+<li class="links "><a href="Gtk.Widget-queue_draw_region.html" title="Gtk.Widget::queue_draw_region">Gtk.Widget::queue_draw_region</a></li>
+<li class="links "><a href="Gtk.Widget-screen_changed.html" title="Gtk.Widget::screen_changed">Gtk.Widget::screen_changed</a></li>
+<li class="links "><a href="Gtk.Widget-scroll_event.html" title="Gtk.Widget::scroll_event">Gtk.Widget::scroll_event</a></li>
+<li class="links "><a href="Gtk.Widget-selection_clear_event.html" title="Gtk.Widget::selection_clear_event">Gtk.Widget::selection_clear_event</a></li>
+<li class="links "><a href="Gtk.Widget-selection_get.html" title="Gtk.Widget::selection_get">Gtk.Widget::selection_get</a></li>
+<li class="links "><a href="Gtk.Widget-selection_notify_event.html" title="Gtk.Widget::selection_notify_event">Gtk.Widget::selection_notify_event</a></li>
+<li class="links "><a href="Gtk.Widget-selection_received.html" title="Gtk.Widget::selection_received">Gtk.Widget::selection_received</a></li>
+<li class="links "><a href="Gtk.Widget-selection_request_event.html" title="Gtk.Widget::selection_request_event">Gtk.Widget::selection_request_event</a></li>
+<li class="links "><a href="Gtk.Widget-show_all.html" title="Gtk.Widget::show_all">Gtk.Widget::show_all</a></li>
+<li class="links "><a href="Gtk.Widget-show_help.html" title="Gtk.Widget::show_help">Gtk.Widget::show_help</a></li>
+<li class="links "><a href="Gtk.Widget-size_allocate.html" title="Gtk.Widget::size_allocate">Gtk.Widget::size_allocate</a></li>
+<li class="links "><a href="Gtk.Widget-state_changed.html" title="Gtk.Widget::state_changed">Gtk.Widget::state_changed</a></li>
+<li class="links "><a href="Gtk.Widget-state_flags_changed.html" title="Gtk.Widget::state_flags_changed">Gtk.Widget::state_flags_changed</a></li>
+<li class="links "><a href="Gtk.Widget-style_set.html" title="Gtk.Widget::style_set">Gtk.Widget::style_set</a></li>
+<li class="links "><a href="Gtk.Widget-style_updated.html" title="Gtk.Widget::style_updated">Gtk.Widget::style_updated</a></li>
+<li class="links "><a href="Gtk.Widget-touch_event.html" title="Gtk.Widget::touch_event">Gtk.Widget::touch_event</a></li>
+<li class="links "><a href="Gtk.Widget-unmap_event.html" title="Gtk.Widget::unmap_event">Gtk.Widget::unmap_event</a></li>
+<li class="links "><a href="Gtk.Widget-visibility_notify_event.html" title="Gtk.Widget::visibility_notify_event">Gtk.Widget::visibility_notify_event</a></li>
+<li class="links "><a href="Gtk.Widget-window_state_event.html" title="Gtk.Widget::window_state_event">Gtk.Widget::window_state_event</a></li>
+</ul></div>
+</div></div>
+</div>
+<div class="sect sect-links" role="navigation">
+<div class="hgroup"></div>
+<div class="contents"><div class="links guidelinks"><div class="inner">
+<div class="title"><h2><span class="title">More Information</span></h2></div>
+<div class="region"><ul><li class="links "><a href="index.html" title="Index">Index</a></li></ul></div>
+</div></div></div>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="footer"></div>
+</div></body>
+</html>

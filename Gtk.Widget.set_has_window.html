@@ -1,0 +1,46 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Gtk.Widget.prototype.set_has_window</title>
+<link rel="stylesheet" type="text/css" href="C.css">
+<script type="text/javascript" src="jquery.js"></script><script type="text/javascript" src="jquery.syntax.js"></script><script type="text/javascript" src="yelp.js"></script>
+</head>
+<body><div class="page" role="main">
+<div class="header"><div class="trails" role="navigation"><div class="trail">
+<a class="trail" href="index.html" title="Index">Index</a> » <a class="trail" href="Gtk.Widget.html" title="Gtk.Widget">Gtk.Widget</a> » </div></div></div>
+<div class="body">
+<div class="hgroup"><h1 class="title"><span class="title">Gtk.Widget.prototype.set_has_window</span></h1></div>
+<div class="region">
+<div class="contents">
+<div class="synopsis"><div class="inner"><div class="region"><div class="contents"><div class="code"><pre class="contents ">function set_has_window(has_window:Boolean):void {
+    // Gjs wrapper for gtk_widget_set_has_window()
+}</pre></div></div></div></div></div>
+<p class="p">Specifies whether <span class=" code">widget</span> has a <span class=" link"><a href="Gdk.Window.html" title="Gdk.Window">Gdk.Window</a></span> of its own. Note that
+all realized widgets have a non-<span class=" code">null</span> "window" pointer
+(<span class=" link"><a href="Gtk.Widget.get_window.html" title="Gtk.Widget.prototype.get_window">Gtk.Widget.prototype.get_window</a></span> never returns a <span class=" code">null</span> window when a widget
+is realized), but for many of them it's actually the <span class=" link"><a href="Gdk.Window.html" title="Gdk.Window">Gdk.Window</a></span> of
+one of its parent widgets. Widgets that do not create a %window for
+themselves in <span class=" link"><a href="Gtk.realize.html" title="Gtk.realize">Gtk.realize</a></span> must announce this by
+calling this function with <span class=" code">has_window</span> = <span class=" code">false</span>.</p>
+<p class="p">This function should only be called by widget implementations,
+and they should call it in their init() function.</p>
+<p class="p">Since 2.18</p>
+<div class="terms"><div class="inner"><div class="region"><dl class="terms">
+<dt class="terms"><span class=" code">has_window</span></dt>
+<dd class="terms"><p class="p">whether or not <span class=" code">widget</span> has a window.</p></dd>
+</dl></div></div></div>
+</div>
+<div class="sect sect-links" role="navigation">
+<div class="hgroup"></div>
+<div class="contents"><div class="links guidelinks"><div class="inner">
+<div class="title"><h2><span class="title">More Information</span></h2></div>
+<div class="region"><ul><li class="links "><a href="Gtk.Widget.html" title="Gtk.Widget">Gtk.Widget</a></li></ul></div>
+</div></div></div>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="footer"></div>
+</div></body>
+</html>

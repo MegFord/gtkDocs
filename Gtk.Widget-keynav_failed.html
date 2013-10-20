@@ -1,0 +1,60 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Gtk.Widget::keynav_failed</title>
+<link rel="stylesheet" type="text/css" href="C.css">
+<script type="text/javascript" src="jquery.js"></script><script type="text/javascript" src="jquery.syntax.js"></script><script type="text/javascript" src="yelp.js"></script>
+</head>
+<body><div class="page" role="main">
+<div class="header"><div class="trails" role="navigation"><div class="trail">
+<a class="trail" href="index.html" title="Index">Index</a> » <a class="trail" href="Gtk.Widget.html" title="Gtk.Widget">Gtk.Widget</a> » </div></div></div>
+<div class="body">
+<div class="hgroup"><h1 class="title"><span class="title">Gtk.Widget::keynav_failed</span></h1></div>
+<div class="region">
+<div class="contents">
+<div class="synopsis"><div class="inner"><div class="region"><div class="contents"><div class="code"><pre class="contents ">function vfunc_keynav_failed(direction:Gtk.DirectionType):Boolean {
+}</pre></div></div></div></div></div>
+<p class="p">This function should be called whenever keyboard navigation within
+a single widget hits a boundary. The function emits the
+<span class=" link"><a href="Gtk.keynav-failed.html" title="Gtk.keynav-failed">Gtk.keynav-failed</a></span> signal on the widget and its return
+value should be interpreted in a way similar to the return value of
+<span class=" link"><a href="Gtk.Widget.child_focus.html" title="Gtk.Widget.prototype.child_focus">Gtk.Widget.prototype.child_focus</a></span>:</p>
+<p class="p">When <span class=" code">true</span> is returned, stay in the widget, the failed keyboard
+navigation is Ok and/or there is nowhere we can/should move the
+focus to.</p>
+<p class="p">When <span class=" code">false</span> is returned, the caller should continue with keyboard
+navigation outside the widget, e.g. by calling
+<span class=" link"><a href="Gtk.Widget.child_focus.html" title="Gtk.Widget.prototype.child_focus">Gtk.Widget.prototype.child_focus</a></span> on the widget's toplevel.</p>
+<p class="p">The default ::keynav-failed handler returns <span class=" code">true</span> for
+<span class=" link"><a href="Gtk.DirectionType.html" title="Gtk.DirectionType">Gtk.DirectionType</a></span>.tab_forward and <span class=" link"><a href="Gtk.DirectionType.html" title="Gtk.DirectionType">Gtk.DirectionType</a></span>.tab_backward. For the other
+values of <span class=" link"><a href="Gtk.DirectionType.html" title="Gtk.DirectionType">Gtk.DirectionType</a></span> it returns <span class=" code">false</span>.</p>
+<p class="p">Whenever the default handler returns <span class=" code">true</span>, it also calls
+<span class=" link"><a href="Gtk.Widget.error_bell.html" title="Gtk.Widget.prototype.error_bell">Gtk.Widget.prototype.error_bell</a></span> to notify the user of the failed keyboard
+navigation.</p>
+<p class="p">A use case for providing an own implementation of ::keynav-failed
+(either by connecting to it or by overriding it) would be a row of
+<span class=" link"><a href="Gtk.Entry.html" title="Gtk.Entry">Gtk.Entry</a></span> widgets where the user should be able to navigate the
+entire row with the cursor keys, as e.g. known from user interfaces
+that require entering license keys.</p>
+<p class="p">Since 2.12</p>
+<div class="terms"><div class="inner"><div class="region"><dl class="terms">
+<dt class="terms"><span class=" code">direction</span></dt>
+<dd class="terms"><p class="p">direction of focus movement</p></dd>
+<dt class="terms"><span class=" code">Returns</span></dt>
+<dd class="terms"><p class="p"><span class=" code">true</span> if stopping keyboard navigation is fine, <span class=" code">false</span> if the emitting widget should try to handle the keyboard navigation attempt in its parent container(s).</p></dd>
+</dl></div></div></div>
+</div>
+<div class="sect sect-links" role="navigation">
+<div class="hgroup"></div>
+<div class="contents"><div class="links guidelinks"><div class="inner">
+<div class="title"><h2><span class="title">More Information</span></h2></div>
+<div class="region"><ul><li class="links "><a href="Gtk.Widget.html" title="Gtk.Widget">Gtk.Widget</a></li></ul></div>
+</div></div></div>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="footer"></div>
+</div></body>
+</html>

@@ -1,0 +1,63 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Gtk.Widget.prototype.set_size_request</title>
+<link rel="stylesheet" type="text/css" href="C.css">
+<script type="text/javascript" src="jquery.js"></script><script type="text/javascript" src="jquery.syntax.js"></script><script type="text/javascript" src="yelp.js"></script>
+</head>
+<body><div class="page" role="main">
+<div class="header"><div class="trails" role="navigation"><div class="trail">
+<a class="trail" href="index.html" title="Index">Index</a> » <a class="trail" href="Gtk.Widget.html" title="Gtk.Widget">Gtk.Widget</a> » </div></div></div>
+<div class="body">
+<div class="hgroup"><h1 class="title"><span class="title">Gtk.Widget.prototype.set_size_request</span></h1></div>
+<div class="region">
+<div class="contents">
+<div class="synopsis"><div class="inner"><div class="region"><div class="contents"><div class="code"><pre class="contents ">function set_size_request(width:Number, height:Number):void {
+    // Gjs wrapper for gtk_widget_set_size_request()
+}</pre></div></div></div></div></div>
+<p class="p">Sets the minimum size of a widget; that is, the widget's size
+request will be at least <span class=" code">width</span> by <span class=" code">height</span>. You can use this 
+function to force a widget to be larger than it normally would be.</p>
+<p class="p">In most cases, <span class=" link"><a href="Gtk.set_default_size.html" title="Gtk.set_default_size">Gtk.set_default_size</a></span> is a better choice for
+toplevel windows than this function; setting the default size will
+still allow users to shrink the window. Setting the size request
+will force them to leave the window at least as large as the size
+request. When dealing with window sizes,
+<span class=" link"><a href="Gtk.set_geometry_hints.html" title="Gtk.set_geometry_hints">Gtk.set_geometry_hints</a></span> can be a useful function as well.</p>
+<p class="p">Note the inherent danger of setting any fixed size - themes,
+translations into other languages, different fonts, and user action
+can all change the appropriate size for a given widget. So, it's
+basically impossible to hardcode a size that will always be
+correct.</p>
+<p class="p">The size request of a widget is the smallest size a widget can
+accept while still functioning well and drawing itself correctly.
+However in some strange cases a widget may be allocated less than
+its requested size, and in many cases a widget may be allocated more
+space than it requested.</p>
+<p class="p">If the size request in a given direction is -1 (unset), then
+the "natural" size request of the widget will be used instead.</p>
+<p class="p">The size request set here does not include any margin from the
+<span class=" link"><a href="Gtk.Widget.html" title="Gtk.Widget">Gtk.Widget</a></span> properties margin-left, margin-right, margin-top, and
+margin-bottom, but it does include pretty much all other padding
+or border properties set by any subclass of <span class=" link"><a href="Gtk.Widget.html" title="Gtk.Widget">Gtk.Widget</a></span>.</p>
+<div class="terms"><div class="inner"><div class="region"><dl class="terms">
+<dt class="terms"><span class=" code">width</span></dt>
+<dd class="terms"><p class="p">width <span class=" code">widget</span> should request, or -1 to unset</p></dd>
+<dt class="terms"><span class=" code">height</span></dt>
+<dd class="terms"><p class="p">height <span class=" code">widget</span> should request, or -1 to unset</p></dd>
+</dl></div></div></div>
+</div>
+<div class="sect sect-links" role="navigation">
+<div class="hgroup"></div>
+<div class="contents"><div class="links guidelinks"><div class="inner">
+<div class="title"><h2><span class="title">More Information</span></h2></div>
+<div class="region"><ul><li class="links "><a href="Gtk.Widget.html" title="Gtk.Widget">Gtk.Widget</a></li></ul></div>
+</div></div></div>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="footer"></div>
+</div></body>
+</html>

@@ -1,0 +1,54 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Gtk.Widget.prototype.set_double_buffered</title>
+<link rel="stylesheet" type="text/css" href="C.css">
+<script type="text/javascript" src="jquery.js"></script><script type="text/javascript" src="jquery.syntax.js"></script><script type="text/javascript" src="yelp.js"></script>
+</head>
+<body><div class="page" role="main">
+<div class="header"><div class="trails" role="navigation"><div class="trail">
+<a class="trail" href="index.html" title="Index">Index</a> » <a class="trail" href="Gtk.Widget.html" title="Gtk.Widget">Gtk.Widget</a> » </div></div></div>
+<div class="body">
+<div class="hgroup"><h1 class="title"><span class="title">Gtk.Widget.prototype.set_double_buffered</span></h1></div>
+<div class="region">
+<div class="contents">
+<div class="synopsis"><div class="inner"><div class="region"><div class="contents"><div class="code"><pre class="contents ">function set_double_buffered(double_buffered:Boolean):void {
+    // Gjs wrapper for gtk_widget_set_double_buffered()
+}</pre></div></div></div></div></div>
+<p class="p">Widgets are double buffered by default; you can use this function
+to turn off the buffering. "Double buffered" simply means that
+<span class=" link"><a href="Gdk.begin_paint_region.html" title="Gdk.begin_paint_region">Gdk.begin_paint_region</a></span> and <span class=" link"><a href="Gdk.end_paint.html" title="Gdk.end_paint">Gdk.end_paint</a></span> are called
+automatically around expose events sent to the
+widget. <span class=" link"><a href="Gdk.begin_paint_region.html" title="Gdk.begin_paint_region">Gdk.begin_paint_region</a></span> diverts all drawing to a widget's
+window to an offscreen buffer, and <span class=" link"><a href="Gdk.end_paint.html" title="Gdk.end_paint">Gdk.end_paint</a></span> draws the
+buffer to the screen. The result is that users see the window
+update in one smooth step, and don't see individual graphics
+primitives being rendered.</p>
+<p class="p">In very simple terms, double buffered widgets don't flicker,
+so you would only use this function to turn off double buffering
+if you had special needs and really knew what you were doing.</p>
+<p class="p">Note: if you turn off double-buffering, you have to handle
+expose events, since even the clearing to the background color or
+pixmap will not happen automatically (as it is done in
+<span class=" link"><a href="Gdk.begin_paint_region.html" title="Gdk.begin_paint_region">Gdk.begin_paint_region</a></span>).</p>
+<p class="p">Since 3.10 this function only works for widgets with native
+windows.</p>
+<div class="terms"><div class="inner"><div class="region"><dl class="terms">
+<dt class="terms"><span class=" code">double_buffered</span></dt>
+<dd class="terms"><p class="p"><span class=" code">true</span> to double-buffer a widget</p></dd>
+</dl></div></div></div>
+</div>
+<div class="sect sect-links" role="navigation">
+<div class="hgroup"></div>
+<div class="contents"><div class="links guidelinks"><div class="inner">
+<div class="title"><h2><span class="title">More Information</span></h2></div>
+<div class="region"><ul><li class="links "><a href="Gtk.Widget.html" title="Gtk.Widget">Gtk.Widget</a></li></ul></div>
+</div></div></div>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="footer"></div>
+</div></body>
+</html>

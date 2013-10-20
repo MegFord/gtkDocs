@@ -1,0 +1,49 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Gtk.Widget.prototype.get_child_requisition</title>
+<link rel="stylesheet" type="text/css" href="C.css">
+<script type="text/javascript" src="jquery.js"></script><script type="text/javascript" src="jquery.syntax.js"></script><script type="text/javascript" src="yelp.js"></script>
+</head>
+<body><div class="page" role="main">
+<div class="header"><div class="trails" role="navigation"><div class="trail">
+<a class="trail" href="index.html" title="Index">Index</a> » <a class="trail" href="Gtk.Widget.html" title="Gtk.Widget">Gtk.Widget</a> » </div></div></div>
+<div class="body">
+<div class="hgroup"><h1 class="title"><span class="title">Gtk.Widget.prototype.get_child_requisition</span></h1></div>
+<div class="region">
+<div class="contents">
+<div class="synopsis"><div class="inner"><div class="region"><div class="contents"><div class="code"><pre class="contents ">function get_child_requisition():void {
+    // Gjs wrapper for gtk_widget_get_child_requisition()
+}</pre></div></div></div></div></div>
+<p class="p">This function is only for use in widget implementations. Obtains
+<span class=" code">widget</span>-&gt;requisition, unless someone has forced a particular
+geometry on the widget (e.g. with <span class=" link"><a href="Gtk.set_size_request.html" title="Gtk.set_size_request">Gtk.set_size_request</a></span>),
+in which case it returns that geometry instead of the widget's
+requisition.</p>
+<p class="p">This function differs from <span class=" link"><a href="Gtk.size_request.html" title="Gtk.size_request">Gtk.size_request</a></span> in that
+it retrieves the last size request value from <span class=" code">widget</span>-&gt;requisition,
+while <span class=" link"><a href="Gtk.size_request.html" title="Gtk.size_request">Gtk.size_request</a></span> actually calls the "size_request" method
+on <span class=" code">widget</span> to compute the size request and fill in <span class=" code">widget</span>-&gt;requisition,
+and only then returns <span class=" code">widget</span>-&gt;requisition.</p>
+<p class="p">Because this function does not call the "size_request" method, it
+can only be used when you know that <span class=" code">widget</span>-&gt;requisition is
+up-to-date, that is, <span class=" link"><a href="Gtk.size_request.html" title="Gtk.size_request">Gtk.size_request</a></span> has been called
+since the last time a resize was queued. In general, only container
+implementations have this information; applications should use
+<span class=" link"><a href="Gtk.size_request.html" title="Gtk.size_request">Gtk.size_request</a></span>.</p>
+<div class="terms"><div class="inner"><div class="region"><dl class="terms"></dl></div></div></div>
+</div>
+<div class="sect sect-links" role="navigation">
+<div class="hgroup"></div>
+<div class="contents"><div class="links guidelinks"><div class="inner">
+<div class="title"><h2><span class="title">More Information</span></h2></div>
+<div class="region"><ul><li class="links "><a href="Gtk.Widget.html" title="Gtk.Widget">Gtk.Widget</a></li></ul></div>
+</div></div></div>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="footer"></div>
+</div></body>
+</html>

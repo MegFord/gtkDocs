@@ -1,0 +1,41 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Gtk.Widget.prototype.region_intersect</title>
+<link rel="stylesheet" type="text/css" href="C.css">
+<script type="text/javascript" src="jquery.js"></script><script type="text/javascript" src="jquery.syntax.js"></script><script type="text/javascript" src="yelp.js"></script>
+</head>
+<body><div class="page" role="main">
+<div class="header"><div class="trails" role="navigation"><div class="trail">
+<a class="trail" href="index.html" title="Index">Index</a> » <a class="trail" href="Gtk.Widget.html" title="Gtk.Widget">Gtk.Widget</a> » </div></div></div>
+<div class="body">
+<div class="hgroup"><h1 class="title"><span class="title">Gtk.Widget.prototype.region_intersect</span></h1></div>
+<div class="region">
+<div class="contents">
+<div class="synopsis"><div class="inner"><div class="region"><div class="contents"><div class="code"><pre class="contents ">function region_intersect(region:cairo.Region):cairo.Region {
+    // Gjs wrapper for gtk_widget_region_intersect()
+}</pre></div></div></div></div></div>
+<p class="p">Computes the intersection of a <span class=" code">widget</span>'s area and <span class=" code">region</span>, returning
+the intersection. The result may be empty, use cairo_region_is_empty() to
+check.</p>
+<div class="terms"><div class="inner"><div class="region"><dl class="terms">
+<dt class="terms"><span class=" code">region</span></dt>
+<dd class="terms"><p class="p">a #cairo_region_t, in the same coordinate system as <span class=" code">widget</span>-&gt;allocation. That is, relative to <span class=" code">widget</span>-&gt;window for %NO_WINDOW widgets; relative to the parent window of <span class=" code">widget</span>-&gt;window for widgets with their own window.</p></dd>
+<dt class="terms"><span class=" code">Returns</span></dt>
+<dd class="terms"><p class="p">A newly allocated region holding the intersection of <span class=" code">widget</span> and <span class=" code">region</span>. The coordinates of the return value are relative to <span class=" code">widget</span>-&gt;window for %NO_WINDOW widgets, and relative to the parent window of <span class=" code">widget</span>-&gt;window for widgets with their own window.</p></dd>
+</dl></div></div></div>
+</div>
+<div class="sect sect-links" role="navigation">
+<div class="hgroup"></div>
+<div class="contents"><div class="links guidelinks"><div class="inner">
+<div class="title"><h2><span class="title">More Information</span></h2></div>
+<div class="region"><ul><li class="links "><a href="Gtk.Widget.html" title="Gtk.Widget">Gtk.Widget</a></li></ul></div>
+</div></div></div>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="footer"></div>
+</div></body>
+</html>

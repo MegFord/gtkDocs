@@ -1,0 +1,52 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Gtk.Widget.prototype.modify_style</title>
+<link rel="stylesheet" type="text/css" href="C.css">
+<script type="text/javascript" src="jquery.js"></script><script type="text/javascript" src="jquery.syntax.js"></script><script type="text/javascript" src="yelp.js"></script>
+</head>
+<body><div class="page" role="main">
+<div class="header"><div class="trails" role="navigation"><div class="trail">
+<a class="trail" href="index.html" title="Index">Index</a> » <a class="trail" href="Gtk.Widget.html" title="Gtk.Widget">Gtk.Widget</a> » </div></div></div>
+<div class="body">
+<div class="hgroup"><h1 class="title"><span class="title">Gtk.Widget.prototype.modify_style</span></h1></div>
+<div class="region">
+<div class="contents">
+<div class="synopsis"><div class="inner"><div class="region"><div class="contents"><div class="code"><pre class="contents ">function modify_style(style:Gtk.RcStyle):void {
+    // Gjs wrapper for gtk_widget_modify_style()
+}</pre></div></div></div></div></div>
+<p class="p">Modifies style values on the widget.</p>
+<p class="p">Modifications made using this technique take precedence over
+style values set via an RC file, however, they will be overridden
+if a style is explicitely set on the widget using <span class=" link"><a href="Gtk.set_style.html" title="Gtk.set_style">Gtk.set_style</a></span>.
+The <span class=" link"><a href="Gtk.RcStyle.html" title="Gtk.RcStyle">Gtk.RcStyle</a></span> structure is designed so each field can either be
+set or unset, so it is possible, using this function, to modify some
+style values and leave the others unchanged.</p>
+<p class="p">Note that modifications made with this function are not cumulative
+with previous calls to <span class=" link"><a href="Gtk.Widget.modify_style.html" title="Gtk.Widget.prototype.modify_style">Gtk.Widget.prototype.modify_style</a></span> or with such
+functions as <span class=" link"><a href="Gtk.Widget.modify_fg.html" title="Gtk.Widget.prototype.modify_fg">Gtk.Widget.prototype.modify_fg</a></span>. If you wish to retain
+previous values, you must first call <span class=" link"><a href="Gtk.Widget.get_modifier_style.html" title="Gtk.Widget.prototype.get_modifier_style">Gtk.Widget.prototype.get_modifier_style</a></span>,
+make your modifications to the returned style, then call
+<span class=" link"><a href="Gtk.Widget.modify_style.html" title="Gtk.Widget.prototype.modify_style">Gtk.Widget.prototype.modify_style</a></span> with that style. On the other hand,
+if you first call <span class=" link"><a href="Gtk.Widget.modify_style.html" title="Gtk.Widget.prototype.modify_style">Gtk.Widget.prototype.modify_style</a></span>, subsequent calls
+to such functions <span class=" link"><a href="Gtk.Widget.modify_fg.html" title="Gtk.Widget.prototype.modify_fg">Gtk.Widget.prototype.modify_fg</a></span> will have a cumulative
+effect with the initial modifications.</p>
+<div class="terms"><div class="inner"><div class="region"><dl class="terms">
+<dt class="terms"><span class=" code">style</span></dt>
+<dd class="terms"><p class="p">the <span class=" link"><a href="Gtk.RcStyle.html" title="Gtk.RcStyle">Gtk.RcStyle</a></span> holding the style modifications</p></dd>
+</dl></div></div></div>
+</div>
+<div class="sect sect-links" role="navigation">
+<div class="hgroup"></div>
+<div class="contents"><div class="links guidelinks"><div class="inner">
+<div class="title"><h2><span class="title">More Information</span></h2></div>
+<div class="region"><ul><li class="links "><a href="Gtk.Widget.html" title="Gtk.Widget">Gtk.Widget</a></li></ul></div>
+</div></div></div>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="footer"></div>
+</div></body>
+</html>

@@ -1,0 +1,42 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Gtk.Widget.prototype.grab_default</title>
+<link rel="stylesheet" type="text/css" href="C.css">
+<script type="text/javascript" src="jquery.js"></script><script type="text/javascript" src="jquery.syntax.js"></script><script type="text/javascript" src="yelp.js"></script>
+</head>
+<body><div class="page" role="main">
+<div class="header"><div class="trails" role="navigation"><div class="trail">
+<a class="trail" href="index.html" title="Index">Index</a> » <a class="trail" href="Gtk.Widget.html" title="Gtk.Widget">Gtk.Widget</a> » </div></div></div>
+<div class="body">
+<div class="hgroup"><h1 class="title"><span class="title">Gtk.Widget.prototype.grab_default</span></h1></div>
+<div class="region">
+<div class="contents">
+<div class="synopsis"><div class="inner"><div class="region"><div class="contents"><div class="code"><pre class="contents ">function grab_default():void {
+    // Gjs wrapper for gtk_widget_grab_default()
+}</pre></div></div></div></div></div>
+<p class="p">Causes <span class=" code">widget</span> to become the default widget. <span class=" code">widget</span> must be able to be
+a default widget; typically you would ensure this yourself
+by calling <span class=" link"><a href="Gtk.set_can_default.html" title="Gtk.set_can_default">Gtk.set_can_default</a></span> with a <span class=" code">true</span> value.
+The default widget is activated when
+the user presses Enter in a window. Default widgets must be
+activatable, that is, <span class=" link"><a href="Gtk.Widget.activate.html" title="Gtk.Widget.prototype.activate">Gtk.Widget.prototype.activate</a></span> should affect them. Note
+that <span class=" link"><a href="Gtk.Entry.html" title="Gtk.Entry">Gtk.Entry</a></span> widgets require the "activates-default" property
+set to <span class=" code">true</span> before they activate the default widget when Enter
+is pressed and the <span class=" link"><a href="Gtk.Entry.html" title="Gtk.Entry">Gtk.Entry</a></span> is focused.</p>
+<div class="terms"><div class="inner"><div class="region"><dl class="terms"></dl></div></div></div>
+</div>
+<div class="sect sect-links" role="navigation">
+<div class="hgroup"></div>
+<div class="contents"><div class="links guidelinks"><div class="inner">
+<div class="title"><h2><span class="title">More Information</span></h2></div>
+<div class="region"><ul><li class="links "><a href="Gtk.Widget.html" title="Gtk.Widget">Gtk.Widget</a></li></ul></div>
+</div></div></div>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="footer"></div>
+</div></body>
+</html>

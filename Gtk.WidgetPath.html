@@ -1,0 +1,104 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Gtk.WidgetPath</title>
+<link rel="stylesheet" type="text/css" href="C.css">
+<script type="text/javascript" src="jquery.js"></script><script type="text/javascript" src="jquery.syntax.js"></script><script type="text/javascript" src="yelp.js"></script>
+</head>
+<body><div class="page" role="main">
+<div class="header"><div class="trails" role="navigation"><div class="trail">
+<a class="trail" href="index.html" title="Index">Index</a> » </div></div></div>
+<div class="body">
+<div class="hgroup"><h1 class="title"><span class="title">Gtk.WidgetPath</span></h1></div>
+<div class="region">
+<div class="contents">
+<p class="p">GtkWidgetPath is a boxed type that represents a widget hierarchy from
+the topmost widget, typically a toplevel, to any child. This widget
+path abstraction is used in <span class=" link"><a href="Gtk.StyleContext.html" title="Gtk.StyleContext">Gtk.StyleContext</a></span> on behalf of the real
+widget in order to query style information.</p>
+<p class="p">If you are using GTK+ widgets, you probably will not need to use
+this API directly, as there is <span class=" link"><a href="Gtk.Widget.get_path.html" title="Gtk.Widget.prototype.get_path">Gtk.Widget.prototype.get_path</a></span>, and the style
+context returned by <span class=" link"><a href="Gtk.Widget.get_style_context.html" title="Gtk.Widget.prototype.get_style_context">Gtk.Widget.prototype.get_style_context</a></span> will be automatically
+updated on widget hierarchy changes.</p>
+<p class="p">The widget path generation is generally simple:
+&lt;example&gt;
+&lt;title&gt;Defining a button within a window&lt;/title&gt;
+&lt;programlisting&gt;
+{
+  GtkWidgetPath *path;</p>
+<p class="p">  path = gtk_widget_path_new ();
+  gtk_widget_path_append_type (path, GTK_TYPE_WINDOW);
+  gtk_widget_path_append_type (path, GTK_TYPE_BUTTON);
+}
+&lt;/programlisting&gt;
+&lt;/example&gt;</p>
+<p class="p">Although more complex information, such as widget names, or
+different classes (property that may be used by other widget
+types) and intermediate regions may be included:</p>
+<p class="p">&lt;example&gt;
+&lt;title&gt;Defining the first tab widget in a notebook&lt;/title&gt;
+&lt;programlisting&gt;
+{
+  GtkWidgetPath *path;
+  guint pos;</p>
+<p class="p">  path = gtk_widget_path_new ();</p>
+<p class="p">  pos = gtk_widget_path_append_type (path, GTK_TYPE_NOTEBOOK);
+  gtk_widget_path_iter_add_region (path, pos, "tab", GTK_REGION_EVEN | GTK_REGION_FIRST);</p>
+<p class="p">  pos = gtk_widget_path_append_type (path, GTK_TYPE_LABEL);
+  gtk_widget_path_iter_set_name (path, pos, "first tab label");
+}
+&lt;/programlisting&gt;
+&lt;/example&gt;</p>
+<p class="p">All this information will be used to match the style information
+that applies to the described widget.</p>
+<div class="links topiclinks"><div class="inner"><div class="region">
+<div class="linkdiv "><a class="linkdiv" href="Gtk.WidgetPath.new.html" title="Gtk.WidgetPath.new"><span class="title">Gtk.WidgetPath.new</span></a></div>
+<div class="linkdiv "><a class="linkdiv" href="Gtk.WidgetPath.append_for_widget.html" title="Gtk.WidgetPath.prototype.append_for_widget"><span class="title">Gtk.WidgetPath.prototype.append_for_widget</span></a></div>
+<div class="linkdiv "><a class="linkdiv" href="Gtk.WidgetPath.append_type.html" title="Gtk.WidgetPath.prototype.append_type"><span class="title">Gtk.WidgetPath.prototype.append_type</span></a></div>
+<div class="linkdiv "><a class="linkdiv" href="Gtk.WidgetPath.append_with_siblings.html" title="Gtk.WidgetPath.prototype.append_with_siblings"><span class="title">Gtk.WidgetPath.prototype.append_with_siblings</span></a></div>
+<div class="linkdiv "><a class="linkdiv" href="Gtk.WidgetPath.copy.html" title="Gtk.WidgetPath.prototype.copy"><span class="title">Gtk.WidgetPath.prototype.copy</span></a></div>
+<div class="linkdiv "><a class="linkdiv" href="Gtk.WidgetPath.free.html" title="Gtk.WidgetPath.prototype.free"><span class="title">Gtk.WidgetPath.prototype.free</span></a></div>
+<div class="linkdiv "><a class="linkdiv" href="Gtk.WidgetPath.get_object_type.html" title="Gtk.WidgetPath.prototype.get_object_type"><span class="title">Gtk.WidgetPath.prototype.get_object_type</span></a></div>
+<div class="linkdiv "><a class="linkdiv" href="Gtk.WidgetPath.has_parent.html" title="Gtk.WidgetPath.prototype.has_parent"><span class="title">Gtk.WidgetPath.prototype.has_parent</span></a></div>
+<div class="linkdiv "><a class="linkdiv" href="Gtk.WidgetPath.is_type.html" title="Gtk.WidgetPath.prototype.is_type"><span class="title">Gtk.WidgetPath.prototype.is_type</span></a></div>
+<div class="linkdiv "><a class="linkdiv" href="Gtk.WidgetPath.iter_add_class.html" title="Gtk.WidgetPath.prototype.iter_add_class"><span class="title">Gtk.WidgetPath.prototype.iter_add_class</span></a></div>
+<div class="linkdiv "><a class="linkdiv" href="Gtk.WidgetPath.iter_add_region.html" title="Gtk.WidgetPath.prototype.iter_add_region"><span class="title">Gtk.WidgetPath.prototype.iter_add_region</span></a></div>
+<div class="linkdiv "><a class="linkdiv" href="Gtk.WidgetPath.iter_clear_classes.html" title="Gtk.WidgetPath.prototype.iter_clear_classes"><span class="title">Gtk.WidgetPath.prototype.iter_clear_classes</span></a></div>
+<div class="linkdiv "><a class="linkdiv" href="Gtk.WidgetPath.iter_clear_regions.html" title="Gtk.WidgetPath.prototype.iter_clear_regions"><span class="title">Gtk.WidgetPath.prototype.iter_clear_regions</span></a></div>
+<div class="linkdiv "><a class="linkdiv" href="Gtk.WidgetPath.iter_get_name.html" title="Gtk.WidgetPath.prototype.iter_get_name"><span class="title">Gtk.WidgetPath.prototype.iter_get_name</span></a></div>
+<div class="linkdiv "><a class="linkdiv" href="Gtk.WidgetPath.iter_get_object_type.html" title="Gtk.WidgetPath.prototype.iter_get_object_type"><span class="title">Gtk.WidgetPath.prototype.iter_get_object_type</span></a></div>
+<div class="linkdiv "><a class="linkdiv" href="Gtk.WidgetPath.iter_get_sibling_index.html" title="Gtk.WidgetPath.prototype.iter_get_sibling_index"><span class="title">Gtk.WidgetPath.prototype.iter_get_sibling_index</span></a></div>
+<div class="linkdiv "><a class="linkdiv" href="Gtk.WidgetPath.iter_get_siblings.html" title="Gtk.WidgetPath.prototype.iter_get_siblings"><span class="title">Gtk.WidgetPath.prototype.iter_get_siblings</span></a></div>
+<div class="linkdiv "><a class="linkdiv" href="Gtk.WidgetPath.iter_has_class.html" title="Gtk.WidgetPath.prototype.iter_has_class"><span class="title">Gtk.WidgetPath.prototype.iter_has_class</span></a></div>
+<div class="linkdiv "><a class="linkdiv" href="Gtk.WidgetPath.iter_has_name.html" title="Gtk.WidgetPath.prototype.iter_has_name"><span class="title">Gtk.WidgetPath.prototype.iter_has_name</span></a></div>
+<div class="linkdiv "><a class="linkdiv" href="Gtk.WidgetPath.iter_has_qclass.html" title="Gtk.WidgetPath.prototype.iter_has_qclass"><span class="title">Gtk.WidgetPath.prototype.iter_has_qclass</span></a></div>
+<div class="linkdiv "><a class="linkdiv" href="Gtk.WidgetPath.iter_has_qname.html" title="Gtk.WidgetPath.prototype.iter_has_qname"><span class="title">Gtk.WidgetPath.prototype.iter_has_qname</span></a></div>
+<div class="linkdiv "><a class="linkdiv" href="Gtk.WidgetPath.iter_has_qregion.html" title="Gtk.WidgetPath.prototype.iter_has_qregion"><span class="title">Gtk.WidgetPath.prototype.iter_has_qregion</span></a></div>
+<div class="linkdiv "><a class="linkdiv" href="Gtk.WidgetPath.iter_has_region.html" title="Gtk.WidgetPath.prototype.iter_has_region"><span class="title">Gtk.WidgetPath.prototype.iter_has_region</span></a></div>
+<div class="linkdiv "><a class="linkdiv" href="Gtk.WidgetPath.iter_list_classes.html" title="Gtk.WidgetPath.prototype.iter_list_classes"><span class="title">Gtk.WidgetPath.prototype.iter_list_classes</span></a></div>
+<div class="linkdiv "><a class="linkdiv" href="Gtk.WidgetPath.iter_list_regions.html" title="Gtk.WidgetPath.prototype.iter_list_regions"><span class="title">Gtk.WidgetPath.prototype.iter_list_regions</span></a></div>
+<div class="linkdiv "><a class="linkdiv" href="Gtk.WidgetPath.iter_remove_class.html" title="Gtk.WidgetPath.prototype.iter_remove_class"><span class="title">Gtk.WidgetPath.prototype.iter_remove_class</span></a></div>
+<div class="linkdiv "><a class="linkdiv" href="Gtk.WidgetPath.iter_remove_region.html" title="Gtk.WidgetPath.prototype.iter_remove_region"><span class="title">Gtk.WidgetPath.prototype.iter_remove_region</span></a></div>
+<div class="linkdiv "><a class="linkdiv" href="Gtk.WidgetPath.iter_set_name.html" title="Gtk.WidgetPath.prototype.iter_set_name"><span class="title">Gtk.WidgetPath.prototype.iter_set_name</span></a></div>
+<div class="linkdiv "><a class="linkdiv" href="Gtk.WidgetPath.iter_set_object_type.html" title="Gtk.WidgetPath.prototype.iter_set_object_type"><span class="title">Gtk.WidgetPath.prototype.iter_set_object_type</span></a></div>
+<div class="linkdiv "><a class="linkdiv" href="Gtk.WidgetPath.length.html" title="Gtk.WidgetPath.prototype.length"><span class="title">Gtk.WidgetPath.prototype.length</span></a></div>
+<div class="linkdiv "><a class="linkdiv" href="Gtk.WidgetPath.prepend_type.html" title="Gtk.WidgetPath.prototype.prepend_type"><span class="title">Gtk.WidgetPath.prototype.prepend_type</span></a></div>
+<div class="linkdiv "><a class="linkdiv" href="Gtk.WidgetPath.ref.html" title="Gtk.WidgetPath.prototype.ref"><span class="title">Gtk.WidgetPath.prototype.ref</span></a></div>
+<div class="linkdiv "><a class="linkdiv" href="Gtk.WidgetPath.to_string.html" title="Gtk.WidgetPath.prototype.to_string"><span class="title">Gtk.WidgetPath.prototype.to_string</span></a></div>
+<div class="linkdiv "><a class="linkdiv" href="Gtk.WidgetPath.unref.html" title="Gtk.WidgetPath.prototype.unref"><span class="title">Gtk.WidgetPath.prototype.unref</span></a></div>
+</div></div></div>
+</div>
+<div class="sect sect-links" role="navigation">
+<div class="hgroup"></div>
+<div class="contents"><div class="links guidelinks"><div class="inner">
+<div class="title"><h2><span class="title">More Information</span></h2></div>
+<div class="region"><ul><li class="links "><a href="index.html" title="Index">Index</a></li></ul></div>
+</div></div></div>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="footer"></div>
+</div></body>
+</html>

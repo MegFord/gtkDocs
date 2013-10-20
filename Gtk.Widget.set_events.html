@@ -1,0 +1,46 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Gtk.Widget.prototype.set_events</title>
+<link rel="stylesheet" type="text/css" href="C.css">
+<script type="text/javascript" src="jquery.js"></script><script type="text/javascript" src="jquery.syntax.js"></script><script type="text/javascript" src="yelp.js"></script>
+</head>
+<body><div class="page" role="main">
+<div class="header"><div class="trails" role="navigation"><div class="trail">
+<a class="trail" href="index.html" title="Index">Index</a> » <a class="trail" href="Gtk.Widget.html" title="Gtk.Widget">Gtk.Widget</a> » </div></div></div>
+<div class="body">
+<div class="hgroup"><h1 class="title"><span class="title">Gtk.Widget.prototype.set_events</span></h1></div>
+<div class="region">
+<div class="contents">
+<div class="synopsis"><div class="inner"><div class="region"><div class="contents"><div class="code"><pre class="contents ">function set_events(events:Number):void {
+    // Gjs wrapper for gtk_widget_set_events()
+}</pre></div></div></div></div></div>
+<p class="p">Sets the event mask (see <span class=" link"><a href="Gdk.EventMask.html" title="Gdk.EventMask">Gdk.EventMask</a></span>) for a widget. The event
+mask determines which events a widget will receive. Keep in mind
+that different widgets have different default event masks, and by
+changing the event mask you may disrupt a widget's functionality,
+so be careful. This function must be called while a widget is
+unrealized. Consider <span class=" link"><a href="Gtk.Widget.add_events.html" title="Gtk.Widget.prototype.add_events">Gtk.Widget.prototype.add_events</a></span> for widgets that are
+already realized, or if you want to preserve the existing event
+mask. This function can't be used with #GTK_NO_WINDOW widgets;
+to get events on those widgets, place them inside a <span class=" link"><a href="Gtk.EventBox.html" title="Gtk.EventBox">Gtk.EventBox</a></span>
+and receive events on the event box.</p>
+<div class="terms"><div class="inner"><div class="region"><dl class="terms">
+<dt class="terms"><span class=" code">events</span></dt>
+<dd class="terms"><p class="p">event mask</p></dd>
+</dl></div></div></div>
+</div>
+<div class="sect sect-links" role="navigation">
+<div class="hgroup"></div>
+<div class="contents"><div class="links guidelinks"><div class="inner">
+<div class="title"><h2><span class="title">More Information</span></h2></div>
+<div class="region"><ul><li class="links "><a href="Gtk.Widget.html" title="Gtk.Widget">Gtk.Widget</a></li></ul></div>
+</div></div></div>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="footer"></div>
+</div></body>
+</html>

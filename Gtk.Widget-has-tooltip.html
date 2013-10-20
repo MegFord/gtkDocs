@@ -1,0 +1,39 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Gtk.Widget:has-tooltip</title>
+<link rel="stylesheet" type="text/css" href="C.css">
+<script type="text/javascript" src="jquery.js"></script><script type="text/javascript" src="jquery.syntax.js"></script><script type="text/javascript" src="yelp.js"></script>
+</head>
+<body><div class="page" role="main">
+<div class="header"><div class="trails" role="navigation"><div class="trail">
+<a class="trail" href="index.html" title="Index">Index</a> » <a class="trail" href="Gtk.Widget.html" title="Gtk.Widget">Gtk.Widget</a> » </div></div></div>
+<div class="body">
+<div class="hgroup"><h1 class="title"><span class="title">Gtk.Widget:has-tooltip</span></h1></div>
+<div class="region">
+<div class="contents">
+<div class="synopsis"><div class="inner"><div class="region"><div class="contents"><div class="code"><pre class="contents syntax brush-python">"has-tooltip"             Boolean                : Read / Write</pre></div></div></div></div></div>
+<p class="p">Enables or disables the emission of <span class=" link"><a href="Gtk.Widget-query-tooltip.html" title="Gtk.Widget::query-tooltip">Gtk.Widget::query-tooltip</a></span> on @widget.
+A value of <span class=" code">true</span> indicates that @widget can have a tooltip, in this case
+the widget will be queried using <span class=" link"><a href="Gtk.Widget-query-tooltip.html" title="Gtk.Widget::query-tooltip">Gtk.Widget::query-tooltip</a></span> to determine
+whether it will provide a tooltip or not.</p>
+<p class="p">Note that setting this property to <span class=" code">true</span> for the first time will change
+the event masks of the GdkWindows of this widget to include leave-notify
+and motion-notify events.  This cannot and will not be undone when the
+property is set to <span class=" code">false</span> again.</p>
+<p class="p">Since 2.12</p>
+</div>
+<div class="sect sect-links" role="navigation">
+<div class="hgroup"></div>
+<div class="contents"><div class="links guidelinks"><div class="inner">
+<div class="title"><h2><span class="title">More Information</span></h2></div>
+<div class="region"><ul><li class="links "><a href="Gtk.Widget.html" title="Gtk.Widget">Gtk.Widget</a></li></ul></div>
+</div></div></div>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="footer"></div>
+</div></body>
+</html>

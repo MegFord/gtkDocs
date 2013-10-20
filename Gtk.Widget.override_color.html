@@ -1,0 +1,61 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Gtk.Widget.prototype.override_color</title>
+<link rel="stylesheet" type="text/css" href="C.css">
+<script type="text/javascript" src="jquery.js"></script><script type="text/javascript" src="jquery.syntax.js"></script><script type="text/javascript" src="yelp.js"></script>
+</head>
+<body><div class="page" role="main">
+<div class="header"><div class="trails" role="navigation"><div class="trail">
+<a class="trail" href="index.html" title="Index">Index</a> » <a class="trail" href="Gtk.Widget.html" title="Gtk.Widget">Gtk.Widget</a> » </div></div></div>
+<div class="body">
+<div class="hgroup"><h1 class="title"><span class="title">Gtk.Widget.prototype.override_color</span></h1></div>
+<div class="region">
+<div class="contents">
+<div class="synopsis"><div class="inner"><div class="region"><div class="contents"><div class="code"><pre class="contents ">function override_color(state:Gtk.StateFlags, color:Gdk.RGBA):void {
+    // Gjs wrapper for gtk_widget_override_color()
+}</pre></div></div></div></div></div>
+<p class="p">Sets the color to use for a widget.</p>
+<p class="p">All other style values are left untouched.</p>
+<p class="p">&lt;note&gt;&lt;para&gt;
+This API is mostly meant as a quick way for applications to
+change a widget appearance. If you are developing a widgets
+library and intend this change to be themeable, it is better
+done by setting meaningful CSS classes and regions in your
+widget/container implementation through <span class=" link"><a href="Gtk.StyleContext.add_class.html" title="Gtk.StyleContext.prototype.add_class">Gtk.StyleContext.prototype.add_class</a></span>
+and <span class=" link"><a href="Gtk.StyleContext.add_region.html" title="Gtk.StyleContext.prototype.add_region">Gtk.StyleContext.prototype.add_region</a></span>.
+&lt;/para&gt;&lt;para&gt;
+This way, your widget library can install a <span class=" link"><a href="Gtk.CssProvider.html" title="Gtk.CssProvider">Gtk.CssProvider</a></span>
+with the %GTK_STYLE_PROVIDER_PRIORITY_FALLBACK priority in order
+to provide a default styling for those widgets that need so, and
+this theming may fully overridden by the user's theme.
+&lt;/para&gt;&lt;/note&gt;
+&lt;note&gt;&lt;para&gt;
+Note that for complex widgets this may bring in undesired
+results (such as uniform background color everywhere), in
+these cases it is better to fully style such widgets through a
+<span class=" link"><a href="Gtk.CssProvider.html" title="Gtk.CssProvider">Gtk.CssProvider</a></span> with the %GTK_STYLE_PROVIDER_PRIORITY_APPLICATION
+priority.
+&lt;/para&gt;&lt;/note&gt;</p>
+<p class="p">Since 3.0</p>
+<div class="terms"><div class="inner"><div class="region"><dl class="terms">
+<dt class="terms"><span class=" code">state</span></dt>
+<dd class="terms"><p class="p">the state for which to set the color</p></dd>
+<dt class="terms"><span class=" code">color</span></dt>
+<dd class="terms"><p class="p">the color to assign, or <span class=" code">null</span> to undo the effect of previous calls to <span class=" link"><a href="Gtk.Widget.override_color.html" title="Gtk.Widget.prototype.override_color">Gtk.Widget.prototype.override_color</a></span></p></dd>
+</dl></div></div></div>
+</div>
+<div class="sect sect-links" role="navigation">
+<div class="hgroup"></div>
+<div class="contents"><div class="links guidelinks"><div class="inner">
+<div class="title"><h2><span class="title">More Information</span></h2></div>
+<div class="region"><ul><li class="links "><a href="Gtk.Widget.html" title="Gtk.Widget">Gtk.Widget</a></li></ul></div>
+</div></div></div>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="footer"></div>
+</div></body>
+</html>

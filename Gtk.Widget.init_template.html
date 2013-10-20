@@ -1,0 +1,47 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Gtk.Widget.prototype.init_template</title>
+<link rel="stylesheet" type="text/css" href="C.css">
+<script type="text/javascript" src="jquery.js"></script><script type="text/javascript" src="jquery.syntax.js"></script><script type="text/javascript" src="yelp.js"></script>
+</head>
+<body><div class="page" role="main">
+<div class="header"><div class="trails" role="navigation"><div class="trail">
+<a class="trail" href="index.html" title="Index">Index</a> » <a class="trail" href="Gtk.Widget.html" title="Gtk.Widget">Gtk.Widget</a> » </div></div></div>
+<div class="body">
+<div class="hgroup"><h1 class="title"><span class="title">Gtk.Widget.prototype.init_template</span></h1></div>
+<div class="region">
+<div class="contents">
+<div class="synopsis"><div class="inner"><div class="region"><div class="contents"><div class="code"><pre class="contents ">function init_template():void {
+    // Gjs wrapper for gtk_widget_init_template()
+}</pre></div></div></div></div></div>
+<p class="p">Creates and initializes child widgets defined in templates. This
+function must be called in the instance initializer for any
+class which assigned itself a template using <span class=" link"><a href="Gtk.set_template.html" title="Gtk.set_template">Gtk.set_template</a></span></p>
+<p class="p">It is important to call this function in the instance initializer
+of a <span class=" link"><a href="Gtk.Widget.html" title="Gtk.Widget">Gtk.Widget</a></span> subclass and not in <span class=" link"><a href="GObject.Object.html" title="GObject.Object">GObject.Object</a></span>.constructed() or
+<span class=" link"><a href="GObject.Object.html" title="GObject.Object">GObject.Object</a></span>.constructor() for two reasons.</p>
+<p class="p">One reason is that generally derived widgets will assume that parent
+class composite widgets have been created in their instance
+initializers.</p>
+<p class="p">Another reason is that when calling g_object_new() on a widget with
+composite templates, it's important to build the composite widgets
+before the construct properties are set. Properties passed to g_object_new()
+should take precedence over properties set in the private template XML.</p>
+<p class="p">Since 3.10</p>
+<div class="terms"><div class="inner"><div class="region"><dl class="terms"></dl></div></div></div>
+</div>
+<div class="sect sect-links" role="navigation">
+<div class="hgroup"></div>
+<div class="contents"><div class="links guidelinks"><div class="inner">
+<div class="title"><h2><span class="title">More Information</span></h2></div>
+<div class="region"><ul><li class="links "><a href="Gtk.Widget.html" title="Gtk.Widget">Gtk.Widget</a></li></ul></div>
+</div></div></div>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="footer"></div>
+</div></body>
+</html>
