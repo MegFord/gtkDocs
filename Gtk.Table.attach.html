@@ -1,0 +1,65 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Gtk.Table.prototype.attach</title>
+<link rel="stylesheet" type="text/css" href="C.css">
+<script type="text/javascript" src="jquery.js"></script><script type="text/javascript" src="jquery.syntax.js"></script><script type="text/javascript" src="yelp.js"></script>
+</head>
+<body><div class="page" role="main">
+<div class="header"><div class="trails" role="navigation"><div class="trail">
+<a class="trail" href="index.html" title="Index">Index</a> » <a class="trail" href="Gtk.Table.html" title="Gtk.Table">Gtk.Table</a> » </div></div></div>
+<div class="body">
+<div class="hgroup"><h1 class="title"><span class="title">Gtk.Table.prototype.attach</span></h1></div>
+<div class="region">
+<div class="contents">
+<div class="synopsis"><div class="inner"><div class="region"><div class="contents"><div class="code"><pre class="contents ">function attach(child:Gtk.Widget, left_attach:Number, right_attach:Number, top_attach:Number, bottom_attach:Number, xoptions:Gtk.AttachOptions, yoptions:Gtk.AttachOptions, xpadding:Number, ypadding:Number):void {
+    // Gjs wrapper for gtk_table_attach()
+}</pre></div></div></div></div></div>
+<p class="p">Adds a widget to a table. The number of 'cells' that a widget will occupy is
+specified by <span class=" code">left_attach</span>, <span class=" code">right_attach</span>, <span class=" code">top_attach</span> and <span class=" code">bottom_attach</span>.
+These each represent the leftmost, rightmost, uppermost and lowest column
+and row numbers of the table. (Columns and rows are indexed from zero).</p>
+<p class="p">To make a button occupy the lower right cell of a 2x2 table, use
+&lt;informalexample&gt;&lt;programlisting&gt;
+gtk_table_attach (table, button,
+                  1, 2, // left, right attach
+                  1, 2, // top, bottom attach
+                  xoptions, yoptions,
+                  xpadding, ypadding);
+&lt;/programlisting&gt;&lt;/informalexample&gt;
+If you want to make the button span the entire bottom row, use <span class=" code">left_attach</span> == 0 and <span class=" code">right_attach</span> = 2 instead.</p>
+<div class="terms"><div class="inner"><div class="region"><dl class="terms">
+<dt class="terms"><span class=" code">child</span></dt>
+<dd class="terms"><p class="p">The widget to add.</p></dd>
+<dt class="terms"><span class=" code">left_attach</span></dt>
+<dd class="terms"><p class="p">the column number to attach the left side of a child widget to.</p></dd>
+<dt class="terms"><span class=" code">right_attach</span></dt>
+<dd class="terms"><p class="p">the column number to attach the right side of a child widget to.</p></dd>
+<dt class="terms"><span class=" code">top_attach</span></dt>
+<dd class="terms"><p class="p">the row number to attach the top of a child widget to.</p></dd>
+<dt class="terms"><span class=" code">bottom_attach</span></dt>
+<dd class="terms"><p class="p">the row number to attach the bottom of a child widget to.</p></dd>
+<dt class="terms"><span class=" code">xoptions</span></dt>
+<dd class="terms"><p class="p">Used to specify the properties of the child widget when the table is resized.</p></dd>
+<dt class="terms"><span class=" code">yoptions</span></dt>
+<dd class="terms"><p class="p">The same as xoptions, except this field determines behaviour of vertical resizing.</p></dd>
+<dt class="terms"><span class=" code">xpadding</span></dt>
+<dd class="terms"><p class="p">An integer value specifying the padding on the left and right of the widget being added to the table.</p></dd>
+<dt class="terms"><span class=" code">ypadding</span></dt>
+<dd class="terms"><p class="p">The amount of padding above and below the child widget.</p></dd>
+</dl></div></div></div>
+</div>
+<div class="sect sect-links" role="navigation">
+<div class="hgroup"></div>
+<div class="contents"><div class="links guidelinks"><div class="inner">
+<div class="title"><h2><span class="title">More Information</span></h2></div>
+<div class="region"><ul><li class="links "><a href="Gtk.Table.html" title="Gtk.Table">Gtk.Table</a></li></ul></div>
+</div></div></div>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="footer"></div>
+</div></body>
+</html>

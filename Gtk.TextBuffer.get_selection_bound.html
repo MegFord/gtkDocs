@@ -1,0 +1,46 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Gtk.TextBuffer.prototype.get_selection_bound</title>
+<link rel="stylesheet" type="text/css" href="C.css">
+<script type="text/javascript" src="jquery.js"></script><script type="text/javascript" src="jquery.syntax.js"></script><script type="text/javascript" src="yelp.js"></script>
+</head>
+<body><div class="page" role="main">
+<div class="header"><div class="trails" role="navigation"><div class="trail">
+<a class="trail" href="index.html" title="Index">Index</a> » <a class="trail" href="Gtk.TextBuffer.html" title="Gtk.TextBuffer">Gtk.TextBuffer</a> » </div></div></div>
+<div class="body">
+<div class="hgroup"><h1 class="title"><span class="title">Gtk.TextBuffer.prototype.get_selection_bound</span></h1></div>
+<div class="region">
+<div class="contents">
+<div class="synopsis"><div class="inner"><div class="region"><div class="contents"><div class="code"><pre class="contents ">function get_selection_bound():Gtk.TextMark {
+    // Gjs wrapper for gtk_text_buffer_get_selection_bound()
+}</pre></div></div></div></div></div>
+<p class="p">Returns the mark that represents the selection bound.  Equivalent
+to calling <span class=" link"><a href="Gtk.TextBuffer.get_mark.html" title="Gtk.TextBuffer.prototype.get_mark">Gtk.TextBuffer.prototype.get_mark</a></span> to get the mark named
+"selection_bound", but very slightly more efficient, and involves
+less typing.</p>
+<p class="p">The currently-selected text in <span class=" code">buffer</span> is the region between the
+"selection_bound" and "insert" marks. If "selection_bound" and
+"insert" are in the same place, then there is no current selection.
+<span class=" link"><a href="Gtk.get_selection_bounds.html" title="Gtk.get_selection_bounds">Gtk.get_selection_bounds</a></span> is another convenient function
+for handling the selection, if you just want to know whether there's a
+selection and what its bounds are.</p>
+<div class="terms"><div class="inner"><div class="region"><dl class="terms">
+<dt class="terms"><span class=" code">Returns</span></dt>
+<dd class="terms"><p class="p">selection bound mark</p></dd>
+</dl></div></div></div>
+</div>
+<div class="sect sect-links" role="navigation">
+<div class="hgroup"></div>
+<div class="contents"><div class="links guidelinks"><div class="inner">
+<div class="title"><h2><span class="title">More Information</span></h2></div>
+<div class="region"><ul><li class="links "><a href="Gtk.TextBuffer.html" title="Gtk.TextBuffer">Gtk.TextBuffer</a></li></ul></div>
+</div></div></div>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="footer"></div>
+</div></body>
+</html>

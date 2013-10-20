@@ -1,0 +1,54 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Gtk.TextBuffer.prototype.deserialize_set_can_create_tags</title>
+<link rel="stylesheet" type="text/css" href="C.css">
+<script type="text/javascript" src="jquery.js"></script><script type="text/javascript" src="jquery.syntax.js"></script><script type="text/javascript" src="yelp.js"></script>
+</head>
+<body><div class="page" role="main">
+<div class="header"><div class="trails" role="navigation"><div class="trail">
+<a class="trail" href="index.html" title="Index">Index</a> » <a class="trail" href="Gtk.TextBuffer.html" title="Gtk.TextBuffer">Gtk.TextBuffer</a> » </div></div></div>
+<div class="body">
+<div class="hgroup"><h1 class="title"><span class="title">Gtk.TextBuffer.prototype.deserialize_set_can_create_tags</span></h1></div>
+<div class="region">
+<div class="contents">
+<div class="synopsis"><div class="inner"><div class="region"><div class="contents"><div class="code"><pre class="contents ">function deserialize_set_can_create_tags(format:Gdk.Atom, can_create_tags:Boolean):void {
+    // Gjs wrapper for gtk_text_buffer_deserialize_set_can_create_tags()
+}</pre></div></div></div></div></div>
+<p class="p">Use this function to allow a rich text deserialization function to
+create new tags in the receiving buffer. Note that using this
+function is almost always a bad idea, because the rich text
+functions you register should know how to map the rich text format
+they handler to your text buffers set of tags.</p>
+<p class="p">The ability of creating new (arbitrary!) tags in the receiving buffer
+is meant for special rich text formats like the internal one that
+is registered using <span class=" link"><a href="Gtk.register_deserialize_tagset.html" title="Gtk.register_deserialize_tagset">Gtk.register_deserialize_tagset</a></span>,
+because that format is essentially a dump of the internal structure
+of the source buffer, including its tag names.</p>
+<p class="p">You should allow creation of tags only if you know what you are
+doing, e.g. if you defined a tagset name for your application
+suite's text buffers and you know that it's fine to receive new
+tags from these buffers, because you know that your application can
+handle the newly created tags.</p>
+<p class="p">Since 2.10</p>
+<div class="terms"><div class="inner"><div class="region"><dl class="terms">
+<dt class="terms"><span class=" code">format</span></dt>
+<dd class="terms"><p class="p">a <span class=" link"><a href="Gdk.Atom.html" title="Gdk.Atom">Gdk.Atom</a></span> representing a registered rich text format</p></dd>
+<dt class="terms"><span class=" code">can_create_tags</span></dt>
+<dd class="terms"><p class="p">whether deserializing this format may create tags</p></dd>
+</dl></div></div></div>
+</div>
+<div class="sect sect-links" role="navigation">
+<div class="hgroup"></div>
+<div class="contents"><div class="links guidelinks"><div class="inner">
+<div class="title"><h2><span class="title">More Information</span></h2></div>
+<div class="region"><ul><li class="links "><a href="Gtk.TextBuffer.html" title="Gtk.TextBuffer">Gtk.TextBuffer</a></li></ul></div>
+</div></div></div>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="footer"></div>
+</div></body>
+</html>

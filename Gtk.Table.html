@@ -1,0 +1,123 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Gtk.Table</title>
+<link rel="stylesheet" type="text/css" href="C.css">
+<script type="text/javascript" src="jquery.js"></script><script type="text/javascript" src="jquery.syntax.js"></script><script type="text/javascript" src="yelp.js"></script>
+</head>
+<body><div class="page" role="main">
+<div class="header"><div class="trails" role="navigation"><div class="trail">
+<a class="trail" href="index.html" title="Index">Index</a> » </div></div></div>
+<div class="body">
+<div class="hgroup"><h1 class="title"><span class="title">Gtk.Table</span></h1></div>
+<div class="region">
+<div class="contents">
+<div class="synopsis"><div class="inner"><div class="region"><div class="contents"><div class="code"><pre class="contents ">const Gtk = imports.gi.Gtk;
+
+let table = new Gtk.Table({
+    <span class=" link"><a href="Gtk.Table-column-spacing.html" title="Gtk.Table:column-spacing">column_spacing</a></span>: value,
+    <span class=" link"><a href="Gtk.Table-homogeneous.html" title="Gtk.Table:homogeneous">homogeneous</a></span>: value,
+    <span class=" link"><a href="Gtk.Table-n-columns.html" title="Gtk.Table:n-columns">n_columns</a></span>: value,
+    <span class=" link"><a href="Gtk.Table-n-rows.html" title="Gtk.Table:n-rows">n_rows</a></span>: value,
+    <span class=" link"><a href="Gtk.Table-row-spacing.html" title="Gtk.Table:row-spacing">row_spacing</a></span>: value,
+});
+  </pre></div></div></div></div></div>
+<p class="p">The <span class=" link"><a href="Gtk.Table.html" title="Gtk.Table">Gtk.Table</a></span> functions allow the programmer to arrange widgets in rows and
+columns, making it easy to align many widgets next to each other,
+horizontally and vertically.</p>
+<p class="p">Tables are created with a call to <span class=" link"><a href="Gtk.new.html" title="Gtk.new">Gtk.new</a></span>, the size of which can
+later be changed with <span class=" link"><a href="Gtk.resize.html" title="Gtk.resize">Gtk.resize</a></span>.</p>
+<p class="p">Widgets can be added to a table using <span class=" link"><a href="Gtk.attach.html" title="Gtk.attach">Gtk.attach</a></span> or the more
+convenient (but slightly less flexible) <span class=" link"><a href="Gtk.attach_defaults.html" title="Gtk.attach_defaults">Gtk.attach_defaults</a></span>.</p>
+<p class="p">To alter the space next to a specific row, use <span class=" link"><a href="Gtk.set_row_spacing.html" title="Gtk.set_row_spacing">Gtk.set_row_spacing</a></span>,
+and for a column, <span class=" link"><a href="Gtk.set_col_spacing.html" title="Gtk.set_col_spacing">Gtk.set_col_spacing</a></span>.
+The gaps between &lt;emphasis&gt;all&lt;/emphasis&gt; rows or columns can be changed by
+calling <span class=" link"><a href="Gtk.set_row_spacings.html" title="Gtk.set_row_spacings">Gtk.set_row_spacings</a></span> or <span class=" link"><a href="Gtk.set_col_spacings.html" title="Gtk.set_col_spacings">Gtk.set_col_spacings</a></span>
+respectively. Note that spacing is added &lt;emphasis&gt;between&lt;/emphasis&gt; the
+children, while padding added by <span class=" link"><a href="Gtk.attach.html" title="Gtk.attach">Gtk.attach</a></span> is added &lt;emphasis&gt;on
+either side&lt;/emphasis&gt; of the widget it belongs to.</p>
+<p class="p"><span class=" link"><a href="Gtk.set_homogeneous.html" title="Gtk.set_homogeneous">Gtk.set_homogeneous</a></span>, can be used to set whether all cells in the
+table will resize themselves to the size of the largest widget in the table.</p>
+<p class="p">&lt;note&gt;
+<span class=" link"><a href="Gtk.Table.html" title="Gtk.Table">Gtk.Table</a></span> has been deprecated. Use <span class=" link"><a href="Gtk.Grid.html" title="Gtk.Grid">Gtk.Grid</a></span> instead. It provides the same
+capabilities as GtkTable for arranging widgets in a rectangular grid, but
+does support height-for-width geometry management.
+&lt;/note&gt;</p>
+<div class="synopsis"><div class="inner">
+<div class="title title-synopsis"><h2><span class="title">Hierarchy</span></h2></div>
+<div class="region"><div class="contents"><div class="tree"><div class="inner"><div class="region"><ul class="tree"><li class="tree">
+<div>
+        <span class=" code">GObject.Object</span>
+      
+      </div>
+<ul class="tree"><li class="tree">
+<div>
+        <span class=" code">GObject.InitiallyUnowned</span>
+      
+      </div>
+<ul class="tree"><li class="tree">
+<div>
+        <span class=" code">Gtk.Widget</span>
+      
+      </div>
+<ul class="tree"><li class="tree">
+<div>
+        <span class=" code">Gtk.Container</span>
+      
+      </div>
+<ul class="tree"><li class="tree"><div>
+        <span class=" code">Gtk.Table</span>
+      </div></li></ul>
+</li></ul>
+</li></ul>
+</li></ul>
+</li></ul></div></div></div></div></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Methods</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.Table.attach.html" title="Gtk.Table.prototype.attach">Gtk.Table.prototype.attach</a></li>
+<li class="links "><a href="Gtk.Table.attach_defaults.html" title="Gtk.Table.prototype.attach_defaults">Gtk.Table.prototype.attach_defaults</a></li>
+<li class="links "><a href="Gtk.Table.get_col_spacing.html" title="Gtk.Table.prototype.get_col_spacing">Gtk.Table.prototype.get_col_spacing</a></li>
+<li class="links "><a href="Gtk.Table.get_default_col_spacing.html" title="Gtk.Table.prototype.get_default_col_spacing">Gtk.Table.prototype.get_default_col_spacing</a></li>
+<li class="links "><a href="Gtk.Table.get_default_row_spacing.html" title="Gtk.Table.prototype.get_default_row_spacing">Gtk.Table.prototype.get_default_row_spacing</a></li>
+<li class="links "><a href="Gtk.Table.get_homogeneous.html" title="Gtk.Table.prototype.get_homogeneous">Gtk.Table.prototype.get_homogeneous</a></li>
+<li class="links "><a href="Gtk.Table.get_row_spacing.html" title="Gtk.Table.prototype.get_row_spacing">Gtk.Table.prototype.get_row_spacing</a></li>
+<li class="links "><a href="Gtk.Table.get_size.html" title="Gtk.Table.prototype.get_size">Gtk.Table.prototype.get_size</a></li>
+<li class="links "><a href="Gtk.Table.resize.html" title="Gtk.Table.prototype.resize">Gtk.Table.prototype.resize</a></li>
+<li class="links "><a href="Gtk.Table.set_col_spacing.html" title="Gtk.Table.prototype.set_col_spacing">Gtk.Table.prototype.set_col_spacing</a></li>
+<li class="links "><a href="Gtk.Table.set_col_spacings.html" title="Gtk.Table.prototype.set_col_spacings">Gtk.Table.prototype.set_col_spacings</a></li>
+<li class="links "><a href="Gtk.Table.set_homogeneous.html" title="Gtk.Table.prototype.set_homogeneous">Gtk.Table.prototype.set_homogeneous</a></li>
+<li class="links "><a href="Gtk.Table.set_row_spacing.html" title="Gtk.Table.prototype.set_row_spacing">Gtk.Table.prototype.set_row_spacing</a></li>
+<li class="links "><a href="Gtk.Table.set_row_spacings.html" title="Gtk.Table.prototype.set_row_spacings">Gtk.Table.prototype.set_row_spacings</a></li>
+</ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Properties</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.Table-column-spacing.html" title="Gtk.Table:column-spacing">column-spacing</a></li>
+<li class="links "><a href="Gtk.Table-homogeneous.html" title="Gtk.Table:homogeneous">homogeneous</a></li>
+<li class="links "><a href="Gtk.Table-n-columns.html" title="Gtk.Table:n-columns">n-columns</a></li>
+<li class="links "><a href="Gtk.Table-n-rows.html" title="Gtk.Table:n-rows">n-rows</a></li>
+<li class="links "><a href="Gtk.Table-row-spacing.html" title="Gtk.Table:row-spacing">row-spacing</a></li>
+</ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Other</span></h2></div>
+<div class="region"><ul><li class="links "><a href="Gtk.Table.new.html" title="Gtk.Table.new">Gtk.Table.new</a></li></ul></div>
+</div></div>
+</div>
+<div class="sect sect-links" role="navigation">
+<div class="hgroup"></div>
+<div class="contents"><div class="links guidelinks"><div class="inner">
+<div class="title"><h2><span class="title">More Information</span></h2></div>
+<div class="region"><ul><li class="links "><a href="index.html" title="Index">Index</a></li></ul></div>
+</div></div></div>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="footer"></div>
+</div></body>
+</html>

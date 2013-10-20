@@ -1,0 +1,50 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>test_find_widget</title>
+<link rel="stylesheet" type="text/css" href="C.css">
+<script type="text/javascript" src="jquery.js"></script><script type="text/javascript" src="jquery.syntax.js"></script><script type="text/javascript" src="yelp.js"></script>
+</head>
+<body><div class="page" role="main">
+<div class="header"><div class="trails" role="navigation"><div class="trail">
+<a class="trail" href="index.html" title="Index">Index</a> » </div></div></div>
+<div class="body">
+<div class="hgroup"><h1 class="title"><span class="title">test_find_widget</span></h1></div>
+<div class="region">
+<div class="contents">
+<div class="synopsis"><div class="inner"><div class="region"><div class="contents"><div class="code"><pre class="contents ">function test_find_widget(widget:Gtk.Widget, label_pattern:String, widget_type:GType):Gtk.Widget {
+    // Gjs wrapper for gtk_test_find_widget()
+}</pre></div></div></div></div></div>
+<p class="p">This function will search the descendants of <span class=" code">widget</span> for a widget
+of type <span class=" code">widget_type</span> that has a label matching <span class=" code">label_pattern</span> next
+to it. This is most useful for automated GUI testing, e.g. to find
+the "OK" button in a dialog and synthesize clicks on it.
+However see <span class=" link"><a href="Gtk.test_find_label.html" title="test_find_label">test_find_label</a></span>, <span class=" link"><a href="Gtk.test_find_sibling.html" title="test_find_sibling">test_find_sibling</a></span> and
+<span class=" link"><a href="Gtk.test_widget_click.html" title="test_widget_click">test_widget_click</a></span> for possible caveats involving the search of
+such widgets and synthesizing widget events.</p>
+<p class="p">Since 2.14</p>
+<div class="terms"><div class="inner"><div class="region"><dl class="terms">
+<dt class="terms"><span class=" code">widget</span></dt>
+<dd class="terms"><p class="p">Container widget, usually a GtkWindow.</p></dd>
+<dt class="terms"><span class=" code">label_pattern</span></dt>
+<dd class="terms"><p class="p">Shell-glob pattern to match a label string.</p></dd>
+<dt class="terms"><span class=" code">widget_type</span></dt>
+<dd class="terms"><p class="p">Type of a aearched for label sibling widget.</p></dd>
+<dt class="terms"><span class=" code">Returns</span></dt>
+<dd class="terms"><p class="p">a valid widget if any is found or <span class=" code">null</span>.</p></dd>
+</dl></div></div></div>
+</div>
+<div class="sect sect-links" role="navigation">
+<div class="hgroup"></div>
+<div class="contents"><div class="links guidelinks"><div class="inner">
+<div class="title"><h2><span class="title">More Information</span></h2></div>
+<div class="region"><ul><li class="links "><a href="index.html" title="Index">Index</a></li></ul></div>
+</div></div></div>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="footer"></div>
+</div></body>
+</html>

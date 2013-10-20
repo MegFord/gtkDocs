@@ -1,0 +1,44 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Gtk.TextBuffer.prototype.paste_clipboard</title>
+<link rel="stylesheet" type="text/css" href="C.css">
+<script type="text/javascript" src="jquery.js"></script><script type="text/javascript" src="jquery.syntax.js"></script><script type="text/javascript" src="yelp.js"></script>
+</head>
+<body><div class="page" role="main">
+<div class="header"><div class="trails" role="navigation"><div class="trail">
+<a class="trail" href="index.html" title="Index">Index</a> » <a class="trail" href="Gtk.TextBuffer.html" title="Gtk.TextBuffer">Gtk.TextBuffer</a> » </div></div></div>
+<div class="body">
+<div class="hgroup"><h1 class="title"><span class="title">Gtk.TextBuffer.prototype.paste_clipboard</span></h1></div>
+<div class="region">
+<div class="contents">
+<div class="synopsis"><div class="inner"><div class="region"><div class="contents"><div class="code"><pre class="contents ">function paste_clipboard(clipboard:Gtk.Clipboard, override_location:Gtk.TextIter, default_editable:Boolean):void {
+    // Gjs wrapper for gtk_text_buffer_paste_clipboard()
+}</pre></div></div></div></div></div>
+<p class="p">Pastes the contents of a clipboard at the insertion point, or
+at <span class=" code">override_location</span>. (Note: pasting is asynchronous, that is,
+we'll ask for the paste data and return, and at some point later
+after the main loop runs, the paste data will be inserted.)</p>
+<div class="terms"><div class="inner"><div class="region"><dl class="terms">
+<dt class="terms"><span class=" code">clipboard</span></dt>
+<dd class="terms"><p class="p">the <span class=" link"><a href="Gtk.Clipboard.html" title="Gtk.Clipboard">Gtk.Clipboard</a></span> to paste from</p></dd>
+<dt class="terms"><span class=" code">override_location</span></dt>
+<dd class="terms"><p class="p">location to insert pasted text, or <span class=" code">null</span> for at the cursor</p></dd>
+<dt class="terms"><span class=" code">default_editable</span></dt>
+<dd class="terms"><p class="p">whether the buffer is editable by default</p></dd>
+</dl></div></div></div>
+</div>
+<div class="sect sect-links" role="navigation">
+<div class="hgroup"></div>
+<div class="contents"><div class="links guidelinks"><div class="inner">
+<div class="title"><h2><span class="title">More Information</span></h2></div>
+<div class="region"><ul><li class="links "><a href="Gtk.TextBuffer.html" title="Gtk.TextBuffer">Gtk.TextBuffer</a></li></ul></div>
+</div></div></div>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="footer"></div>
+</div></body>
+</html>

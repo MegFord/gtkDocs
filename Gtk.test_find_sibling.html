@@ -1,0 +1,48 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>test_find_sibling</title>
+<link rel="stylesheet" type="text/css" href="C.css">
+<script type="text/javascript" src="jquery.js"></script><script type="text/javascript" src="jquery.syntax.js"></script><script type="text/javascript" src="yelp.js"></script>
+</head>
+<body><div class="page" role="main">
+<div class="header"><div class="trails" role="navigation"><div class="trail">
+<a class="trail" href="index.html" title="Index">Index</a> » </div></div></div>
+<div class="body">
+<div class="hgroup"><h1 class="title"><span class="title">test_find_sibling</span></h1></div>
+<div class="region">
+<div class="contents">
+<div class="synopsis"><div class="inner"><div class="region"><div class="contents"><div class="code"><pre class="contents ">function test_find_sibling(base_widget:Gtk.Widget, widget_type:GType):Gtk.Widget {
+    // Gjs wrapper for gtk_test_find_sibling()
+}</pre></div></div></div></div></div>
+<p class="p">This function will search siblings of <span class=" code">base_widget</span> and siblings of its
+ancestors for all widgets matching <span class=" code">widget_type</span>.
+Of the matching widgets, the one that is geometrically closest to
+<span class=" code">base_widget</span> will be returned.
+The general purpose of this function is to find the most likely "action"
+widget, relative to another labeling widget. Such as finding a
+button or text entry widget, given its corresponding label widget.</p>
+<p class="p">Since 2.14</p>
+<div class="terms"><div class="inner"><div class="region"><dl class="terms">
+<dt class="terms"><span class=" code">base_widget</span></dt>
+<dd class="terms"><p class="p">Valid widget, part of a widget hierarchy</p></dd>
+<dt class="terms"><span class=" code">widget_type</span></dt>
+<dd class="terms"><p class="p">Type of a aearched for sibling widget</p></dd>
+<dt class="terms"><span class=" code">Returns</span></dt>
+<dd class="terms"><p class="p">a widget of type <span class=" code">widget_type</span> if any is found.</p></dd>
+</dl></div></div></div>
+</div>
+<div class="sect sect-links" role="navigation">
+<div class="hgroup"></div>
+<div class="contents"><div class="links guidelinks"><div class="inner">
+<div class="title"><h2><span class="title">More Information</span></h2></div>
+<div class="region"><ul><li class="links "><a href="index.html" title="Index">Index</a></li></ul></div>
+</div></div></div>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="footer"></div>
+</div></body>
+</html>

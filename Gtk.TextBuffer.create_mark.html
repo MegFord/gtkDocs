@@ -1,0 +1,57 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Gtk.TextBuffer.prototype.create_mark</title>
+<link rel="stylesheet" type="text/css" href="C.css">
+<script type="text/javascript" src="jquery.js"></script><script type="text/javascript" src="jquery.syntax.js"></script><script type="text/javascript" src="yelp.js"></script>
+</head>
+<body><div class="page" role="main">
+<div class="header"><div class="trails" role="navigation"><div class="trail">
+<a class="trail" href="index.html" title="Index">Index</a> » <a class="trail" href="Gtk.TextBuffer.html" title="Gtk.TextBuffer">Gtk.TextBuffer</a> » </div></div></div>
+<div class="body">
+<div class="hgroup"><h1 class="title"><span class="title">Gtk.TextBuffer.prototype.create_mark</span></h1></div>
+<div class="region">
+<div class="contents">
+<div class="synopsis"><div class="inner"><div class="region"><div class="contents"><div class="code"><pre class="contents ">function create_mark(mark_name:String, where:Gtk.TextIter, left_gravity:Boolean):Gtk.TextMark {
+    // Gjs wrapper for gtk_text_buffer_create_mark()
+}</pre></div></div></div></div></div>
+<p class="p">Creates a mark at position <span class=" code">where</span>. If <span class=" code">mark_name</span> is <span class=" code">null</span>, the mark
+is anonymous; otherwise, the mark can be retrieved by name using
+<span class=" link"><a href="Gtk.get_mark.html" title="Gtk.get_mark">Gtk.get_mark</a></span>. If a mark has left gravity, and text is
+inserted at the mark's current location, the mark will be moved to
+the left of the newly-inserted text. If the mark has right gravity
+(<span class=" code">left_gravity</span> = <span class=" code">false</span>), the mark will end up on the right of
+newly-inserted text. The standard left-to-right cursor is a mark
+with right gravity (when you type, the cursor stays on the right
+side of the text you're typing).</p>
+<p class="p">The caller of this function does &lt;emphasis&gt;not&lt;/emphasis&gt; own a 
+reference to the returned <span class=" link"><a href="Gtk.TextMark.html" title="Gtk.TextMark">Gtk.TextMark</a></span>, so you can ignore the 
+return value if you like. Marks are owned by the buffer and go 
+away when the buffer does.</p>
+<p class="p">Emits the "mark-set" signal as notification of the mark's initial
+placement.</p>
+<div class="terms"><div class="inner"><div class="region"><dl class="terms">
+<dt class="terms"><span class=" code">mark_name</span></dt>
+<dd class="terms"><p class="p">name for mark, or <span class=" code">null</span></p></dd>
+<dt class="terms"><span class=" code">where</span></dt>
+<dd class="terms"><p class="p">location to place mark</p></dd>
+<dt class="terms"><span class=" code">left_gravity</span></dt>
+<dd class="terms"><p class="p">whether the mark has left gravity</p></dd>
+<dt class="terms"><span class=" code">Returns</span></dt>
+<dd class="terms"><p class="p">the new <span class=" link"><a href="Gtk.TextMark.html" title="Gtk.TextMark">Gtk.TextMark</a></span> object</p></dd>
+</dl></div></div></div>
+</div>
+<div class="sect sect-links" role="navigation">
+<div class="hgroup"></div>
+<div class="contents"><div class="links guidelinks"><div class="inner">
+<div class="title"><h2><span class="title">More Information</span></h2></div>
+<div class="region"><ul><li class="links "><a href="Gtk.TextBuffer.html" title="Gtk.TextBuffer">Gtk.TextBuffer</a></li></ul></div>
+</div></div></div>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="footer"></div>
+</div></body>
+</html>

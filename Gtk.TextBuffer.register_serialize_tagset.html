@@ -1,0 +1,54 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Gtk.TextBuffer.prototype.register_serialize_tagset</title>
+<link rel="stylesheet" type="text/css" href="C.css">
+<script type="text/javascript" src="jquery.js"></script><script type="text/javascript" src="jquery.syntax.js"></script><script type="text/javascript" src="yelp.js"></script>
+</head>
+<body><div class="page" role="main">
+<div class="header"><div class="trails" role="navigation"><div class="trail">
+<a class="trail" href="index.html" title="Index">Index</a> » <a class="trail" href="Gtk.TextBuffer.html" title="Gtk.TextBuffer">Gtk.TextBuffer</a> » </div></div></div>
+<div class="body">
+<div class="hgroup"><h1 class="title"><span class="title">Gtk.TextBuffer.prototype.register_serialize_tagset</span></h1></div>
+<div class="region">
+<div class="contents">
+<div class="synopsis"><div class="inner"><div class="region"><div class="contents"><div class="code"><pre class="contents ">function register_serialize_tagset(tagset_name:String):Gdk.Atom {
+    // Gjs wrapper for gtk_text_buffer_register_serialize_tagset()
+}</pre></div></div></div></div></div>
+<p class="p">This function registers GTK+'s internal rich text serialization
+format with the passed <span class=" code">buffer</span>. The internal format does not comply
+to any standard rich text format and only works between <span class=" link"><a href="Gtk.TextBuffer.html" title="Gtk.TextBuffer">Gtk.TextBuffer</a></span>
+instances. It is capable of serializing all of a text buffer's tags
+and embedded pixbufs.</p>
+<p class="p">This function is just a wrapper around
+<span class=" link"><a href="Gtk.TextBuffer.register_serialize_format.html" title="Gtk.TextBuffer.prototype.register_serialize_format">Gtk.TextBuffer.prototype.register_serialize_format</a></span>. The mime type used
+for registering is "application/x-gtk-text-buffer-rich-text", or
+"application/x-gtk-text-buffer-rich-text;format=<span class=" code">tagset_name</span>" if a
+<span class=" code">tagset_name</span> was passed.</p>
+<p class="p">The <span class=" code">tagset_name</span> can be used to restrict the transfer of rich text
+to buffers with compatible sets of tags, in order to avoid unknown
+tags from being pasted. It is probably the common case to pass an
+identifier != <span class=" code">null</span> here, since the <span class=" code">null</span> tagset requires the
+receiving buffer to deal with with pasting of arbitrary tags.</p>
+<p class="p">Since 2.10</p>
+<div class="terms"><div class="inner"><div class="region"><dl class="terms">
+<dt class="terms"><span class=" code">tagset_name</span></dt>
+<dd class="terms"><p class="p">an optional tagset name, on <span class=" code">null</span></p></dd>
+<dt class="terms"><span class=" code">Returns</span></dt>
+<dd class="terms"><p class="p">the <span class=" link"><a href="Gdk.Atom.html" title="Gdk.Atom">Gdk.Atom</a></span> that corresponds to the newly registered format's mime-type.</p></dd>
+</dl></div></div></div>
+</div>
+<div class="sect sect-links" role="navigation">
+<div class="hgroup"></div>
+<div class="contents"><div class="links guidelinks"><div class="inner">
+<div class="title"><h2><span class="title">More Information</span></h2></div>
+<div class="region"><ul><li class="links "><a href="Gtk.TextBuffer.html" title="Gtk.TextBuffer">Gtk.TextBuffer</a></li></ul></div>
+</div></div></div>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="footer"></div>
+</div></body>
+</html>

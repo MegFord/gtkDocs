@@ -1,0 +1,47 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Gtk.Table.new</title>
+<link rel="stylesheet" type="text/css" href="C.css">
+<script type="text/javascript" src="jquery.js"></script><script type="text/javascript" src="jquery.syntax.js"></script><script type="text/javascript" src="yelp.js"></script>
+</head>
+<body><div class="page" role="main">
+<div class="header"><div class="trails" role="navigation"><div class="trail">
+<a class="trail" href="index.html" title="Index">Index</a> » <a class="trail" href="Gtk.Table.html" title="Gtk.Table">Gtk.Table</a> » </div></div></div>
+<div class="body">
+<div class="hgroup"><h1 class="title"><span class="title">Gtk.Table.new</span></h1></div>
+<div class="region">
+<div class="contents">
+<div class="synopsis"><div class="inner"><div class="region"><div class="contents"><div class="code"><pre class="contents ">function new(rows:Number, columns:Number, homogeneous:Boolean):Gtk.Widget {
+    // Gjs wrapper for gtk_table_new()
+}</pre></div></div></div></div></div>
+<p class="p">Used to create a new table widget. An initial size must be given by
+specifying how many rows and columns the table should have, although
+this can be changed later with <span class=" link"><a href="Gtk.Table.resize.html" title="Gtk.Table.prototype.resize">Gtk.Table.prototype.resize</a></span>.  <span class=" code">rows</span> and <span class=" code">columns</span>
+must both be in the range 1 .. 65535. For historical reasons, 0 is accepted
+as well and is silently interpreted as 1.</p>
+<div class="terms"><div class="inner"><div class="region"><dl class="terms">
+<dt class="terms"><span class=" code">rows</span></dt>
+<dd class="terms"><p class="p">The number of rows the new table should have.</p></dd>
+<dt class="terms"><span class=" code">columns</span></dt>
+<dd class="terms"><p class="p">The number of columns the new table should have.</p></dd>
+<dt class="terms"><span class=" code">homogeneous</span></dt>
+<dd class="terms"><p class="p">If set to <span class=" code">true</span>, all table cells are resized to the size of the cell containing the largest widget.</p></dd>
+<dt class="terms"><span class=" code">Returns</span></dt>
+<dd class="terms"><p class="p">A pointer to the newly created table widget.</p></dd>
+</dl></div></div></div>
+</div>
+<div class="sect sect-links" role="navigation">
+<div class="hgroup"></div>
+<div class="contents"><div class="links guidelinks"><div class="inner">
+<div class="title"><h2><span class="title">More Information</span></h2></div>
+<div class="region"><ul><li class="links "><a href="Gtk.Table.html" title="Gtk.Table">Gtk.Table</a></li></ul></div>
+</div></div></div>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="footer"></div>
+</div></body>
+</html>

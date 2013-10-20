@@ -1,0 +1,47 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Gtk.TextBuffer.prototype.insert_range</title>
+<link rel="stylesheet" type="text/css" href="C.css">
+<script type="text/javascript" src="jquery.js"></script><script type="text/javascript" src="jquery.syntax.js"></script><script type="text/javascript" src="yelp.js"></script>
+</head>
+<body><div class="page" role="main">
+<div class="header"><div class="trails" role="navigation"><div class="trail">
+<a class="trail" href="index.html" title="Index">Index</a> » <a class="trail" href="Gtk.TextBuffer.html" title="Gtk.TextBuffer">Gtk.TextBuffer</a> » </div></div></div>
+<div class="body">
+<div class="hgroup"><h1 class="title"><span class="title">Gtk.TextBuffer.prototype.insert_range</span></h1></div>
+<div class="region">
+<div class="contents">
+<div class="synopsis"><div class="inner"><div class="region"><div class="contents"><div class="code"><pre class="contents ">function insert_range(iter:Gtk.TextIter, start:Gtk.TextIter, end:Gtk.TextIter):void {
+    // Gjs wrapper for gtk_text_buffer_insert_range()
+}</pre></div></div></div></div></div>
+<p class="p">Copies text, tags, and pixbufs between <span class=" code">start</span> and <span class=" code">end</span> (the order
+of <span class=" code">start</span> and <span class=" code">end</span> doesn't matter) and inserts the copy at <span class=" code">iter</span>.
+Used instead of simply getting/inserting text because it preserves
+images and tags. If <span class=" code">start</span> and <span class=" code">end</span> are in a different buffer from
+<span class=" code">buffer</span>, the two buffers must share the same tag table.</p>
+<p class="p">Implemented via emissions of the insert_text and apply_tag signals,
+so expect those.</p>
+<div class="terms"><div class="inner"><div class="region"><dl class="terms">
+<dt class="terms"><span class=" code">iter</span></dt>
+<dd class="terms"><p class="p">a position in <span class=" code">buffer</span></p></dd>
+<dt class="terms"><span class=" code">start</span></dt>
+<dd class="terms"><p class="p">a position in a <span class=" link"><a href="Gtk.TextBuffer.html" title="Gtk.TextBuffer">Gtk.TextBuffer</a></span></p></dd>
+<dt class="terms"><span class=" code">end</span></dt>
+<dd class="terms"><p class="p">another position in the same buffer as <span class=" code">start</span></p></dd>
+</dl></div></div></div>
+</div>
+<div class="sect sect-links" role="navigation">
+<div class="hgroup"></div>
+<div class="contents"><div class="links guidelinks"><div class="inner">
+<div class="title"><h2><span class="title">More Information</span></h2></div>
+<div class="region"><ul><li class="links "><a href="Gtk.TextBuffer.html" title="Gtk.TextBuffer">Gtk.TextBuffer</a></li></ul></div>
+</div></div></div>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="footer"></div>
+</div></body>
+</html>
