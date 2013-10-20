@@ -1,0 +1,155 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Gtk.LevelBar</title>
+<link rel="stylesheet" type="text/css" href="C.css">
+<script type="text/javascript" src="jquery.js"></script><script type="text/javascript" src="jquery.syntax.js"></script><script type="text/javascript" src="yelp.js"></script>
+</head>
+<body><div class="page" role="main">
+<div class="header"><div class="trails" role="navigation"><div class="trail">
+<a class="trail" href="index.html" title="Index">Index</a> » </div></div></div>
+<div class="body">
+<div class="hgroup"><h1 class="title"><span class="title">Gtk.LevelBar</span></h1></div>
+<div class="region">
+<div class="contents">
+<div class="synopsis"><div class="inner"><div class="region"><div class="contents"><div class="code"><pre class="contents ">const Gtk = imports.gi.Gtk;
+
+let level_bar = new Gtk.LevelBar({
+    <span class=" link"><a href="Gtk.LevelBar-inverted.html" title="Gtk.LevelBar:inverted">inverted</a></span>: value,
+    <span class=" link"><a href="Gtk.LevelBar-max-value.html" title="Gtk.LevelBar:max-value">max_value</a></span>: value,
+    <span class=" link"><a href="Gtk.LevelBar-min-value.html" title="Gtk.LevelBar:min-value">min_value</a></span>: value,
+    <span class=" link"><a href="Gtk.LevelBar-mode.html" title="Gtk.LevelBar:mode">mode</a></span>: value,
+    <span class=" link"><a href="Gtk.LevelBar-value.html" title="Gtk.LevelBar:value">value</a></span>: value,
+});
+  </pre></div></div></div></div></div>
+<p class="p">The <span class=" link"><a href="Gtk.LevelBar.html" title="Gtk.LevelBar">Gtk.LevelBar</a></span> is a bar widget that can be used
+as a level indicator. Typical use cases are displaying the strength
+of a password, or showing the charge level of a battery.</p>
+<p class="p">Use <span class=" link"><a href="Gtk.set_value.html" title="Gtk.set_value">Gtk.set_value</a></span> to set the current value, and
+<span class=" link"><a href="Gtk.add_offset_value.html" title="Gtk.add_offset_value">Gtk.add_offset_value</a></span> to set the value offsets at which
+the bar will be considered in a different state. GTK will add two offsets
+by default on the level bar: #GTK_LEVEL_BAR_OFFSET_LOW and
+#GTK_LEVEL_BAR_OFFSET_HIGH, with values 0.25 and 0.75 respectively.</p>
+<p class="p">&lt;example&gt;
+&lt;title&gt;Adding a custom offset on the bar&lt;/title&gt;
+&lt;programlisting&gt;</p>
+<p class="p">static GtkWidget *
+create_level_bar (void)
+{
+  GtkWidget *level_bar;</p>
+<p class="p">  level_bar = gtk_level_bar_new ();</p>
+<p class="p">  /&lt;!----&gt;* This changes the value of the default low offset *&lt;!----&gt;/
+  gtk_level_bar_add_offset_value (GTK_LEVEL_BAR (level_bar),
+                                  GTK_LEVEL_BAR_OFFSET_LOW, 0.10);</p>
+<p class="p">  /&lt;!----&gt;* This adds a new offset to the bar; the application will
+   * be able to change its color by using the following selector,
+   * either by adding it to its CSS file or using
+   * <span class=" link"><a href="Gtk.CssProvider.load_from_data.html" title="Gtk.CssProvider.prototype.load_from_data">Gtk.CssProvider.prototype.load_from_data</a></span> and <span class=" link"><a href="Gtk.add_provider.html" title="Gtk.add_provider">Gtk.add_provider</a></span>
+   *
+   * .level-bar.fill-block.level-my-offset {
+   *   background-color: green;
+   *   border-style: solid;
+   *   border-color: black;
+   *   border-style: 1px;
+   * }
+   *&lt;!----&gt;/
+  gtk_level_bar_add_offset_value (GTK_LEVEL_BAR (level_bar),
+                                  "my-offset", 0.60);</p>
+<p class="p">  return level_bar;
+}
+&lt;/programlisting&gt;
+&lt;/example&gt;</p>
+<p class="p">The default interval of values is between zero and one, but it's possible to
+modify the interval using <span class=" link"><a href="Gtk.set_min_value.html" title="Gtk.set_min_value">Gtk.set_min_value</a></span> and
+<span class=" link"><a href="Gtk.set_max_value.html" title="Gtk.set_max_value">Gtk.set_max_value</a></span>. The value will be always drawn in proportion to
+the admissible interval, i.e. a value of 15 with a specified interval between
+10 and 20 is equivalent to a value of 0.5 with an interval between 0 and 1.
+When #GTK_LEVEL_BAR_MODE_DISCRETE is used, the bar level is rendered
+as a finite and number of separated blocks instead of a single one. The number
+of blocks that will be rendered is equal to the number of units specified by
+the admissible interval.
+For instance, to build a bar rendered with five blocks, it's sufficient to
+set the minimum value to 0 and the maximum value to 5 after changing the indicator
+mode to discrete.</p>
+<div class="synopsis"><div class="inner">
+<div class="title title-synopsis"><h2><span class="title">Hierarchy</span></h2></div>
+<div class="region"><div class="contents"><div class="tree"><div class="inner"><div class="region"><ul class="tree"><li class="tree">
+<div>
+        <span class=" code">GObject.Object</span>
+      
+      </div>
+<ul class="tree"><li class="tree">
+<div>
+        <span class=" code">GObject.InitiallyUnowned</span>
+      
+      </div>
+<ul class="tree"><li class="tree">
+<div>
+        <span class=" code">Gtk.Widget</span>
+      
+      </div>
+<ul class="tree"><li class="tree"><div>
+        <span class=" code">Gtk.LevelBar</span>
+      </div></li></ul>
+</li></ul>
+</li></ul>
+</li></ul></div></div></div></div></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Methods</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.LevelBar.add_offset_value.html" title="Gtk.LevelBar.prototype.add_offset_value">Gtk.LevelBar.prototype.add_offset_value</a></li>
+<li class="links "><a href="Gtk.LevelBar.get_inverted.html" title="Gtk.LevelBar.prototype.get_inverted">Gtk.LevelBar.prototype.get_inverted</a></li>
+<li class="links "><a href="Gtk.LevelBar.get_max_value.html" title="Gtk.LevelBar.prototype.get_max_value">Gtk.LevelBar.prototype.get_max_value</a></li>
+<li class="links "><a href="Gtk.LevelBar.get_min_value.html" title="Gtk.LevelBar.prototype.get_min_value">Gtk.LevelBar.prototype.get_min_value</a></li>
+<li class="links "><a href="Gtk.LevelBar.get_mode.html" title="Gtk.LevelBar.prototype.get_mode">Gtk.LevelBar.prototype.get_mode</a></li>
+<li class="links "><a href="Gtk.LevelBar.get_offset_value.html" title="Gtk.LevelBar.prototype.get_offset_value">Gtk.LevelBar.prototype.get_offset_value</a></li>
+<li class="links "><a href="Gtk.LevelBar.get_value.html" title="Gtk.LevelBar.prototype.get_value">Gtk.LevelBar.prototype.get_value</a></li>
+<li class="links "><a href="Gtk.LevelBar.remove_offset_value.html" title="Gtk.LevelBar.prototype.remove_offset_value">Gtk.LevelBar.prototype.remove_offset_value</a></li>
+<li class="links "><a href="Gtk.LevelBar.set_inverted.html" title="Gtk.LevelBar.prototype.set_inverted">Gtk.LevelBar.prototype.set_inverted</a></li>
+<li class="links "><a href="Gtk.LevelBar.set_max_value.html" title="Gtk.LevelBar.prototype.set_max_value">Gtk.LevelBar.prototype.set_max_value</a></li>
+<li class="links "><a href="Gtk.LevelBar.set_min_value.html" title="Gtk.LevelBar.prototype.set_min_value">Gtk.LevelBar.prototype.set_min_value</a></li>
+<li class="links "><a href="Gtk.LevelBar.set_mode.html" title="Gtk.LevelBar.prototype.set_mode">Gtk.LevelBar.prototype.set_mode</a></li>
+<li class="links "><a href="Gtk.LevelBar.set_value.html" title="Gtk.LevelBar.prototype.set_value">Gtk.LevelBar.prototype.set_value</a></li>
+</ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Properties</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.LevelBar-inverted.html" title="Gtk.LevelBar:inverted">inverted</a></li>
+<li class="links "><a href="Gtk.LevelBar-max-value.html" title="Gtk.LevelBar:max-value">max-value</a></li>
+<li class="links "><a href="Gtk.LevelBar-min-value.html" title="Gtk.LevelBar:min-value">min-value</a></li>
+<li class="links "><a href="Gtk.LevelBar-mode.html" title="Gtk.LevelBar:mode">mode</a></li>
+<li class="links "><a href="Gtk.LevelBar-value.html" title="Gtk.LevelBar:value">value</a></li>
+</ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Signals</span></h2></div>
+<div class="region"><ul><li class="links "><a href="Gtk.LevelBar-offset-changed.html" title="Gtk.LevelBar::offset-changed">offset-changed</a></li></ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Virtual functions</span></h2></div>
+<div class="region"><ul><li class="links "><a href="Gtk.LevelBar-offset_changed.html" title="Gtk.LevelBar::offset_changed">Gtk.LevelBar::offset_changed</a></li></ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Other</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.LevelBar.new.html" title="Gtk.LevelBar.new">Gtk.LevelBar.new</a></li>
+<li class="links "><a href="Gtk.LevelBar.new_for_interval.html" title="Gtk.LevelBar.new_for_interval">Gtk.LevelBar.new_for_interval</a></li>
+</ul></div>
+</div></div>
+</div>
+<div class="sect sect-links" role="navigation">
+<div class="hgroup"></div>
+<div class="contents"><div class="links guidelinks"><div class="inner">
+<div class="title"><h2><span class="title">More Information</span></h2></div>
+<div class="region"><ul><li class="links "><a href="index.html" title="Index">Index</a></li></ul></div>
+</div></div></div>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="footer"></div>
+</div></body>
+</html>

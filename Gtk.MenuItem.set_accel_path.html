@@ -1,0 +1,52 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Gtk.MenuItem.prototype.set_accel_path</title>
+<link rel="stylesheet" type="text/css" href="C.css">
+<script type="text/javascript" src="jquery.js"></script><script type="text/javascript" src="jquery.syntax.js"></script><script type="text/javascript" src="yelp.js"></script>
+</head>
+<body><div class="page" role="main">
+<div class="header"><div class="trails" role="navigation"><div class="trail">
+<a class="trail" href="index.html" title="Index">Index</a> » <a class="trail" href="Gtk.MenuItem.html" title="Gtk.MenuItem">Gtk.MenuItem</a> » </div></div></div>
+<div class="body">
+<div class="hgroup"><h1 class="title"><span class="title">Gtk.MenuItem.prototype.set_accel_path</span></h1></div>
+<div class="region">
+<div class="contents">
+<div class="synopsis"><div class="inner"><div class="region"><div class="contents"><div class="code"><pre class="contents ">function set_accel_path(accel_path:String):void {
+    // Gjs wrapper for gtk_menu_item_set_accel_path()
+}</pre></div></div></div></div></div>
+<p class="p">Set the accelerator path on <span class=" code">menu_item</span>, through which runtime
+changes of the menu item's accelerator caused by the user can be
+identified and saved to persistent storage (see <span class=" link"><a href="Gtk.AccelMap.save.html" title="save">save</a></span>
+on this). To set up a default accelerator for this menu item, call
+<span class=" link"><a href="Gtk.AccelMap.add_entry.html" title="add_entry">add_entry</a></span> with the same <span class=" code">accel_path</span>. See also
+<span class=" link"><a href="Gtk.AccelMap.add_entry.html" title="add_entry">add_entry</a></span> on the specifics of accelerator paths,
+and <span class=" link"><a href="Gtk.Menu.set_accel_path.html" title="Gtk.Menu.prototype.set_accel_path">Gtk.Menu.prototype.set_accel_path</a></span> for a more convenient variant of
+this function.</p>
+<p class="p">This function is basically a convenience wrapper that handles
+calling <span class=" link"><a href="Gtk.set_accel_path.html" title="Gtk.set_accel_path">Gtk.set_accel_path</a></span> with the appropriate accelerator
+group for the menu item.</p>
+<p class="p">Note that you do need to set an accelerator on the parent menu with
+<span class=" link"><a href="Gtk.Menu.set_accel_group.html" title="Gtk.Menu.prototype.set_accel_group">Gtk.Menu.prototype.set_accel_group</a></span> for this to work.</p>
+<p class="p">Note that <span class=" code">accel_path</span> string will be stored in a <span class=" link"><a href="GLib.Quark.html" title="GLib.Quark">GLib.Quark</a></span>.
+Therefore, if you pass a static string, you can save some memory
+by interning it first with g_intern_static_string().</p>
+<div class="terms"><div class="inner"><div class="region"><dl class="terms">
+<dt class="terms"><span class=" code">accel_path</span></dt>
+<dd class="terms"><p class="p">accelerator path, corresponding to this menu item's functionality, or <span class=" code">null</span> to unset the current path.</p></dd>
+</dl></div></div></div>
+</div>
+<div class="sect sect-links" role="navigation">
+<div class="hgroup"></div>
+<div class="contents"><div class="links guidelinks"><div class="inner">
+<div class="title"><h2><span class="title">More Information</span></h2></div>
+<div class="region"><ul><li class="links "><a href="Gtk.MenuItem.html" title="Gtk.MenuItem">Gtk.MenuItem</a></li></ul></div>
+</div></div></div>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="footer"></div>
+</div></body>
+</html>

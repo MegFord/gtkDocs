@@ -1,0 +1,328 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Gtk.Label</title>
+<link rel="stylesheet" type="text/css" href="C.css">
+<script type="text/javascript" src="jquery.js"></script><script type="text/javascript" src="jquery.syntax.js"></script><script type="text/javascript" src="yelp.js"></script>
+</head>
+<body><div class="page" role="main">
+<div class="header"><div class="trails" role="navigation"><div class="trail">
+<a class="trail" href="index.html" title="Index">Index</a> » </div></div></div>
+<div class="body">
+<div class="hgroup"><h1 class="title"><span class="title">Gtk.Label</span></h1></div>
+<div class="region">
+<div class="contents">
+<div class="synopsis"><div class="inner"><div class="region"><div class="contents"><div class="code"><pre class="contents ">const Gtk = imports.gi.Gtk;
+
+let label = new Gtk.Label({
+    <span class=" link"><a href="Gtk.Label-angle.html" title="Gtk.Label:angle">angle</a></span>: value,
+    <span class=" link"><a href="Gtk.Label-attributes.html" title="Gtk.Label:attributes">attributes</a></span>: value,
+    <span class=" link"><a href="Gtk.Label-ellipsize.html" title="Gtk.Label:ellipsize">ellipsize</a></span>: value,
+    <span class=" link"><a href="Gtk.Label-justify.html" title="Gtk.Label:justify">justify</a></span>: value,
+    <span class=" link"><a href="Gtk.Label-label.html" title="Gtk.Label:label">label</a></span>: value,
+    <span class=" link"><a href="Gtk.Label-max-width-chars.html" title="Gtk.Label:max-width-chars">max_width_chars</a></span>: value,
+    <span class=" link"><a href="Gtk.Label-mnemonic-widget.html" title="Gtk.Label:mnemonic-widget">mnemonic_widget</a></span>: value,
+    <span class=" link"><a href="Gtk.Label-pattern.html" title="Gtk.Label:pattern">pattern</a></span>: value,
+    <span class=" link"><a href="Gtk.Label-selectable.html" title="Gtk.Label:selectable">selectable</a></span>: value,
+    <span class=" link"><a href="Gtk.Label-single-line-mode.html" title="Gtk.Label:single-line-mode">single_line_mode</a></span>: value,
+    <span class=" link"><a href="Gtk.Label-track-visited-links.html" title="Gtk.Label:track-visited-links">track_visited_links</a></span>: value,
+    <span class=" link"><a href="Gtk.Label-use-markup.html" title="Gtk.Label:use-markup">use_markup</a></span>: value,
+    <span class=" link"><a href="Gtk.Label-use-underline.html" title="Gtk.Label:use-underline">use_underline</a></span>: value,
+    <span class=" link"><a href="Gtk.Label-width-chars.html" title="Gtk.Label:width-chars">width_chars</a></span>: value,
+    <span class=" link"><a href="Gtk.Label-wrap.html" title="Gtk.Label:wrap">wrap</a></span>: value,
+    <span class=" link"><a href="Gtk.Label-wrap-mode.html" title="Gtk.Label:wrap-mode">wrap_mode</a></span>: value,
+});
+  </pre></div></div></div></div></div>
+<p class="p">The <span class=" link"><a href="Gtk.Label.html" title="Gtk.Label">Gtk.Label</a></span> widget displays a small amount of text. As the name
+implies, most labels are used to label another widget such as a
+<span class=" link"><a href="Gtk.Button.html" title="Gtk.Button">Gtk.Button</a></span>, a <span class=" link"><a href="Gtk.MenuItem.html" title="Gtk.MenuItem">Gtk.MenuItem</a></span>, or a <span class=" link"><a href="Gtk.ComboBox.html" title="Gtk.ComboBox">Gtk.ComboBox</a></span>.</p>
+<p class="p">&lt;refsect2 id="GtkLabel-BUILDER-UI"&gt;
+&lt;title&gt;GtkLabel as GtkBuildable&lt;/title&gt;
+&lt;para&gt;
+The GtkLabel implementation of the GtkBuildable interface supports a
+custom &amp;lt;attributes&amp;gt; element, which supports any number of &amp;lt;attribute&amp;gt;
+elements. the &amp;lt;attribute&amp;gt; element has attributes named name, value,
+start and end and allows you to specify <span class=" link"><a href="Pango.Attribute.html" title="Pango.Attribute">Pango.Attribute</a></span> values for this label.</p>
+<p class="p">&lt;example&gt;
+&lt;title&gt;A UI definition fragment specifying Pango attributes&lt;/title&gt;
+&lt;programlisting&gt;&lt;![CDATA[
+&lt;object class="GtkLabel"&gt;
+  &lt;attributes&gt;
+    &lt;attribute name="weight" value="PANGO_WEIGHT_BOLD"/&gt;
+    &lt;attribute name="background" value="red" start="5" end="10"/&gt;"
+  &lt;/attributes&gt;
+&lt;/object&gt;
+]]&gt;&lt;/programlisting&gt;
+&lt;/example&gt;
+The start and end attributes specify the range of characters to which the
+Pango attribute applies. If start and end are not specified, the attribute is
+applied to the whole text. Note that specifying ranges does not make much
+sense with translatable attributes. Use markup embedded in the translatable
+content instead.
+&lt;/para&gt;
+&lt;/refsect2&gt;
+&lt;refsect2&gt;
+&lt;title&gt;Mnemonics&lt;/title&gt;
+&lt;para&gt;
+Labels may contain &lt;firstterm&gt;mnemonics&lt;/firstterm&gt;. Mnemonics are
+underlined characters in the label, used for keyboard navigation.
+Mnemonics are created by providing a string with an underscore before
+the mnemonic character, such as &lt;literal&gt;"_File"&lt;/literal&gt;, to the
+functions <span class=" link"><a href="Gtk.new_with_mnemonic.html" title="Gtk.new_with_mnemonic">Gtk.new_with_mnemonic</a></span> or
+<span class=" link"><a href="Gtk.set_text_with_mnemonic.html" title="Gtk.set_text_with_mnemonic">Gtk.set_text_with_mnemonic</a></span>.</p>
+<p class="p">Mnemonics automatically activate any activatable widget the label is
+inside, such as a <span class=" link"><a href="Gtk.Button.html" title="Gtk.Button">Gtk.Button</a></span>; if the label is not inside the
+mnemonic's target widget, you have to tell the label about the target
+using <span class=" link"><a href="Gtk.set_mnemonic_widget.html" title="Gtk.set_mnemonic_widget">Gtk.set_mnemonic_widget</a></span>. Here's a simple example where
+the label is inside a button:</p>
+<p class="p">&lt;informalexample&gt;
+&lt;programlisting&gt;
+  // Pressing Alt+H will activate this button
+  button = gtk_button_new (&lt;!-- --&gt;);
+  label = gtk_label_new_with_mnemonic ("_Hello");
+  gtk_container_add (GTK_CONTAINER (button), label);
+&lt;/programlisting&gt;
+&lt;/informalexample&gt;</p>
+<p class="p">There's a convenience function to create buttons with a mnemonic label
+already inside:</p>
+<p class="p">&lt;informalexample&gt;
+&lt;programlisting&gt;
+  // Pressing Alt+H will activate this button
+  button = gtk_button_new_with_mnemonic ("_Hello");
+&lt;/programlisting&gt;
+&lt;/informalexample&gt;</p>
+<p class="p">To create a mnemonic for a widget alongside the label, such as a
+<span class=" link"><a href="Gtk.Entry.html" title="Gtk.Entry">Gtk.Entry</a></span>, you have to point the label at the entry with
+<span class=" link"><a href="Gtk.set_mnemonic_widget.html" title="Gtk.set_mnemonic_widget">Gtk.set_mnemonic_widget</a></span>:</p>
+<p class="p">&lt;informalexample&gt;
+&lt;programlisting&gt;
+  // Pressing Alt+H will focus the entry
+  entry = gtk_entry_new (&lt;!-- --&gt;);
+  label = gtk_label_new_with_mnemonic ("_Hello");
+  gtk_label_set_mnemonic_widget (GTK_LABEL (label), entry);
+&lt;/programlisting&gt;
+&lt;/informalexample&gt;
+&lt;/para&gt;
+&lt;/refsect2&gt;
+&lt;refsect2&gt;
+&lt;title&gt;Markup (styled text)&lt;/title&gt;
+&lt;para&gt;
+To make it easy to format text in a label (changing colors, fonts,
+etc.), label text can be provided in a simple &lt;link
+linkend="PangoMarkupFormat"&gt;markup format&lt;/link&gt;.
+Here's how to create a label with a small font:</p>
+<p class="p">&lt;informalexample&gt;
+&lt;programlisting&gt;
+  label = gtk_label_new (NULL);
+  gtk_label_set_markup (GTK_LABEL (label), "&lt;small&gt;Small text&lt;/small&gt;");
+&lt;/programlisting&gt;
+&lt;/informalexample&gt;</p>
+<p class="p">(See &lt;link
+linkend="PangoMarkupFormat"&gt;complete documentation&lt;/link&gt; of available
+tags in the Pango manual.)</p>
+<p class="p">The markup passed to <span class=" link"><a href="Gtk.set_markup.html" title="Gtk.set_markup">Gtk.set_markup</a></span> must be valid; for example,
+literal &amp;lt;, &amp;gt; and &amp;amp; characters must be escaped as \&amp;lt;,
+\gt;, and \&amp;amp;. If you pass text obtained from the user, file,
+or a network to <span class=" link"><a href="Gtk.set_markup.html" title="Gtk.set_markup">Gtk.set_markup</a></span>, you'll want to escape it with
+g_markup_escape_text() or g_markup_printf_escaped().</p>
+<p class="p">Markup strings are just a convenient way to set the <span class=" link"><a href="Pango.AttrList.html" title="Pango.AttrList">Pango.AttrList</a></span> on
+a label; <span class=" link"><a href="Gtk.set_attributes.html" title="Gtk.set_attributes">Gtk.set_attributes</a></span> may be a simpler way to set
+attributes in some cases. Be careful though; <span class=" link"><a href="Pango.AttrList.html" title="Pango.AttrList">Pango.AttrList</a></span> tends to
+cause internationalization problems, unless you're applying attributes
+to the entire string (i.e. unless you set the range of each attribute
+to [0, %G_MAXINT)). The reason is that specifying the start_index and
+end_index for a <span class=" link"><a href="Pango.Attribute.html" title="Pango.Attribute">Pango.Attribute</a></span> requires knowledge of the exact string
+being displayed, so translations will cause problems.
+&lt;/para&gt;
+&lt;/refsect2&gt;
+&lt;refsect2&gt;
+&lt;title&gt;Selectable labels&lt;/title&gt;
+Labels can be made selectable with <span class=" link"><a href="Gtk.set_selectable.html" title="Gtk.set_selectable">Gtk.set_selectable</a></span>.
+Selectable labels allow the user to copy the label contents to
+the clipboard. Only labels that contain useful-to-copy information
+&amp;mdash; such as error messages &amp;mdash; should be made selectable.
+&lt;/refsect2&gt;
+&lt;refsect2 id="label-text-layout"&gt;
+&lt;title&gt;Text layout&lt;/title&gt;
+&lt;para&gt;
+A label can contain any number of paragraphs, but will have
+performance problems if it contains more than a small number.
+Paragraphs are separated by newlines or other paragraph separators
+understood by Pango.</p>
+<p class="p">Labels can automatically wrap text if you call
+<span class=" link"><a href="Gtk.set_line_wrap.html" title="Gtk.set_line_wrap">Gtk.set_line_wrap</a></span>.</p>
+<p class="p"><span class=" link"><a href="Gtk.set_justify.html" title="Gtk.set_justify">Gtk.set_justify</a></span> sets how the lines in a label align
+with one another. If you want to set how the label as a whole
+aligns in its available space, see <span class=" link"><a href="Gtk.set_alignment.html" title="Gtk.set_alignment">Gtk.set_alignment</a></span>.</p>
+<p class="p">The <span class=" link"><a href="Gtk.width-chars.html" title="Gtk.width-chars">Gtk.width-chars</a></span> and <span class=" link"><a href="Gtk.max-width-chars.html" title="Gtk.max-width-chars">Gtk.max-width-chars</a></span> properties
+can be used to control the size allocation of ellipsized or wrapped
+labels. For ellipsizing labels, if either is specified (and less
+than the actual text size), it is used as the minimum width, and the actual
+text size is used as the natural width of the label. For wrapping labels,
+width-chars is used as the minimum width, if specified, and max-width-chars
+is used as the natural width. Even if max-width-chars specified, wrapping
+labels will be rewrapped to use all of the available width.</p>
+<p class="p">&lt;note&gt;&lt;para&gt;
+Note that the interpretation of <span class=" link"><a href="Gtk.width-chars.html" title="Gtk.width-chars">Gtk.width-chars</a></span> and
+<span class=" link"><a href="Gtk.max-width-chars.html" title="Gtk.max-width-chars">Gtk.max-width-chars</a></span> has changed a bit with the introduction of
+&lt;link linkend="geometry-management"&gt;width-for-height geometry management.&lt;/link&gt;
+&lt;/para&gt;&lt;/note&gt;
+&lt;/para&gt;
+&lt;/refsect2&gt;
+&lt;refsect2&gt;
+&lt;title&gt;Links&lt;/title&gt;
+&lt;para&gt;
+Since 2.18, GTK+ supports markup for clickable hyperlinks in addition
+to regular Pango markup. The markup for links is borrowed from HTML, using the
+&lt;tag&gt;a&lt;/tag&gt; with href and title attributes. GTK+ renders links similar to the
+way they appear in web browsers, with colored, underlined text. The title
+attribute is displayed as a tooltip on the link. An example looks like this:</p>
+<p class="p">&lt;informalexample&gt;&lt;programlisting&gt;
+gtk_label_set_markup (label, "Go to the &lt;a href="http://www.gtk.org" title="&amp;lt;i&amp;gt;Our&amp;lt;/i&amp;gt; website"&gt;GTK+ website&lt;/a&gt; for more...");
+&lt;/programlisting&gt;&lt;/informalexample&gt;</p>
+<p class="p">It is possible to implement custom handling for links and their tooltips with
+the <span class=" link"><a href="Gtk.activate-link.html" title="Gtk.activate-link">Gtk.activate-link</a></span> signal and the <span class=" link"><a href="Gtk.get_current_uri.html" title="Gtk.get_current_uri">Gtk.get_current_uri</a></span> function.
+&lt;/para&gt;
+&lt;/refsect2&gt;</p>
+<div class="synopsis"><div class="inner">
+<div class="title title-synopsis"><h2><span class="title">Hierarchy</span></h2></div>
+<div class="region"><div class="contents"><div class="tree"><div class="inner"><div class="region"><ul class="tree"><li class="tree">
+<div>
+        <span class=" code">GObject.Object</span>
+      
+      </div>
+<ul class="tree"><li class="tree">
+<div>
+        <span class=" code">GObject.InitiallyUnowned</span>
+      
+      </div>
+<ul class="tree"><li class="tree">
+<div>
+        <span class=" code">Gtk.Widget</span>
+      
+      </div>
+<ul class="tree"><li class="tree">
+<div>
+        <span class=" code">Gtk.Misc</span>
+      
+      </div>
+<ul class="tree"><li class="tree"><div>
+        <span class=" code">Gtk.Label</span>
+      </div></li></ul>
+</li></ul>
+</li></ul>
+</li></ul>
+</li></ul></div></div></div></div></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Methods</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.Label.get_angle.html" title="Gtk.Label.prototype.get_angle">Gtk.Label.prototype.get_angle</a></li>
+<li class="links "><a href="Gtk.Label.get_attributes.html" title="Gtk.Label.prototype.get_attributes">Gtk.Label.prototype.get_attributes</a></li>
+<li class="links "><a href="Gtk.Label.get_current_uri.html" title="Gtk.Label.prototype.get_current_uri">Gtk.Label.prototype.get_current_uri</a></li>
+<li class="links "><a href="Gtk.Label.get_ellipsize.html" title="Gtk.Label.prototype.get_ellipsize">Gtk.Label.prototype.get_ellipsize</a></li>
+<li class="links "><a href="Gtk.Label.get_justify.html" title="Gtk.Label.prototype.get_justify">Gtk.Label.prototype.get_justify</a></li>
+<li class="links "><a href="Gtk.Label.get_label.html" title="Gtk.Label.prototype.get_label">Gtk.Label.prototype.get_label</a></li>
+<li class="links "><a href="Gtk.Label.get_layout.html" title="Gtk.Label.prototype.get_layout">Gtk.Label.prototype.get_layout</a></li>
+<li class="links "><a href="Gtk.Label.get_layout_offsets.html" title="Gtk.Label.prototype.get_layout_offsets">Gtk.Label.prototype.get_layout_offsets</a></li>
+<li class="links "><a href="Gtk.Label.get_line_wrap.html" title="Gtk.Label.prototype.get_line_wrap">Gtk.Label.prototype.get_line_wrap</a></li>
+<li class="links "><a href="Gtk.Label.get_line_wrap_mode.html" title="Gtk.Label.prototype.get_line_wrap_mode">Gtk.Label.prototype.get_line_wrap_mode</a></li>
+<li class="links "><a href="Gtk.Label.get_max_width_chars.html" title="Gtk.Label.prototype.get_max_width_chars">Gtk.Label.prototype.get_max_width_chars</a></li>
+<li class="links "><a href="Gtk.Label.get_mnemonic_keyval.html" title="Gtk.Label.prototype.get_mnemonic_keyval">Gtk.Label.prototype.get_mnemonic_keyval</a></li>
+<li class="links "><a href="Gtk.Label.get_mnemonic_widget.html" title="Gtk.Label.prototype.get_mnemonic_widget">Gtk.Label.prototype.get_mnemonic_widget</a></li>
+<li class="links "><a href="Gtk.Label.get_selectable.html" title="Gtk.Label.prototype.get_selectable">Gtk.Label.prototype.get_selectable</a></li>
+<li class="links "><a href="Gtk.Label.get_selection_bounds.html" title="Gtk.Label.prototype.get_selection_bounds">Gtk.Label.prototype.get_selection_bounds</a></li>
+<li class="links "><a href="Gtk.Label.get_single_line_mode.html" title="Gtk.Label.prototype.get_single_line_mode">Gtk.Label.prototype.get_single_line_mode</a></li>
+<li class="links "><a href="Gtk.Label.get_text.html" title="Gtk.Label.prototype.get_text">Gtk.Label.prototype.get_text</a></li>
+<li class="links "><a href="Gtk.Label.get_track_visited_links.html" title="Gtk.Label.prototype.get_track_visited_links">Gtk.Label.prototype.get_track_visited_links</a></li>
+<li class="links "><a href="Gtk.Label.get_use_markup.html" title="Gtk.Label.prototype.get_use_markup">Gtk.Label.prototype.get_use_markup</a></li>
+<li class="links "><a href="Gtk.Label.get_use_underline.html" title="Gtk.Label.prototype.get_use_underline">Gtk.Label.prototype.get_use_underline</a></li>
+<li class="links "><a href="Gtk.Label.get_width_chars.html" title="Gtk.Label.prototype.get_width_chars">Gtk.Label.prototype.get_width_chars</a></li>
+<li class="links "><a href="Gtk.Label.select_region.html" title="Gtk.Label.prototype.select_region">Gtk.Label.prototype.select_region</a></li>
+<li class="links "><a href="Gtk.Label.set_angle.html" title="Gtk.Label.prototype.set_angle">Gtk.Label.prototype.set_angle</a></li>
+<li class="links "><a href="Gtk.Label.set_attributes.html" title="Gtk.Label.prototype.set_attributes">Gtk.Label.prototype.set_attributes</a></li>
+<li class="links "><a href="Gtk.Label.set_ellipsize.html" title="Gtk.Label.prototype.set_ellipsize">Gtk.Label.prototype.set_ellipsize</a></li>
+<li class="links "><a href="Gtk.Label.set_justify.html" title="Gtk.Label.prototype.set_justify">Gtk.Label.prototype.set_justify</a></li>
+<li class="links "><a href="Gtk.Label.set_label.html" title="Gtk.Label.prototype.set_label">Gtk.Label.prototype.set_label</a></li>
+<li class="links "><a href="Gtk.Label.set_line_wrap.html" title="Gtk.Label.prototype.set_line_wrap">Gtk.Label.prototype.set_line_wrap</a></li>
+<li class="links "><a href="Gtk.Label.set_line_wrap_mode.html" title="Gtk.Label.prototype.set_line_wrap_mode">Gtk.Label.prototype.set_line_wrap_mode</a></li>
+<li class="links "><a href="Gtk.Label.set_markup.html" title="Gtk.Label.prototype.set_markup">Gtk.Label.prototype.set_markup</a></li>
+<li class="links "><a href="Gtk.Label.set_markup_with_mnemonic.html" title="Gtk.Label.prototype.set_markup_with_mnemonic">Gtk.Label.prototype.set_markup_with_mnemonic</a></li>
+<li class="links "><a href="Gtk.Label.set_max_width_chars.html" title="Gtk.Label.prototype.set_max_width_chars">Gtk.Label.prototype.set_max_width_chars</a></li>
+<li class="links "><a href="Gtk.Label.set_mnemonic_widget.html" title="Gtk.Label.prototype.set_mnemonic_widget">Gtk.Label.prototype.set_mnemonic_widget</a></li>
+<li class="links "><a href="Gtk.Label.set_pattern.html" title="Gtk.Label.prototype.set_pattern">Gtk.Label.prototype.set_pattern</a></li>
+<li class="links "><a href="Gtk.Label.set_selectable.html" title="Gtk.Label.prototype.set_selectable">Gtk.Label.prototype.set_selectable</a></li>
+<li class="links "><a href="Gtk.Label.set_single_line_mode.html" title="Gtk.Label.prototype.set_single_line_mode">Gtk.Label.prototype.set_single_line_mode</a></li>
+<li class="links "><a href="Gtk.Label.set_text.html" title="Gtk.Label.prototype.set_text">Gtk.Label.prototype.set_text</a></li>
+<li class="links "><a href="Gtk.Label.set_text_with_mnemonic.html" title="Gtk.Label.prototype.set_text_with_mnemonic">Gtk.Label.prototype.set_text_with_mnemonic</a></li>
+<li class="links "><a href="Gtk.Label.set_track_visited_links.html" title="Gtk.Label.prototype.set_track_visited_links">Gtk.Label.prototype.set_track_visited_links</a></li>
+<li class="links "><a href="Gtk.Label.set_use_markup.html" title="Gtk.Label.prototype.set_use_markup">Gtk.Label.prototype.set_use_markup</a></li>
+<li class="links "><a href="Gtk.Label.set_use_underline.html" title="Gtk.Label.prototype.set_use_underline">Gtk.Label.prototype.set_use_underline</a></li>
+<li class="links "><a href="Gtk.Label.set_width_chars.html" title="Gtk.Label.prototype.set_width_chars">Gtk.Label.prototype.set_width_chars</a></li>
+</ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Properties</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.Label-angle.html" title="Gtk.Label:angle">angle</a></li>
+<li class="links "><a href="Gtk.Label-attributes.html" title="Gtk.Label:attributes">attributes</a></li>
+<li class="links "><a href="Gtk.Label-cursor-position.html" title="Gtk.Label:cursor-position">cursor-position</a></li>
+<li class="links "><a href="Gtk.Label-ellipsize.html" title="Gtk.Label:ellipsize">ellipsize</a></li>
+<li class="links "><a href="Gtk.Label-justify.html" title="Gtk.Label:justify">justify</a></li>
+<li class="links "><a href="Gtk.Label-label.html" title="Gtk.Label:label">label</a></li>
+<li class="links "><a href="Gtk.Label-max-width-chars.html" title="Gtk.Label:max-width-chars">max-width-chars</a></li>
+<li class="links "><a href="Gtk.Label-mnemonic-keyval.html" title="Gtk.Label:mnemonic-keyval">mnemonic-keyval</a></li>
+<li class="links "><a href="Gtk.Label-mnemonic-widget.html" title="Gtk.Label:mnemonic-widget">mnemonic-widget</a></li>
+<li class="links "><a href="Gtk.Label-pattern.html" title="Gtk.Label:pattern">pattern</a></li>
+<li class="links "><a href="Gtk.Label-selectable.html" title="Gtk.Label:selectable">selectable</a></li>
+<li class="links "><a href="Gtk.Label-selection-bound.html" title="Gtk.Label:selection-bound">selection-bound</a></li>
+<li class="links "><a href="Gtk.Label-single-line-mode.html" title="Gtk.Label:single-line-mode">single-line-mode</a></li>
+<li class="links "><a href="Gtk.Label-track-visited-links.html" title="Gtk.Label:track-visited-links">track-visited-links</a></li>
+<li class="links "><a href="Gtk.Label-use-markup.html" title="Gtk.Label:use-markup">use-markup</a></li>
+<li class="links "><a href="Gtk.Label-use-underline.html" title="Gtk.Label:use-underline">use-underline</a></li>
+<li class="links "><a href="Gtk.Label-width-chars.html" title="Gtk.Label:width-chars">width-chars</a></li>
+<li class="links "><a href="Gtk.Label-wrap.html" title="Gtk.Label:wrap">wrap</a></li>
+<li class="links "><a href="Gtk.Label-wrap-mode.html" title="Gtk.Label:wrap-mode">wrap-mode</a></li>
+</ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Signals</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.Label-activate-current-link.html" title="Gtk.Label::activate-current-link">activate-current-link</a></li>
+<li class="links "><a href="Gtk.Label-activate-link.html" title="Gtk.Label::activate-link">activate-link</a></li>
+<li class="links "><a href="Gtk.Label-copy-clipboard.html" title="Gtk.Label::copy-clipboard">copy-clipboard</a></li>
+<li class="links "><a href="Gtk.Label-move-cursor.html" title="Gtk.Label::move-cursor">move-cursor</a></li>
+<li class="links "><a href="Gtk.Label-populate-popup.html" title="Gtk.Label::populate-popup">populate-popup</a></li>
+</ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Virtual functions</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.Label-activate_link.html" title="Gtk.Label::activate_link">Gtk.Label::activate_link</a></li>
+<li class="links "><a href="Gtk.Label-copy_clipboard.html" title="Gtk.Label::copy_clipboard">Gtk.Label::copy_clipboard</a></li>
+<li class="links "><a href="Gtk.Label-move_cursor.html" title="Gtk.Label::move_cursor">Gtk.Label::move_cursor</a></li>
+<li class="links "><a href="Gtk.Label-populate_popup.html" title="Gtk.Label::populate_popup">Gtk.Label::populate_popup</a></li>
+</ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Other</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.Label.new.html" title="Gtk.Label.new">Gtk.Label.new</a></li>
+<li class="links "><a href="Gtk.Label.new_with_mnemonic.html" title="Gtk.Label.new_with_mnemonic">Gtk.Label.new_with_mnemonic</a></li>
+</ul></div>
+</div></div>
+</div>
+<div class="sect sect-links" role="navigation">
+<div class="hgroup"></div>
+<div class="contents"><div class="links guidelinks"><div class="inner">
+<div class="title"><h2><span class="title">More Information</span></h2></div>
+<div class="region"><ul><li class="links "><a href="index.html" title="Index">Index</a></li></ul></div>
+</div></div></div>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="footer"></div>
+</div></body>
+</html>

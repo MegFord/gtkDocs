@@ -1,0 +1,224 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Gtk.MenuButton</title>
+<link rel="stylesheet" type="text/css" href="C.css">
+<script type="text/javascript" src="jquery.js"></script><script type="text/javascript" src="jquery.syntax.js"></script><script type="text/javascript" src="yelp.js"></script>
+</head>
+<body><div class="page" role="main">
+<div class="header"><div class="trails" role="navigation"><div class="trail">
+<a class="trail" href="index.html" title="Index">Index</a> » </div></div></div>
+<div class="body">
+<div class="hgroup"><h1 class="title"><span class="title">Gtk.MenuButton</span></h1></div>
+<div class="region">
+<div class="contents">
+<div class="synopsis"><div class="inner"><div class="region"><div class="contents"><div class="code"><pre class="contents ">const Gtk = imports.gi.Gtk;
+
+let menu_button = new Gtk.MenuButton({
+    <span class=" link"><a href="Gtk.MenuButton-align-widget.html" title="Gtk.MenuButton:align-widget">align_widget</a></span>: value,
+    <span class=" link"><a href="Gtk.MenuButton-direction.html" title="Gtk.MenuButton:direction">direction</a></span>: value,
+    <span class=" link"><a href="Gtk.MenuButton-menu-model.html" title="Gtk.MenuButton:menu-model">menu_model</a></span>: value,
+    <span class=" link"><a href="Gtk.MenuButton-popup.html" title="Gtk.MenuButton:popup">popup</a></span>: value,
+});
+  </pre></div></div></div></div></div>
+<p class="p">The <span class=" link"><a href="Gtk.MenuButton.html" title="Gtk.MenuButton">Gtk.MenuButton</a></span> widget is used to display a menu when clicked on.
+This menu can be provided either as a <span class=" link"><a href="Gtk.Menu.html" title="Gtk.Menu">Gtk.Menu</a></span>, or an abstract <span class=" link"><a href="Gio.MenuModel.html" title="Gio.MenuModel">Gio.MenuModel</a></span>.</p>
+<p class="p">The <span class=" link"><a href="Gtk.MenuButton.html" title="Gtk.MenuButton">Gtk.MenuButton</a></span> widget can hold any valid child widget. That is, it
+can hold almost any other standard <span class=" link"><a href="Gtk.Widget.html" title="Gtk.Widget">Gtk.Widget</a></span>. The most commonly used
+child is the provided <span class=" link"><a href="Gtk.Arrow.html" title="Gtk.Arrow">Gtk.Arrow</a></span>.</p>
+<p class="p">The positioning of the menu is determined by the <span class=" link"><a href="Gtk.direction.html" title="Gtk.direction">Gtk.direction</a></span>
+property of the menu button and the <span class=" link"><a href="Gtk.halign.html" title="Gtk.halign">Gtk.halign</a></span> or <span class=" link"><a href="Gtk.valign.html" title="Gtk.valign">Gtk.valign</a></span>
+properties of the menu. For example, when the direction is <span class=" link"><a href="Gtk.ArrowType.html" title="Gtk.ArrowType">Gtk.ArrowType</a></span>.down
+and the horizontal alignment is <span class=" link"><a href="Gtk.Align.html" title="Gtk.Align">Gtk.Align</a></span>.start, the menu will be
+positioned below the button, with the starting edge (depending on the
+text direction) of the menu aligned with the starting edge of the button.
+If there is not enough space below the button, the menu is popped up above
+the button instead. If the alignment would move part of the menu offscreen,
+it is 'pushed in'.</p>
+<p class="p">&lt;informaltable&gt;
+  &lt;tgroup cols="4"&gt;
+    &lt;tbody&gt;
+      &lt;row&gt;
+        &lt;entry&gt;&lt;/entry&gt;
+        &lt;entry&gt;halign = start&lt;/entry&gt;
+        &lt;entry&gt;halign = center&lt;/entry&gt;
+        &lt;entry&gt;halign = end&lt;/entry&gt;
+      &lt;/row&gt;
+    &lt;row&gt;
+      &lt;entry&gt;direction = down&lt;/entry&gt;
+      &lt;entry&gt;
+        &lt;inlinemediaobject&gt;
+          &lt;imageobject&gt;&lt;imagedata fileref="down-start.png" format="PNG"/&gt;&lt;/imageobject&gt;
+        &lt;/inlinemediaobject&gt;
+      &lt;/entry&gt;
+      &lt;entry&gt;
+        &lt;inlinemediaobject&gt;
+          &lt;imageobject&gt;&lt;imagedata fileref="down-center.png" format="PNG"/&gt;&lt;/imageobject&gt;
+        &lt;/inlinemediaobject&gt;
+      &lt;/entry&gt;
+      &lt;entry&gt;
+        &lt;inlinemediaobject&gt;
+          &lt;imageobject&gt;&lt;imagedata fileref="down-end.png" format="PNG"/&gt;&lt;/imageobject&gt;
+        &lt;/inlinemediaobject&gt;
+      &lt;/entry&gt;
+    &lt;/row&gt;
+    &lt;row&gt;
+      &lt;entry&gt;direction = up&lt;/entry&gt;
+      &lt;entry&gt;
+        &lt;inlinemediaobject&gt;
+          &lt;imageobject&gt;&lt;imagedata fileref="up-start.png" format="PNG"/&gt;&lt;/imageobject&gt;
+        &lt;/inlinemediaobject&gt;
+      &lt;/entry&gt;
+      &lt;entry&gt;
+        &lt;inlinemediaobject&gt;
+          &lt;imageobject&gt;&lt;imagedata fileref="up-center.png" format="PNG"/&gt;&lt;/imageobject&gt;
+        &lt;/inlinemediaobject&gt;
+      &lt;/entry&gt;
+      &lt;entry&gt;
+        &lt;inlinemediaobject&gt;
+          &lt;imageobject&gt;&lt;imagedata fileref="up-end.png" format="PNG"/&gt;&lt;/imageobject&gt;
+        &lt;/inlinemediaobject&gt;
+      &lt;/entry&gt;
+     &lt;/row&gt;
+    &lt;/tbody&gt;
+  &lt;/tgroup&gt;
+&lt;/informaltable&gt;
+&lt;informaltable&gt;
+  &lt;tgroup cols="3"&gt;
+    &lt;tbody&gt;
+      &lt;row&gt;
+        &lt;entry&gt;&lt;/entry&gt;
+        &lt;entry&gt;direction = left&lt;/entry&gt;
+        &lt;entry&gt;direction = right&lt;/entry&gt;
+      &lt;/row&gt;
+    &lt;row&gt;
+      &lt;entry&gt;valign = start&lt;/entry&gt;
+      &lt;entry&gt;
+        &lt;inlinemediaobject&gt;
+          &lt;imageobject&gt;&lt;imagedata fileref="left-start.png" format="PNG"/&gt;&lt;/imageobject&gt;
+        &lt;/inlinemediaobject&gt;
+      &lt;/entry&gt;
+      &lt;entry&gt;
+        &lt;inlinemediaobject&gt;
+          &lt;imageobject&gt;&lt;imagedata fileref="right-start.png" format="PNG"/&gt;&lt;/imageobject&gt;
+        &lt;/inlinemediaobject&gt;
+      &lt;/entry&gt;
+    &lt;/row&gt;
+    &lt;row&gt;
+      &lt;entry&gt;valign = center&lt;/entry&gt;
+      &lt;entry&gt;
+        &lt;inlinemediaobject&gt;
+          &lt;imageobject&gt;&lt;imagedata fileref="left-center.png" format="PNG"/&gt;&lt;/imageobject&gt;
+        &lt;/inlinemediaobject&gt;
+      &lt;/entry&gt;
+      &lt;entry&gt;
+        &lt;inlinemediaobject&gt;
+          &lt;imageobject&gt;&lt;imagedata fileref="right-center.png" format="PNG"/&gt;&lt;/imageobject&gt;
+        &lt;/inlinemediaobject&gt;
+      &lt;/entry&gt;
+    &lt;/row&gt;
+    &lt;row&gt;
+      &lt;entry&gt;valign = end&lt;/entry&gt;
+      &lt;entry&gt;
+        &lt;inlinemediaobject&gt;
+          &lt;imageobject&gt;&lt;imagedata fileref="left-end.png" format="PNG"/&gt;&lt;/imageobject&gt;
+        &lt;/inlinemediaobject&gt;
+      &lt;/entry&gt;
+      &lt;entry&gt;
+        &lt;inlinemediaobject&gt;
+          &lt;imageobject&gt;&lt;imagedata fileref="right-end.png" format="PNG"/&gt;&lt;/imageobject&gt;
+        &lt;/inlinemediaobject&gt;
+      &lt;/entry&gt;
+     &lt;/row&gt;
+    &lt;/tbody&gt;
+  &lt;/tgroup&gt;
+&lt;/informaltable&gt;</p>
+<div class="synopsis"><div class="inner">
+<div class="title title-synopsis"><h2><span class="title">Hierarchy</span></h2></div>
+<div class="region"><div class="contents"><div class="tree"><div class="inner"><div class="region"><ul class="tree"><li class="tree">
+<div>
+        <span class=" code">GObject.Object</span>
+      
+      </div>
+<ul class="tree"><li class="tree">
+<div>
+        <span class=" code">GObject.InitiallyUnowned</span>
+      
+      </div>
+<ul class="tree"><li class="tree">
+<div>
+        <span class=" code">Gtk.Widget</span>
+      
+      </div>
+<ul class="tree"><li class="tree">
+<div>
+        <span class=" code">Gtk.Container</span>
+      
+      </div>
+<ul class="tree"><li class="tree">
+<div>
+        <span class=" code">Gtk.Bin</span>
+      
+      </div>
+<ul class="tree"><li class="tree">
+<div>
+        <span class=" code">Gtk.Button</span>
+      
+      </div>
+<ul class="tree"><li class="tree">
+<div>
+        <span class=" code">Gtk.ToggleButton</span>
+      
+      </div>
+<ul class="tree"><li class="tree"><div>
+        <span class=" code">Gtk.MenuButton</span>
+      </div></li></ul>
+</li></ul>
+</li></ul>
+</li></ul>
+</li></ul>
+</li></ul>
+</li></ul>
+</li></ul></div></div></div></div></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Methods</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.MenuButton.get_align_widget.html" title="Gtk.MenuButton.prototype.get_align_widget">Gtk.MenuButton.prototype.get_align_widget</a></li>
+<li class="links "><a href="Gtk.MenuButton.get_direction.html" title="Gtk.MenuButton.prototype.get_direction">Gtk.MenuButton.prototype.get_direction</a></li>
+<li class="links "><a href="Gtk.MenuButton.get_menu_model.html" title="Gtk.MenuButton.prototype.get_menu_model">Gtk.MenuButton.prototype.get_menu_model</a></li>
+<li class="links "><a href="Gtk.MenuButton.get_popup.html" title="Gtk.MenuButton.prototype.get_popup">Gtk.MenuButton.prototype.get_popup</a></li>
+<li class="links "><a href="Gtk.MenuButton.set_align_widget.html" title="Gtk.MenuButton.prototype.set_align_widget">Gtk.MenuButton.prototype.set_align_widget</a></li>
+<li class="links "><a href="Gtk.MenuButton.set_direction.html" title="Gtk.MenuButton.prototype.set_direction">Gtk.MenuButton.prototype.set_direction</a></li>
+<li class="links "><a href="Gtk.MenuButton.set_menu_model.html" title="Gtk.MenuButton.prototype.set_menu_model">Gtk.MenuButton.prototype.set_menu_model</a></li>
+<li class="links "><a href="Gtk.MenuButton.set_popup.html" title="Gtk.MenuButton.prototype.set_popup">Gtk.MenuButton.prototype.set_popup</a></li>
+</ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Properties</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.MenuButton-align-widget.html" title="Gtk.MenuButton:align-widget">align-widget</a></li>
+<li class="links "><a href="Gtk.MenuButton-direction.html" title="Gtk.MenuButton:direction">direction</a></li>
+<li class="links "><a href="Gtk.MenuButton-menu-model.html" title="Gtk.MenuButton:menu-model">menu-model</a></li>
+<li class="links "><a href="Gtk.MenuButton-popup.html" title="Gtk.MenuButton:popup">popup</a></li>
+</ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Other</span></h2></div>
+<div class="region"><ul><li class="links "><a href="Gtk.MenuButton.new.html" title="Gtk.MenuButton.new">Gtk.MenuButton.new</a></li></ul></div>
+</div></div>
+</div>
+<div class="sect sect-links" role="navigation">
+<div class="hgroup"></div>
+<div class="contents"><div class="links guidelinks"><div class="inner">
+<div class="title"><h2><span class="title">More Information</span></h2></div>
+<div class="region"><ul><li class="links "><a href="index.html" title="Index">Index</a></li></ul></div>
+</div></div></div>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="footer"></div>
+</div></body>
+</html>

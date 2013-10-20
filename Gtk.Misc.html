@@ -1,0 +1,93 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Gtk.Misc</title>
+<link rel="stylesheet" type="text/css" href="C.css">
+<script type="text/javascript" src="jquery.js"></script><script type="text/javascript" src="jquery.syntax.js"></script><script type="text/javascript" src="yelp.js"></script>
+</head>
+<body><div class="page" role="main">
+<div class="header"><div class="trails" role="navigation"><div class="trail">
+<a class="trail" href="index.html" title="Index">Index</a> » </div></div></div>
+<div class="body">
+<div class="hgroup"><h1 class="title"><span class="title">Gtk.Misc</span></h1></div>
+<div class="region">
+<div class="contents">
+<div class="synopsis"><div class="inner"><div class="region"><div class="contents"><div class="code"><pre class="contents ">const Gtk = imports.gi.Gtk;
+
+let misc = new Gtk.Misc({
+    <span class=" link"><a href="Gtk.Misc-xalign.html" title="Gtk.Misc:xalign">xalign</a></span>: value,
+    <span class=" link"><a href="Gtk.Misc-xpad.html" title="Gtk.Misc:xpad">xpad</a></span>: value,
+    <span class=" link"><a href="Gtk.Misc-yalign.html" title="Gtk.Misc:yalign">yalign</a></span>: value,
+    <span class=" link"><a href="Gtk.Misc-ypad.html" title="Gtk.Misc:ypad">ypad</a></span>: value,
+});
+  </pre></div></div></div></div></div>
+<p class="p">The <span class=" link"><a href="Gtk.Misc.html" title="Gtk.Misc">Gtk.Misc</a></span> widget is an abstract widget which is not useful itself, but
+is used to derive subclasses which have alignment and padding attributes.</p>
+<p class="p">The horizontal and vertical padding attributes allows extra space to be
+added around the widget.</p>
+<p class="p">The horizontal and vertical alignment attributes enable the widget to be
+positioned within its allocated area. Note that if the widget is added to
+a container in such a way that it expands automatically to fill its
+allocated area, the alignment settings will not alter the widgets position.</p>
+<p class="p">&lt;note&gt;
+Note that the desired effect can in most cases be achieved by using the
+<span class=" link"><a href="Gtk.halign.html" title="Gtk.halign">Gtk.halign</a></span>, <span class=" link"><a href="Gtk.valign.html" title="Gtk.valign">Gtk.valign</a></span> and <span class=" link"><a href="Gtk.margin.html" title="Gtk.margin">Gtk.margin</a></span> properties
+on the child widget, so GtkMisc should not be used in new code.
+&lt;/note&gt;</p>
+<div class="synopsis"><div class="inner">
+<div class="title title-synopsis"><h2><span class="title">Hierarchy</span></h2></div>
+<div class="region"><div class="contents"><div class="tree"><div class="inner"><div class="region"><ul class="tree"><li class="tree">
+<div>
+        <span class=" code">GObject.Object</span>
+      
+      </div>
+<ul class="tree"><li class="tree">
+<div>
+        <span class=" code">GObject.InitiallyUnowned</span>
+      
+      </div>
+<ul class="tree"><li class="tree">
+<div>
+        <span class=" code">Gtk.Widget</span>
+      
+      </div>
+<ul class="tree"><li class="tree"><div>
+        <span class=" code">Gtk.Misc</span>
+      </div></li></ul>
+</li></ul>
+</li></ul>
+</li></ul></div></div></div></div></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Methods</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.Misc.get_alignment.html" title="Gtk.Misc.prototype.get_alignment">Gtk.Misc.prototype.get_alignment</a></li>
+<li class="links "><a href="Gtk.Misc.get_padding.html" title="Gtk.Misc.prototype.get_padding">Gtk.Misc.prototype.get_padding</a></li>
+<li class="links "><a href="Gtk.Misc.set_alignment.html" title="Gtk.Misc.prototype.set_alignment">Gtk.Misc.prototype.set_alignment</a></li>
+<li class="links "><a href="Gtk.Misc.set_padding.html" title="Gtk.Misc.prototype.set_padding">Gtk.Misc.prototype.set_padding</a></li>
+</ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Properties</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.Misc-xalign.html" title="Gtk.Misc:xalign">xalign</a></li>
+<li class="links "><a href="Gtk.Misc-xpad.html" title="Gtk.Misc:xpad">xpad</a></li>
+<li class="links "><a href="Gtk.Misc-yalign.html" title="Gtk.Misc:yalign">yalign</a></li>
+<li class="links "><a href="Gtk.Misc-ypad.html" title="Gtk.Misc:ypad">ypad</a></li>
+</ul></div>
+</div></div>
+</div>
+<div class="sect sect-links" role="navigation">
+<div class="hgroup"></div>
+<div class="contents"><div class="links guidelinks"><div class="inner">
+<div class="title"><h2><span class="title">More Information</span></h2></div>
+<div class="region"><ul><li class="links "><a href="index.html" title="Index">Index</a></li></ul></div>
+</div></div></div>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="footer"></div>
+</div></body>
+</html>

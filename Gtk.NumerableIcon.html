@@ -1,0 +1,100 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Gtk.NumerableIcon</title>
+<link rel="stylesheet" type="text/css" href="C.css">
+<script type="text/javascript" src="jquery.js"></script><script type="text/javascript" src="jquery.syntax.js"></script><script type="text/javascript" src="yelp.js"></script>
+</head>
+<body><div class="page" role="main">
+<div class="header"><div class="trails" role="navigation"><div class="trail">
+<a class="trail" href="index.html" title="Index">Index</a> » </div></div></div>
+<div class="body">
+<div class="hgroup"><h1 class="title"><span class="title">Gtk.NumerableIcon</span></h1></div>
+<div class="region">
+<div class="contents">
+<div class="synopsis"><div class="inner"><div class="region"><div class="contents"><div class="code"><pre class="contents ">const Gtk = imports.gi.Gtk;
+
+let numerable_icon = new Gtk.NumerableIcon({
+    <span class=" link"><a href="Gtk.NumerableIcon-background-icon.html" title="Gtk.NumerableIcon:background-icon">background_icon</a></span>: value,
+    <span class=" link"><a href="Gtk.NumerableIcon-background-icon-name.html" title="Gtk.NumerableIcon:background-icon-name">background_icon_name</a></span>: value,
+    <span class=" link"><a href="Gtk.NumerableIcon-count.html" title="Gtk.NumerableIcon:count">count</a></span>: value,
+    <span class=" link"><a href="Gtk.NumerableIcon-label.html" title="Gtk.NumerableIcon:label">label</a></span>: value,
+    <span class=" link"><a href="Gtk.NumerableIcon-style-context.html" title="Gtk.NumerableIcon:style-context">style_context</a></span>: value,
+});
+  </pre></div></div></div></div></div>
+<p class="p">GtkNumerableIcon is a subclass of <span class=" link"><a href="Gio.EmblemedIcon.html" title="Gio.EmblemedIcon">Gio.EmblemedIcon</a></span> that can
+show a number or short string as an emblem. The number can
+be overlayed on top of another emblem, if desired.</p>
+<p class="p">It supports theming by taking font and color information
+from a provided <span class=" link"><a href="Gtk.StyleContext.html" title="Gtk.StyleContext">Gtk.StyleContext</a></span>; see
+<span class=" link"><a href="Gtk.set_style_context.html" title="Gtk.set_style_context">Gtk.set_style_context</a></span>.</p>
+<p class="p">&lt;example&gt;
+&lt;title&gt;Typical numerable icons&lt;/title&gt;
+&lt;inlinegraphic fileref="numerableicon.png" format="PNG"/&gt;
+&lt;inlinegraphic fileref="numerableicon2.png" format="PNG"/&gt;
+&lt;/example&gt;</p>
+<div class="synopsis"><div class="inner">
+<div class="title title-synopsis"><h2><span class="title">Hierarchy</span></h2></div>
+<div class="region"><div class="contents"><div class="tree"><div class="inner"><div class="region"><ul class="tree"><li class="tree">
+<div>
+        <span class=" code">GObject.Object</span>
+      
+      </div>
+<ul class="tree"><li class="tree">
+<div>
+        <span class=" code">Gio.EmblemedIcon</span>
+      
+      </div>
+<ul class="tree"><li class="tree"><div>
+        <span class=" code">Gtk.NumerableIcon</span>
+      </div></li></ul>
+</li></ul>
+</li></ul></div></div></div></div></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Methods</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.NumerableIcon.get_background_gicon.html" title="Gtk.NumerableIcon.prototype.get_background_gicon">Gtk.NumerableIcon.prototype.get_background_gicon</a></li>
+<li class="links "><a href="Gtk.NumerableIcon.get_background_icon_name.html" title="Gtk.NumerableIcon.prototype.get_background_icon_name">Gtk.NumerableIcon.prototype.get_background_icon_name</a></li>
+<li class="links "><a href="Gtk.NumerableIcon.get_count.html" title="Gtk.NumerableIcon.prototype.get_count">Gtk.NumerableIcon.prototype.get_count</a></li>
+<li class="links "><a href="Gtk.NumerableIcon.get_label.html" title="Gtk.NumerableIcon.prototype.get_label">Gtk.NumerableIcon.prototype.get_label</a></li>
+<li class="links "><a href="Gtk.NumerableIcon.get_style_context.html" title="Gtk.NumerableIcon.prototype.get_style_context">Gtk.NumerableIcon.prototype.get_style_context</a></li>
+<li class="links "><a href="Gtk.NumerableIcon.set_background_gicon.html" title="Gtk.NumerableIcon.prototype.set_background_gicon">Gtk.NumerableIcon.prototype.set_background_gicon</a></li>
+<li class="links "><a href="Gtk.NumerableIcon.set_background_icon_name.html" title="Gtk.NumerableIcon.prototype.set_background_icon_name">Gtk.NumerableIcon.prototype.set_background_icon_name</a></li>
+<li class="links "><a href="Gtk.NumerableIcon.set_count.html" title="Gtk.NumerableIcon.prototype.set_count">Gtk.NumerableIcon.prototype.set_count</a></li>
+<li class="links "><a href="Gtk.NumerableIcon.set_label.html" title="Gtk.NumerableIcon.prototype.set_label">Gtk.NumerableIcon.prototype.set_label</a></li>
+<li class="links "><a href="Gtk.NumerableIcon.set_style_context.html" title="Gtk.NumerableIcon.prototype.set_style_context">Gtk.NumerableIcon.prototype.set_style_context</a></li>
+</ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Functions</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.NumerableIcon.new.html" title="new">new</a></li>
+<li class="links "><a href="Gtk.NumerableIcon.new_with_style_context.html" title="new_with_style_context">new_with_style_context</a></li>
+</ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Properties</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.NumerableIcon-background-icon.html" title="Gtk.NumerableIcon:background-icon">background-icon</a></li>
+<li class="links "><a href="Gtk.NumerableIcon-background-icon-name.html" title="Gtk.NumerableIcon:background-icon-name">background-icon-name</a></li>
+<li class="links "><a href="Gtk.NumerableIcon-count.html" title="Gtk.NumerableIcon:count">count</a></li>
+<li class="links "><a href="Gtk.NumerableIcon-label.html" title="Gtk.NumerableIcon:label">label</a></li>
+<li class="links "><a href="Gtk.NumerableIcon-style-context.html" title="Gtk.NumerableIcon:style-context">style-context</a></li>
+</ul></div>
+</div></div>
+</div>
+<div class="sect sect-links" role="navigation">
+<div class="hgroup"></div>
+<div class="contents"><div class="links guidelinks"><div class="inner">
+<div class="title"><h2><span class="title">More Information</span></h2></div>
+<div class="region"><ul><li class="links "><a href="index.html" title="Index">Index</a></li></ul></div>
+</div></div></div>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="footer"></div>
+</div></body>
+</html>

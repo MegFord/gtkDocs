@@ -1,0 +1,69 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Gtk.MenuShell.prototype.bind_model</title>
+<link rel="stylesheet" type="text/css" href="C.css">
+<script type="text/javascript" src="jquery.js"></script><script type="text/javascript" src="jquery.syntax.js"></script><script type="text/javascript" src="yelp.js"></script>
+</head>
+<body><div class="page" role="main">
+<div class="header"><div class="trails" role="navigation"><div class="trail">
+<a class="trail" href="index.html" title="Index">Index</a> » <a class="trail" href="Gtk.MenuShell.html" title="Gtk.MenuShell">Gtk.MenuShell</a> » </div></div></div>
+<div class="body">
+<div class="hgroup"><h1 class="title"><span class="title">Gtk.MenuShell.prototype.bind_model</span></h1></div>
+<div class="region">
+<div class="contents">
+<div class="synopsis"><div class="inner"><div class="region"><div class="contents"><div class="code"><pre class="contents ">function bind_model(model:Gio.MenuModel, action_namespace:String, with_separators:Boolean):void {
+    // Gjs wrapper for gtk_menu_shell_bind_model()
+}</pre></div></div></div></div></div>
+<p class="p">Establishes a binding between a <span class=" link"><a href="Gtk.MenuShell.html" title="Gtk.MenuShell">Gtk.MenuShell</a></span> and a <span class=" link"><a href="Gio.MenuModel.html" title="Gio.MenuModel">Gio.MenuModel</a></span>.</p>
+<p class="p">The contents of @shell are removed and then refilled with menu items
+according to <span class=" code">model</span>.  When <span class=" code">model</span> changes, @shell is updated.
+Calling this function twice on @shell with different <span class=" code">model</span> will
+cause the first binding to be replaced with a binding to the new
+model. If <span class=" code">model</span> is <span class=" code">null</span> then any previous binding is undone and
+all children are removed.</p>
+<p class="p"><span class=" code">with_separators</span> determines if toplevel items (eg: sections) have
+separators inserted between them.  This is typically desired for
+menus but doesn't make sense for menubars.</p>
+<p class="p">If <span class=" code">action_namespace</span> is non-<span class=" code">null</span> then the effect is as if all
+actions mentioned in the <span class=" code">model</span> have their names prefixed with the
+namespace, plus a dot.  For example, if the action "quit" is
+mentioned and <span class=" code">action_namespace</span> is "app" then the effective action
+name is "app.quit".</p>
+<p class="p">This function uses <span class=" link"><a href="Gtk.Actionable.html" title="Gtk.Actionable">Gtk.Actionable</a></span> to define the action name and
+target values on the created menu items.  If you want to use an
+action group other than "app" and "win", or if you want to use a
+<span class=" link"><a href="Gtk.MenuShell.html" title="Gtk.MenuShell">Gtk.MenuShell</a></span> outside of a <span class=" link"><a href="Gtk.ApplicationWindow.html" title="Gtk.ApplicationWindow">Gtk.ApplicationWindow</a></span>, then you will need
+to attach your own action group to the widget hierarchy using
+<span class=" link"><a href="Gtk.insert_action_group.html" title="Gtk.insert_action_group">Gtk.insert_action_group</a></span>.  As an example, if you created a
+group with a "quit" action and inserted it with the name "mygroup"
+then you would use the action name "mygroup.quit" in your
+<span class=" link"><a href="Gio.MenuModel.html" title="Gio.MenuModel">Gio.MenuModel</a></span>.</p>
+<p class="p">For most cases you are probably better off using
+<span class=" link"><a href="Gtk.Menu.new_from_model.html" title="Gtk.Menu.new_from_model">Gtk.Menu.new_from_model</a></span> or <span class=" link"><a href="Gtk.MenuBar.new_from_model.html" title="Gtk.MenuBar.new_from_model">Gtk.MenuBar.new_from_model</a></span> or just
+directly passing the <span class=" link"><a href="Gio.MenuModel.html" title="Gio.MenuModel">Gio.MenuModel</a></span> to <span class=" link"><a href="Gtk.Application.set_app_menu.html" title="Gtk.Application.prototype.set_app_menu">Gtk.Application.prototype.set_app_menu</a></span> or
+gtk_application_set_menu_bar().</p>
+<p class="p">Since 3.6</p>
+<div class="terms"><div class="inner"><div class="region"><dl class="terms">
+<dt class="terms"><span class=" code">model</span></dt>
+<dd class="terms"><p class="p">the <span class=" link"><a href="Gio.MenuModel.html" title="Gio.MenuModel">Gio.MenuModel</a></span> to bind to or <span class=" code">null</span> to remove binding</p></dd>
+<dt class="terms"><span class=" code">action_namespace</span></dt>
+<dd class="terms"><p class="p">the namespace for actions in <span class=" code">model</span></p></dd>
+<dt class="terms"><span class=" code">with_separators</span></dt>
+<dd class="terms"><p class="p"><span class=" code">true</span> if toplevel items in @shell should have separators between them</p></dd>
+</dl></div></div></div>
+</div>
+<div class="sect sect-links" role="navigation">
+<div class="hgroup"></div>
+<div class="contents"><div class="links guidelinks"><div class="inner">
+<div class="title"><h2><span class="title">More Information</span></h2></div>
+<div class="region"><ul><li class="links "><a href="Gtk.MenuShell.html" title="Gtk.MenuShell">Gtk.MenuShell</a></li></ul></div>
+</div></div></div>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="footer"></div>
+</div></body>
+</html>

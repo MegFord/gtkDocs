@@ -1,0 +1,203 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Gtk.ListStore</title>
+<link rel="stylesheet" type="text/css" href="C.css">
+<script type="text/javascript" src="jquery.js"></script><script type="text/javascript" src="jquery.syntax.js"></script><script type="text/javascript" src="yelp.js"></script>
+</head>
+<body><div class="page" role="main">
+<div class="header"><div class="trails" role="navigation"><div class="trail">
+<a class="trail" href="index.html" title="Index">Index</a> » </div></div></div>
+<div class="body">
+<div class="hgroup"><h1 class="title"><span class="title">Gtk.ListStore</span></h1></div>
+<div class="region">
+<div class="contents">
+<div class="synopsis"><div class="inner"><div class="region"><div class="contents"><div class="code"><pre class="contents ">const Gtk = imports.gi.Gtk;
+
+let list_store = new Gtk.ListStore();
+  </pre></div></div></div></div></div>
+<p class="p">The <span class=" link"><a href="Gtk.ListStore.html" title="Gtk.ListStore">Gtk.ListStore</a></span> object is a list model for use with a <span class=" link"><a href="Gtk.TreeView.html" title="Gtk.TreeView">Gtk.TreeView</a></span>
+widget.  It implements the <span class=" link"><a href="Gtk.TreeModel.html" title="Gtk.TreeModel">Gtk.TreeModel</a></span> interface, and consequentialy,
+can use all of the methods available there.  It also implements the
+<span class=" link"><a href="Gtk.TreeSortable.html" title="Gtk.TreeSortable">Gtk.TreeSortable</a></span> interface so it can be sorted by the view.
+Finally, it also implements the tree
+&lt;link linkend="gtk3-GtkTreeView-drag-and-drop"&gt;drag and drop&lt;/link&gt;
+interfaces.</p>
+<p class="p">The <span class=" link"><a href="Gtk.ListStore.html" title="Gtk.ListStore">Gtk.ListStore</a></span> can accept most GObject types as a column type, though
+it can't accept all custom types.  Internally, it will keep a copy of
+data passed in (such as a string or a boxed pointer).  Columns that
+accept <span class=" link"><a href="GObject.Object.html" title="GObject.Object">GObject.Object</a></span>&lt;!-- --&gt;s are handled a little differently.  The
+<span class=" link"><a href="Gtk.ListStore.html" title="Gtk.ListStore">Gtk.ListStore</a></span> will keep a reference to the object instead of copying the
+value.  As a result, if the object is modified, it is up to the
+application writer to call <span class=" link"><a href="Gtk.row_changed.html" title="Gtk.row_changed">Gtk.row_changed</a></span> to emit the
+#GtkTreeModel::row_changed signal.  This most commonly affects lists with
+<span class=" link"><a href="GdkPixbuf.Pixbuf.html" title="GdkPixbuf.Pixbuf">GdkPixbuf.Pixbuf</a></span>&lt;!-- --&gt;s stored.</p>
+<p class="p">&lt;example&gt;
+&lt;title&gt;Creating a simple list store.&lt;/title&gt;
+&lt;programlisting&gt;
+enum {
+  COLUMN_STRING,
+  COLUMN_INT,
+  COLUMN_BOOLEAN,
+  N_COLUMNS
+};</p>
+<p class="p">{
+  GtkListStore *list_store;
+  GtkTreePath *path;
+  GtkTreeIter iter;
+  gint i;</p>
+<p class="p">  list_store = gtk_list_store_new (N_COLUMNS,
+                                   G_TYPE_STRING,
+                                   G_TYPE_INT,
+                                   G_TYPE_BOOLEAN);</p>
+<p class="p">  for (i = 0; i &lt; 10; i++)
+    {
+      gchar *some_data;</p>
+<p class="p">      some_data = get_some_data (i);</p>
+<p class="p">      // Add a new row to the model
+      gtk_list_store_append (list_store, &amp;iter);
+      gtk_list_store_set (list_store, &amp;iter,
+                          COLUMN_STRING, some_data,
+                          COLUMN_INT, i,
+                          COLUMN_BOOLEAN,  FALSE,
+                          -1);</p>
+<p class="p">      /&lt;!----&gt;* As the store will keep a copy of the string internally, we
+       * free some_data.
+       *&lt;!----&gt;/
+      g_free (some_data);
+    }</p>
+<p class="p">  // Modify a particular row
+  path = gtk_tree_path_new_from_string ("4");
+  gtk_tree_model_get_iter (GTK_TREE_MODEL (list_store),
+                           &amp;iter,
+                           path);
+  gtk_tree_path_free (path);
+  gtk_list_store_set (list_store, &amp;iter,
+                      COLUMN_BOOLEAN, TRUE,
+                      -1);
+}
+&lt;/programlisting&gt;
+&lt;/example&gt;</p>
+<p class="p">&lt;refsect2&gt;
+&lt;title&gt;Performance Considerations&lt;/title&gt;
+Internally, the <span class=" link"><a href="Gtk.ListStore.html" title="Gtk.ListStore">Gtk.ListStore</a></span> was implemented with a linked list with a
+tail pointer prior to GTK+ 2.6.  As a result, it was fast at data
+insertion and deletion, and not fast at random data access.  The
+<span class=" link"><a href="Gtk.ListStore.html" title="Gtk.ListStore">Gtk.ListStore</a></span> sets the #GTK_TREE_MODEL_ITERS_PERSIST flag, which means
+that <span class=" link"><a href="Gtk.TreeIter.html" title="Gtk.TreeIter">Gtk.TreeIter</a></span>&lt;!-- --&gt;s can be cached while the row exists.  Thus, if
+access to a particular row is needed often and your code is expected to
+run on older versions of GTK+, it is worth keeping the iter around.
+&lt;/refsect2&gt;
+&lt;refsect2&gt;
+&lt;title&gt;Atomic Operations&lt;/title&gt;
+It is important to note that only the methods
+<span class=" link"><a href="Gtk.insert_with_values.html" title="Gtk.insert_with_values">Gtk.insert_with_values</a></span> and <span class=" link"><a href="Gtk.insert_with_valuesv.html" title="Gtk.insert_with_valuesv">Gtk.insert_with_valuesv</a></span>
+are atomic, in the sense that the row is being appended to the store and the
+values filled in in a single operation with regard to <span class=" link"><a href="Gtk.TreeModel.html" title="Gtk.TreeModel">Gtk.TreeModel</a></span> signaling.
+In contrast, using e.g. <span class=" link"><a href="Gtk.append.html" title="Gtk.append">Gtk.append</a></span> and then <span class=" link"><a href="Gtk.set.html" title="Gtk.set">Gtk.set</a></span>
+will first create a row, which triggers the <span class=" link"><a href="Gtk.row-inserted.html" title="Gtk.row-inserted">Gtk.row-inserted</a></span> signal
+on <span class=" link"><a href="Gtk.ListStore.html" title="Gtk.ListStore">Gtk.ListStore</a></span>. The row, however, is still empty, and any signal handler
+connecting to <span class=" link"><a href="Gtk.row-inserted.html" title="Gtk.row-inserted">Gtk.row-inserted</a></span> on this particular store should be prepared
+for the situation that the row might be empty. This is especially important
+if you are wrapping the <span class=" link"><a href="Gtk.ListStore.html" title="Gtk.ListStore">Gtk.ListStore</a></span> inside a <span class=" link"><a href="Gtk.TreeModelFilter.html" title="Gtk.TreeModelFilter">Gtk.TreeModelFilter</a></span> and are
+using a <span class=" link"><a href="Gtk.TreeModelFilterVisibleFunc.html" title="Gtk.TreeModelFilterVisibleFunc">Gtk.TreeModelFilterVisibleFunc</a></span>. Using any of the non-atomic operations
+to append rows to the <span class=" link"><a href="Gtk.ListStore.html" title="Gtk.ListStore">Gtk.ListStore</a></span> will cause the
+<span class=" link"><a href="Gtk.TreeModelFilterVisibleFunc.html" title="Gtk.TreeModelFilterVisibleFunc">Gtk.TreeModelFilterVisibleFunc</a></span> to be visited with an empty row first; the
+function must be prepared for that.
+&lt;/refsect2&gt;
+&lt;refsect2 id="GtkListStore-BUILDER-UI"&gt;
+&lt;title&gt;GtkListStore as GtkBuildable&lt;/title&gt;
+&lt;para&gt;
+The GtkListStore implementation of the GtkBuildable interface allows
+to specify the model columns with a &amp;lt;columns&amp;gt; element that may
+contain multiple &amp;lt;column&amp;gt; elements, each specifying one model
+column. The "type" attribute specifies the data type for the column.</p>
+<p class="p">Additionally, it is possible to specify content for the list store
+in the UI definition, with the &amp;lt;data&amp;gt; element. It can contain
+multiple &amp;lt;row&amp;gt; elements, each specifying to content for one
+row of the list model. Inside a &amp;lt;row&amp;gt;, the &amp;lt;col&amp;gt; elements
+specify the content for individual cells.</p>
+<p class="p">Note that it is probably more common to define your models
+in the code, and one might consider it a layering violation
+to specify the content of a list store in a UI definition,
+&lt;emphasis&gt;data&lt;/emphasis&gt;, not &lt;emphasis&gt;presentation&lt;/emphasis&gt;,
+and common wisdom is to separate the two, as far as possible.
+&lt;!-- FIXME a bit inconclusive --&gt;</p>
+<p class="p">&lt;example&gt;
+&lt;title&gt;A UI Definition fragment for a list store&lt;/title&gt;
+&lt;programlisting&gt;&lt;![CDATA[
+&lt;object class="GtkListStore"&gt;
+  &lt;columns&gt;
+    &lt;column type="gchararray"/&gt;
+    &lt;column type="gchararray"/&gt;
+    &lt;column type="gint"/&gt;
+  &lt;/columns&gt;
+  &lt;data&gt;
+    &lt;row&gt;
+      &lt;col id="0"&gt;John&lt;/col&gt;
+      &lt;col id="1"&gt;Doe&lt;/col&gt;
+      &lt;col id="2"&gt;25&lt;/col&gt;
+    &lt;/row&gt;
+    &lt;row&gt;
+      &lt;col id="0"&gt;Johan&lt;/col&gt;
+      &lt;col id="1"&gt;Dahlin&lt;/col&gt;
+      &lt;col id="2"&gt;50&lt;/col&gt;
+    &lt;/row&gt;
+  &lt;/data&gt;
+&lt;/object&gt;
+]]&gt;&lt;/programlisting&gt;
+&lt;/example&gt;
+&lt;/para&gt;
+&lt;/refsect2&gt;</p>
+<div class="synopsis"><div class="inner">
+<div class="title title-synopsis"><h2><span class="title">Hierarchy</span></h2></div>
+<div class="region"><div class="contents"><div class="tree"><div class="inner"><div class="region"><ul class="tree"><li class="tree">
+<div>
+        <span class=" code">GObject.Object</span>
+      
+      </div>
+<ul class="tree"><li class="tree"><div>
+        <span class=" code">Gtk.ListStore</span>
+      </div></li></ul>
+</li></ul></div></div></div></div></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Methods</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.ListStore.append.html" title="Gtk.ListStore.prototype.append">Gtk.ListStore.prototype.append</a></li>
+<li class="links "><a href="Gtk.ListStore.clear.html" title="Gtk.ListStore.prototype.clear">Gtk.ListStore.prototype.clear</a></li>
+<li class="links "><a href="Gtk.ListStore.insert.html" title="Gtk.ListStore.prototype.insert">Gtk.ListStore.prototype.insert</a></li>
+<li class="links "><a href="Gtk.ListStore.insert_after.html" title="Gtk.ListStore.prototype.insert_after">Gtk.ListStore.prototype.insert_after</a></li>
+<li class="links "><a href="Gtk.ListStore.insert_before.html" title="Gtk.ListStore.prototype.insert_before">Gtk.ListStore.prototype.insert_before</a></li>
+<li class="links "><a href="Gtk.ListStore.insert_with_valuesv.html" title="Gtk.ListStore.prototype.insert_with_valuesv">Gtk.ListStore.prototype.insert_with_valuesv</a></li>
+<li class="links "><a href="Gtk.ListStore.iter_is_valid.html" title="Gtk.ListStore.prototype.iter_is_valid">Gtk.ListStore.prototype.iter_is_valid</a></li>
+<li class="links "><a href="Gtk.ListStore.move_after.html" title="Gtk.ListStore.prototype.move_after">Gtk.ListStore.prototype.move_after</a></li>
+<li class="links "><a href="Gtk.ListStore.move_before.html" title="Gtk.ListStore.prototype.move_before">Gtk.ListStore.prototype.move_before</a></li>
+<li class="links "><a href="Gtk.ListStore.prepend.html" title="Gtk.ListStore.prototype.prepend">Gtk.ListStore.prototype.prepend</a></li>
+<li class="links "><a href="Gtk.ListStore.remove.html" title="Gtk.ListStore.prototype.remove">Gtk.ListStore.prototype.remove</a></li>
+<li class="links "><a href="Gtk.ListStore.reorder.html" title="Gtk.ListStore.prototype.reorder">Gtk.ListStore.prototype.reorder</a></li>
+<li class="links "><a href="Gtk.ListStore.set_column_types.html" title="Gtk.ListStore.prototype.set_column_types">Gtk.ListStore.prototype.set_column_types</a></li>
+<li class="links "><a href="Gtk.ListStore.set_value.html" title="Gtk.ListStore.prototype.set_value">Gtk.ListStore.prototype.set_value</a></li>
+<li class="links "><a href="Gtk.ListStore.set_valuesv.html" title="Gtk.ListStore.prototype.set_valuesv">Gtk.ListStore.prototype.set_valuesv</a></li>
+<li class="links "><a href="Gtk.ListStore.swap.html" title="Gtk.ListStore.prototype.swap">Gtk.ListStore.prototype.swap</a></li>
+</ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Other</span></h2></div>
+<div class="region"><ul><li class="links "><a href="Gtk.ListStore.newv.html" title="Gtk.ListStore.newv">Gtk.ListStore.newv</a></li></ul></div>
+</div></div>
+</div>
+<div class="sect sect-links" role="navigation">
+<div class="hgroup"></div>
+<div class="contents"><div class="links guidelinks"><div class="inner">
+<div class="title"><h2><span class="title">More Information</span></h2></div>
+<div class="region"><ul><li class="links "><a href="index.html" title="Index">Index</a></li></ul></div>
+</div></div></div>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="footer"></div>
+</div></body>
+</html>

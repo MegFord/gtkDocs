@@ -1,0 +1,42 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Gtk.PlacesSidebar.prototype.get_nth_bookmark</title>
+<link rel="stylesheet" type="text/css" href="C.css">
+<script type="text/javascript" src="jquery.js"></script><script type="text/javascript" src="jquery.syntax.js"></script><script type="text/javascript" src="yelp.js"></script>
+</head>
+<body><div class="page" role="main">
+<div class="header"><div class="trails" role="navigation"><div class="trail">
+<a class="trail" href="index.html" title="Index">Index</a> » <a class="trail" href="Gtk.PlacesSidebar.html" title="Gtk.PlacesSidebar">Gtk.PlacesSidebar</a> » </div></div></div>
+<div class="body">
+<div class="hgroup"><h1 class="title"><span class="title">Gtk.PlacesSidebar.prototype.get_nth_bookmark</span></h1></div>
+<div class="region">
+<div class="contents">
+<div class="synopsis"><div class="inner"><div class="region"><div class="contents"><div class="code"><pre class="contents ">function get_nth_bookmark(n:Number):Gio.File {
+    // Gjs wrapper for gtk_places_sidebar_get_nth_bookmark()
+}</pre></div></div></div></div></div>
+<p class="p">This function queries the bookmarks added by the user to the places sidebar,
+and returns one of them.  This function is used by <span class=" link"><a href="Gtk.FileChooser.html" title="Gtk.FileChooser">Gtk.FileChooser</a></span> to implement
+the "Alt-1", "Alt-2", etc. shortcuts, which activate the cooresponding bookmark.</p>
+<p class="p">Since 3.10</p>
+<div class="terms"><div class="inner"><div class="region"><dl class="terms">
+<dt class="terms"><span class=" code">n</span></dt>
+<dd class="terms"><p class="p">index of the bookmark to query</p></dd>
+<dt class="terms"><span class=" code">Returns</span></dt>
+<dd class="terms"><p class="p">The bookmark specified by the index <span class=" code">n</span>, or #NULL if no such index exist.  Note that the indices start at 0, even though the file chooser starts them with the keyboard shortcut "Alt-1".</p></dd>
+</dl></div></div></div>
+</div>
+<div class="sect sect-links" role="navigation">
+<div class="hgroup"></div>
+<div class="contents"><div class="links guidelinks"><div class="inner">
+<div class="title"><h2><span class="title">More Information</span></h2></div>
+<div class="region"><ul><li class="links "><a href="Gtk.PlacesSidebar.html" title="Gtk.PlacesSidebar">Gtk.PlacesSidebar</a></li></ul></div>
+</div></div></div>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="footer"></div>
+</div></body>
+</html>

@@ -1,0 +1,139 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Gtk.PlacesSidebar</title>
+<link rel="stylesheet" type="text/css" href="C.css">
+<script type="text/javascript" src="jquery.js"></script><script type="text/javascript" src="jquery.syntax.js"></script><script type="text/javascript" src="yelp.js"></script>
+</head>
+<body><div class="page" role="main">
+<div class="header"><div class="trails" role="navigation"><div class="trail">
+<a class="trail" href="index.html" title="Index">Index</a> » </div></div></div>
+<div class="body">
+<div class="hgroup"><h1 class="title"><span class="title">Gtk.PlacesSidebar</span></h1></div>
+<div class="region">
+<div class="contents">
+<div class="synopsis"><div class="inner"><div class="region"><div class="contents"><div class="code"><pre class="contents ">const Gtk = imports.gi.Gtk;
+
+let places_sidebar = new Gtk.PlacesSidebar({
+    <span class=" link"><a href="Gtk.PlacesSidebar-location.html" title="Gtk.PlacesSidebar:location">location</a></span>: value,
+    <span class=" link"><a href="Gtk.PlacesSidebar-open-flags.html" title="Gtk.PlacesSidebar:open-flags">open_flags</a></span>: value,
+    <span class=" link"><a href="Gtk.PlacesSidebar-show-connect-to-server.html" title="Gtk.PlacesSidebar:show-connect-to-server">show_connect_to_server</a></span>: value,
+    <span class=" link"><a href="Gtk.PlacesSidebar-show-desktop.html" title="Gtk.PlacesSidebar:show-desktop">show_desktop</a></span>: value,
+});
+  </pre></div></div></div></div></div>
+<p class="p"><span class=" link"><a href="Gtk.PlacesSidebar.html" title="Gtk.PlacesSidebar">Gtk.PlacesSidebar</a></span> is a widget that displays a list of frequently-used places in the
+file system:  the user's home directory, the user's bookmarks, and volumes and drives.
+This widget is used as a sidebar in <span class=" link"><a href="Gtk.FileChooser.html" title="Gtk.FileChooser">Gtk.FileChooser</a></span> and may be used by file managers
+and similar programs.</p>
+<p class="p">The places sidebar displays drives and volumes, and will automatically mount
+or unmount them when the user selects them.</p>
+<p class="p">Applications can hook to various signals in the places sidebar to customize
+its behavior.  For example, they can add extra commands to the context menu
+of the sidebar.</p>
+<p class="p">While bookmarks are completely in control of the user, the places sidebar also
+allows individual applications to provide extra shortcut folders that are unique
+to each application.  For example, a Paint program may want to add a shortcut
+for a Clipart folder.  You can do this with <span class=" link"><a href="Gtk.add_shortcut.html" title="Gtk.add_shortcut">Gtk.add_shortcut</a></span>.</p>
+<p class="p">To make use of the places sidebar, an application at least needs to connect
+to the <span class=" link"><a href="Gtk.open-location.html" title="Gtk.open-location">Gtk.open-location</a></span> signal.  This is emitted when the
+user selects in the sidebar a location to open.  The application should also
+call <span class=" link"><a href="Gtk.set_location.html" title="Gtk.set_location">Gtk.set_location</a></span> when it changes the currently-viewed
+location.</p>
+<div class="synopsis"><div class="inner">
+<div class="title title-synopsis"><h2><span class="title">Hierarchy</span></h2></div>
+<div class="region"><div class="contents"><div class="tree"><div class="inner"><div class="region"><ul class="tree"><li class="tree">
+<div>
+        <span class=" code">GObject.Object</span>
+      
+      </div>
+<ul class="tree"><li class="tree">
+<div>
+        <span class=" code">GObject.InitiallyUnowned</span>
+      
+      </div>
+<ul class="tree"><li class="tree">
+<div>
+        <span class=" code">Gtk.Widget</span>
+      
+      </div>
+<ul class="tree"><li class="tree">
+<div>
+        <span class=" code">Gtk.Container</span>
+      
+      </div>
+<ul class="tree"><li class="tree">
+<div>
+        <span class=" code">Gtk.Bin</span>
+      
+      </div>
+<ul class="tree"><li class="tree">
+<div>
+        <span class=" code">Gtk.ScrolledWindow</span>
+      
+      </div>
+<ul class="tree"><li class="tree"><div>
+        <span class=" code">Gtk.PlacesSidebar</span>
+      </div></li></ul>
+</li></ul>
+</li></ul>
+</li></ul>
+</li></ul>
+</li></ul>
+</li></ul></div></div></div></div></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Methods</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.PlacesSidebar.add_shortcut.html" title="Gtk.PlacesSidebar.prototype.add_shortcut">Gtk.PlacesSidebar.prototype.add_shortcut</a></li>
+<li class="links "><a href="Gtk.PlacesSidebar.get_location.html" title="Gtk.PlacesSidebar.prototype.get_location">Gtk.PlacesSidebar.prototype.get_location</a></li>
+<li class="links "><a href="Gtk.PlacesSidebar.get_nth_bookmark.html" title="Gtk.PlacesSidebar.prototype.get_nth_bookmark">Gtk.PlacesSidebar.prototype.get_nth_bookmark</a></li>
+<li class="links "><a href="Gtk.PlacesSidebar.get_open_flags.html" title="Gtk.PlacesSidebar.prototype.get_open_flags">Gtk.PlacesSidebar.prototype.get_open_flags</a></li>
+<li class="links "><a href="Gtk.PlacesSidebar.get_show_connect_to_server.html" title="Gtk.PlacesSidebar.prototype.get_show_connect_to_server">Gtk.PlacesSidebar.prototype.get_show_connect_to_server</a></li>
+<li class="links "><a href="Gtk.PlacesSidebar.get_show_desktop.html" title="Gtk.PlacesSidebar.prototype.get_show_desktop">Gtk.PlacesSidebar.prototype.get_show_desktop</a></li>
+<li class="links "><a href="Gtk.PlacesSidebar.list_shortcuts.html" title="Gtk.PlacesSidebar.prototype.list_shortcuts">Gtk.PlacesSidebar.prototype.list_shortcuts</a></li>
+<li class="links "><a href="Gtk.PlacesSidebar.remove_shortcut.html" title="Gtk.PlacesSidebar.prototype.remove_shortcut">Gtk.PlacesSidebar.prototype.remove_shortcut</a></li>
+<li class="links "><a href="Gtk.PlacesSidebar.set_location.html" title="Gtk.PlacesSidebar.prototype.set_location">Gtk.PlacesSidebar.prototype.set_location</a></li>
+<li class="links "><a href="Gtk.PlacesSidebar.set_open_flags.html" title="Gtk.PlacesSidebar.prototype.set_open_flags">Gtk.PlacesSidebar.prototype.set_open_flags</a></li>
+<li class="links "><a href="Gtk.PlacesSidebar.set_show_connect_to_server.html" title="Gtk.PlacesSidebar.prototype.set_show_connect_to_server">Gtk.PlacesSidebar.prototype.set_show_connect_to_server</a></li>
+<li class="links "><a href="Gtk.PlacesSidebar.set_show_desktop.html" title="Gtk.PlacesSidebar.prototype.set_show_desktop">Gtk.PlacesSidebar.prototype.set_show_desktop</a></li>
+</ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Properties</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.PlacesSidebar-location.html" title="Gtk.PlacesSidebar:location">location</a></li>
+<li class="links "><a href="Gtk.PlacesSidebar-open-flags.html" title="Gtk.PlacesSidebar:open-flags">open-flags</a></li>
+<li class="links "><a href="Gtk.PlacesSidebar-show-connect-to-server.html" title="Gtk.PlacesSidebar:show-connect-to-server">show-connect-to-server</a></li>
+<li class="links "><a href="Gtk.PlacesSidebar-show-desktop.html" title="Gtk.PlacesSidebar:show-desktop">show-desktop</a></li>
+</ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Signals</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.PlacesSidebar-drag-action-ask.html" title="Gtk.PlacesSidebar::drag-action-ask">drag-action-ask</a></li>
+<li class="links "><a href="Gtk.PlacesSidebar-drag-action-requested.html" title="Gtk.PlacesSidebar::drag-action-requested">drag-action-requested</a></li>
+<li class="links "><a href="Gtk.PlacesSidebar-drag-perform-drop.html" title="Gtk.PlacesSidebar::drag-perform-drop">drag-perform-drop</a></li>
+<li class="links "><a href="Gtk.PlacesSidebar-open-location.html" title="Gtk.PlacesSidebar::open-location">open-location</a></li>
+<li class="links "><a href="Gtk.PlacesSidebar-populate-popup.html" title="Gtk.PlacesSidebar::populate-popup">populate-popup</a></li>
+<li class="links "><a href="Gtk.PlacesSidebar-show-error-message.html" title="Gtk.PlacesSidebar::show-error-message">show-error-message</a></li>
+</ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Other</span></h2></div>
+<div class="region"><ul><li class="links "><a href="Gtk.PlacesSidebar.new.html" title="Gtk.PlacesSidebar.new">Gtk.PlacesSidebar.new</a></li></ul></div>
+</div></div>
+</div>
+<div class="sect sect-links" role="navigation">
+<div class="hgroup"></div>
+<div class="contents"><div class="links guidelinks"><div class="inner">
+<div class="title"><h2><span class="title">More Information</span></h2></div>
+<div class="region"><ul><li class="links "><a href="index.html" title="Index">Index</a></li></ul></div>
+</div></div></div>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="footer"></div>
+</div></body>
+</html>

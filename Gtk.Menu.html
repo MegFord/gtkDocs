@@ -1,0 +1,184 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Gtk.Menu</title>
+<link rel="stylesheet" type="text/css" href="C.css">
+<script type="text/javascript" src="jquery.js"></script><script type="text/javascript" src="jquery.syntax.js"></script><script type="text/javascript" src="yelp.js"></script>
+</head>
+<body><div class="page" role="main">
+<div class="header"><div class="trails" role="navigation"><div class="trail">
+<a class="trail" href="index.html" title="Index">Index</a> » </div></div></div>
+<div class="body">
+<div class="hgroup"><h1 class="title"><span class="title">Gtk.Menu</span></h1></div>
+<div class="region">
+<div class="contents">
+<div class="synopsis"><div class="inner"><div class="region"><div class="contents"><div class="code"><pre class="contents ">const Gtk = imports.gi.Gtk;
+
+let menu = new Gtk.Menu({
+    <span class=" link"><a href="Gtk.Menu-accel-group.html" title="Gtk.Menu:accel-group">accel_group</a></span>: value,
+    <span class=" link"><a href="Gtk.Menu-accel-path.html" title="Gtk.Menu:accel-path">accel_path</a></span>: value,
+    <span class=" link"><a href="Gtk.Menu-active.html" title="Gtk.Menu:active">active</a></span>: value,
+    <span class=" link"><a href="Gtk.Menu-attach-widget.html" title="Gtk.Menu:attach-widget">attach_widget</a></span>: value,
+    <span class=" link"><a href="Gtk.Menu-monitor.html" title="Gtk.Menu:monitor">monitor</a></span>: value,
+    <span class=" link"><a href="Gtk.Menu-reserve-toggle-size.html" title="Gtk.Menu:reserve-toggle-size">reserve_toggle_size</a></span>: value,
+    <span class=" link"><a href="Gtk.Menu-tearoff-state.html" title="Gtk.Menu:tearoff-state">tearoff_state</a></span>: value,
+    <span class=" link"><a href="Gtk.Menu-tearoff-title.html" title="Gtk.Menu:tearoff-title">tearoff_title</a></span>: value,
+});
+  </pre></div></div></div></div></div>
+<p class="p">A <span class=" link"><a href="Gtk.Menu.html" title="Gtk.Menu">Gtk.Menu</a></span> is a <span class=" link"><a href="Gtk.MenuShell.html" title="Gtk.MenuShell">Gtk.MenuShell</a></span> that implements a drop down menu
+consisting of a list of <span class=" link"><a href="Gtk.MenuItem.html" title="Gtk.MenuItem">Gtk.MenuItem</a></span> objects which can be navigated
+and activated by the user to perform application functions.</p>
+<p class="p">A <span class=" link"><a href="Gtk.Menu.html" title="Gtk.Menu">Gtk.Menu</a></span> is most commonly dropped down by activating a
+<span class=" link"><a href="Gtk.MenuItem.html" title="Gtk.MenuItem">Gtk.MenuItem</a></span> in a <span class=" link"><a href="Gtk.MenuBar.html" title="Gtk.MenuBar">Gtk.MenuBar</a></span> or popped up by activating a
+<span class=" link"><a href="Gtk.MenuItem.html" title="Gtk.MenuItem">Gtk.MenuItem</a></span> in another <span class=" link"><a href="Gtk.Menu.html" title="Gtk.Menu">Gtk.Menu</a></span>.</p>
+<p class="p">A <span class=" link"><a href="Gtk.Menu.html" title="Gtk.Menu">Gtk.Menu</a></span> can also be popped up by activating a <span class=" link"><a href="Gtk.ComboBox.html" title="Gtk.ComboBox">Gtk.ComboBox</a></span>.
+Other composite widgets such as the <span class=" link"><a href="Gtk.Notebook.html" title="Gtk.Notebook">Gtk.Notebook</a></span> can pop up a
+<span class=" link"><a href="Gtk.Menu.html" title="Gtk.Menu">Gtk.Menu</a></span> as well.</p>
+<p class="p">Applications can display a <span class=" link"><a href="Gtk.Menu.html" title="Gtk.Menu">Gtk.Menu</a></span> as a popup menu by calling the 
+<span class=" link"><a href="Gtk.popup.html" title="Gtk.popup">Gtk.popup</a></span> function.  The example below shows how an application
+can pop up a menu when the 3rd mouse button is pressed.  </p>
+<p class="p">&lt;example&gt;
+&lt;title&gt;Connecting the popup signal handler.&lt;/title&gt;
+&lt;programlisting&gt;
+  /&lt;!----&gt;* connect our handler which will popup the menu *&lt;!----&gt;/
+  g_signal_connect_swapped (window, "button_press_event",
+G_CALLBACK (my_popup_handler), menu);
+&lt;/programlisting&gt;
+&lt;/example&gt;</p>
+<p class="p">&lt;example&gt;
+&lt;title&gt;Signal handler which displays a popup menu.&lt;/title&gt;
+&lt;programlisting&gt;
+static gint
+my_popup_handler (GtkWidget *widget, GdkEvent *event)
+{
+  GtkMenu *menu;
+  GdkEventButton *event_button;</p>
+<p class="p">  g_return_val_if_fail (widget != NULL, FALSE);
+  g_return_val_if_fail (GTK_IS_MENU (widget), FALSE);
+  g_return_val_if_fail (event != NULL, FALSE);</p>
+<p class="p">  /&lt;!----&gt;* The "widget" is the menu that was supplied when 
+   * g_signal_connect_swapped() was called.
+   *&lt;!----&gt;/
+  menu = GTK_MENU (widget);</p>
+<p class="p">  if (event-&gt;type == GDK_BUTTON_PRESS)
+    {
+      event_button = (GdkEventButton *) event;
+      if (event_button-&gt;button == GDK_BUTTON_SECONDARY)
+        {
+          gtk_menu_popup (menu, NULL, NULL, NULL, NULL, 
+                          event_button-&gt;button, event_button-&gt;time);
+          return TRUE;
+        }
+    }</p>
+<p class="p">  return FALSE;
+}
+&lt;/programlisting&gt;
+&lt;/example&gt;</p>
+<div class="synopsis"><div class="inner">
+<div class="title title-synopsis"><h2><span class="title">Hierarchy</span></h2></div>
+<div class="region"><div class="contents"><div class="tree"><div class="inner"><div class="region"><ul class="tree"><li class="tree">
+<div>
+        <span class=" code">GObject.Object</span>
+      
+      </div>
+<ul class="tree"><li class="tree">
+<div>
+        <span class=" code">GObject.InitiallyUnowned</span>
+      
+      </div>
+<ul class="tree"><li class="tree">
+<div>
+        <span class=" code">Gtk.Widget</span>
+      
+      </div>
+<ul class="tree"><li class="tree">
+<div>
+        <span class=" code">Gtk.Container</span>
+      
+      </div>
+<ul class="tree"><li class="tree">
+<div>
+        <span class=" code">Gtk.MenuShell</span>
+      
+      </div>
+<ul class="tree"><li class="tree"><div>
+        <span class=" code">Gtk.Menu</span>
+      </div></li></ul>
+</li></ul>
+</li></ul>
+</li></ul>
+</li></ul>
+</li></ul></div></div></div></div></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Methods</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.Menu.attach.html" title="Gtk.Menu.prototype.attach">Gtk.Menu.prototype.attach</a></li>
+<li class="links "><a href="Gtk.Menu.attach_to_widget.html" title="Gtk.Menu.prototype.attach_to_widget">Gtk.Menu.prototype.attach_to_widget</a></li>
+<li class="links "><a href="Gtk.Menu.detach.html" title="Gtk.Menu.prototype.detach">Gtk.Menu.prototype.detach</a></li>
+<li class="links "><a href="Gtk.Menu.get_accel_group.html" title="Gtk.Menu.prototype.get_accel_group">Gtk.Menu.prototype.get_accel_group</a></li>
+<li class="links "><a href="Gtk.Menu.get_accel_path.html" title="Gtk.Menu.prototype.get_accel_path">Gtk.Menu.prototype.get_accel_path</a></li>
+<li class="links "><a href="Gtk.Menu.get_active.html" title="Gtk.Menu.prototype.get_active">Gtk.Menu.prototype.get_active</a></li>
+<li class="links "><a href="Gtk.Menu.get_attach_widget.html" title="Gtk.Menu.prototype.get_attach_widget">Gtk.Menu.prototype.get_attach_widget</a></li>
+<li class="links "><a href="Gtk.Menu.get_monitor.html" title="Gtk.Menu.prototype.get_monitor">Gtk.Menu.prototype.get_monitor</a></li>
+<li class="links "><a href="Gtk.Menu.get_reserve_toggle_size.html" title="Gtk.Menu.prototype.get_reserve_toggle_size">Gtk.Menu.prototype.get_reserve_toggle_size</a></li>
+<li class="links "><a href="Gtk.Menu.get_tearoff_state.html" title="Gtk.Menu.prototype.get_tearoff_state">Gtk.Menu.prototype.get_tearoff_state</a></li>
+<li class="links "><a href="Gtk.Menu.get_title.html" title="Gtk.Menu.prototype.get_title">Gtk.Menu.prototype.get_title</a></li>
+<li class="links "><a href="Gtk.Menu.popdown.html" title="Gtk.Menu.prototype.popdown">Gtk.Menu.prototype.popdown</a></li>
+<li class="links "><a href="Gtk.Menu.popup.html" title="Gtk.Menu.prototype.popup">Gtk.Menu.prototype.popup</a></li>
+<li class="links "><a href="Gtk.Menu.popup_for_device.html" title="Gtk.Menu.prototype.popup_for_device">Gtk.Menu.prototype.popup_for_device</a></li>
+<li class="links "><a href="Gtk.Menu.reorder_child.html" title="Gtk.Menu.prototype.reorder_child">Gtk.Menu.prototype.reorder_child</a></li>
+<li class="links "><a href="Gtk.Menu.reposition.html" title="Gtk.Menu.prototype.reposition">Gtk.Menu.prototype.reposition</a></li>
+<li class="links "><a href="Gtk.Menu.set_accel_group.html" title="Gtk.Menu.prototype.set_accel_group">Gtk.Menu.prototype.set_accel_group</a></li>
+<li class="links "><a href="Gtk.Menu.set_accel_path.html" title="Gtk.Menu.prototype.set_accel_path">Gtk.Menu.prototype.set_accel_path</a></li>
+<li class="links "><a href="Gtk.Menu.set_active.html" title="Gtk.Menu.prototype.set_active">Gtk.Menu.prototype.set_active</a></li>
+<li class="links "><a href="Gtk.Menu.set_monitor.html" title="Gtk.Menu.prototype.set_monitor">Gtk.Menu.prototype.set_monitor</a></li>
+<li class="links "><a href="Gtk.Menu.set_reserve_toggle_size.html" title="Gtk.Menu.prototype.set_reserve_toggle_size">Gtk.Menu.prototype.set_reserve_toggle_size</a></li>
+<li class="links "><a href="Gtk.Menu.set_screen.html" title="Gtk.Menu.prototype.set_screen">Gtk.Menu.prototype.set_screen</a></li>
+<li class="links "><a href="Gtk.Menu.set_tearoff_state.html" title="Gtk.Menu.prototype.set_tearoff_state">Gtk.Menu.prototype.set_tearoff_state</a></li>
+<li class="links "><a href="Gtk.Menu.set_title.html" title="Gtk.Menu.prototype.set_title">Gtk.Menu.prototype.set_title</a></li>
+</ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Functions</span></h2></div>
+<div class="region"><ul><li class="links "><a href="Gtk.Menu.get_for_attach_widget.html" title="get_for_attach_widget">get_for_attach_widget</a></li></ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Properties</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.Menu-accel-group.html" title="Gtk.Menu:accel-group">accel-group</a></li>
+<li class="links "><a href="Gtk.Menu-accel-path.html" title="Gtk.Menu:accel-path">accel-path</a></li>
+<li class="links "><a href="Gtk.Menu-active.html" title="Gtk.Menu:active">active</a></li>
+<li class="links "><a href="Gtk.Menu-attach-widget.html" title="Gtk.Menu:attach-widget">attach-widget</a></li>
+<li class="links "><a href="Gtk.Menu-monitor.html" title="Gtk.Menu:monitor">monitor</a></li>
+<li class="links "><a href="Gtk.Menu-reserve-toggle-size.html" title="Gtk.Menu:reserve-toggle-size">reserve-toggle-size</a></li>
+<li class="links "><a href="Gtk.Menu-tearoff-state.html" title="Gtk.Menu:tearoff-state">tearoff-state</a></li>
+<li class="links "><a href="Gtk.Menu-tearoff-title.html" title="Gtk.Menu:tearoff-title">tearoff-title</a></li>
+</ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Signals</span></h2></div>
+<div class="region"><ul><li class="links "><a href="Gtk.Menu-move-scroll.html" title="Gtk.Menu::move-scroll">move-scroll</a></li></ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Other</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.Menu.new.html" title="Gtk.Menu.new">Gtk.Menu.new</a></li>
+<li class="links "><a href="Gtk.Menu.new_from_model.html" title="Gtk.Menu.new_from_model">Gtk.Menu.new_from_model</a></li>
+</ul></div>
+</div></div>
+</div>
+<div class="sect sect-links" role="navigation">
+<div class="hgroup"></div>
+<div class="contents"><div class="links guidelinks"><div class="inner">
+<div class="title"><h2><span class="title">More Information</span></h2></div>
+<div class="region"><ul><li class="links "><a href="index.html" title="Index">Index</a></li></ul></div>
+</div></div></div>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="footer"></div>
+</div></body>
+</html>

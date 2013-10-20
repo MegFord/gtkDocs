@@ -1,0 +1,118 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Gtk.MenuShell</title>
+<link rel="stylesheet" type="text/css" href="C.css">
+<script type="text/javascript" src="jquery.js"></script><script type="text/javascript" src="jquery.syntax.js"></script><script type="text/javascript" src="yelp.js"></script>
+</head>
+<body><div class="page" role="main">
+<div class="header"><div class="trails" role="navigation"><div class="trail">
+<a class="trail" href="index.html" title="Index">Index</a> » </div></div></div>
+<div class="body">
+<div class="hgroup"><h1 class="title"><span class="title">Gtk.MenuShell</span></h1></div>
+<div class="region">
+<div class="contents">
+<div class="synopsis"><div class="inner"><div class="region"><div class="contents"><div class="code"><pre class="contents ">const Gtk = imports.gi.Gtk;
+
+let menu_shell = new Gtk.MenuShell({
+    <span class=" link"><a href="Gtk.MenuShell-take-focus.html" title="Gtk.MenuShell:take-focus">take_focus</a></span>: value,
+});
+  </pre></div></div></div></div></div>
+<p class="p">A <span class=" link"><a href="Gtk.MenuShell.html" title="Gtk.MenuShell">Gtk.MenuShell</a></span> is the abstract base class used to derive the
+<span class=" link"><a href="Gtk.Menu.html" title="Gtk.Menu">Gtk.Menu</a></span> and <span class=" link"><a href="Gtk.MenuBar.html" title="Gtk.MenuBar">Gtk.MenuBar</a></span> subclasses.</p>
+<p class="p">A <span class=" link"><a href="Gtk.MenuShell.html" title="Gtk.MenuShell">Gtk.MenuShell</a></span> is a container of <span class=" link"><a href="Gtk.MenuItem.html" title="Gtk.MenuItem">Gtk.MenuItem</a></span> objects arranged
+in a list which can be navigated, selected, and activated by the
+user to perform application functions. A <span class=" link"><a href="Gtk.MenuItem.html" title="Gtk.MenuItem">Gtk.MenuItem</a></span> can have a
+submenu associated with it, allowing for nested hierarchical menus.</p>
+<div class="synopsis"><div class="inner">
+<div class="title title-synopsis"><h2><span class="title">Hierarchy</span></h2></div>
+<div class="region"><div class="contents"><div class="tree"><div class="inner"><div class="region"><ul class="tree"><li class="tree">
+<div>
+        <span class=" code">GObject.Object</span>
+      
+      </div>
+<ul class="tree"><li class="tree">
+<div>
+        <span class=" code">GObject.InitiallyUnowned</span>
+      
+      </div>
+<ul class="tree"><li class="tree">
+<div>
+        <span class=" code">Gtk.Widget</span>
+      
+      </div>
+<ul class="tree"><li class="tree">
+<div>
+        <span class=" code">Gtk.Container</span>
+      
+      </div>
+<ul class="tree"><li class="tree"><div>
+        <span class=" code">Gtk.MenuShell</span>
+      </div></li></ul>
+</li></ul>
+</li></ul>
+</li></ul>
+</li></ul></div></div></div></div></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Methods</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.MenuShell.activate_item.html" title="Gtk.MenuShell.prototype.activate_item">Gtk.MenuShell.prototype.activate_item</a></li>
+<li class="links "><a href="Gtk.MenuShell.append.html" title="Gtk.MenuShell.prototype.append">Gtk.MenuShell.prototype.append</a></li>
+<li class="links "><a href="Gtk.MenuShell.bind_model.html" title="Gtk.MenuShell.prototype.bind_model">Gtk.MenuShell.prototype.bind_model</a></li>
+<li class="links "><a href="Gtk.MenuShell.cancel.html" title="Gtk.MenuShell.prototype.cancel">Gtk.MenuShell.prototype.cancel</a></li>
+<li class="links "><a href="Gtk.MenuShell.deactivate.html" title="Gtk.MenuShell.prototype.deactivate">Gtk.MenuShell.prototype.deactivate</a></li>
+<li class="links "><a href="Gtk.MenuShell.deselect.html" title="Gtk.MenuShell.prototype.deselect">Gtk.MenuShell.prototype.deselect</a></li>
+<li class="links "><a href="Gtk.MenuShell.get_parent_shell.html" title="Gtk.MenuShell.prototype.get_parent_shell">Gtk.MenuShell.prototype.get_parent_shell</a></li>
+<li class="links "><a href="Gtk.MenuShell.get_selected_item.html" title="Gtk.MenuShell.prototype.get_selected_item">Gtk.MenuShell.prototype.get_selected_item</a></li>
+<li class="links "><a href="Gtk.MenuShell.get_take_focus.html" title="Gtk.MenuShell.prototype.get_take_focus">Gtk.MenuShell.prototype.get_take_focus</a></li>
+<li class="links "><a href="Gtk.MenuShell.insert.html" title="Gtk.MenuShell.prototype.insert">Gtk.MenuShell.prototype.insert</a></li>
+<li class="links "><a href="Gtk.MenuShell.prepend.html" title="Gtk.MenuShell.prototype.prepend">Gtk.MenuShell.prototype.prepend</a></li>
+<li class="links "><a href="Gtk.MenuShell.select_first.html" title="Gtk.MenuShell.prototype.select_first">Gtk.MenuShell.prototype.select_first</a></li>
+<li class="links "><a href="Gtk.MenuShell.select_item.html" title="Gtk.MenuShell.prototype.select_item">Gtk.MenuShell.prototype.select_item</a></li>
+<li class="links "><a href="Gtk.MenuShell.set_take_focus.html" title="Gtk.MenuShell.prototype.set_take_focus">Gtk.MenuShell.prototype.set_take_focus</a></li>
+</ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Properties</span></h2></div>
+<div class="region"><ul><li class="links "><a href="Gtk.MenuShell-take-focus.html" title="Gtk.MenuShell:take-focus">take-focus</a></li></ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Signals</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.MenuShell-activate-current.html" title="Gtk.MenuShell::activate-current">activate-current</a></li>
+<li class="links "><a href="Gtk.MenuShell-cancel.html" title="Gtk.MenuShell::cancel">cancel</a></li>
+<li class="links "><a href="Gtk.MenuShell-cycle-focus.html" title="Gtk.MenuShell::cycle-focus">cycle-focus</a></li>
+<li class="links "><a href="Gtk.MenuShell-deactivate.html" title="Gtk.MenuShell::deactivate">deactivate</a></li>
+<li class="links "><a href="Gtk.MenuShell-insert.html" title="Gtk.MenuShell::insert">insert</a></li>
+<li class="links "><a href="Gtk.MenuShell-move-current.html" title="Gtk.MenuShell::move-current">move-current</a></li>
+<li class="links "><a href="Gtk.MenuShell-move-selected.html" title="Gtk.MenuShell::move-selected">move-selected</a></li>
+<li class="links "><a href="Gtk.MenuShell-selection-done.html" title="Gtk.MenuShell::selection-done">selection-done</a></li>
+</ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Virtual functions</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.MenuShell-activate_current.html" title="Gtk.MenuShell::activate_current">Gtk.MenuShell::activate_current</a></li>
+<li class="links "><a href="Gtk.MenuShell-get_popup_delay.html" title="Gtk.MenuShell::get_popup_delay">Gtk.MenuShell::get_popup_delay</a></li>
+<li class="links "><a href="Gtk.MenuShell-move_current.html" title="Gtk.MenuShell::move_current">Gtk.MenuShell::move_current</a></li>
+<li class="links "><a href="Gtk.MenuShell-move_selected.html" title="Gtk.MenuShell::move_selected">Gtk.MenuShell::move_selected</a></li>
+<li class="links "><a href="Gtk.MenuShell-select_item.html" title="Gtk.MenuShell::select_item">Gtk.MenuShell::select_item</a></li>
+<li class="links "><a href="Gtk.MenuShell-selection_done.html" title="Gtk.MenuShell::selection_done">Gtk.MenuShell::selection_done</a></li>
+</ul></div>
+</div></div>
+</div>
+<div class="sect sect-links" role="navigation">
+<div class="hgroup"></div>
+<div class="contents"><div class="links guidelinks"><div class="inner">
+<div class="title"><h2><span class="title">More Information</span></h2></div>
+<div class="region"><ul><li class="links "><a href="index.html" title="Index">Index</a></li></ul></div>
+</div></div></div>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="footer"></div>
+</div></body>
+</html>

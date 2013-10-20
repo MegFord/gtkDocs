@@ -1,0 +1,155 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Gtk.Paned</title>
+<link rel="stylesheet" type="text/css" href="C.css">
+<script type="text/javascript" src="jquery.js"></script><script type="text/javascript" src="jquery.syntax.js"></script><script type="text/javascript" src="yelp.js"></script>
+</head>
+<body><div class="page" role="main">
+<div class="header"><div class="trails" role="navigation"><div class="trail">
+<a class="trail" href="index.html" title="Index">Index</a> » </div></div></div>
+<div class="body">
+<div class="hgroup"><h1 class="title"><span class="title">Gtk.Paned</span></h1></div>
+<div class="region">
+<div class="contents">
+<div class="synopsis"><div class="inner"><div class="region"><div class="contents"><div class="code"><pre class="contents ">const Gtk = imports.gi.Gtk;
+
+let paned = new Gtk.Paned({
+    <span class=" link"><a href="Gtk.Paned-position.html" title="Gtk.Paned:position">position</a></span>: value,
+    <span class=" link"><a href="Gtk.Paned-position-set.html" title="Gtk.Paned:position-set">position_set</a></span>: value,
+});
+  </pre></div></div></div></div></div>
+<p class="p"><span class=" link"><a href="Gtk.Paned.html" title="Gtk.Paned">Gtk.Paned</a></span> has two panes, arranged either
+horizontally or vertically. The division between
+the two panes is adjustable by the user by dragging
+a handle.</p>
+<p class="p">Child widgets are
+added to the panes of the widget with <span class=" link"><a href="Gtk.pack1.html" title="Gtk.pack1">Gtk.pack1</a></span> and
+<span class=" link"><a href="Gtk.pack2.html" title="Gtk.pack2">Gtk.pack2</a></span>. The division between the two children is set by default
+from the size requests of the children, but it can be adjusted by the
+user.</p>
+<p class="p">A paned widget draws a separator between the two child widgets and a
+small handle that the user can drag to adjust the division. It does not
+draw any relief around the children or around the separator. (The space
+in which the separator is called the gutter.) Often, it is useful to put
+each child inside a <span class=" link"><a href="Gtk.Frame.html" title="Gtk.Frame">Gtk.Frame</a></span> with the shadow type set to <span class=" link"><a href="Gtk.ShadowType.html" title="Gtk.ShadowType">Gtk.ShadowType</a></span>.in
+so that the gutter appears as a ridge. No separator is drawn if one of
+the children is missing.</p>
+<p class="p">Each child has two options that can be set, @resize and @shrink. If
+@resize is true, then when the <span class=" link"><a href="Gtk.Paned.html" title="Gtk.Paned">Gtk.Paned</a></span> is resized, that child will
+expand or shrink along with the paned widget. If @shrink is true, then
+that child can be made smaller than its requisition by the user.
+Setting @shrink to <span class=" code">false</span> allows the application to set a minimum size.
+If @resize is false for both children, then this is treated as if
+@resize is true for both children.</p>
+<p class="p">The application can set the position of the slider as if it were set
+by the user, by calling <span class=" link"><a href="Gtk.set_position.html" title="Gtk.set_position">Gtk.set_position</a></span>.</p>
+<p class="p">&lt;example&gt;
+&lt;title&gt;Creating a paned widget with minimum sizes.&lt;/title&gt;
+&lt;programlisting&gt;
+GtkWidget *hpaned = gtk_paned_new (GTK_ORIENTATION_HORIZONTAL);
+GtkWidget *frame1 = gtk_frame_new (NULL);
+GtkWidget *frame2 = gtk_frame_new (NULL);
+gtk_frame_set_shadow_type (GTK_FRAME (frame1), GTK_SHADOW_IN);
+gtk_frame_set_shadow_type (GTK_FRAME (frame2), GTK_SHADOW_IN);</p>
+<p class="p">gtk_widget_set_size_request (hpaned, 200, -1);</p>
+<p class="p">gtk_paned_pack1 (GTK_PANED (hpaned), frame1, TRUE, FALSE);
+gtk_widget_set_size_request (frame1, 50, -1);</p>
+<p class="p">gtk_paned_pack2 (GTK_PANED (hpaned), frame2, FALSE, FALSE);
+gtk_widget_set_size_request (frame2, 50, -1);
+&lt;/programlisting&gt;
+&lt;/example&gt;</p>
+<div class="synopsis"><div class="inner">
+<div class="title title-synopsis"><h2><span class="title">Hierarchy</span></h2></div>
+<div class="region"><div class="contents"><div class="tree"><div class="inner"><div class="region"><ul class="tree"><li class="tree">
+<div>
+        <span class=" code">GObject.Object</span>
+      
+      </div>
+<ul class="tree"><li class="tree">
+<div>
+        <span class=" code">GObject.InitiallyUnowned</span>
+      
+      </div>
+<ul class="tree"><li class="tree">
+<div>
+        <span class=" code">Gtk.Widget</span>
+      
+      </div>
+<ul class="tree"><li class="tree">
+<div>
+        <span class=" code">Gtk.Container</span>
+      
+      </div>
+<ul class="tree"><li class="tree"><div>
+        <span class=" code">Gtk.Paned</span>
+      </div></li></ul>
+</li></ul>
+</li></ul>
+</li></ul>
+</li></ul></div></div></div></div></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Methods</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.Paned.add1.html" title="Gtk.Paned.prototype.add1">Gtk.Paned.prototype.add1</a></li>
+<li class="links "><a href="Gtk.Paned.add2.html" title="Gtk.Paned.prototype.add2">Gtk.Paned.prototype.add2</a></li>
+<li class="links "><a href="Gtk.Paned.get_child1.html" title="Gtk.Paned.prototype.get_child1">Gtk.Paned.prototype.get_child1</a></li>
+<li class="links "><a href="Gtk.Paned.get_child2.html" title="Gtk.Paned.prototype.get_child2">Gtk.Paned.prototype.get_child2</a></li>
+<li class="links "><a href="Gtk.Paned.get_handle_window.html" title="Gtk.Paned.prototype.get_handle_window">Gtk.Paned.prototype.get_handle_window</a></li>
+<li class="links "><a href="Gtk.Paned.get_position.html" title="Gtk.Paned.prototype.get_position">Gtk.Paned.prototype.get_position</a></li>
+<li class="links "><a href="Gtk.Paned.pack1.html" title="Gtk.Paned.prototype.pack1">Gtk.Paned.prototype.pack1</a></li>
+<li class="links "><a href="Gtk.Paned.pack2.html" title="Gtk.Paned.prototype.pack2">Gtk.Paned.prototype.pack2</a></li>
+<li class="links "><a href="Gtk.Paned.set_position.html" title="Gtk.Paned.prototype.set_position">Gtk.Paned.prototype.set_position</a></li>
+</ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Properties</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.Paned-max-position.html" title="Gtk.Paned:max-position">max-position</a></li>
+<li class="links "><a href="Gtk.Paned-min-position.html" title="Gtk.Paned:min-position">min-position</a></li>
+<li class="links "><a href="Gtk.Paned-position.html" title="Gtk.Paned:position">position</a></li>
+<li class="links "><a href="Gtk.Paned-position-set.html" title="Gtk.Paned:position-set">position-set</a></li>
+</ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Signals</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.Paned-accept-position.html" title="Gtk.Paned::accept-position">accept-position</a></li>
+<li class="links "><a href="Gtk.Paned-cancel-position.html" title="Gtk.Paned::cancel-position">cancel-position</a></li>
+<li class="links "><a href="Gtk.Paned-cycle-child-focus.html" title="Gtk.Paned::cycle-child-focus">cycle-child-focus</a></li>
+<li class="links "><a href="Gtk.Paned-cycle-handle-focus.html" title="Gtk.Paned::cycle-handle-focus">cycle-handle-focus</a></li>
+<li class="links "><a href="Gtk.Paned-move-handle.html" title="Gtk.Paned::move-handle">move-handle</a></li>
+<li class="links "><a href="Gtk.Paned-toggle-handle-focus.html" title="Gtk.Paned::toggle-handle-focus">toggle-handle-focus</a></li>
+</ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Virtual functions</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.Paned-accept_position.html" title="Gtk.Paned::accept_position">Gtk.Paned::accept_position</a></li>
+<li class="links "><a href="Gtk.Paned-cancel_position.html" title="Gtk.Paned::cancel_position">Gtk.Paned::cancel_position</a></li>
+<li class="links "><a href="Gtk.Paned-cycle_child_focus.html" title="Gtk.Paned::cycle_child_focus">Gtk.Paned::cycle_child_focus</a></li>
+<li class="links "><a href="Gtk.Paned-cycle_handle_focus.html" title="Gtk.Paned::cycle_handle_focus">Gtk.Paned::cycle_handle_focus</a></li>
+<li class="links "><a href="Gtk.Paned-move_handle.html" title="Gtk.Paned::move_handle">Gtk.Paned::move_handle</a></li>
+<li class="links "><a href="Gtk.Paned-toggle_handle_focus.html" title="Gtk.Paned::toggle_handle_focus">Gtk.Paned::toggle_handle_focus</a></li>
+</ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Other</span></h2></div>
+<div class="region"><ul><li class="links "><a href="Gtk.Paned.new.html" title="Gtk.Paned.new">Gtk.Paned.new</a></li></ul></div>
+</div></div>
+</div>
+<div class="sect sect-links" role="navigation">
+<div class="hgroup"></div>
+<div class="contents"><div class="links guidelinks"><div class="inner">
+<div class="title"><h2><span class="title">More Information</span></h2></div>
+<div class="region"><ul><li class="links "><a href="index.html" title="Index">Index</a></li></ul></div>
+</div></div></div>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="footer"></div>
+</div></body>
+</html>

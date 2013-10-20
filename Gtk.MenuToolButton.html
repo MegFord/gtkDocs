@@ -1,0 +1,134 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Gtk.MenuToolButton</title>
+<link rel="stylesheet" type="text/css" href="C.css">
+<script type="text/javascript" src="jquery.js"></script><script type="text/javascript" src="jquery.syntax.js"></script><script type="text/javascript" src="yelp.js"></script>
+</head>
+<body><div class="page" role="main">
+<div class="header"><div class="trails" role="navigation"><div class="trail">
+<a class="trail" href="index.html" title="Index">Index</a> » </div></div></div>
+<div class="body">
+<div class="hgroup"><h1 class="title"><span class="title">Gtk.MenuToolButton</span></h1></div>
+<div class="region">
+<div class="contents">
+<div class="synopsis"><div class="inner"><div class="region"><div class="contents"><div class="code"><pre class="contents ">const Gtk = imports.gi.Gtk;
+
+let menu_tool_button = new Gtk.MenuToolButton({
+    <span class=" link"><a href="Gtk.MenuToolButton-menu.html" title="Gtk.MenuToolButton:menu">menu</a></span>: value,
+});
+  </pre></div></div></div></div></div>
+<p class="p">A <span class=" link"><a href="Gtk.MenuToolButton.html" title="Gtk.MenuToolButton">Gtk.MenuToolButton</a></span> is a <span class=" link"><a href="Gtk.ToolItem.html" title="Gtk.ToolItem">Gtk.ToolItem</a></span> that contains a button and
+a small additional button with an arrow. When clicked, the arrow
+button pops up a dropdown menu.</p>
+<p class="p">Use <span class=" link"><a href="Gtk.new.html" title="Gtk.new">Gtk.new</a></span> to create a new
+<span class=" link"><a href="Gtk.MenuToolButton.html" title="Gtk.MenuToolButton">Gtk.MenuToolButton</a></span>.</p>
+<p class="p">&lt;refsect2 id="GtkMenuToolButton-BUILDER-UI"&gt;
+&lt;title&gt;GtkMenuToolButton as GtkBuildable&lt;/title&gt;
+&lt;para&gt;
+The GtkMenuToolButton implementation of the GtkBuildable interface
+supports adding a menu by specifying "menu" as the "type"
+attribute of a &amp;lt;child&amp;gt; element.</p>
+<p class="p">&lt;example&gt;
+&lt;title&gt;A UI definition fragment with menus&lt;/title&gt;
+&lt;programlisting&gt;&lt;![CDATA[
+&lt;object class="GtkMenuToolButton"&gt;
+  &lt;child type="menu"&gt;
+    &lt;object class="GtkMenu"/&gt;
+  &lt;/child&gt;
+&lt;/object&gt;
+]]&gt;&lt;/programlisting&gt;
+&lt;/example&gt;
+&lt;/para&gt;
+&lt;/refsect2&gt;</p>
+<div class="synopsis"><div class="inner">
+<div class="title title-synopsis"><h2><span class="title">Hierarchy</span></h2></div>
+<div class="region"><div class="contents"><div class="tree"><div class="inner"><div class="region"><ul class="tree"><li class="tree">
+<div>
+        <span class=" code">GObject.Object</span>
+      
+      </div>
+<ul class="tree"><li class="tree">
+<div>
+        <span class=" code">GObject.InitiallyUnowned</span>
+      
+      </div>
+<ul class="tree"><li class="tree">
+<div>
+        <span class=" code">Gtk.Widget</span>
+      
+      </div>
+<ul class="tree"><li class="tree">
+<div>
+        <span class=" code">Gtk.Container</span>
+      
+      </div>
+<ul class="tree"><li class="tree">
+<div>
+        <span class=" code">Gtk.Bin</span>
+      
+      </div>
+<ul class="tree"><li class="tree">
+<div>
+        <span class=" code">Gtk.ToolItem</span>
+      
+      </div>
+<ul class="tree"><li class="tree">
+<div>
+        <span class=" code">Gtk.ToolButton</span>
+      
+      </div>
+<ul class="tree"><li class="tree"><div>
+        <span class=" code">Gtk.MenuToolButton</span>
+      </div></li></ul>
+</li></ul>
+</li></ul>
+</li></ul>
+</li></ul>
+</li></ul>
+</li></ul>
+</li></ul></div></div></div></div></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Methods</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.MenuToolButton.get_menu.html" title="Gtk.MenuToolButton.prototype.get_menu">Gtk.MenuToolButton.prototype.get_menu</a></li>
+<li class="links "><a href="Gtk.MenuToolButton.set_arrow_tooltip_markup.html" title="Gtk.MenuToolButton.prototype.set_arrow_tooltip_markup">Gtk.MenuToolButton.prototype.set_arrow_tooltip_markup</a></li>
+<li class="links "><a href="Gtk.MenuToolButton.set_arrow_tooltip_text.html" title="Gtk.MenuToolButton.prototype.set_arrow_tooltip_text">Gtk.MenuToolButton.prototype.set_arrow_tooltip_text</a></li>
+<li class="links "><a href="Gtk.MenuToolButton.set_menu.html" title="Gtk.MenuToolButton.prototype.set_menu">Gtk.MenuToolButton.prototype.set_menu</a></li>
+</ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Properties</span></h2></div>
+<div class="region"><ul><li class="links "><a href="Gtk.MenuToolButton-menu.html" title="Gtk.MenuToolButton:menu">menu</a></li></ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Signals</span></h2></div>
+<div class="region"><ul><li class="links "><a href="Gtk.MenuToolButton-show-menu.html" title="Gtk.MenuToolButton::show-menu">show-menu</a></li></ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Virtual functions</span></h2></div>
+<div class="region"><ul><li class="links "><a href="Gtk.MenuToolButton-show_menu.html" title="Gtk.MenuToolButton::show_menu">Gtk.MenuToolButton::show_menu</a></li></ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Other</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.MenuToolButton.new.html" title="Gtk.MenuToolButton.new">Gtk.MenuToolButton.new</a></li>
+<li class="links "><a href="Gtk.MenuToolButton.new_from_stock.html" title="Gtk.MenuToolButton.new_from_stock">Gtk.MenuToolButton.new_from_stock</a></li>
+</ul></div>
+</div></div>
+</div>
+<div class="sect sect-links" role="navigation">
+<div class="hgroup"></div>
+<div class="contents"><div class="links guidelinks"><div class="inner">
+<div class="title"><h2><span class="title">More Information</span></h2></div>
+<div class="region"><ul><li class="links "><a href="index.html" title="Index">Index</a></li></ul></div>
+</div></div></div>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="footer"></div>
+</div></body>
+</html>

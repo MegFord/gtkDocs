@@ -1,0 +1,41 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Gtk.PlacesOpenFlags</title>
+<link rel="stylesheet" type="text/css" href="C.css">
+<script type="text/javascript" src="jquery.js"></script><script type="text/javascript" src="jquery.syntax.js"></script><script type="text/javascript" src="yelp.js"></script>
+</head>
+<body><div class="page" role="main">
+<div class="header"><div class="trails" role="navigation"><div class="trail">
+<a class="trail" href="index.html" title="Index">Index</a> » </div></div></div>
+<div class="body">
+<div class="hgroup"><h1 class="title"><span class="title">Gtk.PlacesOpenFlags</span></h1></div>
+<div class="region">
+<div class="contents">
+<p class="p">These flags serve two purposes.  First, the application can call <span class=" link"><a href="Gtk.set_open_flags.html" title="Gtk.set_open_flags">Gtk.set_open_flags</a></span>
+using these flags as a bitmask.  This tells the sidebar that the application is able to open
+folders selected from the sidebar in various ways, for example, in new tabs or in new windows in
+addition to the normal mode.</p>
+<p class="p">Second, when one of these values gets passed back to the application in the
+<span class=" link"><a href="Gtk.open-location.html" title="Gtk.open-location">Gtk.open-location</a></span> signal, it means that the application should
+open the selected location in the normal way, in a new tab, or in a new
+window.  The sidebar takes care of determining the desired way to open the location,
+based on the modifier keys that the user is pressing at the time the selection is made.</p>
+<p class="p">If the application never calls <span class=" link"><a href="Gtk.set_open_flags.html" title="Gtk.set_open_flags">Gtk.set_open_flags</a></span>, then the sidebar will only
+use #GTK_PLACES_OPEN_NORMAL in the <span class=" link"><a href="Gtk.open-location.html" title="Gtk.open-location">Gtk.open-location</a></span> signal.  This is the
+default mode of operation.</p>
+</div>
+<div class="sect sect-links" role="navigation">
+<div class="hgroup"></div>
+<div class="contents"><div class="links guidelinks"><div class="inner">
+<div class="title"><h2><span class="title">More Information</span></h2></div>
+<div class="region"><ul><li class="links "><a href="index.html" title="Index">Index</a></li></ul></div>
+</div></div></div>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="footer"></div>
+</div></body>
+</html>

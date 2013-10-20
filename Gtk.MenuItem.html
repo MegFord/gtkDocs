@@ -1,0 +1,168 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Gtk.MenuItem</title>
+<link rel="stylesheet" type="text/css" href="C.css">
+<script type="text/javascript" src="jquery.js"></script><script type="text/javascript" src="jquery.syntax.js"></script><script type="text/javascript" src="yelp.js"></script>
+</head>
+<body><div class="page" role="main">
+<div class="header"><div class="trails" role="navigation"><div class="trail">
+<a class="trail" href="index.html" title="Index">Index</a> » </div></div></div>
+<div class="body">
+<div class="hgroup"><h1 class="title"><span class="title">Gtk.MenuItem</span></h1></div>
+<div class="region">
+<div class="contents">
+<div class="synopsis"><div class="inner"><div class="region"><div class="contents"><div class="code"><pre class="contents ">const Gtk = imports.gi.Gtk;
+
+let menu_item = new Gtk.MenuItem({
+    <span class=" link"><a href="Gtk.MenuItem-accel-path.html" title="Gtk.MenuItem:accel-path">accel_path</a></span>: value,
+    <span class=" link"><a href="Gtk.MenuItem-label.html" title="Gtk.MenuItem:label">label</a></span>: value,
+    <span class=" link"><a href="Gtk.MenuItem-right-justified.html" title="Gtk.MenuItem:right-justified">right_justified</a></span>: value,
+    <span class=" link"><a href="Gtk.MenuItem-submenu.html" title="Gtk.MenuItem:submenu">submenu</a></span>: value,
+    <span class=" link"><a href="Gtk.MenuItem-use-underline.html" title="Gtk.MenuItem:use-underline">use_underline</a></span>: value,
+});
+  </pre></div></div></div></div></div>
+<p class="p">The <span class=" link"><a href="Gtk.MenuItem.html" title="Gtk.MenuItem">Gtk.MenuItem</a></span> widget and the derived widgets are the only valid
+children for menus. Their function is to correctly handle highlighting,
+alignment, events and submenus.</p>
+<p class="p">As a GtkMenuItem derives from <span class=" link"><a href="Gtk.Bin.html" title="Gtk.Bin">Gtk.Bin</a></span> it can hold any valid child widget,
+although only a few are really useful.</p>
+<p class="p">By default, a GtkMenuItem sets a <span class=" link"><a href="Gtk.AccelLabel.html" title="Gtk.AccelLabel">Gtk.AccelLabel</a></span> as its child.
+GtkMenuItem has direct functions to set the label and its mnemonic.
+For more advanced label settings, you can fetch the child widget from the GtkBin.</p>
+<p class="p">&lt;example&gt;
+&lt;title&gt;Setting markup and accelerator on a MenuItem&lt;/title&gt;
+&lt;programlisting&gt;&lt;![CDATA[
+GtkWidget *child = gtk_bin_get_child (GTK_BIN (menu_item));
+gtk_label_set_markup (GTK_LABEL (child), "&lt;i&gt;new label&lt;/i&gt; with &lt;b&gt;markup&lt;/b&gt;");
+gtk_accel_label_set_accel (GTK_ACCEL_LABEL (child), GDK_KEY_1, 0);
+]]&gt;&lt;/programlisting&gt;
+&lt;/example&gt;</p>
+<p class="p">&lt;refsect2 id="GtkMenuItem-BUILDER-UI"&gt;
+&lt;title&gt;GtkMenuItem as GtkBuildable&lt;/title&gt;
+The GtkMenuItem implementation of the <span class=" link"><a href="Gtk.Buildable.html" title="Gtk.Buildable">Gtk.Buildable</a></span> interface
+supports adding a submenu by specifying "submenu" as the "type"
+attribute of a &amp;lt;child&amp;gt; element.
+&lt;example&gt;
+&lt;title&gt;A UI definition fragment with submenus&lt;/title&gt;
+&lt;programlisting&gt;&lt;![CDATA[
+&lt;object class="GtkMenuItem"&gt;
+  &lt;child type="submenu"&gt;
+    &lt;object class="GtkMenu"/&gt;
+  &lt;/child&gt;
+&lt;/object&gt;
+]]&gt;&lt;/programlisting&gt;
+&lt;/example&gt;
+&lt;/refsect2&gt;</p>
+<div class="synopsis"><div class="inner">
+<div class="title title-synopsis"><h2><span class="title">Hierarchy</span></h2></div>
+<div class="region"><div class="contents"><div class="tree"><div class="inner"><div class="region"><ul class="tree"><li class="tree">
+<div>
+        <span class=" code">GObject.Object</span>
+      
+      </div>
+<ul class="tree"><li class="tree">
+<div>
+        <span class=" code">GObject.InitiallyUnowned</span>
+      
+      </div>
+<ul class="tree"><li class="tree">
+<div>
+        <span class=" code">Gtk.Widget</span>
+      
+      </div>
+<ul class="tree"><li class="tree">
+<div>
+        <span class=" code">Gtk.Container</span>
+      
+      </div>
+<ul class="tree"><li class="tree">
+<div>
+        <span class=" code">Gtk.Bin</span>
+      
+      </div>
+<ul class="tree"><li class="tree"><div>
+        <span class=" code">Gtk.MenuItem</span>
+      </div></li></ul>
+</li></ul>
+</li></ul>
+</li></ul>
+</li></ul>
+</li></ul></div></div></div></div></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Methods</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.MenuItem.activate.html" title="Gtk.MenuItem.prototype.activate">Gtk.MenuItem.prototype.activate</a></li>
+<li class="links "><a href="Gtk.MenuItem.deselect.html" title="Gtk.MenuItem.prototype.deselect">Gtk.MenuItem.prototype.deselect</a></li>
+<li class="links "><a href="Gtk.MenuItem.get_accel_path.html" title="Gtk.MenuItem.prototype.get_accel_path">Gtk.MenuItem.prototype.get_accel_path</a></li>
+<li class="links "><a href="Gtk.MenuItem.get_label.html" title="Gtk.MenuItem.prototype.get_label">Gtk.MenuItem.prototype.get_label</a></li>
+<li class="links "><a href="Gtk.MenuItem.get_reserve_indicator.html" title="Gtk.MenuItem.prototype.get_reserve_indicator">Gtk.MenuItem.prototype.get_reserve_indicator</a></li>
+<li class="links "><a href="Gtk.MenuItem.get_right_justified.html" title="Gtk.MenuItem.prototype.get_right_justified">Gtk.MenuItem.prototype.get_right_justified</a></li>
+<li class="links "><a href="Gtk.MenuItem.get_submenu.html" title="Gtk.MenuItem.prototype.get_submenu">Gtk.MenuItem.prototype.get_submenu</a></li>
+<li class="links "><a href="Gtk.MenuItem.get_use_underline.html" title="Gtk.MenuItem.prototype.get_use_underline">Gtk.MenuItem.prototype.get_use_underline</a></li>
+<li class="links "><a href="Gtk.MenuItem.select.html" title="Gtk.MenuItem.prototype.select">Gtk.MenuItem.prototype.select</a></li>
+<li class="links "><a href="Gtk.MenuItem.set_accel_path.html" title="Gtk.MenuItem.prototype.set_accel_path">Gtk.MenuItem.prototype.set_accel_path</a></li>
+<li class="links "><a href="Gtk.MenuItem.set_label.html" title="Gtk.MenuItem.prototype.set_label">Gtk.MenuItem.prototype.set_label</a></li>
+<li class="links "><a href="Gtk.MenuItem.set_reserve_indicator.html" title="Gtk.MenuItem.prototype.set_reserve_indicator">Gtk.MenuItem.prototype.set_reserve_indicator</a></li>
+<li class="links "><a href="Gtk.MenuItem.set_right_justified.html" title="Gtk.MenuItem.prototype.set_right_justified">Gtk.MenuItem.prototype.set_right_justified</a></li>
+<li class="links "><a href="Gtk.MenuItem.set_submenu.html" title="Gtk.MenuItem.prototype.set_submenu">Gtk.MenuItem.prototype.set_submenu</a></li>
+<li class="links "><a href="Gtk.MenuItem.set_use_underline.html" title="Gtk.MenuItem.prototype.set_use_underline">Gtk.MenuItem.prototype.set_use_underline</a></li>
+<li class="links "><a href="Gtk.MenuItem.toggle_size_allocate.html" title="Gtk.MenuItem.prototype.toggle_size_allocate">Gtk.MenuItem.prototype.toggle_size_allocate</a></li>
+<li class="links "><a href="Gtk.MenuItem.toggle_size_request.html" title="Gtk.MenuItem.prototype.toggle_size_request">Gtk.MenuItem.prototype.toggle_size_request</a></li>
+</ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Properties</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.MenuItem-accel-path.html" title="Gtk.MenuItem:accel-path">accel-path</a></li>
+<li class="links "><a href="Gtk.MenuItem-label.html" title="Gtk.MenuItem:label">label</a></li>
+<li class="links "><a href="Gtk.MenuItem-right-justified.html" title="Gtk.MenuItem:right-justified">right-justified</a></li>
+<li class="links "><a href="Gtk.MenuItem-submenu.html" title="Gtk.MenuItem:submenu">submenu</a></li>
+<li class="links "><a href="Gtk.MenuItem-use-underline.html" title="Gtk.MenuItem:use-underline">use-underline</a></li>
+</ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Signals</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.MenuItem-activate.html" title="Gtk.MenuItem::activate">activate</a></li>
+<li class="links "><a href="Gtk.MenuItem-activate-item.html" title="Gtk.MenuItem::activate-item">activate-item</a></li>
+<li class="links "><a href="Gtk.MenuItem-deselect.html" title="Gtk.MenuItem::deselect">deselect</a></li>
+<li class="links "><a href="Gtk.MenuItem-select.html" title="Gtk.MenuItem::select">select</a></li>
+<li class="links "><a href="Gtk.MenuItem-toggle-size-allocate.html" title="Gtk.MenuItem::toggle-size-allocate">toggle-size-allocate</a></li>
+<li class="links "><a href="Gtk.MenuItem-toggle-size-request.html" title="Gtk.MenuItem::toggle-size-request">toggle-size-request</a></li>
+</ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Virtual functions</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.MenuItem-activate_item.html" title="Gtk.MenuItem::activate_item">Gtk.MenuItem::activate_item</a></li>
+<li class="links "><a href="Gtk.MenuItem-get_label.html" title="Gtk.MenuItem::get_label">Gtk.MenuItem::get_label</a></li>
+<li class="links "><a href="Gtk.MenuItem-set_label.html" title="Gtk.MenuItem::set_label">Gtk.MenuItem::set_label</a></li>
+<li class="links "><a href="Gtk.MenuItem-toggle_size_allocate.html" title="Gtk.MenuItem::toggle_size_allocate">Gtk.MenuItem::toggle_size_allocate</a></li>
+<li class="links "><a href="Gtk.MenuItem-toggle_size_request.html" title="Gtk.MenuItem::toggle_size_request">Gtk.MenuItem::toggle_size_request</a></li>
+</ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Other</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.MenuItem.new.html" title="Gtk.MenuItem.new">Gtk.MenuItem.new</a></li>
+<li class="links "><a href="Gtk.MenuItem.new_with_label.html" title="Gtk.MenuItem.new_with_label">Gtk.MenuItem.new_with_label</a></li>
+<li class="links "><a href="Gtk.MenuItem.new_with_mnemonic.html" title="Gtk.MenuItem.new_with_mnemonic">Gtk.MenuItem.new_with_mnemonic</a></li>
+</ul></div>
+</div></div>
+</div>
+<div class="sect sect-links" role="navigation">
+<div class="hgroup"></div>
+<div class="contents"><div class="links guidelinks"><div class="inner">
+<div class="title"><h2><span class="title">More Information</span></h2></div>
+<div class="region"><ul><li class="links "><a href="index.html" title="Index">Index</a></li></ul></div>
+</div></div></div>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="footer"></div>
+</div></body>
+</html>

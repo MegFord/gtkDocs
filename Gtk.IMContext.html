@@ -1,0 +1,158 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Gtk.IMContext</title>
+<link rel="stylesheet" type="text/css" href="C.css">
+<script type="text/javascript" src="jquery.js"></script><script type="text/javascript" src="jquery.syntax.js"></script><script type="text/javascript" src="yelp.js"></script>
+</head>
+<body><div class="page" role="main">
+<div class="header"><div class="trails" role="navigation"><div class="trail">
+<a class="trail" href="index.html" title="Index">Index</a> » </div></div></div>
+<div class="body">
+<div class="hgroup"><h1 class="title"><span class="title">Gtk.IMContext</span></h1></div>
+<div class="region">
+<div class="contents">
+<div class="synopsis"><div class="inner"><div class="region"><div class="contents"><div class="code"><pre class="contents ">const Gtk = imports.gi.Gtk;
+
+let i_m_context = new Gtk.IMContext({
+    <span class=" link"><a href="Gtk.IMContext-input-hints.html" title="Gtk.IMContext:input-hints">input_hints</a></span>: value,
+    <span class=" link"><a href="Gtk.IMContext-input-purpose.html" title="Gtk.IMContext:input-purpose">input_purpose</a></span>: value,
+});
+  </pre></div></div></div></div></div>
+<p class="p"><span class=" link"><a href="Gtk.IMContext.html" title="Gtk.IMContext">Gtk.IMContext</a></span> defines the interface for GTK+ input methods. An input method
+is used by GTK+ text input widgets like <span class=" link"><a href="Gtk.Entry.html" title="Gtk.Entry">Gtk.Entry</a></span> to map from key events to
+Unicode character strings.</p>
+<p class="p">The default input method can be set programmatically via the 
+<span class=" link"><a href="Gtk.gtk-im-module.html" title="Gtk.gtk-im-module">Gtk.gtk-im-module</a></span> GtkSettings property. Alternatively, you may set 
+the GTK_IM_MODULE environment variable as documented in #gtk-running.</p>
+<p class="p">The <span class=" link"><a href="Gtk.Entry.html" title="Gtk.Entry">Gtk.Entry</a></span> <span class=" link"><a href="Gtk.Entry-im-module.html" title="Gtk.Entry:im-module">Gtk.Entry:im-module</a></span> and <span class=" link"><a href="Gtk.TextView.html" title="Gtk.TextView">Gtk.TextView</a></span> <span class=" link"><a href="Gtk.im-module.html" title="Gtk.im-module">Gtk.im-module</a></span> 
+properties may also be used to set input methods for specific widget 
+instances. For instance, a certain entry widget might be expected to contain 
+certain characters which would be easier to input with a certain input 
+method.</p>
+<p class="p">An input method may consume multiple key events in sequence and finally
+output the composed result. This is called preediting, and an input method
+may provide feedback about this process by displaying the intermediate
+composition states as preedit text. For instance, the default GTK+ input
+method implements the input of arbitrary Unicode code points by holding down
+the Control and Shift keys and then typing "U" followed by the hexadecimal
+digits of the code point.  When releasing the Control and Shift keys,
+preediting ends and the character is inserted as text. Ctrl+Shift+u20AC for
+example results in the € sign.</p>
+<p class="p">Additional input methods can be made available for use by GTK+ widgets as
+loadable modules. An input method module is a small shared library which
+implements a subclass of <span class=" link"><a href="Gtk.IMContext.html" title="Gtk.IMContext">Gtk.IMContext</a></span> or <span class=" link"><a href="Gtk.IMContextSimple.html" title="Gtk.IMContextSimple">Gtk.IMContextSimple</a></span> and exports
+these four functions:</p>
+<p class="p">&lt;informalexample&gt;&lt;programlisting&gt;
+void im_module_init(<span class=" link"><a href="GObject.TypeModule.html" title="GObject.TypeModule">GObject.TypeModule</a></span> *module);
+&lt;/programlisting&gt;&lt;/informalexample&gt;
+This function should register the <span class=" link"><a href="GLib.Type.html" title="GLib.Type">GLib.Type</a></span> of the <span class=" link"><a href="Gtk.IMContext.html" title="Gtk.IMContext">Gtk.IMContext</a></span> subclass which
+implements the input method by means of g_type_module_register_type(). Note
+that g_type_register_static() cannot be used as the type needs to be
+registered dynamically.</p>
+<p class="p">&lt;informalexample&gt;&lt;programlisting&gt;
+void im_module_exit(void);
+&lt;/programlisting&gt;&lt;/informalexample&gt;
+Here goes any cleanup code your input method might require on module unload.</p>
+<p class="p">&lt;informalexample&gt;&lt;programlisting&gt;
+void im_module_list(const <span class=" link"><a href="Gtk.IMContextInfo.html" title="Gtk.IMContextInfo">Gtk.IMContextInfo</a></span> ***contexts, int *n_contexts)
+{
+  *contexts = info_list;
+  *n_contexts = G_N_ELEMENTS (info_list);
+}
+&lt;/programlisting&gt;&lt;/informalexample&gt;
+This function returns the list of input methods provided by the module. The
+example implementation above shows a common solution and simply returns a
+pointer to statically defined array of <span class=" link"><a href="Gtk.IMContextInfo.html" title="Gtk.IMContextInfo">Gtk.IMContextInfo</a></span> items for each
+provided input method.</p>
+<p class="p">&lt;informalexample&gt;&lt;programlisting&gt;
+<span class=" link"><a href="Gtk.IMContext.html" title="Gtk.IMContext">Gtk.IMContext</a></span> * im_module_create(const #gchar *context_id);
+&lt;/programlisting&gt;&lt;/informalexample&gt;
+This function should return a pointer to a newly created instance of the
+<span class=" link"><a href="Gtk.IMContext.html" title="Gtk.IMContext">Gtk.IMContext</a></span> subclass identified by @context_id. The context ID is the same
+as specified in the <span class=" link"><a href="Gtk.IMContextInfo.html" title="Gtk.IMContextInfo">Gtk.IMContextInfo</a></span> array returned by im_module_list().</p>
+<p class="p">After a new loadable input method module has been installed on the system,
+the configuration file &lt;filename&gt;gtk.immodules&lt;/filename&gt; needs to be
+regenerated by &lt;link linkend="gtk-query-immodules-3.0"&gt;gtk-query-immodules-3.0&lt;/link&gt;,
+in order for the new input method to become available to GTK+ applications.</p>
+<div class="synopsis"><div class="inner">
+<div class="title title-synopsis"><h2><span class="title">Hierarchy</span></h2></div>
+<div class="region"><div class="contents"><div class="tree"><div class="inner"><div class="region"><ul class="tree"><li class="tree">
+<div>
+        <span class=" code">GObject.Object</span>
+      
+      </div>
+<ul class="tree"><li class="tree"><div>
+        <span class=" code">Gtk.IMContext</span>
+      </div></li></ul>
+</li></ul></div></div></div></div></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Methods</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.IMContext.delete_surrounding.html" title="Gtk.IMContext.prototype.delete_surrounding">Gtk.IMContext.prototype.delete_surrounding</a></li>
+<li class="links "><a href="Gtk.IMContext.filter_keypress.html" title="Gtk.IMContext.prototype.filter_keypress">Gtk.IMContext.prototype.filter_keypress</a></li>
+<li class="links "><a href="Gtk.IMContext.focus_in.html" title="Gtk.IMContext.prototype.focus_in">Gtk.IMContext.prototype.focus_in</a></li>
+<li class="links "><a href="Gtk.IMContext.focus_out.html" title="Gtk.IMContext.prototype.focus_out">Gtk.IMContext.prototype.focus_out</a></li>
+<li class="links "><a href="Gtk.IMContext.get_preedit_string.html" title="Gtk.IMContext.prototype.get_preedit_string">Gtk.IMContext.prototype.get_preedit_string</a></li>
+<li class="links "><a href="Gtk.IMContext.get_surrounding.html" title="Gtk.IMContext.prototype.get_surrounding">Gtk.IMContext.prototype.get_surrounding</a></li>
+<li class="links "><a href="Gtk.IMContext.reset.html" title="Gtk.IMContext.prototype.reset">Gtk.IMContext.prototype.reset</a></li>
+<li class="links "><a href="Gtk.IMContext.set_client_window.html" title="Gtk.IMContext.prototype.set_client_window">Gtk.IMContext.prototype.set_client_window</a></li>
+<li class="links "><a href="Gtk.IMContext.set_cursor_location.html" title="Gtk.IMContext.prototype.set_cursor_location">Gtk.IMContext.prototype.set_cursor_location</a></li>
+<li class="links "><a href="Gtk.IMContext.set_surrounding.html" title="Gtk.IMContext.prototype.set_surrounding">Gtk.IMContext.prototype.set_surrounding</a></li>
+<li class="links "><a href="Gtk.IMContext.set_use_preedit.html" title="Gtk.IMContext.prototype.set_use_preedit">Gtk.IMContext.prototype.set_use_preedit</a></li>
+</ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Properties</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.IMContext-input-hints.html" title="Gtk.IMContext:input-hints">input-hints</a></li>
+<li class="links "><a href="Gtk.IMContext-input-purpose.html" title="Gtk.IMContext:input-purpose">input-purpose</a></li>
+</ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Signals</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.IMContext-commit.html" title="Gtk.IMContext::commit">commit</a></li>
+<li class="links "><a href="Gtk.IMContext-delete-surrounding.html" title="Gtk.IMContext::delete-surrounding">delete-surrounding</a></li>
+<li class="links "><a href="Gtk.IMContext-preedit-changed.html" title="Gtk.IMContext::preedit-changed">preedit-changed</a></li>
+<li class="links "><a href="Gtk.IMContext-preedit-end.html" title="Gtk.IMContext::preedit-end">preedit-end</a></li>
+<li class="links "><a href="Gtk.IMContext-preedit-start.html" title="Gtk.IMContext::preedit-start">preedit-start</a></li>
+<li class="links "><a href="Gtk.IMContext-retrieve-surrounding.html" title="Gtk.IMContext::retrieve-surrounding">retrieve-surrounding</a></li>
+</ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Virtual functions</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.IMContext-delete_surrounding.html" title="Gtk.IMContext::delete_surrounding">Gtk.IMContext::delete_surrounding</a></li>
+<li class="links "><a href="Gtk.IMContext-filter_keypress.html" title="Gtk.IMContext::filter_keypress">Gtk.IMContext::filter_keypress</a></li>
+<li class="links "><a href="Gtk.IMContext-focus_in.html" title="Gtk.IMContext::focus_in">Gtk.IMContext::focus_in</a></li>
+<li class="links "><a href="Gtk.IMContext-focus_out.html" title="Gtk.IMContext::focus_out">Gtk.IMContext::focus_out</a></li>
+<li class="links "><a href="Gtk.IMContext-get_preedit_string.html" title="Gtk.IMContext::get_preedit_string">Gtk.IMContext::get_preedit_string</a></li>
+<li class="links "><a href="Gtk.IMContext-get_surrounding.html" title="Gtk.IMContext::get_surrounding">Gtk.IMContext::get_surrounding</a></li>
+<li class="links "><a href="Gtk.IMContext-preedit_changed.html" title="Gtk.IMContext::preedit_changed">Gtk.IMContext::preedit_changed</a></li>
+<li class="links "><a href="Gtk.IMContext-preedit_end.html" title="Gtk.IMContext::preedit_end">Gtk.IMContext::preedit_end</a></li>
+<li class="links "><a href="Gtk.IMContext-preedit_start.html" title="Gtk.IMContext::preedit_start">Gtk.IMContext::preedit_start</a></li>
+<li class="links "><a href="Gtk.IMContext-reset.html" title="Gtk.IMContext::reset">Gtk.IMContext::reset</a></li>
+<li class="links "><a href="Gtk.IMContext-retrieve_surrounding.html" title="Gtk.IMContext::retrieve_surrounding">Gtk.IMContext::retrieve_surrounding</a></li>
+<li class="links "><a href="Gtk.IMContext-set_client_window.html" title="Gtk.IMContext::set_client_window">Gtk.IMContext::set_client_window</a></li>
+<li class="links "><a href="Gtk.IMContext-set_cursor_location.html" title="Gtk.IMContext::set_cursor_location">Gtk.IMContext::set_cursor_location</a></li>
+<li class="links "><a href="Gtk.IMContext-set_surrounding.html" title="Gtk.IMContext::set_surrounding">Gtk.IMContext::set_surrounding</a></li>
+<li class="links "><a href="Gtk.IMContext-set_use_preedit.html" title="Gtk.IMContext::set_use_preedit">Gtk.IMContext::set_use_preedit</a></li>
+</ul></div>
+</div></div>
+</div>
+<div class="sect sect-links" role="navigation">
+<div class="hgroup"></div>
+<div class="contents"><div class="links guidelinks"><div class="inner">
+<div class="title"><h2><span class="title">More Information</span></h2></div>
+<div class="region"><ul><li class="links "><a href="index.html" title="Index">Index</a></li></ul></div>
+</div></div></div>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="footer"></div>
+</div></body>
+</html>

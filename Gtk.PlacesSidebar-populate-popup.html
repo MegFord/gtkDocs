@@ -1,0 +1,56 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Gtk.PlacesSidebar::populate-popup</title>
+<link rel="stylesheet" type="text/css" href="C.css">
+<script type="text/javascript" src="jquery.js"></script><script type="text/javascript" src="jquery.syntax.js"></script><script type="text/javascript" src="yelp.js"></script>
+</head>
+<body><div class="page" role="main">
+<div class="header"><div class="trails" role="navigation"><div class="trail">
+<a class="trail" href="index.html" title="Index">Index</a> » <a class="trail" href="Gtk.PlacesSidebar.html" title="Gtk.PlacesSidebar">Gtk.PlacesSidebar</a> » </div></div></div>
+<div class="body">
+<div class="hgroup"><h1 class="title"><span class="title">Gtk.PlacesSidebar::populate-popup</span></h1></div>
+<div class="region">
+<div class="contents">
+<div class="synopsis"><div class="inner"><div class="region"><div class="contents"><div class="code"><pre class="contents syntax brush-python">function callback(places_sidebar, menu:GObject.Object, selected_item:GObject.Object, selected_volume:GObject.Object, ):void;</pre></div></div></div></div></div>
+<p class="p">The places sidebar emits this signal when the user invokes a contextual
+menu on one of its items.  In the signal handler, the application may
+add extra items to the menu as appropriate.  For example, a file manager
+may want to add a "Properties" command to the menu.</p>
+<p class="p">It is not necessary to store the <span class=" code">selected_item</span> for each menu item;
+during their GtkMenuItem::activate callbacks, the application can use
+<span class=" link"><a href="Gtk.PlacesSidebar.get_location.html" title="Gtk.PlacesSidebar.prototype.get_location">Gtk.PlacesSidebar.prototype.get_location</a></span> to get the file to which the item
+refers.</p>
+<p class="p">The <span class=" code">selected_item</span> argument may be #NULL in case the selection refers to
+a volume.  In this case, <span class=" code">selected_volume</span> will be non-NULL.  In this case,
+the calling application will have to g_object_ref() the <span class=" code">selected_volume</span> and
+keep it around for the purposes of its menu item's "activate" callback.</p>
+<p class="p">The <span class=" code">menu</span> and all its menu items are destroyed after the user
+dismisses the menu.  The menu is re-created (and thus, this signal is
+emitted) every time the user activates the contextual menu.</p>
+<p class="p">Since 3.10</p>
+<div class="terms"><div class="inner"><div class="region"><dl class="terms">
+<dt class="terms"><span class=" code">places_sidebar</span></dt>
+<dd class="terms"><p class="p">instance of <span class=" link"><a href="Gtk.PlacesSidebar.html" title="Gtk.PlacesSidebar">Gtk.PlacesSidebar</a></span> that is emitting the signal</p></dd>
+<dt class="terms"><span class=" code">menu</span></dt>
+<dd class="terms"><p class="p">a <span class=" link"><a href="Gtk.Menu.html" title="Gtk.Menu">Gtk.Menu</a></span>.</p></dd>
+<dt class="terms"><span class=" code">selected_item</span></dt>
+<dd class="terms"><p class="p"><span class=" link"><a href="Gio.File.html" title="Gio.File">Gio.File</a></span> with the item to which the menu should refer, or #NULL in the case of a <span class=" code">selected_volume</span>.</p></dd>
+<dt class="terms"><span class=" code">selected_volume</span></dt>
+<dd class="terms"><p class="p"><span class=" link"><a href="Gio.Volume.html" title="Gio.Volume">Gio.Volume</a></span> if the selected item is a volume, or #NULL if it is a file.</p></dd>
+</dl></div></div></div>
+</div>
+<div class="sect sect-links" role="navigation">
+<div class="hgroup"></div>
+<div class="contents"><div class="links guidelinks"><div class="inner">
+<div class="title"><h2><span class="title">More Information</span></h2></div>
+<div class="region"><ul><li class="links "><a href="Gtk.PlacesSidebar.html" title="Gtk.PlacesSidebar">Gtk.PlacesSidebar</a></li></ul></div>
+</div></div></div>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="footer"></div>
+</div></body>
+</html>

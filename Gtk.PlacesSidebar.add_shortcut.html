@@ -1,0 +1,46 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Gtk.PlacesSidebar.prototype.add_shortcut</title>
+<link rel="stylesheet" type="text/css" href="C.css">
+<script type="text/javascript" src="jquery.js"></script><script type="text/javascript" src="jquery.syntax.js"></script><script type="text/javascript" src="yelp.js"></script>
+</head>
+<body><div class="page" role="main">
+<div class="header"><div class="trails" role="navigation"><div class="trail">
+<a class="trail" href="index.html" title="Index">Index</a> » <a class="trail" href="Gtk.PlacesSidebar.html" title="Gtk.PlacesSidebar">Gtk.PlacesSidebar</a> » </div></div></div>
+<div class="body">
+<div class="hgroup"><h1 class="title"><span class="title">Gtk.PlacesSidebar.prototype.add_shortcut</span></h1></div>
+<div class="region">
+<div class="contents">
+<div class="synopsis"><div class="inner"><div class="region"><div class="contents"><div class="code"><pre class="contents ">function add_shortcut(location:Gio.File):void {
+    // Gjs wrapper for gtk_places_sidebar_add_shortcut()
+}</pre></div></div></div></div></div>
+<p class="p">Applications may want to present some folders in the places sidebar if
+they could be immediately useful to users.  For example, a drawing
+program could add a "/usr/share/clipart" location when the sidebar is
+being used in an "Insert Clipart" dialog box.</p>
+<p class="p">This function adds the specified <span class=" code">location</span> to a special place for immutable
+shortcuts.  The shortcuts are application-specific; they are not shared
+across applications, and they are not persistent.  If this function
+is called multiple times with different locations, then they are added
+to the sidebar's list in the same order as the function is called.</p>
+<p class="p">Since 3.10</p>
+<div class="terms"><div class="inner"><div class="region"><dl class="terms">
+<dt class="terms"><span class=" code">location</span></dt>
+<dd class="terms"><p class="p">location to add as an application-specific shortcut</p></dd>
+</dl></div></div></div>
+</div>
+<div class="sect sect-links" role="navigation">
+<div class="hgroup"></div>
+<div class="contents"><div class="links guidelinks"><div class="inner">
+<div class="title"><h2><span class="title">More Information</span></h2></div>
+<div class="region"><ul><li class="links "><a href="Gtk.PlacesSidebar.html" title="Gtk.PlacesSidebar">Gtk.PlacesSidebar</a></li></ul></div>
+</div></div></div>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="footer"></div>
+</div></body>
+</html>

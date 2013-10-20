@@ -1,0 +1,126 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Gtk.LockButton</title>
+<link rel="stylesheet" type="text/css" href="C.css">
+<script type="text/javascript" src="jquery.js"></script><script type="text/javascript" src="jquery.syntax.js"></script><script type="text/javascript" src="yelp.js"></script>
+</head>
+<body><div class="page" role="main">
+<div class="header"><div class="trails" role="navigation"><div class="trail">
+<a class="trail" href="index.html" title="Index">Index</a> » </div></div></div>
+<div class="body">
+<div class="hgroup"><h1 class="title"><span class="title">Gtk.LockButton</span></h1></div>
+<div class="region">
+<div class="contents">
+<div class="synopsis"><div class="inner"><div class="region"><div class="contents"><div class="code"><pre class="contents ">const Gtk = imports.gi.Gtk;
+
+let lock_button = new Gtk.LockButton({
+    <span class=" link"><a href="Gtk.LockButton-permission.html" title="Gtk.LockButton:permission">permission</a></span>: value,
+    <span class=" link"><a href="Gtk.LockButton-text-lock.html" title="Gtk.LockButton:text-lock">text_lock</a></span>: value,
+    <span class=" link"><a href="Gtk.LockButton-text-unlock.html" title="Gtk.LockButton:text-unlock">text_unlock</a></span>: value,
+    <span class=" link"><a href="Gtk.LockButton-tooltip-lock.html" title="Gtk.LockButton:tooltip-lock">tooltip_lock</a></span>: value,
+    <span class=" link"><a href="Gtk.LockButton-tooltip-not-authorized.html" title="Gtk.LockButton:tooltip-not-authorized">tooltip_not_authorized</a></span>: value,
+    <span class=" link"><a href="Gtk.LockButton-tooltip-unlock.html" title="Gtk.LockButton:tooltip-unlock">tooltip_unlock</a></span>: value,
+});
+  </pre></div></div></div></div></div>
+<p class="p">GtkLockButton is a widget that can be used in control panels or
+preference dialogs to allow users to obtain and revoke authorizations
+needed to operate the controls. The required authorization is represented
+by a <span class=" link"><a href="Gio.Permission.html" title="Gio.Permission">Gio.Permission</a></span> object. Concrete implementations of <span class=" link"><a href="Gio.Permission.html" title="Gio.Permission">Gio.Permission</a></span> may use
+PolicyKit or some other authorization framework. To obtain a PolicyKit-based
+<span class=" link"><a href="Gio.Permission.html" title="Gio.Permission">Gio.Permission</a></span>, use polkit_permission_new().</p>
+<p class="p">If the user is not currently allowed to perform the action, but can obtain
+the permission, the widget looks like this
+&lt;informalexample&gt;&lt;inlinegraphic fileref="lockbutton-locked.png"&gt;&lt;/inlinegraphic&gt;&lt;/informalexample&gt;
+and the user can click the button to request the permission. Depending
+on the platform, this may pop up an authentication dialog or ask the user
+to authenticate in some other way. Once the user has obtained the permission,
+the widget changes to this
+&lt;informalexample&gt;&lt;inlinegraphic fileref="lockbutton-unlocked.png"&gt;&lt;/inlinegraphic&gt;&lt;/informalexample&gt;
+and the permission can be dropped again by clicking the button. If the user
+is not able to obtain the permission at all, the widget looks like this
+&lt;informalexample&gt;&lt;inlinegraphic fileref="lockbutton-sorry.png"&gt;&lt;/inlinegraphic&gt;&lt;/informalexample&gt;
+If the user has the permission and cannot drop it, the button is hidden.</p>
+<p class="p">The text (and tooltips) that are shown in the various cases can be adjusted
+with the <span class=" link"><a href="Gtk.text-lock.html" title="Gtk.text-lock">Gtk.text-lock</a></span>, <span class=" link"><a href="Gtk.text-unlock.html" title="Gtk.text-unlock">Gtk.text-unlock</a></span>,
+<span class=" link"><a href="Gtk.tooltip-lock.html" title="Gtk.tooltip-lock">Gtk.tooltip-lock</a></span>, <span class=" link"><a href="Gtk.tooltip-unlock.html" title="Gtk.tooltip-unlock">Gtk.tooltip-unlock</a></span> and
+<span class=" link"><a href="Gtk.tooltip-not-authorized.html" title="Gtk.tooltip-not-authorized">Gtk.tooltip-not-authorized</a></span> properties.</p>
+<div class="synopsis"><div class="inner">
+<div class="title title-synopsis"><h2><span class="title">Hierarchy</span></h2></div>
+<div class="region"><div class="contents"><div class="tree"><div class="inner"><div class="region"><ul class="tree"><li class="tree">
+<div>
+        <span class=" code">GObject.Object</span>
+      
+      </div>
+<ul class="tree"><li class="tree">
+<div>
+        <span class=" code">GObject.InitiallyUnowned</span>
+      
+      </div>
+<ul class="tree"><li class="tree">
+<div>
+        <span class=" code">Gtk.Widget</span>
+      
+      </div>
+<ul class="tree"><li class="tree">
+<div>
+        <span class=" code">Gtk.Container</span>
+      
+      </div>
+<ul class="tree"><li class="tree">
+<div>
+        <span class=" code">Gtk.Bin</span>
+      
+      </div>
+<ul class="tree"><li class="tree">
+<div>
+        <span class=" code">Gtk.Button</span>
+      
+      </div>
+<ul class="tree"><li class="tree"><div>
+        <span class=" code">Gtk.LockButton</span>
+      </div></li></ul>
+</li></ul>
+</li></ul>
+</li></ul>
+</li></ul>
+</li></ul>
+</li></ul></div></div></div></div></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Methods</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.LockButton.get_permission.html" title="Gtk.LockButton.prototype.get_permission">Gtk.LockButton.prototype.get_permission</a></li>
+<li class="links "><a href="Gtk.LockButton.set_permission.html" title="Gtk.LockButton.prototype.set_permission">Gtk.LockButton.prototype.set_permission</a></li>
+</ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Properties</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.LockButton-permission.html" title="Gtk.LockButton:permission">permission</a></li>
+<li class="links "><a href="Gtk.LockButton-text-lock.html" title="Gtk.LockButton:text-lock">text-lock</a></li>
+<li class="links "><a href="Gtk.LockButton-text-unlock.html" title="Gtk.LockButton:text-unlock">text-unlock</a></li>
+<li class="links "><a href="Gtk.LockButton-tooltip-lock.html" title="Gtk.LockButton:tooltip-lock">tooltip-lock</a></li>
+<li class="links "><a href="Gtk.LockButton-tooltip-not-authorized.html" title="Gtk.LockButton:tooltip-not-authorized">tooltip-not-authorized</a></li>
+<li class="links "><a href="Gtk.LockButton-tooltip-unlock.html" title="Gtk.LockButton:tooltip-unlock">tooltip-unlock</a></li>
+</ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Other</span></h2></div>
+<div class="region"><ul><li class="links "><a href="Gtk.LockButton.new.html" title="Gtk.LockButton.new">Gtk.LockButton.new</a></li></ul></div>
+</div></div>
+</div>
+<div class="sect sect-links" role="navigation">
+<div class="hgroup"></div>
+<div class="contents"><div class="links guidelinks"><div class="inner">
+<div class="title"><h2><span class="title">More Information</span></h2></div>
+<div class="region"><ul><li class="links "><a href="index.html" title="Index">Index</a></li></ul></div>
+</div></div></div>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="footer"></div>
+</div></body>
+</html>

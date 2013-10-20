@@ -1,0 +1,134 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Gtk.ListBox</title>
+<link rel="stylesheet" type="text/css" href="C.css">
+<script type="text/javascript" src="jquery.js"></script><script type="text/javascript" src="jquery.syntax.js"></script><script type="text/javascript" src="yelp.js"></script>
+</head>
+<body><div class="page" role="main">
+<div class="header"><div class="trails" role="navigation"><div class="trail">
+<a class="trail" href="index.html" title="Index">Index</a> » </div></div></div>
+<div class="body">
+<div class="hgroup"><h1 class="title"><span class="title">Gtk.ListBox</span></h1></div>
+<div class="region">
+<div class="contents">
+<div class="synopsis"><div class="inner"><div class="region"><div class="contents"><div class="code"><pre class="contents ">const Gtk = imports.gi.Gtk;
+
+let list_box = new Gtk.ListBox({
+    <span class=" link"><a href="Gtk.ListBox-activate-on-single-click.html" title="Gtk.ListBox:activate-on-single-click">activate_on_single_click</a></span>: value,
+    <span class=" link"><a href="Gtk.ListBox-selection-mode.html" title="Gtk.ListBox:selection-mode">selection_mode</a></span>: value,
+});
+  </pre></div></div></div></div></div>
+<p class="p">A GtkListBox is a vertical container that contains GtkListBoxRow
+children. These rows can by dynamically sorted and filtered, and
+headers can be added dynamically depending on the row content.
+It also allows keyboard and mouse navigation and selection like
+a typical list.</p>
+<p class="p">Using GtkListBox is often an alternative to <span class=" link"><a href="Gtk.TreeView.html" title="Gtk.TreeView">Gtk.TreeView</a></span>, especially
+when the list contents has a more complicated layout than what is allowed
+by a <span class=" link"><a href="Gtk.CellRenderer.html" title="Gtk.CellRenderer">Gtk.CellRenderer</a></span>, or when the contents is interactive (i.e. has a
+button in it).</p>
+<p class="p">Although a <span class=" link"><a href="Gtk.ListBox.html" title="Gtk.ListBox">Gtk.ListBox</a></span> must have only <span class=" link"><a href="Gtk.ListBoxRow.html" title="Gtk.ListBoxRow">Gtk.ListBoxRow</a></span> children you can
+add any kind of widget to it via <span class=" link"><a href="Gtk.Container.add.html" title="Gtk.Container.prototype.add">Gtk.Container.prototype.add</a></span>, and a <span class=" link"><a href="Gtk.ListBoxRow.html" title="Gtk.ListBoxRow">Gtk.ListBoxRow</a></span>
+widget will automatically be inserted between the list and the widget.</p>
+<p class="p">The GtkListBox widget was added in GTK+ 3.10.</p>
+<div class="synopsis"><div class="inner">
+<div class="title title-synopsis"><h2><span class="title">Hierarchy</span></h2></div>
+<div class="region"><div class="contents"><div class="tree"><div class="inner"><div class="region"><ul class="tree"><li class="tree">
+<div>
+        <span class=" code">GObject.Object</span>
+      
+      </div>
+<ul class="tree"><li class="tree">
+<div>
+        <span class=" code">GObject.InitiallyUnowned</span>
+      
+      </div>
+<ul class="tree"><li class="tree">
+<div>
+        <span class=" code">Gtk.Widget</span>
+      
+      </div>
+<ul class="tree"><li class="tree">
+<div>
+        <span class=" code">Gtk.Container</span>
+      
+      </div>
+<ul class="tree"><li class="tree"><div>
+        <span class=" code">Gtk.ListBox</span>
+      </div></li></ul>
+</li></ul>
+</li></ul>
+</li></ul>
+</li></ul></div></div></div></div></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Methods</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.ListBox.drag_highlight_row.html" title="Gtk.ListBox.prototype.drag_highlight_row">Gtk.ListBox.prototype.drag_highlight_row</a></li>
+<li class="links "><a href="Gtk.ListBox.drag_unhighlight_row.html" title="Gtk.ListBox.prototype.drag_unhighlight_row">Gtk.ListBox.prototype.drag_unhighlight_row</a></li>
+<li class="links "><a href="Gtk.ListBox.get_activate_on_single_click.html" title="Gtk.ListBox.prototype.get_activate_on_single_click">Gtk.ListBox.prototype.get_activate_on_single_click</a></li>
+<li class="links "><a href="Gtk.ListBox.get_adjustment.html" title="Gtk.ListBox.prototype.get_adjustment">Gtk.ListBox.prototype.get_adjustment</a></li>
+<li class="links "><a href="Gtk.ListBox.get_row_at_index.html" title="Gtk.ListBox.prototype.get_row_at_index">Gtk.ListBox.prototype.get_row_at_index</a></li>
+<li class="links "><a href="Gtk.ListBox.get_row_at_y.html" title="Gtk.ListBox.prototype.get_row_at_y">Gtk.ListBox.prototype.get_row_at_y</a></li>
+<li class="links "><a href="Gtk.ListBox.get_selected_row.html" title="Gtk.ListBox.prototype.get_selected_row">Gtk.ListBox.prototype.get_selected_row</a></li>
+<li class="links "><a href="Gtk.ListBox.get_selection_mode.html" title="Gtk.ListBox.prototype.get_selection_mode">Gtk.ListBox.prototype.get_selection_mode</a></li>
+<li class="links "><a href="Gtk.ListBox.invalidate_filter.html" title="Gtk.ListBox.prototype.invalidate_filter">Gtk.ListBox.prototype.invalidate_filter</a></li>
+<li class="links "><a href="Gtk.ListBox.invalidate_headers.html" title="Gtk.ListBox.prototype.invalidate_headers">Gtk.ListBox.prototype.invalidate_headers</a></li>
+<li class="links "><a href="Gtk.ListBox.invalidate_sort.html" title="Gtk.ListBox.prototype.invalidate_sort">Gtk.ListBox.prototype.invalidate_sort</a></li>
+<li class="links "><a href="Gtk.ListBox.select_row.html" title="Gtk.ListBox.prototype.select_row">Gtk.ListBox.prototype.select_row</a></li>
+<li class="links "><a href="Gtk.ListBox.set_activate_on_single_click.html" title="Gtk.ListBox.prototype.set_activate_on_single_click">Gtk.ListBox.prototype.set_activate_on_single_click</a></li>
+<li class="links "><a href="Gtk.ListBox.set_adjustment.html" title="Gtk.ListBox.prototype.set_adjustment">Gtk.ListBox.prototype.set_adjustment</a></li>
+<li class="links "><a href="Gtk.ListBox.set_filter_func.html" title="Gtk.ListBox.prototype.set_filter_func">Gtk.ListBox.prototype.set_filter_func</a></li>
+<li class="links "><a href="Gtk.ListBox.set_header_func.html" title="Gtk.ListBox.prototype.set_header_func">Gtk.ListBox.prototype.set_header_func</a></li>
+<li class="links "><a href="Gtk.ListBox.set_placeholder.html" title="Gtk.ListBox.prototype.set_placeholder">Gtk.ListBox.prototype.set_placeholder</a></li>
+<li class="links "><a href="Gtk.ListBox.set_selection_mode.html" title="Gtk.ListBox.prototype.set_selection_mode">Gtk.ListBox.prototype.set_selection_mode</a></li>
+<li class="links "><a href="Gtk.ListBox.set_sort_func.html" title="Gtk.ListBox.prototype.set_sort_func">Gtk.ListBox.prototype.set_sort_func</a></li>
+</ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Properties</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.ListBox-activate-on-single-click.html" title="Gtk.ListBox:activate-on-single-click">activate-on-single-click</a></li>
+<li class="links "><a href="Gtk.ListBox-selection-mode.html" title="Gtk.ListBox:selection-mode">selection-mode</a></li>
+</ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Signals</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.ListBox-activate-cursor-row.html" title="Gtk.ListBox::activate-cursor-row">activate-cursor-row</a></li>
+<li class="links "><a href="Gtk.ListBox-move-cursor.html" title="Gtk.ListBox::move-cursor">move-cursor</a></li>
+<li class="links "><a href="Gtk.ListBox-row-activated.html" title="Gtk.ListBox::row-activated">row-activated</a></li>
+<li class="links "><a href="Gtk.ListBox-row-selected.html" title="Gtk.ListBox::row-selected">row-selected</a></li>
+<li class="links "><a href="Gtk.ListBox-toggle-cursor-row.html" title="Gtk.ListBox::toggle-cursor-row">toggle-cursor-row</a></li>
+</ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Virtual functions</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.ListBox-activate_cursor_row.html" title="Gtk.ListBox::activate_cursor_row">Gtk.ListBox::activate_cursor_row</a></li>
+<li class="links "><a href="Gtk.ListBox-move_cursor.html" title="Gtk.ListBox::move_cursor">Gtk.ListBox::move_cursor</a></li>
+<li class="links "><a href="Gtk.ListBox-row_activated.html" title="Gtk.ListBox::row_activated">Gtk.ListBox::row_activated</a></li>
+<li class="links "><a href="Gtk.ListBox-row_selected.html" title="Gtk.ListBox::row_selected">Gtk.ListBox::row_selected</a></li>
+<li class="links "><a href="Gtk.ListBox-toggle_cursor_row.html" title="Gtk.ListBox::toggle_cursor_row">Gtk.ListBox::toggle_cursor_row</a></li>
+</ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Other</span></h2></div>
+<div class="region"><ul><li class="links "><a href="Gtk.ListBox.new.html" title="Gtk.ListBox.new">Gtk.ListBox.new</a></li></ul></div>
+</div></div>
+</div>
+<div class="sect sect-links" role="navigation">
+<div class="hgroup"></div>
+<div class="contents"><div class="links guidelinks"><div class="inner">
+<div class="title"><h2><span class="title">More Information</span></h2></div>
+<div class="region"><ul><li class="links "><a href="index.html" title="Index">Index</a></li></ul></div>
+</div></div></div>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="footer"></div>
+</div></body>
+</html>

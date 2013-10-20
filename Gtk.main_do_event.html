@@ -1,0 +1,87 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>main_do_event</title>
+<link rel="stylesheet" type="text/css" href="C.css">
+<script type="text/javascript" src="jquery.js"></script><script type="text/javascript" src="jquery.syntax.js"></script><script type="text/javascript" src="yelp.js"></script>
+</head>
+<body><div class="page" role="main">
+<div class="header"><div class="trails" role="navigation"><div class="trail">
+<a class="trail" href="index.html" title="Index">Index</a> » </div></div></div>
+<div class="body">
+<div class="hgroup"><h1 class="title"><span class="title">main_do_event</span></h1></div>
+<div class="region">
+<div class="contents">
+<div class="synopsis"><div class="inner"><div class="region"><div class="contents"><div class="code"><pre class="contents ">function main_do_event(event:Gdk.Event):void {
+    // Gjs wrapper for gtk_main_do_event()
+}</pre></div></div></div></div></div>
+<p class="p">Processes a single GDK event.</p>
+<p class="p">This is public only to allow filtering of events between GDK and GTK+.
+You will not usually need to call this function directly.</p>
+<p class="p">While you should not call this function directly, you might want to
+know how exactly events are handled. So here is what this function
+does with the event:</p>
+<p class="p">&lt;orderedlist&gt;
+&lt;listitem&gt;&lt;para&gt;
+  Compress enter/leave notify events. If the event passed build an
+  enter/leave pair together with the next event (peeked from GDK), both
+  events are thrown away. This is to avoid a backlog of (de-)highlighting
+  widgets crossed by the pointer.
+&lt;/para&gt;&lt;/listitem&gt;
+&lt;listitem&gt;&lt;para&gt;
+  Find the widget which got the event. If the widget can't be determined
+  the event is thrown away unless it belongs to a INCR transaction.
+&lt;/para&gt;&lt;/listitem&gt;
+&lt;listitem&gt;&lt;para&gt;
+  Then the event is pushed onto a stack so you can query the currently
+  handled event with <span class=" link"><a href="Gtk.get_current_event.html" title="get_current_event">get_current_event</a></span>.
+&lt;/para&gt;&lt;/listitem&gt;
+&lt;listitem&gt;&lt;para&gt;
+  The event is sent to a widget. If a grab is active all events for widgets
+  that are not in the contained in the grab widget are sent to the latter
+  with a few exceptions:
+  &lt;itemizedlist&gt;
+  &lt;listitem&gt;&lt;para&gt;
+    Deletion and destruction events are still sent to the event widget for
+    obvious reasons.
+  &lt;/para&gt;&lt;/listitem&gt;
+  &lt;listitem&gt;&lt;para&gt;
+    Events which directly relate to the visual representation of the event
+    widget.
+  &lt;/para&gt;&lt;/listitem&gt;
+  &lt;listitem&gt;&lt;para&gt;
+    Leave events are delivered to the event widget if there was an enter
+    event delivered to it before without the paired leave event.
+  &lt;/para&gt;&lt;/listitem&gt;
+  &lt;listitem&gt;&lt;para&gt;
+    Drag events are not redirected because it is unclear what the semantics
+    of that would be.
+  &lt;/para&gt;&lt;/listitem&gt;
+  &lt;/itemizedlist&gt;
+  Another point of interest might be that all key events are first passed
+  through the key snooper functions if there are any. Read the description
+  of <span class=" link"><a href="Gtk.key_snooper_install.html" title="Gtk.key_snooper_install">Gtk.key_snooper_install</a></span> if you need this feature.
+&lt;/para&gt;&lt;/listitem&gt;
+&lt;listitem&gt;&lt;para&gt;
+  After finishing the delivery the event is popped from the event stack.
+&lt;/para&gt;&lt;/listitem&gt;
+&lt;/orderedlist&gt;</p>
+<div class="terms"><div class="inner"><div class="region"><dl class="terms">
+<dt class="terms"><span class=" code">event</span></dt>
+<dd class="terms"><p class="p">An event to process (normally passed by GDK)</p></dd>
+</dl></div></div></div>
+</div>
+<div class="sect sect-links" role="navigation">
+<div class="hgroup"></div>
+<div class="contents"><div class="links guidelinks"><div class="inner">
+<div class="title"><h2><span class="title">More Information</span></h2></div>
+<div class="region"><ul><li class="links "><a href="index.html" title="Index">Index</a></li></ul></div>
+</div></div></div>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="footer"></div>
+</div></body>
+</html>

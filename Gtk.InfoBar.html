@@ -1,0 +1,154 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Gtk.InfoBar</title>
+<link rel="stylesheet" type="text/css" href="C.css">
+<script type="text/javascript" src="jquery.js"></script><script type="text/javascript" src="jquery.syntax.js"></script><script type="text/javascript" src="yelp.js"></script>
+</head>
+<body><div class="page" role="main">
+<div class="header"><div class="trails" role="navigation"><div class="trail">
+<a class="trail" href="index.html" title="Index">Index</a> » </div></div></div>
+<div class="body">
+<div class="hgroup"><h1 class="title"><span class="title">Gtk.InfoBar</span></h1></div>
+<div class="region">
+<div class="contents">
+<div class="synopsis"><div class="inner"><div class="region"><div class="contents"><div class="code"><pre class="contents ">const Gtk = imports.gi.Gtk;
+
+let info_bar = new Gtk.InfoBar({
+    <span class=" link"><a href="Gtk.InfoBar-message-type.html" title="Gtk.InfoBar:message-type">message_type</a></span>: value,
+});
+  </pre></div></div></div></div></div>
+<p class="p"><span class=" link"><a href="Gtk.InfoBar.html" title="Gtk.InfoBar">Gtk.InfoBar</a></span> is a widget that can be used to show messages to
+the user without showing a dialog. It is often temporarily shown
+at the top or bottom of a document. In contrast to <span class=" link"><a href="Gtk.Dialog.html" title="Gtk.Dialog">Gtk.Dialog</a></span>, which
+has a horizontal action area at the bottom, <span class=" link"><a href="Gtk.InfoBar.html" title="Gtk.InfoBar">Gtk.InfoBar</a></span> has a
+vertical action area at the side.</p>
+<p class="p">The API of <span class=" link"><a href="Gtk.InfoBar.html" title="Gtk.InfoBar">Gtk.InfoBar</a></span> is very similar to <span class=" link"><a href="Gtk.Dialog.html" title="Gtk.Dialog">Gtk.Dialog</a></span>, allowing you
+to add buttons to the action area with <span class=" link"><a href="Gtk.add_button.html" title="Gtk.add_button">Gtk.add_button</a></span> or
+<span class=" link"><a href="Gtk.new_with_buttons.html" title="Gtk.new_with_buttons">Gtk.new_with_buttons</a></span>. The sensitivity of action widgets
+can be controlled with <span class=" link"><a href="Gtk.set_response_sensitive.html" title="Gtk.set_response_sensitive">Gtk.set_response_sensitive</a></span>.
+To add widgets to the main content area of a <span class=" link"><a href="Gtk.InfoBar.html" title="Gtk.InfoBar">Gtk.InfoBar</a></span>, use
+<span class=" link"><a href="Gtk.get_content_area.html" title="Gtk.get_content_area">Gtk.get_content_area</a></span> and add your widgets to the container.</p>
+<p class="p">Similar to <span class=" link"><a href="Gtk.MessageDialog.html" title="Gtk.MessageDialog">Gtk.MessageDialog</a></span>, the contents of a <span class=" link"><a href="Gtk.InfoBar.html" title="Gtk.InfoBar">Gtk.InfoBar</a></span> can by
+classified as error message, warning, informational message, etc,
+by using <span class=" link"><a href="Gtk.set_message_type.html" title="Gtk.set_message_type">Gtk.set_message_type</a></span>. GTK+ uses the message type
+to determine the background color of the message area.</p>
+<p class="p">&lt;example&gt;
+&lt;title&gt;Simple GtkInfoBar usage.&lt;/title&gt;
+&lt;programlisting&gt;
+/&amp;ast; set up info bar &amp;ast;/
+info_bar = gtk_info_bar_new ();
+gtk_widget_set_no_show_all (info_bar, TRUE);
+message_label = gtk_label_new ("");
+gtk_widget_show (message_label);
+content_area = gtk_info_bar_get_content_area (GTK_INFO_BAR (info_bar));
+gtk_container_add (GTK_CONTAINER (content_area), message_label);
+gtk_info_bar_add_button (GTK_INFO_BAR (info_bar),
+                         _("_OK"), GTK_RESPONSE_OK);
+g_signal_connect (info_bar, "response",
+                  G_CALLBACK (gtk_widget_hide), NULL);
+gtk_grid_attach (GTK_GRID (grid),
+                 info_bar,
+                 0, 2, 1, 1);</p>
+<p class="p">/&amp;ast; ... &amp;ast;/</p>
+<p class="p">/&amp;ast; show an error message &amp;ast;/
+gtk_label_set_text (GTK_LABEL (message_label), error_message);
+gtk_info_bar_set_message_type (GTK_INFO_BAR (info_bar),
+                               GTK_MESSAGE_ERROR);
+gtk_widget_show (info_bar);
+&lt;/programlisting&gt;
+&lt;/example&gt;</p>
+<p class="p">&lt;refsect2 id="GtkInfoBar-BUILDER-UI"&gt;
+&lt;title&gt;GtkInfoBar as GtkBuildable&lt;/title&gt;
+&lt;para&gt;
+The GtkInfoBar implementation of the GtkBuildable interface exposes
+the content area and action area as internal children with the names
+"content_area" and "action_area".
+&lt;/para&gt;
+&lt;para&gt;
+GtkInfoBar supports a custom &amp;lt;action-widgets&amp;gt; element, which
+can contain multiple &amp;lt;action-widget&amp;gt; elements. The "response"
+attribute specifies a numeric response, and the content of the element
+is the id of widget (which should be a child of the dialogs @action_area).
+&lt;/para&gt;
+&lt;/refsect2&gt;</p>
+<div class="synopsis"><div class="inner">
+<div class="title title-synopsis"><h2><span class="title">Hierarchy</span></h2></div>
+<div class="region"><div class="contents"><div class="tree"><div class="inner"><div class="region"><ul class="tree"><li class="tree">
+<div>
+        <span class=" code">GObject.Object</span>
+      
+      </div>
+<ul class="tree"><li class="tree">
+<div>
+        <span class=" code">GObject.InitiallyUnowned</span>
+      
+      </div>
+<ul class="tree"><li class="tree">
+<div>
+        <span class=" code">Gtk.Widget</span>
+      
+      </div>
+<ul class="tree"><li class="tree">
+<div>
+        <span class=" code">Gtk.Container</span>
+      
+      </div>
+<ul class="tree"><li class="tree">
+<div>
+        <span class=" code">Gtk.Box</span>
+      
+      </div>
+<ul class="tree"><li class="tree"><div>
+        <span class=" code">Gtk.InfoBar</span>
+      </div></li></ul>
+</li></ul>
+</li></ul>
+</li></ul>
+</li></ul>
+</li></ul></div></div></div></div></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Methods</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.InfoBar.add_action_widget.html" title="Gtk.InfoBar.prototype.add_action_widget">Gtk.InfoBar.prototype.add_action_widget</a></li>
+<li class="links "><a href="Gtk.InfoBar.add_button.html" title="Gtk.InfoBar.prototype.add_button">Gtk.InfoBar.prototype.add_button</a></li>
+<li class="links "><a href="Gtk.InfoBar.get_action_area.html" title="Gtk.InfoBar.prototype.get_action_area">Gtk.InfoBar.prototype.get_action_area</a></li>
+<li class="links "><a href="Gtk.InfoBar.get_content_area.html" title="Gtk.InfoBar.prototype.get_content_area">Gtk.InfoBar.prototype.get_content_area</a></li>
+<li class="links "><a href="Gtk.InfoBar.get_message_type.html" title="Gtk.InfoBar.prototype.get_message_type">Gtk.InfoBar.prototype.get_message_type</a></li>
+<li class="links "><a href="Gtk.InfoBar.response.html" title="Gtk.InfoBar.prototype.response">Gtk.InfoBar.prototype.response</a></li>
+<li class="links "><a href="Gtk.InfoBar.set_default_response.html" title="Gtk.InfoBar.prototype.set_default_response">Gtk.InfoBar.prototype.set_default_response</a></li>
+<li class="links "><a href="Gtk.InfoBar.set_message_type.html" title="Gtk.InfoBar.prototype.set_message_type">Gtk.InfoBar.prototype.set_message_type</a></li>
+<li class="links "><a href="Gtk.InfoBar.set_response_sensitive.html" title="Gtk.InfoBar.prototype.set_response_sensitive">Gtk.InfoBar.prototype.set_response_sensitive</a></li>
+</ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Properties</span></h2></div>
+<div class="region"><ul><li class="links "><a href="Gtk.InfoBar-message-type.html" title="Gtk.InfoBar:message-type">message-type</a></li></ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Signals</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.InfoBar-close.html" title="Gtk.InfoBar::close">close</a></li>
+<li class="links "><a href="Gtk.InfoBar-response.html" title="Gtk.InfoBar::response">response</a></li>
+</ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Other</span></h2></div>
+<div class="region"><ul><li class="links "><a href="Gtk.InfoBar.new.html" title="Gtk.InfoBar.new">Gtk.InfoBar.new</a></li></ul></div>
+</div></div>
+</div>
+<div class="sect sect-links" role="navigation">
+<div class="hgroup"></div>
+<div class="contents"><div class="links guidelinks"><div class="inner">
+<div class="title"><h2><span class="title">More Information</span></h2></div>
+<div class="region"><ul><li class="links "><a href="index.html" title="Index">Index</a></li></ul></div>
+</div></div></div>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="footer"></div>
+</div></body>
+</html>

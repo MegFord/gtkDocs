@@ -1,0 +1,43 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Gtk.PlacesSidebar::open-location</title>
+<link rel="stylesheet" type="text/css" href="C.css">
+<script type="text/javascript" src="jquery.js"></script><script type="text/javascript" src="jquery.syntax.js"></script><script type="text/javascript" src="yelp.js"></script>
+</head>
+<body><div class="page" role="main">
+<div class="header"><div class="trails" role="navigation"><div class="trail">
+<a class="trail" href="index.html" title="Index">Index</a> » <a class="trail" href="Gtk.PlacesSidebar.html" title="Gtk.PlacesSidebar">Gtk.PlacesSidebar</a> » </div></div></div>
+<div class="body">
+<div class="hgroup"><h1 class="title"><span class="title">Gtk.PlacesSidebar::open-location</span></h1></div>
+<div class="region">
+<div class="contents">
+<div class="synopsis"><div class="inner"><div class="region"><div class="contents"><div class="code"><pre class="contents syntax brush-python">function callback(places_sidebar, location:GObject.Object, open_flags:Gtk.PlacesOpenFlags, ):void;</pre></div></div></div></div></div>
+<p class="p">The places sidebar emits this signal when the user selects a location
+in it.  The calling application should display the contents of that
+location; for example, a file manager should show a list of files in
+the specified location.</p>
+<p class="p">Since 3.10</p>
+<div class="terms"><div class="inner"><div class="region"><dl class="terms">
+<dt class="terms"><span class=" code">places_sidebar</span></dt>
+<dd class="terms"><p class="p">instance of <span class=" link"><a href="Gtk.PlacesSidebar.html" title="Gtk.PlacesSidebar">Gtk.PlacesSidebar</a></span> that is emitting the signal</p></dd>
+<dt class="terms"><span class=" code">location</span></dt>
+<dd class="terms"><p class="p"><span class=" link"><a href="Gio.File.html" title="Gio.File">Gio.File</a></span> to which the caller should switch.</p></dd>
+<dt class="terms"><span class=" code">open_flags</span></dt>
+<dd class="terms"><p class="p">a single value from <span class=" link"><a href="Gtk.PlacesOpenFlags.html" title="Gtk.PlacesOpenFlags">Gtk.PlacesOpenFlags</a></span> specifying how the <span class=" code">location</span> should be opened.</p></dd>
+</dl></div></div></div>
+</div>
+<div class="sect sect-links" role="navigation">
+<div class="hgroup"></div>
+<div class="contents"><div class="links guidelinks"><div class="inner">
+<div class="title"><h2><span class="title">More Information</span></h2></div>
+<div class="region"><ul><li class="links "><a href="Gtk.PlacesSidebar.html" title="Gtk.PlacesSidebar">Gtk.PlacesSidebar</a></li></ul></div>
+</div></div></div>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="footer"></div>
+</div></body>
+</html>

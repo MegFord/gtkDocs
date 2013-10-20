@@ -1,0 +1,52 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Gtk.ListBox.prototype.set_header_func</title>
+<link rel="stylesheet" type="text/css" href="C.css">
+<script type="text/javascript" src="jquery.js"></script><script type="text/javascript" src="jquery.syntax.js"></script><script type="text/javascript" src="yelp.js"></script>
+</head>
+<body><div class="page" role="main">
+<div class="header"><div class="trails" role="navigation"><div class="trail">
+<a class="trail" href="index.html" title="Index">Index</a> » <a class="trail" href="Gtk.ListBox.html" title="Gtk.ListBox">Gtk.ListBox</a> » </div></div></div>
+<div class="body">
+<div class="hgroup"><h1 class="title"><span class="title">Gtk.ListBox.prototype.set_header_func</span></h1></div>
+<div class="region">
+<div class="contents">
+<div class="synopsis"><div class="inner"><div class="region"><div class="contents"><div class="code"><pre class="contents ">function set_header_func(update_header:Gtk.ListBoxUpdateHeaderFunc):void {
+    // Gjs wrapper for gtk_list_box_set_header_func()
+}</pre></div></div></div></div></div>
+<p class="p">By setting a header function on the <span class=" code">list_box</span> one can dynamically add headers
+in front of rows, depending on the contents of the row and its position in the list.
+For instance, one could use it to add headers in front of the first item of a
+new kind, in a list sorted by the kind.</p>
+<p class="p">The <span class=" code">update_header</span> can look at the current header widget using <span class=" link"><a href="Gtk.get_header.html" title="Gtk.get_header">Gtk.get_header</a></span>
+and either update the state of the widget as needed, or set a new one using
+<span class=" link"><a href="Gtk.set_header.html" title="Gtk.set_header">Gtk.set_header</a></span>. If no header is needed, set the header to <span class=" code">null</span>.</p>
+<p class="p">Note that you may get many calls <span class=" code">update_header</span> to this for a particular row when e.g.
+changing things that don't affect the header. In this case it is important for performance
+to not blindly replace an exisiting header widh an identical one.</p>
+<p class="p">The <span class=" code">update_header</span> function will be called for each row after the call, and it will
+continue to be called each time a row changes (via <span class=" link"><a href="Gtk.changed.html" title="Gtk.changed">Gtk.changed</a></span>) and when
+the row before changes (either by <span class=" link"><a href="Gtk.changed.html" title="Gtk.changed">Gtk.changed</a></span> on the previous row, or when
+the previous row becomes a different row). It is also called for all rows when
+<span class=" link"><a href="Gtk.ListBox.invalidate_headers.html" title="Gtk.ListBox.prototype.invalidate_headers">Gtk.ListBox.prototype.invalidate_headers</a></span> is called.</p>
+<p class="p">Since 3.10</p>
+<div class="terms"><div class="inner"><div class="region"><dl class="terms">
+<dt class="terms"><span class=" code">update_header</span></dt>
+<dd class="terms"><p class="p">callback that lets you add row headers</p></dd>
+</dl></div></div></div>
+</div>
+<div class="sect sect-links" role="navigation">
+<div class="hgroup"></div>
+<div class="contents"><div class="links guidelinks"><div class="inner">
+<div class="title"><h2><span class="title">More Information</span></h2></div>
+<div class="region"><ul><li class="links "><a href="Gtk.ListBox.html" title="Gtk.ListBox">Gtk.ListBox</a></li></ul></div>
+</div></div></div>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="footer"></div>
+</div></body>
+</html>

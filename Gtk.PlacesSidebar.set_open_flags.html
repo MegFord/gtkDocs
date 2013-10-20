@@ -1,0 +1,49 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Gtk.PlacesSidebar.prototype.set_open_flags</title>
+<link rel="stylesheet" type="text/css" href="C.css">
+<script type="text/javascript" src="jquery.js"></script><script type="text/javascript" src="jquery.syntax.js"></script><script type="text/javascript" src="yelp.js"></script>
+</head>
+<body><div class="page" role="main">
+<div class="header"><div class="trails" role="navigation"><div class="trail">
+<a class="trail" href="index.html" title="Index">Index</a> » <a class="trail" href="Gtk.PlacesSidebar.html" title="Gtk.PlacesSidebar">Gtk.PlacesSidebar</a> » </div></div></div>
+<div class="body">
+<div class="hgroup"><h1 class="title"><span class="title">Gtk.PlacesSidebar.prototype.set_open_flags</span></h1></div>
+<div class="region">
+<div class="contents">
+<div class="synopsis"><div class="inner"><div class="region"><div class="contents"><div class="code"><pre class="contents ">function set_open_flags(flags:Gtk.PlacesOpenFlags):void {
+    // Gjs wrapper for gtk_places_sidebar_set_open_flags()
+}</pre></div></div></div></div></div>
+<p class="p">Sets the way in which the calling application can open new locations from
+the places sidebar.  For example, some applications only open locations
+"directly" into their main view, while others may support opening locations
+in a new notebook tab or a new window.</p>
+<p class="p">This function is used to tell the places <span class=" code">sidebar</span> about the ways in which the
+application can open new locations, so that the sidebar can display (or not)
+the "Open in new tab" and "Open in new window" menu items as appropriate.</p>
+<p class="p">When the <span class=" link"><a href="Gtk.open-location.html" title="Gtk.open-location">Gtk.open-location</a></span> signal is emitted, its flags
+argument will be set to one of the <span class=" code">flags</span> that was passed in
+<span class=" link"><a href="Gtk.PlacesSidebar.set_open_flags.html" title="Gtk.PlacesSidebar.prototype.set_open_flags">Gtk.PlacesSidebar.prototype.set_open_flags</a></span>.</p>
+<p class="p">Passing 0 for <span class=" code">flags</span> will cause #GTK_PLACES_OPEN_NORMAL to always be sent
+to callbacks for the "open-location" signal.</p>
+<p class="p">Since 3.10</p>
+<div class="terms"><div class="inner"><div class="region"><dl class="terms">
+<dt class="terms"><span class=" code">flags</span></dt>
+<dd class="terms"><p class="p">Bitmask of modes in which the calling application can open locations</p></dd>
+</dl></div></div></div>
+</div>
+<div class="sect sect-links" role="navigation">
+<div class="hgroup"></div>
+<div class="contents"><div class="links guidelinks"><div class="inner">
+<div class="title"><h2><span class="title">More Information</span></h2></div>
+<div class="region"><ul><li class="links "><a href="Gtk.PlacesSidebar.html" title="Gtk.PlacesSidebar">Gtk.PlacesSidebar</a></li></ul></div>
+</div></div></div>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="footer"></div>
+</div></body>
+</html>

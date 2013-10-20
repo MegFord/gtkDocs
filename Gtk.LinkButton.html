@@ -1,0 +1,121 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Gtk.LinkButton</title>
+<link rel="stylesheet" type="text/css" href="C.css">
+<script type="text/javascript" src="jquery.js"></script><script type="text/javascript" src="jquery.syntax.js"></script><script type="text/javascript" src="yelp.js"></script>
+</head>
+<body><div class="page" role="main">
+<div class="header"><div class="trails" role="navigation"><div class="trail">
+<a class="trail" href="index.html" title="Index">Index</a> » </div></div></div>
+<div class="body">
+<div class="hgroup"><h1 class="title"><span class="title">Gtk.LinkButton</span></h1></div>
+<div class="region">
+<div class="contents">
+<div class="synopsis"><div class="inner"><div class="region"><div class="contents"><div class="code"><pre class="contents ">const Gtk = imports.gi.Gtk;
+
+let link_button = new Gtk.LinkButton({
+    <span class=" link"><a href="Gtk.LinkButton-uri.html" title="Gtk.LinkButton:uri">uri</a></span>: value,
+    <span class=" link"><a href="Gtk.LinkButton-visited.html" title="Gtk.LinkButton:visited">visited</a></span>: value,
+});
+  </pre></div></div></div></div></div>
+<p class="p">A GtkLinkButton is a <span class=" link"><a href="Gtk.Button.html" title="Gtk.Button">Gtk.Button</a></span> with a hyperlink, similar to the one
+used by web browsers, which triggers an action when clicked. It is useful
+to show quick links to resources.</p>
+<p class="p">A link button is created by calling either <span class=" link"><a href="Gtk.new.html" title="Gtk.new">Gtk.new</a></span> or
+<span class=" link"><a href="Gtk.new_with_label.html" title="Gtk.new_with_label">Gtk.new_with_label</a></span>. If using the former, the URI you pass
+to the constructor is used as a label for the widget.</p>
+<p class="p">The URI bound to a GtkLinkButton can be set specifically using
+<span class=" link"><a href="Gtk.set_uri.html" title="Gtk.set_uri">Gtk.set_uri</a></span>, and retrieved using <span class=" link"><a href="Gtk.get_uri.html" title="Gtk.get_uri">Gtk.get_uri</a></span>.</p>
+<p class="p">By default, GtkLinkButton calls <span class=" link"><a href="Gtk.show_uri.html" title="show_uri">show_uri</a></span> when the button is
+clicked. This behaviour can be overridden by connecting to the
+<span class=" link"><a href="Gtk.activate-link.html" title="Gtk.activate-link">Gtk.activate-link</a></span> signal and returning <span class=" code">true</span> from the
+signal handler.</p>
+<div class="synopsis"><div class="inner">
+<div class="title title-synopsis"><h2><span class="title">Hierarchy</span></h2></div>
+<div class="region"><div class="contents"><div class="tree"><div class="inner"><div class="region"><ul class="tree"><li class="tree">
+<div>
+        <span class=" code">GObject.Object</span>
+      
+      </div>
+<ul class="tree"><li class="tree">
+<div>
+        <span class=" code">GObject.InitiallyUnowned</span>
+      
+      </div>
+<ul class="tree"><li class="tree">
+<div>
+        <span class=" code">Gtk.Widget</span>
+      
+      </div>
+<ul class="tree"><li class="tree">
+<div>
+        <span class=" code">Gtk.Container</span>
+      
+      </div>
+<ul class="tree"><li class="tree">
+<div>
+        <span class=" code">Gtk.Bin</span>
+      
+      </div>
+<ul class="tree"><li class="tree">
+<div>
+        <span class=" code">Gtk.Button</span>
+      
+      </div>
+<ul class="tree"><li class="tree"><div>
+        <span class=" code">Gtk.LinkButton</span>
+      </div></li></ul>
+</li></ul>
+</li></ul>
+</li></ul>
+</li></ul>
+</li></ul>
+</li></ul></div></div></div></div></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Methods</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.LinkButton.get_uri.html" title="Gtk.LinkButton.prototype.get_uri">Gtk.LinkButton.prototype.get_uri</a></li>
+<li class="links "><a href="Gtk.LinkButton.get_visited.html" title="Gtk.LinkButton.prototype.get_visited">Gtk.LinkButton.prototype.get_visited</a></li>
+<li class="links "><a href="Gtk.LinkButton.set_uri.html" title="Gtk.LinkButton.prototype.set_uri">Gtk.LinkButton.prototype.set_uri</a></li>
+<li class="links "><a href="Gtk.LinkButton.set_visited.html" title="Gtk.LinkButton.prototype.set_visited">Gtk.LinkButton.prototype.set_visited</a></li>
+</ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Properties</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.LinkButton-uri.html" title="Gtk.LinkButton:uri">uri</a></li>
+<li class="links "><a href="Gtk.LinkButton-visited.html" title="Gtk.LinkButton:visited">visited</a></li>
+</ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Signals</span></h2></div>
+<div class="region"><ul><li class="links "><a href="Gtk.LinkButton-activate-link.html" title="Gtk.LinkButton::activate-link">activate-link</a></li></ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Virtual functions</span></h2></div>
+<div class="region"><ul><li class="links "><a href="Gtk.LinkButton-activate_link.html" title="Gtk.LinkButton::activate_link">Gtk.LinkButton::activate_link</a></li></ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Other</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.LinkButton.new.html" title="Gtk.LinkButton.new">Gtk.LinkButton.new</a></li>
+<li class="links "><a href="Gtk.LinkButton.new_with_label.html" title="Gtk.LinkButton.new_with_label">Gtk.LinkButton.new_with_label</a></li>
+</ul></div>
+</div></div>
+</div>
+<div class="sect sect-links" role="navigation">
+<div class="hgroup"></div>
+<div class="contents"><div class="links guidelinks"><div class="inner">
+<div class="title"><h2><span class="title">More Information</span></h2></div>
+<div class="region"><ul><li class="links "><a href="index.html" title="Index">Index</a></li></ul></div>
+</div></div></div>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="footer"></div>
+</div></body>
+</html>

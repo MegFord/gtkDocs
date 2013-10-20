@@ -1,0 +1,93 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Gtk.PrintOperation.prototype.run</title>
+<link rel="stylesheet" type="text/css" href="C.css">
+<script type="text/javascript" src="jquery.js"></script><script type="text/javascript" src="jquery.syntax.js"></script><script type="text/javascript" src="yelp.js"></script>
+</head>
+<body><div class="page" role="main">
+<div class="header"><div class="trails" role="navigation"><div class="trail">
+<a class="trail" href="index.html" title="Index">Index</a> » <a class="trail" href="Gtk.PrintOperation.html" title="Gtk.PrintOperation">Gtk.PrintOperation</a> » </div></div></div>
+<div class="body">
+<div class="hgroup"><h1 class="title"><span class="title">Gtk.PrintOperation.prototype.run</span></h1></div>
+<div class="region">
+<div class="contents">
+<div class="synopsis"><div class="inner"><div class="region"><div class="contents"><div class="code"><pre class="contents ">function run(action:Gtk.PrintOperationAction, parent:Gtk.Window):Gtk.PrintOperationResult {
+    // Gjs wrapper for gtk_print_operation_run()
+}</pre></div></div></div></div></div>
+<p class="p">Runs the print operation, by first letting the user modify
+print settings in the print dialog, and then print the document.</p>
+<p class="p">Normally that this function does not return until the rendering of all 
+pages is complete. You can connect to the 
+<span class=" link"><a href="Gtk.status-changed.html" title="Gtk.status-changed">Gtk.status-changed</a></span> signal on <span class=" code">op</span> to obtain some 
+information about the progress of the print operation. 
+Furthermore, it may use a recursive mainloop to show the print dialog.</p>
+<p class="p">If you call <span class=" link"><a href="Gtk.set_allow_async.html" title="Gtk.set_allow_async">Gtk.set_allow_async</a></span> or set the 
+<span class=" link"><a href="Gtk.allow-async.html" title="Gtk.allow-async">Gtk.allow-async</a></span> property the operation will run 
+asynchronously if this is supported on the platform. The 
+<span class=" link"><a href="Gtk.done.html" title="Gtk.done">Gtk.done</a></span> signal will be emitted with the result of the 
+operation when the it is done (i.e. when the dialog is canceled, or when 
+the print succeeds or fails).
+|[
+if (settings != NULL)
+  gtk_print_operation_set_print_settings (print, settings);
+  
+if (page_setup != NULL)
+  gtk_print_operation_set_default_page_setup (print, page_setup);
+  
+g_signal_connect (print, "begin-print", 
+                  G_CALLBACK (begin_print), &amp;data);
+g_signal_connect (print, "draw-page", 
+                  G_CALLBACK (draw_page), &amp;data);
+ 
+res = gtk_print_operation_run (print, 
+                               GTK_PRINT_OPERATION_ACTION_PRINT_DIALOG, 
+                               parent, 
+                               &amp;error);
+ 
+if (res == GTK_PRINT_OPERATION_RESULT_ERROR)
+ {
+   error_dialog = gtk_message_dialog_new (GTK_WINDOW (parent),
+  			                     GTK_DIALOG_DESTROY_WITH_PARENT,
+					     GTK_MESSAGE_ERROR,
+					     GTK_BUTTONS_CLOSE,
+					     "Error printing file:\n%s",
+					     error-&gt;message);
+   g_signal_connect (error_dialog, "response", 
+                     G_CALLBACK (gtk_widget_destroy), NULL);
+   gtk_widget_show (error_dialog);
+   g_error_free (error);
+ }
+else if (res == GTK_PRINT_OPERATION_RESULT_APPLY)
+ {
+   if (settings != NULL)
+g_object_unref (settings);
+   settings = g_object_ref (gtk_print_operation_get_print_settings (print));
+ }
+]|</p>
+<p class="p">Note that <span class=" link"><a href="Gtk.PrintOperation.run.html" title="Gtk.PrintOperation.prototype.run">Gtk.PrintOperation.prototype.run</a></span> can only be called once on a
+given <span class=" link"><a href="Gtk.PrintOperation.html" title="Gtk.PrintOperation">Gtk.PrintOperation</a></span>.</p>
+<p class="p">Since 2.10</p>
+<div class="terms"><div class="inner"><div class="region"><dl class="terms">
+<dt class="terms"><span class=" code">action</span></dt>
+<dd class="terms"><p class="p">the action to start</p></dd>
+<dt class="terms"><span class=" code">parent</span></dt>
+<dd class="terms"><p class="p">Transient parent of the dialog</p></dd>
+<dt class="terms"><span class=" code">Returns</span></dt>
+<dd class="terms"><p class="p">the result of the print operation. A return value of <span class=" link"><a href="Gtk.PrintOperationResult.html" title="Gtk.PrintOperationResult">Gtk.PrintOperationResult</a></span>.apply indicates that the printing was completed successfully. In this case, it is a good idea to obtain the used print settings with <span class=" link"><a href="Gtk.PrintOperation.get_print_settings.html" title="Gtk.PrintOperation.prototype.get_print_settings">Gtk.PrintOperation.prototype.get_print_settings</a></span> and store them for reuse with the next print operation. A value of <span class=" link"><a href="Gtk.PrintOperationResult.html" title="Gtk.PrintOperationResult">Gtk.PrintOperationResult</a></span>.in_progress means the operation is running asynchronously, and will emit the <span class=" link"><a href="Gtk.done.html" title="Gtk.done">Gtk.done</a></span> signal when done.</p></dd>
+</dl></div></div></div>
+</div>
+<div class="sect sect-links" role="navigation">
+<div class="hgroup"></div>
+<div class="contents"><div class="links guidelinks"><div class="inner">
+<div class="title"><h2><span class="title">More Information</span></h2></div>
+<div class="region"><ul><li class="links "><a href="Gtk.PrintOperation.html" title="Gtk.PrintOperation">Gtk.PrintOperation</a></li></ul></div>
+</div></div></div>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="footer"></div>
+</div></body>
+</html>

@@ -1,0 +1,158 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Gtk.MessageDialog</title>
+<link rel="stylesheet" type="text/css" href="C.css">
+<script type="text/javascript" src="jquery.js"></script><script type="text/javascript" src="jquery.syntax.js"></script><script type="text/javascript" src="yelp.js"></script>
+</head>
+<body><div class="page" role="main">
+<div class="header"><div class="trails" role="navigation"><div class="trail">
+<a class="trail" href="index.html" title="Index">Index</a> » </div></div></div>
+<div class="body">
+<div class="hgroup"><h1 class="title"><span class="title">Gtk.MessageDialog</span></h1></div>
+<div class="region">
+<div class="contents">
+<div class="synopsis"><div class="inner"><div class="region"><div class="contents"><div class="code"><pre class="contents ">const Gtk = imports.gi.Gtk;
+
+let message_dialog = new Gtk.MessageDialog({
+    <span class=" link"><a href="Gtk.MessageDialog-buttons.html" title="Gtk.MessageDialog:buttons">buttons</a></span>: value,
+    <span class=" link"><a href="Gtk.MessageDialog-image.html" title="Gtk.MessageDialog:image">image</a></span>: value,
+    <span class=" link"><a href="Gtk.MessageDialog-message-type.html" title="Gtk.MessageDialog:message-type">message_type</a></span>: value,
+    <span class=" link"><a href="Gtk.MessageDialog-secondary-text.html" title="Gtk.MessageDialog:secondary-text">secondary_text</a></span>: value,
+    <span class=" link"><a href="Gtk.MessageDialog-secondary-use-markup.html" title="Gtk.MessageDialog:secondary-use-markup">secondary_use_markup</a></span>: value,
+    <span class=" link"><a href="Gtk.MessageDialog-text.html" title="Gtk.MessageDialog:text">text</a></span>: value,
+    <span class=" link"><a href="Gtk.MessageDialog-use-markup.html" title="Gtk.MessageDialog:use-markup">use_markup</a></span>: value,
+});
+  </pre></div></div></div></div></div>
+<p class="p"><span class=" link"><a href="Gtk.MessageDialog.html" title="Gtk.MessageDialog">Gtk.MessageDialog</a></span> presents a dialog with an image representing the type of
+message (Error, Question, etc.) alongside some message text. It's simply a
+convenience widget; you could construct the equivalent of <span class=" link"><a href="Gtk.MessageDialog.html" title="Gtk.MessageDialog">Gtk.MessageDialog</a></span>
+from <span class=" link"><a href="Gtk.Dialog.html" title="Gtk.Dialog">Gtk.Dialog</a></span> without too much effort, but <span class=" link"><a href="Gtk.MessageDialog.html" title="Gtk.MessageDialog">Gtk.MessageDialog</a></span> saves typing.</p>
+<p class="p">One difference from <span class=" link"><a href="Gtk.Dialog.html" title="Gtk.Dialog">Gtk.Dialog</a></span> is that <span class=" link"><a href="Gtk.MessageDialog.html" title="Gtk.MessageDialog">Gtk.MessageDialog</a></span> sets the
+<span class=" link"><a href="Gtk.skip-taskbar-hint.html" title="Gtk.skip-taskbar-hint">Gtk.skip-taskbar-hint</a></span> property to <span class=" code">true</span>, so that the dialog is hidden
+from the taskbar by default.</p>
+<p class="p">The easiest way to do a modal message dialog is to use <span class=" link"><a href="Gtk.Dialog.run.html" title="Gtk.Dialog.prototype.run">Gtk.Dialog.prototype.run</a></span>, though
+you can also pass in the <span class=" link"><a href="Gtk.DialogFlags.html" title="Gtk.DialogFlags">Gtk.DialogFlags</a></span>.modal flag, <span class=" link"><a href="Gtk.Dialog.run.html" title="Gtk.Dialog.prototype.run">Gtk.Dialog.prototype.run</a></span> automatically
+makes the dialog modal and waits for the user to respond to it. <span class=" link"><a href="Gtk.Dialog.run.html" title="Gtk.Dialog.prototype.run">Gtk.Dialog.prototype.run</a></span>
+returns when any dialog button is clicked.
+&lt;example&gt;
+&lt;title&gt;A modal dialog.&lt;/title&gt;
+&lt;programlisting&gt;
+ dialog = gtk_message_dialog_new (main_application_window,
+                                  GTK_DIALOG_DESTROY_WITH_PARENT,
+                                  GTK_MESSAGE_ERROR,
+                                  GTK_BUTTONS_CLOSE,
+                                  "Error loading file '&amp;percnt;s': &amp;percnt;s",
+                                  filename, g_strerror (errno));
+ gtk_dialog_run (GTK_DIALOG (dialog));
+ gtk_widget_destroy (dialog);
+&lt;/programlisting&gt;
+&lt;/example&gt;
+You might do a non-modal <span class=" link"><a href="Gtk.MessageDialog.html" title="Gtk.MessageDialog">Gtk.MessageDialog</a></span> as follows:
+&lt;example&gt;
+&lt;title&gt;A non-modal dialog.&lt;/title&gt;
+&lt;programlisting&gt;
+ dialog = gtk_message_dialog_new (main_application_window,
+                                  GTK_DIALOG_DESTROY_WITH_PARENT,
+                                  GTK_MESSAGE_ERROR,
+                                  GTK_BUTTONS_CLOSE,
+                                  "Error loading file '&amp;percnt;s': &amp;percnt;s",
+                                  filename, g_strerror (errno));</p>
+<p class="p"> /&amp;ast; Destroy the dialog when the user responds to it (e.g. clicks a button) &amp;ast;/
+ g_signal_connect_swapped (dialog, "response",
+                           G_CALLBACK (gtk_widget_destroy),
+                           dialog);
+&lt;/programlisting&gt;
+&lt;/example&gt;</p>
+<p class="p">&lt;refsect2 id="GtkMessageDialog-BUILDER-UI"&gt;
+&lt;title&gt;GtkMessageDialog as GtkBuildable&lt;/title&gt;
+&lt;para&gt;
+The GtkMessageDialog implementation of the GtkBuildable interface exposes
+the message area as an internal child with the name "message_area".
+&lt;/para&gt;
+&lt;/refsect2&gt;</p>
+<div class="synopsis"><div class="inner">
+<div class="title title-synopsis"><h2><span class="title">Hierarchy</span></h2></div>
+<div class="region"><div class="contents"><div class="tree"><div class="inner"><div class="region"><ul class="tree"><li class="tree">
+<div>
+        <span class=" code">GObject.Object</span>
+      
+      </div>
+<ul class="tree"><li class="tree">
+<div>
+        <span class=" code">GObject.InitiallyUnowned</span>
+      
+      </div>
+<ul class="tree"><li class="tree">
+<div>
+        <span class=" code">Gtk.Widget</span>
+      
+      </div>
+<ul class="tree"><li class="tree">
+<div>
+        <span class=" code">Gtk.Container</span>
+      
+      </div>
+<ul class="tree"><li class="tree">
+<div>
+        <span class=" code">Gtk.Bin</span>
+      
+      </div>
+<ul class="tree"><li class="tree">
+<div>
+        <span class=" code">Gtk.Window</span>
+      
+      </div>
+<ul class="tree"><li class="tree">
+<div>
+        <span class=" code">Gtk.Dialog</span>
+      
+      </div>
+<ul class="tree"><li class="tree"><div>
+        <span class=" code">Gtk.MessageDialog</span>
+      </div></li></ul>
+</li></ul>
+</li></ul>
+</li></ul>
+</li></ul>
+</li></ul>
+</li></ul>
+</li></ul></div></div></div></div></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Methods</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.MessageDialog.get_image.html" title="Gtk.MessageDialog.prototype.get_image">Gtk.MessageDialog.prototype.get_image</a></li>
+<li class="links "><a href="Gtk.MessageDialog.get_message_area.html" title="Gtk.MessageDialog.prototype.get_message_area">Gtk.MessageDialog.prototype.get_message_area</a></li>
+<li class="links "><a href="Gtk.MessageDialog.set_image.html" title="Gtk.MessageDialog.prototype.set_image">Gtk.MessageDialog.prototype.set_image</a></li>
+<li class="links "><a href="Gtk.MessageDialog.set_markup.html" title="Gtk.MessageDialog.prototype.set_markup">Gtk.MessageDialog.prototype.set_markup</a></li>
+</ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Properties</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.MessageDialog-buttons.html" title="Gtk.MessageDialog:buttons">buttons</a></li>
+<li class="links "><a href="Gtk.MessageDialog-image.html" title="Gtk.MessageDialog:image">image</a></li>
+<li class="links "><a href="Gtk.MessageDialog-message-area.html" title="Gtk.MessageDialog:message-area">message-area</a></li>
+<li class="links "><a href="Gtk.MessageDialog-message-type.html" title="Gtk.MessageDialog:message-type">message-type</a></li>
+<li class="links "><a href="Gtk.MessageDialog-secondary-text.html" title="Gtk.MessageDialog:secondary-text">secondary-text</a></li>
+<li class="links "><a href="Gtk.MessageDialog-secondary-use-markup.html" title="Gtk.MessageDialog:secondary-use-markup">secondary-use-markup</a></li>
+<li class="links "><a href="Gtk.MessageDialog-text.html" title="Gtk.MessageDialog:text">text</a></li>
+<li class="links "><a href="Gtk.MessageDialog-use-markup.html" title="Gtk.MessageDialog:use-markup">use-markup</a></li>
+</ul></div>
+</div></div>
+</div>
+<div class="sect sect-links" role="navigation">
+<div class="hgroup"></div>
+<div class="contents"><div class="links guidelinks"><div class="inner">
+<div class="title"><h2><span class="title">More Information</span></h2></div>
+<div class="region"><ul><li class="links "><a href="index.html" title="Index">Index</a></li></ul></div>
+</div></div></div>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="footer"></div>
+</div></body>
+</html>

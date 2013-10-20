@@ -1,0 +1,49 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Gtk.Label.prototype.set_mnemonic_widget</title>
+<link rel="stylesheet" type="text/css" href="C.css">
+<script type="text/javascript" src="jquery.js"></script><script type="text/javascript" src="jquery.syntax.js"></script><script type="text/javascript" src="yelp.js"></script>
+</head>
+<body><div class="page" role="main">
+<div class="header"><div class="trails" role="navigation"><div class="trail">
+<a class="trail" href="index.html" title="Index">Index</a> » <a class="trail" href="Gtk.Label.html" title="Gtk.Label">Gtk.Label</a> » </div></div></div>
+<div class="body">
+<div class="hgroup"><h1 class="title"><span class="title">Gtk.Label.prototype.set_mnemonic_widget</span></h1></div>
+<div class="region">
+<div class="contents">
+<div class="synopsis"><div class="inner"><div class="region"><div class="contents"><div class="code"><pre class="contents ">function set_mnemonic_widget(widget:Gtk.Widget):void {
+    // Gjs wrapper for gtk_label_set_mnemonic_widget()
+}</pre></div></div></div></div></div>
+<p class="p">If the label has been set so that it has an mnemonic key (using
+i.e. <span class=" link"><a href="Gtk.Label.set_markup_with_mnemonic.html" title="Gtk.Label.prototype.set_markup_with_mnemonic">Gtk.Label.prototype.set_markup_with_mnemonic</a></span>,
+<span class=" link"><a href="Gtk.set_text_with_mnemonic.html" title="Gtk.set_text_with_mnemonic">Gtk.set_text_with_mnemonic</a></span>, <span class=" link"><a href="Gtk.new_with_mnemonic.html" title="Gtk.new_with_mnemonic">Gtk.new_with_mnemonic</a></span>
+or the "use_underline" property) the label can be associated with a
+widget that is the target of the mnemonic. When the label is inside
+a widget (like a <span class=" link"><a href="Gtk.Button.html" title="Gtk.Button">Gtk.Button</a></span> or a <span class=" link"><a href="Gtk.Notebook.html" title="Gtk.Notebook">Gtk.Notebook</a></span> tab) it is
+automatically associated with the correct widget, but sometimes
+(i.e. when the target is a <span class=" link"><a href="Gtk.Entry.html" title="Gtk.Entry">Gtk.Entry</a></span> next to the label) you need to
+set it explicitly using this function.</p>
+<p class="p">The target widget will be accelerated by emitting the 
+GtkWidget::mnemonic-activate signal on it. The default handler for 
+this signal will activate the widget if there are no mnemonic collisions 
+and toggle focus between the colliding widgets otherwise.</p>
+<div class="terms"><div class="inner"><div class="region"><dl class="terms">
+<dt class="terms"><span class=" code">widget</span></dt>
+<dd class="terms"><p class="p">the target <span class=" link"><a href="Gtk.Widget.html" title="Gtk.Widget">Gtk.Widget</a></span></p></dd>
+</dl></div></div></div>
+</div>
+<div class="sect sect-links" role="navigation">
+<div class="hgroup"></div>
+<div class="contents"><div class="links guidelinks"><div class="inner">
+<div class="title"><h2><span class="title">More Information</span></h2></div>
+<div class="region"><ul><li class="links "><a href="Gtk.Label.html" title="Gtk.Label">Gtk.Label</a></li></ul></div>
+</div></div></div>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="footer"></div>
+</div></body>
+</html>

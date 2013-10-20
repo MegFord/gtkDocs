@@ -1,0 +1,63 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Gtk.Menu.prototype.popup_for_device</title>
+<link rel="stylesheet" type="text/css" href="C.css">
+<script type="text/javascript" src="jquery.js"></script><script type="text/javascript" src="jquery.syntax.js"></script><script type="text/javascript" src="yelp.js"></script>
+</head>
+<body><div class="page" role="main">
+<div class="header"><div class="trails" role="navigation"><div class="trail">
+<a class="trail" href="index.html" title="Index">Index</a> » <a class="trail" href="Gtk.Menu.html" title="Gtk.Menu">Gtk.Menu</a> » </div></div></div>
+<div class="body">
+<div class="hgroup"><h1 class="title"><span class="title">Gtk.Menu.prototype.popup_for_device</span></h1></div>
+<div class="region">
+<div class="contents">
+<div class="synopsis"><div class="inner"><div class="region"><div class="contents"><div class="code"><pre class="contents ">function popup_for_device(device:Gdk.Device, parent_menu_shell:Gtk.Widget, parent_menu_item:Gtk.Widget, func:Gtk.MenuPositionFunc, button:Number, activate_time:guint32):void {
+    // Gjs wrapper for gtk_menu_popup_for_device()
+}</pre></div></div></div></div></div>
+<p class="p">Displays a menu and makes it available for selection.</p>
+<p class="p">Applications can use this function to display context-sensitive menus,
+and will typically supply <span class=" code">null</span> for the <span class=" code">parent_menu_shell</span>,
+<span class=" code">parent_menu_item</span>, <span class=" code">func</span>, <span class=" code">data</span> and <span class=" code">destroy</span> parameters. The default
+menu positioning function will position the menu at the current position
+of <span class=" code">device</span> (or its corresponding pointer).</p>
+<p class="p">The <span class=" code">button</span> parameter should be the mouse button pressed to initiate
+the menu popup. If the menu popup was initiated by something other than
+a mouse button press, such as a mouse button release or a keypress,
+<span class=" code">button</span> should be 0.</p>
+<p class="p">The <span class=" code">activate_time</span> parameter is used to conflict-resolve initiation of
+concurrent requests for mouse/keyboard grab requests. To function
+properly, this needs to be the time stamp of the user event (such as
+a mouse click or key press) that caused the initiation of the popup.
+Only if no such event is available, <span class=" link"><a href="Gtk.get_current_event_time.html" title="get_current_event_time">get_current_event_time</a></span> can
+be used instead.</p>
+<p class="p">Since 3.0</p>
+<div class="terms"><div class="inner"><div class="region"><dl class="terms">
+<dt class="terms"><span class=" code">device</span></dt>
+<dd class="terms"><p class="p">a <span class=" link"><a href="Gdk.Device.html" title="Gdk.Device">Gdk.Device</a></span></p></dd>
+<dt class="terms"><span class=" code">parent_menu_shell</span></dt>
+<dd class="terms"><p class="p">the menu shell containing the triggering menu item, or <span class=" code">null</span></p></dd>
+<dt class="terms"><span class=" code">parent_menu_item</span></dt>
+<dd class="terms"><p class="p">the menu item whose activation triggered the popup, or <span class=" code">null</span></p></dd>
+<dt class="terms"><span class=" code">func</span></dt>
+<dd class="terms"><p class="p">a user supplied function used to position the menu, or <span class=" code">null</span></p></dd>
+<dt class="terms"><span class=" code">button</span></dt>
+<dd class="terms"><p class="p">the mouse button which was pressed to initiate the event</p></dd>
+<dt class="terms"><span class=" code">activate_time</span></dt>
+<dd class="terms"><p class="p">the time at which the activation event occurred</p></dd>
+</dl></div></div></div>
+</div>
+<div class="sect sect-links" role="navigation">
+<div class="hgroup"></div>
+<div class="contents"><div class="links guidelinks"><div class="inner">
+<div class="title"><h2><span class="title">More Information</span></h2></div>
+<div class="region"><ul><li class="links "><a href="Gtk.Menu.html" title="Gtk.Menu">Gtk.Menu</a></li></ul></div>
+</div></div></div>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="footer"></div>
+</div></body>
+</html>
