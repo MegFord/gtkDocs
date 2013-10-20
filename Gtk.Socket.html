@@ -1,0 +1,139 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Gtk.Socket</title>
+<link rel="stylesheet" type="text/css" href="C.css">
+<script type="text/javascript" src="jquery.js"></script><script type="text/javascript" src="jquery.syntax.js"></script><script type="text/javascript" src="yelp.js"></script>
+</head>
+<body><div class="page" role="main">
+<div class="header"><div class="trails" role="navigation"><div class="trail">
+<a class="trail" href="index.html" title="Index">Index</a> » </div></div></div>
+<div class="body">
+<div class="hgroup"><h1 class="title"><span class="title">Gtk.Socket</span></h1></div>
+<div class="region">
+<div class="contents">
+<div class="synopsis"><div class="inner"><div class="region"><div class="contents"><div class="code"><pre class="contents ">const Gtk = imports.gi.Gtk;
+
+let socket = new Gtk.Socket();
+  </pre></div></div></div></div></div>
+<p class="p">Together with <span class=" link"><a href="Gtk.Plug.html" title="Gtk.Plug">Gtk.Plug</a></span>, <span class=" link"><a href="Gtk.Socket.html" title="Gtk.Socket">Gtk.Socket</a></span> provides the ability to embed
+widgets from one process into another process in a fashion that
+is transparent to the user. One process creates a <span class=" link"><a href="Gtk.Socket.html" title="Gtk.Socket">Gtk.Socket</a></span> widget
+and passes that widget's window ID to the other process, which then
+creates a <span class=" link"><a href="Gtk.Plug.html" title="Gtk.Plug">Gtk.Plug</a></span> with that window ID. Any widgets contained in the
+<span class=" link"><a href="Gtk.Plug.html" title="Gtk.Plug">Gtk.Plug</a></span> then will appear inside the first application's window.</p>
+<p class="p">The socket's window ID is obtained by using <span class=" link"><a href="Gtk.get_id.html" title="Gtk.get_id">Gtk.get_id</a></span>.
+Before using this function, the socket must have been realized,
+and for hence, have been added to its parent.</p>
+<p class="p">&lt;example&gt;
+&lt;title&gt;Obtaining the window ID of a socket.&lt;/title&gt;
+&lt;programlisting&gt;
+GtkWidget *socket = gtk_socket_new (&lt;!-- --&gt;);
+gtk_widget_show (socket);
+gtk_container_add (GTK_CONTAINER (parent), socket);</p>
+<p class="p">/&amp;ast; The following call is only necessary if one of
+ * the ancestors of the socket is not yet visible.
+ &amp;ast;/
+gtk_widget_realize (socket);
+g_print ("The ID of the sockets window is %#x\n",
+         gtk_socket_get_id (socket));
+&lt;/programlisting&gt;
+&lt;/example&gt;</p>
+<p class="p">Note that if you pass the window ID of the socket to another
+process that will create a plug in the socket, you must make
+sure that the socket widget is not destroyed until that plug
+is created. Violating this rule will cause unpredictable
+consequences, the most likely consequence being that the plug
+will appear as a separate toplevel window. You can check if
+the plug has been created by using <span class=" link"><a href="Gtk.get_plug_window.html" title="Gtk.get_plug_window">Gtk.get_plug_window</a></span>.
+If it returns a non-<span class=" code">null</span> value, then the plug has been
+successfully created inside of the socket.</p>
+<p class="p">When GTK+ is notified that the embedded window has been destroyed,
+then it will destroy the socket as well. You should always,
+therefore, be prepared for your sockets to be destroyed at any
+time when the main event loop is running. To prevent this from
+happening, you can connect to the <span class=" link"><a href="Gtk.plug-removed.html" title="Gtk.plug-removed">Gtk.plug-removed</a></span> signal.</p>
+<p class="p">The communication between a <span class=" link"><a href="Gtk.Socket.html" title="Gtk.Socket">Gtk.Socket</a></span> and a <span class=" link"><a href="Gtk.Plug.html" title="Gtk.Plug">Gtk.Plug</a></span> follows the
+&lt;ulink url="http://www.freedesktop.org/Standards/xembed-spec"&gt;XEmbed&lt;/ulink&gt;
+protocol. This protocol has also been implemented in other toolkits,
+e.g. &lt;application&gt;Qt&lt;/application&gt;, allowing the same level of
+integration when embedding a &lt;application&gt;Qt&lt;/application&gt; widget
+in GTK or vice versa.</p>
+<p class="p">&lt;note&gt;
+The <span class=" link"><a href="Gtk.Plug.html" title="Gtk.Plug">Gtk.Plug</a></span> and <span class=" link"><a href="Gtk.Socket.html" title="Gtk.Socket">Gtk.Socket</a></span> widgets are only available when GTK+
+is compiled for the X11 platform and %GDK_WINDOWING_X11 is defined.
+They can only be used on a #GdkX11Display. To use <span class=" link"><a href="Gtk.Plug.html" title="Gtk.Plug">Gtk.Plug</a></span> and
+<span class=" link"><a href="Gtk.Socket.html" title="Gtk.Socket">Gtk.Socket</a></span>, you need to include the &lt;filename&gt;gtk/gtkx.h&lt;/filename&gt;
+header.
+&lt;/note&gt;</p>
+<div class="synopsis"><div class="inner">
+<div class="title title-synopsis"><h2><span class="title">Hierarchy</span></h2></div>
+<div class="region"><div class="contents"><div class="tree"><div class="inner"><div class="region"><ul class="tree"><li class="tree">
+<div>
+        <span class=" code">GObject.Object</span>
+      
+      </div>
+<ul class="tree"><li class="tree">
+<div>
+        <span class=" code">GObject.InitiallyUnowned</span>
+      
+      </div>
+<ul class="tree"><li class="tree">
+<div>
+        <span class=" code">Gtk.Widget</span>
+      
+      </div>
+<ul class="tree"><li class="tree">
+<div>
+        <span class=" code">Gtk.Container</span>
+      
+      </div>
+<ul class="tree"><li class="tree"><div>
+        <span class=" code">Gtk.Socket</span>
+      </div></li></ul>
+</li></ul>
+</li></ul>
+</li></ul>
+</li></ul></div></div></div></div></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Methods</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.Socket.add_id.html" title="Gtk.Socket.prototype.add_id">Gtk.Socket.prototype.add_id</a></li>
+<li class="links "><a href="Gtk.Socket.get_id.html" title="Gtk.Socket.prototype.get_id">Gtk.Socket.prototype.get_id</a></li>
+<li class="links "><a href="Gtk.Socket.get_plug_window.html" title="Gtk.Socket.prototype.get_plug_window">Gtk.Socket.prototype.get_plug_window</a></li>
+</ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Signals</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.Socket-plug-added.html" title="Gtk.Socket::plug-added">plug-added</a></li>
+<li class="links "><a href="Gtk.Socket-plug-removed.html" title="Gtk.Socket::plug-removed">plug-removed</a></li>
+</ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Virtual functions</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.Socket-plug_added.html" title="Gtk.Socket::plug_added">Gtk.Socket::plug_added</a></li>
+<li class="links "><a href="Gtk.Socket-plug_removed.html" title="Gtk.Socket::plug_removed">Gtk.Socket::plug_removed</a></li>
+</ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Other</span></h2></div>
+<div class="region"><ul><li class="links "><a href="Gtk.Socket.new.html" title="Gtk.Socket.new">Gtk.Socket.new</a></li></ul></div>
+</div></div>
+</div>
+<div class="sect sect-links" role="navigation">
+<div class="hgroup"></div>
+<div class="contents"><div class="links guidelinks"><div class="inner">
+<div class="title"><h2><span class="title">More Information</span></h2></div>
+<div class="region"><ul><li class="links "><a href="index.html" title="Index">Index</a></li></ul></div>
+</div></div></div>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="footer"></div>
+</div></body>
+</html>

@@ -1,0 +1,55 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Gtk.SpinButton::output</title>
+<link rel="stylesheet" type="text/css" href="C.css">
+<script type="text/javascript" src="jquery.js"></script><script type="text/javascript" src="jquery.syntax.js"></script><script type="text/javascript" src="yelp.js"></script>
+</head>
+<body><div class="page" role="main">
+<div class="header"><div class="trails" role="navigation"><div class="trail">
+<a class="trail" href="index.html" title="Index">Index</a> » <a class="trail" href="Gtk.SpinButton.html" title="Gtk.SpinButton">Gtk.SpinButton</a> » </div></div></div>
+<div class="body">
+<div class="hgroup"><h1 class="title"><span class="title">Gtk.SpinButton::output</span></h1></div>
+<div class="region">
+<div class="contents">
+<div class="synopsis"><div class="inner"><div class="region"><div class="contents"><div class="code"><pre class="contents syntax brush-python">function callback(spin_button, ):Boolean;</pre></div></div></div></div></div>
+<p class="p">The ::output signal can be used to change to formatting
+of the value that is displayed in the spin buttons entry.
+|[
+/&amp;ast; show leading zeros &amp;ast;/
+static gboolean
+on_output (GtkSpinButton *spin,
+           gpointer       data)
+{
+   GtkAdjustment *adjustment;
+   gchar *text;
+   int value;</p>
+<p class="p">   adjustment = gtk_spin_button_get_adjustment (spin);
+   value = (int)gtk_adjustment_get_value (adjustment);
+   text = g_strdup_printf ("%02d", value);
+   gtk_entry_set_text (GTK_ENTRY (spin), text);
+   g_free (text);</p>
+<p class="p">   return TRUE;
+}
+]|</p>
+<div class="terms"><div class="inner"><div class="region"><dl class="terms">
+<dt class="terms"><span class=" code">spin_button</span></dt>
+<dd class="terms"><p class="p">instance of <span class=" link"><a href="Gtk.SpinButton.html" title="Gtk.SpinButton">Gtk.SpinButton</a></span> that is emitting the signal</p></dd>
+<dt class="terms"><span class=" code">Returns</span></dt>
+<dd class="terms"><p class="p"><span class=" code">true</span> if the value has been displayed</p></dd>
+</dl></div></div></div>
+</div>
+<div class="sect sect-links" role="navigation">
+<div class="hgroup"></div>
+<div class="contents"><div class="links guidelinks"><div class="inner">
+<div class="title"><h2><span class="title">More Information</span></h2></div>
+<div class="region"><ul><li class="links "><a href="Gtk.SpinButton.html" title="Gtk.SpinButton">Gtk.SpinButton</a></li></ul></div>
+</div></div></div>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="footer"></div>
+</div></body>
+</html>

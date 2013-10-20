@@ -1,0 +1,111 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Gtk.Stack</title>
+<link rel="stylesheet" type="text/css" href="C.css">
+<script type="text/javascript" src="jquery.js"></script><script type="text/javascript" src="jquery.syntax.js"></script><script type="text/javascript" src="yelp.js"></script>
+</head>
+<body><div class="page" role="main">
+<div class="header"><div class="trails" role="navigation"><div class="trail">
+<a class="trail" href="index.html" title="Index">Index</a> » </div></div></div>
+<div class="body">
+<div class="hgroup"><h1 class="title"><span class="title">Gtk.Stack</span></h1></div>
+<div class="region">
+<div class="contents">
+<div class="synopsis"><div class="inner"><div class="region"><div class="contents"><div class="code"><pre class="contents ">const Gtk = imports.gi.Gtk;
+
+let stack = new Gtk.Stack({
+    <span class=" link"><a href="Gtk.Stack-homogeneous.html" title="Gtk.Stack:homogeneous">homogeneous</a></span>: value,
+    <span class=" link"><a href="Gtk.Stack-transition-duration.html" title="Gtk.Stack:transition-duration">transition_duration</a></span>: value,
+    <span class=" link"><a href="Gtk.Stack-transition-type.html" title="Gtk.Stack:transition-type">transition_type</a></span>: value,
+    <span class=" link"><a href="Gtk.Stack-visible-child.html" title="Gtk.Stack:visible-child">visible_child</a></span>: value,
+    <span class=" link"><a href="Gtk.Stack-visible-child-name.html" title="Gtk.Stack:visible-child-name">visible_child_name</a></span>: value,
+});
+  </pre></div></div></div></div></div>
+<p class="p">The GtkStack widget is a container which only shows
+one of its children at a time. In contrast to GtkNotebook,
+GtkStack does not provide a means for users to change the
+visible child. Instead, the <span class=" link"><a href="Gtk.StackSwitcher.html" title="Gtk.StackSwitcher">Gtk.StackSwitcher</a></span> widget can be
+used with GtkStack to provide this functionality.</p>
+<p class="p">Transitions between pages can be animated as slides or
+fades. This can be controlled with <span class=" link"><a href="Gtk.set_transition_type.html" title="Gtk.set_transition_type">Gtk.set_transition_type</a></span>.
+These animations respect the #GtkSettings::gtk-enable-animations
+setting.</p>
+<p class="p">The GtkStack widget was added in GTK+ 3.10.</p>
+<div class="synopsis"><div class="inner">
+<div class="title title-synopsis"><h2><span class="title">Hierarchy</span></h2></div>
+<div class="region"><div class="contents"><div class="tree"><div class="inner"><div class="region"><ul class="tree"><li class="tree">
+<div>
+        <span class=" code">GObject.Object</span>
+      
+      </div>
+<ul class="tree"><li class="tree">
+<div>
+        <span class=" code">GObject.InitiallyUnowned</span>
+      
+      </div>
+<ul class="tree"><li class="tree">
+<div>
+        <span class=" code">Gtk.Widget</span>
+      
+      </div>
+<ul class="tree"><li class="tree">
+<div>
+        <span class=" code">Gtk.Container</span>
+      
+      </div>
+<ul class="tree"><li class="tree"><div>
+        <span class=" code">Gtk.Stack</span>
+      </div></li></ul>
+</li></ul>
+</li></ul>
+</li></ul>
+</li></ul></div></div></div></div></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Methods</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.Stack.add_named.html" title="Gtk.Stack.prototype.add_named">Gtk.Stack.prototype.add_named</a></li>
+<li class="links "><a href="Gtk.Stack.add_titled.html" title="Gtk.Stack.prototype.add_titled">Gtk.Stack.prototype.add_titled</a></li>
+<li class="links "><a href="Gtk.Stack.get_homogeneous.html" title="Gtk.Stack.prototype.get_homogeneous">Gtk.Stack.prototype.get_homogeneous</a></li>
+<li class="links "><a href="Gtk.Stack.get_transition_duration.html" title="Gtk.Stack.prototype.get_transition_duration">Gtk.Stack.prototype.get_transition_duration</a></li>
+<li class="links "><a href="Gtk.Stack.get_transition_type.html" title="Gtk.Stack.prototype.get_transition_type">Gtk.Stack.prototype.get_transition_type</a></li>
+<li class="links "><a href="Gtk.Stack.get_visible_child.html" title="Gtk.Stack.prototype.get_visible_child">Gtk.Stack.prototype.get_visible_child</a></li>
+<li class="links "><a href="Gtk.Stack.get_visible_child_name.html" title="Gtk.Stack.prototype.get_visible_child_name">Gtk.Stack.prototype.get_visible_child_name</a></li>
+<li class="links "><a href="Gtk.Stack.set_homogeneous.html" title="Gtk.Stack.prototype.set_homogeneous">Gtk.Stack.prototype.set_homogeneous</a></li>
+<li class="links "><a href="Gtk.Stack.set_transition_duration.html" title="Gtk.Stack.prototype.set_transition_duration">Gtk.Stack.prototype.set_transition_duration</a></li>
+<li class="links "><a href="Gtk.Stack.set_transition_type.html" title="Gtk.Stack.prototype.set_transition_type">Gtk.Stack.prototype.set_transition_type</a></li>
+<li class="links "><a href="Gtk.Stack.set_visible_child.html" title="Gtk.Stack.prototype.set_visible_child">Gtk.Stack.prototype.set_visible_child</a></li>
+<li class="links "><a href="Gtk.Stack.set_visible_child_full.html" title="Gtk.Stack.prototype.set_visible_child_full">Gtk.Stack.prototype.set_visible_child_full</a></li>
+<li class="links "><a href="Gtk.Stack.set_visible_child_name.html" title="Gtk.Stack.prototype.set_visible_child_name">Gtk.Stack.prototype.set_visible_child_name</a></li>
+</ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Properties</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.Stack-homogeneous.html" title="Gtk.Stack:homogeneous">homogeneous</a></li>
+<li class="links "><a href="Gtk.Stack-transition-duration.html" title="Gtk.Stack:transition-duration">transition-duration</a></li>
+<li class="links "><a href="Gtk.Stack-transition-type.html" title="Gtk.Stack:transition-type">transition-type</a></li>
+<li class="links "><a href="Gtk.Stack-visible-child.html" title="Gtk.Stack:visible-child">visible-child</a></li>
+<li class="links "><a href="Gtk.Stack-visible-child-name.html" title="Gtk.Stack:visible-child-name">visible-child-name</a></li>
+</ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Other</span></h2></div>
+<div class="region"><ul><li class="links "><a href="Gtk.Stack.new.html" title="Gtk.Stack.new">Gtk.Stack.new</a></li></ul></div>
+</div></div>
+</div>
+<div class="sect sect-links" role="navigation">
+<div class="hgroup"></div>
+<div class="contents"><div class="links guidelinks"><div class="inner">
+<div class="title"><h2><span class="title">More Information</span></h2></div>
+<div class="region"><ul><li class="links "><a href="index.html" title="Index">Index</a></li></ul></div>
+</div></div></div>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="footer"></div>
+</div></body>
+</html>

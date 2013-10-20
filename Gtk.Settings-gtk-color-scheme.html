@@ -1,0 +1,49 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Gtk.Settings:gtk-color-scheme</title>
+<link rel="stylesheet" type="text/css" href="C.css">
+<script type="text/javascript" src="jquery.js"></script><script type="text/javascript" src="jquery.syntax.js"></script><script type="text/javascript" src="yelp.js"></script>
+</head>
+<body><div class="page" role="main">
+<div class="header"><div class="trails" role="navigation"><div class="trail">
+<a class="trail" href="index.html" title="Index">Index</a> » <a class="trail" href="Gtk.Settings.html" title="Gtk.Settings">Gtk.Settings</a> » </div></div></div>
+<div class="body">
+<div class="hgroup"><h1 class="title"><span class="title">Gtk.Settings:gtk-color-scheme</span></h1></div>
+<div class="region">
+<div class="contents">
+<div class="synopsis"><div class="inner"><div class="region"><div class="contents"><div class="code"><pre class="contents syntax brush-python">"gtk-color-scheme"             String                : Read / Write</pre></div></div></div></div></div>
+<p class="p">A palette of named colors for use in themes. The format of the string is
+&lt;programlisting&gt;
+name1: color1
+name2: color2
+...
+&lt;/programlisting&gt;
+Color names must be acceptable as identifiers in the
+&lt;link linkend="gtk-Resource-Files"&gt;gtkrc&lt;/link&gt; syntax, and
+color specifications must be in the format accepted by
+<span class=" link"><a href="Gdk.color_parse.html" title="Gdk.color_parse">Gdk.color_parse</a></span>.</p>
+<p class="p">Note that due to the way the color tables from different sources are
+merged, color specifications will be converted to hexadecimal form
+when getting this property.</p>
+<p class="p">Starting with GTK+ 2.12, the entries can alternatively be separated
+by ';' instead of newlines:
+&lt;programlisting&gt;
+name1: color1; name2: color2; ...
+&lt;/programlisting&gt;</p>
+<p class="p">Since 2.10</p>
+</div>
+<div class="sect sect-links" role="navigation">
+<div class="hgroup"></div>
+<div class="contents"><div class="links guidelinks"><div class="inner">
+<div class="title"><h2><span class="title">More Information</span></h2></div>
+<div class="region"><ul><li class="links "><a href="Gtk.Settings.html" title="Gtk.Settings">Gtk.Settings</a></li></ul></div>
+</div></div></div>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="footer"></div>
+</div></body>
+</html>

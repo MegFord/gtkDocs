@@ -1,0 +1,200 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Gtk.SpinButton</title>
+<link rel="stylesheet" type="text/css" href="C.css">
+<script type="text/javascript" src="jquery.js"></script><script type="text/javascript" src="jquery.syntax.js"></script><script type="text/javascript" src="yelp.js"></script>
+</head>
+<body><div class="page" role="main">
+<div class="header"><div class="trails" role="navigation"><div class="trail">
+<a class="trail" href="index.html" title="Index">Index</a> » </div></div></div>
+<div class="body">
+<div class="hgroup"><h1 class="title"><span class="title">Gtk.SpinButton</span></h1></div>
+<div class="region">
+<div class="contents">
+<div class="synopsis"><div class="inner"><div class="region"><div class="contents"><div class="code"><pre class="contents ">const Gtk = imports.gi.Gtk;
+
+let spin_button = new Gtk.SpinButton({
+    <span class=" link"><a href="Gtk.SpinButton-adjustment.html" title="Gtk.SpinButton:adjustment">adjustment</a></span>: value,
+    <span class=" link"><a href="Gtk.SpinButton-climb-rate.html" title="Gtk.SpinButton:climb-rate">climb_rate</a></span>: value,
+    <span class=" link"><a href="Gtk.SpinButton-digits.html" title="Gtk.SpinButton:digits">digits</a></span>: value,
+    <span class=" link"><a href="Gtk.SpinButton-numeric.html" title="Gtk.SpinButton:numeric">numeric</a></span>: value,
+    <span class=" link"><a href="Gtk.SpinButton-snap-to-ticks.html" title="Gtk.SpinButton:snap-to-ticks">snap_to_ticks</a></span>: value,
+    <span class=" link"><a href="Gtk.SpinButton-update-policy.html" title="Gtk.SpinButton:update-policy">update_policy</a></span>: value,
+    <span class=" link"><a href="Gtk.SpinButton-value.html" title="Gtk.SpinButton:value">value</a></span>: value,
+    <span class=" link"><a href="Gtk.SpinButton-wrap.html" title="Gtk.SpinButton:wrap">wrap</a></span>: value,
+});
+  </pre></div></div></div></div></div>
+<p class="p">A <span class=" link"><a href="Gtk.SpinButton.html" title="Gtk.SpinButton">Gtk.SpinButton</a></span> is an ideal way to allow the user to set the value of
+some attribute. Rather than having to directly type a number into a
+<span class=" link"><a href="Gtk.Entry.html" title="Gtk.Entry">Gtk.Entry</a></span>, GtkSpinButton allows the user to click on one of two arrows
+to increment or decrement the displayed value. A value can still be
+typed in, with the bonus that it can be checked to ensure it is in a
+given range.</p>
+<p class="p">The main properties of a GtkSpinButton are through an adjustment.
+See the <span class=" link"><a href="Gtk.Adjustment.html" title="Gtk.Adjustment">Gtk.Adjustment</a></span> section for more details about an adjustment's
+properties.</p>
+<p class="p">&lt;example&gt;
+&lt;title&gt;Using a GtkSpinButton to get an integer&lt;/title&gt;
+&lt;programlisting&gt;
+/&amp;ast; Provides a function to retrieve an integer value from a
+ &amp;ast; GtkSpinButton and creates a spin button to model percentage
+ &amp;ast; values.
+ &amp;ast;/</p>
+<p class="p">gint
+grab_int_value (GtkSpinButton *button,
+                gpointer       user_data)
+{
+  return gtk_spin_button_get_value_as_int (button);
+}</p>
+<p class="p">void
+create_integer_spin_button (void)
+{</p>
+<p class="p">  GtkWidget *window, *button;
+  GtkAdjustment *adjustment;</p>
+<p class="p">  adjustment = gtk_adjustment_new (50.0, 0.0, 100.0, 1.0, 5.0, 0.0);</p>
+<p class="p">  window = gtk_window_new (GTK_WINDOW_TOPLEVEL);
+  gtk_container_set_border_width (GTK_CONTAINER (window), 5);</p>
+<p class="p">  /&amp;ast; creates the spinbutton, with no decimal places &amp;ast;/
+  button = gtk_spin_button_new (adjustment, 1.0, 0);
+  gtk_container_add (GTK_CONTAINER (window), button);</p>
+<p class="p">  gtk_widget_show_all (window);
+}
+&lt;/programlisting&gt;
+&lt;/example&gt;</p>
+<p class="p">&lt;example&gt;
+&lt;title&gt;Using a GtkSpinButton to get a floating point value&lt;/title&gt;
+&lt;programlisting&gt;
+/&amp;ast; Provides a function to retrieve a floating point value from a
+ &amp;ast; GtkSpinButton, and creates a high precision spin button.
+ &amp;ast;/</p>
+<p class="p">gfloat
+grab_float_value (GtkSpinButton *button,
+                  gpointer       user_data)
+{
+  return gtk_spin_button_get_value (button);
+}</p>
+<p class="p">void
+create_floating_spin_button (void)
+{
+  GtkWidget *window, *button;
+  GtkAdjustment *adjustment;</p>
+<p class="p">  adjustment = gtk_adjustment_new (2.500, 0.0, 5.0, 0.001, 0.1, 0.0);</p>
+<p class="p">  window = gtk_window_new (GTK_WINDOW_TOPLEVEL);
+  gtk_container_set_border_width (GTK_CONTAINER (window), 5);</p>
+<p class="p">  /&amp;ast; creates the spinbutton, with three decimal places &amp;ast;/
+  button = gtk_spin_button_new (adjustment, 0.001, 3);
+  gtk_container_add (GTK_CONTAINER (window), button);</p>
+<p class="p">  gtk_widget_show_all (window);
+}
+&lt;/programlisting&gt;
+&lt;/example&gt;</p>
+<div class="synopsis"><div class="inner">
+<div class="title title-synopsis"><h2><span class="title">Hierarchy</span></h2></div>
+<div class="region"><div class="contents"><div class="tree"><div class="inner"><div class="region"><ul class="tree"><li class="tree">
+<div>
+        <span class=" code">GObject.Object</span>
+      
+      </div>
+<ul class="tree"><li class="tree">
+<div>
+        <span class=" code">GObject.InitiallyUnowned</span>
+      
+      </div>
+<ul class="tree"><li class="tree">
+<div>
+        <span class=" code">Gtk.Widget</span>
+      
+      </div>
+<ul class="tree"><li class="tree">
+<div>
+        <span class=" code">Gtk.Entry</span>
+      
+      </div>
+<ul class="tree"><li class="tree"><div>
+        <span class=" code">Gtk.SpinButton</span>
+      </div></li></ul>
+</li></ul>
+</li></ul>
+</li></ul>
+</li></ul></div></div></div></div></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Methods</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.SpinButton.configure.html" title="Gtk.SpinButton.prototype.configure">Gtk.SpinButton.prototype.configure</a></li>
+<li class="links "><a href="Gtk.SpinButton.get_adjustment.html" title="Gtk.SpinButton.prototype.get_adjustment">Gtk.SpinButton.prototype.get_adjustment</a></li>
+<li class="links "><a href="Gtk.SpinButton.get_digits.html" title="Gtk.SpinButton.prototype.get_digits">Gtk.SpinButton.prototype.get_digits</a></li>
+<li class="links "><a href="Gtk.SpinButton.get_increments.html" title="Gtk.SpinButton.prototype.get_increments">Gtk.SpinButton.prototype.get_increments</a></li>
+<li class="links "><a href="Gtk.SpinButton.get_numeric.html" title="Gtk.SpinButton.prototype.get_numeric">Gtk.SpinButton.prototype.get_numeric</a></li>
+<li class="links "><a href="Gtk.SpinButton.get_range.html" title="Gtk.SpinButton.prototype.get_range">Gtk.SpinButton.prototype.get_range</a></li>
+<li class="links "><a href="Gtk.SpinButton.get_snap_to_ticks.html" title="Gtk.SpinButton.prototype.get_snap_to_ticks">Gtk.SpinButton.prototype.get_snap_to_ticks</a></li>
+<li class="links "><a href="Gtk.SpinButton.get_update_policy.html" title="Gtk.SpinButton.prototype.get_update_policy">Gtk.SpinButton.prototype.get_update_policy</a></li>
+<li class="links "><a href="Gtk.SpinButton.get_value.html" title="Gtk.SpinButton.prototype.get_value">Gtk.SpinButton.prototype.get_value</a></li>
+<li class="links "><a href="Gtk.SpinButton.get_value_as_int.html" title="Gtk.SpinButton.prototype.get_value_as_int">Gtk.SpinButton.prototype.get_value_as_int</a></li>
+<li class="links "><a href="Gtk.SpinButton.get_wrap.html" title="Gtk.SpinButton.prototype.get_wrap">Gtk.SpinButton.prototype.get_wrap</a></li>
+<li class="links "><a href="Gtk.SpinButton.set_adjustment.html" title="Gtk.SpinButton.prototype.set_adjustment">Gtk.SpinButton.prototype.set_adjustment</a></li>
+<li class="links "><a href="Gtk.SpinButton.set_digits.html" title="Gtk.SpinButton.prototype.set_digits">Gtk.SpinButton.prototype.set_digits</a></li>
+<li class="links "><a href="Gtk.SpinButton.set_increments.html" title="Gtk.SpinButton.prototype.set_increments">Gtk.SpinButton.prototype.set_increments</a></li>
+<li class="links "><a href="Gtk.SpinButton.set_numeric.html" title="Gtk.SpinButton.prototype.set_numeric">Gtk.SpinButton.prototype.set_numeric</a></li>
+<li class="links "><a href="Gtk.SpinButton.set_range.html" title="Gtk.SpinButton.prototype.set_range">Gtk.SpinButton.prototype.set_range</a></li>
+<li class="links "><a href="Gtk.SpinButton.set_snap_to_ticks.html" title="Gtk.SpinButton.prototype.set_snap_to_ticks">Gtk.SpinButton.prototype.set_snap_to_ticks</a></li>
+<li class="links "><a href="Gtk.SpinButton.set_update_policy.html" title="Gtk.SpinButton.prototype.set_update_policy">Gtk.SpinButton.prototype.set_update_policy</a></li>
+<li class="links "><a href="Gtk.SpinButton.set_value.html" title="Gtk.SpinButton.prototype.set_value">Gtk.SpinButton.prototype.set_value</a></li>
+<li class="links "><a href="Gtk.SpinButton.set_wrap.html" title="Gtk.SpinButton.prototype.set_wrap">Gtk.SpinButton.prototype.set_wrap</a></li>
+<li class="links "><a href="Gtk.SpinButton.spin.html" title="Gtk.SpinButton.prototype.spin">Gtk.SpinButton.prototype.spin</a></li>
+<li class="links "><a href="Gtk.SpinButton.update.html" title="Gtk.SpinButton.prototype.update">Gtk.SpinButton.prototype.update</a></li>
+</ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Properties</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.SpinButton-adjustment.html" title="Gtk.SpinButton:adjustment">adjustment</a></li>
+<li class="links "><a href="Gtk.SpinButton-climb-rate.html" title="Gtk.SpinButton:climb-rate">climb-rate</a></li>
+<li class="links "><a href="Gtk.SpinButton-digits.html" title="Gtk.SpinButton:digits">digits</a></li>
+<li class="links "><a href="Gtk.SpinButton-numeric.html" title="Gtk.SpinButton:numeric">numeric</a></li>
+<li class="links "><a href="Gtk.SpinButton-snap-to-ticks.html" title="Gtk.SpinButton:snap-to-ticks">snap-to-ticks</a></li>
+<li class="links "><a href="Gtk.SpinButton-update-policy.html" title="Gtk.SpinButton:update-policy">update-policy</a></li>
+<li class="links "><a href="Gtk.SpinButton-value.html" title="Gtk.SpinButton:value">value</a></li>
+<li class="links "><a href="Gtk.SpinButton-wrap.html" title="Gtk.SpinButton:wrap">wrap</a></li>
+</ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Signals</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.SpinButton-change-value.html" title="Gtk.SpinButton::change-value">change-value</a></li>
+<li class="links "><a href="Gtk.SpinButton-input.html" title="Gtk.SpinButton::input">input</a></li>
+<li class="links "><a href="Gtk.SpinButton-output.html" title="Gtk.SpinButton::output">output</a></li>
+<li class="links "><a href="Gtk.SpinButton-value-changed.html" title="Gtk.SpinButton::value-changed">value-changed</a></li>
+<li class="links "><a href="Gtk.SpinButton-wrapped.html" title="Gtk.SpinButton::wrapped">wrapped</a></li>
+</ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Virtual functions</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.SpinButton-change_value.html" title="Gtk.SpinButton::change_value">Gtk.SpinButton::change_value</a></li>
+<li class="links "><a href="Gtk.SpinButton-value_changed.html" title="Gtk.SpinButton::value_changed">Gtk.SpinButton::value_changed</a></li>
+</ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Other</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.SpinButton.new.html" title="Gtk.SpinButton.new">Gtk.SpinButton.new</a></li>
+<li class="links "><a href="Gtk.SpinButton.new_with_range.html" title="Gtk.SpinButton.new_with_range">Gtk.SpinButton.new_with_range</a></li>
+</ul></div>
+</div></div>
+</div>
+<div class="sect sect-links" role="navigation">
+<div class="hgroup"></div>
+<div class="contents"><div class="links guidelinks"><div class="inner">
+<div class="title"><h2><span class="title">More Information</span></h2></div>
+<div class="region"><ul><li class="links "><a href="index.html" title="Index">Index</a></li></ul></div>
+</div></div></div>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="footer"></div>
+</div></body>
+</html>
