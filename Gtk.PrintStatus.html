@@ -1,0 +1,51 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Gtk.PrintStatus</title>
+<link rel="stylesheet" type="text/css" href="C.css">
+<script type="text/javascript" src="jquery.js"></script><script type="text/javascript" src="jquery.syntax.js"></script><script type="text/javascript" src="yelp.js"></script>
+</head>
+<body><div class="page" role="main">
+<div class="header"><div class="trails" role="navigation"><div class="trail">
+<a class="trail" href="index.html" title="Index">Index</a> » </div></div></div>
+<div class="body">
+<div class="hgroup"><h1 class="title"><span class="title">Gtk.PrintStatus</span></h1></div>
+<div class="region">
+<div class="contents">
+<p class="p">The status gives a rough indication of the completion of a running
+print operation.</p>
+<div class="terms"><div class="inner"><div class="region"><dl class="terms">
+<dt class="terms"><span class=" code">PrintStatus.INITIAL</span></dt>
+<dd class="terms"><p class="p">The printing has not started yet; this status is set initially, and while the print dialog is shown.</p></dd>
+<dt class="terms"><span class=" code">PrintStatus.PREPARING</span></dt>
+<dd class="terms"><p class="p">This status is set while the begin-print signal is emitted and during pagination.</p></dd>
+<dt class="terms"><span class=" code">PrintStatus.GENERATING_DATA</span></dt>
+<dd class="terms"><p class="p">This status is set while the pages are being rendered.</p></dd>
+<dt class="terms"><span class=" code">PrintStatus.SENDING_DATA</span></dt>
+<dd class="terms"><p class="p">The print job is being sent off to the printer.</p></dd>
+<dt class="terms"><span class=" code">PrintStatus.PENDING</span></dt>
+<dd class="terms"><p class="p">The print job has been sent to the printer, but is not printed for some reason, e.g. the printer may be stopped.</p></dd>
+<dt class="terms"><span class=" code">PrintStatus.PENDING_ISSUE</span></dt>
+<dd class="terms"><p class="p">Some problem has occurred during printing, e.g. a paper jam.</p></dd>
+<dt class="terms"><span class=" code">PrintStatus.PRINTING</span></dt>
+<dd class="terms"><p class="p">The printer is processing the print job.</p></dd>
+<dt class="terms"><span class=" code">PrintStatus.FINISHED</span></dt>
+<dd class="terms"><p class="p">The printing has been completed successfully.</p></dd>
+<dt class="terms"><span class=" code">PrintStatus.FINISHED_ABORTED</span></dt>
+<dd class="terms"><p class="p">The printing has been aborted.</p></dd>
+</dl></div></div></div>
+</div>
+<div class="sect sect-links" role="navigation">
+<div class="hgroup"></div>
+<div class="contents"><div class="links guidelinks"><div class="inner">
+<div class="title"><h2><span class="title">More Information</span></h2></div>
+<div class="region"><ul><li class="links "><a href="index.html" title="Index">Index</a></li></ul></div>
+</div></div></div>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="footer"></div>
+</div></body>
+</html>

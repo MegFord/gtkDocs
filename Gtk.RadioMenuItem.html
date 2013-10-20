@@ -1,0 +1,134 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Gtk.RadioMenuItem</title>
+<link rel="stylesheet" type="text/css" href="C.css">
+<script type="text/javascript" src="jquery.js"></script><script type="text/javascript" src="jquery.syntax.js"></script><script type="text/javascript" src="yelp.js"></script>
+</head>
+<body><div class="page" role="main">
+<div class="header"><div class="trails" role="navigation"><div class="trail">
+<a class="trail" href="index.html" title="Index">Index</a> » </div></div></div>
+<div class="body">
+<div class="hgroup"><h1 class="title"><span class="title">Gtk.RadioMenuItem</span></h1></div>
+<div class="region">
+<div class="contents">
+<div class="synopsis"><div class="inner"><div class="region"><div class="contents"><div class="code"><pre class="contents ">const Gtk = imports.gi.Gtk;
+
+let radio_menu_item = new Gtk.RadioMenuItem({
+    <span class=" link"><a href="Gtk.RadioMenuItem-group.html" title="Gtk.RadioMenuItem:group">group</a></span>: value,
+});
+  </pre></div></div></div></div></div>
+<p class="p">A radio menu item is a check menu item that belongs to a group. At each
+instant exactly one of the radio menu items from a group is selected.</p>
+<p class="p">The group list does not need to be freed, as each <span class=" link"><a href="Gtk.RadioMenuItem.html" title="Gtk.RadioMenuItem">Gtk.RadioMenuItem</a></span> will
+remove itself and its list item when it is destroyed.</p>
+<p class="p">The correct way to create a group of radio menu items is approximatively
+this:</p>
+<p class="p">&lt;example&gt;
+&lt;title&gt;How to create a group of radio menu items.&lt;/title&gt;
+&lt;programlisting&gt;
+GSList *group = NULL;
+GtkWidget *item;
+gint i;</p>
+<p class="p">for (i = 0; i &lt; 5; i++)
+{
+  item = gtk_radio_menu_item_new_with_label (group, "This is an example");
+  group = gtk_radio_menu_item_get_group (GTK_RADIO_MENU_ITEM (item));
+  if (i == 1)
+    gtk_check_menu_item_set_active (GTK_CHECK_MENU_ITEM (item), TRUE);
+}
+&lt;/programlisting&gt;
+&lt;/example&gt;</p>
+<div class="synopsis"><div class="inner">
+<div class="title title-synopsis"><h2><span class="title">Hierarchy</span></h2></div>
+<div class="region"><div class="contents"><div class="tree"><div class="inner"><div class="region"><ul class="tree"><li class="tree">
+<div>
+        <span class=" code">GObject.Object</span>
+      
+      </div>
+<ul class="tree"><li class="tree">
+<div>
+        <span class=" code">GObject.InitiallyUnowned</span>
+      
+      </div>
+<ul class="tree"><li class="tree">
+<div>
+        <span class=" code">Gtk.Widget</span>
+      
+      </div>
+<ul class="tree"><li class="tree">
+<div>
+        <span class=" code">Gtk.Container</span>
+      
+      </div>
+<ul class="tree"><li class="tree">
+<div>
+        <span class=" code">Gtk.Bin</span>
+      
+      </div>
+<ul class="tree"><li class="tree">
+<div>
+        <span class=" code">Gtk.MenuItem</span>
+      
+      </div>
+<ul class="tree"><li class="tree">
+<div>
+        <span class=" code">Gtk.CheckMenuItem</span>
+      
+      </div>
+<ul class="tree"><li class="tree"><div>
+        <span class=" code">Gtk.RadioMenuItem</span>
+      </div></li></ul>
+</li></ul>
+</li></ul>
+</li></ul>
+</li></ul>
+</li></ul>
+</li></ul>
+</li></ul></div></div></div></div></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Methods</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.RadioMenuItem.get_group.html" title="Gtk.RadioMenuItem.prototype.get_group">Gtk.RadioMenuItem.prototype.get_group</a></li>
+<li class="links "><a href="Gtk.RadioMenuItem.set_group.html" title="Gtk.RadioMenuItem.prototype.set_group">Gtk.RadioMenuItem.prototype.set_group</a></li>
+</ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Properties</span></h2></div>
+<div class="region"><ul><li class="links "><a href="Gtk.RadioMenuItem-group.html" title="Gtk.RadioMenuItem:group">group</a></li></ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Signals</span></h2></div>
+<div class="region"><ul><li class="links "><a href="Gtk.RadioMenuItem-group-changed.html" title="Gtk.RadioMenuItem::group-changed">group-changed</a></li></ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Virtual functions</span></h2></div>
+<div class="region"><ul><li class="links "><a href="Gtk.RadioMenuItem-group_changed.html" title="Gtk.RadioMenuItem::group_changed">Gtk.RadioMenuItem::group_changed</a></li></ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Other</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.RadioMenuItem.new.html" title="Gtk.RadioMenuItem.new">Gtk.RadioMenuItem.new</a></li>
+<li class="links "><a href="Gtk.RadioMenuItem.new_from_widget.html" title="Gtk.RadioMenuItem.new_from_widget">Gtk.RadioMenuItem.new_from_widget</a></li>
+<li class="links "><a href="Gtk.RadioMenuItem.new_with_label.html" title="Gtk.RadioMenuItem.new_with_label">Gtk.RadioMenuItem.new_with_label</a></li>
+<li class="links "><a href="Gtk.RadioMenuItem.new_with_label_from_widget.html" title="Gtk.RadioMenuItem.new_with_label_from_widget">Gtk.RadioMenuItem.new_with_label_from_widget</a></li>
+<li class="links "><a href="Gtk.RadioMenuItem.new_with_mnemonic.html" title="Gtk.RadioMenuItem.new_with_mnemonic">Gtk.RadioMenuItem.new_with_mnemonic</a></li>
+<li class="links "><a href="Gtk.RadioMenuItem.new_with_mnemonic_from_widget.html" title="Gtk.RadioMenuItem.new_with_mnemonic_from_widget">Gtk.RadioMenuItem.new_with_mnemonic_from_widget</a></li>
+</ul></div>
+</div></div>
+</div>
+<div class="sect sect-links" role="navigation">
+<div class="hgroup"></div>
+<div class="contents"><div class="links guidelinks"><div class="inner">
+<div class="title"><h2><span class="title">More Information</span></h2></div>
+<div class="region"><ul><li class="links "><a href="index.html" title="Index">Index</a></li></ul></div>
+</div></div></div>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="footer"></div>
+</div></body>
+</html>

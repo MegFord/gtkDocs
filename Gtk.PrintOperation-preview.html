@@ -1,0 +1,56 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Gtk.PrintOperation::preview</title>
+<link rel="stylesheet" type="text/css" href="C.css">
+<script type="text/javascript" src="jquery.js"></script><script type="text/javascript" src="jquery.syntax.js"></script><script type="text/javascript" src="yelp.js"></script>
+</head>
+<body><div class="page" role="main">
+<div class="header"><div class="trails" role="navigation"><div class="trail">
+<a class="trail" href="index.html" title="Index">Index</a> » <a class="trail" href="Gtk.PrintOperation.html" title="Gtk.PrintOperation">Gtk.PrintOperation</a> » </div></div></div>
+<div class="body">
+<div class="hgroup"><h1 class="title"><span class="title">Gtk.PrintOperation::preview</span></h1></div>
+<div class="region">
+<div class="contents">
+<div class="synopsis"><div class="inner"><div class="region"><div class="contents"><div class="code"><pre class="contents syntax brush-python">function callback(print_operation, preview:Gtk.PrintOperationPreview, context:Gtk.PrintContext, parent:Gtk.Window, ):Boolean;</pre></div></div></div></div></div>
+<p class="p">Gets emitted when a preview is requested from the native dialog.</p>
+<p class="p">The default handler for this signal uses an external viewer 
+application to preview.</p>
+<p class="p">To implement a custom print preview, an application must return
+<span class=" code">true</span> from its handler for this signal. In order to use the
+provided <span class=" code">context</span> for the preview implementation, it must be
+given a suitable cairo context with <span class=" link"><a href="Gtk.PrintContext.set_cairo_context.html" title="Gtk.PrintContext.prototype.set_cairo_context">Gtk.PrintContext.prototype.set_cairo_context</a></span>.</p>
+<p class="p">The custom preview implementation can use 
+<span class=" link"><a href="Gtk.is_selected.html" title="Gtk.is_selected">Gtk.is_selected</a></span> and 
+<span class=" link"><a href="Gtk.render_page.html" title="Gtk.render_page">Gtk.render_page</a></span> to find pages which
+are selected for print and render them. The preview must be
+finished by calling <span class=" link"><a href="Gtk.end_preview.html" title="Gtk.end_preview">Gtk.end_preview</a></span>
+(typically in response to the user clicking a close button).</p>
+<p class="p">Since 2.10</p>
+<div class="terms"><div class="inner"><div class="region"><dl class="terms">
+<dt class="terms"><span class=" code">print_operation</span></dt>
+<dd class="terms"><p class="p">instance of <span class=" link"><a href="Gtk.PrintOperation.html" title="Gtk.PrintOperation">Gtk.PrintOperation</a></span> that is emitting the signal</p></dd>
+<dt class="terms"><span class=" code">preview</span></dt>
+<dd class="terms"><p class="p">the <span class=" link"><a href="Gtk.PrintOperationPreview.html" title="Gtk.PrintOperationPreview">Gtk.PrintOperationPreview</a></span> for the current operation</p></dd>
+<dt class="terms"><span class=" code">context</span></dt>
+<dd class="terms"><p class="p">the <span class=" link"><a href="Gtk.PrintContext.html" title="Gtk.PrintContext">Gtk.PrintContext</a></span> that will be used</p></dd>
+<dt class="terms"><span class=" code">parent</span></dt>
+<dd class="terms"><p class="p">the <span class=" link"><a href="Gtk.Window.html" title="Gtk.Window">Gtk.Window</a></span> to use as window parent, or <span class=" code">null</span></p></dd>
+<dt class="terms"><span class=" code">Returns</span></dt>
+<dd class="terms"><p class="p"><span class=" code">true</span> if the listener wants to take over control of the preview</p></dd>
+</dl></div></div></div>
+</div>
+<div class="sect sect-links" role="navigation">
+<div class="hgroup"></div>
+<div class="contents"><div class="links guidelinks"><div class="inner">
+<div class="title"><h2><span class="title">More Information</span></h2></div>
+<div class="region"><ul><li class="links "><a href="Gtk.PrintOperation.html" title="Gtk.PrintOperation">Gtk.PrintOperation</a></li></ul></div>
+</div></div></div>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="footer"></div>
+</div></body>
+</html>

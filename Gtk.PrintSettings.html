@@ -1,0 +1,140 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Gtk.PrintSettings</title>
+<link rel="stylesheet" type="text/css" href="C.css">
+<script type="text/javascript" src="jquery.js"></script><script type="text/javascript" src="jquery.syntax.js"></script><script type="text/javascript" src="yelp.js"></script>
+</head>
+<body><div class="page" role="main">
+<div class="header"><div class="trails" role="navigation"><div class="trail">
+<a class="trail" href="index.html" title="Index">Index</a> » </div></div></div>
+<div class="body">
+<div class="hgroup"><h1 class="title"><span class="title">Gtk.PrintSettings</span></h1></div>
+<div class="region">
+<div class="contents">
+<div class="synopsis"><div class="inner"><div class="region"><div class="contents"><div class="code"><pre class="contents ">const Gtk = imports.gi.Gtk;
+
+let print_settings = new Gtk.PrintSettings();
+  </pre></div></div></div></div></div>
+<p class="p">A GtkPrintSettings object represents the settings of a print dialog in
+a system-independent way. The main use for this object is that once
+you've printed you can get a settings object that represents the settings
+the user chose, and the next time you print you can pass that object in so
+that the user doesn't have to re-set all his settings.</p>
+<p class="p">Its also possible to enumerate the settings so that you can easily save
+the settings for the next time your app runs, or even store them in a
+document. The predefined keys try to use shared values as much as possible
+so that moving such a document between systems still works.</p>
+<p class="p">&lt;!-- TODO example of getting, storing and setting settings --&gt;</p>
+<p class="p">Printing support was added in GTK+ 2.10.</p>
+<div class="synopsis"><div class="inner">
+<div class="title title-synopsis"><h2><span class="title">Hierarchy</span></h2></div>
+<div class="region"><div class="contents"><div class="tree"><div class="inner"><div class="region"><ul class="tree"><li class="tree">
+<div>
+        <span class=" code">GObject.Object</span>
+      
+      </div>
+<ul class="tree"><li class="tree"><div>
+        <span class=" code">Gtk.PrintSettings</span>
+      </div></li></ul>
+</li></ul></div></div></div></div></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Methods</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.PrintSettings.copy.html" title="Gtk.PrintSettings.prototype.copy">Gtk.PrintSettings.prototype.copy</a></li>
+<li class="links "><a href="Gtk.PrintSettings.foreach.html" title="Gtk.PrintSettings.prototype.foreach">Gtk.PrintSettings.prototype.foreach</a></li>
+<li class="links "><a href="Gtk.PrintSettings.get.html" title="Gtk.PrintSettings.prototype.get">Gtk.PrintSettings.prototype.get</a></li>
+<li class="links "><a href="Gtk.PrintSettings.get_bool.html" title="Gtk.PrintSettings.prototype.get_bool">Gtk.PrintSettings.prototype.get_bool</a></li>
+<li class="links "><a href="Gtk.PrintSettings.get_collate.html" title="Gtk.PrintSettings.prototype.get_collate">Gtk.PrintSettings.prototype.get_collate</a></li>
+<li class="links "><a href="Gtk.PrintSettings.get_default_source.html" title="Gtk.PrintSettings.prototype.get_default_source">Gtk.PrintSettings.prototype.get_default_source</a></li>
+<li class="links "><a href="Gtk.PrintSettings.get_dither.html" title="Gtk.PrintSettings.prototype.get_dither">Gtk.PrintSettings.prototype.get_dither</a></li>
+<li class="links "><a href="Gtk.PrintSettings.get_double.html" title="Gtk.PrintSettings.prototype.get_double">Gtk.PrintSettings.prototype.get_double</a></li>
+<li class="links "><a href="Gtk.PrintSettings.get_double_with_default.html" title="Gtk.PrintSettings.prototype.get_double_with_default">Gtk.PrintSettings.prototype.get_double_with_default</a></li>
+<li class="links "><a href="Gtk.PrintSettings.get_duplex.html" title="Gtk.PrintSettings.prototype.get_duplex">Gtk.PrintSettings.prototype.get_duplex</a></li>
+<li class="links "><a href="Gtk.PrintSettings.get_finishings.html" title="Gtk.PrintSettings.prototype.get_finishings">Gtk.PrintSettings.prototype.get_finishings</a></li>
+<li class="links "><a href="Gtk.PrintSettings.get_int.html" title="Gtk.PrintSettings.prototype.get_int">Gtk.PrintSettings.prototype.get_int</a></li>
+<li class="links "><a href="Gtk.PrintSettings.get_int_with_default.html" title="Gtk.PrintSettings.prototype.get_int_with_default">Gtk.PrintSettings.prototype.get_int_with_default</a></li>
+<li class="links "><a href="Gtk.PrintSettings.get_length.html" title="Gtk.PrintSettings.prototype.get_length">Gtk.PrintSettings.prototype.get_length</a></li>
+<li class="links "><a href="Gtk.PrintSettings.get_media_type.html" title="Gtk.PrintSettings.prototype.get_media_type">Gtk.PrintSettings.prototype.get_media_type</a></li>
+<li class="links "><a href="Gtk.PrintSettings.get_n_copies.html" title="Gtk.PrintSettings.prototype.get_n_copies">Gtk.PrintSettings.prototype.get_n_copies</a></li>
+<li class="links "><a href="Gtk.PrintSettings.get_number_up.html" title="Gtk.PrintSettings.prototype.get_number_up">Gtk.PrintSettings.prototype.get_number_up</a></li>
+<li class="links "><a href="Gtk.PrintSettings.get_number_up_layout.html" title="Gtk.PrintSettings.prototype.get_number_up_layout">Gtk.PrintSettings.prototype.get_number_up_layout</a></li>
+<li class="links "><a href="Gtk.PrintSettings.get_orientation.html" title="Gtk.PrintSettings.prototype.get_orientation">Gtk.PrintSettings.prototype.get_orientation</a></li>
+<li class="links "><a href="Gtk.PrintSettings.get_output_bin.html" title="Gtk.PrintSettings.prototype.get_output_bin">Gtk.PrintSettings.prototype.get_output_bin</a></li>
+<li class="links "><a href="Gtk.PrintSettings.get_page_ranges.html" title="Gtk.PrintSettings.prototype.get_page_ranges">Gtk.PrintSettings.prototype.get_page_ranges</a></li>
+<li class="links "><a href="Gtk.PrintSettings.get_page_set.html" title="Gtk.PrintSettings.prototype.get_page_set">Gtk.PrintSettings.prototype.get_page_set</a></li>
+<li class="links "><a href="Gtk.PrintSettings.get_paper_height.html" title="Gtk.PrintSettings.prototype.get_paper_height">Gtk.PrintSettings.prototype.get_paper_height</a></li>
+<li class="links "><a href="Gtk.PrintSettings.get_paper_size.html" title="Gtk.PrintSettings.prototype.get_paper_size">Gtk.PrintSettings.prototype.get_paper_size</a></li>
+<li class="links "><a href="Gtk.PrintSettings.get_paper_width.html" title="Gtk.PrintSettings.prototype.get_paper_width">Gtk.PrintSettings.prototype.get_paper_width</a></li>
+<li class="links "><a href="Gtk.PrintSettings.get_print_pages.html" title="Gtk.PrintSettings.prototype.get_print_pages">Gtk.PrintSettings.prototype.get_print_pages</a></li>
+<li class="links "><a href="Gtk.PrintSettings.get_printer.html" title="Gtk.PrintSettings.prototype.get_printer">Gtk.PrintSettings.prototype.get_printer</a></li>
+<li class="links "><a href="Gtk.PrintSettings.get_printer_lpi.html" title="Gtk.PrintSettings.prototype.get_printer_lpi">Gtk.PrintSettings.prototype.get_printer_lpi</a></li>
+<li class="links "><a href="Gtk.PrintSettings.get_quality.html" title="Gtk.PrintSettings.prototype.get_quality">Gtk.PrintSettings.prototype.get_quality</a></li>
+<li class="links "><a href="Gtk.PrintSettings.get_resolution.html" title="Gtk.PrintSettings.prototype.get_resolution">Gtk.PrintSettings.prototype.get_resolution</a></li>
+<li class="links "><a href="Gtk.PrintSettings.get_resolution_x.html" title="Gtk.PrintSettings.prototype.get_resolution_x">Gtk.PrintSettings.prototype.get_resolution_x</a></li>
+<li class="links "><a href="Gtk.PrintSettings.get_resolution_y.html" title="Gtk.PrintSettings.prototype.get_resolution_y">Gtk.PrintSettings.prototype.get_resolution_y</a></li>
+<li class="links "><a href="Gtk.PrintSettings.get_reverse.html" title="Gtk.PrintSettings.prototype.get_reverse">Gtk.PrintSettings.prototype.get_reverse</a></li>
+<li class="links "><a href="Gtk.PrintSettings.get_scale.html" title="Gtk.PrintSettings.prototype.get_scale">Gtk.PrintSettings.prototype.get_scale</a></li>
+<li class="links "><a href="Gtk.PrintSettings.get_use_color.html" title="Gtk.PrintSettings.prototype.get_use_color">Gtk.PrintSettings.prototype.get_use_color</a></li>
+<li class="links "><a href="Gtk.PrintSettings.has_key.html" title="Gtk.PrintSettings.prototype.has_key">Gtk.PrintSettings.prototype.has_key</a></li>
+<li class="links "><a href="Gtk.PrintSettings.load_file.html" title="Gtk.PrintSettings.prototype.load_file">Gtk.PrintSettings.prototype.load_file</a></li>
+<li class="links "><a href="Gtk.PrintSettings.load_key_file.html" title="Gtk.PrintSettings.prototype.load_key_file">Gtk.PrintSettings.prototype.load_key_file</a></li>
+<li class="links "><a href="Gtk.PrintSettings.set.html" title="Gtk.PrintSettings.prototype.set">Gtk.PrintSettings.prototype.set</a></li>
+<li class="links "><a href="Gtk.PrintSettings.set_bool.html" title="Gtk.PrintSettings.prototype.set_bool">Gtk.PrintSettings.prototype.set_bool</a></li>
+<li class="links "><a href="Gtk.PrintSettings.set_collate.html" title="Gtk.PrintSettings.prototype.set_collate">Gtk.PrintSettings.prototype.set_collate</a></li>
+<li class="links "><a href="Gtk.PrintSettings.set_default_source.html" title="Gtk.PrintSettings.prototype.set_default_source">Gtk.PrintSettings.prototype.set_default_source</a></li>
+<li class="links "><a href="Gtk.PrintSettings.set_dither.html" title="Gtk.PrintSettings.prototype.set_dither">Gtk.PrintSettings.prototype.set_dither</a></li>
+<li class="links "><a href="Gtk.PrintSettings.set_double.html" title="Gtk.PrintSettings.prototype.set_double">Gtk.PrintSettings.prototype.set_double</a></li>
+<li class="links "><a href="Gtk.PrintSettings.set_duplex.html" title="Gtk.PrintSettings.prototype.set_duplex">Gtk.PrintSettings.prototype.set_duplex</a></li>
+<li class="links "><a href="Gtk.PrintSettings.set_finishings.html" title="Gtk.PrintSettings.prototype.set_finishings">Gtk.PrintSettings.prototype.set_finishings</a></li>
+<li class="links "><a href="Gtk.PrintSettings.set_int.html" title="Gtk.PrintSettings.prototype.set_int">Gtk.PrintSettings.prototype.set_int</a></li>
+<li class="links "><a href="Gtk.PrintSettings.set_length.html" title="Gtk.PrintSettings.prototype.set_length">Gtk.PrintSettings.prototype.set_length</a></li>
+<li class="links "><a href="Gtk.PrintSettings.set_media_type.html" title="Gtk.PrintSettings.prototype.set_media_type">Gtk.PrintSettings.prototype.set_media_type</a></li>
+<li class="links "><a href="Gtk.PrintSettings.set_n_copies.html" title="Gtk.PrintSettings.prototype.set_n_copies">Gtk.PrintSettings.prototype.set_n_copies</a></li>
+<li class="links "><a href="Gtk.PrintSettings.set_number_up.html" title="Gtk.PrintSettings.prototype.set_number_up">Gtk.PrintSettings.prototype.set_number_up</a></li>
+<li class="links "><a href="Gtk.PrintSettings.set_number_up_layout.html" title="Gtk.PrintSettings.prototype.set_number_up_layout">Gtk.PrintSettings.prototype.set_number_up_layout</a></li>
+<li class="links "><a href="Gtk.PrintSettings.set_orientation.html" title="Gtk.PrintSettings.prototype.set_orientation">Gtk.PrintSettings.prototype.set_orientation</a></li>
+<li class="links "><a href="Gtk.PrintSettings.set_output_bin.html" title="Gtk.PrintSettings.prototype.set_output_bin">Gtk.PrintSettings.prototype.set_output_bin</a></li>
+<li class="links "><a href="Gtk.PrintSettings.set_page_ranges.html" title="Gtk.PrintSettings.prototype.set_page_ranges">Gtk.PrintSettings.prototype.set_page_ranges</a></li>
+<li class="links "><a href="Gtk.PrintSettings.set_page_set.html" title="Gtk.PrintSettings.prototype.set_page_set">Gtk.PrintSettings.prototype.set_page_set</a></li>
+<li class="links "><a href="Gtk.PrintSettings.set_paper_height.html" title="Gtk.PrintSettings.prototype.set_paper_height">Gtk.PrintSettings.prototype.set_paper_height</a></li>
+<li class="links "><a href="Gtk.PrintSettings.set_paper_size.html" title="Gtk.PrintSettings.prototype.set_paper_size">Gtk.PrintSettings.prototype.set_paper_size</a></li>
+<li class="links "><a href="Gtk.PrintSettings.set_paper_width.html" title="Gtk.PrintSettings.prototype.set_paper_width">Gtk.PrintSettings.prototype.set_paper_width</a></li>
+<li class="links "><a href="Gtk.PrintSettings.set_print_pages.html" title="Gtk.PrintSettings.prototype.set_print_pages">Gtk.PrintSettings.prototype.set_print_pages</a></li>
+<li class="links "><a href="Gtk.PrintSettings.set_printer.html" title="Gtk.PrintSettings.prototype.set_printer">Gtk.PrintSettings.prototype.set_printer</a></li>
+<li class="links "><a href="Gtk.PrintSettings.set_printer_lpi.html" title="Gtk.PrintSettings.prototype.set_printer_lpi">Gtk.PrintSettings.prototype.set_printer_lpi</a></li>
+<li class="links "><a href="Gtk.PrintSettings.set_quality.html" title="Gtk.PrintSettings.prototype.set_quality">Gtk.PrintSettings.prototype.set_quality</a></li>
+<li class="links "><a href="Gtk.PrintSettings.set_resolution.html" title="Gtk.PrintSettings.prototype.set_resolution">Gtk.PrintSettings.prototype.set_resolution</a></li>
+<li class="links "><a href="Gtk.PrintSettings.set_resolution_xy.html" title="Gtk.PrintSettings.prototype.set_resolution_xy">Gtk.PrintSettings.prototype.set_resolution_xy</a></li>
+<li class="links "><a href="Gtk.PrintSettings.set_reverse.html" title="Gtk.PrintSettings.prototype.set_reverse">Gtk.PrintSettings.prototype.set_reverse</a></li>
+<li class="links "><a href="Gtk.PrintSettings.set_scale.html" title="Gtk.PrintSettings.prototype.set_scale">Gtk.PrintSettings.prototype.set_scale</a></li>
+<li class="links "><a href="Gtk.PrintSettings.set_use_color.html" title="Gtk.PrintSettings.prototype.set_use_color">Gtk.PrintSettings.prototype.set_use_color</a></li>
+<li class="links "><a href="Gtk.PrintSettings.to_file.html" title="Gtk.PrintSettings.prototype.to_file">Gtk.PrintSettings.prototype.to_file</a></li>
+<li class="links "><a href="Gtk.PrintSettings.to_key_file.html" title="Gtk.PrintSettings.prototype.to_key_file">Gtk.PrintSettings.prototype.to_key_file</a></li>
+<li class="links "><a href="Gtk.PrintSettings.unset.html" title="Gtk.PrintSettings.prototype.unset">Gtk.PrintSettings.prototype.unset</a></li>
+</ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Other</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.PrintSettings.new.html" title="Gtk.PrintSettings.new">Gtk.PrintSettings.new</a></li>
+<li class="links "><a href="Gtk.PrintSettings.new_from_file.html" title="Gtk.PrintSettings.new_from_file">Gtk.PrintSettings.new_from_file</a></li>
+<li class="links "><a href="Gtk.PrintSettings.new_from_key_file.html" title="Gtk.PrintSettings.new_from_key_file">Gtk.PrintSettings.new_from_key_file</a></li>
+</ul></div>
+</div></div>
+</div>
+<div class="sect sect-links" role="navigation">
+<div class="hgroup"></div>
+<div class="contents"><div class="links guidelinks"><div class="inner">
+<div class="title"><h2><span class="title">More Information</span></h2></div>
+<div class="region"><ul><li class="links "><a href="index.html" title="Index">Index</a></li></ul></div>
+</div></div></div>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="footer"></div>
+</div></body>
+</html>

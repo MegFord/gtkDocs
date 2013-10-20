@@ -1,0 +1,172 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Gtk.RadioButton</title>
+<link rel="stylesheet" type="text/css" href="C.css">
+<script type="text/javascript" src="jquery.js"></script><script type="text/javascript" src="jquery.syntax.js"></script><script type="text/javascript" src="yelp.js"></script>
+</head>
+<body><div class="page" role="main">
+<div class="header"><div class="trails" role="navigation"><div class="trail">
+<a class="trail" href="index.html" title="Index">Index</a> » </div></div></div>
+<div class="body">
+<div class="hgroup"><h1 class="title"><span class="title">Gtk.RadioButton</span></h1></div>
+<div class="region">
+<div class="contents">
+<div class="synopsis"><div class="inner"><div class="region"><div class="contents"><div class="code"><pre class="contents ">const Gtk = imports.gi.Gtk;
+
+let radio_button = new Gtk.RadioButton({
+    <span class=" link"><a href="Gtk.RadioButton-group.html" title="Gtk.RadioButton:group">group</a></span>: value,
+});
+  </pre></div></div></div></div></div>
+<p class="p">A single radio button performs the same basic function as a <span class=" link"><a href="Gtk.CheckButton.html" title="Gtk.CheckButton">Gtk.CheckButton</a></span>,
+as its position in the object hierarchy reflects. It is only when multiple
+radio buttons are grouped together that they become a different user
+interface component in their own right.</p>
+<p class="p">Every radio button is a member of some group of radio buttons. When one is
+selected, all other radio buttons in the same group are deselected. A
+<span class=" link"><a href="Gtk.RadioButton.html" title="Gtk.RadioButton">Gtk.RadioButton</a></span> is one way of giving the user a choice from many options.</p>
+<p class="p">Radio button widgets are created with <span class=" link"><a href="Gtk.new.html" title="Gtk.new">Gtk.new</a></span>, passing <span class=" code">null</span>
+as the argument if this is the first radio button in a group. In subsequent
+calls, the group you wish to add this button to should be passed as an
+argument. Optionally, <span class=" link"><a href="Gtk.new_with_label.html" title="Gtk.new_with_label">Gtk.new_with_label</a></span> can be used if you
+want a text label on the radio button.</p>
+<p class="p">Alternatively, when adding widgets to an existing group of radio buttons,
+use <span class=" link"><a href="Gtk.new_from_widget.html" title="Gtk.new_from_widget">Gtk.new_from_widget</a></span> with a <span class=" link"><a href="Gtk.RadioButton.html" title="Gtk.RadioButton">Gtk.RadioButton</a></span> that already
+has a group assigned to it. The convenience function
+<span class=" link"><a href="Gtk.new_with_label_from_widget.html" title="Gtk.new_with_label_from_widget">Gtk.new_with_label_from_widget</a></span> is also provided.</p>
+<p class="p">To retrieve the group a <span class=" link"><a href="Gtk.RadioButton.html" title="Gtk.RadioButton">Gtk.RadioButton</a></span> is assigned to, use
+<span class=" link"><a href="Gtk.get_group.html" title="Gtk.get_group">Gtk.get_group</a></span>.</p>
+<p class="p">To remove a <span class=" link"><a href="Gtk.RadioButton.html" title="Gtk.RadioButton">Gtk.RadioButton</a></span> from one group and make it part of a new one,
+use <span class=" link"><a href="Gtk.set_group.html" title="Gtk.set_group">Gtk.set_group</a></span>.</p>
+<p class="p">The group list does not need to be freed, as each <span class=" link"><a href="Gtk.RadioButton.html" title="Gtk.RadioButton">Gtk.RadioButton</a></span> will remove
+itself and its list item when it is destroyed.</p>
+<p class="p">&lt;example&gt;
+&lt;title&gt;How to create a group of two radio buttons.&lt;/title&gt;
+&lt;programlisting&gt;
+void create_radio_buttons (void) {</p>
+<p class="p">   GtkWidget *window, *radio1, *radio2, *box, *entry;
+   window = gtk_window_new (GTK_WINDOW_TOPLEVEL);
+   box = gtk_box_new (GTK_ORIENTATION_VERTICAL, 2);
+   gtk_box_set_homogeneous (GTK_BOX (box), TRUE);</p>
+<p class="p">   /&amp;ast; Create a radio button with a GtkEntry widget &amp;ast;/
+   radio1 = gtk_radio_button_new (NULL);
+   entry = gtk_entry_new (&lt;!-- --&gt;);
+   gtk_container_add (GTK_CONTAINER (radio1), entry);</p>
+<p class="p">
+   /&amp;ast; Create a radio button with a label &amp;ast;/
+   radio2 = gtk_radio_button_new_with_label_from_widget (GTK_RADIO_BUTTON (radio1),
+                                                         "I'm the second radio button.");</p>
+<p class="p">   /&amp;ast; Pack them into a box, then show all the widgets &amp;ast;/
+   gtk_box_pack_start (GTK_BOX (box), radio1, TRUE, TRUE, 2);
+   gtk_box_pack_start (GTK_BOX (box), radio2, TRUE, TRUE, 2);
+   gtk_container_add (GTK_CONTAINER (window), box);
+   gtk_widget_show_all (window);
+   return;
+}
+&lt;/programlisting&gt;
+&lt;/example&gt;</p>
+<p class="p">When an unselected button in the group is clicked the clicked button
+receives the <span class=" link"><a href="Gtk.toggled.html" title="Gtk.toggled">Gtk.toggled</a></span> signal, as does the previously
+selected button.
+Inside the <span class=" link"><a href="Gtk.toggled.html" title="Gtk.toggled">Gtk.toggled</a></span> handler, <span class=" link"><a href="Gtk.get_active.html" title="Gtk.get_active">Gtk.get_active</a></span>
+can be used to determine if the button has been selected or deselected.</p>
+<div class="synopsis"><div class="inner">
+<div class="title title-synopsis"><h2><span class="title">Hierarchy</span></h2></div>
+<div class="region"><div class="contents"><div class="tree"><div class="inner"><div class="region"><ul class="tree"><li class="tree">
+<div>
+        <span class=" code">GObject.Object</span>
+      
+      </div>
+<ul class="tree"><li class="tree">
+<div>
+        <span class=" code">GObject.InitiallyUnowned</span>
+      
+      </div>
+<ul class="tree"><li class="tree">
+<div>
+        <span class=" code">Gtk.Widget</span>
+      
+      </div>
+<ul class="tree"><li class="tree">
+<div>
+        <span class=" code">Gtk.Container</span>
+      
+      </div>
+<ul class="tree"><li class="tree">
+<div>
+        <span class=" code">Gtk.Bin</span>
+      
+      </div>
+<ul class="tree"><li class="tree">
+<div>
+        <span class=" code">Gtk.Button</span>
+      
+      </div>
+<ul class="tree"><li class="tree">
+<div>
+        <span class=" code">Gtk.ToggleButton</span>
+      
+      </div>
+<ul class="tree"><li class="tree">
+<div>
+        <span class=" code">Gtk.CheckButton</span>
+      
+      </div>
+<ul class="tree"><li class="tree"><div>
+        <span class=" code">Gtk.RadioButton</span>
+      </div></li></ul>
+</li></ul>
+</li></ul>
+</li></ul>
+</li></ul>
+</li></ul>
+</li></ul>
+</li></ul>
+</li></ul></div></div></div></div></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Methods</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.RadioButton.get_group.html" title="Gtk.RadioButton.prototype.get_group">Gtk.RadioButton.prototype.get_group</a></li>
+<li class="links "><a href="Gtk.RadioButton.join_group.html" title="Gtk.RadioButton.prototype.join_group">Gtk.RadioButton.prototype.join_group</a></li>
+<li class="links "><a href="Gtk.RadioButton.set_group.html" title="Gtk.RadioButton.prototype.set_group">Gtk.RadioButton.prototype.set_group</a></li>
+</ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Properties</span></h2></div>
+<div class="region"><ul><li class="links "><a href="Gtk.RadioButton-group.html" title="Gtk.RadioButton:group">group</a></li></ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Signals</span></h2></div>
+<div class="region"><ul><li class="links "><a href="Gtk.RadioButton-group-changed.html" title="Gtk.RadioButton::group-changed">group-changed</a></li></ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Virtual functions</span></h2></div>
+<div class="region"><ul><li class="links "><a href="Gtk.RadioButton-group_changed.html" title="Gtk.RadioButton::group_changed">Gtk.RadioButton::group_changed</a></li></ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Other</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.RadioButton.new.html" title="Gtk.RadioButton.new">Gtk.RadioButton.new</a></li>
+<li class="links "><a href="Gtk.RadioButton.new_from_widget.html" title="Gtk.RadioButton.new_from_widget">Gtk.RadioButton.new_from_widget</a></li>
+<li class="links "><a href="Gtk.RadioButton.new_with_label.html" title="Gtk.RadioButton.new_with_label">Gtk.RadioButton.new_with_label</a></li>
+<li class="links "><a href="Gtk.RadioButton.new_with_label_from_widget.html" title="Gtk.RadioButton.new_with_label_from_widget">Gtk.RadioButton.new_with_label_from_widget</a></li>
+<li class="links "><a href="Gtk.RadioButton.new_with_mnemonic.html" title="Gtk.RadioButton.new_with_mnemonic">Gtk.RadioButton.new_with_mnemonic</a></li>
+<li class="links "><a href="Gtk.RadioButton.new_with_mnemonic_from_widget.html" title="Gtk.RadioButton.new_with_mnemonic_from_widget">Gtk.RadioButton.new_with_mnemonic_from_widget</a></li>
+</ul></div>
+</div></div>
+</div>
+<div class="sect sect-links" role="navigation">
+<div class="hgroup"></div>
+<div class="contents"><div class="links guidelinks"><div class="inner">
+<div class="title"><h2><span class="title">More Information</span></h2></div>
+<div class="region"><ul><li class="links "><a href="index.html" title="Index">Index</a></li></ul></div>
+</div></div></div>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="footer"></div>
+</div></body>
+</html>

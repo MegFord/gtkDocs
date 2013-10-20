@@ -1,0 +1,57 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>rc_get_style_by_paths</title>
+<link rel="stylesheet" type="text/css" href="C.css">
+<script type="text/javascript" src="jquery.js"></script><script type="text/javascript" src="jquery.syntax.js"></script><script type="text/javascript" src="yelp.js"></script>
+</head>
+<body><div class="page" role="main">
+<div class="header"><div class="trails" role="navigation"><div class="trail">
+<a class="trail" href="index.html" title="Index">Index</a> » </div></div></div>
+<div class="body">
+<div class="hgroup"><h1 class="title"><span class="title">rc_get_style_by_paths</span></h1></div>
+<div class="region">
+<div class="contents">
+<div class="synopsis"><div class="inner"><div class="region"><div class="contents"><div class="code"><pre class="contents ">function rc_get_style_by_paths(settings:Gtk.Settings, widget_path:String, class_path:String, type:GType):Gtk.Style {
+    // Gjs wrapper for gtk_rc_get_style_by_paths()
+}</pre></div></div></div></div></div>
+<p class="p">Creates up a <span class=" link"><a href="Gtk.Style.html" title="Gtk.Style">Gtk.Style</a></span> from styles defined in a RC file by providing
+the raw components used in matching. This function may be useful
+when creating pseudo-widgets that should be themed like widgets but
+don't actually have corresponding GTK+ widgets. An example of this
+would be items inside a GNOME canvas widget.</p>
+<p class="p">The action of <span class=" link"><a href="Gtk.rc_get_style.html" title="rc_get_style">rc_get_style</a></span> is similar to:
+|[
+ gtk_widget_path (widget, NULL, &amp;path, NULL);
+ gtk_widget_class_path (widget, NULL, &amp;class_path, NULL);
+ gtk_rc_get_style_by_paths (gtk_widget_get_settings (widget),
+                            path, class_path,
+                            G_OBJECT_TYPE (widget));
+]|</p>
+<div class="terms"><div class="inner"><div class="region"><dl class="terms">
+<dt class="terms"><span class=" code">settings</span></dt>
+<dd class="terms"><p class="p">a <span class=" link"><a href="Gtk.Settings.html" title="Gtk.Settings">Gtk.Settings</a></span> object</p></dd>
+<dt class="terms"><span class=" code">widget_path</span></dt>
+<dd class="terms"><p class="p">the widget path to use when looking up the style, or <span class=" code">null</span> if no matching against the widget path should be done</p></dd>
+<dt class="terms"><span class=" code">class_path</span></dt>
+<dd class="terms"><p class="p">the class path to use when looking up the style, or <span class=" code">null</span> if no matching against the class path should be done.</p></dd>
+<dt class="terms"><span class=" code">type</span></dt>
+<dd class="terms"><p class="p">a type that will be used along with parent types of this type when matching against class styles, or #G_TYPE_NONE</p></dd>
+<dt class="terms"><span class=" code">Returns</span></dt>
+<dd class="terms"><p class="p">A style created by matching with the supplied paths, or <span class=" code">null</span> if nothing matching was specified and the default style should be used. The returned value is owned by GTK+ as part of an internal cache, so you must call g_object_ref() on the returned value if you want to keep a reference to it.</p></dd>
+</dl></div></div></div>
+</div>
+<div class="sect sect-links" role="navigation">
+<div class="hgroup"></div>
+<div class="contents"><div class="links guidelinks"><div class="inner">
+<div class="title"><h2><span class="title">More Information</span></h2></div>
+<div class="region"><ul><li class="links "><a href="index.html" title="Index">Index</a></li></ul></div>
+</div></div></div>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="footer"></div>
+</div></body>
+</html>

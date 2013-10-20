@@ -1,0 +1,54 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Gtk.Range::change-value</title>
+<link rel="stylesheet" type="text/css" href="C.css">
+<script type="text/javascript" src="jquery.js"></script><script type="text/javascript" src="jquery.syntax.js"></script><script type="text/javascript" src="yelp.js"></script>
+</head>
+<body><div class="page" role="main">
+<div class="header"><div class="trails" role="navigation"><div class="trail">
+<a class="trail" href="index.html" title="Index">Index</a> » <a class="trail" href="Gtk.Range.html" title="Gtk.Range">Gtk.Range</a> » </div></div></div>
+<div class="body">
+<div class="hgroup"><h1 class="title"><span class="title">Gtk.Range::change-value</span></h1></div>
+<div class="region">
+<div class="contents">
+<div class="synopsis"><div class="inner"><div class="region"><div class="contents"><div class="code"><pre class="contents syntax brush-python">function callback(range, scroll:Gtk.ScrollType, value:Number, ):Boolean;</pre></div></div></div></div></div>
+<p class="p">The <span class=" link"><a href="Gtk.Range-change-value.html" title="Gtk.Range::change-value">Gtk.Range::change-value</a></span> signal is emitted when a scroll action is
+performed on a range.  It allows an application to determine the
+type of scroll event that occurred and the resultant new value.
+The application can handle the event itself and return <span class=" code">true</span> to
+prevent further processing.  Or, by returning <span class=" code">false</span>, it can pass
+the event to other handlers until the default GTK+ handler is
+reached.</p>
+<p class="p">The value parameter is unrounded.  An application that overrides
+the GtkRange::change-value signal is responsible for clamping the
+value to the desired number of decimal digits; the default GTK+
+handler clamps the value based on <span class=" link"><a href="Gtk.round-digits.html" title="Gtk.round-digits">Gtk.round-digits</a></span>.</p>
+<p class="p">It is not possible to use delayed update policies in an overridden
+<span class=" link"><a href="Gtk.Range-change-value.html" title="Gtk.Range::change-value">Gtk.Range::change-value</a></span> handler.</p>
+<p class="p">Since 2.6</p>
+<div class="terms"><div class="inner"><div class="region"><dl class="terms">
+<dt class="terms"><span class=" code">range</span></dt>
+<dd class="terms"><p class="p">instance of <span class=" link"><a href="Gtk.Range.html" title="Gtk.Range">Gtk.Range</a></span> that is emitting the signal</p></dd>
+<dt class="terms"><span class=" code">scroll</span></dt>
+<dd class="terms"><p class="p">the type of scroll action that was performed</p></dd>
+<dt class="terms"><span class=" code">value</span></dt>
+<dd class="terms"><p class="p">the new value resulting from the scroll action</p></dd>
+<dt class="terms"><span class=" code">Returns</span></dt>
+<dd class="terms"><p class="p"><span class=" code">true</span> to prevent other handlers from being invoked for the signal, <span class=" code">false</span> to propagate the signal further</p></dd>
+</dl></div></div></div>
+</div>
+<div class="sect sect-links" role="navigation">
+<div class="hgroup"></div>
+<div class="contents"><div class="links guidelinks"><div class="inner">
+<div class="title"><h2><span class="title">More Information</span></h2></div>
+<div class="region"><ul><li class="links "><a href="Gtk.Range.html" title="Gtk.Range">Gtk.Range</a></li></ul></div>
+</div></div></div>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="footer"></div>
+</div></body>
+</html>

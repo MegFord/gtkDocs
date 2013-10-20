@@ -1,0 +1,51 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Gtk.Range.prototype.set_fill_level</title>
+<link rel="stylesheet" type="text/css" href="C.css">
+<script type="text/javascript" src="jquery.js"></script><script type="text/javascript" src="jquery.syntax.js"></script><script type="text/javascript" src="yelp.js"></script>
+</head>
+<body><div class="page" role="main">
+<div class="header"><div class="trails" role="navigation"><div class="trail">
+<a class="trail" href="index.html" title="Index">Index</a> » <a class="trail" href="Gtk.Range.html" title="Gtk.Range">Gtk.Range</a> » </div></div></div>
+<div class="body">
+<div class="hgroup"><h1 class="title"><span class="title">Gtk.Range.prototype.set_fill_level</span></h1></div>
+<div class="region">
+<div class="contents">
+<div class="synopsis"><div class="inner"><div class="region"><div class="contents"><div class="code"><pre class="contents ">function set_fill_level(fill_level:Number):void {
+    // Gjs wrapper for gtk_range_set_fill_level()
+}</pre></div></div></div></div></div>
+<p class="p">Set the new position of the fill level indicator.</p>
+<p class="p">The "fill level" is probably best described by its most prominent
+use case, which is an indicator for the amount of pre-buffering in
+a streaming media player. In that use case, the value of the range
+would indicate the current play position, and the fill level would
+be the position up to which the file/stream has been downloaded.</p>
+<p class="p">This amount of prebuffering can be displayed on the range's trough
+and is themeable separately from the trough. To enable fill level
+display, use <span class=" link"><a href="Gtk.set_show_fill_level.html" title="Gtk.set_show_fill_level">Gtk.set_show_fill_level</a></span>. The range defaults
+to not showing the fill level.</p>
+<p class="p">Additionally, it's possible to restrict the range's slider position
+to values which are smaller than the fill level. This is controller
+by <span class=" link"><a href="Gtk.set_restrict_to_fill_level.html" title="Gtk.set_restrict_to_fill_level">Gtk.set_restrict_to_fill_level</a></span> and is by default
+enabled.</p>
+<p class="p">Since 2.12</p>
+<div class="terms"><div class="inner"><div class="region"><dl class="terms">
+<dt class="terms"><span class=" code">fill_level</span></dt>
+<dd class="terms"><p class="p">the new position of the fill level indicator</p></dd>
+</dl></div></div></div>
+</div>
+<div class="sect sect-links" role="navigation">
+<div class="hgroup"></div>
+<div class="contents"><div class="links guidelinks"><div class="inner">
+<div class="title"><h2><span class="title">More Information</span></h2></div>
+<div class="region"><ul><li class="links "><a href="Gtk.Range.html" title="Gtk.Range">Gtk.Range</a></li></ul></div>
+</div></div></div>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="footer"></div>
+</div></body>
+</html>

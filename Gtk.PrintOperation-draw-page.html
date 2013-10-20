@@ -1,0 +1,86 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Gtk.PrintOperation::draw-page</title>
+<link rel="stylesheet" type="text/css" href="C.css">
+<script type="text/javascript" src="jquery.js"></script><script type="text/javascript" src="jquery.syntax.js"></script><script type="text/javascript" src="yelp.js"></script>
+</head>
+<body><div class="page" role="main">
+<div class="header"><div class="trails" role="navigation"><div class="trail">
+<a class="trail" href="index.html" title="Index">Index</a> » <a class="trail" href="Gtk.PrintOperation.html" title="Gtk.PrintOperation">Gtk.PrintOperation</a> » </div></div></div>
+<div class="body">
+<div class="hgroup"><h1 class="title"><span class="title">Gtk.PrintOperation::draw-page</span></h1></div>
+<div class="region">
+<div class="contents">
+<div class="synopsis"><div class="inner"><div class="region"><div class="contents"><div class="code"><pre class="contents syntax brush-python">function callback(print_operation, context:Gtk.PrintContext, page_nr:Number, ):void;</pre></div></div></div></div></div>
+<p class="p">Emitted for every page that is printed. The signal handler
+must render the <span class=" code">page_nr</span>'s page onto the cairo context obtained
+from <span class=" code">context</span> using <span class=" link"><a href="Gtk.PrintContext.get_cairo_context.html" title="Gtk.PrintContext.prototype.get_cairo_context">Gtk.PrintContext.prototype.get_cairo_context</a></span>.
+|[
+static void
+draw_page (GtkPrintOperation *operation,
+           GtkPrintContext   *context,
+           gint               page_nr,
+           gpointer           user_data)
+{
+  cairo_t *cr;
+  PangoLayout *layout;
+  gdouble width, text_height;
+  gint layout_height;
+  PangoFontDescription *desc;
+  
+  cr = gtk_print_context_get_cairo_context (context);
+  width = gtk_print_context_get_width (context);
+  
+  cairo_rectangle (cr, 0, 0, width, HEADER_HEIGHT);
+  
+  cairo_set_source_rgb (cr, 0.8, 0.8, 0.8);
+  cairo_fill (cr);
+  
+  layout = gtk_print_context_create_pango_layout (context);
+  
+  desc = pango_font_description_from_string ("sans 14");
+  pango_layout_set_font_description (layout, desc);
+  pango_font_description_free (desc);
+  
+  pango_layout_set_text (layout, "some text", -1);
+  pango_layout_set_width (layout, width * PANGO_SCALE);
+  pango_layout_set_alignment (layout, PANGO_ALIGN_CENTER);
+     		      
+  pango_layout_get_size (layout, NULL, &amp;layout_height);
+  text_height = (gdouble)layout_height / PANGO_SCALE;
+  
+  cairo_move_to (cr, width / 2,  (HEADER_HEIGHT - text_height) / 2);
+  pango_cairo_show_layout (cr, layout);
+  
+  g_object_unref (layout);
+}
+]|</p>
+<p class="p">Use <span class=" link"><a href="Gtk.PrintOperation.set_use_full_page.html" title="Gtk.PrintOperation.prototype.set_use_full_page">Gtk.PrintOperation.prototype.set_use_full_page</a></span> and 
+<span class=" link"><a href="Gtk.PrintOperation.set_unit.html" title="Gtk.PrintOperation.prototype.set_unit">Gtk.PrintOperation.prototype.set_unit</a></span> before starting the print operation
+to set up the transformation of the cairo context according to your
+needs.</p>
+<p class="p">Since 2.10</p>
+<div class="terms"><div class="inner"><div class="region"><dl class="terms">
+<dt class="terms"><span class=" code">print_operation</span></dt>
+<dd class="terms"><p class="p">instance of <span class=" link"><a href="Gtk.PrintOperation.html" title="Gtk.PrintOperation">Gtk.PrintOperation</a></span> that is emitting the signal</p></dd>
+<dt class="terms"><span class=" code">context</span></dt>
+<dd class="terms"><p class="p">the <span class=" link"><a href="Gtk.PrintContext.html" title="Gtk.PrintContext">Gtk.PrintContext</a></span> for the current operation</p></dd>
+<dt class="terms"><span class=" code">page_nr</span></dt>
+<dd class="terms"><p class="p">the number of the currently printed page (0-based)</p></dd>
+</dl></div></div></div>
+</div>
+<div class="sect sect-links" role="navigation">
+<div class="hgroup"></div>
+<div class="contents"><div class="links guidelinks"><div class="inner">
+<div class="title"><h2><span class="title">More Information</span></h2></div>
+<div class="region"><ul><li class="links "><a href="Gtk.PrintOperation.html" title="Gtk.PrintOperation">Gtk.PrintOperation</a></li></ul></div>
+</div></div></div>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="footer"></div>
+</div></body>
+</html>

@@ -1,0 +1,116 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Gtk.ProgressBar</title>
+<link rel="stylesheet" type="text/css" href="C.css">
+<script type="text/javascript" src="jquery.js"></script><script type="text/javascript" src="jquery.syntax.js"></script><script type="text/javascript" src="yelp.js"></script>
+</head>
+<body><div class="page" role="main">
+<div class="header"><div class="trails" role="navigation"><div class="trail">
+<a class="trail" href="index.html" title="Index">Index</a> » </div></div></div>
+<div class="body">
+<div class="hgroup"><h1 class="title"><span class="title">Gtk.ProgressBar</span></h1></div>
+<div class="region">
+<div class="contents">
+<div class="synopsis"><div class="inner"><div class="region"><div class="contents"><div class="code"><pre class="contents ">const Gtk = imports.gi.Gtk;
+
+let progress_bar = new Gtk.ProgressBar({
+    <span class=" link"><a href="Gtk.ProgressBar-ellipsize.html" title="Gtk.ProgressBar:ellipsize">ellipsize</a></span>: value,
+    <span class=" link"><a href="Gtk.ProgressBar-fraction.html" title="Gtk.ProgressBar:fraction">fraction</a></span>: value,
+    <span class=" link"><a href="Gtk.ProgressBar-inverted.html" title="Gtk.ProgressBar:inverted">inverted</a></span>: value,
+    <span class=" link"><a href="Gtk.ProgressBar-pulse-step.html" title="Gtk.ProgressBar:pulse-step">pulse_step</a></span>: value,
+    <span class=" link"><a href="Gtk.ProgressBar-show-text.html" title="Gtk.ProgressBar:show-text">show_text</a></span>: value,
+    <span class=" link"><a href="Gtk.ProgressBar-text.html" title="Gtk.ProgressBar:text">text</a></span>: value,
+});
+  </pre></div></div></div></div></div>
+<p class="p">The <span class=" link"><a href="Gtk.ProgressBar.html" title="Gtk.ProgressBar">Gtk.ProgressBar</a></span> is typically used to display the progress of a long
+running operation.  It provides a visual clue that processing
+is underway.  The <span class=" link"><a href="Gtk.ProgressBar.html" title="Gtk.ProgressBar">Gtk.ProgressBar</a></span> can be used in two different
+modes: percentage mode and activity mode.</p>
+<p class="p">When an application can determine how much work needs to take place
+(e.g. read a fixed number of bytes from a file) and can monitor its
+progress, it can use the <span class=" link"><a href="Gtk.ProgressBar.html" title="Gtk.ProgressBar">Gtk.ProgressBar</a></span> in percentage mode and the user
+sees a growing bar indicating the percentage of the work that has
+been completed.  In this mode, the application is required to call
+<span class=" link"><a href="Gtk.set_fraction.html" title="Gtk.set_fraction">Gtk.set_fraction</a></span> periodically to update the progress bar.</p>
+<p class="p">When an application has no accurate way of knowing the amount of work
+to do, it can use the <span class=" link"><a href="Gtk.ProgressBar.html" title="Gtk.ProgressBar">Gtk.ProgressBar</a></span> in activity mode, which shows
+activity by a block moving back and forth within the progress area. In
+this mode, the application is required to call <span class=" link"><a href="Gtk.pulse.html" title="Gtk.pulse">Gtk.pulse</a></span>
+periodically to update the progress bar.</p>
+<p class="p">There is quite a bit of flexibility provided to control the appearance
+of the <span class=" link"><a href="Gtk.ProgressBar.html" title="Gtk.ProgressBar">Gtk.ProgressBar</a></span>.  Functions are provided to control the
+orientation of the bar, optional text can be displayed along with
+the bar, and the step size used in activity mode can be set.</p>
+<div class="synopsis"><div class="inner">
+<div class="title title-synopsis"><h2><span class="title">Hierarchy</span></h2></div>
+<div class="region"><div class="contents"><div class="tree"><div class="inner"><div class="region"><ul class="tree"><li class="tree">
+<div>
+        <span class=" code">GObject.Object</span>
+      
+      </div>
+<ul class="tree"><li class="tree">
+<div>
+        <span class=" code">GObject.InitiallyUnowned</span>
+      
+      </div>
+<ul class="tree"><li class="tree">
+<div>
+        <span class=" code">Gtk.Widget</span>
+      
+      </div>
+<ul class="tree"><li class="tree"><div>
+        <span class=" code">Gtk.ProgressBar</span>
+      </div></li></ul>
+</li></ul>
+</li></ul>
+</li></ul></div></div></div></div></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Methods</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.ProgressBar.get_ellipsize.html" title="Gtk.ProgressBar.prototype.get_ellipsize">Gtk.ProgressBar.prototype.get_ellipsize</a></li>
+<li class="links "><a href="Gtk.ProgressBar.get_fraction.html" title="Gtk.ProgressBar.prototype.get_fraction">Gtk.ProgressBar.prototype.get_fraction</a></li>
+<li class="links "><a href="Gtk.ProgressBar.get_inverted.html" title="Gtk.ProgressBar.prototype.get_inverted">Gtk.ProgressBar.prototype.get_inverted</a></li>
+<li class="links "><a href="Gtk.ProgressBar.get_pulse_step.html" title="Gtk.ProgressBar.prototype.get_pulse_step">Gtk.ProgressBar.prototype.get_pulse_step</a></li>
+<li class="links "><a href="Gtk.ProgressBar.get_show_text.html" title="Gtk.ProgressBar.prototype.get_show_text">Gtk.ProgressBar.prototype.get_show_text</a></li>
+<li class="links "><a href="Gtk.ProgressBar.get_text.html" title="Gtk.ProgressBar.prototype.get_text">Gtk.ProgressBar.prototype.get_text</a></li>
+<li class="links "><a href="Gtk.ProgressBar.pulse.html" title="Gtk.ProgressBar.prototype.pulse">Gtk.ProgressBar.prototype.pulse</a></li>
+<li class="links "><a href="Gtk.ProgressBar.set_ellipsize.html" title="Gtk.ProgressBar.prototype.set_ellipsize">Gtk.ProgressBar.prototype.set_ellipsize</a></li>
+<li class="links "><a href="Gtk.ProgressBar.set_fraction.html" title="Gtk.ProgressBar.prototype.set_fraction">Gtk.ProgressBar.prototype.set_fraction</a></li>
+<li class="links "><a href="Gtk.ProgressBar.set_inverted.html" title="Gtk.ProgressBar.prototype.set_inverted">Gtk.ProgressBar.prototype.set_inverted</a></li>
+<li class="links "><a href="Gtk.ProgressBar.set_pulse_step.html" title="Gtk.ProgressBar.prototype.set_pulse_step">Gtk.ProgressBar.prototype.set_pulse_step</a></li>
+<li class="links "><a href="Gtk.ProgressBar.set_show_text.html" title="Gtk.ProgressBar.prototype.set_show_text">Gtk.ProgressBar.prototype.set_show_text</a></li>
+<li class="links "><a href="Gtk.ProgressBar.set_text.html" title="Gtk.ProgressBar.prototype.set_text">Gtk.ProgressBar.prototype.set_text</a></li>
+</ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Properties</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.ProgressBar-ellipsize.html" title="Gtk.ProgressBar:ellipsize">ellipsize</a></li>
+<li class="links "><a href="Gtk.ProgressBar-fraction.html" title="Gtk.ProgressBar:fraction">fraction</a></li>
+<li class="links "><a href="Gtk.ProgressBar-inverted.html" title="Gtk.ProgressBar:inverted">inverted</a></li>
+<li class="links "><a href="Gtk.ProgressBar-pulse-step.html" title="Gtk.ProgressBar:pulse-step">pulse-step</a></li>
+<li class="links "><a href="Gtk.ProgressBar-show-text.html" title="Gtk.ProgressBar:show-text">show-text</a></li>
+<li class="links "><a href="Gtk.ProgressBar-text.html" title="Gtk.ProgressBar:text">text</a></li>
+</ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Other</span></h2></div>
+<div class="region"><ul><li class="links "><a href="Gtk.ProgressBar.new.html" title="Gtk.ProgressBar.new">Gtk.ProgressBar.new</a></li></ul></div>
+</div></div>
+</div>
+<div class="sect sect-links" role="navigation">
+<div class="hgroup"></div>
+<div class="contents"><div class="links guidelinks"><div class="inner">
+<div class="title"><h2><span class="title">More Information</span></h2></div>
+<div class="region"><ul><li class="links "><a href="index.html" title="Index">Index</a></li></ul></div>
+</div></div></div>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="footer"></div>
+</div></body>
+</html>

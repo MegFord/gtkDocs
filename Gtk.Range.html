@@ -1,0 +1,137 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Gtk.Range</title>
+<link rel="stylesheet" type="text/css" href="C.css">
+<script type="text/javascript" src="jquery.js"></script><script type="text/javascript" src="jquery.syntax.js"></script><script type="text/javascript" src="yelp.js"></script>
+</head>
+<body><div class="page" role="main">
+<div class="header"><div class="trails" role="navigation"><div class="trail">
+<a class="trail" href="index.html" title="Index">Index</a> » </div></div></div>
+<div class="body">
+<div class="hgroup"><h1 class="title"><span class="title">Gtk.Range</span></h1></div>
+<div class="region">
+<div class="contents">
+<div class="synopsis"><div class="inner"><div class="region"><div class="contents"><div class="code"><pre class="contents ">const Gtk = imports.gi.Gtk;
+
+let range = new Gtk.Range({
+    <span class=" link"><a href="Gtk.Range-adjustment.html" title="Gtk.Range:adjustment">adjustment</a></span>: value,
+    <span class=" link"><a href="Gtk.Range-fill-level.html" title="Gtk.Range:fill-level">fill_level</a></span>: value,
+    <span class=" link"><a href="Gtk.Range-inverted.html" title="Gtk.Range:inverted">inverted</a></span>: value,
+    <span class=" link"><a href="Gtk.Range-lower-stepper-sensitivity.html" title="Gtk.Range:lower-stepper-sensitivity">lower_stepper_sensitivity</a></span>: value,
+    <span class=" link"><a href="Gtk.Range-restrict-to-fill-level.html" title="Gtk.Range:restrict-to-fill-level">restrict_to_fill_level</a></span>: value,
+    <span class=" link"><a href="Gtk.Range-round-digits.html" title="Gtk.Range:round-digits">round_digits</a></span>: value,
+    <span class=" link"><a href="Gtk.Range-show-fill-level.html" title="Gtk.Range:show-fill-level">show_fill_level</a></span>: value,
+    <span class=" link"><a href="Gtk.Range-upper-stepper-sensitivity.html" title="Gtk.Range:upper-stepper-sensitivity">upper_stepper_sensitivity</a></span>: value,
+});
+  </pre></div></div></div></div></div>
+<p class="p"><span class=" link"><a href="Gtk.Range.html" title="Gtk.Range">Gtk.Range</a></span> is the common base class for widgets which visualize an
+adjustment, e.g <span class=" link"><a href="Gtk.Scale.html" title="Gtk.Scale">Gtk.Scale</a></span> or <span class=" link"><a href="Gtk.Scrollbar.html" title="Gtk.Scrollbar">Gtk.Scrollbar</a></span>.</p>
+<p class="p">Apart from signals for monitoring the parameters of the adjustment,
+<span class=" link"><a href="Gtk.Range.html" title="Gtk.Range">Gtk.Range</a></span> provides properties and methods for influencing the sensitivity
+of the "steppers". It also provides properties and methods for setting a
+"fill level" on range widgets. See <span class=" link"><a href="Gtk.set_fill_level.html" title="Gtk.set_fill_level">Gtk.set_fill_level</a></span>.</p>
+<div class="synopsis"><div class="inner">
+<div class="title title-synopsis"><h2><span class="title">Hierarchy</span></h2></div>
+<div class="region"><div class="contents"><div class="tree"><div class="inner"><div class="region"><ul class="tree"><li class="tree">
+<div>
+        <span class=" code">GObject.Object</span>
+      
+      </div>
+<ul class="tree"><li class="tree">
+<div>
+        <span class=" code">GObject.InitiallyUnowned</span>
+      
+      </div>
+<ul class="tree"><li class="tree">
+<div>
+        <span class=" code">Gtk.Widget</span>
+      
+      </div>
+<ul class="tree"><li class="tree"><div>
+        <span class=" code">Gtk.Range</span>
+      </div></li></ul>
+</li></ul>
+</li></ul>
+</li></ul></div></div></div></div></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Methods</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.Range.get_adjustment.html" title="Gtk.Range.prototype.get_adjustment">Gtk.Range.prototype.get_adjustment</a></li>
+<li class="links "><a href="Gtk.Range.get_fill_level.html" title="Gtk.Range.prototype.get_fill_level">Gtk.Range.prototype.get_fill_level</a></li>
+<li class="links "><a href="Gtk.Range.get_flippable.html" title="Gtk.Range.prototype.get_flippable">Gtk.Range.prototype.get_flippable</a></li>
+<li class="links "><a href="Gtk.Range.get_inverted.html" title="Gtk.Range.prototype.get_inverted">Gtk.Range.prototype.get_inverted</a></li>
+<li class="links "><a href="Gtk.Range.get_lower_stepper_sensitivity.html" title="Gtk.Range.prototype.get_lower_stepper_sensitivity">Gtk.Range.prototype.get_lower_stepper_sensitivity</a></li>
+<li class="links "><a href="Gtk.Range.get_min_slider_size.html" title="Gtk.Range.prototype.get_min_slider_size">Gtk.Range.prototype.get_min_slider_size</a></li>
+<li class="links "><a href="Gtk.Range.get_range_rect.html" title="Gtk.Range.prototype.get_range_rect">Gtk.Range.prototype.get_range_rect</a></li>
+<li class="links "><a href="Gtk.Range.get_restrict_to_fill_level.html" title="Gtk.Range.prototype.get_restrict_to_fill_level">Gtk.Range.prototype.get_restrict_to_fill_level</a></li>
+<li class="links "><a href="Gtk.Range.get_round_digits.html" title="Gtk.Range.prototype.get_round_digits">Gtk.Range.prototype.get_round_digits</a></li>
+<li class="links "><a href="Gtk.Range.get_show_fill_level.html" title="Gtk.Range.prototype.get_show_fill_level">Gtk.Range.prototype.get_show_fill_level</a></li>
+<li class="links "><a href="Gtk.Range.get_slider_range.html" title="Gtk.Range.prototype.get_slider_range">Gtk.Range.prototype.get_slider_range</a></li>
+<li class="links "><a href="Gtk.Range.get_slider_size_fixed.html" title="Gtk.Range.prototype.get_slider_size_fixed">Gtk.Range.prototype.get_slider_size_fixed</a></li>
+<li class="links "><a href="Gtk.Range.get_upper_stepper_sensitivity.html" title="Gtk.Range.prototype.get_upper_stepper_sensitivity">Gtk.Range.prototype.get_upper_stepper_sensitivity</a></li>
+<li class="links "><a href="Gtk.Range.get_value.html" title="Gtk.Range.prototype.get_value">Gtk.Range.prototype.get_value</a></li>
+<li class="links "><a href="Gtk.Range.set_adjustment.html" title="Gtk.Range.prototype.set_adjustment">Gtk.Range.prototype.set_adjustment</a></li>
+<li class="links "><a href="Gtk.Range.set_fill_level.html" title="Gtk.Range.prototype.set_fill_level">Gtk.Range.prototype.set_fill_level</a></li>
+<li class="links "><a href="Gtk.Range.set_flippable.html" title="Gtk.Range.prototype.set_flippable">Gtk.Range.prototype.set_flippable</a></li>
+<li class="links "><a href="Gtk.Range.set_increments.html" title="Gtk.Range.prototype.set_increments">Gtk.Range.prototype.set_increments</a></li>
+<li class="links "><a href="Gtk.Range.set_inverted.html" title="Gtk.Range.prototype.set_inverted">Gtk.Range.prototype.set_inverted</a></li>
+<li class="links "><a href="Gtk.Range.set_lower_stepper_sensitivity.html" title="Gtk.Range.prototype.set_lower_stepper_sensitivity">Gtk.Range.prototype.set_lower_stepper_sensitivity</a></li>
+<li class="links "><a href="Gtk.Range.set_min_slider_size.html" title="Gtk.Range.prototype.set_min_slider_size">Gtk.Range.prototype.set_min_slider_size</a></li>
+<li class="links "><a href="Gtk.Range.set_range.html" title="Gtk.Range.prototype.set_range">Gtk.Range.prototype.set_range</a></li>
+<li class="links "><a href="Gtk.Range.set_restrict_to_fill_level.html" title="Gtk.Range.prototype.set_restrict_to_fill_level">Gtk.Range.prototype.set_restrict_to_fill_level</a></li>
+<li class="links "><a href="Gtk.Range.set_round_digits.html" title="Gtk.Range.prototype.set_round_digits">Gtk.Range.prototype.set_round_digits</a></li>
+<li class="links "><a href="Gtk.Range.set_show_fill_level.html" title="Gtk.Range.prototype.set_show_fill_level">Gtk.Range.prototype.set_show_fill_level</a></li>
+<li class="links "><a href="Gtk.Range.set_slider_size_fixed.html" title="Gtk.Range.prototype.set_slider_size_fixed">Gtk.Range.prototype.set_slider_size_fixed</a></li>
+<li class="links "><a href="Gtk.Range.set_upper_stepper_sensitivity.html" title="Gtk.Range.prototype.set_upper_stepper_sensitivity">Gtk.Range.prototype.set_upper_stepper_sensitivity</a></li>
+<li class="links "><a href="Gtk.Range.set_value.html" title="Gtk.Range.prototype.set_value">Gtk.Range.prototype.set_value</a></li>
+</ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Properties</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.Range-adjustment.html" title="Gtk.Range:adjustment">adjustment</a></li>
+<li class="links "><a href="Gtk.Range-fill-level.html" title="Gtk.Range:fill-level">fill-level</a></li>
+<li class="links "><a href="Gtk.Range-inverted.html" title="Gtk.Range:inverted">inverted</a></li>
+<li class="links "><a href="Gtk.Range-lower-stepper-sensitivity.html" title="Gtk.Range:lower-stepper-sensitivity">lower-stepper-sensitivity</a></li>
+<li class="links "><a href="Gtk.Range-restrict-to-fill-level.html" title="Gtk.Range:restrict-to-fill-level">restrict-to-fill-level</a></li>
+<li class="links "><a href="Gtk.Range-round-digits.html" title="Gtk.Range:round-digits">round-digits</a></li>
+<li class="links "><a href="Gtk.Range-show-fill-level.html" title="Gtk.Range:show-fill-level">show-fill-level</a></li>
+<li class="links "><a href="Gtk.Range-upper-stepper-sensitivity.html" title="Gtk.Range:upper-stepper-sensitivity">upper-stepper-sensitivity</a></li>
+</ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Signals</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.Range-adjust-bounds.html" title="Gtk.Range::adjust-bounds">adjust-bounds</a></li>
+<li class="links "><a href="Gtk.Range-change-value.html" title="Gtk.Range::change-value">change-value</a></li>
+<li class="links "><a href="Gtk.Range-move-slider.html" title="Gtk.Range::move-slider">move-slider</a></li>
+<li class="links "><a href="Gtk.Range-value-changed.html" title="Gtk.Range::value-changed">value-changed</a></li>
+</ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Virtual functions</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.Range-adjust_bounds.html" title="Gtk.Range::adjust_bounds">Gtk.Range::adjust_bounds</a></li>
+<li class="links "><a href="Gtk.Range-change_value.html" title="Gtk.Range::change_value">Gtk.Range::change_value</a></li>
+<li class="links "><a href="Gtk.Range-get_range_border.html" title="Gtk.Range::get_range_border">Gtk.Range::get_range_border</a></li>
+<li class="links "><a href="Gtk.Range-move_slider.html" title="Gtk.Range::move_slider">Gtk.Range::move_slider</a></li>
+<li class="links "><a href="Gtk.Range-value_changed.html" title="Gtk.Range::value_changed">Gtk.Range::value_changed</a></li>
+</ul></div>
+</div></div>
+</div>
+<div class="sect sect-links" role="navigation">
+<div class="hgroup"></div>
+<div class="contents"><div class="links guidelinks"><div class="inner">
+<div class="title"><h2><span class="title">More Information</span></h2></div>
+<div class="region"><ul><li class="links "><a href="index.html" title="Index">Index</a></li></ul></div>
+</div></div></div>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="footer"></div>
+</div></body>
+</html>
