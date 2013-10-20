@@ -1,0 +1,102 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Gtk.AccelGroup</title>
+<link rel="stylesheet" type="text/css" href="C.css">
+<script type="text/javascript" src="jquery.js"></script><script type="text/javascript" src="jquery.syntax.js"></script><script type="text/javascript" src="yelp.js"></script>
+</head>
+<body><div class="page" role="main">
+<div class="header"><div class="trails" role="navigation"><div class="trail">
+<a class="trail" href="index.html" title="Index">Index</a> » </div></div></div>
+<div class="body">
+<div class="hgroup"><h1 class="title"><span class="title">Gtk.AccelGroup</span></h1></div>
+<div class="region">
+<div class="contents">
+<div class="synopsis"><div class="inner"><div class="region"><div class="contents"><div class="code"><pre class="contents ">const Gtk = imports.gi.Gtk;
+
+let accel_group = new Gtk.AccelGroup({
+});
+  </pre></div></div></div></div></div>
+<p class="p">A <span class=" link"><a href="Gtk.AccelGroup.html" title="Gtk.AccelGroup">Gtk.AccelGroup</a></span> represents a group of keyboard accelerators,
+typically attached to a toplevel <span class=" link"><a href="Gtk.Window.html" title="Gtk.Window">Gtk.Window</a></span> (with
+<span class=" link"><a href="Gtk.add_accel_group.html" title="Gtk.add_accel_group">Gtk.add_accel_group</a></span>). Usually you won't need to create a
+<span class=" link"><a href="Gtk.AccelGroup.html" title="Gtk.AccelGroup">Gtk.AccelGroup</a></span> directly; instead, when using <span class=" link"><a href="Gtk.UIManager.html" title="Gtk.UIManager">Gtk.UIManager</a></span>, GTK+
+automatically sets up the accelerators for your menus in the ui
+manager's <span class=" link"><a href="Gtk.AccelGroup.html" title="Gtk.AccelGroup">Gtk.AccelGroup</a></span>.</p>
+<p class="p">Note that &lt;firstterm&gt;accelerators&lt;/firstterm&gt; are different from
+&lt;firstterm&gt;mnemonics&lt;/firstterm&gt;. Accelerators are shortcuts for
+activating a menu item; they appear alongside the menu item they're a
+shortcut for. For example "Ctrl+Q" might appear alongside the "Quit"
+menu item. Mnemonics are shortcuts for GUI elements such as text
+entries or buttons; they appear as underlined characters. See
+<span class=" link"><a href="Gtk.new_with_mnemonic.html" title="Gtk.new_with_mnemonic">Gtk.new_with_mnemonic</a></span>. Menu items can have both accelerators
+and mnemonics, of course.</p>
+<div class="synopsis"><div class="inner">
+<div class="title title-synopsis"><h2><span class="title">Hierarchy</span></h2></div>
+<div class="region"><div class="contents"><div class="tree"><div class="inner"><div class="region"><ul class="tree"><li class="tree">
+<div>
+        <span class=" code">GObject.Object</span>
+      
+      </div>
+<ul class="tree"><li class="tree"><div>
+        <span class=" code">Gtk.AccelGroup</span>
+      </div></li></ul>
+</li></ul></div></div></div></div></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Methods</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.AccelGroup.activate.html" title="Gtk.AccelGroup.prototype.activate">Gtk.AccelGroup.prototype.activate</a></li>
+<li class="links "><a href="Gtk.AccelGroup.connect.html" title="Gtk.AccelGroup.prototype.connect">Gtk.AccelGroup.prototype.connect</a></li>
+<li class="links "><a href="Gtk.AccelGroup.connect_by_path.html" title="Gtk.AccelGroup.prototype.connect_by_path">Gtk.AccelGroup.prototype.connect_by_path</a></li>
+<li class="links "><a href="Gtk.AccelGroup.disconnect.html" title="Gtk.AccelGroup.prototype.disconnect">Gtk.AccelGroup.prototype.disconnect</a></li>
+<li class="links "><a href="Gtk.AccelGroup.disconnect_key.html" title="Gtk.AccelGroup.prototype.disconnect_key">Gtk.AccelGroup.prototype.disconnect_key</a></li>
+<li class="links "><a href="Gtk.AccelGroup.find.html" title="Gtk.AccelGroup.prototype.find">Gtk.AccelGroup.prototype.find</a></li>
+<li class="links "><a href="Gtk.AccelGroup.get_is_locked.html" title="Gtk.AccelGroup.prototype.get_is_locked">Gtk.AccelGroup.prototype.get_is_locked</a></li>
+<li class="links "><a href="Gtk.AccelGroup.get_modifier_mask.html" title="Gtk.AccelGroup.prototype.get_modifier_mask">Gtk.AccelGroup.prototype.get_modifier_mask</a></li>
+<li class="links "><a href="Gtk.AccelGroup.lock.html" title="Gtk.AccelGroup.prototype.lock">Gtk.AccelGroup.prototype.lock</a></li>
+<li class="links "><a href="Gtk.AccelGroup.query.html" title="Gtk.AccelGroup.prototype.query">Gtk.AccelGroup.prototype.query</a></li>
+<li class="links "><a href="Gtk.AccelGroup.unlock.html" title="Gtk.AccelGroup.prototype.unlock">Gtk.AccelGroup.prototype.unlock</a></li>
+</ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Functions</span></h2></div>
+<div class="region"><ul><li class="links "><a href="Gtk.AccelGroup.from_accel_closure.html" title="from_accel_closure">from_accel_closure</a></li></ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Properties</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.AccelGroup-is-locked.html" title="Gtk.AccelGroup:is-locked">is-locked</a></li>
+<li class="links "><a href="Gtk.AccelGroup-modifier-mask.html" title="Gtk.AccelGroup:modifier-mask">modifier-mask</a></li>
+</ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Signals</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.AccelGroup-accel-activate.html" title="Gtk.AccelGroup::accel-activate">accel-activate</a></li>
+<li class="links "><a href="Gtk.AccelGroup-accel-changed.html" title="Gtk.AccelGroup::accel-changed">accel-changed</a></li>
+</ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Virtual functions</span></h2></div>
+<div class="region"><ul><li class="links "><a href="Gtk.AccelGroup-accel_changed.html" title="Gtk.AccelGroup::accel_changed">Gtk.AccelGroup::accel_changed</a></li></ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Other</span></h2></div>
+<div class="region"><ul><li class="links "><a href="Gtk.AccelGroup.new.html" title="Gtk.AccelGroup.new">Gtk.AccelGroup.new</a></li></ul></div>
+</div></div>
+</div>
+<div class="sect sect-links" role="navigation">
+<div class="hgroup"></div>
+<div class="contents"><div class="links guidelinks"><div class="inner">
+<div class="title"><h2><span class="title">More Information</span></h2></div>
+<div class="region"><ul><li class="links "><a href="index.html" title="Index">Index</a></li></ul></div>
+</div></div></div>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="footer"></div>
+</div></body>
+</html>

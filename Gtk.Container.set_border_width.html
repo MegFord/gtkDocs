@@ -1,0 +1,45 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Gtk.Container.prototype.set_border_width</title>
+<link rel="stylesheet" type="text/css" href="C.css">
+<script type="text/javascript" src="jquery.js"></script><script type="text/javascript" src="jquery.syntax.js"></script><script type="text/javascript" src="yelp.js"></script>
+</head>
+<body><div class="page" role="main">
+<div class="header"><div class="trails" role="navigation"><div class="trail">
+<a class="trail" href="index.html" title="Index">Index</a> » <a class="trail" href="Gtk.Container.html" title="Gtk.Container">Gtk.Container</a> » </div></div></div>
+<div class="body">
+<div class="hgroup"><h1 class="title"><span class="title">Gtk.Container.prototype.set_border_width</span></h1></div>
+<div class="region">
+<div class="contents">
+<div class="synopsis"><div class="inner"><div class="region"><div class="contents"><div class="code"><pre class="contents ">function set_border_width(border_width:Number):void {
+    // Gjs wrapper for gtk_container_set_border_width()
+}</pre></div></div></div></div></div>
+<p class="p">Sets the border width of the container.</p>
+<p class="p">The border width of a container is the amount of space to leave
+around the outside of the container. The only exception to this is
+<span class=" link"><a href="Gtk.Window.html" title="Gtk.Window">Gtk.Window</a></span>; because toplevel windows can't leave space outside,
+they leave the space inside. The border is added on all sides of
+the container. To add space to only one side, one approach is to
+create a <span class=" link"><a href="Gtk.Alignment.html" title="Gtk.Alignment">Gtk.Alignment</a></span> widget, call <span class=" link"><a href="Gtk.set_size_request.html" title="Gtk.set_size_request">Gtk.set_size_request</a></span>
+to give it a size, and place it on the side of the container as
+a spacer.</p>
+<div class="terms"><div class="inner"><div class="region"><dl class="terms">
+<dt class="terms"><span class=" code">border_width</span></dt>
+<dd class="terms"><p class="p">amount of blank space to leave &lt;emphasis&gt;outside&lt;/emphasis&gt; the container. Valid values are in the range 0-65535 pixels.</p></dd>
+</dl></div></div></div>
+</div>
+<div class="sect sect-links" role="navigation">
+<div class="hgroup"></div>
+<div class="contents"><div class="links guidelinks"><div class="inner">
+<div class="title"><h2><span class="title">More Information</span></h2></div>
+<div class="region"><ul><li class="links "><a href="Gtk.Container.html" title="Gtk.Container">Gtk.Container</a></li></ul></div>
+</div></div></div>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="footer"></div>
+</div></body>
+</html>

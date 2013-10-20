@@ -1,0 +1,140 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Gtk.Assistant</title>
+<link rel="stylesheet" type="text/css" href="C.css">
+<script type="text/javascript" src="jquery.js"></script><script type="text/javascript" src="jquery.syntax.js"></script><script type="text/javascript" src="yelp.js"></script>
+</head>
+<body><div class="page" role="main">
+<div class="header"><div class="trails" role="navigation"><div class="trail">
+<a class="trail" href="index.html" title="Index">Index</a> » </div></div></div>
+<div class="body">
+<div class="hgroup"><h1 class="title"><span class="title">Gtk.Assistant</span></h1></div>
+<div class="region">
+<div class="contents">
+<div class="synopsis"><div class="inner"><div class="region"><div class="contents"><div class="code"><pre class="contents ">const Gtk = imports.gi.Gtk;
+
+let assistant = new Gtk.Assistant();
+  </pre></div></div></div></div></div>
+<p class="p">A <span class=" link"><a href="Gtk.Assistant.html" title="Gtk.Assistant">Gtk.Assistant</a></span> is a widget used to represent a generally complex
+operation splitted in several steps, guiding the user through its pages
+and controlling the page flow to collect the necessary data.</p>
+<p class="p">The design of GtkAssistant is that it controls what buttons to show and
+to make sensitive, based on what it knows about the page sequence and
+the &lt;link linkend="GtkAssistantPageType"&gt;type&lt;/link&gt; of each page, in
+addition to state information like the page
+&lt;link linkend="gtk-assistant-set-page-complete"&gt;completion&lt;/link&gt; and
+&lt;link linkend="gtk-assistant-commit"&gt;committed&lt;/link&gt; status.</p>
+<p class="p">If you have a case that doesn't quite fit in #GtkAssistants way of
+handling buttons, you can use the #GTK_ASSISTANT_PAGE_CUSTOM page type
+and handle buttons yourself.</p>
+<p class="p">&lt;refsect2 id="GtkAssistant-BUILDER-UI"&gt;
+&lt;title&gt;GtkAssistant as GtkBuildable&lt;/title&gt;
+&lt;para&gt;
+The GtkAssistant implementation of the GtkBuildable interface exposes the
+@action_area as internal children with the name "action_area".</p>
+<p class="p">To add pages to an assistant in GtkBuilder, simply add it as a
+&amp;lt;child&amp;gt; to the GtkAssistant object, and set its child properties
+as necessary.
+&lt;/para&gt;
+&lt;/refsect2&gt;</p>
+<div class="synopsis"><div class="inner">
+<div class="title title-synopsis"><h2><span class="title">Hierarchy</span></h2></div>
+<div class="region"><div class="contents"><div class="tree"><div class="inner"><div class="region"><ul class="tree"><li class="tree">
+<div>
+        <span class=" code">GObject.Object</span>
+      
+      </div>
+<ul class="tree"><li class="tree">
+<div>
+        <span class=" code">GObject.InitiallyUnowned</span>
+      
+      </div>
+<ul class="tree"><li class="tree">
+<div>
+        <span class=" code">Gtk.Widget</span>
+      
+      </div>
+<ul class="tree"><li class="tree">
+<div>
+        <span class=" code">Gtk.Container</span>
+      
+      </div>
+<ul class="tree"><li class="tree">
+<div>
+        <span class=" code">Gtk.Bin</span>
+      
+      </div>
+<ul class="tree"><li class="tree">
+<div>
+        <span class=" code">Gtk.Window</span>
+      
+      </div>
+<ul class="tree"><li class="tree"><div>
+        <span class=" code">Gtk.Assistant</span>
+      </div></li></ul>
+</li></ul>
+</li></ul>
+</li></ul>
+</li></ul>
+</li></ul>
+</li></ul></div></div></div></div></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Methods</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.Assistant.add_action_widget.html" title="Gtk.Assistant.prototype.add_action_widget">Gtk.Assistant.prototype.add_action_widget</a></li>
+<li class="links "><a href="Gtk.Assistant.append_page.html" title="Gtk.Assistant.prototype.append_page">Gtk.Assistant.prototype.append_page</a></li>
+<li class="links "><a href="Gtk.Assistant.commit.html" title="Gtk.Assistant.prototype.commit">Gtk.Assistant.prototype.commit</a></li>
+<li class="links "><a href="Gtk.Assistant.get_current_page.html" title="Gtk.Assistant.prototype.get_current_page">Gtk.Assistant.prototype.get_current_page</a></li>
+<li class="links "><a href="Gtk.Assistant.get_n_pages.html" title="Gtk.Assistant.prototype.get_n_pages">Gtk.Assistant.prototype.get_n_pages</a></li>
+<li class="links "><a href="Gtk.Assistant.get_nth_page.html" title="Gtk.Assistant.prototype.get_nth_page">Gtk.Assistant.prototype.get_nth_page</a></li>
+<li class="links "><a href="Gtk.Assistant.get_page_complete.html" title="Gtk.Assistant.prototype.get_page_complete">Gtk.Assistant.prototype.get_page_complete</a></li>
+<li class="links "><a href="Gtk.Assistant.get_page_header_image.html" title="Gtk.Assistant.prototype.get_page_header_image">Gtk.Assistant.prototype.get_page_header_image</a></li>
+<li class="links "><a href="Gtk.Assistant.get_page_side_image.html" title="Gtk.Assistant.prototype.get_page_side_image">Gtk.Assistant.prototype.get_page_side_image</a></li>
+<li class="links "><a href="Gtk.Assistant.get_page_title.html" title="Gtk.Assistant.prototype.get_page_title">Gtk.Assistant.prototype.get_page_title</a></li>
+<li class="links "><a href="Gtk.Assistant.get_page_type.html" title="Gtk.Assistant.prototype.get_page_type">Gtk.Assistant.prototype.get_page_type</a></li>
+<li class="links "><a href="Gtk.Assistant.insert_page.html" title="Gtk.Assistant.prototype.insert_page">Gtk.Assistant.prototype.insert_page</a></li>
+<li class="links "><a href="Gtk.Assistant.next_page.html" title="Gtk.Assistant.prototype.next_page">Gtk.Assistant.prototype.next_page</a></li>
+<li class="links "><a href="Gtk.Assistant.prepend_page.html" title="Gtk.Assistant.prototype.prepend_page">Gtk.Assistant.prototype.prepend_page</a></li>
+<li class="links "><a href="Gtk.Assistant.previous_page.html" title="Gtk.Assistant.prototype.previous_page">Gtk.Assistant.prototype.previous_page</a></li>
+<li class="links "><a href="Gtk.Assistant.remove_action_widget.html" title="Gtk.Assistant.prototype.remove_action_widget">Gtk.Assistant.prototype.remove_action_widget</a></li>
+<li class="links "><a href="Gtk.Assistant.remove_page.html" title="Gtk.Assistant.prototype.remove_page">Gtk.Assistant.prototype.remove_page</a></li>
+<li class="links "><a href="Gtk.Assistant.set_current_page.html" title="Gtk.Assistant.prototype.set_current_page">Gtk.Assistant.prototype.set_current_page</a></li>
+<li class="links "><a href="Gtk.Assistant.set_forward_page_func.html" title="Gtk.Assistant.prototype.set_forward_page_func">Gtk.Assistant.prototype.set_forward_page_func</a></li>
+<li class="links "><a href="Gtk.Assistant.set_page_complete.html" title="Gtk.Assistant.prototype.set_page_complete">Gtk.Assistant.prototype.set_page_complete</a></li>
+<li class="links "><a href="Gtk.Assistant.set_page_header_image.html" title="Gtk.Assistant.prototype.set_page_header_image">Gtk.Assistant.prototype.set_page_header_image</a></li>
+<li class="links "><a href="Gtk.Assistant.set_page_side_image.html" title="Gtk.Assistant.prototype.set_page_side_image">Gtk.Assistant.prototype.set_page_side_image</a></li>
+<li class="links "><a href="Gtk.Assistant.set_page_title.html" title="Gtk.Assistant.prototype.set_page_title">Gtk.Assistant.prototype.set_page_title</a></li>
+<li class="links "><a href="Gtk.Assistant.set_page_type.html" title="Gtk.Assistant.prototype.set_page_type">Gtk.Assistant.prototype.set_page_type</a></li>
+<li class="links "><a href="Gtk.Assistant.update_buttons_state.html" title="Gtk.Assistant.prototype.update_buttons_state">Gtk.Assistant.prototype.update_buttons_state</a></li>
+</ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Signals</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.Assistant-apply.html" title="Gtk.Assistant::apply">apply</a></li>
+<li class="links "><a href="Gtk.Assistant-cancel.html" title="Gtk.Assistant::cancel">cancel</a></li>
+<li class="links "><a href="Gtk.Assistant-close.html" title="Gtk.Assistant::close">close</a></li>
+<li class="links "><a href="Gtk.Assistant-prepare.html" title="Gtk.Assistant::prepare">prepare</a></li>
+</ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Other</span></h2></div>
+<div class="region"><ul><li class="links "><a href="Gtk.Assistant.new.html" title="Gtk.Assistant.new">Gtk.Assistant.new</a></li></ul></div>
+</div></div>
+</div>
+<div class="sect sect-links" role="navigation">
+<div class="hgroup"></div>
+<div class="contents"><div class="links guidelinks"><div class="inner">
+<div class="title"><h2><span class="title">More Information</span></h2></div>
+<div class="region"><ul><li class="links "><a href="index.html" title="Index">Index</a></li></ul></div>
+</div></div></div>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="footer"></div>
+</div></body>
+</html>

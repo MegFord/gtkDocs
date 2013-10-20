@@ -1,0 +1,55 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Gtk.Builder.prototype.connect_signals</title>
+<link rel="stylesheet" type="text/css" href="C.css">
+<script type="text/javascript" src="jquery.js"></script><script type="text/javascript" src="jquery.syntax.js"></script><script type="text/javascript" src="yelp.js"></script>
+</head>
+<body><div class="page" role="main">
+<div class="header"><div class="trails" role="navigation"><div class="trail">
+<a class="trail" href="index.html" title="Index">Index</a> » <a class="trail" href="Gtk.Builder.html" title="Gtk.Builder">Gtk.Builder</a> » </div></div></div>
+<div class="body">
+<div class="hgroup"><h1 class="title"><span class="title">Gtk.Builder.prototype.connect_signals</span></h1></div>
+<div class="region">
+<div class="contents">
+<div class="synopsis"><div class="inner"><div class="region"><div class="contents"><div class="code"><pre class="contents ">function connect_signals(user_data:gpointer):void {
+    // Gjs wrapper for gtk_builder_connect_signals()
+}</pre></div></div></div></div></div>
+<p class="p">This method is a simpler variation of <span class=" link"><a href="Gtk.connect_signals_full.html" title="Gtk.connect_signals_full">Gtk.connect_signals_full</a></span>.
+It uses symbols explicitly added to <span class=" code">builder</span> with prior calls to
+<span class=" link"><a href="Gtk.Builder.add_callback_symbol.html" title="Gtk.Builder.prototype.add_callback_symbol">Gtk.Builder.prototype.add_callback_symbol</a></span>. In the case that symbols are not
+explicitly added; it uses <span class=" link"><a href="GModule.Module.html" title="GModule.Module">GModule.Module</a></span>'s introspective features (by opening the module <span class=" code">null</span>) 
+to look at the application's symbol table. From here it tries to match
+the signal handler names given in the interface description with
+symbols in the application and connects the signals. Note that this
+function can only be called once, subsequent calls will do nothing.</p>
+<p class="p">Note that unless <span class=" link"><a href="Gtk.Builder.add_callback_symbol.html" title="Gtk.Builder.prototype.add_callback_symbol">Gtk.Builder.prototype.add_callback_symbol</a></span> is called for
+all signal callbacks which are referenced by the loaded XML, this 
+function will require that <span class=" link"><a href="GModule.Module.html" title="GModule.Module">GModule.Module</a></span> be supported on the platform.</p>
+<p class="p">If you rely on <span class=" link"><a href="GModule.Module.html" title="GModule.Module">GModule.Module</a></span> support to lookup callbacks in the symbol table,
+the following details should be noted:</p>
+<p class="p">When compiling applications for Windows, you must declare signal callbacks
+with #G_MODULE_EXPORT, or they will not be put in the symbol table.
+On Linux and Unices, this is not necessary; applications should instead
+be compiled with the -Wl,--export-dynamic CFLAGS, and linked against
+gmodule-export-2.0.</p>
+<p class="p">Since 2.12</p>
+<div class="terms"><div class="inner"><div class="region"><dl class="terms">
+<dt class="terms"><span class=" code">user_data</span></dt>
+<dd class="terms"><p class="p">a pointer to a structure sent in as user data to all signals</p></dd>
+</dl></div></div></div>
+</div>
+<div class="sect sect-links" role="navigation">
+<div class="hgroup"></div>
+<div class="contents"><div class="links guidelinks"><div class="inner">
+<div class="title"><h2><span class="title">More Information</span></h2></div>
+<div class="region"><ul><li class="links "><a href="Gtk.Builder.html" title="Gtk.Builder">Gtk.Builder</a></li></ul></div>
+</div></div></div>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="footer"></div>
+</div></body>
+</html>

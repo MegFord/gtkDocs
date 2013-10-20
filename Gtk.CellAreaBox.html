@@ -1,0 +1,91 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Gtk.CellAreaBox</title>
+<link rel="stylesheet" type="text/css" href="C.css">
+<script type="text/javascript" src="jquery.js"></script><script type="text/javascript" src="jquery.syntax.js"></script><script type="text/javascript" src="yelp.js"></script>
+</head>
+<body><div class="page" role="main">
+<div class="header"><div class="trails" role="navigation"><div class="trail">
+<a class="trail" href="index.html" title="Index">Index</a> » </div></div></div>
+<div class="body">
+<div class="hgroup"><h1 class="title"><span class="title">Gtk.CellAreaBox</span></h1></div>
+<div class="region">
+<div class="contents">
+<div class="synopsis"><div class="inner"><div class="region"><div class="contents"><div class="code"><pre class="contents ">const Gtk = imports.gi.Gtk;
+
+let cell_area_box = new Gtk.CellAreaBox({
+    <span class=" link"><a href="Gtk.CellAreaBox-spacing.html" title="Gtk.CellAreaBox:spacing">spacing</a></span>: value,
+});
+  </pre></div></div></div></div></div>
+<p class="p">The <span class=" link"><a href="Gtk.CellAreaBox.html" title="Gtk.CellAreaBox">Gtk.CellAreaBox</a></span> renders cell renderers into a row or a column
+depending on its <span class=" link"><a href="Gtk.Orientation.html" title="Gtk.Orientation">Gtk.Orientation</a></span>.</p>
+<p class="p">GtkCellAreaBox uses a notion of &lt;emphasis&gt;packing&lt;/emphasis&gt;. Packing
+refers to adding cell renderers with reference to a particular position
+in a <span class=" link"><a href="Gtk.CellAreaBox.html" title="Gtk.CellAreaBox">Gtk.CellAreaBox</a></span>. There are two reference positions: the
+&lt;emphasis&gt;start&lt;/emphasis&gt; and the &lt;emphasis&gt;end&lt;/emphasis&gt; of the box.
+When the <span class=" link"><a href="Gtk.CellAreaBox.html" title="Gtk.CellAreaBox">Gtk.CellAreaBox</a></span> is oriented in the <span class=" link"><a href="Gtk.Orientation.html" title="Gtk.Orientation">Gtk.Orientation</a></span>.vertical
+orientation, the start is defined as the top of the box and the end is
+defined as the bottom. In the <span class=" link"><a href="Gtk.Orientation.html" title="Gtk.Orientation">Gtk.Orientation</a></span>.horizontal orientation
+start is defined as the left side and the end is defined as the right
+side.</p>
+<p class="p">Alignments of #GtkCellRenderers rendered in adjacent rows can be
+configured by configuring the #GtkCellAreaBox:align child cell property
+with <span class=" link"><a href="Gtk.CellArea.cell_set_property.html" title="Gtk.CellArea.prototype.cell_set_property">Gtk.CellArea.prototype.cell_set_property</a></span> or by specifying the "align"
+argument to <span class=" link"><a href="Gtk.pack_start.html" title="Gtk.pack_start">Gtk.pack_start</a></span> and <span class=" link"><a href="Gtk.pack_end.html" title="Gtk.pack_end">Gtk.pack_end</a></span>.</p>
+<div class="synopsis"><div class="inner">
+<div class="title title-synopsis"><h2><span class="title">Hierarchy</span></h2></div>
+<div class="region"><div class="contents"><div class="tree"><div class="inner"><div class="region"><ul class="tree"><li class="tree">
+<div>
+        <span class=" code">GObject.Object</span>
+      
+      </div>
+<ul class="tree"><li class="tree">
+<div>
+        <span class=" code">GObject.InitiallyUnowned</span>
+      
+      </div>
+<ul class="tree"><li class="tree">
+<div>
+        <span class=" code">Gtk.CellArea</span>
+      
+      </div>
+<ul class="tree"><li class="tree"><div>
+        <span class=" code">Gtk.CellAreaBox</span>
+      </div></li></ul>
+</li></ul>
+</li></ul>
+</li></ul></div></div></div></div></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Methods</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.CellAreaBox.get_spacing.html" title="Gtk.CellAreaBox.prototype.get_spacing">Gtk.CellAreaBox.prototype.get_spacing</a></li>
+<li class="links "><a href="Gtk.CellAreaBox.pack_end.html" title="Gtk.CellAreaBox.prototype.pack_end">Gtk.CellAreaBox.prototype.pack_end</a></li>
+<li class="links "><a href="Gtk.CellAreaBox.pack_start.html" title="Gtk.CellAreaBox.prototype.pack_start">Gtk.CellAreaBox.prototype.pack_start</a></li>
+<li class="links "><a href="Gtk.CellAreaBox.set_spacing.html" title="Gtk.CellAreaBox.prototype.set_spacing">Gtk.CellAreaBox.prototype.set_spacing</a></li>
+</ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Properties</span></h2></div>
+<div class="region"><ul><li class="links "><a href="Gtk.CellAreaBox-spacing.html" title="Gtk.CellAreaBox:spacing">spacing</a></li></ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Other</span></h2></div>
+<div class="region"><ul><li class="links "><a href="Gtk.CellAreaBox.new.html" title="Gtk.CellAreaBox.new">Gtk.CellAreaBox.new</a></li></ul></div>
+</div></div>
+</div>
+<div class="sect sect-links" role="navigation">
+<div class="hgroup"></div>
+<div class="contents"><div class="links guidelinks"><div class="inner">
+<div class="title"><h2><span class="title">More Information</span></h2></div>
+<div class="region"><ul><li class="links "><a href="index.html" title="Index">Index</a></li></ul></div>
+</div></div></div>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="footer"></div>
+</div></body>
+</html>

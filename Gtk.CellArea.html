@@ -1,0 +1,428 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Gtk.CellArea</title>
+<link rel="stylesheet" type="text/css" href="C.css">
+<script type="text/javascript" src="jquery.js"></script><script type="text/javascript" src="jquery.syntax.js"></script><script type="text/javascript" src="yelp.js"></script>
+</head>
+<body><div class="page" role="main">
+<div class="header"><div class="trails" role="navigation"><div class="trail">
+<a class="trail" href="index.html" title="Index">Index</a> » </div></div></div>
+<div class="body">
+<div class="hgroup"><h1 class="title"><span class="title">Gtk.CellArea</span></h1></div>
+<div class="region">
+<div class="contents">
+<div class="synopsis"><div class="inner"><div class="region"><div class="contents"><div class="code"><pre class="contents ">const Gtk = imports.gi.Gtk;
+
+let cell_area = new Gtk.CellArea({
+    <span class=" link"><a href="Gtk.CellArea-focus-cell.html" title="Gtk.CellArea:focus-cell">focus_cell</a></span>: value,
+});
+  </pre></div></div></div></div></div>
+<p class="p">The <span class=" link"><a href="Gtk.CellArea.html" title="Gtk.CellArea">Gtk.CellArea</a></span> is an abstract class for <span class=" link"><a href="Gtk.CellLayout.html" title="Gtk.CellLayout">Gtk.CellLayout</a></span> widgets
+(also referred to as "layouting widgets") to interface with an
+arbitrary number of #GtkCellRenderers and interact with the user
+for a given <span class=" link"><a href="Gtk.TreeModel.html" title="Gtk.TreeModel">Gtk.TreeModel</a></span> row.</p>
+<p class="p">The cell area handles events, focus navigation, drawing and
+size requests and allocations for a given row of data.</p>
+<p class="p">Usually users dont have to interact with the <span class=" link"><a href="Gtk.CellArea.html" title="Gtk.CellArea">Gtk.CellArea</a></span> directly
+unless they are implementing a cell-layouting widget themselves.</p>
+<p class="p">&lt;refsect2 id="cell-area-geometry-management"&gt;
+&lt;title&gt;Requesting area sizes&lt;/title&gt;
+&lt;para&gt;
+As outlined in &lt;link linkend="geometry-management"&gt;GtkWidget's
+geometry management section&lt;/link&gt;, GTK+ uses a height-for-width
+geometry management system to compute the sizes of widgets and user
+interfaces. <span class=" link"><a href="Gtk.CellArea.html" title="Gtk.CellArea">Gtk.CellArea</a></span> uses the same semantics to calculate the
+size of an area for an arbitrary number of <span class=" link"><a href="Gtk.TreeModel.html" title="Gtk.TreeModel">Gtk.TreeModel</a></span> rows.</p>
+<p class="p">When requesting the size of a cell area one needs to calculate
+the size for a handful of rows, and this will be done differently by
+different layouting widgets. For instance a <span class=" link"><a href="Gtk.TreeViewColumn.html" title="Gtk.TreeViewColumn">Gtk.TreeViewColumn</a></span>
+always lines up the areas from top to bottom while a <span class=" link"><a href="Gtk.IconView.html" title="Gtk.IconView">Gtk.IconView</a></span>
+on the other hand might enforce that all areas received the same
+width and wrap the areas around, requesting height for more cell
+areas when allocated less width.</p>
+<p class="p">It's also important for areas to maintain some cell
+alignments with areas rendered for adjacent rows (cells can
+appear "columnized" inside an area even when the size of
+cells are different in each row). For this reason the <span class=" link"><a href="Gtk.CellArea.html" title="Gtk.CellArea">Gtk.CellArea</a></span>
+uses a <span class=" link"><a href="Gtk.CellAreaContext.html" title="Gtk.CellAreaContext">Gtk.CellAreaContext</a></span> object to store the alignments
+and sizes along the way (as well as the overall largest minimum
+and natural size for all the rows which have been calculated
+with the said context).</p>
+<p class="p">The <span class=" link"><a href="Gtk.CellAreaContext.html" title="Gtk.CellAreaContext">Gtk.CellAreaContext</a></span> is an opaque object specific to the
+<span class=" link"><a href="Gtk.CellArea.html" title="Gtk.CellArea">Gtk.CellArea</a></span> which created it (see <span class=" link"><a href="Gtk.create_context.html" title="Gtk.create_context">Gtk.create_context</a></span>).
+The owning cell-layouting widget can create as many contexts as
+it wishes to calculate sizes of rows which should receive the
+same size in at least one orientation (horizontally or vertically),
+However, it's important that the same <span class=" link"><a href="Gtk.CellAreaContext.html" title="Gtk.CellAreaContext">Gtk.CellAreaContext</a></span> which
+was used to request the sizes for a given <span class=" link"><a href="Gtk.TreeModel.html" title="Gtk.TreeModel">Gtk.TreeModel</a></span> row be
+used when rendering or processing events for that row.</p>
+<p class="p">In order to request the width of all the rows at the root level
+of a <span class=" link"><a href="Gtk.TreeModel.html" title="Gtk.TreeModel">Gtk.TreeModel</a></span> one would do the following:
+&lt;example&gt;
+  &lt;title&gt;Requesting the width of a handful of GtkTreeModel rows&lt;/title&gt;
+  &lt;programlisting&gt;
+GtkTreeIter iter;
+gint        minimum_width;
+gint        natural_width;</p>
+<p class="p">valid = gtk_tree_model_get_iter_first (model, &amp;iter);
+while (valid)
+  {
+    gtk_cell_area_apply_attributes (area, model, &amp;iter, FALSE, FALSE);
+    gtk_cell_area_get_preferred_width (area, context, widget, NULL, NULL);</p>
+<p class="p">    valid = gtk_tree_model_iter_next (model, &amp;iter);
+  }
+gtk_cell_area_context_get_preferred_width (context, &amp;minimum_width, &amp;natural_width);
+  &lt;/programlisting&gt;
+&lt;/example&gt;
+Note that in this example it's not important to observe the
+returned minimum and natural width of the area for each row
+unless the cell-layouting object is actually interested in the
+widths of individual rows. The overall width is however stored
+in the accompanying <span class=" link"><a href="Gtk.CellAreaContext.html" title="Gtk.CellAreaContext">Gtk.CellAreaContext</a></span> object and can be consulted
+at any time.</p>
+<p class="p">This can be useful since <span class=" link"><a href="Gtk.CellLayout.html" title="Gtk.CellLayout">Gtk.CellLayout</a></span> widgets usually have to
+support requesting and rendering rows in treemodels with an
+exceedingly large amount of rows. The <span class=" link"><a href="Gtk.CellLayout.html" title="Gtk.CellLayout">Gtk.CellLayout</a></span> widget in
+that case would calculate the required width of the rows in an
+idle or timeout source (see g_timeout_add()) and when the widget
+is requested its actual width in <span class=" link"><a href="Gtk.WidgetClass.html" title="Gtk.WidgetClass">Gtk.WidgetClass</a></span>.get_preferred_width()
+it can simply consult the width accumulated so far in the
+<span class=" link"><a href="Gtk.CellAreaContext.html" title="Gtk.CellAreaContext">Gtk.CellAreaContext</a></span> object.</p>
+<p class="p">A simple example where rows are rendered from top to bottom and
+take up the full width of the layouting widget would look like:
+&lt;example&gt;
+  &lt;title&gt;A typical get_preferred_width() implementation&lt;/title&gt;
+  &lt;programlisting&gt;
+static void
+foo_get_preferred_width (GtkWidget       *widget,
+                         gint            *minimum_size,
+                         gint            *natural_size)
+{
+  Foo        *foo  = FOO (widget);
+  FooPrivate *priv = foo-&gt;priv;</p>
+<p class="p">  foo_ensure_at_least_one_handfull_of_rows_have_been_requested (foo);</p>
+<p class="p">  gtk_cell_area_context_get_preferred_width (priv-&gt;context, minimum_size, natural_size);
+}
+  &lt;/programlisting&gt;
+&lt;/example&gt;
+In the above example the Foo widget has to make sure that some
+row sizes have been calculated (the amount of rows that Foo judged
+was appropriate to request space for in a single timeout iteration)
+before simply returning the amount of space required by the area via
+the <span class=" link"><a href="Gtk.CellAreaContext.html" title="Gtk.CellAreaContext">Gtk.CellAreaContext</a></span>.</p>
+<p class="p">Requesting the height for width (or width for height) of an area is
+a similar task except in this case the <span class=" link"><a href="Gtk.CellAreaContext.html" title="Gtk.CellAreaContext">Gtk.CellAreaContext</a></span> does not
+store the data (actually, it does not know how much space the layouting
+widget plans to allocate it for every row. It's up to the layouting
+widget to render each row of data with the appropriate height and
+width which was requested by the <span class=" link"><a href="Gtk.CellArea.html" title="Gtk.CellArea">Gtk.CellArea</a></span>).</p>
+<p class="p">In order to request the height for width of all the rows at the
+root level of a <span class=" link"><a href="Gtk.TreeModel.html" title="Gtk.TreeModel">Gtk.TreeModel</a></span> one would do the following:
+&lt;example&gt;
+  &lt;title&gt;Requesting the height for width of a handful of GtkTreeModel rows&lt;/title&gt;
+  &lt;programlisting&gt;
+GtkTreeIter iter;
+gint        minimum_height;
+gint        natural_height;
+gint        full_minimum_height = 0;
+gint        full_natural_height = 0;</p>
+<p class="p">valid = gtk_tree_model_get_iter_first (model, &amp;iter);
+while (valid)
+  {
+    gtk_cell_area_apply_attributes (area, model, &amp;iter, FALSE, FALSE);
+    gtk_cell_area_get_preferred_height_for_width (area, context, widget,
+                                                  width, &amp;minimum_height, &amp;natural_height);</p>
+<p class="p">    if (width_is_for_allocation)
+       cache_row_height (&amp;iter, minimum_height, natural_height);</p>
+<p class="p">    full_minimum_height += minimum_height;
+    full_natural_height += natural_height;</p>
+<p class="p">    valid = gtk_tree_model_iter_next (model, &amp;iter);
+  }
+  &lt;/programlisting&gt;
+&lt;/example&gt;
+Note that in the above example we would need to cache the heights
+returned for each row so that we would know what sizes to render the
+areas for each row. However we would only want to really cache the
+heights if the request is intended for the layouting widgets real
+allocation.</p>
+<p class="p">In some cases the layouting widget is requested the height for an
+arbitrary for_width, this is a special case for layouting widgets
+who need to request size for tens of thousands  of rows. For this
+case it's only important that the layouting widget calculate
+one reasonably sized chunk of rows and return that height
+synchronously. The reasoning here is that any layouting widget is
+at least capable of synchronously calculating enough height to fill
+the screen height (or scrolled window height) in response to a single
+call to <span class=" link"><a href="Gtk.WidgetClass.html" title="Gtk.WidgetClass">Gtk.WidgetClass</a></span>.get_preferred_height_for_width(). Returning
+a perfect height for width that is larger than the screen area is
+inconsequential since after the layouting receives an allocation
+from a scrolled window it simply continues to drive the scrollbar
+values while more and more height is required for the row heights
+that are calculated in the background.
+&lt;/para&gt;
+&lt;/refsect2&gt;
+&lt;refsect2 id="cell-area-rendering"&gt;
+&lt;title&gt;Rendering Areas&lt;/title&gt;
+&lt;para&gt;
+Once area sizes have been aquired at least for the rows in the
+visible area of the layouting widget they can be rendered at
+<span class=" link"><a href="Gtk.WidgetClass.html" title="Gtk.WidgetClass">Gtk.WidgetClass</a></span>.draw() time.</p>
+<p class="p">A crude example of how to render all the rows at the root level
+runs as follows:
+&lt;example&gt;
+  &lt;title&gt;Requesting the width of a handful of GtkTreeModel rows&lt;/title&gt;
+  &lt;programlisting&gt;
+GtkAllocation allocation;
+GdkRectangle  cell_area = { 0, };
+GtkTreeIter   iter;
+gint          minimum_width;
+gint          natural_width;</p>
+<p class="p">gtk_widget_get_allocation (widget, &amp;allocation);
+cell_area.width = allocation.width;</p>
+<p class="p">valid = gtk_tree_model_get_iter_first (model, &amp;iter);
+while (valid)
+  {
+    cell_area.height = get_cached_height_for_row (&amp;iter);</p>
+<p class="p">    gtk_cell_area_apply_attributes (area, model, &amp;iter, FALSE, FALSE);
+    gtk_cell_area_render (area, context, widget, cr,
+                          &amp;cell_area, &amp;cell_area, state_flags, FALSE);</p>
+<p class="p">    cell_area.y += cell_area.height;</p>
+<p class="p">    valid = gtk_tree_model_iter_next (model, &amp;iter);
+  }
+  &lt;/programlisting&gt;
+&lt;/example&gt;
+Note that the cached height in this example really depends on how
+the layouting widget works. The layouting widget might decide to
+give every row its minimum or natural height or, if the model content
+is expected to fit inside the layouting widget without scrolling, it
+would make sense to calculate the allocation for each row at
+<span class=" link"><a href="Gtk.size-allocate.html" title="Gtk.size-allocate">Gtk.size-allocate</a></span> time using <span class=" link"><a href="Gtk.distribute_natural_allocation.html" title="distribute_natural_allocation">distribute_natural_allocation</a></span>.
+&lt;/para&gt;
+&lt;/refsect2&gt;
+&lt;refsect2 id="cell-area-events-and-focus"&gt;
+&lt;title&gt;Handling Events and Driving Keyboard Focus&lt;/title&gt;
+&lt;para&gt;
+Passing events to the area is as simple as handling events on any
+normal widget and then passing them to the <span class=" link"><a href="Gtk.event.html" title="Gtk.event">Gtk.event</a></span>
+API as they come in. Usually <span class=" link"><a href="Gtk.CellArea.html" title="Gtk.CellArea">Gtk.CellArea</a></span> is only interested in
+button events, however some customized derived areas can be implemented
+who are interested in handling other events. Handling an event can
+trigger the <span class=" link"><a href="Gtk.focus-changed.html" title="Gtk.focus-changed">Gtk.focus-changed</a></span> signal to fire; as well as
+<span class=" link"><a href="Gtk.add-editable.html" title="Gtk.add-editable">Gtk.add-editable</a></span> in the case that an editable cell was
+clicked and needs to start editing. You can call
+<span class=" link"><a href="Gtk.stop_editing.html" title="Gtk.stop_editing">Gtk.stop_editing</a></span> at any time to cancel any cell editing
+that is currently in progress.</p>
+<p class="p">The <span class=" link"><a href="Gtk.CellArea.html" title="Gtk.CellArea">Gtk.CellArea</a></span> drives keyboard focus from cell to cell in a way
+similar to <span class=" link"><a href="Gtk.Widget.html" title="Gtk.Widget">Gtk.Widget</a></span>. For layouting widgets that support giving
+focus to cells it's important to remember to pass <span class=" link"><a href="Gtk.CellRendererState.html" title="Gtk.CellRendererState">Gtk.CellRendererState</a></span>.focused
+to the area functions for the row that has focus and to tell the
+area to paint the focus at render time.</p>
+<p class="p">Layouting widgets that accept focus on cells should implement the
+<span class=" link"><a href="Gtk.WidgetClass.html" title="Gtk.WidgetClass">Gtk.WidgetClass</a></span>.focus() virtual method. The layouting widget is always
+responsible for knowing where <span class=" link"><a href="Gtk.TreeModel.html" title="Gtk.TreeModel">Gtk.TreeModel</a></span> rows are rendered inside
+the widget, so at <span class=" link"><a href="Gtk.WidgetClass.html" title="Gtk.WidgetClass">Gtk.WidgetClass</a></span>.focus() time the layouting widget
+should use the <span class=" link"><a href="Gtk.CellArea.html" title="Gtk.CellArea">Gtk.CellArea</a></span> methods to navigate focus inside the area
+and then observe the GtkDirectionType to pass the focus to adjacent
+rows and areas.</p>
+<p class="p">A basic example of how the <span class=" link"><a href="Gtk.WidgetClass.html" title="Gtk.WidgetClass">Gtk.WidgetClass</a></span>.focus() virtual method
+should be implemented:
+&lt;example&gt;
+  &lt;title&gt;Implementing keyboard focus navigation&lt;/title&gt;
+  &lt;programlisting&gt;
+static gboolean
+foo_focus (GtkWidget       *widget,
+           GtkDirectionType direction)
+{
+  Foo        *foo  = FOO (widget);
+  FooPrivate *priv = foo-&gt;priv;
+  gint        focus_row;
+  gboolean    have_focus = FALSE;</p>
+<p class="p">  focus_row = priv-&gt;focus_row;</p>
+<p class="p">  if (!gtk_widget_has_focus (widget))
+    gtk_widget_grab_focus (widget);</p>
+<p class="p">  valid = gtk_tree_model_iter_nth_child (priv-&gt;model, &amp;iter, NULL, priv-&gt;focus_row);
+  while (valid)
+    {
+      gtk_cell_area_apply_attributes (priv-&gt;area, priv-&gt;model, &amp;iter, FALSE, FALSE);</p>
+<p class="p">      if (gtk_cell_area_focus (priv-&gt;area, direction))
+        {
+           priv-&gt;focus_row = focus_row;
+           have_focus = TRUE;
+           break;
+        }
+      else
+        {
+          if (direction == GTK_DIR_RIGHT ||
+              direction == GTK_DIR_LEFT)
+            break;
+          else if (direction == GTK_DIR_UP ||
+                   direction == GTK_DIR_TAB_BACKWARD)
+           {
+              if (focus_row == 0)
+                break;
+              else
+               {
+                  focus_row--;
+                  valid = gtk_tree_model_iter_nth_child (priv-&gt;model, &amp;iter, NULL, focus_row);
+               }
+            }
+          else
+            {
+              if (focus_row == last_row)
+                break;
+              else
+                {
+                  focus_row++;
+                  valid = gtk_tree_model_iter_next (priv-&gt;model, &amp;iter);
+                }
+            }
+        }
+    }
+    return have_focus;
+}
+  &lt;/programlisting&gt;
+&lt;/example&gt;
+Note that the layouting widget is responsible for matching the
+GtkDirectionType values to the way it lays out its cells.
+&lt;/para&gt;
+&lt;/refsect2&gt;
+&lt;refsect2 id="cell-properties"&gt;
+&lt;title&gt;Cell Properties&lt;/title&gt;
+&lt;para&gt;
+The <span class=" link"><a href="Gtk.CellArea.html" title="Gtk.CellArea">Gtk.CellArea</a></span> introduces &lt;emphasis&gt;cell properties&lt;/emphasis&gt;
+for #GtkCellRenderers in very much the same way that <span class=" link"><a href="Gtk.Container.html" title="Gtk.Container">Gtk.Container</a></span>
+introduces &lt;link linkend="child-properties"&gt;child properties&lt;/link&gt;
+for #GtkWidgets. This provides some general interfaces for defining
+the relationship cell areas have with their cells. For instance in a
+<span class=" link"><a href="Gtk.CellAreaBox.html" title="Gtk.CellAreaBox">Gtk.CellAreaBox</a></span> a cell might "expand" and receive extra space when
+the area is allocated more than its full natural request, or a cell
+might be configured to "align" with adjacent rows which were requested
+and rendered with the same <span class=" link"><a href="Gtk.CellAreaContext.html" title="Gtk.CellAreaContext">Gtk.CellAreaContext</a></span>.</p>
+<p class="p">Use <span class=" link"><a href="Gtk.install_cell_property.html" title="Gtk.install_cell_property">Gtk.install_cell_property</a></span> to install cell
+properties for a cell area class and <span class=" link"><a href="Gtk.find_cell_property.html" title="Gtk.find_cell_property">Gtk.find_cell_property</a></span>
+or <span class=" link"><a href="Gtk.list_cell_properties.html" title="Gtk.list_cell_properties">Gtk.list_cell_properties</a></span> to get information about
+existing cell properties.</p>
+<p class="p">To set the value of a cell property, use <span class=" link"><a href="Gtk.cell_set_property.html" title="Gtk.cell_set_property">Gtk.cell_set_property</a></span>,
+<span class=" link"><a href="Gtk.cell_set.html" title="Gtk.cell_set">Gtk.cell_set</a></span> or <span class=" link"><a href="Gtk.cell_set_valist.html" title="Gtk.cell_set_valist">Gtk.cell_set_valist</a></span>. To obtain
+the value of a cell property, use <span class=" link"><a href="Gtk.cell_get_property.html" title="Gtk.cell_get_property">Gtk.cell_get_property</a></span>,
+<span class=" link"><a href="Gtk.cell_get.html" title="Gtk.cell_get">Gtk.cell_get</a></span> or <span class=" link"><a href="Gtk.cell_get_valist.html" title="Gtk.cell_get_valist">Gtk.cell_get_valist</a></span>.
+&lt;/para&gt;
+&lt;/refsect2&gt;</p>
+<div class="synopsis"><div class="inner">
+<div class="title title-synopsis"><h2><span class="title">Hierarchy</span></h2></div>
+<div class="region"><div class="contents"><div class="tree"><div class="inner"><div class="region"><ul class="tree"><li class="tree">
+<div>
+        <span class=" code">GObject.Object</span>
+      
+      </div>
+<ul class="tree"><li class="tree">
+<div>
+        <span class=" code">GObject.InitiallyUnowned</span>
+      
+      </div>
+<ul class="tree"><li class="tree"><div>
+        <span class=" code">Gtk.CellArea</span>
+      </div></li></ul>
+</li></ul>
+</li></ul></div></div></div></div></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Methods</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.CellArea.activate.html" title="Gtk.CellArea.prototype.activate">Gtk.CellArea.prototype.activate</a></li>
+<li class="links "><a href="Gtk.CellArea.activate_cell.html" title="Gtk.CellArea.prototype.activate_cell">Gtk.CellArea.prototype.activate_cell</a></li>
+<li class="links "><a href="Gtk.CellArea.add.html" title="Gtk.CellArea.prototype.add">Gtk.CellArea.prototype.add</a></li>
+<li class="links "><a href="Gtk.CellArea.add_focus_sibling.html" title="Gtk.CellArea.prototype.add_focus_sibling">Gtk.CellArea.prototype.add_focus_sibling</a></li>
+<li class="links "><a href="Gtk.CellArea.apply_attributes.html" title="Gtk.CellArea.prototype.apply_attributes">Gtk.CellArea.prototype.apply_attributes</a></li>
+<li class="links "><a href="Gtk.CellArea.attribute_connect.html" title="Gtk.CellArea.prototype.attribute_connect">Gtk.CellArea.prototype.attribute_connect</a></li>
+<li class="links "><a href="Gtk.CellArea.attribute_disconnect.html" title="Gtk.CellArea.prototype.attribute_disconnect">Gtk.CellArea.prototype.attribute_disconnect</a></li>
+<li class="links "><a href="Gtk.CellArea.cell_get_property.html" title="Gtk.CellArea.prototype.cell_get_property">Gtk.CellArea.prototype.cell_get_property</a></li>
+<li class="links "><a href="Gtk.CellArea.cell_set_property.html" title="Gtk.CellArea.prototype.cell_set_property">Gtk.CellArea.prototype.cell_set_property</a></li>
+<li class="links "><a href="Gtk.CellArea.copy_context.html" title="Gtk.CellArea.prototype.copy_context">Gtk.CellArea.prototype.copy_context</a></li>
+<li class="links "><a href="Gtk.CellArea.create_context.html" title="Gtk.CellArea.prototype.create_context">Gtk.CellArea.prototype.create_context</a></li>
+<li class="links "><a href="Gtk.CellArea.event.html" title="Gtk.CellArea.prototype.event">Gtk.CellArea.prototype.event</a></li>
+<li class="links "><a href="Gtk.CellArea.focus.html" title="Gtk.CellArea.prototype.focus">Gtk.CellArea.prototype.focus</a></li>
+<li class="links "><a href="Gtk.CellArea.foreach.html" title="Gtk.CellArea.prototype.foreach">Gtk.CellArea.prototype.foreach</a></li>
+<li class="links "><a href="Gtk.CellArea.foreach_alloc.html" title="Gtk.CellArea.prototype.foreach_alloc">Gtk.CellArea.prototype.foreach_alloc</a></li>
+<li class="links "><a href="Gtk.CellArea.get_cell_allocation.html" title="Gtk.CellArea.prototype.get_cell_allocation">Gtk.CellArea.prototype.get_cell_allocation</a></li>
+<li class="links "><a href="Gtk.CellArea.get_cell_at_position.html" title="Gtk.CellArea.prototype.get_cell_at_position">Gtk.CellArea.prototype.get_cell_at_position</a></li>
+<li class="links "><a href="Gtk.CellArea.get_current_path_string.html" title="Gtk.CellArea.prototype.get_current_path_string">Gtk.CellArea.prototype.get_current_path_string</a></li>
+<li class="links "><a href="Gtk.CellArea.get_edit_widget.html" title="Gtk.CellArea.prototype.get_edit_widget">Gtk.CellArea.prototype.get_edit_widget</a></li>
+<li class="links "><a href="Gtk.CellArea.get_edited_cell.html" title="Gtk.CellArea.prototype.get_edited_cell">Gtk.CellArea.prototype.get_edited_cell</a></li>
+<li class="links "><a href="Gtk.CellArea.get_focus_cell.html" title="Gtk.CellArea.prototype.get_focus_cell">Gtk.CellArea.prototype.get_focus_cell</a></li>
+<li class="links "><a href="Gtk.CellArea.get_focus_from_sibling.html" title="Gtk.CellArea.prototype.get_focus_from_sibling">Gtk.CellArea.prototype.get_focus_from_sibling</a></li>
+<li class="links "><a href="Gtk.CellArea.get_focus_siblings.html" title="Gtk.CellArea.prototype.get_focus_siblings">Gtk.CellArea.prototype.get_focus_siblings</a></li>
+<li class="links "><a href="Gtk.CellArea.get_preferred_height.html" title="Gtk.CellArea.prototype.get_preferred_height">Gtk.CellArea.prototype.get_preferred_height</a></li>
+<li class="links "><a href="Gtk.CellArea.get_preferred_height_for_width.html" title="Gtk.CellArea.prototype.get_preferred_height_for_width">Gtk.CellArea.prototype.get_preferred_height_for_width</a></li>
+<li class="links "><a href="Gtk.CellArea.get_preferred_width.html" title="Gtk.CellArea.prototype.get_preferred_width">Gtk.CellArea.prototype.get_preferred_width</a></li>
+<li class="links "><a href="Gtk.CellArea.get_preferred_width_for_height.html" title="Gtk.CellArea.prototype.get_preferred_width_for_height">Gtk.CellArea.prototype.get_preferred_width_for_height</a></li>
+<li class="links "><a href="Gtk.CellArea.get_request_mode.html" title="Gtk.CellArea.prototype.get_request_mode">Gtk.CellArea.prototype.get_request_mode</a></li>
+<li class="links "><a href="Gtk.CellArea.has_renderer.html" title="Gtk.CellArea.prototype.has_renderer">Gtk.CellArea.prototype.has_renderer</a></li>
+<li class="links "><a href="Gtk.CellArea.inner_cell_area.html" title="Gtk.CellArea.prototype.inner_cell_area">Gtk.CellArea.prototype.inner_cell_area</a></li>
+<li class="links "><a href="Gtk.CellArea.is_activatable.html" title="Gtk.CellArea.prototype.is_activatable">Gtk.CellArea.prototype.is_activatable</a></li>
+<li class="links "><a href="Gtk.CellArea.is_focus_sibling.html" title="Gtk.CellArea.prototype.is_focus_sibling">Gtk.CellArea.prototype.is_focus_sibling</a></li>
+<li class="links "><a href="Gtk.CellArea.remove.html" title="Gtk.CellArea.prototype.remove">Gtk.CellArea.prototype.remove</a></li>
+<li class="links "><a href="Gtk.CellArea.remove_focus_sibling.html" title="Gtk.CellArea.prototype.remove_focus_sibling">Gtk.CellArea.prototype.remove_focus_sibling</a></li>
+<li class="links "><a href="Gtk.CellArea.render.html" title="Gtk.CellArea.prototype.render">Gtk.CellArea.prototype.render</a></li>
+<li class="links "><a href="Gtk.CellArea.request_renderer.html" title="Gtk.CellArea.prototype.request_renderer">Gtk.CellArea.prototype.request_renderer</a></li>
+<li class="links "><a href="Gtk.CellArea.set_focus_cell.html" title="Gtk.CellArea.prototype.set_focus_cell">Gtk.CellArea.prototype.set_focus_cell</a></li>
+<li class="links "><a href="Gtk.CellArea.stop_editing.html" title="Gtk.CellArea.prototype.stop_editing">Gtk.CellArea.prototype.stop_editing</a></li>
+</ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Properties</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.CellArea-edit-widget.html" title="Gtk.CellArea:edit-widget">edit-widget</a></li>
+<li class="links "><a href="Gtk.CellArea-edited-cell.html" title="Gtk.CellArea:edited-cell">edited-cell</a></li>
+<li class="links "><a href="Gtk.CellArea-focus-cell.html" title="Gtk.CellArea:focus-cell">focus-cell</a></li>
+</ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Signals</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.CellArea-add-editable.html" title="Gtk.CellArea::add-editable">add-editable</a></li>
+<li class="links "><a href="Gtk.CellArea-apply-attributes.html" title="Gtk.CellArea::apply-attributes">apply-attributes</a></li>
+<li class="links "><a href="Gtk.CellArea-focus-changed.html" title="Gtk.CellArea::focus-changed">focus-changed</a></li>
+<li class="links "><a href="Gtk.CellArea-remove-editable.html" title="Gtk.CellArea::remove-editable">remove-editable</a></li>
+</ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Virtual functions</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.CellArea-activate.html" title="Gtk.CellArea::activate">Gtk.CellArea::activate</a></li>
+<li class="links "><a href="Gtk.CellArea-add.html" title="Gtk.CellArea::add">Gtk.CellArea::add</a></li>
+<li class="links "><a href="Gtk.CellArea-apply_attributes.html" title="Gtk.CellArea::apply_attributes">Gtk.CellArea::apply_attributes</a></li>
+<li class="links "><a href="Gtk.CellArea-copy_context.html" title="Gtk.CellArea::copy_context">Gtk.CellArea::copy_context</a></li>
+<li class="links "><a href="Gtk.CellArea-create_context.html" title="Gtk.CellArea::create_context">Gtk.CellArea::create_context</a></li>
+<li class="links "><a href="Gtk.CellArea-event.html" title="Gtk.CellArea::event">Gtk.CellArea::event</a></li>
+<li class="links "><a href="Gtk.CellArea-focus.html" title="Gtk.CellArea::focus">Gtk.CellArea::focus</a></li>
+<li class="links "><a href="Gtk.CellArea-foreach.html" title="Gtk.CellArea::foreach">Gtk.CellArea::foreach</a></li>
+<li class="links "><a href="Gtk.CellArea-foreach_alloc.html" title="Gtk.CellArea::foreach_alloc">Gtk.CellArea::foreach_alloc</a></li>
+<li class="links "><a href="Gtk.CellArea-get_cell_property.html" title="Gtk.CellArea::get_cell_property">Gtk.CellArea::get_cell_property</a></li>
+<li class="links "><a href="Gtk.CellArea-get_preferred_height.html" title="Gtk.CellArea::get_preferred_height">Gtk.CellArea::get_preferred_height</a></li>
+<li class="links "><a href="Gtk.CellArea-get_preferred_height_for_width.html" title="Gtk.CellArea::get_preferred_height_for_width">Gtk.CellArea::get_preferred_height_for_width</a></li>
+<li class="links "><a href="Gtk.CellArea-get_preferred_width.html" title="Gtk.CellArea::get_preferred_width">Gtk.CellArea::get_preferred_width</a></li>
+<li class="links "><a href="Gtk.CellArea-get_preferred_width_for_height.html" title="Gtk.CellArea::get_preferred_width_for_height">Gtk.CellArea::get_preferred_width_for_height</a></li>
+<li class="links "><a href="Gtk.CellArea-get_request_mode.html" title="Gtk.CellArea::get_request_mode">Gtk.CellArea::get_request_mode</a></li>
+<li class="links "><a href="Gtk.CellArea-is_activatable.html" title="Gtk.CellArea::is_activatable">Gtk.CellArea::is_activatable</a></li>
+<li class="links "><a href="Gtk.CellArea-remove.html" title="Gtk.CellArea::remove">Gtk.CellArea::remove</a></li>
+<li class="links "><a href="Gtk.CellArea-render.html" title="Gtk.CellArea::render">Gtk.CellArea::render</a></li>
+<li class="links "><a href="Gtk.CellArea-set_cell_property.html" title="Gtk.CellArea::set_cell_property">Gtk.CellArea::set_cell_property</a></li>
+</ul></div>
+</div></div>
+</div>
+<div class="sect sect-links" role="navigation">
+<div class="hgroup"></div>
+<div class="contents"><div class="links guidelinks"><div class="inner">
+<div class="title"><h2><span class="title">More Information</span></h2></div>
+<div class="region"><ul><li class="links "><a href="index.html" title="Index">Index</a></li></ul></div>
+</div></div></div>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="footer"></div>
+</div></body>
+</html>

@@ -1,0 +1,133 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Gtk.ComboBoxText</title>
+<link rel="stylesheet" type="text/css" href="C.css">
+<script type="text/javascript" src="jquery.js"></script><script type="text/javascript" src="jquery.syntax.js"></script><script type="text/javascript" src="yelp.js"></script>
+</head>
+<body><div class="page" role="main">
+<div class="header"><div class="trails" role="navigation"><div class="trail">
+<a class="trail" href="index.html" title="Index">Index</a> » </div></div></div>
+<div class="body">
+<div class="hgroup"><h1 class="title"><span class="title">Gtk.ComboBoxText</span></h1></div>
+<div class="region">
+<div class="contents">
+<div class="synopsis"><div class="inner"><div class="region"><div class="contents"><div class="code"><pre class="contents ">const Gtk = imports.gi.Gtk;
+
+let combo_box_text = new Gtk.ComboBoxText();
+  </pre></div></div></div></div></div>
+<p class="p">A GtkComboBoxText is a simple variant of <span class=" link"><a href="Gtk.ComboBox.html" title="Gtk.ComboBox">Gtk.ComboBox</a></span> that hides
+the model-view complexity for simple text-only use cases.</p>
+<p class="p">To create a GtkComboBoxText, use <span class=" link"><a href="Gtk.new.html" title="Gtk.new">Gtk.new</a></span> or
+<span class=" link"><a href="Gtk.new_with_entry.html" title="Gtk.new_with_entry">Gtk.new_with_entry</a></span>.</p>
+<p class="p">You can add items to a GtkComboBoxText with
+<span class=" link"><a href="Gtk.append_text.html" title="Gtk.append_text">Gtk.append_text</a></span>, <span class=" link"><a href="Gtk.insert_text.html" title="Gtk.insert_text">Gtk.insert_text</a></span>
+or <span class=" link"><a href="Gtk.prepend_text.html" title="Gtk.prepend_text">Gtk.prepend_text</a></span> and remove options with
+<span class=" link"><a href="Gtk.remove.html" title="Gtk.remove">Gtk.remove</a></span>.</p>
+<p class="p">If the GtkComboBoxText contains an entry (via the 'has-entry' property),
+its contents can be retrieved using <span class=" link"><a href="Gtk.get_active_text.html" title="Gtk.get_active_text">Gtk.get_active_text</a></span>.
+The entry itself can be accessed by calling <span class=" link"><a href="Gtk.Bin.get_child.html" title="Gtk.Bin.prototype.get_child">Gtk.Bin.prototype.get_child</a></span> on the
+combo box.</p>
+<p class="p">You should not call <span class=" link"><a href="Gtk.ComboBox.set_model.html" title="Gtk.ComboBox.prototype.set_model">Gtk.ComboBox.prototype.set_model</a></span> or attempt to pack more cells
+into this combo box via its GtkCellLayout interface.</p>
+<p class="p">&lt;refsect2 id="GtkComboBoxText-BUILDER-UI"&gt;
+&lt;title&gt;GtkComboBoxText as GtkBuildable&lt;/title&gt;
+&lt;para&gt;
+The GtkComboBoxText implementation of the GtkBuildable interface
+supports adding items directly using the &amp;lt;items&amp;gt; element
+and specifying &amp;lt;item&amp;gt; elements for each item. Each &amp;lt;item&amp;gt;
+element can specify the "id" corresponding to the appended text and
+also supports the regular translation attributes "translatable",
+"context" and "comments".</p>
+<p class="p">&lt;example&gt;
+&lt;title&gt;A UI definition fragment specifying GtkComboBoxText items&lt;/title&gt;
+&lt;programlisting&gt;&lt;![CDATA[
+&lt;object class="GtkComboBoxText"&gt;
+  &lt;items&gt;
+    &lt;item translatable="yes" id="factory"&gt;Factory&lt;/item&gt;
+    &lt;item translatable="yes" id="home"&gt;Home&lt;/item&gt;
+    &lt;item translatable="yes" id="subway"&gt;Subway&lt;/item&gt;
+  &lt;/items&gt;
+&lt;/object&gt;
+]]&gt;&lt;/programlisting&gt;
+&lt;/example&gt;
+&lt;/para&gt;
+&lt;/refsect2&gt;</p>
+<div class="synopsis"><div class="inner">
+<div class="title title-synopsis"><h2><span class="title">Hierarchy</span></h2></div>
+<div class="region"><div class="contents"><div class="tree"><div class="inner"><div class="region"><ul class="tree"><li class="tree">
+<div>
+        <span class=" code">GObject.Object</span>
+      
+      </div>
+<ul class="tree"><li class="tree">
+<div>
+        <span class=" code">GObject.InitiallyUnowned</span>
+      
+      </div>
+<ul class="tree"><li class="tree">
+<div>
+        <span class=" code">Gtk.Widget</span>
+      
+      </div>
+<ul class="tree"><li class="tree">
+<div>
+        <span class=" code">Gtk.Container</span>
+      
+      </div>
+<ul class="tree"><li class="tree">
+<div>
+        <span class=" code">Gtk.Bin</span>
+      
+      </div>
+<ul class="tree"><li class="tree">
+<div>
+        <span class=" code">Gtk.ComboBox</span>
+      
+      </div>
+<ul class="tree"><li class="tree"><div>
+        <span class=" code">Gtk.ComboBoxText</span>
+      </div></li></ul>
+</li></ul>
+</li></ul>
+</li></ul>
+</li></ul>
+</li></ul>
+</li></ul></div></div></div></div></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Methods</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.ComboBoxText.append.html" title="Gtk.ComboBoxText.prototype.append">Gtk.ComboBoxText.prototype.append</a></li>
+<li class="links "><a href="Gtk.ComboBoxText.append_text.html" title="Gtk.ComboBoxText.prototype.append_text">Gtk.ComboBoxText.prototype.append_text</a></li>
+<li class="links "><a href="Gtk.ComboBoxText.get_active_text.html" title="Gtk.ComboBoxText.prototype.get_active_text">Gtk.ComboBoxText.prototype.get_active_text</a></li>
+<li class="links "><a href="Gtk.ComboBoxText.insert.html" title="Gtk.ComboBoxText.prototype.insert">Gtk.ComboBoxText.prototype.insert</a></li>
+<li class="links "><a href="Gtk.ComboBoxText.insert_text.html" title="Gtk.ComboBoxText.prototype.insert_text">Gtk.ComboBoxText.prototype.insert_text</a></li>
+<li class="links "><a href="Gtk.ComboBoxText.prepend.html" title="Gtk.ComboBoxText.prototype.prepend">Gtk.ComboBoxText.prototype.prepend</a></li>
+<li class="links "><a href="Gtk.ComboBoxText.prepend_text.html" title="Gtk.ComboBoxText.prototype.prepend_text">Gtk.ComboBoxText.prototype.prepend_text</a></li>
+<li class="links "><a href="Gtk.ComboBoxText.remove.html" title="Gtk.ComboBoxText.prototype.remove">Gtk.ComboBoxText.prototype.remove</a></li>
+<li class="links "><a href="Gtk.ComboBoxText.remove_all.html" title="Gtk.ComboBoxText.prototype.remove_all">Gtk.ComboBoxText.prototype.remove_all</a></li>
+</ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Other</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.ComboBoxText.new.html" title="Gtk.ComboBoxText.new">Gtk.ComboBoxText.new</a></li>
+<li class="links "><a href="Gtk.ComboBoxText.new_with_entry.html" title="Gtk.ComboBoxText.new_with_entry">Gtk.ComboBoxText.new_with_entry</a></li>
+</ul></div>
+</div></div>
+</div>
+<div class="sect sect-links" role="navigation">
+<div class="hgroup"></div>
+<div class="contents"><div class="links guidelinks"><div class="inner">
+<div class="title"><h2><span class="title">More Information</span></h2></div>
+<div class="region"><ul><li class="links "><a href="index.html" title="Index">Index</a></li></ul></div>
+</div></div></div>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="footer"></div>
+</div></body>
+</html>

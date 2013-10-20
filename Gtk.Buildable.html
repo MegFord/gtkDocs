@@ -1,0 +1,80 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Gtk.Buildable</title>
+<link rel="stylesheet" type="text/css" href="C.css">
+<script type="text/javascript" src="jquery.js"></script><script type="text/javascript" src="jquery.syntax.js"></script><script type="text/javascript" src="yelp.js"></script>
+</head>
+<body><div class="page" role="main">
+<div class="header"><div class="trails" role="navigation"><div class="trail">
+<a class="trail" href="index.html" title="Index">Index</a> » </div></div></div>
+<div class="body">
+<div class="hgroup"><h1 class="title"><span class="title">Gtk.Buildable</span></h1></div>
+<div class="region">
+<div class="contents">
+<div class="synopsis"><div class="inner"><div class="region"><div class="contents"><div class="code"><pre class="contents ">const Gtk = imports.gi.Gtk;
+
+let buildable = new Gtk.Buildable();
+  </pre></div></div></div></div></div>
+<p class="p">GtkBuildable allows objects to extend and customize their deserialization
+from &lt;link linkend="BUILDER-UI"&gt;GtkBuilder UI descriptions&lt;/link&gt;.
+The interface includes methods for setting names and properties of objects, 
+parsing custom tags and constructing child objects.</p>
+<p class="p">The GtkBuildable interface is implemented by all widgets and
+many of the non-widget objects that are provided by GTK+. The
+main user of this interface is <span class=" link"><a href="Gtk.Builder.html" title="Gtk.Builder">Gtk.Builder</a></span>. There should be
+very little need for applications to call any
+&lt;function&gt;gtk_buildable_...&lt;/function&gt; functions.</p>
+<p class="p">&lt;note&gt;&lt;para&gt;An object only needs to implement this interface if it needs
+to extend the <span class=" link"><a href="Gtk.Builder.html" title="Gtk.Builder">Gtk.Builder</a></span> format or run any extra routines at deserialization time&lt;/para&gt;&lt;/note&gt;</p>
+<div class="synopsis"><div class="inner">
+<div class="title title-synopsis"><h2><span class="title">Hierarchy</span></h2></div>
+<div class="region"><div class="contents"><div class="tree"><div class="inner"><div class="region"><ul class="tree"><li class="tree"><div>
+        <span class=" code">Gtk.Buildable</span>
+      </div></li></ul></div></div></div></div></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Methods</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.Buildable.add_child.html" title="Gtk.Buildable.prototype.add_child">Gtk.Buildable.prototype.add_child</a></li>
+<li class="links "><a href="Gtk.Buildable.construct_child.html" title="Gtk.Buildable.prototype.construct_child">Gtk.Buildable.prototype.construct_child</a></li>
+<li class="links "><a href="Gtk.Buildable.custom_finished.html" title="Gtk.Buildable.prototype.custom_finished">Gtk.Buildable.prototype.custom_finished</a></li>
+<li class="links "><a href="Gtk.Buildable.custom_tag_end.html" title="Gtk.Buildable.prototype.custom_tag_end">Gtk.Buildable.prototype.custom_tag_end</a></li>
+<li class="links "><a href="Gtk.Buildable.custom_tag_start.html" title="Gtk.Buildable.prototype.custom_tag_start">Gtk.Buildable.prototype.custom_tag_start</a></li>
+<li class="links "><a href="Gtk.Buildable.get_internal_child.html" title="Gtk.Buildable.prototype.get_internal_child">Gtk.Buildable.prototype.get_internal_child</a></li>
+<li class="links "><a href="Gtk.Buildable.get_name.html" title="Gtk.Buildable.prototype.get_name">Gtk.Buildable.prototype.get_name</a></li>
+<li class="links "><a href="Gtk.Buildable.parser_finished.html" title="Gtk.Buildable.prototype.parser_finished">Gtk.Buildable.prototype.parser_finished</a></li>
+<li class="links "><a href="Gtk.Buildable.set_buildable_property.html" title="Gtk.Buildable.prototype.set_buildable_property">Gtk.Buildable.prototype.set_buildable_property</a></li>
+<li class="links "><a href="Gtk.Buildable.set_name.html" title="Gtk.Buildable.prototype.set_name">Gtk.Buildable.prototype.set_name</a></li>
+</ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Virtual functions</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.Buildable-add_child.html" title="Gtk.Buildable::add_child">Gtk.Buildable::add_child</a></li>
+<li class="links "><a href="Gtk.Buildable-construct_child.html" title="Gtk.Buildable::construct_child">Gtk.Buildable::construct_child</a></li>
+<li class="links "><a href="Gtk.Buildable-custom_finished.html" title="Gtk.Buildable::custom_finished">Gtk.Buildable::custom_finished</a></li>
+<li class="links "><a href="Gtk.Buildable-custom_tag_end.html" title="Gtk.Buildable::custom_tag_end">Gtk.Buildable::custom_tag_end</a></li>
+<li class="links "><a href="Gtk.Buildable-custom_tag_start.html" title="Gtk.Buildable::custom_tag_start">Gtk.Buildable::custom_tag_start</a></li>
+<li class="links "><a href="Gtk.Buildable-get_internal_child.html" title="Gtk.Buildable::get_internal_child">Gtk.Buildable::get_internal_child</a></li>
+<li class="links "><a href="Gtk.Buildable-get_name.html" title="Gtk.Buildable::get_name">Gtk.Buildable::get_name</a></li>
+<li class="links "><a href="Gtk.Buildable-parser_finished.html" title="Gtk.Buildable::parser_finished">Gtk.Buildable::parser_finished</a></li>
+<li class="links "><a href="Gtk.Buildable-set_buildable_property.html" title="Gtk.Buildable::set_buildable_property">Gtk.Buildable::set_buildable_property</a></li>
+<li class="links "><a href="Gtk.Buildable-set_name.html" title="Gtk.Buildable::set_name">Gtk.Buildable::set_name</a></li>
+</ul></div>
+</div></div>
+</div>
+<div class="sect sect-links" role="navigation">
+<div class="hgroup"></div>
+<div class="contents"><div class="links guidelinks"><div class="inner">
+<div class="title"><h2><span class="title">More Information</span></h2></div>
+<div class="region"><ul><li class="links "><a href="index.html" title="Index">Index</a></li></ul></div>
+</div></div></div>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="footer"></div>
+</div></body>
+</html>

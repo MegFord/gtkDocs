@@ -1,0 +1,192 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Gtk.ComboBox</title>
+<link rel="stylesheet" type="text/css" href="C.css">
+<script type="text/javascript" src="jquery.js"></script><script type="text/javascript" src="jquery.syntax.js"></script><script type="text/javascript" src="yelp.js"></script>
+</head>
+<body><div class="page" role="main">
+<div class="header"><div class="trails" role="navigation"><div class="trail">
+<a class="trail" href="index.html" title="Index">Index</a> » </div></div></div>
+<div class="body">
+<div class="hgroup"><h1 class="title"><span class="title">Gtk.ComboBox</span></h1></div>
+<div class="region">
+<div class="contents">
+<div class="synopsis"><div class="inner"><div class="region"><div class="contents"><div class="code"><pre class="contents ">const Gtk = imports.gi.Gtk;
+
+let combo_box = new Gtk.ComboBox({
+    <span class=" link"><a href="Gtk.ComboBox-active.html" title="Gtk.ComboBox:active">active</a></span>: value,
+    <span class=" link"><a href="Gtk.ComboBox-active-id.html" title="Gtk.ComboBox:active-id">active_id</a></span>: value,
+    <span class=" link"><a href="Gtk.ComboBox-add-tearoffs.html" title="Gtk.ComboBox:add-tearoffs">add_tearoffs</a></span>: value,
+    <span class=" link"><a href="Gtk.ComboBox-button-sensitivity.html" title="Gtk.ComboBox:button-sensitivity">button_sensitivity</a></span>: value,
+    <span class=" link"><a href="Gtk.ComboBox-cell-area.html" title="Gtk.ComboBox:cell-area">cell_area</a></span>: value,
+    <span class=" link"><a href="Gtk.ComboBox-column-span-column.html" title="Gtk.ComboBox:column-span-column">column_span_column</a></span>: value,
+    <span class=" link"><a href="Gtk.ComboBox-entry-text-column.html" title="Gtk.ComboBox:entry-text-column">entry_text_column</a></span>: value,
+    <span class=" link"><a href="Gtk.ComboBox-focus-on-click.html" title="Gtk.ComboBox:focus-on-click">focus_on_click</a></span>: value,
+    <span class=" link"><a href="Gtk.ComboBox-has-entry.html" title="Gtk.ComboBox:has-entry">has_entry</a></span>: value,
+    <span class=" link"><a href="Gtk.ComboBox-has-frame.html" title="Gtk.ComboBox:has-frame">has_frame</a></span>: value,
+    <span class=" link"><a href="Gtk.ComboBox-id-column.html" title="Gtk.ComboBox:id-column">id_column</a></span>: value,
+    <span class=" link"><a href="Gtk.ComboBox-model.html" title="Gtk.ComboBox:model">model</a></span>: value,
+    <span class=" link"><a href="Gtk.ComboBox-popup-fixed-width.html" title="Gtk.ComboBox:popup-fixed-width">popup_fixed_width</a></span>: value,
+    <span class=" link"><a href="Gtk.ComboBox-row-span-column.html" title="Gtk.ComboBox:row-span-column">row_span_column</a></span>: value,
+    <span class=" link"><a href="Gtk.ComboBox-tearoff-title.html" title="Gtk.ComboBox:tearoff-title">tearoff_title</a></span>: value,
+    <span class=" link"><a href="Gtk.ComboBox-wrap-width.html" title="Gtk.ComboBox:wrap-width">wrap_width</a></span>: value,
+});
+  </pre></div></div></div></div></div>
+<p class="p">A GtkComboBox is a widget that allows the user to choose from a list of
+valid choices. The GtkComboBox displays the selected choice. When
+activated, the GtkComboBox displays a popup which allows the user to
+make a new choice. The style in which the selected value is displayed,
+and the style of the popup is determined by the current theme. It may
+be similar to a Windows-style combo box.</p>
+<p class="p">The GtkComboBox uses the model-view pattern; the list of valid choices
+is specified in the form of a tree model, and the display of the choices
+can be adapted to the data in the model by using cell renderers, as you
+would in a tree view. This is possible since GtkComboBox implements the
+<span class=" link"><a href="Gtk.CellLayout.html" title="Gtk.CellLayout">Gtk.CellLayout</a></span> interface. The tree model holding the valid choices is
+not restricted to a flat list, it can be a real tree, and the popup will
+reflect the tree structure.</p>
+<p class="p">To allow the user to enter values not in the model, the 'has-entry'
+property allows the GtkComboBox to contain a <span class=" link"><a href="Gtk.Entry.html" title="Gtk.Entry">Gtk.Entry</a></span>. This entry
+can be accessed by calling <span class=" link"><a href="Gtk.Bin.get_child.html" title="Gtk.Bin.prototype.get_child">Gtk.Bin.prototype.get_child</a></span> on the combo box.</p>
+<p class="p">For a simple list of textual choices, the model-view API of GtkComboBox
+can be a bit overwhelming. In this case, <span class=" link"><a href="Gtk.ComboBoxText.html" title="Gtk.ComboBoxText">Gtk.ComboBoxText</a></span> offers a
+simple alternative. Both GtkComboBox and <span class=" link"><a href="Gtk.ComboBoxText.html" title="Gtk.ComboBoxText">Gtk.ComboBoxText</a></span> can contain
+an entry.</p>
+<div class="synopsis"><div class="inner">
+<div class="title title-synopsis"><h2><span class="title">Hierarchy</span></h2></div>
+<div class="region"><div class="contents"><div class="tree"><div class="inner"><div class="region"><ul class="tree"><li class="tree">
+<div>
+        <span class=" code">GObject.Object</span>
+      
+      </div>
+<ul class="tree"><li class="tree">
+<div>
+        <span class=" code">GObject.InitiallyUnowned</span>
+      
+      </div>
+<ul class="tree"><li class="tree">
+<div>
+        <span class=" code">Gtk.Widget</span>
+      
+      </div>
+<ul class="tree"><li class="tree">
+<div>
+        <span class=" code">Gtk.Container</span>
+      
+      </div>
+<ul class="tree"><li class="tree">
+<div>
+        <span class=" code">Gtk.Bin</span>
+      
+      </div>
+<ul class="tree"><li class="tree"><div>
+        <span class=" code">Gtk.ComboBox</span>
+      </div></li></ul>
+</li></ul>
+</li></ul>
+</li></ul>
+</li></ul>
+</li></ul></div></div></div></div></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Methods</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.ComboBox.get_active.html" title="Gtk.ComboBox.prototype.get_active">Gtk.ComboBox.prototype.get_active</a></li>
+<li class="links "><a href="Gtk.ComboBox.get_active_id.html" title="Gtk.ComboBox.prototype.get_active_id">Gtk.ComboBox.prototype.get_active_id</a></li>
+<li class="links "><a href="Gtk.ComboBox.get_active_iter.html" title="Gtk.ComboBox.prototype.get_active_iter">Gtk.ComboBox.prototype.get_active_iter</a></li>
+<li class="links "><a href="Gtk.ComboBox.get_add_tearoffs.html" title="Gtk.ComboBox.prototype.get_add_tearoffs">Gtk.ComboBox.prototype.get_add_tearoffs</a></li>
+<li class="links "><a href="Gtk.ComboBox.get_button_sensitivity.html" title="Gtk.ComboBox.prototype.get_button_sensitivity">Gtk.ComboBox.prototype.get_button_sensitivity</a></li>
+<li class="links "><a href="Gtk.ComboBox.get_column_span_column.html" title="Gtk.ComboBox.prototype.get_column_span_column">Gtk.ComboBox.prototype.get_column_span_column</a></li>
+<li class="links "><a href="Gtk.ComboBox.get_entry_text_column.html" title="Gtk.ComboBox.prototype.get_entry_text_column">Gtk.ComboBox.prototype.get_entry_text_column</a></li>
+<li class="links "><a href="Gtk.ComboBox.get_focus_on_click.html" title="Gtk.ComboBox.prototype.get_focus_on_click">Gtk.ComboBox.prototype.get_focus_on_click</a></li>
+<li class="links "><a href="Gtk.ComboBox.get_has_entry.html" title="Gtk.ComboBox.prototype.get_has_entry">Gtk.ComboBox.prototype.get_has_entry</a></li>
+<li class="links "><a href="Gtk.ComboBox.get_id_column.html" title="Gtk.ComboBox.prototype.get_id_column">Gtk.ComboBox.prototype.get_id_column</a></li>
+<li class="links "><a href="Gtk.ComboBox.get_model.html" title="Gtk.ComboBox.prototype.get_model">Gtk.ComboBox.prototype.get_model</a></li>
+<li class="links "><a href="Gtk.ComboBox.get_popup_accessible.html" title="Gtk.ComboBox.prototype.get_popup_accessible">Gtk.ComboBox.prototype.get_popup_accessible</a></li>
+<li class="links "><a href="Gtk.ComboBox.get_popup_fixed_width.html" title="Gtk.ComboBox.prototype.get_popup_fixed_width">Gtk.ComboBox.prototype.get_popup_fixed_width</a></li>
+<li class="links "><a href="Gtk.ComboBox.get_row_span_column.html" title="Gtk.ComboBox.prototype.get_row_span_column">Gtk.ComboBox.prototype.get_row_span_column</a></li>
+<li class="links "><a href="Gtk.ComboBox.get_title.html" title="Gtk.ComboBox.prototype.get_title">Gtk.ComboBox.prototype.get_title</a></li>
+<li class="links "><a href="Gtk.ComboBox.get_wrap_width.html" title="Gtk.ComboBox.prototype.get_wrap_width">Gtk.ComboBox.prototype.get_wrap_width</a></li>
+<li class="links "><a href="Gtk.ComboBox.popdown.html" title="Gtk.ComboBox.prototype.popdown">Gtk.ComboBox.prototype.popdown</a></li>
+<li class="links "><a href="Gtk.ComboBox.popup.html" title="Gtk.ComboBox.prototype.popup">Gtk.ComboBox.prototype.popup</a></li>
+<li class="links "><a href="Gtk.ComboBox.popup_for_device.html" title="Gtk.ComboBox.prototype.popup_for_device">Gtk.ComboBox.prototype.popup_for_device</a></li>
+<li class="links "><a href="Gtk.ComboBox.set_active.html" title="Gtk.ComboBox.prototype.set_active">Gtk.ComboBox.prototype.set_active</a></li>
+<li class="links "><a href="Gtk.ComboBox.set_active_id.html" title="Gtk.ComboBox.prototype.set_active_id">Gtk.ComboBox.prototype.set_active_id</a></li>
+<li class="links "><a href="Gtk.ComboBox.set_active_iter.html" title="Gtk.ComboBox.prototype.set_active_iter">Gtk.ComboBox.prototype.set_active_iter</a></li>
+<li class="links "><a href="Gtk.ComboBox.set_add_tearoffs.html" title="Gtk.ComboBox.prototype.set_add_tearoffs">Gtk.ComboBox.prototype.set_add_tearoffs</a></li>
+<li class="links "><a href="Gtk.ComboBox.set_button_sensitivity.html" title="Gtk.ComboBox.prototype.set_button_sensitivity">Gtk.ComboBox.prototype.set_button_sensitivity</a></li>
+<li class="links "><a href="Gtk.ComboBox.set_column_span_column.html" title="Gtk.ComboBox.prototype.set_column_span_column">Gtk.ComboBox.prototype.set_column_span_column</a></li>
+<li class="links "><a href="Gtk.ComboBox.set_entry_text_column.html" title="Gtk.ComboBox.prototype.set_entry_text_column">Gtk.ComboBox.prototype.set_entry_text_column</a></li>
+<li class="links "><a href="Gtk.ComboBox.set_focus_on_click.html" title="Gtk.ComboBox.prototype.set_focus_on_click">Gtk.ComboBox.prototype.set_focus_on_click</a></li>
+<li class="links "><a href="Gtk.ComboBox.set_id_column.html" title="Gtk.ComboBox.prototype.set_id_column">Gtk.ComboBox.prototype.set_id_column</a></li>
+<li class="links "><a href="Gtk.ComboBox.set_model.html" title="Gtk.ComboBox.prototype.set_model">Gtk.ComboBox.prototype.set_model</a></li>
+<li class="links "><a href="Gtk.ComboBox.set_popup_fixed_width.html" title="Gtk.ComboBox.prototype.set_popup_fixed_width">Gtk.ComboBox.prototype.set_popup_fixed_width</a></li>
+<li class="links "><a href="Gtk.ComboBox.set_row_separator_func.html" title="Gtk.ComboBox.prototype.set_row_separator_func">Gtk.ComboBox.prototype.set_row_separator_func</a></li>
+<li class="links "><a href="Gtk.ComboBox.set_row_span_column.html" title="Gtk.ComboBox.prototype.set_row_span_column">Gtk.ComboBox.prototype.set_row_span_column</a></li>
+<li class="links "><a href="Gtk.ComboBox.set_title.html" title="Gtk.ComboBox.prototype.set_title">Gtk.ComboBox.prototype.set_title</a></li>
+<li class="links "><a href="Gtk.ComboBox.set_wrap_width.html" title="Gtk.ComboBox.prototype.set_wrap_width">Gtk.ComboBox.prototype.set_wrap_width</a></li>
+</ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Properties</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.ComboBox-active.html" title="Gtk.ComboBox:active">active</a></li>
+<li class="links "><a href="Gtk.ComboBox-active-id.html" title="Gtk.ComboBox:active-id">active-id</a></li>
+<li class="links "><a href="Gtk.ComboBox-add-tearoffs.html" title="Gtk.ComboBox:add-tearoffs">add-tearoffs</a></li>
+<li class="links "><a href="Gtk.ComboBox-button-sensitivity.html" title="Gtk.ComboBox:button-sensitivity">button-sensitivity</a></li>
+<li class="links "><a href="Gtk.ComboBox-cell-area.html" title="Gtk.ComboBox:cell-area">cell-area</a></li>
+<li class="links "><a href="Gtk.ComboBox-column-span-column.html" title="Gtk.ComboBox:column-span-column">column-span-column</a></li>
+<li class="links "><a href="Gtk.ComboBox-entry-text-column.html" title="Gtk.ComboBox:entry-text-column">entry-text-column</a></li>
+<li class="links "><a href="Gtk.ComboBox-focus-on-click.html" title="Gtk.ComboBox:focus-on-click">focus-on-click</a></li>
+<li class="links "><a href="Gtk.ComboBox-has-entry.html" title="Gtk.ComboBox:has-entry">has-entry</a></li>
+<li class="links "><a href="Gtk.ComboBox-has-frame.html" title="Gtk.ComboBox:has-frame">has-frame</a></li>
+<li class="links "><a href="Gtk.ComboBox-id-column.html" title="Gtk.ComboBox:id-column">id-column</a></li>
+<li class="links "><a href="Gtk.ComboBox-model.html" title="Gtk.ComboBox:model">model</a></li>
+<li class="links "><a href="Gtk.ComboBox-popup-fixed-width.html" title="Gtk.ComboBox:popup-fixed-width">popup-fixed-width</a></li>
+<li class="links "><a href="Gtk.ComboBox-popup-shown.html" title="Gtk.ComboBox:popup-shown">popup-shown</a></li>
+<li class="links "><a href="Gtk.ComboBox-row-span-column.html" title="Gtk.ComboBox:row-span-column">row-span-column</a></li>
+<li class="links "><a href="Gtk.ComboBox-tearoff-title.html" title="Gtk.ComboBox:tearoff-title">tearoff-title</a></li>
+<li class="links "><a href="Gtk.ComboBox-wrap-width.html" title="Gtk.ComboBox:wrap-width">wrap-width</a></li>
+</ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Signals</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.ComboBox-changed.html" title="Gtk.ComboBox::changed">changed</a></li>
+<li class="links "><a href="Gtk.ComboBox-format-entry-text.html" title="Gtk.ComboBox::format-entry-text">format-entry-text</a></li>
+<li class="links "><a href="Gtk.ComboBox-move-active.html" title="Gtk.ComboBox::move-active">move-active</a></li>
+<li class="links "><a href="Gtk.ComboBox-popdown.html" title="Gtk.ComboBox::popdown">popdown</a></li>
+<li class="links "><a href="Gtk.ComboBox-popup.html" title="Gtk.ComboBox::popup">popup</a></li>
+</ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Virtual functions</span></h2></div>
+<div class="region"><ul><li class="links "><a href="Gtk.ComboBox-format_entry_text.html" title="Gtk.ComboBox::format_entry_text">Gtk.ComboBox::format_entry_text</a></li></ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Other</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.ComboBox.new.html" title="Gtk.ComboBox.new">Gtk.ComboBox.new</a></li>
+<li class="links "><a href="Gtk.ComboBox.new_with_area.html" title="Gtk.ComboBox.new_with_area">Gtk.ComboBox.new_with_area</a></li>
+<li class="links "><a href="Gtk.ComboBox.new_with_area_and_entry.html" title="Gtk.ComboBox.new_with_area_and_entry">Gtk.ComboBox.new_with_area_and_entry</a></li>
+<li class="links "><a href="Gtk.ComboBox.new_with_entry.html" title="Gtk.ComboBox.new_with_entry">Gtk.ComboBox.new_with_entry</a></li>
+<li class="links "><a href="Gtk.ComboBox.new_with_model.html" title="Gtk.ComboBox.new_with_model">Gtk.ComboBox.new_with_model</a></li>
+<li class="links "><a href="Gtk.ComboBox.new_with_model_and_entry.html" title="Gtk.ComboBox.new_with_model_and_entry">Gtk.ComboBox.new_with_model_and_entry</a></li>
+</ul></div>
+</div></div>
+</div>
+<div class="sect sect-links" role="navigation">
+<div class="hgroup"></div>
+<div class="contents"><div class="links guidelinks"><div class="inner">
+<div class="title"><h2><span class="title">More Information</span></h2></div>
+<div class="region"><ul><li class="links "><a href="index.html" title="Index">Index</a></li></ul></div>
+</div></div></div>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="footer"></div>
+</div></body>
+</html>

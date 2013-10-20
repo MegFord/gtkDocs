@@ -1,0 +1,64 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Gtk.AppChooser</title>
+<link rel="stylesheet" type="text/css" href="C.css">
+<script type="text/javascript" src="jquery.js"></script><script type="text/javascript" src="jquery.syntax.js"></script><script type="text/javascript" src="yelp.js"></script>
+</head>
+<body><div class="page" role="main">
+<div class="header"><div class="trails" role="navigation"><div class="trail">
+<a class="trail" href="index.html" title="Index">Index</a> » </div></div></div>
+<div class="body">
+<div class="hgroup"><h1 class="title"><span class="title">Gtk.AppChooser</span></h1></div>
+<div class="region">
+<div class="contents">
+<div class="synopsis"><div class="inner"><div class="region"><div class="contents"><div class="code"><pre class="contents ">const Gtk = imports.gi.Gtk;
+
+let app_chooser = new Gtk.AppChooser({
+    <span class=" link"><a href="Gtk.AppChooser-content-type.html" title="Gtk.AppChooser-content-type">content_type</a></span>: value,
+});
+  </pre></div></div></div></div></div>
+<p class="p"><span class=" link"><a href="Gtk.AppChooser.html" title="Gtk.AppChooser">Gtk.AppChooser</a></span> is an interface that can be implemented by widgets which
+allow the user to choose an application (typically for the purpose of
+opening a file). The main objects that implement this interface are
+<span class=" link"><a href="Gtk.AppChooserWidget.html" title="Gtk.AppChooserWidget">Gtk.AppChooserWidget</a></span>, <span class=" link"><a href="Gtk.AppChooserDialog.html" title="Gtk.AppChooserDialog">Gtk.AppChooserDialog</a></span> and <span class=" link"><a href="Gtk.AppChooserButton.html" title="Gtk.AppChooserButton">Gtk.AppChooserButton</a></span>.</p>
+<p class="p">Applications are represented by GIO <span class=" link"><a href="Gio.AppInfo.html" title="Gio.AppInfo">Gio.AppInfo</a></span> objects here.
+GIO has a concept of recommended and fallback applications for a
+given content type. Recommended applications are those that claim
+to handle the content type itself, while fallback also includes
+applications that handle a more generic content type. GIO also
+knows the default and last-used application for a given content
+type. The <span class=" link"><a href="Gtk.AppChooserWidget.html" title="Gtk.AppChooserWidget">Gtk.AppChooserWidget</a></span> provides detailed control over
+whether the shown list of applications should include default,
+recommended or fallback applications.</p>
+<p class="p">To obtain the application that has been selected in a <span class=" link"><a href="Gtk.AppChooser.html" title="Gtk.AppChooser">Gtk.AppChooser</a></span>,
+use <span class=" link"><a href="Gtk.get_app_info.html" title="Gtk.get_app_info">Gtk.get_app_info</a></span>.</p>
+<div class="synopsis"><div class="inner">
+<div class="title title-synopsis"><h2><span class="title">Hierarchy</span></h2></div>
+<div class="region"><div class="contents"><div class="tree"><div class="inner"><div class="region"><ul class="tree"><li class="tree"><div>
+        <span class=" code">Gtk.AppChooser</span>
+      </div></li></ul></div></div></div></div></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Methods</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.AppChooser.get_app_info.html" title="Gtk.AppChooser.prototype.get_app_info">Gtk.AppChooser.prototype.get_app_info</a></li>
+<li class="links "><a href="Gtk.AppChooser.get_content_type.html" title="Gtk.AppChooser.prototype.get_content_type">Gtk.AppChooser.prototype.get_content_type</a></li>
+<li class="links "><a href="Gtk.AppChooser.refresh.html" title="Gtk.AppChooser.prototype.refresh">Gtk.AppChooser.prototype.refresh</a></li>
+</ul></div>
+</div></div>
+</div>
+<div class="sect sect-links" role="navigation">
+<div class="hgroup"></div>
+<div class="contents"><div class="links guidelinks"><div class="inner">
+<div class="title"><h2><span class="title">More Information</span></h2></div>
+<div class="region"><ul><li class="links "><a href="index.html" title="Index">Index</a></li></ul></div>
+</div></div></div>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="footer"></div>
+</div></body>
+</html>

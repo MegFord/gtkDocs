@@ -1,0 +1,83 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Gtk.Accessible</title>
+<link rel="stylesheet" type="text/css" href="C.css">
+<script type="text/javascript" src="jquery.js"></script><script type="text/javascript" src="jquery.syntax.js"></script><script type="text/javascript" src="yelp.js"></script>
+</head>
+<body><div class="page" role="main">
+<div class="header"><div class="trails" role="navigation"><div class="trail">
+<a class="trail" href="index.html" title="Index">Index</a> » </div></div></div>
+<div class="body">
+<div class="hgroup"><h1 class="title"><span class="title">Gtk.Accessible</span></h1></div>
+<div class="region">
+<div class="contents">
+<div class="synopsis"><div class="inner"><div class="region"><div class="contents"><div class="code"><pre class="contents ">const Gtk = imports.gi.Gtk;
+
+let accessible = new Gtk.Accessible({
+    <span class=" link"><a href="Gtk.Accessible-widget.html" title="Gtk.Accessible:widget">widget</a></span>: value,
+});
+  </pre></div></div></div></div></div>
+<p class="p">The <span class=" link"><a href="Gtk.Accessible.html" title="Gtk.Accessible">Gtk.Accessible</a></span> class is the base class for accessible
+implementations for <span class=" link"><a href="Gtk.Widget.html" title="Gtk.Widget">Gtk.Widget</a></span> subclasses. It is a thin
+wrapper around <span class=" link"><a href="Atk.Object.html" title="Atk.Object">Atk.Object</a></span>, which adds facilities for associating
+a widget with its accessible object.</p>
+<p class="p">An accessible implementation for a third-party widget should
+derive from <span class=" link"><a href="Gtk.Accessible.html" title="Gtk.Accessible">Gtk.Accessible</a></span> and implement the suitable interfaces
+from ATK, such as <span class=" link"><a href="Atk.Text.html" title="Atk.Text">Atk.Text</a></span> or <span class=" link"><a href="Atk.Selection.html" title="Atk.Selection">Atk.Selection</a></span>. To establish
+the connection between the widget class and its corresponding
+acccessible implementation, override the get_accessible vfunc
+in <span class=" link"><a href="Gtk.WidgetClass.html" title="Gtk.WidgetClass">Gtk.WidgetClass</a></span>.</p>
+<div class="synopsis"><div class="inner">
+<div class="title title-synopsis"><h2><span class="title">Hierarchy</span></h2></div>
+<div class="region"><div class="contents"><div class="tree"><div class="inner"><div class="region"><ul class="tree"><li class="tree">
+<div>
+        <span class=" code">GObject.Object</span>
+      
+      </div>
+<ul class="tree"><li class="tree">
+<div>
+        <span class=" code">Atk.Object</span>
+      
+      </div>
+<ul class="tree"><li class="tree"><div>
+        <span class=" code">Gtk.Accessible</span>
+      </div></li></ul>
+</li></ul>
+</li></ul></div></div></div></div></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Methods</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.Accessible.connect_widget_destroyed.html" title="Gtk.Accessible.prototype.connect_widget_destroyed">Gtk.Accessible.prototype.connect_widget_destroyed</a></li>
+<li class="links "><a href="Gtk.Accessible.get_widget.html" title="Gtk.Accessible.prototype.get_widget">Gtk.Accessible.prototype.get_widget</a></li>
+<li class="links "><a href="Gtk.Accessible.set_widget.html" title="Gtk.Accessible.prototype.set_widget">Gtk.Accessible.prototype.set_widget</a></li>
+</ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Properties</span></h2></div>
+<div class="region"><ul><li class="links "><a href="Gtk.Accessible-widget.html" title="Gtk.Accessible:widget">widget</a></li></ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Virtual functions</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.Accessible-connect_widget_destroyed.html" title="Gtk.Accessible::connect_widget_destroyed">Gtk.Accessible::connect_widget_destroyed</a></li>
+<li class="links "><a href="Gtk.Accessible-widget_set.html" title="Gtk.Accessible::widget_set">Gtk.Accessible::widget_set</a></li>
+<li class="links "><a href="Gtk.Accessible-widget_unset.html" title="Gtk.Accessible::widget_unset">Gtk.Accessible::widget_unset</a></li>
+</ul></div>
+</div></div>
+</div>
+<div class="sect sect-links" role="navigation">
+<div class="hgroup"></div>
+<div class="contents"><div class="links guidelinks"><div class="inner">
+<div class="title"><h2><span class="title">More Information</span></h2></div>
+<div class="region"><ul><li class="links "><a href="index.html" title="Index">Index</a></li></ul></div>
+</div></div></div>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="footer"></div>
+</div></body>
+</html>

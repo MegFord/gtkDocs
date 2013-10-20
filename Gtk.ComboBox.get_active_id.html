@@ -1,0 +1,46 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Gtk.ComboBox.prototype.get_active_id</title>
+<link rel="stylesheet" type="text/css" href="C.css">
+<script type="text/javascript" src="jquery.js"></script><script type="text/javascript" src="jquery.syntax.js"></script><script type="text/javascript" src="yelp.js"></script>
+</head>
+<body><div class="page" role="main">
+<div class="header"><div class="trails" role="navigation"><div class="trail">
+<a class="trail" href="index.html" title="Index">Index</a> » <a class="trail" href="Gtk.ComboBox.html" title="Gtk.ComboBox">Gtk.ComboBox</a> » </div></div></div>
+<div class="body">
+<div class="hgroup"><h1 class="title"><span class="title">Gtk.ComboBox.prototype.get_active_id</span></h1></div>
+<div class="region">
+<div class="contents">
+<div class="synopsis"><div class="inner"><div class="region"><div class="contents"><div class="code"><pre class="contents ">function get_active_id():String {
+    // Gjs wrapper for gtk_combo_box_get_active_id()
+}</pre></div></div></div></div></div>
+<p class="p">Returns the ID of the active row of <span class=" code">combo_box</span>.  This value is taken
+from the active row and the column specified by the <span class=" link"><a href="Gtk.id-column.html" title="Gtk.id-column">Gtk.id-column</a></span>
+property of <span class=" code">combo_box</span> (see <span class=" link"><a href="Gtk.set_id_column.html" title="Gtk.set_id_column">Gtk.set_id_column</a></span>).</p>
+<p class="p">The returned value is an interned string which means that you can
+compare the pointer by value to other interned strings and that you
+must not free it.</p>
+<p class="p">If the <span class=" link"><a href="Gtk.id-column.html" title="Gtk.id-column">Gtk.id-column</a></span> property of <span class=" code">combo_box</span> is not set, or if
+no row is active, or if the active row has a <span class=" code">null</span> ID value, then <span class=" code">null</span>
+is returned.</p>
+<p class="p">Since 3.0</p>
+<div class="terms"><div class="inner"><div class="region"><dl class="terms">
+<dt class="terms"><span class=" code">Returns</span></dt>
+<dd class="terms"><p class="p">the ID of the active row, or <span class=" code">null</span></p></dd>
+</dl></div></div></div>
+</div>
+<div class="sect sect-links" role="navigation">
+<div class="hgroup"></div>
+<div class="contents"><div class="links guidelinks"><div class="inner">
+<div class="title"><h2><span class="title">More Information</span></h2></div>
+<div class="region"><ul><li class="links "><a href="Gtk.ComboBox.html" title="Gtk.ComboBox">Gtk.ComboBox</a></li></ul></div>
+</div></div></div>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="footer"></div>
+</div></body>
+</html>

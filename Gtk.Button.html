@@ -1,0 +1,150 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Gtk.Button</title>
+<link rel="stylesheet" type="text/css" href="C.css">
+<script type="text/javascript" src="jquery.js"></script><script type="text/javascript" src="jquery.syntax.js"></script><script type="text/javascript" src="yelp.js"></script>
+</head>
+<body><div class="page" role="main">
+<div class="header"><div class="trails" role="navigation"><div class="trail">
+<a class="trail" href="index.html" title="Index">Index</a> » </div></div></div>
+<div class="body">
+<div class="hgroup"><h1 class="title"><span class="title">Gtk.Button</span></h1></div>
+<div class="region">
+<div class="contents">
+<div class="synopsis"><div class="inner"><div class="region"><div class="contents"><div class="code"><pre class="contents ">const Gtk = imports.gi.Gtk;
+
+let button = new Gtk.Button({
+    <span class=" link"><a href="Gtk.Button-always-show-image.html" title="Gtk.Button:always-show-image">always_show_image</a></span>: value,
+    <span class=" link"><a href="Gtk.Button-focus-on-click.html" title="Gtk.Button:focus-on-click">focus_on_click</a></span>: value,
+    <span class=" link"><a href="Gtk.Button-image.html" title="Gtk.Button:image">image</a></span>: value,
+    <span class=" link"><a href="Gtk.Button-image-position.html" title="Gtk.Button:image-position">image_position</a></span>: value,
+    <span class=" link"><a href="Gtk.Button-label.html" title="Gtk.Button:label">label</a></span>: value,
+    <span class=" link"><a href="Gtk.Button-relief.html" title="Gtk.Button:relief">relief</a></span>: value,
+    <span class=" link"><a href="Gtk.Button-use-stock.html" title="Gtk.Button:use-stock">use_stock</a></span>: value,
+    <span class=" link"><a href="Gtk.Button-use-underline.html" title="Gtk.Button:use-underline">use_underline</a></span>: value,
+    <span class=" link"><a href="Gtk.Button-xalign.html" title="Gtk.Button:xalign">xalign</a></span>: value,
+    <span class=" link"><a href="Gtk.Button-yalign.html" title="Gtk.Button:yalign">yalign</a></span>: value,
+});
+  </pre></div></div></div></div></div>
+<p class="p">The <span class=" link"><a href="Gtk.Button.html" title="Gtk.Button">Gtk.Button</a></span> widget is generally used to trigger a callback function that is
+called when the button is pressed.  The various signals and how to use them
+are outlined below.</p>
+<p class="p">The <span class=" link"><a href="Gtk.Button.html" title="Gtk.Button">Gtk.Button</a></span> widget can hold any valid child widget.  That is, it can hold
+almost any other standard <span class=" link"><a href="Gtk.Widget.html" title="Gtk.Widget">Gtk.Widget</a></span>.  The most commonly used child is the
+<span class=" link"><a href="Gtk.Label.html" title="Gtk.Label">Gtk.Label</a></span>.</p>
+<div class="synopsis"><div class="inner">
+<div class="title title-synopsis"><h2><span class="title">Hierarchy</span></h2></div>
+<div class="region"><div class="contents"><div class="tree"><div class="inner"><div class="region"><ul class="tree"><li class="tree">
+<div>
+        <span class=" code">GObject.Object</span>
+      
+      </div>
+<ul class="tree"><li class="tree">
+<div>
+        <span class=" code">GObject.InitiallyUnowned</span>
+      
+      </div>
+<ul class="tree"><li class="tree">
+<div>
+        <span class=" code">Gtk.Widget</span>
+      
+      </div>
+<ul class="tree"><li class="tree">
+<div>
+        <span class=" code">Gtk.Container</span>
+      
+      </div>
+<ul class="tree"><li class="tree">
+<div>
+        <span class=" code">Gtk.Bin</span>
+      
+      </div>
+<ul class="tree"><li class="tree"><div>
+        <span class=" code">Gtk.Button</span>
+      </div></li></ul>
+</li></ul>
+</li></ul>
+</li></ul>
+</li></ul>
+</li></ul></div></div></div></div></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Methods</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.Button.clicked.html" title="Gtk.Button.prototype.clicked">Gtk.Button.prototype.clicked</a></li>
+<li class="links "><a href="Gtk.Button.enter.html" title="Gtk.Button.prototype.enter">Gtk.Button.prototype.enter</a></li>
+<li class="links "><a href="Gtk.Button.get_alignment.html" title="Gtk.Button.prototype.get_alignment">Gtk.Button.prototype.get_alignment</a></li>
+<li class="links "><a href="Gtk.Button.get_always_show_image.html" title="Gtk.Button.prototype.get_always_show_image">Gtk.Button.prototype.get_always_show_image</a></li>
+<li class="links "><a href="Gtk.Button.get_event_window.html" title="Gtk.Button.prototype.get_event_window">Gtk.Button.prototype.get_event_window</a></li>
+<li class="links "><a href="Gtk.Button.get_focus_on_click.html" title="Gtk.Button.prototype.get_focus_on_click">Gtk.Button.prototype.get_focus_on_click</a></li>
+<li class="links "><a href="Gtk.Button.get_image.html" title="Gtk.Button.prototype.get_image">Gtk.Button.prototype.get_image</a></li>
+<li class="links "><a href="Gtk.Button.get_image_position.html" title="Gtk.Button.prototype.get_image_position">Gtk.Button.prototype.get_image_position</a></li>
+<li class="links "><a href="Gtk.Button.get_label.html" title="Gtk.Button.prototype.get_label">Gtk.Button.prototype.get_label</a></li>
+<li class="links "><a href="Gtk.Button.get_relief.html" title="Gtk.Button.prototype.get_relief">Gtk.Button.prototype.get_relief</a></li>
+<li class="links "><a href="Gtk.Button.get_use_stock.html" title="Gtk.Button.prototype.get_use_stock">Gtk.Button.prototype.get_use_stock</a></li>
+<li class="links "><a href="Gtk.Button.get_use_underline.html" title="Gtk.Button.prototype.get_use_underline">Gtk.Button.prototype.get_use_underline</a></li>
+<li class="links "><a href="Gtk.Button.leave.html" title="Gtk.Button.prototype.leave">Gtk.Button.prototype.leave</a></li>
+<li class="links "><a href="Gtk.Button.pressed.html" title="Gtk.Button.prototype.pressed">Gtk.Button.prototype.pressed</a></li>
+<li class="links "><a href="Gtk.Button.released.html" title="Gtk.Button.prototype.released">Gtk.Button.prototype.released</a></li>
+<li class="links "><a href="Gtk.Button.set_alignment.html" title="Gtk.Button.prototype.set_alignment">Gtk.Button.prototype.set_alignment</a></li>
+<li class="links "><a href="Gtk.Button.set_always_show_image.html" title="Gtk.Button.prototype.set_always_show_image">Gtk.Button.prototype.set_always_show_image</a></li>
+<li class="links "><a href="Gtk.Button.set_focus_on_click.html" title="Gtk.Button.prototype.set_focus_on_click">Gtk.Button.prototype.set_focus_on_click</a></li>
+<li class="links "><a href="Gtk.Button.set_image.html" title="Gtk.Button.prototype.set_image">Gtk.Button.prototype.set_image</a></li>
+<li class="links "><a href="Gtk.Button.set_image_position.html" title="Gtk.Button.prototype.set_image_position">Gtk.Button.prototype.set_image_position</a></li>
+<li class="links "><a href="Gtk.Button.set_label.html" title="Gtk.Button.prototype.set_label">Gtk.Button.prototype.set_label</a></li>
+<li class="links "><a href="Gtk.Button.set_relief.html" title="Gtk.Button.prototype.set_relief">Gtk.Button.prototype.set_relief</a></li>
+<li class="links "><a href="Gtk.Button.set_use_stock.html" title="Gtk.Button.prototype.set_use_stock">Gtk.Button.prototype.set_use_stock</a></li>
+<li class="links "><a href="Gtk.Button.set_use_underline.html" title="Gtk.Button.prototype.set_use_underline">Gtk.Button.prototype.set_use_underline</a></li>
+</ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Properties</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.Button-always-show-image.html" title="Gtk.Button:always-show-image">always-show-image</a></li>
+<li class="links "><a href="Gtk.Button-focus-on-click.html" title="Gtk.Button:focus-on-click">focus-on-click</a></li>
+<li class="links "><a href="Gtk.Button-image.html" title="Gtk.Button:image">image</a></li>
+<li class="links "><a href="Gtk.Button-image-position.html" title="Gtk.Button:image-position">image-position</a></li>
+<li class="links "><a href="Gtk.Button-label.html" title="Gtk.Button:label">label</a></li>
+<li class="links "><a href="Gtk.Button-relief.html" title="Gtk.Button:relief">relief</a></li>
+<li class="links "><a href="Gtk.Button-use-stock.html" title="Gtk.Button:use-stock">use-stock</a></li>
+<li class="links "><a href="Gtk.Button-use-underline.html" title="Gtk.Button:use-underline">use-underline</a></li>
+<li class="links "><a href="Gtk.Button-xalign.html" title="Gtk.Button:xalign">xalign</a></li>
+<li class="links "><a href="Gtk.Button-yalign.html" title="Gtk.Button:yalign">yalign</a></li>
+</ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Signals</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.Button-activate.html" title="Gtk.Button::activate">activate</a></li>
+<li class="links "><a href="Gtk.Button-clicked.html" title="Gtk.Button::clicked">clicked</a></li>
+<li class="links "><a href="Gtk.Button-enter.html" title="Gtk.Button::enter">enter</a></li>
+<li class="links "><a href="Gtk.Button-leave.html" title="Gtk.Button::leave">leave</a></li>
+<li class="links "><a href="Gtk.Button-pressed.html" title="Gtk.Button::pressed">pressed</a></li>
+<li class="links "><a href="Gtk.Button-released.html" title="Gtk.Button::released">released</a></li>
+</ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Other</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.Button.new.html" title="Gtk.Button.new">Gtk.Button.new</a></li>
+<li class="links "><a href="Gtk.Button.new_from_stock.html" title="Gtk.Button.new_from_stock">Gtk.Button.new_from_stock</a></li>
+<li class="links "><a href="Gtk.Button.new_with_label.html" title="Gtk.Button.new_with_label">Gtk.Button.new_with_label</a></li>
+<li class="links "><a href="Gtk.Button.new_with_mnemonic.html" title="Gtk.Button.new_with_mnemonic">Gtk.Button.new_with_mnemonic</a></li>
+</ul></div>
+</div></div>
+</div>
+<div class="sect sect-links" role="navigation">
+<div class="hgroup"></div>
+<div class="contents"><div class="links guidelinks"><div class="inner">
+<div class="title"><h2><span class="title">More Information</span></h2></div>
+<div class="region"><ul><li class="links "><a href="index.html" title="Index">Index</a></li></ul></div>
+</div></div></div>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="footer"></div>
+</div></body>
+</html>

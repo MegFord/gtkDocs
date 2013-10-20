@@ -1,0 +1,49 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>cairo_transform_to_window</title>
+<link rel="stylesheet" type="text/css" href="C.css">
+<script type="text/javascript" src="jquery.js"></script><script type="text/javascript" src="jquery.syntax.js"></script><script type="text/javascript" src="yelp.js"></script>
+</head>
+<body><div class="page" role="main">
+<div class="header"><div class="trails" role="navigation"><div class="trail">
+<a class="trail" href="index.html" title="Index">Index</a> » </div></div></div>
+<div class="body">
+<div class="hgroup"><h1 class="title"><span class="title">cairo_transform_to_window</span></h1></div>
+<div class="region">
+<div class="contents">
+<div class="synopsis"><div class="inner"><div class="region"><div class="contents"><div class="code"><pre class="contents ">function cairo_transform_to_window(cr:cairo.Context, widget:Gtk.Widget, window:Gdk.Window):void {
+    // Gjs wrapper for gtk_cairo_transform_to_window()
+}</pre></div></div></div></div></div>
+<p class="p">Transforms the given cairo context <span class=" code">cr</span> that from <span class=" code">widget</span>-relative
+coordinates to <span class=" code">window</span>-relative coordinates.
+If the <span class=" code">widget</span>'s window is not an ancestor of <span class=" code">window</span>, no
+modification will be applied.</p>
+<p class="p">This is the inverse to the transformation GTK applies when
+preparing an expose event to be emitted with the <span class=" link"><a href="Gtk.Widget-draw.html" title="Gtk.Widget::draw">Gtk.Widget::draw</a></span>
+signal. It is intended to help porting multiwindow widgets from
+GTK+ 2 to the rendering architecture of GTK+ 3.</p>
+<p class="p">Since 3.0</p>
+<div class="terms"><div class="inner"><div class="region"><dl class="terms">
+<dt class="terms"><span class=" code">cr</span></dt>
+<dd class="terms"><p class="p">the cairo context to transform</p></dd>
+<dt class="terms"><span class=" code">widget</span></dt>
+<dd class="terms"><p class="p">the widget the context is currently centered for</p></dd>
+<dt class="terms"><span class=" code">window</span></dt>
+<dd class="terms"><p class="p">the window to transform the context to</p></dd>
+</dl></div></div></div>
+</div>
+<div class="sect sect-links" role="navigation">
+<div class="hgroup"></div>
+<div class="contents"><div class="links guidelinks"><div class="inner">
+<div class="title"><h2><span class="title">More Information</span></h2></div>
+<div class="region"><ul><li class="links "><a href="index.html" title="Index">Index</a></li></ul></div>
+</div></div></div>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="footer"></div>
+</div></body>
+</html>

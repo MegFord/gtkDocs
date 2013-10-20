@@ -1,0 +1,45 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Gtk.CellAreaContext.prototype.get_area</title>
+<link rel="stylesheet" type="text/css" href="C.css">
+<script type="text/javascript" src="jquery.js"></script><script type="text/javascript" src="jquery.syntax.js"></script><script type="text/javascript" src="yelp.js"></script>
+</head>
+<body><div class="page" role="main">
+<div class="header"><div class="trails" role="navigation"><div class="trail">
+<a class="trail" href="index.html" title="Index">Index</a> » <a class="trail" href="Gtk.CellAreaContext.html" title="Gtk.CellAreaContext">Gtk.CellAreaContext</a> » </div></div></div>
+<div class="body">
+<div class="hgroup"><h1 class="title"><span class="title">Gtk.CellAreaContext.prototype.get_area</span></h1></div>
+<div class="region">
+<div class="contents">
+<div class="synopsis"><div class="inner"><div class="region"><div class="contents"><div class="code"><pre class="contents ">function get_area():Gtk.CellArea {
+    // Gjs wrapper for gtk_cell_area_context_get_area()
+}</pre></div></div></div></div></div>
+<p class="p">Fetches the <span class=" link"><a href="Gtk.CellArea.html" title="Gtk.CellArea">Gtk.CellArea</a></span> this <span class=" code">context</span> was created by.</p>
+<p class="p">This is generally unneeded by layouting widgets; however,
+it is important for the context implementation itself to
+fetch information about the area it is being used for.</p>
+<p class="p">For instance at <span class=" link"><a href="Gtk.CellAreaContextClass.html" title="Gtk.CellAreaContextClass">Gtk.CellAreaContextClass</a></span>.allocate() time
+it's important to know details about any cell spacing
+that the <span class=" link"><a href="Gtk.CellArea.html" title="Gtk.CellArea">Gtk.CellArea</a></span> is configured with in order to
+compute a proper allocation.</p>
+<p class="p">Since 3.0</p>
+<div class="terms"><div class="inner"><div class="region"><dl class="terms">
+<dt class="terms"><span class=" code">Returns</span></dt>
+<dd class="terms"><p class="p">the <span class=" link"><a href="Gtk.CellArea.html" title="Gtk.CellArea">Gtk.CellArea</a></span> this context was created by.</p></dd>
+</dl></div></div></div>
+</div>
+<div class="sect sect-links" role="navigation">
+<div class="hgroup"></div>
+<div class="contents"><div class="links guidelinks"><div class="inner">
+<div class="title"><h2><span class="title">More Information</span></h2></div>
+<div class="region"><ul><li class="links "><a href="Gtk.CellAreaContext.html" title="Gtk.CellAreaContext">Gtk.CellAreaContext</a></li></ul></div>
+</div></div></div>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="footer"></div>
+</div></body>
+</html>

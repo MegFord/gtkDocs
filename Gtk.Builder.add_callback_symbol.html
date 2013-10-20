@@ -1,0 +1,44 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Gtk.Builder.prototype.add_callback_symbol</title>
+<link rel="stylesheet" type="text/css" href="C.css">
+<script type="text/javascript" src="jquery.js"></script><script type="text/javascript" src="jquery.syntax.js"></script><script type="text/javascript" src="yelp.js"></script>
+</head>
+<body><div class="page" role="main">
+<div class="header"><div class="trails" role="navigation"><div class="trail">
+<a class="trail" href="index.html" title="Index">Index</a> » <a class="trail" href="Gtk.Builder.html" title="Gtk.Builder">Gtk.Builder</a> » </div></div></div>
+<div class="body">
+<div class="hgroup"><h1 class="title"><span class="title">Gtk.Builder.prototype.add_callback_symbol</span></h1></div>
+<div class="region">
+<div class="contents">
+<div class="synopsis"><div class="inner"><div class="region"><div class="contents"><div class="code"><pre class="contents ">function add_callback_symbol(callback_name:String, callback_symbol:GObject.Callback):void {
+    // Gjs wrapper for gtk_builder_add_callback_symbol()
+}</pre></div></div></div></div></div>
+<p class="p">Adds the <span class=" code">callback_symbol</span> to the scope of <span class=" code">builder</span> under the given <span class=" code">callback_name</span>.</p>
+<p class="p">Using this function overrides the behavior of <span class=" link"><a href="Gtk.connect_signals.html" title="Gtk.connect_signals">Gtk.connect_signals</a></span>
+for any callback symbols that are added. Using this method allows for better
+encapsulation as it does not require that callback symbols be declared in
+the global namespace.</p>
+<p class="p">Since 3.10</p>
+<div class="terms"><div class="inner"><div class="region"><dl class="terms">
+<dt class="terms"><span class=" code">callback_name</span></dt>
+<dd class="terms"><p class="p">The name of the callback, as expected in the XML</p></dd>
+<dt class="terms"><span class=" code">callback_symbol</span></dt>
+<dd class="terms"><p class="p">The callback pointer</p></dd>
+</dl></div></div></div>
+</div>
+<div class="sect sect-links" role="navigation">
+<div class="hgroup"></div>
+<div class="contents"><div class="links guidelinks"><div class="inner">
+<div class="title"><h2><span class="title">More Information</span></h2></div>
+<div class="region"><ul><li class="links "><a href="Gtk.Builder.html" title="Gtk.Builder">Gtk.Builder</a></li></ul></div>
+</div></div></div>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="footer"></div>
+</div></body>
+</html>

@@ -1,0 +1,120 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Gtk.Alignment</title>
+<link rel="stylesheet" type="text/css" href="C.css">
+<script type="text/javascript" src="jquery.js"></script><script type="text/javascript" src="jquery.syntax.js"></script><script type="text/javascript" src="yelp.js"></script>
+</head>
+<body><div class="page" role="main">
+<div class="header"><div class="trails" role="navigation"><div class="trail">
+<a class="trail" href="index.html" title="Index">Index</a> » </div></div></div>
+<div class="body">
+<div class="hgroup"><h1 class="title"><span class="title">Gtk.Alignment</span></h1></div>
+<div class="region">
+<div class="contents">
+<div class="synopsis"><div class="inner"><div class="region"><div class="contents"><div class="code"><pre class="contents ">const Gtk = imports.gi.Gtk;
+
+let alignment = new Gtk.Alignment({
+    <span class=" link"><a href="Gtk.Alignment-bottom-padding.html" title="Gtk.Alignment:bottom-padding">bottom_padding</a></span>: value,
+    <span class=" link"><a href="Gtk.Alignment-left-padding.html" title="Gtk.Alignment:left-padding">left_padding</a></span>: value,
+    <span class=" link"><a href="Gtk.Alignment-right-padding.html" title="Gtk.Alignment:right-padding">right_padding</a></span>: value,
+    <span class=" link"><a href="Gtk.Alignment-top-padding.html" title="Gtk.Alignment:top-padding">top_padding</a></span>: value,
+    <span class=" link"><a href="Gtk.Alignment-xalign.html" title="Gtk.Alignment:xalign">xalign</a></span>: value,
+    <span class=" link"><a href="Gtk.Alignment-xscale.html" title="Gtk.Alignment:xscale">xscale</a></span>: value,
+    <span class=" link"><a href="Gtk.Alignment-yalign.html" title="Gtk.Alignment:yalign">yalign</a></span>: value,
+    <span class=" link"><a href="Gtk.Alignment-yscale.html" title="Gtk.Alignment:yscale">yscale</a></span>: value,
+});
+  </pre></div></div></div></div></div>
+<p class="p">The <span class=" link"><a href="Gtk.Alignment.html" title="Gtk.Alignment">Gtk.Alignment</a></span> widget controls the alignment and size of its child widget.
+It has four settings: xscale, yscale, xalign, and yalign.</p>
+<p class="p">The scale settings are used to specify how much the child widget should
+expand to fill the space allocated to the <span class=" link"><a href="Gtk.Alignment.html" title="Gtk.Alignment">Gtk.Alignment</a></span>.
+The values can range from 0 (meaning the child doesn't expand at all) to
+1 (meaning the child expands to fill all of the available space).</p>
+<p class="p">The align settings are used to place the child widget within the available
+area. The values range from 0 (top or left) to 1 (bottom or right).
+Of course, if the scale settings are both set to 1, the alignment settings
+have no effect.</p>
+<p class="p">&lt;note&gt;
+&lt;para&gt;
+Note that the desired effect can in most cases be achieved by using the
+<span class=" link"><a href="Gtk.halign.html" title="Gtk.halign">Gtk.halign</a></span>, <span class=" link"><a href="Gtk.valign.html" title="Gtk.valign">Gtk.valign</a></span> and <span class=" link"><a href="Gtk.margin.html" title="Gtk.margin">Gtk.margin</a></span> properties
+on the child widget, so <span class=" link"><a href="Gtk.Alignment.html" title="Gtk.Alignment">Gtk.Alignment</a></span> should not be used in new code.
+&lt;/para&gt;
+&lt;/note&gt;</p>
+<div class="synopsis"><div class="inner">
+<div class="title title-synopsis"><h2><span class="title">Hierarchy</span></h2></div>
+<div class="region"><div class="contents"><div class="tree"><div class="inner"><div class="region"><ul class="tree"><li class="tree">
+<div>
+        <span class=" code">GObject.Object</span>
+      
+      </div>
+<ul class="tree"><li class="tree">
+<div>
+        <span class=" code">GObject.InitiallyUnowned</span>
+      
+      </div>
+<ul class="tree"><li class="tree">
+<div>
+        <span class=" code">Gtk.Widget</span>
+      
+      </div>
+<ul class="tree"><li class="tree">
+<div>
+        <span class=" code">Gtk.Container</span>
+      
+      </div>
+<ul class="tree"><li class="tree">
+<div>
+        <span class=" code">Gtk.Bin</span>
+      
+      </div>
+<ul class="tree"><li class="tree"><div>
+        <span class=" code">Gtk.Alignment</span>
+      </div></li></ul>
+</li></ul>
+</li></ul>
+</li></ul>
+</li></ul>
+</li></ul></div></div></div></div></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Methods</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.Alignment.get_padding.html" title="Gtk.Alignment.prototype.get_padding">Gtk.Alignment.prototype.get_padding</a></li>
+<li class="links "><a href="Gtk.Alignment.set.html" title="Gtk.Alignment.prototype.set">Gtk.Alignment.prototype.set</a></li>
+<li class="links "><a href="Gtk.Alignment.set_padding.html" title="Gtk.Alignment.prototype.set_padding">Gtk.Alignment.prototype.set_padding</a></li>
+</ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Properties</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.Alignment-bottom-padding.html" title="Gtk.Alignment:bottom-padding">bottom-padding</a></li>
+<li class="links "><a href="Gtk.Alignment-left-padding.html" title="Gtk.Alignment:left-padding">left-padding</a></li>
+<li class="links "><a href="Gtk.Alignment-right-padding.html" title="Gtk.Alignment:right-padding">right-padding</a></li>
+<li class="links "><a href="Gtk.Alignment-top-padding.html" title="Gtk.Alignment:top-padding">top-padding</a></li>
+<li class="links "><a href="Gtk.Alignment-xalign.html" title="Gtk.Alignment:xalign">xalign</a></li>
+<li class="links "><a href="Gtk.Alignment-xscale.html" title="Gtk.Alignment:xscale">xscale</a></li>
+<li class="links "><a href="Gtk.Alignment-yalign.html" title="Gtk.Alignment:yalign">yalign</a></li>
+<li class="links "><a href="Gtk.Alignment-yscale.html" title="Gtk.Alignment:yscale">yscale</a></li>
+</ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Other</span></h2></div>
+<div class="region"><ul><li class="links "><a href="Gtk.Alignment.new.html" title="Gtk.Alignment.new">Gtk.Alignment.new</a></li></ul></div>
+</div></div>
+</div>
+<div class="sect sect-links" role="navigation">
+<div class="hgroup"></div>
+<div class="contents"><div class="links guidelinks"><div class="inner">
+<div class="title"><h2><span class="title">More Information</span></h2></div>
+<div class="region"><ul><li class="links "><a href="index.html" title="Index">Index</a></li></ul></div>
+</div></div></div>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="footer"></div>
+</div></body>
+</html>

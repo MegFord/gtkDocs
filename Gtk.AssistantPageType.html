@@ -1,0 +1,50 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Gtk.AssistantPageType</title>
+<link rel="stylesheet" type="text/css" href="C.css">
+<script type="text/javascript" src="jquery.js"></script><script type="text/javascript" src="jquery.syntax.js"></script><script type="text/javascript" src="yelp.js"></script>
+</head>
+<body><div class="page" role="main">
+<div class="header"><div class="trails" role="navigation"><div class="trail">
+<a class="trail" href="index.html" title="Index">Index</a> » </div></div></div>
+<div class="body">
+<div class="hgroup"><h1 class="title"><span class="title">Gtk.AssistantPageType</span></h1></div>
+<div class="region">
+<div class="contents">
+<p class="p">An enum for determining the page role inside the <span class=" link"><a href="Gtk.Assistant.html" title="Gtk.Assistant">Gtk.Assistant</a></span>. It's
+used to handle buttons sensitivity and visibility.</p>
+<p class="p">Note that an assistant needs to end its page flow with a page of type
+<span class=" link"><a href="Gtk.AssistantPageType.html" title="Gtk.AssistantPageType">Gtk.AssistantPageType</a></span>.confirm, <span class=" link"><a href="Gtk.AssistantPageType.html" title="Gtk.AssistantPageType">Gtk.AssistantPageType</a></span>.summary or
+<span class=" link"><a href="Gtk.AssistantPageType.html" title="Gtk.AssistantPageType">Gtk.AssistantPageType</a></span>.progress to be correct.</p>
+<p class="p">The Cancel button will only be shown if the page isn't "committed".
+See <span class=" link"><a href="Gtk.Assistant.commit.html" title="Gtk.Assistant.prototype.commit">Gtk.Assistant.prototype.commit</a></span> for details.</p>
+<div class="terms"><div class="inner"><div class="region"><dl class="terms">
+<dt class="terms"><span class=" code">AssistantPageType.CONTENT</span></dt>
+<dd class="terms"><p class="p">The page has regular contents. Both the Back and forward buttons will be shown.</p></dd>
+<dt class="terms"><span class=" code">AssistantPageType.INTRO</span></dt>
+<dd class="terms"><p class="p">The page contains an introduction to the assistant task. Only the Forward button will be shown if there is a next page.</p></dd>
+<dt class="terms"><span class=" code">AssistantPageType.CONFIRM</span></dt>
+<dd class="terms"><p class="p">The page lets the user confirm or deny the changes. The Back and Apply buttons will be shown.</p></dd>
+<dt class="terms"><span class=" code">AssistantPageType.SUMMARY</span></dt>
+<dd class="terms"><p class="p">The page informs the user of the changes done. Only the Close button will be shown.</p></dd>
+<dt class="terms"><span class=" code">AssistantPageType.PROGRESS</span></dt>
+<dd class="terms"><p class="p">Used for tasks that take a long time to complete, blocks the assistant until the page is marked as complete. Only the back button will be shown.</p></dd>
+<dt class="terms"><span class=" code">AssistantPageType.CUSTOM</span></dt>
+<dd class="terms"><p class="p">Used for when other page types are not appropriate. No buttons will be shown, and the application must add its own buttons through <span class=" link"><a href="Gtk.Assistant.add_action_widget.html" title="Gtk.Assistant.prototype.add_action_widget">Gtk.Assistant.prototype.add_action_widget</a></span>.</p></dd>
+</dl></div></div></div>
+</div>
+<div class="sect sect-links" role="navigation">
+<div class="hgroup"></div>
+<div class="contents"><div class="links guidelinks"><div class="inner">
+<div class="title"><h2><span class="title">More Information</span></h2></div>
+<div class="region"><ul><li class="links "><a href="index.html" title="Index">Index</a></li></ul></div>
+</div></div></div>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="footer"></div>
+</div></body>
+</html>

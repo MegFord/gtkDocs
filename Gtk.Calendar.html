@@ -1,0 +1,145 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Gtk.Calendar</title>
+<link rel="stylesheet" type="text/css" href="C.css">
+<script type="text/javascript" src="jquery.js"></script><script type="text/javascript" src="jquery.syntax.js"></script><script type="text/javascript" src="yelp.js"></script>
+</head>
+<body><div class="page" role="main">
+<div class="header"><div class="trails" role="navigation"><div class="trail">
+<a class="trail" href="index.html" title="Index">Index</a> » </div></div></div>
+<div class="body">
+<div class="hgroup"><h1 class="title"><span class="title">Gtk.Calendar</span></h1></div>
+<div class="region">
+<div class="contents">
+<div class="synopsis"><div class="inner"><div class="region"><div class="contents"><div class="code"><pre class="contents ">const Gtk = imports.gi.Gtk;
+
+let calendar = new Gtk.Calendar({
+    <span class=" link"><a href="Gtk.Calendar-day.html" title="Gtk.Calendar:day">day</a></span>: value,
+    <span class=" link"><a href="Gtk.Calendar-detail-height-rows.html" title="Gtk.Calendar:detail-height-rows">detail_height_rows</a></span>: value,
+    <span class=" link"><a href="Gtk.Calendar-detail-width-chars.html" title="Gtk.Calendar:detail-width-chars">detail_width_chars</a></span>: value,
+    <span class=" link"><a href="Gtk.Calendar-month.html" title="Gtk.Calendar:month">month</a></span>: value,
+    <span class=" link"><a href="Gtk.Calendar-no-month-change.html" title="Gtk.Calendar:no-month-change">no_month_change</a></span>: value,
+    <span class=" link"><a href="Gtk.Calendar-show-day-names.html" title="Gtk.Calendar:show-day-names">show_day_names</a></span>: value,
+    <span class=" link"><a href="Gtk.Calendar-show-details.html" title="Gtk.Calendar:show-details">show_details</a></span>: value,
+    <span class=" link"><a href="Gtk.Calendar-show-heading.html" title="Gtk.Calendar:show-heading">show_heading</a></span>: value,
+    <span class=" link"><a href="Gtk.Calendar-show-week-numbers.html" title="Gtk.Calendar:show-week-numbers">show_week_numbers</a></span>: value,
+    <span class=" link"><a href="Gtk.Calendar-year.html" title="Gtk.Calendar:year">year</a></span>: value,
+});
+  </pre></div></div></div></div></div>
+<p class="p"><span class=" link"><a href="Gtk.Calendar.html" title="Gtk.Calendar">Gtk.Calendar</a></span> is a widget that displays a Gregorian calendar, one month
+at a time. It can be created with <span class=" link"><a href="Gtk.new.html" title="Gtk.new">Gtk.new</a></span>.</p>
+<p class="p">The month and year currently displayed can be altered with
+<span class=" link"><a href="Gtk.select_month.html" title="Gtk.select_month">Gtk.select_month</a></span>. The exact day can be selected from the
+displayed month using <span class=" link"><a href="Gtk.select_day.html" title="Gtk.select_day">Gtk.select_day</a></span>.</p>
+<p class="p">To place a visual marker on a particular day, use <span class=" link"><a href="Gtk.mark_day.html" title="Gtk.mark_day">Gtk.mark_day</a></span>
+and to remove the marker, <span class=" link"><a href="Gtk.unmark_day.html" title="Gtk.unmark_day">Gtk.unmark_day</a></span>. Alternative, all
+marks can be cleared with <span class=" link"><a href="Gtk.clear_marks.html" title="Gtk.clear_marks">Gtk.clear_marks</a></span>.</p>
+<p class="p">The way in which the calendar itself is displayed can be altered using
+<span class=" link"><a href="Gtk.set_display_options.html" title="Gtk.set_display_options">Gtk.set_display_options</a></span>.</p>
+<p class="p">The selected date can be retrieved from a <span class=" link"><a href="Gtk.Calendar.html" title="Gtk.Calendar">Gtk.Calendar</a></span> using
+<span class=" link"><a href="Gtk.get_date.html" title="Gtk.get_date">Gtk.get_date</a></span>.</p>
+<p class="p">Users should be aware that, although the Gregorian calendar is the legal
+calendar in most countries, it was adopted progressively between 1582 and
+1929. Display before these dates is likely to be historically incorrect.</p>
+<div class="synopsis"><div class="inner">
+<div class="title title-synopsis"><h2><span class="title">Hierarchy</span></h2></div>
+<div class="region"><div class="contents"><div class="tree"><div class="inner"><div class="region"><ul class="tree"><li class="tree">
+<div>
+        <span class=" code">GObject.Object</span>
+      
+      </div>
+<ul class="tree"><li class="tree">
+<div>
+        <span class=" code">GObject.InitiallyUnowned</span>
+      
+      </div>
+<ul class="tree"><li class="tree">
+<div>
+        <span class=" code">Gtk.Widget</span>
+      
+      </div>
+<ul class="tree"><li class="tree"><div>
+        <span class=" code">Gtk.Calendar</span>
+      </div></li></ul>
+</li></ul>
+</li></ul>
+</li></ul></div></div></div></div></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Methods</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.Calendar.clear_marks.html" title="Gtk.Calendar.prototype.clear_marks">Gtk.Calendar.prototype.clear_marks</a></li>
+<li class="links "><a href="Gtk.Calendar.get_date.html" title="Gtk.Calendar.prototype.get_date">Gtk.Calendar.prototype.get_date</a></li>
+<li class="links "><a href="Gtk.Calendar.get_day_is_marked.html" title="Gtk.Calendar.prototype.get_day_is_marked">Gtk.Calendar.prototype.get_day_is_marked</a></li>
+<li class="links "><a href="Gtk.Calendar.get_detail_height_rows.html" title="Gtk.Calendar.prototype.get_detail_height_rows">Gtk.Calendar.prototype.get_detail_height_rows</a></li>
+<li class="links "><a href="Gtk.Calendar.get_detail_width_chars.html" title="Gtk.Calendar.prototype.get_detail_width_chars">Gtk.Calendar.prototype.get_detail_width_chars</a></li>
+<li class="links "><a href="Gtk.Calendar.get_display_options.html" title="Gtk.Calendar.prototype.get_display_options">Gtk.Calendar.prototype.get_display_options</a></li>
+<li class="links "><a href="Gtk.Calendar.mark_day.html" title="Gtk.Calendar.prototype.mark_day">Gtk.Calendar.prototype.mark_day</a></li>
+<li class="links "><a href="Gtk.Calendar.select_day.html" title="Gtk.Calendar.prototype.select_day">Gtk.Calendar.prototype.select_day</a></li>
+<li class="links "><a href="Gtk.Calendar.select_month.html" title="Gtk.Calendar.prototype.select_month">Gtk.Calendar.prototype.select_month</a></li>
+<li class="links "><a href="Gtk.Calendar.set_detail_func.html" title="Gtk.Calendar.prototype.set_detail_func">Gtk.Calendar.prototype.set_detail_func</a></li>
+<li class="links "><a href="Gtk.Calendar.set_detail_height_rows.html" title="Gtk.Calendar.prototype.set_detail_height_rows">Gtk.Calendar.prototype.set_detail_height_rows</a></li>
+<li class="links "><a href="Gtk.Calendar.set_detail_width_chars.html" title="Gtk.Calendar.prototype.set_detail_width_chars">Gtk.Calendar.prototype.set_detail_width_chars</a></li>
+<li class="links "><a href="Gtk.Calendar.set_display_options.html" title="Gtk.Calendar.prototype.set_display_options">Gtk.Calendar.prototype.set_display_options</a></li>
+<li class="links "><a href="Gtk.Calendar.unmark_day.html" title="Gtk.Calendar.prototype.unmark_day">Gtk.Calendar.prototype.unmark_day</a></li>
+</ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Properties</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.Calendar-day.html" title="Gtk.Calendar:day">day</a></li>
+<li class="links "><a href="Gtk.Calendar-detail-height-rows.html" title="Gtk.Calendar:detail-height-rows">detail-height-rows</a></li>
+<li class="links "><a href="Gtk.Calendar-detail-width-chars.html" title="Gtk.Calendar:detail-width-chars">detail-width-chars</a></li>
+<li class="links "><a href="Gtk.Calendar-month.html" title="Gtk.Calendar:month">month</a></li>
+<li class="links "><a href="Gtk.Calendar-no-month-change.html" title="Gtk.Calendar:no-month-change">no-month-change</a></li>
+<li class="links "><a href="Gtk.Calendar-show-day-names.html" title="Gtk.Calendar:show-day-names">show-day-names</a></li>
+<li class="links "><a href="Gtk.Calendar-show-details.html" title="Gtk.Calendar:show-details">show-details</a></li>
+<li class="links "><a href="Gtk.Calendar-show-heading.html" title="Gtk.Calendar:show-heading">show-heading</a></li>
+<li class="links "><a href="Gtk.Calendar-show-week-numbers.html" title="Gtk.Calendar:show-week-numbers">show-week-numbers</a></li>
+<li class="links "><a href="Gtk.Calendar-year.html" title="Gtk.Calendar:year">year</a></li>
+</ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Signals</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.Calendar-day-selected.html" title="Gtk.Calendar::day-selected">day-selected</a></li>
+<li class="links "><a href="Gtk.Calendar-day-selected-double-click.html" title="Gtk.Calendar::day-selected-double-click">day-selected-double-click</a></li>
+<li class="links "><a href="Gtk.Calendar-month-changed.html" title="Gtk.Calendar::month-changed">month-changed</a></li>
+<li class="links "><a href="Gtk.Calendar-next-month.html" title="Gtk.Calendar::next-month">next-month</a></li>
+<li class="links "><a href="Gtk.Calendar-next-year.html" title="Gtk.Calendar::next-year">next-year</a></li>
+<li class="links "><a href="Gtk.Calendar-prev-month.html" title="Gtk.Calendar::prev-month">prev-month</a></li>
+<li class="links "><a href="Gtk.Calendar-prev-year.html" title="Gtk.Calendar::prev-year">prev-year</a></li>
+</ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Virtual functions</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.Calendar-day_selected.html" title="Gtk.Calendar::day_selected">Gtk.Calendar::day_selected</a></li>
+<li class="links "><a href="Gtk.Calendar-day_selected_double_click.html" title="Gtk.Calendar::day_selected_double_click">Gtk.Calendar::day_selected_double_click</a></li>
+<li class="links "><a href="Gtk.Calendar-month_changed.html" title="Gtk.Calendar::month_changed">Gtk.Calendar::month_changed</a></li>
+<li class="links "><a href="Gtk.Calendar-next_month.html" title="Gtk.Calendar::next_month">Gtk.Calendar::next_month</a></li>
+<li class="links "><a href="Gtk.Calendar-next_year.html" title="Gtk.Calendar::next_year">Gtk.Calendar::next_year</a></li>
+<li class="links "><a href="Gtk.Calendar-prev_month.html" title="Gtk.Calendar::prev_month">Gtk.Calendar::prev_month</a></li>
+<li class="links "><a href="Gtk.Calendar-prev_year.html" title="Gtk.Calendar::prev_year">Gtk.Calendar::prev_year</a></li>
+</ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Other</span></h2></div>
+<div class="region"><ul><li class="links "><a href="Gtk.Calendar.new.html" title="Gtk.Calendar.new">Gtk.Calendar.new</a></li></ul></div>
+</div></div>
+</div>
+<div class="sect sect-links" role="navigation">
+<div class="hgroup"></div>
+<div class="contents"><div class="links guidelinks"><div class="inner">
+<div class="title"><h2><span class="title">More Information</span></h2></div>
+<div class="region"><ul><li class="links "><a href="index.html" title="Index">Index</a></li></ul></div>
+</div></div></div>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="footer"></div>
+</div></body>
+</html>

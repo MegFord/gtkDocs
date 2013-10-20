@@ -1,0 +1,51 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Gtk.Container.prototype.propagate_draw</title>
+<link rel="stylesheet" type="text/css" href="C.css">
+<script type="text/javascript" src="jquery.js"></script><script type="text/javascript" src="jquery.syntax.js"></script><script type="text/javascript" src="yelp.js"></script>
+</head>
+<body><div class="page" role="main">
+<div class="header"><div class="trails" role="navigation"><div class="trail">
+<a class="trail" href="index.html" title="Index">Index</a> » <a class="trail" href="Gtk.Container.html" title="Gtk.Container">Gtk.Container</a> » </div></div></div>
+<div class="body">
+<div class="hgroup"><h1 class="title"><span class="title">Gtk.Container.prototype.propagate_draw</span></h1></div>
+<div class="region">
+<div class="contents">
+<div class="synopsis"><div class="inner"><div class="region"><div class="contents"><div class="code"><pre class="contents ">function propagate_draw(child:Gtk.Widget, cr:cairo.Context):void {
+    // Gjs wrapper for gtk_container_propagate_draw()
+}</pre></div></div></div></div></div>
+<p class="p">When a container receives a call to the draw function, it must send
+synthetic <span class=" link"><a href="Gtk.draw.html" title="Gtk.draw">Gtk.draw</a></span> calls to all children that don't have their
+own #GdkWindows. This function provides a convenient way of doing this.
+A container, when it receives a call to its <span class=" link"><a href="Gtk.draw.html" title="Gtk.draw">Gtk.draw</a></span> function,
+calls <span class=" link"><a href="Gtk.Container.propagate_draw.html" title="Gtk.Container.prototype.propagate_draw">Gtk.Container.prototype.propagate_draw</a></span> once for each child, passing in
+the <span class=" code">cr</span> the container received.</p>
+<p class="p"><span class=" link"><a href="Gtk.Container.propagate_draw.html" title="Gtk.Container.prototype.propagate_draw">Gtk.Container.prototype.propagate_draw</a></span> takes care of translating the origin of <span class=" code">cr</span>,
+and deciding whether the draw needs to be sent to the child. It is a
+convenient and optimized way of getting the same effect as calling
+<span class=" link"><a href="Gtk.draw.html" title="Gtk.draw">Gtk.draw</a></span> on the child directly.</p>
+<p class="p">In most cases, a container can simply either inherit the
+<span class=" link"><a href="Gtk.draw.html" title="Gtk.draw">Gtk.draw</a></span> implementation from <span class=" link"><a href="Gtk.Container.html" title="Gtk.Container">Gtk.Container</a></span>, or do some drawing
+and then chain to the ::draw implementation from <span class=" link"><a href="Gtk.Container.html" title="Gtk.Container">Gtk.Container</a></span>.</p>
+<div class="terms"><div class="inner"><div class="region"><dl class="terms">
+<dt class="terms"><span class=" code">child</span></dt>
+<dd class="terms"><p class="p">a child of <span class=" code">container</span></p></dd>
+<dt class="terms"><span class=" code">cr</span></dt>
+<dd class="terms"><p class="p">Cairo context as passed to the container. If you want to use <span class=" code">cr</span> in container's draw function, consider using cairo_save() and cairo_restore() before calling this function.</p></dd>
+</dl></div></div></div>
+</div>
+<div class="sect sect-links" role="navigation">
+<div class="hgroup"></div>
+<div class="contents"><div class="links guidelinks"><div class="inner">
+<div class="title"><h2><span class="title">More Information</span></h2></div>
+<div class="region"><ul><li class="links "><a href="Gtk.Container.html" title="Gtk.Container">Gtk.Container</a></li></ul></div>
+</div></div></div>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="footer"></div>
+</div></body>
+</html>

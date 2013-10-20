@@ -1,0 +1,193 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Gtk.AboutDialog</title>
+<link rel="stylesheet" type="text/css" href="C.css">
+<script type="text/javascript" src="jquery.js"></script><script type="text/javascript" src="jquery.syntax.js"></script><script type="text/javascript" src="yelp.js"></script>
+</head>
+<body><div class="page" role="main">
+<div class="header"><div class="trails" role="navigation"><div class="trail">
+<a class="trail" href="index.html" title="Index">Index</a> » </div></div></div>
+<div class="body">
+<div class="hgroup"><h1 class="title"><span class="title">Gtk.AboutDialog</span></h1></div>
+<div class="region">
+<div class="contents">
+<div class="synopsis"><div class="inner"><div class="region"><div class="contents"><div class="code"><pre class="contents ">const Gtk = imports.gi.Gtk;
+
+let about_dialog = new Gtk.AboutDialog({
+    <span class=" link"><a href="Gtk.AboutDialog-artists.html" title="Gtk.AboutDialog:artists">artists</a></span>: value,
+    <span class=" link"><a href="Gtk.AboutDialog-authors.html" title="Gtk.AboutDialog:authors">authors</a></span>: value,
+    <span class=" link"><a href="Gtk.AboutDialog-comments.html" title="Gtk.AboutDialog:comments">comments</a></span>: value,
+    <span class=" link"><a href="Gtk.AboutDialog-copyright.html" title="Gtk.AboutDialog:copyright">copyright</a></span>: value,
+    <span class=" link"><a href="Gtk.AboutDialog-documenters.html" title="Gtk.AboutDialog:documenters">documenters</a></span>: value,
+    <span class=" link"><a href="Gtk.AboutDialog-license.html" title="Gtk.AboutDialog:license">license</a></span>: value,
+    <span class=" link"><a href="Gtk.AboutDialog-license-type.html" title="Gtk.AboutDialog:license-type">license_type</a></span>: value,
+    <span class=" link"><a href="Gtk.AboutDialog-logo.html" title="Gtk.AboutDialog:logo">logo</a></span>: value,
+    <span class=" link"><a href="Gtk.AboutDialog-logo-icon-name.html" title="Gtk.AboutDialog:logo-icon-name">logo_icon_name</a></span>: value,
+    <span class=" link"><a href="Gtk.AboutDialog-program-name.html" title="Gtk.AboutDialog:program-name">program_name</a></span>: value,
+    <span class=" link"><a href="Gtk.AboutDialog-translator-credits.html" title="Gtk.AboutDialog:translator-credits">translator_credits</a></span>: value,
+    <span class=" link"><a href="Gtk.AboutDialog-version.html" title="Gtk.AboutDialog:version">version</a></span>: value,
+    <span class=" link"><a href="Gtk.AboutDialog-website.html" title="Gtk.AboutDialog:website">website</a></span>: value,
+    <span class=" link"><a href="Gtk.AboutDialog-website-label.html" title="Gtk.AboutDialog:website-label">website_label</a></span>: value,
+    <span class=" link"><a href="Gtk.AboutDialog-wrap-license.html" title="Gtk.AboutDialog:wrap-license">wrap_license</a></span>: value,
+});
+  </pre></div></div></div></div></div>
+<p class="p">The GtkAboutDialog offers a simple way to display information about
+a program like its logo, name, copyright, website and license. It is
+also possible to give credits to the authors, documenters, translators
+and artists who have worked on the program. An about dialog is typically
+opened when the user selects the &lt;literal&gt;About&lt;/literal&gt; option from
+the &lt;literal&gt;Help&lt;/literal&gt; menu. All parts of the dialog are optional.</p>
+<p class="p">About dialog often contain links and email addresses. GtkAboutDialog
+displays these as clickable links. By default, it calls <span class=" link"><a href="Gtk.show_uri.html" title="show_uri">show_uri</a></span>
+when a user clicks one. The behaviour can be overridden with the
+<span class=" link"><a href="Gtk.activate-link.html" title="Gtk.activate-link">Gtk.activate-link</a></span> signal.</p>
+<p class="p">To make constructing a GtkAboutDialog as convenient as possible, you can
+use the function <span class=" link"><a href="Gtk.show_about_dialog.html" title="Gtk.show_about_dialog">Gtk.show_about_dialog</a></span> which constructs and shows a dialog
+and keeps it around so that it can be shown again.</p>
+<p class="p">Note that GTK+ sets a default title of &lt;literal&gt;_("About &amp;percnt;s")&lt;/literal&gt;
+on the dialog window (where &amp;percnt;s is replaced by the name of the
+application, but in order to ensure proper translation of the title,
+applications should set the title property explicitly when constructing
+a GtkAboutDialog, as shown in the following example:
+&lt;informalexample&gt;&lt;programlisting&gt;
+gtk_show_about_dialog (NULL,
+                       "program-name", "ExampleCode",
+                       "logo", example_logo,
+                       "title" _("About ExampleCode"),
+                       NULL);
+&lt;/programlisting&gt;&lt;/informalexample&gt;</p>
+<p class="p">It is also possible to show a <span class=" link"><a href="Gtk.AboutDialog.html" title="Gtk.AboutDialog">Gtk.AboutDialog</a></span> like any other <span class=" link"><a href="Gtk.Dialog.html" title="Gtk.Dialog">Gtk.Dialog</a></span>,
+e.g. using <span class=" link"><a href="Gtk.run.html" title="Gtk.run">Gtk.run</a></span>. In this case, you might need to know that
+the 'Close' button returns the #GTK_RESPONSE_CANCEL response id.</p>
+<div class="synopsis"><div class="inner">
+<div class="title title-synopsis"><h2><span class="title">Hierarchy</span></h2></div>
+<div class="region"><div class="contents"><div class="tree"><div class="inner"><div class="region"><ul class="tree"><li class="tree">
+<div>
+        <span class=" code">GObject.Object</span>
+      
+      </div>
+<ul class="tree"><li class="tree">
+<div>
+        <span class=" code">GObject.InitiallyUnowned</span>
+      
+      </div>
+<ul class="tree"><li class="tree">
+<div>
+        <span class=" code">Gtk.Widget</span>
+      
+      </div>
+<ul class="tree"><li class="tree">
+<div>
+        <span class=" code">Gtk.Container</span>
+      
+      </div>
+<ul class="tree"><li class="tree">
+<div>
+        <span class=" code">Gtk.Bin</span>
+      
+      </div>
+<ul class="tree"><li class="tree">
+<div>
+        <span class=" code">Gtk.Window</span>
+      
+      </div>
+<ul class="tree"><li class="tree">
+<div>
+        <span class=" code">Gtk.Dialog</span>
+      
+      </div>
+<ul class="tree"><li class="tree"><div>
+        <span class=" code">Gtk.AboutDialog</span>
+      </div></li></ul>
+</li></ul>
+</li></ul>
+</li></ul>
+</li></ul>
+</li></ul>
+</li></ul>
+</li></ul></div></div></div></div></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Methods</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.AboutDialog.add_credit_section.html" title="Gtk.AboutDialog.prototype.add_credit_section">Gtk.AboutDialog.prototype.add_credit_section</a></li>
+<li class="links "><a href="Gtk.AboutDialog.get_artists.html" title="Gtk.AboutDialog.prototype.get_artists">Gtk.AboutDialog.prototype.get_artists</a></li>
+<li class="links "><a href="Gtk.AboutDialog.get_authors.html" title="Gtk.AboutDialog.prototype.get_authors">Gtk.AboutDialog.prototype.get_authors</a></li>
+<li class="links "><a href="Gtk.AboutDialog.get_comments.html" title="Gtk.AboutDialog.prototype.get_comments">Gtk.AboutDialog.prototype.get_comments</a></li>
+<li class="links "><a href="Gtk.AboutDialog.get_copyright.html" title="Gtk.AboutDialog.prototype.get_copyright">Gtk.AboutDialog.prototype.get_copyright</a></li>
+<li class="links "><a href="Gtk.AboutDialog.get_documenters.html" title="Gtk.AboutDialog.prototype.get_documenters">Gtk.AboutDialog.prototype.get_documenters</a></li>
+<li class="links "><a href="Gtk.AboutDialog.get_license.html" title="Gtk.AboutDialog.prototype.get_license">Gtk.AboutDialog.prototype.get_license</a></li>
+<li class="links "><a href="Gtk.AboutDialog.get_license_type.html" title="Gtk.AboutDialog.prototype.get_license_type">Gtk.AboutDialog.prototype.get_license_type</a></li>
+<li class="links "><a href="Gtk.AboutDialog.get_logo.html" title="Gtk.AboutDialog.prototype.get_logo">Gtk.AboutDialog.prototype.get_logo</a></li>
+<li class="links "><a href="Gtk.AboutDialog.get_logo_icon_name.html" title="Gtk.AboutDialog.prototype.get_logo_icon_name">Gtk.AboutDialog.prototype.get_logo_icon_name</a></li>
+<li class="links "><a href="Gtk.AboutDialog.get_program_name.html" title="Gtk.AboutDialog.prototype.get_program_name">Gtk.AboutDialog.prototype.get_program_name</a></li>
+<li class="links "><a href="Gtk.AboutDialog.get_translator_credits.html" title="Gtk.AboutDialog.prototype.get_translator_credits">Gtk.AboutDialog.prototype.get_translator_credits</a></li>
+<li class="links "><a href="Gtk.AboutDialog.get_version.html" title="Gtk.AboutDialog.prototype.get_version">Gtk.AboutDialog.prototype.get_version</a></li>
+<li class="links "><a href="Gtk.AboutDialog.get_website.html" title="Gtk.AboutDialog.prototype.get_website">Gtk.AboutDialog.prototype.get_website</a></li>
+<li class="links "><a href="Gtk.AboutDialog.get_website_label.html" title="Gtk.AboutDialog.prototype.get_website_label">Gtk.AboutDialog.prototype.get_website_label</a></li>
+<li class="links "><a href="Gtk.AboutDialog.get_wrap_license.html" title="Gtk.AboutDialog.prototype.get_wrap_license">Gtk.AboutDialog.prototype.get_wrap_license</a></li>
+<li class="links "><a href="Gtk.AboutDialog.set_artists.html" title="Gtk.AboutDialog.prototype.set_artists">Gtk.AboutDialog.prototype.set_artists</a></li>
+<li class="links "><a href="Gtk.AboutDialog.set_authors.html" title="Gtk.AboutDialog.prototype.set_authors">Gtk.AboutDialog.prototype.set_authors</a></li>
+<li class="links "><a href="Gtk.AboutDialog.set_comments.html" title="Gtk.AboutDialog.prototype.set_comments">Gtk.AboutDialog.prototype.set_comments</a></li>
+<li class="links "><a href="Gtk.AboutDialog.set_copyright.html" title="Gtk.AboutDialog.prototype.set_copyright">Gtk.AboutDialog.prototype.set_copyright</a></li>
+<li class="links "><a href="Gtk.AboutDialog.set_documenters.html" title="Gtk.AboutDialog.prototype.set_documenters">Gtk.AboutDialog.prototype.set_documenters</a></li>
+<li class="links "><a href="Gtk.AboutDialog.set_license.html" title="Gtk.AboutDialog.prototype.set_license">Gtk.AboutDialog.prototype.set_license</a></li>
+<li class="links "><a href="Gtk.AboutDialog.set_license_type.html" title="Gtk.AboutDialog.prototype.set_license_type">Gtk.AboutDialog.prototype.set_license_type</a></li>
+<li class="links "><a href="Gtk.AboutDialog.set_logo.html" title="Gtk.AboutDialog.prototype.set_logo">Gtk.AboutDialog.prototype.set_logo</a></li>
+<li class="links "><a href="Gtk.AboutDialog.set_logo_icon_name.html" title="Gtk.AboutDialog.prototype.set_logo_icon_name">Gtk.AboutDialog.prototype.set_logo_icon_name</a></li>
+<li class="links "><a href="Gtk.AboutDialog.set_program_name.html" title="Gtk.AboutDialog.prototype.set_program_name">Gtk.AboutDialog.prototype.set_program_name</a></li>
+<li class="links "><a href="Gtk.AboutDialog.set_translator_credits.html" title="Gtk.AboutDialog.prototype.set_translator_credits">Gtk.AboutDialog.prototype.set_translator_credits</a></li>
+<li class="links "><a href="Gtk.AboutDialog.set_version.html" title="Gtk.AboutDialog.prototype.set_version">Gtk.AboutDialog.prototype.set_version</a></li>
+<li class="links "><a href="Gtk.AboutDialog.set_website.html" title="Gtk.AboutDialog.prototype.set_website">Gtk.AboutDialog.prototype.set_website</a></li>
+<li class="links "><a href="Gtk.AboutDialog.set_website_label.html" title="Gtk.AboutDialog.prototype.set_website_label">Gtk.AboutDialog.prototype.set_website_label</a></li>
+<li class="links "><a href="Gtk.AboutDialog.set_wrap_license.html" title="Gtk.AboutDialog.prototype.set_wrap_license">Gtk.AboutDialog.prototype.set_wrap_license</a></li>
+</ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Properties</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.AboutDialog-artists.html" title="Gtk.AboutDialog:artists">artists</a></li>
+<li class="links "><a href="Gtk.AboutDialog-authors.html" title="Gtk.AboutDialog:authors">authors</a></li>
+<li class="links "><a href="Gtk.AboutDialog-comments.html" title="Gtk.AboutDialog:comments">comments</a></li>
+<li class="links "><a href="Gtk.AboutDialog-copyright.html" title="Gtk.AboutDialog:copyright">copyright</a></li>
+<li class="links "><a href="Gtk.AboutDialog-documenters.html" title="Gtk.AboutDialog:documenters">documenters</a></li>
+<li class="links "><a href="Gtk.AboutDialog-license.html" title="Gtk.AboutDialog:license">license</a></li>
+<li class="links "><a href="Gtk.AboutDialog-license-type.html" title="Gtk.AboutDialog:license-type">license-type</a></li>
+<li class="links "><a href="Gtk.AboutDialog-logo.html" title="Gtk.AboutDialog:logo">logo</a></li>
+<li class="links "><a href="Gtk.AboutDialog-logo-icon-name.html" title="Gtk.AboutDialog:logo-icon-name">logo-icon-name</a></li>
+<li class="links "><a href="Gtk.AboutDialog-program-name.html" title="Gtk.AboutDialog:program-name">program-name</a></li>
+<li class="links "><a href="Gtk.AboutDialog-translator-credits.html" title="Gtk.AboutDialog:translator-credits">translator-credits</a></li>
+<li class="links "><a href="Gtk.AboutDialog-version.html" title="Gtk.AboutDialog:version">version</a></li>
+<li class="links "><a href="Gtk.AboutDialog-website.html" title="Gtk.AboutDialog:website">website</a></li>
+<li class="links "><a href="Gtk.AboutDialog-website-label.html" title="Gtk.AboutDialog:website-label">website-label</a></li>
+<li class="links "><a href="Gtk.AboutDialog-wrap-license.html" title="Gtk.AboutDialog:wrap-license">wrap-license</a></li>
+</ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Signals</span></h2></div>
+<div class="region"><ul><li class="links "><a href="Gtk.AboutDialog-activate-link.html" title="Gtk.AboutDialog::activate-link">activate-link</a></li></ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Virtual functions</span></h2></div>
+<div class="region"><ul><li class="links "><a href="Gtk.AboutDialog-activate_link.html" title="Gtk.AboutDialog::activate_link">Gtk.AboutDialog::activate_link</a></li></ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Other</span></h2></div>
+<div class="region"><ul><li class="links "><a href="Gtk.AboutDialog.new.html" title="Gtk.AboutDialog.new">Gtk.AboutDialog.new</a></li></ul></div>
+</div></div>
+</div>
+<div class="sect sect-links" role="navigation">
+<div class="hgroup"></div>
+<div class="contents"><div class="links guidelinks"><div class="inner">
+<div class="title"><h2><span class="title">More Information</span></h2></div>
+<div class="region"><ul><li class="links "><a href="index.html" title="Index">Index</a></li></ul></div>
+</div></div></div>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="footer"></div>
+</div></body>
+</html>

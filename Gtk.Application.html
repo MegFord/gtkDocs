@@ -1,0 +1,155 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Gtk.Application</title>
+<link rel="stylesheet" type="text/css" href="C.css">
+<script type="text/javascript" src="jquery.js"></script><script type="text/javascript" src="jquery.syntax.js"></script><script type="text/javascript" src="yelp.js"></script>
+</head>
+<body><div class="page" role="main">
+<div class="header"><div class="trails" role="navigation"><div class="trail">
+<a class="trail" href="index.html" title="Index">Index</a> » </div></div></div>
+<div class="body">
+<div class="hgroup"><h1 class="title"><span class="title">Gtk.Application</span></h1></div>
+<div class="region">
+<div class="contents">
+<div class="synopsis"><div class="inner"><div class="region"><div class="contents"><div class="code"><pre class="contents ">const Gtk = imports.gi.Gtk;
+
+let application = new Gtk.Application({
+    <span class=" link"><a href="Gtk.Application-app-menu.html" title="Gtk.Application:app-menu">app_menu</a></span>: value,
+    <span class=" link"><a href="Gtk.Application-menubar.html" title="Gtk.Application:menubar">menubar</a></span>: value,
+    <span class=" link"><a href="Gtk.Application-register-session.html" title="Gtk.Application:register-session">register_session</a></span>: value,
+});
+  </pre></div></div></div></div></div>
+<p class="p"><span class=" link"><a href="Gtk.Application.html" title="Gtk.Application">Gtk.Application</a></span> is a class that handles many important aspects
+of a GTK+ application in a convenient fashion, without enforcing
+a one-size-fits-all application model.</p>
+<p class="p">Currently, GtkApplication handles GTK+ initialization, application
+uniqueness, session management, provides some basic scriptability and
+desktop shell integration by exporting actions and menus and manages a
+list of toplevel windows whose life-cycle is automatically tied to the
+life-cycle of your application.</p>
+<p class="p">While GtkApplication works fine with plain #GtkWindows, it is recommended
+to use it together with <span class=" link"><a href="Gtk.ApplicationWindow.html" title="Gtk.ApplicationWindow">Gtk.ApplicationWindow</a></span>.</p>
+<p class="p">When GDK threads are enabled, GtkApplication will acquire the GDK
+lock when invoking actions that arrive from other processes.  The GDK
+lock is not touched for local action invocations.  In order to have
+actions invoked in a predictable context it is therefore recommended
+that the GDK lock be held while invoking actions locally with
+g_action_group_activate_action().  The same applies to actions
+associated with <span class=" link"><a href="Gtk.ApplicationWindow.html" title="Gtk.ApplicationWindow">Gtk.ApplicationWindow</a></span> and to the 'activate' and
+'open' <span class=" link"><a href="Gio.Application.html" title="Gio.Application">Gio.Application</a></span> methods.</p>
+<p class="p">To set an application menu for a GtkApplication, use
+<span class=" link"><a href="Gtk.set_app_menu.html" title="Gtk.set_app_menu">Gtk.set_app_menu</a></span>. The <span class=" link"><a href="Gio.MenuModel.html" title="Gio.MenuModel">Gio.MenuModel</a></span> that this function
+expects is usually constructed using <span class=" link"><a href="Gtk.Builder.html" title="Gtk.Builder">Gtk.Builder</a></span>, as seen in the
+following example. To specify a menubar that will be shown by
+#GtkApplicationWindows, use <span class=" link"><a href="Gtk.set_menubar.html" title="Gtk.set_menubar">Gtk.set_menubar</a></span>. Use the base
+<span class=" link"><a href="Gio.ActionMap.html" title="Gio.ActionMap">Gio.ActionMap</a></span> interface to add actions, to respond to the user
+selecting these menu items.</p>
+<p class="p">GTK+ displays these menus as expected, depending on the platform
+the application is running on.</p>
+<p class="p">&lt;figure label="Menu integration in OS X"&gt;
+&lt;graphic fileref="bloatpad-osx.png" format="PNG"/&gt;
+&lt;/figure&gt;</p>
+<p class="p">&lt;figure label="Menu integration in GNOME"&gt;
+&lt;graphic fileref="bloatpad-gnome.png" format="PNG"/&gt;
+&lt;/figure&gt;</p>
+<p class="p">&lt;figure label="Menu integration in Xfce"&gt;
+&lt;graphic fileref="bloatpad-xfce.png" format="PNG"/&gt;
+&lt;/figure&gt;</p>
+<p class="p">&lt;example id="gtkapplication"&gt;&lt;title&gt;A simple application&lt;/title&gt;
+&lt;programlisting&gt;
+&lt;xi:include xmlns:xi="http://www.w3.org/2001/XInclude" parse="text" href="../../../../examples/bloatpad.c"&gt;
+ &lt;xi:fallback&gt;FIXME: MISSING XINCLUDE CONTENT&lt;/xi:fallback&gt;
+&lt;/xi:include&gt;
+&lt;/programlisting&gt;
+&lt;/example&gt;</p>
+<p class="p">GtkApplication optionally registers with a session manager
+of the users session (if you set the <span class=" link"><a href="Gtk.register-session.html" title="Gtk.register-session">Gtk.register-session</a></span>
+property) and offers various functionality related to the session
+life-cycle.</p>
+<p class="p">An application can block various ways to end the session with
+the <span class=" link"><a href="Gtk.inhibit.html" title="Gtk.inhibit">Gtk.inhibit</a></span> function. Typical use cases for
+this kind of inhibiting are long-running, uninterruptible operations,
+such as burning a CD or performing a disk backup. The session
+manager may not honor the inhibitor, but it can be expected to
+inform the user about the negative consequences of ending the
+session while inhibitors are present.</p>
+<div class="synopsis"><div class="inner">
+<div class="title title-synopsis"><h2><span class="title">Hierarchy</span></h2></div>
+<div class="region"><div class="contents"><div class="tree"><div class="inner"><div class="region"><ul class="tree"><li class="tree">
+<div>
+        <span class=" code">GObject.Object</span>
+      
+      </div>
+<ul class="tree"><li class="tree">
+<div>
+        <span class=" code">Gio.Application</span>
+      
+      </div>
+<ul class="tree"><li class="tree"><div>
+        <span class=" code">Gtk.Application</span>
+      </div></li></ul>
+</li></ul>
+</li></ul></div></div></div></div></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Methods</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.Application.add_accelerator.html" title="Gtk.Application.prototype.add_accelerator">Gtk.Application.prototype.add_accelerator</a></li>
+<li class="links "><a href="Gtk.Application.add_window.html" title="Gtk.Application.prototype.add_window">Gtk.Application.prototype.add_window</a></li>
+<li class="links "><a href="Gtk.Application.get_active_window.html" title="Gtk.Application.prototype.get_active_window">Gtk.Application.prototype.get_active_window</a></li>
+<li class="links "><a href="Gtk.Application.get_app_menu.html" title="Gtk.Application.prototype.get_app_menu">Gtk.Application.prototype.get_app_menu</a></li>
+<li class="links "><a href="Gtk.Application.get_menubar.html" title="Gtk.Application.prototype.get_menubar">Gtk.Application.prototype.get_menubar</a></li>
+<li class="links "><a href="Gtk.Application.get_window_by_id.html" title="Gtk.Application.prototype.get_window_by_id">Gtk.Application.prototype.get_window_by_id</a></li>
+<li class="links "><a href="Gtk.Application.get_windows.html" title="Gtk.Application.prototype.get_windows">Gtk.Application.prototype.get_windows</a></li>
+<li class="links "><a href="Gtk.Application.inhibit.html" title="Gtk.Application.prototype.inhibit">Gtk.Application.prototype.inhibit</a></li>
+<li class="links "><a href="Gtk.Application.is_inhibited.html" title="Gtk.Application.prototype.is_inhibited">Gtk.Application.prototype.is_inhibited</a></li>
+<li class="links "><a href="Gtk.Application.remove_accelerator.html" title="Gtk.Application.prototype.remove_accelerator">Gtk.Application.prototype.remove_accelerator</a></li>
+<li class="links "><a href="Gtk.Application.remove_window.html" title="Gtk.Application.prototype.remove_window">Gtk.Application.prototype.remove_window</a></li>
+<li class="links "><a href="Gtk.Application.set_app_menu.html" title="Gtk.Application.prototype.set_app_menu">Gtk.Application.prototype.set_app_menu</a></li>
+<li class="links "><a href="Gtk.Application.set_menubar.html" title="Gtk.Application.prototype.set_menubar">Gtk.Application.prototype.set_menubar</a></li>
+<li class="links "><a href="Gtk.Application.uninhibit.html" title="Gtk.Application.prototype.uninhibit">Gtk.Application.prototype.uninhibit</a></li>
+</ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Properties</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.Application-active-window.html" title="Gtk.Application:active-window">active-window</a></li>
+<li class="links "><a href="Gtk.Application-app-menu.html" title="Gtk.Application:app-menu">app-menu</a></li>
+<li class="links "><a href="Gtk.Application-menubar.html" title="Gtk.Application:menubar">menubar</a></li>
+<li class="links "><a href="Gtk.Application-register-session.html" title="Gtk.Application:register-session">register-session</a></li>
+</ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Signals</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.Application-window-added.html" title="Gtk.Application::window-added">window-added</a></li>
+<li class="links "><a href="Gtk.Application-window-removed.html" title="Gtk.Application::window-removed">window-removed</a></li>
+</ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Virtual functions</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.Application-window_added.html" title="Gtk.Application::window_added">Gtk.Application::window_added</a></li>
+<li class="links "><a href="Gtk.Application-window_removed.html" title="Gtk.Application::window_removed">Gtk.Application::window_removed</a></li>
+</ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Other</span></h2></div>
+<div class="region"><ul><li class="links "><a href="Gtk.Application.new.html" title="Gtk.Application.new">Gtk.Application.new</a></li></ul></div>
+</div></div>
+</div>
+<div class="sect sect-links" role="navigation">
+<div class="hgroup"></div>
+<div class="contents"><div class="links guidelinks"><div class="inner">
+<div class="title"><h2><span class="title">More Information</span></h2></div>
+<div class="region"><ul><li class="links "><a href="index.html" title="Index">Index</a></li></ul></div>
+</div></div></div>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="footer"></div>
+</div></body>
+</html>

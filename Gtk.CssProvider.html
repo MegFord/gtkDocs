@@ -1,0 +1,967 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Gtk.CssProvider</title>
+<link rel="stylesheet" type="text/css" href="C.css">
+<script type="text/javascript" src="jquery.js"></script><script type="text/javascript" src="jquery.syntax.js"></script><script type="text/javascript" src="yelp.js"></script>
+</head>
+<body><div class="page" role="main">
+<div class="header"><div class="trails" role="navigation"><div class="trail">
+<a class="trail" href="index.html" title="Index">Index</a> » </div></div></div>
+<div class="body">
+<div class="hgroup"><h1 class="title"><span class="title">Gtk.CssProvider</span></h1></div>
+<div class="region">
+<div class="contents">
+<div class="synopsis"><div class="inner"><div class="region"><div class="contents"><div class="code"><pre class="contents ">const Gtk = imports.gi.Gtk;
+
+let css_provider = new Gtk.CssProvider();
+  </pre></div></div></div></div></div>
+<p class="p">GtkCssProvider is an object implementing the <span class=" link"><a href="Gtk.StyleProvider.html" title="Gtk.StyleProvider">Gtk.StyleProvider</a></span> interface.
+It is able to parse &lt;ulink url="http://www.w3.org/TR/CSS2"&gt;CSS&lt;/ulink&gt;-like
+input in order to style widgets.</p>
+<p class="p">&lt;refsect2 id="gtkcssprovider-files"&gt;
+&lt;title&gt;Default files&lt;/title&gt;
+&lt;para&gt;
+An application can cause GTK+ to parse a specific CSS style sheet by
+calling <span class=" link"><a href="Gtk.load_from_file.html" title="Gtk.load_from_file">Gtk.load_from_file</a></span> and adding the provider with
+<span class=" link"><a href="Gtk.add_provider.html" title="Gtk.add_provider">Gtk.add_provider</a></span> or <span class=" link"><a href="Gtk.add_provider_for_screen.html" title="Gtk.add_provider_for_screen">Gtk.add_provider_for_screen</a></span>.
+In addition, certain files will be read when GTK+ is initialized. First,
+the file &lt;filename&gt;&lt;envar&gt;$XDG_CONFIG_HOME&lt;/envar&gt;/gtk-3.0/gtk.css&lt;/filename&gt;
+is loaded if it exists. Then, GTK+ tries to load
+&lt;filename&gt;&lt;envar&gt;$HOME&lt;/envar&gt;/.themes/&lt;replaceable&gt;theme-name&lt;/replaceable&gt;/gtk-3.0/gtk.css&lt;/filename&gt;,
+falling back to
+&lt;filename&gt;&lt;replaceable&gt;datadir&lt;/replaceable&gt;/share/themes/&lt;replaceable&gt;theme-name&lt;/replaceable&gt;/gtk-3.0/gtk.css&lt;/filename&gt;,
+where &lt;replaceable&gt;theme-name&lt;/replaceable&gt; is the name of the current theme
+(see the <span class=" link"><a href="Gtk.gtk-theme-name.html" title="Gtk.gtk-theme-name">Gtk.gtk-theme-name</a></span> setting) and &lt;replaceable&gt;datadir&lt;/replaceable&gt;
+is the prefix configured when GTK+ was compiled, unless overridden by the
+&lt;envar&gt;GTK_DATA_PREFIX&lt;/envar&gt; environment variable.
+&lt;/para&gt;
+&lt;/refsect2&gt;
+&lt;refsect2 id="gtkcssprovider-stylesheets"&gt;
+&lt;title&gt;Style sheets&lt;/title&gt;
+&lt;para&gt;
+The basic structure of the style sheets understood by this provider is
+a series of statements, which are either rule sets or '@-rules', separated
+by whitespace.
+&lt;/para&gt;
+&lt;para&gt;
+A rule set consists of a selector and a declaration block, which is
+a series of declarations enclosed in curly braces ({ and }). The
+declarations are separated by semicolons (;). Multiple selectors can
+share the same declaration block, by putting all the separators in
+front of the block, separated by commas.
+&lt;/para&gt;
+&lt;example&gt;&lt;title&gt;A rule set with two selectors&lt;/title&gt;
+&lt;programlisting language="text"&gt;
+GtkButton, GtkEntry {
+    color: &amp;num;ff00ea;
+    font: Comic Sans 12
+}
+&lt;/programlisting&gt;
+&lt;/example&gt;
+&lt;/refsect2&gt;
+&lt;refsect2 id="gtkcssprovider-selectors"&gt;
+&lt;title&gt;Selectors&lt;/title&gt;
+&lt;para&gt;
+Selectors work very similar to the way they do in CSS, with widget class
+names taking the role of element names, and widget names taking the role
+of IDs. When used in a selector, widget names must be prefixed with a
+'&amp;num;' character. The '*' character represents the so-called universal
+selector, which matches any widget.
+&lt;/para&gt;
+&lt;para&gt;
+To express more complicated situations, selectors can be combined in
+various ways:
+&lt;itemizedlist&gt;
+&lt;listitem&gt;&lt;para&gt;To require that a widget satisfies several conditions,
+  combine several selectors into one by concatenating them. E.g.
+  &lt;literal&gt;GtkButton&amp;num;button1&lt;/literal&gt; matches a GtkButton widget
+  with the name button1.&lt;/para&gt;&lt;/listitem&gt;
+&lt;listitem&gt;&lt;para&gt;To only match a widget when it occurs inside some other
+  widget, write the two selectors after each other, separated by whitespace.
+  E.g. &lt;literal&gt;GtkToolBar GtkButton&lt;/literal&gt; matches GtkButton widgets
+  that occur inside a GtkToolBar.&lt;/para&gt;&lt;/listitem&gt;
+&lt;listitem&gt;&lt;para&gt;In the previous example, the GtkButton is matched even
+  if it occurs deeply nested inside the toolbar. To restrict the match
+  to direct children of the parent widget, insert a '&gt;' character between
+  the two selectors. E.g. &lt;literal&gt;GtkNotebook &gt; GtkLabel&lt;/literal&gt; matches
+  GtkLabel widgets that are direct children of a GtkNotebook.&lt;/para&gt;&lt;/listitem&gt;
+&lt;/itemizedlist&gt;
+&lt;/para&gt;
+&lt;example&gt;
+&lt;title&gt;Widget classes and names in selectors&lt;/title&gt;
+&lt;programlisting language="text"&gt;
+/&amp;ast; Theme labels that are descendants of a window &amp;ast;/
+GtkWindow GtkLabel {
+    background-color: &amp;num;898989
+}</p>
+<p class="p">/&amp;ast; Theme notebooks, and anything that's within these &amp;ast;/
+GtkNotebook {
+    background-color: &amp;num;a939f0
+}</p>
+<p class="p">/&amp;ast; Theme combo boxes, and entries that
+ are direct children of a notebook &amp;ast;/
+GtkComboBox,
+GtkNotebook &gt; GtkEntry {
+    color: @fg_color;
+    background-color: &amp;num;1209a2
+}</p>
+<p class="p">/&amp;ast; Theme any widget within a GtkBin &amp;ast;/
+GtkBin * {
+    font: Sans 20
+}</p>
+<p class="p">/&amp;ast; Theme a label named title-label &amp;ast;/
+GtkLabel&amp;num;title-label {
+    font: Sans 15
+}</p>
+<p class="p">/&amp;ast; Theme any widget named main-entry &amp;ast;/
+&amp;num;main-entry {
+    background-color: &amp;num;f0a810
+}
+&lt;/programlisting&gt;
+&lt;/example&gt;
+&lt;para&gt;
+Widgets may also define style classes, which can be used for matching.
+When used in a selector, style classes must be prefixed with a '.'
+character.
+&lt;/para&gt;
+&lt;para&gt;
+Refer to the documentation of individual widgets to learn which
+style classes they define and see &lt;xref linkend="gtkstylecontext-classes"/&gt;
+for a list of all style classes used by GTK+ widgets.
+&lt;/para&gt;
+&lt;para&gt;
+Note that there is some ambiguity in the selector syntax when it comes
+to differentiation widget class names from regions. GTK+ currently treats
+a string as a widget class name if it contains any uppercase characters
+(which should work for more widgets with names like GtkLabel).
+&lt;/para&gt;
+&lt;example&gt;
+&lt;title&gt;Style classes in selectors&lt;/title&gt;
+&lt;programlisting language="text"&gt;
+/&amp;ast; Theme all widgets defining the class entry &amp;ast;/
+.entry {
+    color: &amp;num;39f1f9;
+}</p>
+<p class="p">/&amp;ast; Theme spinbuttons' entry &amp;ast;/
+GtkSpinButton.entry {
+    color: &amp;num;900185
+}
+&lt;/programlisting&gt;
+&lt;/example&gt;
+&lt;para&gt;
+In complicated widgets like e.g. a GtkNotebook, it may be desirable
+to style different parts of the widget differently. To make this
+possible, container widgets may define regions, whose names
+may be used for matching in selectors.
+&lt;/para&gt;
+&lt;para&gt;
+Some containers allow to further differentiate between regions by
+applying so-called pseudo-classes to the region. For example, the
+tab region in GtkNotebook allows to single out the first or last
+tab by using the :first-child or :last-child pseudo-class.
+When used in selectors, pseudo-classes must be prefixed with a
+':' character.
+&lt;/para&gt;
+&lt;para&gt;
+Refer to the documentation of individual widgets to learn which
+regions and pseudo-classes they define and see
+&lt;xref linkend="gtkstylecontext-classes"/&gt; for a list of all regions
+used by GTK+ widgets.
+&lt;/para&gt;
+&lt;example&gt;
+&lt;title&gt;Regions in selectors&lt;/title&gt;
+&lt;programlisting language="text"&gt;
+/&amp;ast; Theme any label within a notebook &amp;ast;/
+GtkNotebook GtkLabel {
+    color: &amp;num;f90192;
+}</p>
+<p class="p">/&amp;ast; Theme labels within notebook tabs &amp;ast;/
+GtkNotebook tab GtkLabel {
+    color: &amp;num;703910;
+}</p>
+<p class="p">/&amp;ast; Theme labels in the any first notebook
+ tab, both selectors are equivalent &amp;ast;/
+GtkNotebook tab:nth-child(first) GtkLabel,
+GtkNotebook tab:first-child GtkLabel {
+    color: &amp;num;89d012;
+}
+&lt;/programlisting&gt;
+&lt;/example&gt;
+&lt;para&gt;
+Another use of pseudo-classes is to match widgets depending on their
+state. This is conceptually similar to the :hover, :active or :focus
+pseudo-classes in CSS. The available pseudo-classes for widget states
+are :active, :prelight (or :hover), :insensitive, :selected, :focused
+and :inconsistent.
+&lt;/para&gt;
+&lt;example&gt;
+&lt;title&gt;Styling specific widget states&lt;/title&gt;
+&lt;programlisting language="text"&gt;
+/&amp;ast; Theme active (pressed) buttons &amp;ast;/
+GtkButton:active {
+    background-color: &amp;num;0274d9;
+}</p>
+<p class="p">/&amp;ast; Theme buttons with the mouse pointer on it,
+   both are equivalent &amp;ast;/
+GtkButton:hover,
+GtkButton:prelight {
+    background-color: &amp;num;3085a9;
+}</p>
+<p class="p">/&amp;ast; Theme insensitive widgets, both are equivalent &amp;ast;/
+:insensitive,
+*:insensitive {
+    background-color: &amp;num;320a91;
+}</p>
+<p class="p">/&amp;ast; Theme selection colors in entries &amp;ast;/
+GtkEntry:selected {
+    background-color: &amp;num;56f9a0;
+}</p>
+<p class="p">/&amp;ast; Theme focused labels &amp;ast;/
+GtkLabel:focused {
+    background-color: &amp;num;b4940f;
+}</p>
+<p class="p">/&amp;ast; Theme inconsistent checkbuttons &amp;ast;/
+GtkCheckButton:inconsistent {
+    background-color: &amp;num;20395a;
+}
+&lt;/programlisting&gt;
+&lt;/example&gt;
+&lt;para&gt;
+Widget state pseudoclasses may only apply to the last element
+in a selector.
+&lt;/para&gt;
+&lt;para&gt;
+To determine the effective style for a widget, all the matching rule
+sets are merged. As in CSS, rules apply by specificity, so the rules
+whose selectors more closely match a widget path will take precedence
+over the others.
+&lt;/para&gt;
+&lt;/refsect2&gt;
+&lt;refsect2 id="gtkcssprovider-rules"&gt;
+&lt;title&gt;&amp;commat; Rules&lt;/title&gt;
+&lt;para&gt;
+GTK+'s CSS supports the &amp;commat;import rule, in order to load another
+CSS style sheet in addition to the currently parsed one.
+&lt;/para&gt;
+&lt;example&gt;
+&lt;title&gt;Using the &amp;commat;import rule&lt;/title&gt;
+&lt;programlisting language="text"&gt;
+&amp;commat;import url ("path/to/common.css");
+&lt;/programlisting&gt;
+&lt;/example&gt;
+&lt;para id="css-binding-set"&gt;
+In order to extend key bindings affecting different widgets, GTK+
+supports the &amp;commat;binding-set rule to parse a set of bind/unbind
+directives, see <span class=" link"><a href="Gtk.BindingSet.html" title="Gtk.BindingSet">Gtk.BindingSet</a></span> for the supported syntax. Note that
+the binding sets defined in this way must be associated with rule sets
+by setting the gtk-key-bindings style property.
+&lt;/para&gt;
+&lt;para&gt;
+Customized key bindings are typically defined in a separate
+&lt;filename&gt;gtk-keys.css&lt;/filename&gt; CSS file and GTK+ loads this file
+according to the current key theme, which is defined by the
+<span class=" link"><a href="Gtk.gtk-key-theme-name.html" title="Gtk.gtk-key-theme-name">Gtk.gtk-key-theme-name</a></span> setting.
+&lt;/para&gt;
+&lt;example&gt;
+&lt;title&gt;Using the &amp;commat;binding rule&lt;/title&gt;
+&lt;programlisting language="text"&gt;
+&amp;commat;binding-set binding-set1 {
+  bind "&amp;lt;alt&amp;gt;Left" { "move-cursor" (visual-positions, -3, 0) };
+  unbind "End";
+};</p>
+<p class="p">&amp;commat;binding-set binding-set2 {
+  bind "&amp;lt;alt&amp;gt;Right" { "move-cursor" (visual-positions, 3, 0) };
+  bind "&amp;lt;alt&amp;gt;KP_space" { "delete-from-cursor" (whitespace, 1)
+                         "insert-at-cursor" (" ") };
+};</p>
+<p class="p">GtkEntry {
+  gtk-key-bindings: binding-set1, binding-set2;
+}
+&lt;/programlisting&gt;
+&lt;/example&gt;
+&lt;para&gt;
+GTK+ also supports an additional &amp;commat;define-color rule, in order
+to define a color name which may be used instead of color numeric
+representations. Also see the <span class=" link"><a href="Gtk.gtk-color-scheme.html" title="Gtk.gtk-color-scheme">Gtk.gtk-color-scheme</a></span> setting
+for a way to override the values of these named colors.
+&lt;/para&gt;
+&lt;example&gt;
+&lt;title&gt;Defining colors&lt;/title&gt;
+&lt;programlisting language="text"&gt;
+&amp;commat;define-color bg_color &amp;num;f9a039;</p>
+<p class="p">&amp;ast; {
+    background-color: &amp;commat;bg_color;
+}
+&lt;/programlisting&gt;
+&lt;/example&gt;
+&lt;/refsect2&gt;
+&lt;refsect2 id="gtkcssprovider-symbolic-colors"&gt;
+&lt;title&gt;Symbolic colors&lt;/title&gt;
+&lt;para&gt;
+Besides being able to define color names, the CSS parser is also able
+to read different color expressions, which can also be nested, providing
+a rich language to define colors which are derived from a set of base
+colors.
+&lt;/para&gt;
+&lt;example&gt;
+&lt;title&gt;Using symbolic colors&lt;/title&gt;
+&lt;programlisting language="text"&gt;
+&amp;commat;define-color entry-color shade (&amp;commat;bg_color, 0.7);</p>
+<p class="p">GtkEntry {
+    background-color: @entry-color;
+}</p>
+<p class="p">GtkEntry:focused {
+    background-color: mix (&amp;commat;entry-color,
+                           shade (&amp;num;fff, 0.5),
+                           0.8);
+}
+&lt;/programlisting&gt;
+&lt;/example&gt;
+&lt;para&gt;
+  The various ways to express colors in GTK+ CSS are:
+&lt;/para&gt;
+&lt;informaltable&gt;
+  &lt;tgroup cols="3"&gt;
+    &lt;thead&gt;
+      &lt;row&gt;
+        &lt;entry&gt;Syntax&lt;/entry&gt;
+        &lt;entry&gt;Explanation&lt;/entry&gt;
+        &lt;entry&gt;Examples&lt;/entry&gt;
+      &lt;/row&gt;
+    &lt;/thead&gt;
+    &lt;tbody&gt;
+      &lt;row&gt;
+        &lt;entry&gt;rgb(@r, @g, @b)&lt;/entry&gt;
+        &lt;entry&gt;An opaque color; @r, @g, @b can be either integers between
+               0 and 255 or percentages&lt;/entry&gt;
+        &lt;entry&gt;&lt;literallayout&gt;rgb(128, 10, 54)
+rgb(20%, 30%, 0%)&lt;/literallayout&gt;&lt;/entry&gt;
+      &lt;/row&gt;
+      &lt;row&gt;
+        &lt;entry&gt;rgba(@r, @g, @b, @a)&lt;/entry&gt;
+        &lt;entry&gt;A translucent color; @r, @g, @b are as in the previous row,
+               @a is a floating point number between 0 and 1&lt;/entry&gt;
+        &lt;entry&gt;&lt;literallayout&gt;rgba(255, 255, 0, 0.5)&lt;/literallayout&gt;&lt;/entry&gt;
+      &lt;/row&gt;
+      &lt;row&gt;
+        &lt;entry&gt;&amp;num;@xxyyzz&lt;/entry&gt;
+        &lt;entry&gt;An opaque color; @xx, @yy, @zz are hexadecimal numbers
+               specifying @r, @g, @b variants with between 1 and 4
+               hexadecimal digits per component are allowed&lt;/entry&gt;
+        &lt;entry&gt;&lt;literallayout&gt;&amp;num;ff12ab
+&amp;num;f0c&lt;/literallayout&gt;&lt;/entry&gt;
+      &lt;/row&gt;
+      &lt;row&gt;
+        &lt;entry&gt;&amp;commat;name&lt;/entry&gt;
+        &lt;entry&gt;Reference to a color that has been defined with
+               &amp;commat;define-color
+        &lt;/entry&gt;
+        &lt;entry&gt;&amp;commat;bg_color&lt;/entry&gt;
+      &lt;/row&gt;
+      &lt;row&gt;
+        &lt;entry&gt;mix(@color1, @color2, @f)&lt;/entry&gt;
+        &lt;entry&gt;A linear combination of @color1 and @color2. @f is a
+               floating point number between 0 and 1.&lt;/entry&gt;
+        &lt;entry&gt;&lt;literallayout&gt;mix(&amp;num;ff1e0a, &amp;commat;bg_color, 0.8)&lt;/literallayout&gt;&lt;/entry&gt;
+      &lt;/row&gt;
+      &lt;row&gt;
+        &lt;entry&gt;shade(@color, @f)&lt;/entry&gt;
+        &lt;entry&gt;A lighter or darker variant of @color. @f is a
+               floating point number.
+        &lt;/entry&gt;
+        &lt;entry&gt;shade(&amp;commat;fg_color, 0.5)&lt;/entry&gt;
+      &lt;/row&gt;
+      &lt;row&gt;
+        &lt;entry&gt;lighter(@color)&lt;/entry&gt;
+        &lt;entry&gt;A lighter variant of @color&lt;/entry&gt;
+      &lt;/row&gt;
+      &lt;row&gt;
+        &lt;entry&gt;darker(@color)&lt;/entry&gt;
+        &lt;entry&gt;A darker variant of @color&lt;/entry&gt;
+      &lt;/row&gt;
+      &lt;row&gt;
+        &lt;entry&gt;alpha(@color, @f)&lt;/entry&gt;
+        &lt;entry&gt;Modifies passed color's alpha by a factor @f. @f is a
+               floating point number. @f &lt; 1.0 results in a more transparent
+               color while @f &gt; 1.0 results in a more opaque color.
+        &lt;/entry&gt;
+        &lt;entry&gt;alhpa(blue, 0.5)&lt;/entry&gt;
+      &lt;/row&gt;
+    &lt;/tbody&gt;
+  &lt;/tgroup&gt;
+&lt;/informaltable&gt;
+&lt;/refsect2&gt;
+&lt;refsect2 id="gtkcssprovider-gradients"&gt;
+&lt;title&gt;Gradients&lt;/title&gt;
+&lt;para&gt;
+Linear or radial Gradients can be used as background images.
+&lt;/para&gt;
+&lt;para&gt;
+A linear gradient along the line from (@start_x, @start_y) to
+(@end_x, @end_y) is specified using the syntax
+&lt;literallayout&gt;-gtk-gradient (linear,
+              @start_x @start_y, @end_x @end_y,
+              color-stop (@position, @color),
+              ...)&lt;/literallayout&gt;
+where @start_x and @end_x can be either a floating point number between
+0 and 1 or one of the special values 'left', 'right' or 'center', @start_y
+and @end_y can be either a floating point number between 0 and 1 or one
+of the special values 'top', 'bottom' or 'center', @position is a floating
+point number between 0 and 1 and @color is a color expression (see above).
+The color-stop can be repeated multiple times to add more than one color
+stop. 'from (@color)' and 'to (@color)' can be used as abbreviations for
+color stops with position 0 and 1, respectively.
+&lt;/para&gt;
+&lt;example&gt;
+&lt;title&gt;A linear gradient&lt;/title&gt;
+&lt;inlinegraphic fileref="gradient1.png" format="PNG"/&gt;
+&lt;para&gt;This gradient was specified with
+&lt;literallayout&gt;-gtk-gradient (linear,
+               left top, right bottom,
+               from(&amp;commat;yellow), to(&amp;commat;blue))&lt;/literallayout&gt;&lt;/para&gt;
+&lt;/example&gt;
+&lt;example&gt;
+&lt;title&gt;Another linear gradient&lt;/title&gt;
+&lt;inlinegraphic fileref="gradient2.png" format="PNG"/&gt;
+&lt;para&gt;This gradient was specified with
+&lt;literallayout&gt;-gtk-gradient (linear,
+               0 0, 0 1,
+               color-stop(0, &amp;commat;yellow),
+               color-stop(0.2, &amp;commat;blue),
+               color-stop(1, &amp;num;0f0))&lt;/literallayout&gt;&lt;/para&gt;
+&lt;/example&gt;
+&lt;para&gt;
+A radial gradient along the two circles defined by (@start_x, @start_y,
+@start_radius) and (@end_x, @end_y, @end_radius) is specified using the
+syntax
+&lt;literallayout&gt;-gtk-gradient (radial,
+               @start_x @start_y, @start_radius,
+               @end_x @end_y, @end_radius,
+               color-stop (@position, @color),
+               ...)&lt;/literallayout&gt;
+where @start_radius and @end_radius are floating point numbers and
+the other parameters are as before.
+&lt;/para&gt;
+&lt;example&gt;
+&lt;title&gt;A radial gradient&lt;/title&gt;
+&lt;inlinegraphic fileref="gradient3.png" format="PNG"/&gt;
+&lt;para&gt;This gradient was specified with
+&lt;literallayout&gt;-gtk-gradient (radial,
+               center center, 0,
+               center center, 1,
+               from(&amp;commat;yellow), to(&amp;commat;green))&lt;/literallayout&gt;&lt;/para&gt;
+&lt;/example&gt;
+&lt;example&gt;
+&lt;title&gt;Another radial gradient&lt;/title&gt;
+&lt;inlinegraphic fileref="gradient4.png" format="PNG"/&gt;
+&lt;para&gt;This gradient was specified with
+&lt;literallayout&gt;-gtk-gradient (radial,
+               0.4 0.4, 0.1,
+               0.6 0.6, 0.7,
+               color-stop (0, &amp;num;f00),
+               color-stop (0.1, &amp;num;a0f),
+               color-stop (0.2, &amp;commat;yellow),
+               color-stop (1, &amp;commat;green))&lt;/literallayout&gt;&lt;/para&gt;
+&lt;/example&gt;
+&lt;/refsect2&gt;
+&lt;refsect2 id="gtkcssprovider-shadows"&gt;
+&lt;title&gt;Text shadow&lt;/title&gt;
+&lt;para&gt;
+A shadow list can be applied to text or symbolic icons, using the CSS3
+text-shadow syntax, as defined in
+&lt;ulink url="http://www.w3.org/TR/css3-text/#text-shadow"&gt;the CSS3 specification&lt;/ulink&gt;.
+&lt;/para&gt;
+&lt;para&gt;
+A text shadow is specified using the syntax
+&lt;literallayout&gt;text-shadow: @horizontal_offset @vertical_offset [ @blur_radius ] @color&lt;/literallayout&gt;
+The offset of the shadow is specified with the @horizontal_offset and @vertical_offset
+parameters. The optional blur radius is parsed, but it is currently not rendered by
+the GTK+ theming engine.
+&lt;/para&gt;
+&lt;para&gt;
+To set a shadow on an icon, use the icon-shadow property instead,
+with the same syntax.
+&lt;/para&gt;
+&lt;para&gt;
+To set multiple shadows on an element, you can specify a comma-separated list
+of shadow elements in the text-shadow or icon-shadow property. Shadows are
+always rendered front-back, i.e. the first shadow specified is on top of the
+others. Shadows can thus overlay each other, but they can never overlay the
+text or icon itself, which is always rendered on top of the shadow layer.
+&lt;/para&gt;
+&lt;/refsect2&gt;
+&lt;refsect2&gt;
+&lt;title&gt;Box shadow&lt;/title&gt;
+&lt;para&gt;
+Themes can apply shadows on framed elements using the CSS3 box-shadow syntax,
+as defined in 
+&lt;ulink url="http://www.w3.org/TR/css3-background/#the-box-shadow"&gt;the CSS3 specification&lt;/ulink&gt;.
+&lt;/para&gt;
+&lt;para&gt;
+A box shadow is specified using the syntax
+&lt;literallayout&gt;box-shadow: [ @inset ] @horizontal_offset @vertical_offset [ @blur_radius ] [ @spread ] @color&lt;/literallayout&gt;
+A positive offset will draw a shadow that is offset to the right (down) of the box,
+a negative offset to the left (top). The optional spread parameter defines an additional
+distance to expand the shadow shape in all directions, by the specified radius.
+The optional blur radius parameter is parsed, but it is currently not rendered by
+the GTK+ theming engine.
+The inset parameter defines whether the drop shadow should be rendered inside or outside
+the box canvas.
+&lt;/para&gt;
+&lt;para&gt;
+To set multiple box-shadows on an element, you can specify a comma-separated list
+of shadow elements in the box-shadow property. Shadows are always rendered
+front-back, i.e. the first shadow specified is on top of the others, so they may
+overlap other boxes or other shadows.
+&lt;/para&gt;
+&lt;/refsect2&gt;
+&lt;refsect2 id="gtkcssprovider-border-image"&gt;
+&lt;title&gt;Border images&lt;/title&gt;
+&lt;para&gt;
+Images and gradients can also be used in slices for the purpose of creating
+scalable borders.
+For more information, see the CSS3 documentation for the border-image property,
+which can be found &lt;ulink url="http://www.w3.org/TR/css3-background/#border-images"&gt;here&lt;/ulink&gt;.
+&lt;/para&gt;
+&lt;inlinegraphic fileref="slices.png" format="PNG"/&gt;
+&lt;para&gt;
+The parameters of the slicing process are controlled by
+four separate properties. Note that you can use the
+&lt;literallayout&gt;border-image&lt;/literallayout&gt; shorthand property
+to set values for the three properties at the same time.
+&lt;/para&gt;
+&lt;para&gt;
+&lt;literallayout&gt;border-image-source: url(@path)
+(or border-image-source: -gtk-gradient(...))&lt;/literallayout&gt;:
+Specifies the source of the border image, and it can either
+be an URL or a gradient (see above).
+&lt;/para&gt;
+&lt;para&gt;
+&lt;literallayout&gt;border-image-slice: @top @right @bottom @left&lt;/literallayout&gt;
+The sizes specified by the @top, @right, @bottom and @left parameters
+are the offsets, in pixels, from the relevant edge where the image
+should be "cut off" to build the slices used for the rendering
+of the border.
+&lt;/para&gt;
+&lt;para&gt;
+&lt;literallayout&gt;border-image-width: @top @right @bottom @left&lt;/literallayout&gt;
+The sizes specified by the @top, @right, @bottom and @left parameters
+are inward distances from the border box edge, used to specify the
+rendered size of each slice determined by border-image-slice.
+If this property is not specified, the values of border-width will
+be used as a fallback.
+&lt;/para&gt;
+&lt;para&gt;
+&lt;literallayout&gt;border-image-repeat: [stretch|repeat|round|space] ? 
+[stretch|repeat|round|space]&lt;/literallayout&gt;
+Specifies how the image slices should be rendered in the area
+outlined by border-width.
+The default (stretch) is to resize the slice to fill in the whole 
+allocated area.
+If the value of this property is 'repeat', the image slice
+will be tiled to fill the area.
+If the value of this property is 'round', the image slice will
+be tiled to fill the area, and scaled to fit it exactly
+a whole number of times.
+If the value of this property is 'space', the image slice will
+be tiled to fill the area, and if it doesn't fit it exactly a whole
+number of times, the extra space is distributed as padding around 
+the slices.
+If two options are specified, the first one affects
+the horizontal behaviour and the second one the vertical behaviour.
+If only one option is specified, it affects both.
+&lt;/para&gt;
+&lt;example&gt;
+&lt;title&gt;A border image&lt;/title&gt;
+&lt;inlinegraphic fileref="border1.png" format="PNG"/&gt;
+&lt;para&gt;This border image was specified with
+&lt;literallayout&gt;url("gradient1.png") 10 10 10 10&lt;/literallayout&gt;
+&lt;/para&gt;
+&lt;/example&gt;
+&lt;example&gt;
+&lt;title&gt;A repeating border image&lt;/title&gt;
+&lt;inlinegraphic fileref="border2.png" format="PNG"/&gt;
+&lt;para&gt;This border image was specified with
+&lt;literallayout&gt;url("gradient1.png") 10 10 10 10 repeat&lt;/literallayout&gt;
+&lt;/para&gt;
+&lt;/example&gt;
+&lt;example&gt;
+&lt;title&gt;A stretched border image&lt;/title&gt;
+&lt;inlinegraphic fileref="border3.png" format="PNG"/&gt;
+&lt;para&gt;This border image was specified with
+&lt;literallayout&gt;url("gradient1.png") 10 10 10 10 stretch&lt;/literallayout&gt;
+&lt;/para&gt;
+&lt;/example&gt;
+&lt;/refsect2&gt;
+&lt;refsect2 id="gtkcssprovider-transitions"&gt;
+&lt;para&gt;Styles can specify transitions that will be used to create a gradual
+change in the appearance when a widget state changes. The following
+syntax is used to specify transitions:
+&lt;literallayout&gt;@duration [s|ms] [linear|ease|ease-in|ease-out|ease-in-out] [loop]?&lt;/literallayout&gt;
+The @duration is the amount of time that the animation will take for
+a complete cycle from start to end. If the loop option is given, the
+animation will be repated until the state changes again.
+The option after the duration determines the transition function from a
+small set of predefined functions.
+&lt;figure&gt;&lt;title&gt;Linear transition&lt;/title&gt;
+&lt;graphic fileref="linear.png" format="PNG"/&gt;
+&lt;/figure&gt;
+&lt;figure&gt;&lt;title&gt;Ease transition&lt;/title&gt;
+&lt;graphic fileref="ease.png" format="PNG"/&gt;
+&lt;/figure&gt;
+&lt;figure&gt;&lt;title&gt;Ease-in-out transition&lt;/title&gt;
+&lt;graphic fileref="ease-in-out.png" format="PNG"/&gt;
+&lt;/figure&gt;
+&lt;figure&gt;&lt;title&gt;Ease-in transition&lt;/title&gt;
+&lt;graphic fileref="ease-in.png" format="PNG"/&gt;
+&lt;/figure&gt;
+&lt;figure&gt;&lt;title&gt;Ease-out transition&lt;/title&gt;
+&lt;graphic fileref="ease-out.png" format="PNG"/&gt;
+&lt;/figure&gt;
+&lt;/para&gt;
+&lt;/refsect2&gt;
+&lt;refsect2 id="gtkcssprovider-properties"&gt;
+&lt;title&gt;Supported properties&lt;/title&gt;
+&lt;para&gt;
+Properties are the part that differ the most to common CSS,
+not all properties are supported (some are planned to be
+supported eventually, some others are meaningless or don't
+map intuitively in a widget based environment).
+&lt;/para&gt;
+&lt;para&gt;
+The currently supported properties are:
+&lt;/para&gt;
+&lt;informaltable&gt;
+  &lt;tgroup cols="4"&gt;
+    &lt;thead&gt;
+      &lt;row&gt;
+        &lt;entry&gt;Property name&lt;/entry&gt;
+        &lt;entry&gt;Syntax&lt;/entry&gt;
+        &lt;entry&gt;Maps to&lt;/entry&gt;
+        &lt;entry&gt;Examples&lt;/entry&gt;
+      &lt;/row&gt;
+    &lt;/thead&gt;
+    &lt;tbody&gt;
+      &lt;row&gt;
+        &lt;entry&gt;engine&lt;/entry&gt;
+        &lt;entry&gt;engine-name&lt;/entry&gt;
+        &lt;entry&gt;<span class=" link"><a href="Gtk.ThemingEngine.html" title="Gtk.ThemingEngine">Gtk.ThemingEngine</a></span>&lt;/entry&gt;
+        &lt;entry&gt;engine: clearlooks;
+ engine: none; /&amp;ast; use the default (i.e. builtin) engine) &amp;ast;/ &lt;/entry&gt;
+      &lt;/row&gt;
+      &lt;row&gt;
+        &lt;entry&gt;background-color&lt;/entry&gt;
+        &lt;entry morerows="2"&gt;color (see above)&lt;/entry&gt;
+        &lt;entry morerows="7"&gt;<span class=" link"><a href="Gdk.RGBA.html" title="Gdk.RGBA">Gdk.RGBA</a></span>&lt;/entry&gt;
+        &lt;entry morerows="7"&gt;&lt;literallayout&gt;background-color: &amp;num;fff;
+color: &amp;amp;color1;
+background-color: shade (&amp;amp;color1, 0.5);
+color: mix (&amp;amp;color1, &amp;num;f0f, 0.8);&lt;/literallayout&gt;
+        &lt;/entry&gt;
+      &lt;/row&gt;
+      &lt;row&gt;
+        &lt;entry&gt;color&lt;/entry&gt;
+      &lt;/row&gt;
+      &lt;row&gt;
+        &lt;entry&gt;border-top-color&lt;/entry&gt;
+        &lt;entry morerows="4"&gt;transparent|color (see above)&lt;/entry&gt;
+      &lt;/row&gt;
+      &lt;row&gt;
+        &lt;entry&gt;border-right-color&lt;/entry&gt;
+      &lt;/row&gt;
+      &lt;row&gt;
+        &lt;entry&gt;border-bottom-color&lt;/entry&gt;
+      &lt;/row&gt;
+      &lt;row&gt;
+        &lt;entry&gt;border-left-color&lt;/entry&gt;
+      &lt;/row&gt;
+      &lt;row&gt;
+        &lt;entry&gt;border-color&lt;/entry&gt;
+        &lt;entry&gt;[transparent|color]{1,4}&lt;/entry&gt;
+      &lt;/row&gt;
+      &lt;row&gt;
+        &lt;entry&gt;font-family&lt;/entry&gt;
+        &lt;entry&gt;@family [, @family]*&lt;/entry&gt;
+        &lt;entry&gt;#gchararray&lt;/entry&gt;
+        &lt;entry&gt;font-family: Sans, Arial;&lt;/entry&gt;
+      &lt;/row&gt;
+      &lt;row&gt;
+        &lt;entry&gt;font-style&lt;/entry&gt;
+        &lt;entry&gt;[normal|oblique|italic]&lt;/entry&gt;
+        &lt;entry&gt;#PANGO_TYPE_STYLE&lt;/entry&gt;
+        &lt;entry&gt;font-style: italic;&lt;/entry&gt;
+      &lt;/row&gt;
+      &lt;row&gt;
+        &lt;entry&gt;font-variant&lt;/entry&gt;
+        &lt;entry&gt;[normal|small-caps]&lt;/entry&gt;
+        &lt;entry&gt;#PANGO_TYPE_VARIANT&lt;/entry&gt;
+        &lt;entry&gt;font-variant: normal;&lt;/entry&gt;
+      &lt;/row&gt;
+      &lt;row&gt;
+        &lt;entry&gt;font-weight&lt;/entry&gt;
+        &lt;entry&gt;[normal|bold|bolder|lighter|100|200|300|400|500|600|700|800|900]&lt;/entry&gt;
+        &lt;entry&gt;#PANGO_TYPE_WEIGHT&lt;/entry&gt;
+        &lt;entry&gt;font-weight: bold;&lt;/entry&gt;
+      &lt;/row&gt;
+      &lt;row&gt;
+        &lt;entry&gt;font-size&lt;/entry&gt;
+        &lt;entry&gt;Font size in point&lt;/entry&gt;
+        &lt;entry&gt;#gint&lt;/entry&gt;
+        &lt;entry&gt;font-size: 13;&lt;/entry&gt;
+      &lt;/row&gt;
+      &lt;row&gt;
+        &lt;entry&gt;font&lt;/entry&gt;
+        &lt;entry&gt;@family [@style] [@size]&lt;/entry&gt;
+        &lt;entry&gt;<span class=" link"><a href="Pango.FontDescription.html" title="Pango.FontDescription">Pango.FontDescription</a></span>&lt;/entry&gt;
+        &lt;entry&gt;font: Sans 15;&lt;/entry&gt;
+      &lt;/row&gt;
+      &lt;row&gt;
+        &lt;entry&gt;margin-top&lt;/entry&gt;
+        &lt;entry&gt;integer&lt;/entry&gt;
+        &lt;entry&gt;#gint&lt;/entry&gt;
+        &lt;entry&gt;margin-top: 0;&lt;/entry&gt;
+      &lt;/row&gt;
+      &lt;row&gt;
+        &lt;entry&gt;margin-left&lt;/entry&gt;
+        &lt;entry&gt;integer&lt;/entry&gt;
+        &lt;entry&gt;#gint&lt;/entry&gt;
+        &lt;entry&gt;margin-left: 1;&lt;/entry&gt;
+      &lt;/row&gt;
+      &lt;row&gt;
+        &lt;entry&gt;margin-bottom&lt;/entry&gt;
+        &lt;entry&gt;integer&lt;/entry&gt;
+        &lt;entry&gt;#gint&lt;/entry&gt;
+        &lt;entry&gt;margin-bottom: 2;&lt;/entry&gt;
+      &lt;/row&gt;
+      &lt;row&gt;
+        &lt;entry&gt;margin-right&lt;/entry&gt;
+        &lt;entry&gt;integer&lt;/entry&gt;
+        &lt;entry&gt;#gint&lt;/entry&gt;
+        &lt;entry&gt;margin-right: 4;&lt;/entry&gt;
+      &lt;/row&gt;
+      &lt;row&gt;
+        &lt;entry&gt;margin&lt;/entry&gt;
+        &lt;entry morerows="1"&gt;&lt;literallayout&gt;@width
+@vertical_width @horizontal_width
+@top_width @horizontal_width @bottom_width
+@top_width @right_width @bottom_width @left_width&lt;/literallayout&gt;
+        &lt;/entry&gt;
+        &lt;entry morerows="1"&gt;<span class=" link"><a href="Gtk.Border.html" title="Gtk.Border">Gtk.Border</a></span>&lt;/entry&gt;
+        &lt;entry morerows="1"&gt;&lt;literallayout&gt;margin: 5;
+margin: 5 10;
+margin: 5 10 3;
+margin: 5 10 3 5;&lt;/literallayout&gt;
+        &lt;/entry&gt;
+      &lt;/row&gt;
+      &lt;row&gt;
+        &lt;entry&gt;padding-top&lt;/entry&gt;
+        &lt;entry&gt;integer&lt;/entry&gt;
+        &lt;entry&gt;#gint&lt;/entry&gt;
+        &lt;entry&gt;padding-top: 5;&lt;/entry&gt;
+      &lt;/row&gt;
+      &lt;row&gt;
+        &lt;entry&gt;padding-left&lt;/entry&gt;
+        &lt;entry&gt;integer&lt;/entry&gt;
+        &lt;entry&gt;#gint&lt;/entry&gt;
+        &lt;entry&gt;padding-left: 5;&lt;/entry&gt;
+      &lt;/row&gt;
+      &lt;row&gt;
+        &lt;entry&gt;padding-bottom&lt;/entry&gt;
+        &lt;entry&gt;integer&lt;/entry&gt;
+        &lt;entry&gt;#gint&lt;/entry&gt;
+        &lt;entry&gt;padding-bottom: 5;&lt;/entry&gt;
+      &lt;/row&gt;
+      &lt;row&gt;
+        &lt;entry&gt;padding-right&lt;/entry&gt;
+        &lt;entry&gt;integer&lt;/entry&gt;
+        &lt;entry&gt;#gint&lt;/entry&gt;
+        &lt;entry&gt;padding-right: 5;&lt;/entry&gt;
+      &lt;/row&gt;
+      &lt;row&gt;
+        &lt;entry&gt;padding&lt;/entry&gt;
+      &lt;/row&gt;
+      &lt;row&gt;
+        &lt;entry&gt;background-image&lt;/entry&gt;
+        &lt;entry&gt;&lt;literallayout&gt;gradient (see above) or
+url(@path)&lt;/literallayout&gt;&lt;/entry&gt;
+        &lt;entry&gt;#cairo_pattern_t&lt;/entry&gt;
+        &lt;entry&gt;&lt;literallayout&gt;-gtk-gradient (linear,
+               left top, right top,
+               from (&amp;num;fff), to (&amp;num;000));
+-gtk-gradient (linear, 0.0 0.5, 0.5 1.0,
+               from (&amp;num;fff),
+               color-stop (0.5, &amp;num;f00),
+               to (&amp;num;000));
+-gtk-gradient (radial,
+               center center, 0.2,
+               center center, 0.8,
+               color-stop (0.0, &amp;num;fff),
+               color-stop (1.0, &amp;num;000));
+url ('background.png');&lt;/literallayout&gt;
+        &lt;/entry&gt;
+      &lt;/row&gt;
+      &lt;row&gt;
+        &lt;entry&gt;background-repeat&lt;/entry&gt;
+        &lt;entry&gt;[repeat|no-repeat]&lt;/entry&gt;
+        &lt;entry&gt;internal&lt;/entry&gt;
+        &lt;entry&gt;&lt;literallayout&gt;background-repeat: no-repeat;&lt;/literallayout&gt;
+               If not specified, the style doesn't respect the CSS3
+               specification, since the background will be
+               stretched to fill the area.
+        &lt;/entry&gt;
+      &lt;/row&gt;
+      &lt;row&gt;
+        &lt;entry&gt;border-top-width&lt;/entry&gt;
+        &lt;entry&gt;integer&lt;/entry&gt;
+        &lt;entry&gt;#gint&lt;/entry&gt;
+        &lt;entry&gt;border-top-width: 5;&lt;/entry&gt;
+      &lt;/row&gt;
+      &lt;row&gt;
+        &lt;entry&gt;border-left-width&lt;/entry&gt;
+        &lt;entry&gt;integer&lt;/entry&gt;
+        &lt;entry&gt;#gint&lt;/entry&gt;
+        &lt;entry&gt;border-left-width: 5;&lt;/entry&gt;
+      &lt;/row&gt;
+      &lt;row&gt;
+        &lt;entry&gt;border-bottom-width&lt;/entry&gt;
+        &lt;entry&gt;integer&lt;/entry&gt;
+        &lt;entry&gt;#gint&lt;/entry&gt;
+        &lt;entry&gt;border-bottom-width: 5;&lt;/entry&gt;
+      &lt;/row&gt;
+      &lt;row&gt;
+        &lt;entry&gt;border-right-width&lt;/entry&gt;
+        &lt;entry&gt;integer&lt;/entry&gt;
+        &lt;entry&gt;#gint&lt;/entry&gt;
+        &lt;entry&gt;border-right-width: 5;&lt;/entry&gt;
+      &lt;/row&gt;
+      &lt;row&gt;
+        &lt;entry&gt;border-width&lt;/entry&gt;
+        &lt;entry morerows="1"&gt;<span class=" link"><a href="Gtk.Border.html" title="Gtk.Border">Gtk.Border</a></span>&lt;/entry&gt;
+        &lt;entry morerows="1"&gt;&lt;literallayout&gt;border-width: 1;
+border-width: 1 2;
+border-width: 1 2 3;
+border-width: 1 2 3 5;&lt;/literallayout&gt;
+        &lt;/entry&gt;
+      &lt;/row&gt;
+      &lt;row&gt;
+        &lt;entry&gt;border-radius&lt;/entry&gt;
+        &lt;entry&gt;integer&lt;/entry&gt;
+        &lt;entry&gt;#gint&lt;/entry&gt;
+        &lt;entry&gt;border-radius: 5;&lt;/entry&gt;
+      &lt;/row&gt;
+      &lt;row&gt;
+        &lt;entry&gt;border-style&lt;/entry&gt;
+        &lt;entry&gt;[none|solid|inset|outset]&lt;/entry&gt;
+        &lt;entry&gt;<span class=" link"><a href="Gtk.BorderStyle.html" title="Gtk.BorderStyle">Gtk.BorderStyle</a></span>&lt;/entry&gt;
+        &lt;entry&gt;border-style: solid;&lt;/entry&gt;
+      &lt;/row&gt;
+      &lt;row&gt;
+        &lt;entry&gt;border-image&lt;/entry&gt;
+        &lt;entry&gt;&lt;literallayout&gt;border image (see above)&lt;/literallayout&gt;&lt;/entry&gt;
+        &lt;entry&gt;internal use only&lt;/entry&gt;
+        &lt;entry&gt;&lt;literallayout&gt;border-image: url("/path/to/image.png") 3 4 3 4 stretch;
+border-image: url("/path/to/image.png") 3 4 4 3 repeat stretch;&lt;/literallayout&gt;
+        &lt;/entry&gt;
+      &lt;/row&gt;
+      &lt;row&gt;
+        &lt;entry&gt;text-shadow&lt;/entry&gt;
+        &lt;entry&gt;shadow list (see above)&lt;/entry&gt;
+        &lt;entry&gt;internal use only&lt;/entry&gt;
+        &lt;entry&gt;&lt;literallayout&gt;text-shadow: 1 1 0 blue, -4 -4 red;&lt;/literallayout&gt;&lt;/entry&gt;
+      &lt;/row&gt;
+      &lt;row&gt;
+        &lt;entry&gt;transition&lt;/entry&gt;
+        &lt;entry&gt;transition (see above)&lt;/entry&gt;
+        &lt;entry&gt;internal use only&lt;/entry&gt;
+        &lt;entry&gt;&lt;literallayout&gt;transition: 150ms ease-in-out;
+transition: 1s linear loop;&lt;/literallayout&gt;
+        &lt;/entry&gt;
+      &lt;/row&gt;
+      &lt;row&gt;
+        &lt;entry&gt;gtk-key-bindings&lt;/entry&gt;
+        &lt;entry&gt;binding set name list&lt;/entry&gt;
+        &lt;entry&gt;internal use only&lt;/entry&gt;
+        &lt;entry&gt;&lt;literallayout&gt;gtk-bindings: binding1, binding2, ...;&lt;/literallayout&gt;
+        &lt;/entry&gt;
+      &lt;/row&gt;
+    &lt;/tbody&gt;
+  &lt;/tgroup&gt;
+&lt;/informaltable&gt;
+&lt;para&gt;
+GtkThemingEngines can register their own, engine-specific style properties
+with the function <span class=" link"><a href="Gtk.register_property.html" title="Gtk.register_property">Gtk.register_property</a></span>. These properties
+can be set in CSS like other properties, using a name of the form
+&lt;literallayout&gt;-&lt;replaceable&gt;namespace&lt;/replaceable&gt;-&lt;replaceable&gt;name&lt;/replaceable&gt;&lt;/literallayout&gt;, where &lt;replaceable&gt;namespace&lt;/replaceable&gt; is typically
+the name of the theming engine, and &lt;replaceable&gt;name&lt;/replaceable&gt; is the
+name of the property. Style properties that have been registered by widgets
+using <span class=" link"><a href="Gtk.install_style_property.html" title="Gtk.install_style_property">Gtk.install_style_property</a></span> can also be set in this
+way, using the widget class name for &lt;replaceable&gt;namespace&lt;/replaceable&gt;.
+&lt;/para&gt;
+&lt;example&gt;
+&lt;title&gt;Using engine-specific style properties&lt;/title&gt;
+&lt;programlisting&gt;
+* {
+    engine: clearlooks;
+    border-radius: 4;
+    -GtkPaned-handle-size: 6;
+    -clearlooks-colorize-scrollbar: false;
+}
+&lt;/programlisting&gt;
+&lt;/example&gt;
+&lt;/refsect2&gt;</p>
+<div class="synopsis"><div class="inner">
+<div class="title title-synopsis"><h2><span class="title">Hierarchy</span></h2></div>
+<div class="region"><div class="contents"><div class="tree"><div class="inner"><div class="region"><ul class="tree"><li class="tree">
+<div>
+        <span class=" code">GObject.Object</span>
+      
+      </div>
+<ul class="tree"><li class="tree"><div>
+        <span class=" code">Gtk.CssProvider</span>
+      </div></li></ul>
+</li></ul></div></div></div></div></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Methods</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.CssProvider.load_from_data.html" title="Gtk.CssProvider.prototype.load_from_data">Gtk.CssProvider.prototype.load_from_data</a></li>
+<li class="links "><a href="Gtk.CssProvider.load_from_file.html" title="Gtk.CssProvider.prototype.load_from_file">Gtk.CssProvider.prototype.load_from_file</a></li>
+<li class="links "><a href="Gtk.CssProvider.load_from_path.html" title="Gtk.CssProvider.prototype.load_from_path">Gtk.CssProvider.prototype.load_from_path</a></li>
+<li class="links "><a href="Gtk.CssProvider.to_string.html" title="Gtk.CssProvider.prototype.to_string">Gtk.CssProvider.prototype.to_string</a></li>
+</ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Functions</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.CssProvider.get_default.html" title="get_default">get_default</a></li>
+<li class="links "><a href="Gtk.CssProvider.get_named.html" title="get_named">get_named</a></li>
+</ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Signals</span></h2></div>
+<div class="region"><ul><li class="links "><a href="Gtk.CssProvider-parsing-error.html" title="Gtk.CssProvider::parsing-error">parsing-error</a></li></ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Virtual functions</span></h2></div>
+<div class="region"><ul><li class="links "><a href="Gtk.CssProvider-parsing_error.html" title="Gtk.CssProvider::parsing_error">Gtk.CssProvider::parsing_error</a></li></ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Other</span></h2></div>
+<div class="region"><ul><li class="links "><a href="Gtk.CssProvider.new.html" title="Gtk.CssProvider.new">Gtk.CssProvider.new</a></li></ul></div>
+</div></div>
+</div>
+<div class="sect sect-links" role="navigation">
+<div class="hgroup"></div>
+<div class="contents"><div class="links guidelinks"><div class="inner">
+<div class="title"><h2><span class="title">More Information</span></h2></div>
+<div class="region"><ul><li class="links "><a href="index.html" title="Index">Index</a></li></ul></div>
+</div></div></div>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="footer"></div>
+</div></body>
+</html>

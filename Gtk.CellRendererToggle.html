@@ -1,0 +1,96 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Gtk.CellRendererToggle</title>
+<link rel="stylesheet" type="text/css" href="C.css">
+<script type="text/javascript" src="jquery.js"></script><script type="text/javascript" src="jquery.syntax.js"></script><script type="text/javascript" src="yelp.js"></script>
+</head>
+<body><div class="page" role="main">
+<div class="header"><div class="trails" role="navigation"><div class="trail">
+<a class="trail" href="index.html" title="Index">Index</a> » </div></div></div>
+<div class="body">
+<div class="hgroup"><h1 class="title"><span class="title">Gtk.CellRendererToggle</span></h1></div>
+<div class="region">
+<div class="contents">
+<div class="synopsis"><div class="inner"><div class="region"><div class="contents"><div class="code"><pre class="contents ">const Gtk = imports.gi.Gtk;
+
+let cell_renderer_toggle = new Gtk.CellRendererToggle({
+    <span class=" link"><a href="Gtk.CellRendererToggle-activatable.html" title="Gtk.CellRendererToggle:activatable">activatable</a></span>: value,
+    <span class=" link"><a href="Gtk.CellRendererToggle-active.html" title="Gtk.CellRendererToggle:active">active</a></span>: value,
+    <span class=" link"><a href="Gtk.CellRendererToggle-inconsistent.html" title="Gtk.CellRendererToggle:inconsistent">inconsistent</a></span>: value,
+    <span class=" link"><a href="Gtk.CellRendererToggle-indicator-size.html" title="Gtk.CellRendererToggle:indicator-size">indicator_size</a></span>: value,
+    <span class=" link"><a href="Gtk.CellRendererToggle-radio.html" title="Gtk.CellRendererToggle:radio">radio</a></span>: value,
+});
+  </pre></div></div></div></div></div>
+<p class="p"><span class=" link"><a href="Gtk.CellRendererToggle.html" title="Gtk.CellRendererToggle">Gtk.CellRendererToggle</a></span> renders a toggle button in a cell. The
+button is drawn as a radio or a checkbutton, depending on the
+<span class=" link"><a href="Gtk.radio.html" title="Gtk.radio">Gtk.radio</a></span> property.
+When activated, it emits the <span class=" link"><a href="Gtk.toggled.html" title="Gtk.toggled">Gtk.toggled</a></span> signal.</p>
+<div class="synopsis"><div class="inner">
+<div class="title title-synopsis"><h2><span class="title">Hierarchy</span></h2></div>
+<div class="region"><div class="contents"><div class="tree"><div class="inner"><div class="region"><ul class="tree"><li class="tree">
+<div>
+        <span class=" code">GObject.Object</span>
+      
+      </div>
+<ul class="tree"><li class="tree">
+<div>
+        <span class=" code">GObject.InitiallyUnowned</span>
+      
+      </div>
+<ul class="tree"><li class="tree">
+<div>
+        <span class=" code">Gtk.CellRenderer</span>
+      
+      </div>
+<ul class="tree"><li class="tree"><div>
+        <span class=" code">Gtk.CellRendererToggle</span>
+      </div></li></ul>
+</li></ul>
+</li></ul>
+</li></ul></div></div></div></div></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Methods</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.CellRendererToggle.get_activatable.html" title="Gtk.CellRendererToggle.prototype.get_activatable">Gtk.CellRendererToggle.prototype.get_activatable</a></li>
+<li class="links "><a href="Gtk.CellRendererToggle.get_active.html" title="Gtk.CellRendererToggle.prototype.get_active">Gtk.CellRendererToggle.prototype.get_active</a></li>
+<li class="links "><a href="Gtk.CellRendererToggle.get_radio.html" title="Gtk.CellRendererToggle.prototype.get_radio">Gtk.CellRendererToggle.prototype.get_radio</a></li>
+<li class="links "><a href="Gtk.CellRendererToggle.set_activatable.html" title="Gtk.CellRendererToggle.prototype.set_activatable">Gtk.CellRendererToggle.prototype.set_activatable</a></li>
+<li class="links "><a href="Gtk.CellRendererToggle.set_active.html" title="Gtk.CellRendererToggle.prototype.set_active">Gtk.CellRendererToggle.prototype.set_active</a></li>
+<li class="links "><a href="Gtk.CellRendererToggle.set_radio.html" title="Gtk.CellRendererToggle.prototype.set_radio">Gtk.CellRendererToggle.prototype.set_radio</a></li>
+</ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Properties</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.CellRendererToggle-activatable.html" title="Gtk.CellRendererToggle:activatable">activatable</a></li>
+<li class="links "><a href="Gtk.CellRendererToggle-active.html" title="Gtk.CellRendererToggle:active">active</a></li>
+<li class="links "><a href="Gtk.CellRendererToggle-inconsistent.html" title="Gtk.CellRendererToggle:inconsistent">inconsistent</a></li>
+<li class="links "><a href="Gtk.CellRendererToggle-indicator-size.html" title="Gtk.CellRendererToggle:indicator-size">indicator-size</a></li>
+<li class="links "><a href="Gtk.CellRendererToggle-radio.html" title="Gtk.CellRendererToggle:radio">radio</a></li>
+</ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Signals</span></h2></div>
+<div class="region"><ul><li class="links "><a href="Gtk.CellRendererToggle-toggled.html" title="Gtk.CellRendererToggle::toggled">toggled</a></li></ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Other</span></h2></div>
+<div class="region"><ul><li class="links "><a href="Gtk.CellRendererToggle.new.html" title="Gtk.CellRendererToggle.new">Gtk.CellRendererToggle.new</a></li></ul></div>
+</div></div>
+</div>
+<div class="sect sect-links" role="navigation">
+<div class="hgroup"></div>
+<div class="contents"><div class="links guidelinks"><div class="inner">
+<div class="title"><h2><span class="title">More Information</span></h2></div>
+<div class="region"><ul><li class="links "><a href="index.html" title="Index">Index</a></li></ul></div>
+</div></div></div>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="footer"></div>
+</div></body>
+</html>

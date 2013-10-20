@@ -1,0 +1,252 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Gtk.Activatable</title>
+<link rel="stylesheet" type="text/css" href="C.css">
+<script type="text/javascript" src="jquery.js"></script><script type="text/javascript" src="jquery.syntax.js"></script><script type="text/javascript" src="yelp.js"></script>
+</head>
+<body><div class="page" role="main">
+<div class="header"><div class="trails" role="navigation"><div class="trail">
+<a class="trail" href="index.html" title="Index">Index</a> » </div></div></div>
+<div class="body">
+<div class="hgroup"><h1 class="title"><span class="title">Gtk.Activatable</span></h1></div>
+<div class="region">
+<div class="contents">
+<div class="synopsis"><div class="inner"><div class="region"><div class="contents"><div class="code"><pre class="contents ">const Gtk = imports.gi.Gtk;
+
+let activatable = new Gtk.Activatable({
+    <span class=" link"><a href="Gtk.Activatable-related-action.html" title="Gtk.Activatable-related-action">related_action</a></span>: value,
+    <span class=" link"><a href="Gtk.Activatable-use-action-appearance.html" title="Gtk.Activatable-use-action-appearance">use_action_appearance</a></span>: value,
+});
+  </pre></div></div></div></div></div>
+<p class="p">Activatable widgets can be connected to a <span class=" link"><a href="Gtk.Action.html" title="Gtk.Action">Gtk.Action</a></span> and reflects
+the state of its action. A <span class=" link"><a href="Gtk.Activatable.html" title="Gtk.Activatable">Gtk.Activatable</a></span> can also provide feedback
+through its action, as they are responsible for activating their
+related actions.</p>
+<p class="p">&lt;refsect2&gt;
+&lt;title&gt;Implementing GtkActivatable&lt;/title&gt;
+&lt;para&gt;
+When extending a class that is already <span class=" link"><a href="Gtk.Activatable.html" title="Gtk.Activatable">Gtk.Activatable</a></span>; it is only
+necessary to implement the <span class=" link"><a href="Gtk.Activatable.html" title="Gtk.Activatable">Gtk.Activatable</a></span>-&gt;sync_action_properties()
+and <span class=" link"><a href="Gtk.Activatable.html" title="Gtk.Activatable">Gtk.Activatable</a></span>-&gt;update() methods and chain up to the parent
+implementation, however when introducing
+a new <span class=" link"><a href="Gtk.Activatable.html" title="Gtk.Activatable">Gtk.Activatable</a></span> class; the <span class=" link"><a href="Gtk.related-action.html" title="Gtk.related-action">Gtk.related-action</a></span> and
+<span class=" link"><a href="Gtk.use-action-appearance.html" title="Gtk.use-action-appearance">Gtk.use-action-appearance</a></span> properties need to be handled by
+the implementor. Handling these properties is mostly a matter of installing
+the action pointer and boolean flag on your instance, and calling
+<span class=" link"><a href="Gtk.do_set_related_action.html" title="Gtk.do_set_related_action">Gtk.do_set_related_action</a></span> and
+<span class=" link"><a href="Gtk.sync_action_properties.html" title="Gtk.sync_action_properties">Gtk.sync_action_properties</a></span> at the appropriate times.
+&lt;/para&gt;
+&lt;example&gt;
+&lt;title&gt;A class fragment implementing <span class=" link"><a href="Gtk.Activatable.html" title="Gtk.Activatable">Gtk.Activatable</a></span>&lt;/title&gt;
+&lt;programlisting&gt;&lt;![CDATA[</p>
+<p class="p">enum {
+...</p>
+<p class="p">PROP_ACTIVATABLE_RELATED_ACTION,
+PROP_ACTIVATABLE_USE_ACTION_APPEARANCE
+}</p>
+<p class="p">struct _FooBarPrivate
+{</p>
+<p class="p">  ...</p>
+<p class="p">  GtkAction      *action;
+  gboolean        use_action_appearance;
+};</p>
+<p class="p">...</p>
+<p class="p">static void foo_bar_activatable_interface_init         (GtkActivatableIface  *iface);
+static void foo_bar_activatable_update                 (GtkActivatable       *activatable,
+						           GtkAction            *action,
+						           const gchar          *property_name);
+static void foo_bar_activatable_sync_action_properties (GtkActivatable       *activatable,
+						           GtkAction            *action);
+...</p>
+<p class="p">
+static void
+foo_bar_class_init (FooBarClass *klass)
+{</p>
+<p class="p">  ...</p>
+<p class="p">  g_object_class_override_property (gobject_class, PROP_ACTIVATABLE_RELATED_ACTION, "related-action");
+  g_object_class_override_property (gobject_class, PROP_ACTIVATABLE_USE_ACTION_APPEARANCE, "use-action-appearance");</p>
+<p class="p">  ...
+}</p>
+<p class="p">
+static void
+foo_bar_activatable_interface_init (GtkActivatableIface  *iface)
+{
+  iface-&gt;update = foo_bar_activatable_update;
+  iface-&gt;sync_action_properties = foo_bar_activatable_sync_action_properties;
+}</p>
+<p class="p">... Break the reference using <span class=" link"><a href="Gtk.do_set_related_action.html" title="Gtk.do_set_related_action">Gtk.do_set_related_action</a></span>...</p>
+<p class="p">static void 
+foo_bar_dispose (GObject *object)
+{
+  FooBar *bar = FOO_BAR (object);
+  FooBarPrivate *priv = FOO_BAR_GET_PRIVATE (bar);</p>
+<p class="p">  ...</p>
+<p class="p">  if (priv-&gt;action)
+    {
+      gtk_activatable_do_set_related_action (GTK_ACTIVATABLE (bar), NULL);
+      priv-&gt;action = NULL;
+    }
+  G_OBJECT_CLASS (foo_bar_parent_class)-&gt;dispose (object);
+}</p>
+<p class="p">... Handle the "related-action" and "use-action-appearance" properties ...</p>
+<p class="p">static void
+foo_bar_set_property (GObject         *object,
+                      guint            prop_id,
+                      const GValue    *value,
+                      GParamSpec      *pspec)
+{
+  FooBar *bar = FOO_BAR (object);
+  FooBarPrivate *priv = FOO_BAR_GET_PRIVATE (bar);</p>
+<p class="p">  switch (prop_id)
+    {</p>
+<p class="p">      ...</p>
+<p class="p">    case PROP_ACTIVATABLE_RELATED_ACTION:
+      foo_bar_set_related_action (bar, g_value_get_object (value));
+      break;
+    case PROP_ACTIVATABLE_USE_ACTION_APPEARANCE:
+      foo_bar_set_use_action_appearance (bar, g_value_get_boolean (value));
+      break;
+    default:
+      G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
+      break;
+    }
+}</p>
+<p class="p">static void
+foo_bar_get_property (GObject         *object,
+                         guint            prop_id,
+                         GValue          *value,
+                         GParamSpec      *pspec)
+{
+  FooBar *bar = FOO_BAR (object);
+  FooBarPrivate *priv = FOO_BAR_GET_PRIVATE (bar);</p>
+<p class="p">  switch (prop_id)
+    { </p>
+<p class="p">      ...</p>
+<p class="p">    case PROP_ACTIVATABLE_RELATED_ACTION:
+      g_value_set_object (value, priv-&gt;action);
+      break;
+    case PROP_ACTIVATABLE_USE_ACTION_APPEARANCE:
+      g_value_set_boolean (value, priv-&gt;use_action_appearance);
+      break;
+    default:
+      G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
+      break;
+    }
+}</p>
+<p class="p">
+static void
+foo_bar_set_use_action_appearance (FooBar   *bar, 
+				   gboolean  use_appearance)
+{
+  FooBarPrivate *priv = FOO_BAR_GET_PRIVATE (bar);</p>
+<p class="p">  if (priv-&gt;use_action_appearance != use_appearance)
+    {
+      priv-&gt;use_action_appearance = use_appearance;
+      
+      gtk_activatable_sync_action_properties (GTK_ACTIVATABLE (bar), priv-&gt;action);
+    }
+}</p>
+<p class="p">... call <span class=" link"><a href="Gtk.do_set_related_action.html" title="Gtk.do_set_related_action">Gtk.do_set_related_action</a></span> and then assign the action pointer, 
+no need to reference the action here since <span class=" link"><a href="Gtk.do_set_related_action.html" title="Gtk.do_set_related_action">Gtk.do_set_related_action</a></span> already 
+holds a reference here for you...
+static void
+foo_bar_set_related_action (FooBar    *bar, 
+			    GtkAction *action)
+{
+  FooBarPrivate *priv = FOO_BAR_GET_PRIVATE (bar);</p>
+<p class="p">  if (priv-&gt;action == action)
+    return;</p>
+<p class="p">  gtk_activatable_do_set_related_action (GTK_ACTIVATABLE (bar), action);</p>
+<p class="p">  priv-&gt;action = action;
+}</p>
+<p class="p">... Selectively reset and update activatable depending on the use-action-appearance property ...
+static void
+gtk_button_activatable_sync_action_properties (GtkActivatable       *activatable,
+		                                  GtkAction            *action)
+{
+  GtkButtonPrivate *priv = GTK_BUTTON_GET_PRIVATE (activatable);</p>
+<p class="p">  if (!action)
+    return;</p>
+<p class="p">  if (gtk_action_is_visible (action))
+    gtk_widget_show (GTK_WIDGET (activatable));
+  else
+    gtk_widget_hide (GTK_WIDGET (activatable));
+  
+  gtk_widget_set_sensitive (GTK_WIDGET (activatable), gtk_action_is_sensitive (action));</p>
+<p class="p">  ...
+  
+  if (priv-&gt;use_action_appearance)
+    {
+      if (gtk_action_get_stock_id (action))
+	foo_bar_set_stock (button, gtk_action_get_stock_id (action));
+      else if (gtk_action_get_label (action))
+	foo_bar_set_label (button, gtk_action_get_label (action));</p>
+<p class="p">      ...</p>
+<p class="p">    }
+}</p>
+<p class="p">static void 
+foo_bar_activatable_update (GtkActivatable       *activatable,
+			       GtkAction            *action,
+			       const gchar          *property_name)
+{
+  FooBarPrivate *priv = FOO_BAR_GET_PRIVATE (activatable);</p>
+<p class="p">  if (strcmp (property_name, "visible") == 0)
+    {
+      if (gtk_action_is_visible (action))
+	gtk_widget_show (GTK_WIDGET (activatable));
+      else
+	gtk_widget_hide (GTK_WIDGET (activatable));
+    }
+  else if (strcmp (property_name, "sensitive") == 0)
+    gtk_widget_set_sensitive (GTK_WIDGET (activatable), gtk_action_is_sensitive (action));</p>
+<p class="p">  ...</p>
+<p class="p">  if (!priv-&gt;use_action_appearance)
+    return;</p>
+<p class="p">  if (strcmp (property_name, "stock-id") == 0)
+    foo_bar_set_stock (button, gtk_action_get_stock_id (action));
+  else if (strcmp (property_name, "label") == 0)
+    foo_bar_set_label (button, gtk_action_get_label (action));</p>
+<p class="p">  ...
+}]]&gt;&lt;/programlisting&gt;
+&lt;/example&gt;
+&lt;/refsect2&gt;</p>
+<div class="synopsis"><div class="inner">
+<div class="title title-synopsis"><h2><span class="title">Hierarchy</span></h2></div>
+<div class="region"><div class="contents"><div class="tree"><div class="inner"><div class="region"><ul class="tree"><li class="tree"><div>
+        <span class=" code">Gtk.Activatable</span>
+      </div></li></ul></div></div></div></div></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Methods</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.Activatable.do_set_related_action.html" title="Gtk.Activatable.prototype.do_set_related_action">Gtk.Activatable.prototype.do_set_related_action</a></li>
+<li class="links "><a href="Gtk.Activatable.get_related_action.html" title="Gtk.Activatable.prototype.get_related_action">Gtk.Activatable.prototype.get_related_action</a></li>
+<li class="links "><a href="Gtk.Activatable.get_use_action_appearance.html" title="Gtk.Activatable.prototype.get_use_action_appearance">Gtk.Activatable.prototype.get_use_action_appearance</a></li>
+<li class="links "><a href="Gtk.Activatable.set_related_action.html" title="Gtk.Activatable.prototype.set_related_action">Gtk.Activatable.prototype.set_related_action</a></li>
+<li class="links "><a href="Gtk.Activatable.set_use_action_appearance.html" title="Gtk.Activatable.prototype.set_use_action_appearance">Gtk.Activatable.prototype.set_use_action_appearance</a></li>
+<li class="links "><a href="Gtk.Activatable.sync_action_properties.html" title="Gtk.Activatable.prototype.sync_action_properties">Gtk.Activatable.prototype.sync_action_properties</a></li>
+</ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Virtual functions</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.Activatable-sync_action_properties.html" title="Gtk.Activatable::sync_action_properties">Gtk.Activatable::sync_action_properties</a></li>
+<li class="links "><a href="Gtk.Activatable-update.html" title="Gtk.Activatable::update">Gtk.Activatable::update</a></li>
+</ul></div>
+</div></div>
+</div>
+<div class="sect sect-links" role="navigation">
+<div class="hgroup"></div>
+<div class="contents"><div class="links guidelinks"><div class="inner">
+<div class="title"><h2><span class="title">More Information</span></h2></div>
+<div class="region"><ul><li class="links "><a href="index.html" title="Index">Index</a></li></ul></div>
+</div></div></div>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="footer"></div>
+</div></body>
+</html>

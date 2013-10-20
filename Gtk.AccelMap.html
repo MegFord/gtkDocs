@@ -1,0 +1,123 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Gtk.AccelMap</title>
+<link rel="stylesheet" type="text/css" href="C.css">
+<script type="text/javascript" src="jquery.js"></script><script type="text/javascript" src="jquery.syntax.js"></script><script type="text/javascript" src="yelp.js"></script>
+</head>
+<body><div class="page" role="main">
+<div class="header"><div class="trails" role="navigation"><div class="trail">
+<a class="trail" href="index.html" title="Index">Index</a> » </div></div></div>
+<div class="body">
+<div class="hgroup"><h1 class="title"><span class="title">Gtk.AccelMap</span></h1></div>
+<div class="region">
+<div class="contents">
+<div class="synopsis"><div class="inner"><div class="region"><div class="contents"><div class="code"><pre class="contents ">const Gtk = imports.gi.Gtk;
+
+let accel_map = new Gtk.AccelMap();
+  </pre></div></div></div></div></div>
+<p class="p">Accelerator maps are used to define runtime configurable accelerators.
+Functions for manipulating them are are usually used by higher level
+convenience mechanisms like <span class=" link"><a href="Gtk.UIManager.html" title="Gtk.UIManager">Gtk.UIManager</a></span> and are thus considered
+"low-level". You'll want to use them if you're manually creating menus that
+should have user-configurable accelerators.</p>
+<p class="p">Accelerator is uniquely defined by:</p>
+<p class="p">&lt;itemizedlist&gt;
+  &lt;listitem&gt;&lt;para&gt;accelerator path&lt;/para&gt;&lt;/listitem&gt;
+  &lt;listitem&gt;&lt;para&gt;accelerator key&lt;/para&gt;&lt;/listitem&gt;
+  &lt;listitem&gt;&lt;para&gt;accelerator modifiers&lt;/para&gt;&lt;/listitem&gt;
+&lt;/itemizedlist&gt;</p>
+<p class="p">The accelerator path must consist of
+"&amp;lt;WINDOWTYPE&amp;gt;/Category1/Category2/.../Action", where WINDOWTYPE
+should be a unique application-specific identifier that corresponds to the
+kind of window the accelerator is being used in, e.g. "Gimp-Image",
+"Abiword-Document" or "Gnumeric-Settings".
+The "Category1/.../Action" portion is most appropriately chosen by the action
+the accelerator triggers, i.e. for accelerators on menu items, choose the
+item's menu path, e.g. "File/Save As", "Image/View/Zoom" or
+"Edit/Select All". So a full valid accelerator path may look like:
+"&amp;lt;Gimp-Toolbox&amp;gt;/File/Dialogs/Tool Options...".</p>
+<p class="p">All accelerators are stored inside one global <span class=" link"><a href="Gtk.AccelMap.html" title="Gtk.AccelMap">Gtk.AccelMap</a></span> that can be
+obtained using <span class=" link"><a href="Gtk.get.html" title="Gtk.get">Gtk.get</a></span>. See &lt;link
+linkend="monitoring-changes"&gt;Monitoring changes&lt;/link&gt; for additional
+details.</p>
+<p class="p">&lt;refsect2 id="manipulating-accelerators"&gt;
+&lt;title&gt;Manipulating accelerators&lt;/title&gt;
+&lt;para&gt;
+New accelerators can be added using <span class=" link"><a href="Gtk.add_entry.html" title="Gtk.add_entry">Gtk.add_entry</a></span>. To search for
+specific accelerator, use <span class=" link"><a href="Gtk.lookup_entry.html" title="Gtk.lookup_entry">Gtk.lookup_entry</a></span>. Modifications of
+existing accelerators should be done using <span class=" link"><a href="Gtk.change_entry.html" title="Gtk.change_entry">Gtk.change_entry</a></span>.</p>
+<p class="p">In order to avoid having some accelerators changed, they can be locked using
+<span class=" link"><a href="Gtk.lock_path.html" title="Gtk.lock_path">Gtk.lock_path</a></span>. Unlocking is done using
+<span class=" link"><a href="Gtk.unlock_path.html" title="Gtk.unlock_path">Gtk.unlock_path</a></span>.
+&lt;/para&gt;
+&lt;/refsect2&gt;
+&lt;refsect2 id="saving-and-loading"&gt;
+&lt;title&gt;Saving and loading accelerator maps&lt;/title&gt;
+&lt;para&gt;
+Accelerator maps can be saved to and loaded from some external resource. For
+simple saving and loading from file, <span class=" link"><a href="Gtk.save.html" title="Gtk.save">Gtk.save</a></span> and
+<span class=" link"><a href="Gtk.load.html" title="Gtk.load">Gtk.load</a></span> are provided. Saving and loading can also be done by
+providing file descriptor to <span class=" link"><a href="Gtk.save_fd.html" title="Gtk.save_fd">Gtk.save_fd</a></span> and
+<span class=" link"><a href="Gtk.load_fd.html" title="Gtk.load_fd">Gtk.load_fd</a></span>.
+&lt;/para&gt;
+&lt;/refsect2&gt;
+&lt;refsect2 id="monitoring-changes"&gt;
+&lt;title&gt;Monitoring changes&lt;/title&gt;
+&lt;para&gt;
+<span class=" link"><a href="Gtk.AccelMap.html" title="Gtk.AccelMap">Gtk.AccelMap</a></span> object is only useful for monitoring changes of accelerators. By
+connecting to <span class=" link"><a href="Gtk.changed.html" title="Gtk.changed">Gtk.changed</a></span> signal, one can monitor changes of all
+accelerators. It is also possible to monitor only single accelerator path by
+using it as a detail of the <span class=" link"><a href="Gtk.changed.html" title="Gtk.changed">Gtk.changed</a></span> signal.
+&lt;/para&gt;
+&lt;/refsect2&gt;</p>
+<div class="synopsis"><div class="inner">
+<div class="title title-synopsis"><h2><span class="title">Hierarchy</span></h2></div>
+<div class="region"><div class="contents"><div class="tree"><div class="inner"><div class="region"><ul class="tree"><li class="tree">
+<div>
+        <span class=" code">GObject.Object</span>
+      
+      </div>
+<ul class="tree"><li class="tree"><div>
+        <span class=" code">Gtk.AccelMap</span>
+      </div></li></ul>
+</li></ul></div></div></div></div></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Functions</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.AccelMap.add_entry.html" title="add_entry">add_entry</a></li>
+<li class="links "><a href="Gtk.AccelMap.add_filter.html" title="add_filter">add_filter</a></li>
+<li class="links "><a href="Gtk.AccelMap.change_entry.html" title="change_entry">change_entry</a></li>
+<li class="links "><a href="Gtk.AccelMap.foreach.html" title="foreach">foreach</a></li>
+<li class="links "><a href="Gtk.AccelMap.foreach_unfiltered.html" title="foreach_unfiltered">foreach_unfiltered</a></li>
+<li class="links "><a href="Gtk.AccelMap.get.html" title="get">get</a></li>
+<li class="links "><a href="Gtk.AccelMap.load.html" title="load">load</a></li>
+<li class="links "><a href="Gtk.AccelMap.load_fd.html" title="load_fd">load_fd</a></li>
+<li class="links "><a href="Gtk.AccelMap.load_scanner.html" title="load_scanner">load_scanner</a></li>
+<li class="links "><a href="Gtk.AccelMap.lock_path.html" title="lock_path">lock_path</a></li>
+<li class="links "><a href="Gtk.AccelMap.lookup_entry.html" title="lookup_entry">lookup_entry</a></li>
+<li class="links "><a href="Gtk.AccelMap.save.html" title="save">save</a></li>
+<li class="links "><a href="Gtk.AccelMap.save_fd.html" title="save_fd">save_fd</a></li>
+<li class="links "><a href="Gtk.AccelMap.unlock_path.html" title="unlock_path">unlock_path</a></li>
+</ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Signals</span></h2></div>
+<div class="region"><ul><li class="links "><a href="Gtk.AccelMap-changed.html" title="Gtk.AccelMap::changed">changed</a></li></ul></div>
+</div></div>
+</div>
+<div class="sect sect-links" role="navigation">
+<div class="hgroup"></div>
+<div class="contents"><div class="links guidelinks"><div class="inner">
+<div class="title"><h2><span class="title">More Information</span></h2></div>
+<div class="region"><ul><li class="links "><a href="index.html" title="Index">Index</a></li></ul></div>
+</div></div></div>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="footer"></div>
+</div></body>
+</html>

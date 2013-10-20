@@ -1,0 +1,176 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Gtk.CellRendererText</title>
+<link rel="stylesheet" type="text/css" href="C.css">
+<script type="text/javascript" src="jquery.js"></script><script type="text/javascript" src="jquery.syntax.js"></script><script type="text/javascript" src="yelp.js"></script>
+</head>
+<body><div class="page" role="main">
+<div class="header"><div class="trails" role="navigation"><div class="trail">
+<a class="trail" href="index.html" title="Index">Index</a> » </div></div></div>
+<div class="body">
+<div class="hgroup"><h1 class="title"><span class="title">Gtk.CellRendererText</span></h1></div>
+<div class="region">
+<div class="contents">
+<div class="synopsis"><div class="inner"><div class="region"><div class="contents"><div class="code"><pre class="contents ">const Gtk = imports.gi.Gtk;
+
+let cell_renderer_text = new Gtk.CellRendererText({
+    <span class=" link"><a href="Gtk.CellRendererText-align-set.html" title="Gtk.CellRendererText:align-set">align_set</a></span>: value,
+    <span class=" link"><a href="Gtk.CellRendererText-alignment.html" title="Gtk.CellRendererText:alignment">alignment</a></span>: value,
+    <span class=" link"><a href="Gtk.CellRendererText-attributes.html" title="Gtk.CellRendererText:attributes">attributes</a></span>: value,
+    <span class=" link"><a href="Gtk.CellRendererText-background.html" title="Gtk.CellRendererText:background">background</a></span>: value,
+    <span class=" link"><a href="Gtk.CellRendererText-background-gdk.html" title="Gtk.CellRendererText:background-gdk">background_gdk</a></span>: value,
+    <span class=" link"><a href="Gtk.CellRendererText-background-rgba.html" title="Gtk.CellRendererText:background-rgba">background_rgba</a></span>: value,
+    <span class=" link"><a href="Gtk.CellRendererText-background-set.html" title="Gtk.CellRendererText:background-set">background_set</a></span>: value,
+    <span class=" link"><a href="Gtk.CellRendererText-editable.html" title="Gtk.CellRendererText:editable">editable</a></span>: value,
+    <span class=" link"><a href="Gtk.CellRendererText-editable-set.html" title="Gtk.CellRendererText:editable-set">editable_set</a></span>: value,
+    <span class=" link"><a href="Gtk.CellRendererText-ellipsize.html" title="Gtk.CellRendererText:ellipsize">ellipsize</a></span>: value,
+    <span class=" link"><a href="Gtk.CellRendererText-ellipsize-set.html" title="Gtk.CellRendererText:ellipsize-set">ellipsize_set</a></span>: value,
+    <span class=" link"><a href="Gtk.CellRendererText-family.html" title="Gtk.CellRendererText:family">family</a></span>: value,
+    <span class=" link"><a href="Gtk.CellRendererText-family-set.html" title="Gtk.CellRendererText:family-set">family_set</a></span>: value,
+    <span class=" link"><a href="Gtk.CellRendererText-font.html" title="Gtk.CellRendererText:font">font</a></span>: value,
+    <span class=" link"><a href="Gtk.CellRendererText-font-desc.html" title="Gtk.CellRendererText:font-desc">font_desc</a></span>: value,
+    <span class=" link"><a href="Gtk.CellRendererText-foreground.html" title="Gtk.CellRendererText:foreground">foreground</a></span>: value,
+    <span class=" link"><a href="Gtk.CellRendererText-foreground-gdk.html" title="Gtk.CellRendererText:foreground-gdk">foreground_gdk</a></span>: value,
+    <span class=" link"><a href="Gtk.CellRendererText-foreground-rgba.html" title="Gtk.CellRendererText:foreground-rgba">foreground_rgba</a></span>: value,
+    <span class=" link"><a href="Gtk.CellRendererText-foreground-set.html" title="Gtk.CellRendererText:foreground-set">foreground_set</a></span>: value,
+    <span class=" link"><a href="Gtk.CellRendererText-language.html" title="Gtk.CellRendererText:language">language</a></span>: value,
+    <span class=" link"><a href="Gtk.CellRendererText-language-set.html" title="Gtk.CellRendererText:language-set">language_set</a></span>: value,
+    <span class=" link"><a href="Gtk.CellRendererText-markup.html" title="Gtk.CellRendererText:markup">markup</a></span>: value,
+    <span class=" link"><a href="Gtk.CellRendererText-max-width-chars.html" title="Gtk.CellRendererText:max-width-chars">max_width_chars</a></span>: value,
+    <span class=" link"><a href="Gtk.CellRendererText-placeholder-text.html" title="Gtk.CellRendererText:placeholder-text">placeholder_text</a></span>: value,
+    <span class=" link"><a href="Gtk.CellRendererText-rise.html" title="Gtk.CellRendererText:rise">rise</a></span>: value,
+    <span class=" link"><a href="Gtk.CellRendererText-rise-set.html" title="Gtk.CellRendererText:rise-set">rise_set</a></span>: value,
+    <span class=" link"><a href="Gtk.CellRendererText-scale.html" title="Gtk.CellRendererText:scale">scale</a></span>: value,
+    <span class=" link"><a href="Gtk.CellRendererText-scale-set.html" title="Gtk.CellRendererText:scale-set">scale_set</a></span>: value,
+    <span class=" link"><a href="Gtk.CellRendererText-single-paragraph-mode.html" title="Gtk.CellRendererText:single-paragraph-mode">single_paragraph_mode</a></span>: value,
+    <span class=" link"><a href="Gtk.CellRendererText-size.html" title="Gtk.CellRendererText:size">size</a></span>: value,
+    <span class=" link"><a href="Gtk.CellRendererText-size-points.html" title="Gtk.CellRendererText:size-points">size_points</a></span>: value,
+    <span class=" link"><a href="Gtk.CellRendererText-size-set.html" title="Gtk.CellRendererText:size-set">size_set</a></span>: value,
+    <span class=" link"><a href="Gtk.CellRendererText-stretch.html" title="Gtk.CellRendererText:stretch">stretch</a></span>: value,
+    <span class=" link"><a href="Gtk.CellRendererText-stretch-set.html" title="Gtk.CellRendererText:stretch-set">stretch_set</a></span>: value,
+    <span class=" link"><a href="Gtk.CellRendererText-strikethrough.html" title="Gtk.CellRendererText:strikethrough">strikethrough</a></span>: value,
+    <span class=" link"><a href="Gtk.CellRendererText-strikethrough-set.html" title="Gtk.CellRendererText:strikethrough-set">strikethrough_set</a></span>: value,
+    <span class=" link"><a href="Gtk.CellRendererText-style.html" title="Gtk.CellRendererText:style">style</a></span>: value,
+    <span class=" link"><a href="Gtk.CellRendererText-style-set.html" title="Gtk.CellRendererText:style-set">style_set</a></span>: value,
+    <span class=" link"><a href="Gtk.CellRendererText-text.html" title="Gtk.CellRendererText:text">text</a></span>: value,
+    <span class=" link"><a href="Gtk.CellRendererText-underline.html" title="Gtk.CellRendererText:underline">underline</a></span>: value,
+    <span class=" link"><a href="Gtk.CellRendererText-underline-set.html" title="Gtk.CellRendererText:underline-set">underline_set</a></span>: value,
+    <span class=" link"><a href="Gtk.CellRendererText-variant.html" title="Gtk.CellRendererText:variant">variant</a></span>: value,
+    <span class=" link"><a href="Gtk.CellRendererText-variant-set.html" title="Gtk.CellRendererText:variant-set">variant_set</a></span>: value,
+    <span class=" link"><a href="Gtk.CellRendererText-weight.html" title="Gtk.CellRendererText:weight">weight</a></span>: value,
+    <span class=" link"><a href="Gtk.CellRendererText-weight-set.html" title="Gtk.CellRendererText:weight-set">weight_set</a></span>: value,
+    <span class=" link"><a href="Gtk.CellRendererText-width-chars.html" title="Gtk.CellRendererText:width-chars">width_chars</a></span>: value,
+    <span class=" link"><a href="Gtk.CellRendererText-wrap-mode.html" title="Gtk.CellRendererText:wrap-mode">wrap_mode</a></span>: value,
+    <span class=" link"><a href="Gtk.CellRendererText-wrap-width.html" title="Gtk.CellRendererText:wrap-width">wrap_width</a></span>: value,
+});
+  </pre></div></div></div></div></div>
+<p class="p">A <span class=" link"><a href="Gtk.CellRendererText.html" title="Gtk.CellRendererText">Gtk.CellRendererText</a></span> renders a given text in its cell, using the font, color and
+style information provided by its properties. The text will be ellipsized if it is
+too long and the <span class=" link"><a href="Gtk.ellipsize.html" title="Gtk.ellipsize">Gtk.ellipsize</a></span> property allows it.</p>
+<p class="p">If the <span class=" link"><a href="Gtk.CellRenderer-mode.html" title="Gtk.CellRenderer:mode">Gtk.CellRenderer:mode</a></span> is <span class=" link"><a href="Gtk.CellRendererMode.html" title="Gtk.CellRendererMode">Gtk.CellRendererMode</a></span>.editable,
+the <span class=" link"><a href="Gtk.CellRendererText.html" title="Gtk.CellRendererText">Gtk.CellRendererText</a></span> allows to edit its text using an entry.</p>
+<div class="synopsis"><div class="inner">
+<div class="title title-synopsis"><h2><span class="title">Hierarchy</span></h2></div>
+<div class="region"><div class="contents"><div class="tree"><div class="inner"><div class="region"><ul class="tree"><li class="tree">
+<div>
+        <span class=" code">GObject.Object</span>
+      
+      </div>
+<ul class="tree"><li class="tree">
+<div>
+        <span class=" code">GObject.InitiallyUnowned</span>
+      
+      </div>
+<ul class="tree"><li class="tree">
+<div>
+        <span class=" code">Gtk.CellRenderer</span>
+      
+      </div>
+<ul class="tree"><li class="tree"><div>
+        <span class=" code">Gtk.CellRendererText</span>
+      </div></li></ul>
+</li></ul>
+</li></ul>
+</li></ul></div></div></div></div></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Methods</span></h2></div>
+<div class="region"><ul><li class="links "><a href="Gtk.CellRendererText.set_fixed_height_from_font.html" title="Gtk.CellRendererText.prototype.set_fixed_height_from_font">Gtk.CellRendererText.prototype.set_fixed_height_from_font</a></li></ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Properties</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.CellRendererText-align-set.html" title="Gtk.CellRendererText:align-set">align-set</a></li>
+<li class="links "><a href="Gtk.CellRendererText-alignment.html" title="Gtk.CellRendererText:alignment">alignment</a></li>
+<li class="links "><a href="Gtk.CellRendererText-attributes.html" title="Gtk.CellRendererText:attributes">attributes</a></li>
+<li class="links "><a href="Gtk.CellRendererText-background.html" title="Gtk.CellRendererText:background">background</a></li>
+<li class="links "><a href="Gtk.CellRendererText-background-gdk.html" title="Gtk.CellRendererText:background-gdk">background-gdk</a></li>
+<li class="links "><a href="Gtk.CellRendererText-background-rgba.html" title="Gtk.CellRendererText:background-rgba">background-rgba</a></li>
+<li class="links "><a href="Gtk.CellRendererText-background-set.html" title="Gtk.CellRendererText:background-set">background-set</a></li>
+<li class="links "><a href="Gtk.CellRendererText-editable.html" title="Gtk.CellRendererText:editable">editable</a></li>
+<li class="links "><a href="Gtk.CellRendererText-editable-set.html" title="Gtk.CellRendererText:editable-set">editable-set</a></li>
+<li class="links "><a href="Gtk.CellRendererText-ellipsize.html" title="Gtk.CellRendererText:ellipsize">ellipsize</a></li>
+<li class="links "><a href="Gtk.CellRendererText-ellipsize-set.html" title="Gtk.CellRendererText:ellipsize-set">ellipsize-set</a></li>
+<li class="links "><a href="Gtk.CellRendererText-family.html" title="Gtk.CellRendererText:family">family</a></li>
+<li class="links "><a href="Gtk.CellRendererText-family-set.html" title="Gtk.CellRendererText:family-set">family-set</a></li>
+<li class="links "><a href="Gtk.CellRendererText-font.html" title="Gtk.CellRendererText:font">font</a></li>
+<li class="links "><a href="Gtk.CellRendererText-font-desc.html" title="Gtk.CellRendererText:font-desc">font-desc</a></li>
+<li class="links "><a href="Gtk.CellRendererText-foreground.html" title="Gtk.CellRendererText:foreground">foreground</a></li>
+<li class="links "><a href="Gtk.CellRendererText-foreground-gdk.html" title="Gtk.CellRendererText:foreground-gdk">foreground-gdk</a></li>
+<li class="links "><a href="Gtk.CellRendererText-foreground-rgba.html" title="Gtk.CellRendererText:foreground-rgba">foreground-rgba</a></li>
+<li class="links "><a href="Gtk.CellRendererText-foreground-set.html" title="Gtk.CellRendererText:foreground-set">foreground-set</a></li>
+<li class="links "><a href="Gtk.CellRendererText-language.html" title="Gtk.CellRendererText:language">language</a></li>
+<li class="links "><a href="Gtk.CellRendererText-language-set.html" title="Gtk.CellRendererText:language-set">language-set</a></li>
+<li class="links "><a href="Gtk.CellRendererText-markup.html" title="Gtk.CellRendererText:markup">markup</a></li>
+<li class="links "><a href="Gtk.CellRendererText-max-width-chars.html" title="Gtk.CellRendererText:max-width-chars">max-width-chars</a></li>
+<li class="links "><a href="Gtk.CellRendererText-placeholder-text.html" title="Gtk.CellRendererText:placeholder-text">placeholder-text</a></li>
+<li class="links "><a href="Gtk.CellRendererText-rise.html" title="Gtk.CellRendererText:rise">rise</a></li>
+<li class="links "><a href="Gtk.CellRendererText-rise-set.html" title="Gtk.CellRendererText:rise-set">rise-set</a></li>
+<li class="links "><a href="Gtk.CellRendererText-scale.html" title="Gtk.CellRendererText:scale">scale</a></li>
+<li class="links "><a href="Gtk.CellRendererText-scale-set.html" title="Gtk.CellRendererText:scale-set">scale-set</a></li>
+<li class="links "><a href="Gtk.CellRendererText-single-paragraph-mode.html" title="Gtk.CellRendererText:single-paragraph-mode">single-paragraph-mode</a></li>
+<li class="links "><a href="Gtk.CellRendererText-size.html" title="Gtk.CellRendererText:size">size</a></li>
+<li class="links "><a href="Gtk.CellRendererText-size-points.html" title="Gtk.CellRendererText:size-points">size-points</a></li>
+<li class="links "><a href="Gtk.CellRendererText-size-set.html" title="Gtk.CellRendererText:size-set">size-set</a></li>
+<li class="links "><a href="Gtk.CellRendererText-stretch.html" title="Gtk.CellRendererText:stretch">stretch</a></li>
+<li class="links "><a href="Gtk.CellRendererText-stretch-set.html" title="Gtk.CellRendererText:stretch-set">stretch-set</a></li>
+<li class="links "><a href="Gtk.CellRendererText-strikethrough.html" title="Gtk.CellRendererText:strikethrough">strikethrough</a></li>
+<li class="links "><a href="Gtk.CellRendererText-strikethrough-set.html" title="Gtk.CellRendererText:strikethrough-set">strikethrough-set</a></li>
+<li class="links "><a href="Gtk.CellRendererText-style.html" title="Gtk.CellRendererText:style">style</a></li>
+<li class="links "><a href="Gtk.CellRendererText-style-set.html" title="Gtk.CellRendererText:style-set">style-set</a></li>
+<li class="links "><a href="Gtk.CellRendererText-text.html" title="Gtk.CellRendererText:text">text</a></li>
+<li class="links "><a href="Gtk.CellRendererText-underline.html" title="Gtk.CellRendererText:underline">underline</a></li>
+<li class="links "><a href="Gtk.CellRendererText-underline-set.html" title="Gtk.CellRendererText:underline-set">underline-set</a></li>
+<li class="links "><a href="Gtk.CellRendererText-variant.html" title="Gtk.CellRendererText:variant">variant</a></li>
+<li class="links "><a href="Gtk.CellRendererText-variant-set.html" title="Gtk.CellRendererText:variant-set">variant-set</a></li>
+<li class="links "><a href="Gtk.CellRendererText-weight.html" title="Gtk.CellRendererText:weight">weight</a></li>
+<li class="links "><a href="Gtk.CellRendererText-weight-set.html" title="Gtk.CellRendererText:weight-set">weight-set</a></li>
+<li class="links "><a href="Gtk.CellRendererText-width-chars.html" title="Gtk.CellRendererText:width-chars">width-chars</a></li>
+<li class="links "><a href="Gtk.CellRendererText-wrap-mode.html" title="Gtk.CellRendererText:wrap-mode">wrap-mode</a></li>
+<li class="links "><a href="Gtk.CellRendererText-wrap-width.html" title="Gtk.CellRendererText:wrap-width">wrap-width</a></li>
+</ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Signals</span></h2></div>
+<div class="region"><ul><li class="links "><a href="Gtk.CellRendererText-edited.html" title="Gtk.CellRendererText::edited">edited</a></li></ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Other</span></h2></div>
+<div class="region"><ul><li class="links "><a href="Gtk.CellRendererText.new.html" title="Gtk.CellRendererText.new">Gtk.CellRendererText.new</a></li></ul></div>
+</div></div>
+</div>
+<div class="sect sect-links" role="navigation">
+<div class="hgroup"></div>
+<div class="contents"><div class="links guidelinks"><div class="inner">
+<div class="title"><h2><span class="title">More Information</span></h2></div>
+<div class="region"><ul><li class="links "><a href="index.html" title="Index">Index</a></li></ul></div>
+</div></div></div>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="footer"></div>
+</div></body>
+</html>

@@ -1,0 +1,145 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Gtk.ActionGroup</title>
+<link rel="stylesheet" type="text/css" href="C.css">
+<script type="text/javascript" src="jquery.js"></script><script type="text/javascript" src="jquery.syntax.js"></script><script type="text/javascript" src="yelp.js"></script>
+</head>
+<body><div class="page" role="main">
+<div class="header"><div class="trails" role="navigation"><div class="trail">
+<a class="trail" href="index.html" title="Index">Index</a> » </div></div></div>
+<div class="body">
+<div class="hgroup"><h1 class="title"><span class="title">Gtk.ActionGroup</span></h1></div>
+<div class="region">
+<div class="contents">
+<div class="synopsis"><div class="inner"><div class="region"><div class="contents"><div class="code"><pre class="contents ">const Gtk = imports.gi.Gtk;
+
+let action_group = new Gtk.ActionGroup({
+    <span class=" link"><a href="Gtk.ActionGroup-accel-group.html" title="Gtk.ActionGroup:accel-group">accel_group</a></span>: value,
+    <span class=" link"><a href="Gtk.ActionGroup-name.html" title="Gtk.ActionGroup:name">name</a></span>: value,
+    <span class=" link"><a href="Gtk.ActionGroup-sensitive.html" title="Gtk.ActionGroup:sensitive">sensitive</a></span>: value,
+    <span class=" link"><a href="Gtk.ActionGroup-visible.html" title="Gtk.ActionGroup:visible">visible</a></span>: value,
+});
+  </pre></div></div></div></div></div>
+<p class="p">Actions are organised into groups. An action group is essentially a
+map from names to <span class=" link"><a href="Gtk.Action.html" title="Gtk.Action">Gtk.Action</a></span> objects.</p>
+<p class="p">All actions that would make sense to use in a particular context
+should be in a single group. Multiple action groups may be used for a
+particular user interface. In fact, it is expected that most nontrivial
+applications will make use of multiple groups. For example, in an
+application that can edit multiple documents, one group holding global
+actions (e.g. quit, about, new), and one group per document holding
+actions that act on that document (eg. save, cut/copy/paste, etc). Each
+window's menus would be constructed from a combination of two action
+groups.
+&lt;/para&gt;
+&lt;para id="Action-Accel"&gt;
+Accelerators are handled by the GTK+ accelerator map. All actions are
+assigned an accelerator path (which normally has the form
+&lt;literal&gt;&amp;lt;Actions&amp;gt;/group-name/action-name&lt;/literal&gt;)
+and a shortcut is associated with this accelerator path. All menuitems
+and toolitems take on this accelerator path. The GTK+ accelerator map
+code makes sure that the correct shortcut is displayed next to the menu
+item.</p>
+<p class="p">&lt;refsect2 id="GtkActionGroup-BUILDER-UI"&gt;
+&lt;title&gt;GtkActionGroup as GtkBuildable&lt;/title&gt;
+&lt;para&gt;
+The <span class=" link"><a href="Gtk.ActionGroup.html" title="Gtk.ActionGroup">Gtk.ActionGroup</a></span> implementation of the <span class=" link"><a href="Gtk.Buildable.html" title="Gtk.Buildable">Gtk.Buildable</a></span> interface accepts
+<span class=" link"><a href="Gtk.Action.html" title="Gtk.Action">Gtk.Action</a></span> objects as &amp;lt;child&amp;gt; elements in UI definitions.</p>
+<p class="p">Note that it is probably more common to define actions and action groups
+in the code, since they are directly related to what the code can do.</p>
+<p class="p">The GtkActionGroup implementation of the GtkBuildable interface supports
+a custom &amp;lt;accelerator&amp;gt; element, which has attributes named key and
+modifiers and allows to specify accelerators. This is similar to the
+&amp;lt;accelerator&amp;gt; element of <span class=" link"><a href="Gtk.Widget.html" title="Gtk.Widget">Gtk.Widget</a></span>, the main difference is that
+it doesn't allow you to specify a signal.
+&lt;/para&gt;
+&lt;example&gt;
+&lt;title&gt;A <span class=" link"><a href="Gtk.Dialog.html" title="Gtk.Dialog">Gtk.Dialog</a></span> UI definition fragment.&lt;/title&gt;
+&lt;programlisting&gt;&lt;![CDATA[
+&lt;object class="GtkActionGroup" id="actiongroup"&gt;
+  &lt;child&gt;
+      &lt;object class="GtkAction" id="About"&gt;
+          &lt;property name="name"&gt;About&lt;/property&gt;
+          &lt;property name="stock_id"&gt;gtk-about&lt;/property&gt;
+          &lt;signal handler="about_activate" name="activate"/&gt;
+      &lt;/object&gt;
+      &lt;accelerator key="F1" modifiers="GDK_CONTROL_MASK | GDK_SHIFT_MASK"/&gt;
+  &lt;/child&gt;
+&lt;/object&gt;
+]]&gt;&lt;/programlisting&gt;
+&lt;/example&gt;
+&lt;/refsect2&gt;</p>
+<div class="synopsis"><div class="inner">
+<div class="title title-synopsis"><h2><span class="title">Hierarchy</span></h2></div>
+<div class="region"><div class="contents"><div class="tree"><div class="inner"><div class="region"><ul class="tree"><li class="tree">
+<div>
+        <span class=" code">GObject.Object</span>
+      
+      </div>
+<ul class="tree"><li class="tree"><div>
+        <span class=" code">Gtk.ActionGroup</span>
+      </div></li></ul>
+</li></ul></div></div></div></div></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Methods</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.ActionGroup.add_action.html" title="Gtk.ActionGroup.prototype.add_action">Gtk.ActionGroup.prototype.add_action</a></li>
+<li class="links "><a href="Gtk.ActionGroup.add_action_with_accel.html" title="Gtk.ActionGroup.prototype.add_action_with_accel">Gtk.ActionGroup.prototype.add_action_with_accel</a></li>
+<li class="links "><a href="Gtk.ActionGroup.get_accel_group.html" title="Gtk.ActionGroup.prototype.get_accel_group">Gtk.ActionGroup.prototype.get_accel_group</a></li>
+<li class="links "><a href="Gtk.ActionGroup.get_action.html" title="Gtk.ActionGroup.prototype.get_action">Gtk.ActionGroup.prototype.get_action</a></li>
+<li class="links "><a href="Gtk.ActionGroup.get_name.html" title="Gtk.ActionGroup.prototype.get_name">Gtk.ActionGroup.prototype.get_name</a></li>
+<li class="links "><a href="Gtk.ActionGroup.get_sensitive.html" title="Gtk.ActionGroup.prototype.get_sensitive">Gtk.ActionGroup.prototype.get_sensitive</a></li>
+<li class="links "><a href="Gtk.ActionGroup.get_visible.html" title="Gtk.ActionGroup.prototype.get_visible">Gtk.ActionGroup.prototype.get_visible</a></li>
+<li class="links "><a href="Gtk.ActionGroup.list_actions.html" title="Gtk.ActionGroup.prototype.list_actions">Gtk.ActionGroup.prototype.list_actions</a></li>
+<li class="links "><a href="Gtk.ActionGroup.remove_action.html" title="Gtk.ActionGroup.prototype.remove_action">Gtk.ActionGroup.prototype.remove_action</a></li>
+<li class="links "><a href="Gtk.ActionGroup.set_accel_group.html" title="Gtk.ActionGroup.prototype.set_accel_group">Gtk.ActionGroup.prototype.set_accel_group</a></li>
+<li class="links "><a href="Gtk.ActionGroup.set_sensitive.html" title="Gtk.ActionGroup.prototype.set_sensitive">Gtk.ActionGroup.prototype.set_sensitive</a></li>
+<li class="links "><a href="Gtk.ActionGroup.set_translate_func.html" title="Gtk.ActionGroup.prototype.set_translate_func">Gtk.ActionGroup.prototype.set_translate_func</a></li>
+<li class="links "><a href="Gtk.ActionGroup.set_translation_domain.html" title="Gtk.ActionGroup.prototype.set_translation_domain">Gtk.ActionGroup.prototype.set_translation_domain</a></li>
+<li class="links "><a href="Gtk.ActionGroup.set_visible.html" title="Gtk.ActionGroup.prototype.set_visible">Gtk.ActionGroup.prototype.set_visible</a></li>
+<li class="links "><a href="Gtk.ActionGroup.translate_string.html" title="Gtk.ActionGroup.prototype.translate_string">Gtk.ActionGroup.prototype.translate_string</a></li>
+</ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Properties</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.ActionGroup-accel-group.html" title="Gtk.ActionGroup:accel-group">accel-group</a></li>
+<li class="links "><a href="Gtk.ActionGroup-name.html" title="Gtk.ActionGroup:name">name</a></li>
+<li class="links "><a href="Gtk.ActionGroup-sensitive.html" title="Gtk.ActionGroup:sensitive">sensitive</a></li>
+<li class="links "><a href="Gtk.ActionGroup-visible.html" title="Gtk.ActionGroup:visible">visible</a></li>
+</ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Signals</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.ActionGroup-connect-proxy.html" title="Gtk.ActionGroup::connect-proxy">connect-proxy</a></li>
+<li class="links "><a href="Gtk.ActionGroup-disconnect-proxy.html" title="Gtk.ActionGroup::disconnect-proxy">disconnect-proxy</a></li>
+<li class="links "><a href="Gtk.ActionGroup-post-activate.html" title="Gtk.ActionGroup::post-activate">post-activate</a></li>
+<li class="links "><a href="Gtk.ActionGroup-pre-activate.html" title="Gtk.ActionGroup::pre-activate">pre-activate</a></li>
+</ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Virtual functions</span></h2></div>
+<div class="region"><ul><li class="links "><a href="Gtk.ActionGroup-get_action.html" title="Gtk.ActionGroup::get_action">Gtk.ActionGroup::get_action</a></li></ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Other</span></h2></div>
+<div class="region"><ul><li class="links "><a href="Gtk.ActionGroup.new.html" title="Gtk.ActionGroup.new">Gtk.ActionGroup.new</a></li></ul></div>
+</div></div>
+</div>
+<div class="sect sect-links" role="navigation">
+<div class="hgroup"></div>
+<div class="contents"><div class="links guidelinks"><div class="inner">
+<div class="title"><h2><span class="title">More Information</span></h2></div>
+<div class="region"><ul><li class="links "><a href="index.html" title="Index">Index</a></li></ul></div>
+</div></div></div>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="footer"></div>
+</div></body>
+</html>

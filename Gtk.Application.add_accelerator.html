@@ -1,0 +1,55 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Gtk.Application.prototype.add_accelerator</title>
+<link rel="stylesheet" type="text/css" href="C.css">
+<script type="text/javascript" src="jquery.js"></script><script type="text/javascript" src="jquery.syntax.js"></script><script type="text/javascript" src="yelp.js"></script>
+</head>
+<body><div class="page" role="main">
+<div class="header"><div class="trails" role="navigation"><div class="trail">
+<a class="trail" href="index.html" title="Index">Index</a> » <a class="trail" href="Gtk.Application.html" title="Gtk.Application">Gtk.Application</a> » </div></div></div>
+<div class="body">
+<div class="hgroup"><h1 class="title"><span class="title">Gtk.Application.prototype.add_accelerator</span></h1></div>
+<div class="region">
+<div class="contents">
+<div class="synopsis"><div class="inner"><div class="region"><div class="contents"><div class="code"><pre class="contents ">function add_accelerator(accelerator:String, action_name:String, parameter:GLib.Variant):void {
+    // Gjs wrapper for gtk_application_add_accelerator()
+}</pre></div></div></div></div></div>
+<p class="p">Installs an accelerator that will cause the named action
+to be activated when the key combination specificed by <span class=" code">accelerator</span>
+is pressed.</p>
+<p class="p"><span class=" code">accelerator</span> must be a string that can be parsed by
+<span class=" link"><a href="Gtk.accelerator_parse.html" title="accelerator_parse">accelerator_parse</a></span>, e.g. "&amp;lt;Primary&amp;gt;q" or
+"&amp;lt;Control&amp;gt;&amp;lt;Alt&amp;gt;p".</p>
+<p class="p"><span class=" code">action_name</span> must be the name of an action as it would be used
+in the app menu, i.e. actions that have been added to the application
+are referred to with an "app." prefix, and window-specific actions
+with a "win." prefix.</p>
+<p class="p">GtkApplication also extracts accelerators out of 'accel' attributes
+in the #GMenuModels passed to <span class=" link"><a href="Gtk.set_app_menu.html" title="Gtk.set_app_menu">Gtk.set_app_menu</a></span> and
+<span class=" link"><a href="Gtk.set_menubar.html" title="Gtk.set_menubar">Gtk.set_menubar</a></span>, which is usually more convenient
+than calling this function for each accelerator.</p>
+<p class="p">Since 3.4</p>
+<div class="terms"><div class="inner"><div class="region"><dl class="terms">
+<dt class="terms"><span class=" code">accelerator</span></dt>
+<dd class="terms"><p class="p">accelerator string</p></dd>
+<dt class="terms"><span class=" code">action_name</span></dt>
+<dd class="terms"><p class="p">the name of the action to activate</p></dd>
+<dt class="terms"><span class=" code">parameter</span></dt>
+<dd class="terms"><p class="p">parameter to pass when activating the action, or <span class=" code">null</span> if the action does not accept an activation parameter</p></dd>
+</dl></div></div></div>
+</div>
+<div class="sect sect-links" role="navigation">
+<div class="hgroup"></div>
+<div class="contents"><div class="links guidelinks"><div class="inner">
+<div class="title"><h2><span class="title">More Information</span></h2></div>
+<div class="region"><ul><li class="links "><a href="Gtk.Application.html" title="Gtk.Application">Gtk.Application</a></li></ul></div>
+</div></div></div>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="footer"></div>
+</div></body>
+</html>

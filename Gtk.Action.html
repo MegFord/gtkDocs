@@ -1,0 +1,180 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Gtk.Action</title>
+<link rel="stylesheet" type="text/css" href="C.css">
+<script type="text/javascript" src="jquery.js"></script><script type="text/javascript" src="jquery.syntax.js"></script><script type="text/javascript" src="yelp.js"></script>
+</head>
+<body><div class="page" role="main">
+<div class="header"><div class="trails" role="navigation"><div class="trail">
+<a class="trail" href="index.html" title="Index">Index</a> » </div></div></div>
+<div class="body">
+<div class="hgroup"><h1 class="title"><span class="title">Gtk.Action</span></h1></div>
+<div class="region">
+<div class="contents">
+<div class="synopsis"><div class="inner"><div class="region"><div class="contents"><div class="code"><pre class="contents ">const Gtk = imports.gi.Gtk;
+
+let action = new Gtk.Action({
+    <span class=" link"><a href="Gtk.Action-action-group.html" title="Gtk.Action:action-group">action_group</a></span>: value,
+    <span class=" link"><a href="Gtk.Action-always-show-image.html" title="Gtk.Action:always-show-image">always_show_image</a></span>: value,
+    <span class=" link"><a href="Gtk.Action-gicon.html" title="Gtk.Action:gicon">gicon</a></span>: value,
+    <span class=" link"><a href="Gtk.Action-hide-if-empty.html" title="Gtk.Action:hide-if-empty">hide_if_empty</a></span>: value,
+    <span class=" link"><a href="Gtk.Action-icon-name.html" title="Gtk.Action:icon-name">icon_name</a></span>: value,
+    <span class=" link"><a href="Gtk.Action-is-important.html" title="Gtk.Action:is-important">is_important</a></span>: value,
+    <span class=" link"><a href="Gtk.Action-label.html" title="Gtk.Action:label">label</a></span>: value,
+    <span class=" link"><a href="Gtk.Action-name.html" title="Gtk.Action:name">name</a></span>: value,
+    <span class=" link"><a href="Gtk.Action-sensitive.html" title="Gtk.Action:sensitive">sensitive</a></span>: value,
+    <span class=" link"><a href="Gtk.Action-short-label.html" title="Gtk.Action:short-label">short_label</a></span>: value,
+    <span class=" link"><a href="Gtk.Action-stock-id.html" title="Gtk.Action:stock-id">stock_id</a></span>: value,
+    <span class=" link"><a href="Gtk.Action-tooltip.html" title="Gtk.Action:tooltip">tooltip</a></span>: value,
+    <span class=" link"><a href="Gtk.Action-visible.html" title="Gtk.Action:visible">visible</a></span>: value,
+    <span class=" link"><a href="Gtk.Action-visible-horizontal.html" title="Gtk.Action:visible-horizontal">visible_horizontal</a></span>: value,
+    <span class=" link"><a href="Gtk.Action-visible-overflown.html" title="Gtk.Action:visible-overflown">visible_overflown</a></span>: value,
+    <span class=" link"><a href="Gtk.Action-visible-vertical.html" title="Gtk.Action:visible-vertical">visible_vertical</a></span>: value,
+});
+  </pre></div></div></div></div></div>
+<p class="p">Actions represent operations that the user can be perform, along with
+some information how it should be presented in the interface. Each action
+provides methods to create icons, menu items and toolbar items
+representing itself.</p>
+<p class="p">As well as the callback that is called when the action gets activated,
+the following also gets associated with the action:
+&lt;itemizedlist&gt;
+  &lt;listitem&gt;&lt;para&gt;a name (not translated, for path lookup)&lt;/para&gt;&lt;/listitem&gt;
+  &lt;listitem&gt;&lt;para&gt;a label (translated, for display)&lt;/para&gt;&lt;/listitem&gt;
+  &lt;listitem&gt;&lt;para&gt;an accelerator&lt;/para&gt;&lt;/listitem&gt;
+  &lt;listitem&gt;&lt;para&gt;whether label indicates a stock id&lt;/para&gt;&lt;/listitem&gt;
+  &lt;listitem&gt;&lt;para&gt;a tooltip (optional, translated)&lt;/para&gt;&lt;/listitem&gt;
+  &lt;listitem&gt;&lt;para&gt;a toolbar label (optional, shorter than label)&lt;/para&gt;&lt;/listitem&gt;
+&lt;/itemizedlist&gt;
+The action will also have some state information:
+&lt;itemizedlist&gt;
+  &lt;listitem&gt;&lt;para&gt;visible (shown/hidden)&lt;/para&gt;&lt;/listitem&gt;
+  &lt;listitem&gt;&lt;para&gt;sensitive (enabled/disabled)&lt;/para&gt;&lt;/listitem&gt;
+&lt;/itemizedlist&gt;
+Apart from regular actions, there are &lt;link linkend="GtkToggleAction"&gt;toggle
+actions&lt;/link&gt;, which can be toggled between two states and &lt;link
+linkend="GtkRadioAction"&gt;radio actions&lt;/link&gt;, of which only one in a group
+can be in the "active" state. Other actions can be implemented as <span class=" link"><a href="Gtk.Action.html" title="Gtk.Action">Gtk.Action</a></span>
+subclasses.</p>
+<p class="p">Each action can have one or more proxy widgets. To act as an action proxy,
+widget needs to implement <span class=" link"><a href="Gtk.Activatable.html" title="Gtk.Activatable">Gtk.Activatable</a></span> interface. Proxies mirror the state
+of the action and should change when the action's state changes. Properties
+that are always mirrored by proxies are <span class=" link"><a href="Gtk.sensitive.html" title="Gtk.sensitive">Gtk.sensitive</a></span> and
+<span class=" link"><a href="Gtk.visible.html" title="Gtk.visible">Gtk.visible</a></span>. <span class=" link"><a href="Gtk.gicon.html" title="Gtk.gicon">Gtk.gicon</a></span>, <span class=" link"><a href="Gtk.icon-name.html" title="Gtk.icon-name">Gtk.icon-name</a></span>, <span class=" link"><a href="Gtk.label.html" title="Gtk.label">Gtk.label</a></span>,
+<span class=" link"><a href="Gtk.short-label.html" title="Gtk.short-label">Gtk.short-label</a></span> and <span class=" link"><a href="Gtk.stock-id.html" title="Gtk.stock-id">Gtk.stock-id</a></span> properties are only mirorred
+if proxy widget has <span class=" link"><a href="Gtk.use-action-appearance.html" title="Gtk.use-action-appearance">Gtk.use-action-appearance</a></span> property set to
+<span class=" code">true</span>.</p>
+<p class="p">When the proxy is activated, it should activate its action.</p>
+<div class="synopsis"><div class="inner">
+<div class="title title-synopsis"><h2><span class="title">Hierarchy</span></h2></div>
+<div class="region"><div class="contents"><div class="tree"><div class="inner"><div class="region"><ul class="tree"><li class="tree">
+<div>
+        <span class=" code">GObject.Object</span>
+      
+      </div>
+<ul class="tree"><li class="tree"><div>
+        <span class=" code">Gtk.Action</span>
+      </div></li></ul>
+</li></ul></div></div></div></div></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Methods</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.Action.activate.html" title="Gtk.Action.prototype.activate">Gtk.Action.prototype.activate</a></li>
+<li class="links "><a href="Gtk.Action.block_activate.html" title="Gtk.Action.prototype.block_activate">Gtk.Action.prototype.block_activate</a></li>
+<li class="links "><a href="Gtk.Action.connect_accelerator.html" title="Gtk.Action.prototype.connect_accelerator">Gtk.Action.prototype.connect_accelerator</a></li>
+<li class="links "><a href="Gtk.Action.create_icon.html" title="Gtk.Action.prototype.create_icon">Gtk.Action.prototype.create_icon</a></li>
+<li class="links "><a href="Gtk.Action.create_menu.html" title="Gtk.Action.prototype.create_menu">Gtk.Action.prototype.create_menu</a></li>
+<li class="links "><a href="Gtk.Action.create_menu_item.html" title="Gtk.Action.prototype.create_menu_item">Gtk.Action.prototype.create_menu_item</a></li>
+<li class="links "><a href="Gtk.Action.create_tool_item.html" title="Gtk.Action.prototype.create_tool_item">Gtk.Action.prototype.create_tool_item</a></li>
+<li class="links "><a href="Gtk.Action.disconnect_accelerator.html" title="Gtk.Action.prototype.disconnect_accelerator">Gtk.Action.prototype.disconnect_accelerator</a></li>
+<li class="links "><a href="Gtk.Action.get_accel_closure.html" title="Gtk.Action.prototype.get_accel_closure">Gtk.Action.prototype.get_accel_closure</a></li>
+<li class="links "><a href="Gtk.Action.get_accel_path.html" title="Gtk.Action.prototype.get_accel_path">Gtk.Action.prototype.get_accel_path</a></li>
+<li class="links "><a href="Gtk.Action.get_always_show_image.html" title="Gtk.Action.prototype.get_always_show_image">Gtk.Action.prototype.get_always_show_image</a></li>
+<li class="links "><a href="Gtk.Action.get_gicon.html" title="Gtk.Action.prototype.get_gicon">Gtk.Action.prototype.get_gicon</a></li>
+<li class="links "><a href="Gtk.Action.get_icon_name.html" title="Gtk.Action.prototype.get_icon_name">Gtk.Action.prototype.get_icon_name</a></li>
+<li class="links "><a href="Gtk.Action.get_is_important.html" title="Gtk.Action.prototype.get_is_important">Gtk.Action.prototype.get_is_important</a></li>
+<li class="links "><a href="Gtk.Action.get_label.html" title="Gtk.Action.prototype.get_label">Gtk.Action.prototype.get_label</a></li>
+<li class="links "><a href="Gtk.Action.get_name.html" title="Gtk.Action.prototype.get_name">Gtk.Action.prototype.get_name</a></li>
+<li class="links "><a href="Gtk.Action.get_proxies.html" title="Gtk.Action.prototype.get_proxies">Gtk.Action.prototype.get_proxies</a></li>
+<li class="links "><a href="Gtk.Action.get_sensitive.html" title="Gtk.Action.prototype.get_sensitive">Gtk.Action.prototype.get_sensitive</a></li>
+<li class="links "><a href="Gtk.Action.get_short_label.html" title="Gtk.Action.prototype.get_short_label">Gtk.Action.prototype.get_short_label</a></li>
+<li class="links "><a href="Gtk.Action.get_stock_id.html" title="Gtk.Action.prototype.get_stock_id">Gtk.Action.prototype.get_stock_id</a></li>
+<li class="links "><a href="Gtk.Action.get_tooltip.html" title="Gtk.Action.prototype.get_tooltip">Gtk.Action.prototype.get_tooltip</a></li>
+<li class="links "><a href="Gtk.Action.get_visible.html" title="Gtk.Action.prototype.get_visible">Gtk.Action.prototype.get_visible</a></li>
+<li class="links "><a href="Gtk.Action.get_visible_horizontal.html" title="Gtk.Action.prototype.get_visible_horizontal">Gtk.Action.prototype.get_visible_horizontal</a></li>
+<li class="links "><a href="Gtk.Action.get_visible_vertical.html" title="Gtk.Action.prototype.get_visible_vertical">Gtk.Action.prototype.get_visible_vertical</a></li>
+<li class="links "><a href="Gtk.Action.is_sensitive.html" title="Gtk.Action.prototype.is_sensitive">Gtk.Action.prototype.is_sensitive</a></li>
+<li class="links "><a href="Gtk.Action.is_visible.html" title="Gtk.Action.prototype.is_visible">Gtk.Action.prototype.is_visible</a></li>
+<li class="links "><a href="Gtk.Action.set_accel_group.html" title="Gtk.Action.prototype.set_accel_group">Gtk.Action.prototype.set_accel_group</a></li>
+<li class="links "><a href="Gtk.Action.set_accel_path.html" title="Gtk.Action.prototype.set_accel_path">Gtk.Action.prototype.set_accel_path</a></li>
+<li class="links "><a href="Gtk.Action.set_always_show_image.html" title="Gtk.Action.prototype.set_always_show_image">Gtk.Action.prototype.set_always_show_image</a></li>
+<li class="links "><a href="Gtk.Action.set_gicon.html" title="Gtk.Action.prototype.set_gicon">Gtk.Action.prototype.set_gicon</a></li>
+<li class="links "><a href="Gtk.Action.set_icon_name.html" title="Gtk.Action.prototype.set_icon_name">Gtk.Action.prototype.set_icon_name</a></li>
+<li class="links "><a href="Gtk.Action.set_is_important.html" title="Gtk.Action.prototype.set_is_important">Gtk.Action.prototype.set_is_important</a></li>
+<li class="links "><a href="Gtk.Action.set_label.html" title="Gtk.Action.prototype.set_label">Gtk.Action.prototype.set_label</a></li>
+<li class="links "><a href="Gtk.Action.set_sensitive.html" title="Gtk.Action.prototype.set_sensitive">Gtk.Action.prototype.set_sensitive</a></li>
+<li class="links "><a href="Gtk.Action.set_short_label.html" title="Gtk.Action.prototype.set_short_label">Gtk.Action.prototype.set_short_label</a></li>
+<li class="links "><a href="Gtk.Action.set_stock_id.html" title="Gtk.Action.prototype.set_stock_id">Gtk.Action.prototype.set_stock_id</a></li>
+<li class="links "><a href="Gtk.Action.set_tooltip.html" title="Gtk.Action.prototype.set_tooltip">Gtk.Action.prototype.set_tooltip</a></li>
+<li class="links "><a href="Gtk.Action.set_visible.html" title="Gtk.Action.prototype.set_visible">Gtk.Action.prototype.set_visible</a></li>
+<li class="links "><a href="Gtk.Action.set_visible_horizontal.html" title="Gtk.Action.prototype.set_visible_horizontal">Gtk.Action.prototype.set_visible_horizontal</a></li>
+<li class="links "><a href="Gtk.Action.set_visible_vertical.html" title="Gtk.Action.prototype.set_visible_vertical">Gtk.Action.prototype.set_visible_vertical</a></li>
+<li class="links "><a href="Gtk.Action.unblock_activate.html" title="Gtk.Action.prototype.unblock_activate">Gtk.Action.prototype.unblock_activate</a></li>
+</ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Properties</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.Action-action-group.html" title="Gtk.Action:action-group">action-group</a></li>
+<li class="links "><a href="Gtk.Action-always-show-image.html" title="Gtk.Action:always-show-image">always-show-image</a></li>
+<li class="links "><a href="Gtk.Action-gicon.html" title="Gtk.Action:gicon">gicon</a></li>
+<li class="links "><a href="Gtk.Action-hide-if-empty.html" title="Gtk.Action:hide-if-empty">hide-if-empty</a></li>
+<li class="links "><a href="Gtk.Action-icon-name.html" title="Gtk.Action:icon-name">icon-name</a></li>
+<li class="links "><a href="Gtk.Action-is-important.html" title="Gtk.Action:is-important">is-important</a></li>
+<li class="links "><a href="Gtk.Action-label.html" title="Gtk.Action:label">label</a></li>
+<li class="links "><a href="Gtk.Action-name.html" title="Gtk.Action:name">name</a></li>
+<li class="links "><a href="Gtk.Action-sensitive.html" title="Gtk.Action:sensitive">sensitive</a></li>
+<li class="links "><a href="Gtk.Action-short-label.html" title="Gtk.Action:short-label">short-label</a></li>
+<li class="links "><a href="Gtk.Action-stock-id.html" title="Gtk.Action:stock-id">stock-id</a></li>
+<li class="links "><a href="Gtk.Action-tooltip.html" title="Gtk.Action:tooltip">tooltip</a></li>
+<li class="links "><a href="Gtk.Action-visible.html" title="Gtk.Action:visible">visible</a></li>
+<li class="links "><a href="Gtk.Action-visible-horizontal.html" title="Gtk.Action:visible-horizontal">visible-horizontal</a></li>
+<li class="links "><a href="Gtk.Action-visible-overflown.html" title="Gtk.Action:visible-overflown">visible-overflown</a></li>
+<li class="links "><a href="Gtk.Action-visible-vertical.html" title="Gtk.Action:visible-vertical">visible-vertical</a></li>
+</ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Signals</span></h2></div>
+<div class="region"><ul><li class="links "><a href="Gtk.Action-activate.html" title="Gtk.Action::activate">activate</a></li></ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Virtual functions</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.Action-connect_proxy.html" title="Gtk.Action::connect_proxy">Gtk.Action::connect_proxy</a></li>
+<li class="links "><a href="Gtk.Action-create_menu.html" title="Gtk.Action::create_menu">Gtk.Action::create_menu</a></li>
+<li class="links "><a href="Gtk.Action-create_menu_item.html" title="Gtk.Action::create_menu_item">Gtk.Action::create_menu_item</a></li>
+<li class="links "><a href="Gtk.Action-create_tool_item.html" title="Gtk.Action::create_tool_item">Gtk.Action::create_tool_item</a></li>
+<li class="links "><a href="Gtk.Action-disconnect_proxy.html" title="Gtk.Action::disconnect_proxy">Gtk.Action::disconnect_proxy</a></li>
+</ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Other</span></h2></div>
+<div class="region"><ul><li class="links "><a href="Gtk.Action.new.html" title="Gtk.Action.new">Gtk.Action.new</a></li></ul></div>
+</div></div>
+</div>
+<div class="sect sect-links" role="navigation">
+<div class="hgroup"></div>
+<div class="contents"><div class="links guidelinks"><div class="inner">
+<div class="title"><h2><span class="title">More Information</span></h2></div>
+<div class="region"><ul><li class="links "><a href="index.html" title="Index">Index</a></li></ul></div>
+</div></div></div>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="footer"></div>
+</div></body>
+</html>

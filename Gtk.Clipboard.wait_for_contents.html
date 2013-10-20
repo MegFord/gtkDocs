@@ -1,0 +1,41 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Gtk.Clipboard.prototype.wait_for_contents</title>
+<link rel="stylesheet" type="text/css" href="C.css">
+<script type="text/javascript" src="jquery.js"></script><script type="text/javascript" src="jquery.syntax.js"></script><script type="text/javascript" src="yelp.js"></script>
+</head>
+<body><div class="page" role="main">
+<div class="header"><div class="trails" role="navigation"><div class="trail">
+<a class="trail" href="index.html" title="Index">Index</a> » <a class="trail" href="Gtk.Clipboard.html" title="Gtk.Clipboard">Gtk.Clipboard</a> » </div></div></div>
+<div class="body">
+<div class="hgroup"><h1 class="title"><span class="title">Gtk.Clipboard.prototype.wait_for_contents</span></h1></div>
+<div class="region">
+<div class="contents">
+<div class="synopsis"><div class="inner"><div class="region"><div class="contents"><div class="code"><pre class="contents ">function wait_for_contents(target:Gdk.Atom):Gtk.SelectionData {
+    // Gjs wrapper for gtk_clipboard_wait_for_contents()
+}</pre></div></div></div></div></div>
+<p class="p">Requests the contents of the clipboard using the given target.
+This function waits for the data to be received using the main 
+loop, so events, timeouts, etc, may be dispatched during the wait.</p>
+<div class="terms"><div class="inner"><div class="region"><dl class="terms">
+<dt class="terms"><span class=" code">target</span></dt>
+<dd class="terms"><p class="p">an atom representing the form into which the clipboard owner should convert the selection.</p></dd>
+<dt class="terms"><span class=" code">Returns</span></dt>
+<dd class="terms"><p class="p">a newly-allocated <span class=" link"><a href="Gtk.SelectionData.html" title="Gtk.SelectionData">Gtk.SelectionData</a></span> object or <span class=" code">null</span> if retrieving the given target failed. If non-<span class=" code">null</span>, this value must be freed with <span class=" link"><a href="Gtk.free.html" title="Gtk.free">Gtk.free</a></span> when you are finished with it.</p></dd>
+</dl></div></div></div>
+</div>
+<div class="sect sect-links" role="navigation">
+<div class="hgroup"></div>
+<div class="contents"><div class="links guidelinks"><div class="inner">
+<div class="title"><h2><span class="title">More Information</span></h2></div>
+<div class="region"><ul><li class="links "><a href="Gtk.Clipboard.html" title="Gtk.Clipboard">Gtk.Clipboard</a></li></ul></div>
+</div></div></div>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="footer"></div>
+</div></body>
+</html>

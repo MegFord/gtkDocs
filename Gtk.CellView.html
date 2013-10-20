@@ -1,0 +1,119 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Gtk.CellView</title>
+<link rel="stylesheet" type="text/css" href="C.css">
+<script type="text/javascript" src="jquery.js"></script><script type="text/javascript" src="jquery.syntax.js"></script><script type="text/javascript" src="yelp.js"></script>
+</head>
+<body><div class="page" role="main">
+<div class="header"><div class="trails" role="navigation"><div class="trail">
+<a class="trail" href="index.html" title="Index">Index</a> » </div></div></div>
+<div class="body">
+<div class="hgroup"><h1 class="title"><span class="title">Gtk.CellView</span></h1></div>
+<div class="region">
+<div class="contents">
+<div class="synopsis"><div class="inner"><div class="region"><div class="contents"><div class="code"><pre class="contents ">const Gtk = imports.gi.Gtk;
+
+let cell_view = new Gtk.CellView({
+    <span class=" link"><a href="Gtk.CellView-background.html" title="Gtk.CellView:background">background</a></span>: value,
+    <span class=" link"><a href="Gtk.CellView-background-gdk.html" title="Gtk.CellView:background-gdk">background_gdk</a></span>: value,
+    <span class=" link"><a href="Gtk.CellView-background-rgba.html" title="Gtk.CellView:background-rgba">background_rgba</a></span>: value,
+    <span class=" link"><a href="Gtk.CellView-background-set.html" title="Gtk.CellView:background-set">background_set</a></span>: value,
+    <span class=" link"><a href="Gtk.CellView-cell-area.html" title="Gtk.CellView:cell-area">cell_area</a></span>: value,
+    <span class=" link"><a href="Gtk.CellView-cell-area-context.html" title="Gtk.CellView:cell-area-context">cell_area_context</a></span>: value,
+    <span class=" link"><a href="Gtk.CellView-draw-sensitive.html" title="Gtk.CellView:draw-sensitive">draw_sensitive</a></span>: value,
+    <span class=" link"><a href="Gtk.CellView-fit-model.html" title="Gtk.CellView:fit-model">fit_model</a></span>: value,
+    <span class=" link"><a href="Gtk.CellView-model.html" title="Gtk.CellView:model">model</a></span>: value,
+});
+  </pre></div></div></div></div></div>
+<p class="p">A <span class=" link"><a href="Gtk.CellView.html" title="Gtk.CellView">Gtk.CellView</a></span> displays a single row of a <span class=" link"><a href="Gtk.TreeModel.html" title="Gtk.TreeModel">Gtk.TreeModel</a></span> using a <span class=" link"><a href="Gtk.CellArea.html" title="Gtk.CellArea">Gtk.CellArea</a></span>
+and <span class=" link"><a href="Gtk.CellAreaContext.html" title="Gtk.CellAreaContext">Gtk.CellAreaContext</a></span>. A <span class=" link"><a href="Gtk.CellAreaContext.html" title="Gtk.CellAreaContext">Gtk.CellAreaContext</a></span> can be provided to the 
+<span class=" link"><a href="Gtk.CellView.html" title="Gtk.CellView">Gtk.CellView</a></span> at construction time in order to keep the cellview in context
+of a group of cell views, this ensures that the renderers displayed will
+be properly aligned with eachother (like the aligned cells in the menus
+of <span class=" link"><a href="Gtk.ComboBox.html" title="Gtk.ComboBox">Gtk.ComboBox</a></span>).</p>
+<p class="p"><span class=" link"><a href="Gtk.CellView.html" title="Gtk.CellView">Gtk.CellView</a></span> is <span class=" link"><a href="Gtk.Orientable.html" title="Gtk.Orientable">Gtk.Orientable</a></span> in order to decide in which orientation
+the underlying <span class=" link"><a href="Gtk.CellAreaContext.html" title="Gtk.CellAreaContext">Gtk.CellAreaContext</a></span> should be allocated. Taking the <span class=" link"><a href="Gtk.ComboBox.html" title="Gtk.ComboBox">Gtk.ComboBox</a></span>
+menu as an example, cellviews should be oriented horizontally if the menus are
+listed top-to-bottom and thus all share the same width but may have separate
+individual heights (left-to-right menus should be allocated vertically since
+they all share the same height but may have variable widths).</p>
+<div class="synopsis"><div class="inner">
+<div class="title title-synopsis"><h2><span class="title">Hierarchy</span></h2></div>
+<div class="region"><div class="contents"><div class="tree"><div class="inner"><div class="region"><ul class="tree"><li class="tree">
+<div>
+        <span class=" code">GObject.Object</span>
+      
+      </div>
+<ul class="tree"><li class="tree">
+<div>
+        <span class=" code">GObject.InitiallyUnowned</span>
+      
+      </div>
+<ul class="tree"><li class="tree">
+<div>
+        <span class=" code">Gtk.Widget</span>
+      
+      </div>
+<ul class="tree"><li class="tree"><div>
+        <span class=" code">Gtk.CellView</span>
+      </div></li></ul>
+</li></ul>
+</li></ul>
+</li></ul></div></div></div></div></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Methods</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.CellView.get_displayed_row.html" title="Gtk.CellView.prototype.get_displayed_row">Gtk.CellView.prototype.get_displayed_row</a></li>
+<li class="links "><a href="Gtk.CellView.get_draw_sensitive.html" title="Gtk.CellView.prototype.get_draw_sensitive">Gtk.CellView.prototype.get_draw_sensitive</a></li>
+<li class="links "><a href="Gtk.CellView.get_fit_model.html" title="Gtk.CellView.prototype.get_fit_model">Gtk.CellView.prototype.get_fit_model</a></li>
+<li class="links "><a href="Gtk.CellView.get_model.html" title="Gtk.CellView.prototype.get_model">Gtk.CellView.prototype.get_model</a></li>
+<li class="links "><a href="Gtk.CellView.get_size_of_row.html" title="Gtk.CellView.prototype.get_size_of_row">Gtk.CellView.prototype.get_size_of_row</a></li>
+<li class="links "><a href="Gtk.CellView.set_background_color.html" title="Gtk.CellView.prototype.set_background_color">Gtk.CellView.prototype.set_background_color</a></li>
+<li class="links "><a href="Gtk.CellView.set_background_rgba.html" title="Gtk.CellView.prototype.set_background_rgba">Gtk.CellView.prototype.set_background_rgba</a></li>
+<li class="links "><a href="Gtk.CellView.set_displayed_row.html" title="Gtk.CellView.prototype.set_displayed_row">Gtk.CellView.prototype.set_displayed_row</a></li>
+<li class="links "><a href="Gtk.CellView.set_draw_sensitive.html" title="Gtk.CellView.prototype.set_draw_sensitive">Gtk.CellView.prototype.set_draw_sensitive</a></li>
+<li class="links "><a href="Gtk.CellView.set_fit_model.html" title="Gtk.CellView.prototype.set_fit_model">Gtk.CellView.prototype.set_fit_model</a></li>
+<li class="links "><a href="Gtk.CellView.set_model.html" title="Gtk.CellView.prototype.set_model">Gtk.CellView.prototype.set_model</a></li>
+</ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Properties</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.CellView-background.html" title="Gtk.CellView:background">background</a></li>
+<li class="links "><a href="Gtk.CellView-background-gdk.html" title="Gtk.CellView:background-gdk">background-gdk</a></li>
+<li class="links "><a href="Gtk.CellView-background-rgba.html" title="Gtk.CellView:background-rgba">background-rgba</a></li>
+<li class="links "><a href="Gtk.CellView-background-set.html" title="Gtk.CellView:background-set">background-set</a></li>
+<li class="links "><a href="Gtk.CellView-cell-area.html" title="Gtk.CellView:cell-area">cell-area</a></li>
+<li class="links "><a href="Gtk.CellView-cell-area-context.html" title="Gtk.CellView:cell-area-context">cell-area-context</a></li>
+<li class="links "><a href="Gtk.CellView-draw-sensitive.html" title="Gtk.CellView:draw-sensitive">draw-sensitive</a></li>
+<li class="links "><a href="Gtk.CellView-fit-model.html" title="Gtk.CellView:fit-model">fit-model</a></li>
+<li class="links "><a href="Gtk.CellView-model.html" title="Gtk.CellView:model">model</a></li>
+</ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Other</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.CellView.new.html" title="Gtk.CellView.new">Gtk.CellView.new</a></li>
+<li class="links "><a href="Gtk.CellView.new_with_context.html" title="Gtk.CellView.new_with_context">Gtk.CellView.new_with_context</a></li>
+<li class="links "><a href="Gtk.CellView.new_with_markup.html" title="Gtk.CellView.new_with_markup">Gtk.CellView.new_with_markup</a></li>
+<li class="links "><a href="Gtk.CellView.new_with_pixbuf.html" title="Gtk.CellView.new_with_pixbuf">Gtk.CellView.new_with_pixbuf</a></li>
+<li class="links "><a href="Gtk.CellView.new_with_text.html" title="Gtk.CellView.new_with_text">Gtk.CellView.new_with_text</a></li>
+</ul></div>
+</div></div>
+</div>
+<div class="sect sect-links" role="navigation">
+<div class="hgroup"></div>
+<div class="contents"><div class="links guidelinks"><div class="inner">
+<div class="title"><h2><span class="title">More Information</span></h2></div>
+<div class="region"><ul><li class="links "><a href="index.html" title="Index">Index</a></li></ul></div>
+</div></div></div>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="footer"></div>
+</div></body>
+</html>

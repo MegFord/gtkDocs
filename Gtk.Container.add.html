@@ -1,0 +1,44 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Gtk.Container.prototype.add</title>
+<link rel="stylesheet" type="text/css" href="C.css">
+<script type="text/javascript" src="jquery.js"></script><script type="text/javascript" src="jquery.syntax.js"></script><script type="text/javascript" src="yelp.js"></script>
+</head>
+<body><div class="page" role="main">
+<div class="header"><div class="trails" role="navigation"><div class="trail">
+<a class="trail" href="index.html" title="Index">Index</a> » <a class="trail" href="Gtk.Container.html" title="Gtk.Container">Gtk.Container</a> » </div></div></div>
+<div class="body">
+<div class="hgroup"><h1 class="title"><span class="title">Gtk.Container.prototype.add</span></h1></div>
+<div class="region">
+<div class="contents">
+<div class="synopsis"><div class="inner"><div class="region"><div class="contents"><div class="code"><pre class="contents ">function add(widget:Gtk.Widget):void {
+    // Gjs wrapper for gtk_container_add()
+}</pre></div></div></div></div></div>
+<p class="p">Adds <span class=" code">widget</span> to <span class=" code">container</span>. Typically used for simple containers
+such as <span class=" link"><a href="Gtk.Window.html" title="Gtk.Window">Gtk.Window</a></span>, <span class=" link"><a href="Gtk.Frame.html" title="Gtk.Frame">Gtk.Frame</a></span>, or <span class=" link"><a href="Gtk.Button.html" title="Gtk.Button">Gtk.Button</a></span>; for more complicated
+layout containers such as <span class=" link"><a href="Gtk.Box.html" title="Gtk.Box">Gtk.Box</a></span> or <span class=" link"><a href="Gtk.Grid.html" title="Gtk.Grid">Gtk.Grid</a></span>, this function will
+pick default packing parameters that may not be correct.  So
+consider functions such as <span class=" link"><a href="Gtk.Box.pack_start.html" title="Gtk.Box.prototype.pack_start">Gtk.Box.prototype.pack_start</a></span> and
+<span class=" link"><a href="Gtk.attach.html" title="Gtk.attach">Gtk.attach</a></span> as an alternative to <span class=" link"><a href="Gtk.Container.add.html" title="Gtk.Container.prototype.add">Gtk.Container.prototype.add</a></span> in
+those cases. A widget may be added to only one container at a time;
+you can't place the same widget inside two different containers.</p>
+<div class="terms"><div class="inner"><div class="region"><dl class="terms">
+<dt class="terms"><span class=" code">widget</span></dt>
+<dd class="terms"><p class="p">a widget to be placed inside <span class=" code">container</span></p></dd>
+</dl></div></div></div>
+</div>
+<div class="sect sect-links" role="navigation">
+<div class="hgroup"></div>
+<div class="contents"><div class="links guidelinks"><div class="inner">
+<div class="title"><h2><span class="title">More Information</span></h2></div>
+<div class="region"><ul><li class="links "><a href="Gtk.Container.html" title="Gtk.Container">Gtk.Container</a></li></ul></div>
+</div></div></div>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="footer"></div>
+</div></body>
+</html>

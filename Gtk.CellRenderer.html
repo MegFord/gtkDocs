@@ -1,0 +1,171 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Gtk.CellRenderer</title>
+<link rel="stylesheet" type="text/css" href="C.css">
+<script type="text/javascript" src="jquery.js"></script><script type="text/javascript" src="jquery.syntax.js"></script><script type="text/javascript" src="yelp.js"></script>
+</head>
+<body><div class="page" role="main">
+<div class="header"><div class="trails" role="navigation"><div class="trail">
+<a class="trail" href="index.html" title="Index">Index</a> » </div></div></div>
+<div class="body">
+<div class="hgroup"><h1 class="title"><span class="title">Gtk.CellRenderer</span></h1></div>
+<div class="region">
+<div class="contents">
+<div class="synopsis"><div class="inner"><div class="region"><div class="contents"><div class="code"><pre class="contents ">const Gtk = imports.gi.Gtk;
+
+let cell_renderer = new Gtk.CellRenderer({
+    <span class=" link"><a href="Gtk.CellRenderer-cell-background.html" title="Gtk.CellRenderer:cell-background">cell_background</a></span>: value,
+    <span class=" link"><a href="Gtk.CellRenderer-cell-background-gdk.html" title="Gtk.CellRenderer:cell-background-gdk">cell_background_gdk</a></span>: value,
+    <span class=" link"><a href="Gtk.CellRenderer-cell-background-rgba.html" title="Gtk.CellRenderer:cell-background-rgba">cell_background_rgba</a></span>: value,
+    <span class=" link"><a href="Gtk.CellRenderer-cell-background-set.html" title="Gtk.CellRenderer:cell-background-set">cell_background_set</a></span>: value,
+    <span class=" link"><a href="Gtk.CellRenderer-height.html" title="Gtk.CellRenderer:height">height</a></span>: value,
+    <span class=" link"><a href="Gtk.CellRenderer-is-expanded.html" title="Gtk.CellRenderer:is-expanded">is_expanded</a></span>: value,
+    <span class=" link"><a href="Gtk.CellRenderer-is-expander.html" title="Gtk.CellRenderer:is-expander">is_expander</a></span>: value,
+    <span class=" link"><a href="Gtk.CellRenderer-mode.html" title="Gtk.CellRenderer:mode">mode</a></span>: value,
+    <span class=" link"><a href="Gtk.CellRenderer-sensitive.html" title="Gtk.CellRenderer:sensitive">sensitive</a></span>: value,
+    <span class=" link"><a href="Gtk.CellRenderer-visible.html" title="Gtk.CellRenderer:visible">visible</a></span>: value,
+    <span class=" link"><a href="Gtk.CellRenderer-width.html" title="Gtk.CellRenderer:width">width</a></span>: value,
+    <span class=" link"><a href="Gtk.CellRenderer-xalign.html" title="Gtk.CellRenderer:xalign">xalign</a></span>: value,
+    <span class=" link"><a href="Gtk.CellRenderer-xpad.html" title="Gtk.CellRenderer:xpad">xpad</a></span>: value,
+    <span class=" link"><a href="Gtk.CellRenderer-yalign.html" title="Gtk.CellRenderer:yalign">yalign</a></span>: value,
+    <span class=" link"><a href="Gtk.CellRenderer-ypad.html" title="Gtk.CellRenderer:ypad">ypad</a></span>: value,
+});
+  </pre></div></div></div></div></div>
+<p class="p">The <span class=" link"><a href="Gtk.CellRenderer.html" title="Gtk.CellRenderer">Gtk.CellRenderer</a></span> is a base class of a set of objects used for
+rendering a cell to a #cairo_t.  These objects are used primarily by
+the <span class=" link"><a href="Gtk.TreeView.html" title="Gtk.TreeView">Gtk.TreeView</a></span> widget, though they aren't tied to them in any
+specific way.  It is worth noting that <span class=" link"><a href="Gtk.CellRenderer.html" title="Gtk.CellRenderer">Gtk.CellRenderer</a></span> is not a
+<span class=" link"><a href="Gtk.Widget.html" title="Gtk.Widget">Gtk.Widget</a></span> and cannot be treated as such.</p>
+<p class="p">The primary use of a <span class=" link"><a href="Gtk.CellRenderer.html" title="Gtk.CellRenderer">Gtk.CellRenderer</a></span> is for drawing a certain graphical
+elements on a #cairo_t. Typically, one cell renderer is used to
+draw many cells on the screen.  To this extent, it isn't expected that a
+CellRenderer keep any permanent state around.  Instead, any state is set
+just prior to use using #GObjects property system.  Then, the
+cell is measured using <span class=" link"><a href="Gtk.get_size.html" title="Gtk.get_size">Gtk.get_size</a></span>. Finally, the cell
+is rendered in the correct location using <span class=" link"><a href="Gtk.render.html" title="Gtk.render">Gtk.render</a></span>.</p>
+<p class="p">There are a number of rules that must be followed when writing a new
+<span class=" link"><a href="Gtk.CellRenderer.html" title="Gtk.CellRenderer">Gtk.CellRenderer</a></span>.  First and foremost, it's important that a certain set
+of properties will always yield a cell renderer of the same size,
+barring a <span class=" link"><a href="Gtk.Style.html" title="Gtk.Style">Gtk.Style</a></span> change.  The <span class=" link"><a href="Gtk.CellRenderer.html" title="Gtk.CellRenderer">Gtk.CellRenderer</a></span> also has a number of
+generic properties that are expected to be honored by all children.</p>
+<p class="p">Beyond merely rendering a cell, cell renderers can optionally
+provide active user interface elements. A cell renderer can be
+&lt;firstterm&gt;activatable&lt;/firstterm&gt; like <span class=" link"><a href="Gtk.CellRendererToggle.html" title="Gtk.CellRendererToggle">Gtk.CellRendererToggle</a></span>,
+which toggles when it gets activated by a mouse click, or it can be
+&lt;firstterm&gt;editable&lt;/firstterm&gt; like <span class=" link"><a href="Gtk.CellRendererText.html" title="Gtk.CellRendererText">Gtk.CellRendererText</a></span>, which
+allows the user to edit the text using a <span class=" link"><a href="Gtk.Entry.html" title="Gtk.Entry">Gtk.Entry</a></span>.
+To make a cell renderer activatable or editable, you have to
+implement the <span class=" link"><a href="Gtk.CellRendererClass.html" title="Gtk.CellRendererClass">Gtk.CellRendererClass</a></span>.activate or
+<span class=" link"><a href="Gtk.CellRendererClass.html" title="Gtk.CellRendererClass">Gtk.CellRendererClass</a></span>.start_editing virtual functions, respectively.</p>
+<p class="p">Many properties of <span class=" link"><a href="Gtk.CellRenderer.html" title="Gtk.CellRenderer">Gtk.CellRenderer</a></span> and its subclasses have a
+corresponding "set" property, e.g. "cell-background-set" corresponds
+to "cell-background". These "set" properties reflect whether a property
+has been set or not. You should not set them independently.</p>
+<div class="synopsis"><div class="inner">
+<div class="title title-synopsis"><h2><span class="title">Hierarchy</span></h2></div>
+<div class="region"><div class="contents"><div class="tree"><div class="inner"><div class="region"><ul class="tree"><li class="tree">
+<div>
+        <span class=" code">GObject.Object</span>
+      
+      </div>
+<ul class="tree"><li class="tree">
+<div>
+        <span class=" code">GObject.InitiallyUnowned</span>
+      
+      </div>
+<ul class="tree"><li class="tree"><div>
+        <span class=" code">Gtk.CellRenderer</span>
+      </div></li></ul>
+</li></ul>
+</li></ul></div></div></div></div></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Methods</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.CellRenderer.activate.html" title="Gtk.CellRenderer.prototype.activate">Gtk.CellRenderer.prototype.activate</a></li>
+<li class="links "><a href="Gtk.CellRenderer.get_aligned_area.html" title="Gtk.CellRenderer.prototype.get_aligned_area">Gtk.CellRenderer.prototype.get_aligned_area</a></li>
+<li class="links "><a href="Gtk.CellRenderer.get_alignment.html" title="Gtk.CellRenderer.prototype.get_alignment">Gtk.CellRenderer.prototype.get_alignment</a></li>
+<li class="links "><a href="Gtk.CellRenderer.get_fixed_size.html" title="Gtk.CellRenderer.prototype.get_fixed_size">Gtk.CellRenderer.prototype.get_fixed_size</a></li>
+<li class="links "><a href="Gtk.CellRenderer.get_padding.html" title="Gtk.CellRenderer.prototype.get_padding">Gtk.CellRenderer.prototype.get_padding</a></li>
+<li class="links "><a href="Gtk.CellRenderer.get_preferred_height.html" title="Gtk.CellRenderer.prototype.get_preferred_height">Gtk.CellRenderer.prototype.get_preferred_height</a></li>
+<li class="links "><a href="Gtk.CellRenderer.get_preferred_height_for_width.html" title="Gtk.CellRenderer.prototype.get_preferred_height_for_width">Gtk.CellRenderer.prototype.get_preferred_height_for_width</a></li>
+<li class="links "><a href="Gtk.CellRenderer.get_preferred_size.html" title="Gtk.CellRenderer.prototype.get_preferred_size">Gtk.CellRenderer.prototype.get_preferred_size</a></li>
+<li class="links "><a href="Gtk.CellRenderer.get_preferred_width.html" title="Gtk.CellRenderer.prototype.get_preferred_width">Gtk.CellRenderer.prototype.get_preferred_width</a></li>
+<li class="links "><a href="Gtk.CellRenderer.get_preferred_width_for_height.html" title="Gtk.CellRenderer.prototype.get_preferred_width_for_height">Gtk.CellRenderer.prototype.get_preferred_width_for_height</a></li>
+<li class="links "><a href="Gtk.CellRenderer.get_request_mode.html" title="Gtk.CellRenderer.prototype.get_request_mode">Gtk.CellRenderer.prototype.get_request_mode</a></li>
+<li class="links "><a href="Gtk.CellRenderer.get_sensitive.html" title="Gtk.CellRenderer.prototype.get_sensitive">Gtk.CellRenderer.prototype.get_sensitive</a></li>
+<li class="links "><a href="Gtk.CellRenderer.get_size.html" title="Gtk.CellRenderer.prototype.get_size">Gtk.CellRenderer.prototype.get_size</a></li>
+<li class="links "><a href="Gtk.CellRenderer.get_state.html" title="Gtk.CellRenderer.prototype.get_state">Gtk.CellRenderer.prototype.get_state</a></li>
+<li class="links "><a href="Gtk.CellRenderer.get_visible.html" title="Gtk.CellRenderer.prototype.get_visible">Gtk.CellRenderer.prototype.get_visible</a></li>
+<li class="links "><a href="Gtk.CellRenderer.is_activatable.html" title="Gtk.CellRenderer.prototype.is_activatable">Gtk.CellRenderer.prototype.is_activatable</a></li>
+<li class="links "><a href="Gtk.CellRenderer.render.html" title="Gtk.CellRenderer.prototype.render">Gtk.CellRenderer.prototype.render</a></li>
+<li class="links "><a href="Gtk.CellRenderer.set_alignment.html" title="Gtk.CellRenderer.prototype.set_alignment">Gtk.CellRenderer.prototype.set_alignment</a></li>
+<li class="links "><a href="Gtk.CellRenderer.set_fixed_size.html" title="Gtk.CellRenderer.prototype.set_fixed_size">Gtk.CellRenderer.prototype.set_fixed_size</a></li>
+<li class="links "><a href="Gtk.CellRenderer.set_padding.html" title="Gtk.CellRenderer.prototype.set_padding">Gtk.CellRenderer.prototype.set_padding</a></li>
+<li class="links "><a href="Gtk.CellRenderer.set_sensitive.html" title="Gtk.CellRenderer.prototype.set_sensitive">Gtk.CellRenderer.prototype.set_sensitive</a></li>
+<li class="links "><a href="Gtk.CellRenderer.set_visible.html" title="Gtk.CellRenderer.prototype.set_visible">Gtk.CellRenderer.prototype.set_visible</a></li>
+<li class="links "><a href="Gtk.CellRenderer.start_editing.html" title="Gtk.CellRenderer.prototype.start_editing">Gtk.CellRenderer.prototype.start_editing</a></li>
+<li class="links "><a href="Gtk.CellRenderer.stop_editing.html" title="Gtk.CellRenderer.prototype.stop_editing">Gtk.CellRenderer.prototype.stop_editing</a></li>
+</ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Properties</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.CellRenderer-cell-background.html" title="Gtk.CellRenderer:cell-background">cell-background</a></li>
+<li class="links "><a href="Gtk.CellRenderer-cell-background-gdk.html" title="Gtk.CellRenderer:cell-background-gdk">cell-background-gdk</a></li>
+<li class="links "><a href="Gtk.CellRenderer-cell-background-rgba.html" title="Gtk.CellRenderer:cell-background-rgba">cell-background-rgba</a></li>
+<li class="links "><a href="Gtk.CellRenderer-cell-background-set.html" title="Gtk.CellRenderer:cell-background-set">cell-background-set</a></li>
+<li class="links "><a href="Gtk.CellRenderer-editing.html" title="Gtk.CellRenderer:editing">editing</a></li>
+<li class="links "><a href="Gtk.CellRenderer-height.html" title="Gtk.CellRenderer:height">height</a></li>
+<li class="links "><a href="Gtk.CellRenderer-is-expanded.html" title="Gtk.CellRenderer:is-expanded">is-expanded</a></li>
+<li class="links "><a href="Gtk.CellRenderer-is-expander.html" title="Gtk.CellRenderer:is-expander">is-expander</a></li>
+<li class="links "><a href="Gtk.CellRenderer-mode.html" title="Gtk.CellRenderer:mode">mode</a></li>
+<li class="links "><a href="Gtk.CellRenderer-sensitive.html" title="Gtk.CellRenderer:sensitive">sensitive</a></li>
+<li class="links "><a href="Gtk.CellRenderer-visible.html" title="Gtk.CellRenderer:visible">visible</a></li>
+<li class="links "><a href="Gtk.CellRenderer-width.html" title="Gtk.CellRenderer:width">width</a></li>
+<li class="links "><a href="Gtk.CellRenderer-xalign.html" title="Gtk.CellRenderer:xalign">xalign</a></li>
+<li class="links "><a href="Gtk.CellRenderer-xpad.html" title="Gtk.CellRenderer:xpad">xpad</a></li>
+<li class="links "><a href="Gtk.CellRenderer-yalign.html" title="Gtk.CellRenderer:yalign">yalign</a></li>
+<li class="links "><a href="Gtk.CellRenderer-ypad.html" title="Gtk.CellRenderer:ypad">ypad</a></li>
+</ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Signals</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.CellRenderer-editing-canceled.html" title="Gtk.CellRenderer::editing-canceled">editing-canceled</a></li>
+<li class="links "><a href="Gtk.CellRenderer-editing-started.html" title="Gtk.CellRenderer::editing-started">editing-started</a></li>
+</ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Virtual functions</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.CellRenderer-activate.html" title="Gtk.CellRenderer::activate">Gtk.CellRenderer::activate</a></li>
+<li class="links "><a href="Gtk.CellRenderer-editing_canceled.html" title="Gtk.CellRenderer::editing_canceled">Gtk.CellRenderer::editing_canceled</a></li>
+<li class="links "><a href="Gtk.CellRenderer-editing_started.html" title="Gtk.CellRenderer::editing_started">Gtk.CellRenderer::editing_started</a></li>
+<li class="links "><a href="Gtk.CellRenderer-get_aligned_area.html" title="Gtk.CellRenderer::get_aligned_area">Gtk.CellRenderer::get_aligned_area</a></li>
+<li class="links "><a href="Gtk.CellRenderer-get_preferred_height.html" title="Gtk.CellRenderer::get_preferred_height">Gtk.CellRenderer::get_preferred_height</a></li>
+<li class="links "><a href="Gtk.CellRenderer-get_preferred_height_for_width.html" title="Gtk.CellRenderer::get_preferred_height_for_width">Gtk.CellRenderer::get_preferred_height_for_width</a></li>
+<li class="links "><a href="Gtk.CellRenderer-get_preferred_width.html" title="Gtk.CellRenderer::get_preferred_width">Gtk.CellRenderer::get_preferred_width</a></li>
+<li class="links "><a href="Gtk.CellRenderer-get_preferred_width_for_height.html" title="Gtk.CellRenderer::get_preferred_width_for_height">Gtk.CellRenderer::get_preferred_width_for_height</a></li>
+<li class="links "><a href="Gtk.CellRenderer-get_request_mode.html" title="Gtk.CellRenderer::get_request_mode">Gtk.CellRenderer::get_request_mode</a></li>
+<li class="links "><a href="Gtk.CellRenderer-get_size.html" title="Gtk.CellRenderer::get_size">Gtk.CellRenderer::get_size</a></li>
+<li class="links "><a href="Gtk.CellRenderer-render.html" title="Gtk.CellRenderer::render">Gtk.CellRenderer::render</a></li>
+<li class="links "><a href="Gtk.CellRenderer-start_editing.html" title="Gtk.CellRenderer::start_editing">Gtk.CellRenderer::start_editing</a></li>
+</ul></div>
+</div></div>
+</div>
+<div class="sect sect-links" role="navigation">
+<div class="hgroup"></div>
+<div class="contents"><div class="links guidelinks"><div class="inner">
+<div class="title"><h2><span class="title">More Information</span></h2></div>
+<div class="region"><ul><li class="links "><a href="index.html" title="Index">Index</a></li></ul></div>
+</div></div></div>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="footer"></div>
+</div></body>
+</html>

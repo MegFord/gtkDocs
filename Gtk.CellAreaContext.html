@@ -1,0 +1,90 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Gtk.CellAreaContext</title>
+<link rel="stylesheet" type="text/css" href="C.css">
+<script type="text/javascript" src="jquery.js"></script><script type="text/javascript" src="jquery.syntax.js"></script><script type="text/javascript" src="yelp.js"></script>
+</head>
+<body><div class="page" role="main">
+<div class="header"><div class="trails" role="navigation"><div class="trail">
+<a class="trail" href="index.html" title="Index">Index</a> » </div></div></div>
+<div class="body">
+<div class="hgroup"><h1 class="title"><span class="title">Gtk.CellAreaContext</span></h1></div>
+<div class="region">
+<div class="contents">
+<div class="synopsis"><div class="inner"><div class="region"><div class="contents"><div class="code"><pre class="contents ">const Gtk = imports.gi.Gtk;
+
+let cell_area_context = new Gtk.CellAreaContext({
+    <span class=" link"><a href="Gtk.CellAreaContext-area.html" title="Gtk.CellAreaContext:area">area</a></span>: value,
+});
+  </pre></div></div></div></div></div>
+<p class="p">The <span class=" link"><a href="Gtk.CellAreaContext.html" title="Gtk.CellAreaContext">Gtk.CellAreaContext</a></span> object is created by a given <span class=" link"><a href="Gtk.CellArea.html" title="Gtk.CellArea">Gtk.CellArea</a></span>
+implementation via its <span class=" link"><a href="Gtk.CellAreaClass.html" title="Gtk.CellAreaClass">Gtk.CellAreaClass</a></span>.create_context() virtual
+method and is used to store cell sizes and alignments for a series of
+<span class=" link"><a href="Gtk.TreeModel.html" title="Gtk.TreeModel">Gtk.TreeModel</a></span> rows that are requested and rendered in the same context.</p>
+<p class="p"><span class=" link"><a href="Gtk.CellLayout.html" title="Gtk.CellLayout">Gtk.CellLayout</a></span> widgets can create any number of contexts in which to
+request and render groups of data rows. However, it's important that the
+same context which was used to request sizes for a given <span class=" link"><a href="Gtk.TreeModel.html" title="Gtk.TreeModel">Gtk.TreeModel</a></span>
+row also be used for the same row when calling other <span class=" link"><a href="Gtk.CellArea.html" title="Gtk.CellArea">Gtk.CellArea</a></span> APIs
+such as <span class=" link"><a href="Gtk.CellArea.render.html" title="Gtk.CellArea.prototype.render">Gtk.CellArea.prototype.render</a></span> and <span class=" link"><a href="Gtk.CellArea.event.html" title="Gtk.CellArea.prototype.event">Gtk.CellArea.prototype.event</a></span>.</p>
+<div class="synopsis"><div class="inner">
+<div class="title title-synopsis"><h2><span class="title">Hierarchy</span></h2></div>
+<div class="region"><div class="contents"><div class="tree"><div class="inner"><div class="region"><ul class="tree"><li class="tree">
+<div>
+        <span class=" code">GObject.Object</span>
+      
+      </div>
+<ul class="tree"><li class="tree"><div>
+        <span class=" code">Gtk.CellAreaContext</span>
+      </div></li></ul>
+</li></ul></div></div></div></div></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Methods</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.CellAreaContext.allocate.html" title="Gtk.CellAreaContext.prototype.allocate">Gtk.CellAreaContext.prototype.allocate</a></li>
+<li class="links "><a href="Gtk.CellAreaContext.get_allocation.html" title="Gtk.CellAreaContext.prototype.get_allocation">Gtk.CellAreaContext.prototype.get_allocation</a></li>
+<li class="links "><a href="Gtk.CellAreaContext.get_area.html" title="Gtk.CellAreaContext.prototype.get_area">Gtk.CellAreaContext.prototype.get_area</a></li>
+<li class="links "><a href="Gtk.CellAreaContext.get_preferred_height.html" title="Gtk.CellAreaContext.prototype.get_preferred_height">Gtk.CellAreaContext.prototype.get_preferred_height</a></li>
+<li class="links "><a href="Gtk.CellAreaContext.get_preferred_height_for_width.html" title="Gtk.CellAreaContext.prototype.get_preferred_height_for_width">Gtk.CellAreaContext.prototype.get_preferred_height_for_width</a></li>
+<li class="links "><a href="Gtk.CellAreaContext.get_preferred_width.html" title="Gtk.CellAreaContext.prototype.get_preferred_width">Gtk.CellAreaContext.prototype.get_preferred_width</a></li>
+<li class="links "><a href="Gtk.CellAreaContext.get_preferred_width_for_height.html" title="Gtk.CellAreaContext.prototype.get_preferred_width_for_height">Gtk.CellAreaContext.prototype.get_preferred_width_for_height</a></li>
+<li class="links "><a href="Gtk.CellAreaContext.push_preferred_height.html" title="Gtk.CellAreaContext.prototype.push_preferred_height">Gtk.CellAreaContext.prototype.push_preferred_height</a></li>
+<li class="links "><a href="Gtk.CellAreaContext.push_preferred_width.html" title="Gtk.CellAreaContext.prototype.push_preferred_width">Gtk.CellAreaContext.prototype.push_preferred_width</a></li>
+<li class="links "><a href="Gtk.CellAreaContext.reset.html" title="Gtk.CellAreaContext.prototype.reset">Gtk.CellAreaContext.prototype.reset</a></li>
+</ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Properties</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.CellAreaContext-area.html" title="Gtk.CellAreaContext:area">area</a></li>
+<li class="links "><a href="Gtk.CellAreaContext-minimum-height.html" title="Gtk.CellAreaContext:minimum-height">minimum-height</a></li>
+<li class="links "><a href="Gtk.CellAreaContext-minimum-width.html" title="Gtk.CellAreaContext:minimum-width">minimum-width</a></li>
+<li class="links "><a href="Gtk.CellAreaContext-natural-height.html" title="Gtk.CellAreaContext:natural-height">natural-height</a></li>
+<li class="links "><a href="Gtk.CellAreaContext-natural-width.html" title="Gtk.CellAreaContext:natural-width">natural-width</a></li>
+</ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Virtual functions</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.CellAreaContext-allocate.html" title="Gtk.CellAreaContext::allocate">Gtk.CellAreaContext::allocate</a></li>
+<li class="links "><a href="Gtk.CellAreaContext-get_preferred_height_for_width.html" title="Gtk.CellAreaContext::get_preferred_height_for_width">Gtk.CellAreaContext::get_preferred_height_for_width</a></li>
+<li class="links "><a href="Gtk.CellAreaContext-get_preferred_width_for_height.html" title="Gtk.CellAreaContext::get_preferred_width_for_height">Gtk.CellAreaContext::get_preferred_width_for_height</a></li>
+<li class="links "><a href="Gtk.CellAreaContext-reset.html" title="Gtk.CellAreaContext::reset">Gtk.CellAreaContext::reset</a></li>
+</ul></div>
+</div></div>
+</div>
+<div class="sect sect-links" role="navigation">
+<div class="hgroup"></div>
+<div class="contents"><div class="links guidelinks"><div class="inner">
+<div class="title"><h2><span class="title">More Information</span></h2></div>
+<div class="region"><ul><li class="links "><a href="index.html" title="Index">Index</a></li></ul></div>
+</div></div></div>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="footer"></div>
+</div></body>
+</html>

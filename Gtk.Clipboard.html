@@ -1,0 +1,138 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Gtk.Clipboard</title>
+<link rel="stylesheet" type="text/css" href="C.css">
+<script type="text/javascript" src="jquery.js"></script><script type="text/javascript" src="jquery.syntax.js"></script><script type="text/javascript" src="yelp.js"></script>
+</head>
+<body><div class="page" role="main">
+<div class="header"><div class="trails" role="navigation"><div class="trail">
+<a class="trail" href="index.html" title="Index">Index</a> » </div></div></div>
+<div class="body">
+<div class="hgroup"><h1 class="title"><span class="title">Gtk.Clipboard</span></h1></div>
+<div class="region">
+<div class="contents">
+<div class="synopsis"><div class="inner"><div class="region"><div class="contents"><div class="code"><pre class="contents ">const Gtk = imports.gi.Gtk;
+
+let clipboard = new Gtk.Clipboard();
+  </pre></div></div></div></div></div>
+<p class="p">The <span class=" link"><a href="Gtk.Clipboard.html" title="Gtk.Clipboard">Gtk.Clipboard</a></span> object represents a clipboard of data shared
+between different processes or between different widgets in
+the same process. Each clipboard is identified by a name encoded as a
+<span class=" link"><a href="Gdk.Atom.html" title="Gdk.Atom">Gdk.Atom</a></span>. (Conversion to and from strings can be done with
+<span class=" link"><a href="Gdk.atom_intern.html" title="Gdk.atom_intern">Gdk.atom_intern</a></span> and <span class=" link"><a href="Gdk.name.html" title="Gdk.name">Gdk.name</a></span>.) The default clipboard
+corresponds to the "CLIPBOARD" atom; another commonly used clipboard
+is the "PRIMARY" clipboard, which, in X, traditionally contains
+the currently selected text.</p>
+<p class="p">To support having a number of different formats on the clipboard
+at the same time, the clipboard mechanism allows providing
+callbacks instead of the actual data.  When you set the contents
+of the clipboard, you can either supply the data directly (via
+functions like <span class=" link"><a href="Gtk.set_text.html" title="Gtk.set_text">Gtk.set_text</a></span>), or you can supply a
+callback to be called at a later time when the data is needed (via
+<span class=" link"><a href="Gtk.set_with_data.html" title="Gtk.set_with_data">Gtk.set_with_data</a></span> or <span class=" link"><a href="Gtk.set_with_owner.html" title="Gtk.set_with_owner">Gtk.set_with_owner</a></span>.)
+Providing a callback also avoids having to make copies of the data
+when it is not needed.</p>
+<p class="p"><span class=" link"><a href="Gtk.set_with_data.html" title="Gtk.set_with_data">Gtk.set_with_data</a></span> and <span class=" link"><a href="Gtk.set_with_owner.html" title="Gtk.set_with_owner">Gtk.set_with_owner</a></span>
+are quite similar; the choice between the two depends mostly on
+which is more convenient in a particular situation.
+The former is most useful when you want to have a blob of data
+with callbacks to convert it into the various data types that you
+advertise. When the @clear_func you provided is called, you
+simply free the data blob. The latter is more useful when the
+contents of clipboard reflect the internal state of a <span class=" link"><a href="GObject.Object.html" title="GObject.Object">GObject.Object</a></span>
+(As an example, for the PRIMARY clipboard, when an entry widget
+provides the clipboard's contents the contents are simply the
+text within the selected region.) If the contents change, the
+entry widget can call <span class=" link"><a href="Gtk.set_with_owner.html" title="Gtk.set_with_owner">Gtk.set_with_owner</a></span> to update
+the timestamp for clipboard ownership, without having to worry
+about @clear_func being called.</p>
+<p class="p">Requesting the data from the clipboard is essentially
+asynchronous. If the contents of the clipboard are provided within
+the same process, then a direct function call will be made to
+retrieve the data, but if they are provided by another process,
+then the data needs to be retrieved from the other process, which
+may take some time. To avoid blocking the user interface, the call
+to request the selection, <span class=" link"><a href="Gtk.request_contents.html" title="Gtk.request_contents">Gtk.request_contents</a></span> takes a
+callback that will be called when the contents are received (or
+when the request fails.) If you don't want to deal with providing
+a separate callback, you can also use <span class=" link"><a href="Gtk.wait_for_contents.html" title="Gtk.wait_for_contents">Gtk.wait_for_contents</a></span>.
+What this does is run the GLib main loop recursively waiting for
+the contents. This can simplify the code flow, but you still have
+to be aware that other callbacks in your program can be called
+while this recursive mainloop is running.</p>
+<p class="p">Along with the functions to get the clipboard contents as an
+arbitrary data chunk, there are also functions to retrieve
+it as text, <span class=" link"><a href="Gtk.request_text.html" title="Gtk.request_text">Gtk.request_text</a></span> and
+<span class=" link"><a href="Gtk.wait_for_text.html" title="Gtk.wait_for_text">Gtk.wait_for_text</a></span>. These functions take care of
+determining which formats are advertised by the clipboard
+provider, asking for the clipboard in the best available format
+and converting the results into the UTF-8 encoding. (The standard
+form for representing strings in GTK+.)</p>
+<div class="synopsis"><div class="inner">
+<div class="title title-synopsis"><h2><span class="title">Hierarchy</span></h2></div>
+<div class="region"><div class="contents"><div class="tree"><div class="inner"><div class="region"><ul class="tree"><li class="tree">
+<div>
+        <span class=" code">GObject.Object</span>
+      
+      </div>
+<ul class="tree"><li class="tree"><div>
+        <span class=" code">Gtk.Clipboard</span>
+      </div></li></ul>
+</li></ul></div></div></div></div></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Methods</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.Clipboard.clear.html" title="Gtk.Clipboard.prototype.clear">Gtk.Clipboard.prototype.clear</a></li>
+<li class="links "><a href="Gtk.Clipboard.get_display.html" title="Gtk.Clipboard.prototype.get_display">Gtk.Clipboard.prototype.get_display</a></li>
+<li class="links "><a href="Gtk.Clipboard.get_owner.html" title="Gtk.Clipboard.prototype.get_owner">Gtk.Clipboard.prototype.get_owner</a></li>
+<li class="links "><a href="Gtk.Clipboard.request_contents.html" title="Gtk.Clipboard.prototype.request_contents">Gtk.Clipboard.prototype.request_contents</a></li>
+<li class="links "><a href="Gtk.Clipboard.request_image.html" title="Gtk.Clipboard.prototype.request_image">Gtk.Clipboard.prototype.request_image</a></li>
+<li class="links "><a href="Gtk.Clipboard.request_rich_text.html" title="Gtk.Clipboard.prototype.request_rich_text">Gtk.Clipboard.prototype.request_rich_text</a></li>
+<li class="links "><a href="Gtk.Clipboard.request_targets.html" title="Gtk.Clipboard.prototype.request_targets">Gtk.Clipboard.prototype.request_targets</a></li>
+<li class="links "><a href="Gtk.Clipboard.request_text.html" title="Gtk.Clipboard.prototype.request_text">Gtk.Clipboard.prototype.request_text</a></li>
+<li class="links "><a href="Gtk.Clipboard.request_uris.html" title="Gtk.Clipboard.prototype.request_uris">Gtk.Clipboard.prototype.request_uris</a></li>
+<li class="links "><a href="Gtk.Clipboard.set_can_store.html" title="Gtk.Clipboard.prototype.set_can_store">Gtk.Clipboard.prototype.set_can_store</a></li>
+<li class="links "><a href="Gtk.Clipboard.set_image.html" title="Gtk.Clipboard.prototype.set_image">Gtk.Clipboard.prototype.set_image</a></li>
+<li class="links "><a href="Gtk.Clipboard.set_text.html" title="Gtk.Clipboard.prototype.set_text">Gtk.Clipboard.prototype.set_text</a></li>
+<li class="links "><a href="Gtk.Clipboard.store.html" title="Gtk.Clipboard.prototype.store">Gtk.Clipboard.prototype.store</a></li>
+<li class="links "><a href="Gtk.Clipboard.wait_for_contents.html" title="Gtk.Clipboard.prototype.wait_for_contents">Gtk.Clipboard.prototype.wait_for_contents</a></li>
+<li class="links "><a href="Gtk.Clipboard.wait_for_image.html" title="Gtk.Clipboard.prototype.wait_for_image">Gtk.Clipboard.prototype.wait_for_image</a></li>
+<li class="links "><a href="Gtk.Clipboard.wait_for_rich_text.html" title="Gtk.Clipboard.prototype.wait_for_rich_text">Gtk.Clipboard.prototype.wait_for_rich_text</a></li>
+<li class="links "><a href="Gtk.Clipboard.wait_for_targets.html" title="Gtk.Clipboard.prototype.wait_for_targets">Gtk.Clipboard.prototype.wait_for_targets</a></li>
+<li class="links "><a href="Gtk.Clipboard.wait_for_text.html" title="Gtk.Clipboard.prototype.wait_for_text">Gtk.Clipboard.prototype.wait_for_text</a></li>
+<li class="links "><a href="Gtk.Clipboard.wait_for_uris.html" title="Gtk.Clipboard.prototype.wait_for_uris">Gtk.Clipboard.prototype.wait_for_uris</a></li>
+<li class="links "><a href="Gtk.Clipboard.wait_is_image_available.html" title="Gtk.Clipboard.prototype.wait_is_image_available">Gtk.Clipboard.prototype.wait_is_image_available</a></li>
+<li class="links "><a href="Gtk.Clipboard.wait_is_rich_text_available.html" title="Gtk.Clipboard.prototype.wait_is_rich_text_available">Gtk.Clipboard.prototype.wait_is_rich_text_available</a></li>
+<li class="links "><a href="Gtk.Clipboard.wait_is_target_available.html" title="Gtk.Clipboard.prototype.wait_is_target_available">Gtk.Clipboard.prototype.wait_is_target_available</a></li>
+<li class="links "><a href="Gtk.Clipboard.wait_is_text_available.html" title="Gtk.Clipboard.prototype.wait_is_text_available">Gtk.Clipboard.prototype.wait_is_text_available</a></li>
+<li class="links "><a href="Gtk.Clipboard.wait_is_uris_available.html" title="Gtk.Clipboard.prototype.wait_is_uris_available">Gtk.Clipboard.prototype.wait_is_uris_available</a></li>
+</ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Functions</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.Clipboard.get.html" title="get">get</a></li>
+<li class="links "><a href="Gtk.Clipboard.get_for_display.html" title="get_for_display">get_for_display</a></li>
+</ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Signals</span></h2></div>
+<div class="region"><ul><li class="links "><a href="Gtk.Clipboard-owner-change.html" title="Gtk.Clipboard::owner-change">owner-change</a></li></ul></div>
+</div></div>
+</div>
+<div class="sect sect-links" role="navigation">
+<div class="hgroup"></div>
+<div class="contents"><div class="links guidelinks"><div class="inner">
+<div class="title"><h2><span class="title">More Information</span></h2></div>
+<div class="region"><ul><li class="links "><a href="index.html" title="Index">Index</a></li></ul></div>
+</div></div></div>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="footer"></div>
+</div></body>
+</html>

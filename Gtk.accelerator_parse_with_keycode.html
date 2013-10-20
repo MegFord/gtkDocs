@@ -1,0 +1,45 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>accelerator_parse_with_keycode</title>
+<link rel="stylesheet" type="text/css" href="C.css">
+<script type="text/javascript" src="jquery.js"></script><script type="text/javascript" src="jquery.syntax.js"></script><script type="text/javascript" src="yelp.js"></script>
+</head>
+<body><div class="page" role="main">
+<div class="header"><div class="trails" role="navigation"><div class="trail">
+<a class="trail" href="index.html" title="Index">Index</a> » </div></div></div>
+<div class="body">
+<div class="hgroup"><h1 class="title"><span class="title">accelerator_parse_with_keycode</span></h1></div>
+<div class="region">
+<div class="contents">
+<div class="synopsis"><div class="inner"><div class="region"><div class="contents"><div class="code"><pre class="contents ">function accelerator_parse_with_keycode(accelerator:String):void {
+    // Gjs wrapper for gtk_accelerator_parse_with_keycode()
+}</pre></div></div></div></div></div>
+<p class="p">Parses a string representing an accelerator, similarly to
+<span class=" link"><a href="Gtk.accelerator_parse.html" title="accelerator_parse">accelerator_parse</a></span> but handles keycodes as well. This is only
+useful for system-level components, applications should use
+<span class=" link"><a href="Gtk.accelerator_parse.html" title="accelerator_parse">accelerator_parse</a></span> instead.</p>
+<p class="p">If a keycode is present in the accelerator and no <span class=" code">accelerator_codes</span>
+is given, the parse will fail.</p>
+<p class="p">If the parse fails, <span class=" code">accelerator_key</span>, <span class=" code">accelerator_mods</span> and
+<span class=" code">accelerator_codes</span> will be set to 0 (zero).</p>
+<p class="p">Since 3.4</p>
+<div class="terms"><div class="inner"><div class="region"><dl class="terms">
+<dt class="terms"><span class=" code">accelerator</span></dt>
+<dd class="terms"><p class="p">string representing an accelerator</p></dd>
+</dl></div></div></div>
+</div>
+<div class="sect sect-links" role="navigation">
+<div class="hgroup"></div>
+<div class="contents"><div class="links guidelinks"><div class="inner">
+<div class="title"><h2><span class="title">More Information</span></h2></div>
+<div class="region"><ul><li class="links "><a href="index.html" title="Index">Index</a></li></ul></div>
+</div></div></div>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="footer"></div>
+</div></body>
+</html>

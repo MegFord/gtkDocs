@@ -1,0 +1,276 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Gtk.Container</title>
+<link rel="stylesheet" type="text/css" href="C.css">
+<script type="text/javascript" src="jquery.js"></script><script type="text/javascript" src="jquery.syntax.js"></script><script type="text/javascript" src="yelp.js"></script>
+</head>
+<body><div class="page" role="main">
+<div class="header"><div class="trails" role="navigation"><div class="trail">
+<a class="trail" href="index.html" title="Index">Index</a> » </div></div></div>
+<div class="body">
+<div class="hgroup"><h1 class="title"><span class="title">Gtk.Container</span></h1></div>
+<div class="region">
+<div class="contents">
+<div class="synopsis"><div class="inner"><div class="region"><div class="contents"><div class="code"><pre class="contents ">const Gtk = imports.gi.Gtk;
+
+let container = new Gtk.Container({
+    <span class=" link"><a href="Gtk.Container-border-width.html" title="Gtk.Container:border-width">border_width</a></span>: value,
+    <span class=" link"><a href="Gtk.Container-child.html" title="Gtk.Container:child">child</a></span>: value,
+    <span class=" link"><a href="Gtk.Container-resize-mode.html" title="Gtk.Container:resize-mode">resize_mode</a></span>: value,
+});
+  </pre></div></div></div></div></div>
+<p class="p">A GTK+ user interface is constructed by nesting widgets inside widgets.
+Container widgets are the inner nodes in the resulting tree of widgets:
+they contain other widgets. So, for example, you might have a <span class=" link"><a href="Gtk.Window.html" title="Gtk.Window">Gtk.Window</a></span>
+containing a <span class=" link"><a href="Gtk.Frame.html" title="Gtk.Frame">Gtk.Frame</a></span> containing a <span class=" link"><a href="Gtk.Label.html" title="Gtk.Label">Gtk.Label</a></span>. If you wanted an image instead
+of a textual label inside the frame, you might replace the <span class=" link"><a href="Gtk.Label.html" title="Gtk.Label">Gtk.Label</a></span> widget
+with a <span class=" link"><a href="Gtk.Image.html" title="Gtk.Image">Gtk.Image</a></span> widget.</p>
+<p class="p">There are two major kinds of container widgets in GTK+. Both are subclasses
+of the abstract GtkContainer base class.</p>
+<p class="p">The first type of container widget has a single child widget and derives
+from <span class=" link"><a href="Gtk.Bin.html" title="Gtk.Bin">Gtk.Bin</a></span>. These containers are &lt;emphasis&gt;decorators&lt;/emphasis&gt;, which
+add some kind of functionality to the child. For example, a <span class=" link"><a href="Gtk.Button.html" title="Gtk.Button">Gtk.Button</a></span> makes
+its child into a clickable button; a <span class=" link"><a href="Gtk.Frame.html" title="Gtk.Frame">Gtk.Frame</a></span> draws a frame around its child
+and a <span class=" link"><a href="Gtk.Window.html" title="Gtk.Window">Gtk.Window</a></span> places its child widget inside a top-level window.</p>
+<p class="p">The second type of container can have more than one child; its purpose is to
+manage &lt;emphasis&gt;layout&lt;/emphasis&gt;. This means that these containers assign
+sizes and positions to their children. For example, a <span class=" link"><a href="Gtk.HBox.html" title="Gtk.HBox">Gtk.HBox</a></span> arranges its
+children in a horizontal row, and a <span class=" link"><a href="Gtk.Grid.html" title="Gtk.Grid">Gtk.Grid</a></span> arranges the widgets it contains
+in a two-dimensional grid.</p>
+<p class="p">&lt;refsect2 id="container-geometry-management"&gt;
+&lt;title&gt;Height for width geometry management&lt;/title&gt;
+&lt;para&gt;
+GTK+ uses a height-for-width (and width-for-height) geometry management system.
+Height-for-width means that a widget can change how much vertical space it needs,
+depending on the amount of horizontal space that it is given (and similar for
+width-for-height).</p>
+<p class="p">There are some things to keep in mind when implementing container widgets
+that make use of GTK+'s height for width geometry management system. First,
+it's important to note that a container must prioritize one of its
+dimensions, that is to say that a widget or container can only have a
+<span class=" link"><a href="Gtk.SizeRequestMode.html" title="Gtk.SizeRequestMode">Gtk.SizeRequestMode</a></span> that is <span class=" link"><a href="Gtk.SizeRequestMode.html" title="Gtk.SizeRequestMode">Gtk.SizeRequestMode</a></span>.height_for_width or
+<span class=" link"><a href="Gtk.SizeRequestMode.html" title="Gtk.SizeRequestMode">Gtk.SizeRequestMode</a></span>.width_for_height. However, every widget and container
+must be able to respond to the APIs for both dimensions, i.e. even if a
+widget has a request mode that is height-for-width, it is possible that
+its parent will request its sizes using the width-for-height APIs.</p>
+<p class="p">To ensure that everything works properly, here are some guidelines to follow
+when implementing height-for-width (or width-for-height) containers.</p>
+<p class="p">Each request mode involves 2 virtual methods. Height-for-width apis run
+through <span class=" link"><a href="Gtk.get_preferred_width.html" title="Gtk.get_preferred_width">Gtk.get_preferred_width</a></span> and then through <span class=" link"><a href="Gtk.get_preferred_height_for_width.html" title="Gtk.get_preferred_height_for_width">Gtk.get_preferred_height_for_width</a></span>.
+When handling requests in the opposite <span class=" link"><a href="Gtk.SizeRequestMode.html" title="Gtk.SizeRequestMode">Gtk.SizeRequestMode</a></span> it is important that
+every widget request at least enough space to display all of its content at all times.</p>
+<p class="p">When <span class=" link"><a href="Gtk.get_preferred_height.html" title="Gtk.get_preferred_height">Gtk.get_preferred_height</a></span> is called on a container that is height-for-width,
+the container must return the height for its minimum width. This is easily achieved by
+simply calling the reverse apis implemented for itself as follows:</p>
+<p class="p">&lt;programlisting&gt;&lt;![CDATA[
+static void
+foo_container_get_preferred_height (GtkWidget *widget, gint *min_height, gint *nat_height)
+{
+   if (i_am_in_height_for_width_mode)
+     {
+       gint min_width;</p>
+<p class="p">       GTK_WIDGET_GET_CLASS (widget)-&gt;get_preferred_width (widget, &amp;min_width, NULL);
+       GTK_WIDGET_GET_CLASS (widget)-&gt;get_preferred_height_for_width (widget, min_width,
+                                                                      min_height, nat_height);
+     }
+   else
+     {
+       ... many containers support both request modes, execute the real width-for-height
+       request here by returning the collective heights of all widgets that are
+       stacked vertically (or whatever is appropriate for this container) ...
+     }
+}
+]]&gt;&lt;/programlisting&gt;</p>
+<p class="p">Similarly, when <span class=" link"><a href="Gtk.get_preferred_width_for_height.html" title="Gtk.get_preferred_width_for_height">Gtk.get_preferred_width_for_height</a></span> is called for a container or widget
+that is height-for-width, it then only needs to return the base minimum width like so:</p>
+<p class="p">&lt;programlisting&gt;&lt;![CDATA[
+static void
+foo_container_get_preferred_width_for_height (GtkWidget *widget, gint for_height,
+                                              gint *min_width, gint *nat_width)
+{
+   if (i_am_in_height_for_width_mode)
+     {
+       GTK_WIDGET_GET_CLASS (widget)-&gt;get_preferred_width (widget, min_width, nat_width);
+     }
+   else
+     {
+       ... execute the real width-for-height request here based on the required width
+       of the children collectively if the container were to be allocated the said height ...
+     }
+}
+]]&gt;&lt;/programlisting&gt;</p>
+<p class="p">Height for width requests are generally implemented in terms of a virtual allocation
+of widgets in the input orientation. Assuming an height-for-width request mode, a container
+would implement the &lt;function&gt;get_preferred_height_for_width()&lt;/function&gt; virtual function by first calling
+<span class=" link"><a href="Gtk.get_preferred_width.html" title="Gtk.get_preferred_width">Gtk.get_preferred_width</a></span> for each of its children.</p>
+<p class="p">For each potential group of children that are lined up horizontally, the values returned by
+<span class=" link"><a href="Gtk.get_preferred_width.html" title="Gtk.get_preferred_width">Gtk.get_preferred_width</a></span> should be collected in an array of <span class=" link"><a href="Gtk.RequestedSize.html" title="Gtk.RequestedSize">Gtk.RequestedSize</a></span> structures.
+Any child spacing should be removed from the input @for_width and then the collective size should be
+allocated using the <span class=" link"><a href="Gtk.distribute_natural_allocation.html" title="distribute_natural_allocation">distribute_natural_allocation</a></span> convenience function.</p>
+<p class="p">The container will then move on to request the preferred height for each child by using
+<span class=" link"><a href="Gtk.get_preferred_height_for_width.html" title="Gtk.get_preferred_height_for_width">Gtk.get_preferred_height_for_width</a></span> and using the sizes stored in the <span class=" link"><a href="Gtk.RequestedSize.html" title="Gtk.RequestedSize">Gtk.RequestedSize</a></span> array.</p>
+<p class="p">To allocate a height-for-width container, it's again important
+to consider that a container must prioritize one dimension over the other. So if
+a container is a height-for-width container it must first allocate all widgets horizontally
+using a <span class=" link"><a href="Gtk.RequestedSize.html" title="Gtk.RequestedSize">Gtk.RequestedSize</a></span> array and <span class=" link"><a href="Gtk.distribute_natural_allocation.html" title="distribute_natural_allocation">distribute_natural_allocation</a></span> and then add any
+extra space (if and where appropriate) for the widget to expand.</p>
+<p class="p">After adding all the expand space, the container assumes it was allocated sufficient
+height to fit all of its content. At this time, the container must use the total horizontal sizes
+of each widget to request the height-for-width of each of its children and store the requests in a
+<span class=" link"><a href="Gtk.RequestedSize.html" title="Gtk.RequestedSize">Gtk.RequestedSize</a></span> array for any widgets that stack vertically (for tabular containers this can
+be generalized into the heights and widths of rows and columns).
+The vertical space must then again be distributed using <span class=" link"><a href="Gtk.distribute_natural_allocation.html" title="distribute_natural_allocation">distribute_natural_allocation</a></span>
+while this time considering the allocated height of the widget minus any vertical spacing
+that the container adds. Then vertical expand space should be added where appropriate and available
+and the container should go on to actually allocating the child widgets.</p>
+<p class="p">See &lt;link linkend="geometry-management"&gt;GtkWidget's geometry management section&lt;/link&gt;
+to learn more about implementing height-for-width geometry management for widgets.
+&lt;/para&gt;
+&lt;/refsect2&gt;
+&lt;refsect2 id="child-properties"&gt;
+&lt;title&gt;Child properties&lt;/title&gt;
+&lt;para&gt;
+GtkContainer introduces &lt;emphasis&gt;child properties&lt;/emphasis&gt;.
+These are object properties that are not specific
+to either the container or the contained widget, but rather to their relation.
+Typical examples of child properties are the position or pack-type of a widget
+which is contained in a <span class=" link"><a href="Gtk.Box.html" title="Gtk.Box">Gtk.Box</a></span>.</p>
+<p class="p">Use <span class=" link"><a href="Gtk.install_child_property.html" title="Gtk.install_child_property">Gtk.install_child_property</a></span> to install child properties
+for a container class and <span class=" link"><a href="Gtk.find_child_property.html" title="Gtk.find_child_property">Gtk.find_child_property</a></span> or
+<span class=" link"><a href="Gtk.list_child_properties.html" title="Gtk.list_child_properties">Gtk.list_child_properties</a></span> to get information about existing
+child properties.</p>
+<p class="p">To set the value of a child property, use <span class=" link"><a href="Gtk.child_set_property.html" title="Gtk.child_set_property">Gtk.child_set_property</a></span>,
+<span class=" link"><a href="Gtk.child_set.html" title="Gtk.child_set">Gtk.child_set</a></span> or <span class=" link"><a href="Gtk.child_set_valist.html" title="Gtk.child_set_valist">Gtk.child_set_valist</a></span>.
+To obtain the value of a child property, use
+<span class=" link"><a href="Gtk.child_get_property.html" title="Gtk.child_get_property">Gtk.child_get_property</a></span>, <span class=" link"><a href="Gtk.child_get.html" title="Gtk.child_get">Gtk.child_get</a></span> or
+<span class=" link"><a href="Gtk.child_get_valist.html" title="Gtk.child_get_valist">Gtk.child_get_valist</a></span>. To emit notification about child property
+changes, use <span class=" link"><a href="Gtk.child_notify.html" title="Gtk.child_notify">Gtk.child_notify</a></span>.
+&lt;/para&gt;
+&lt;/refsect2&gt;
+&lt;refsect2 id="GtkContainer-BUILDER-UI"&gt;
+&lt;title&gt;GtkContainer as GtkBuildable&lt;/title&gt;
+&lt;para&gt;
+The GtkContainer implementation of the GtkBuildable interface
+supports a &amp;lt;packing&amp;gt; element for children, which can
+contain multiple &amp;lt;property&amp;gt; elements that specify
+child properties for the child.
+&lt;example&gt;
+&lt;title&gt;Child properties in UI definitions&lt;/title&gt;
+&lt;programlisting&gt;&lt;![CDATA[
+&lt;object class="GtkVBox"&gt;
+  &lt;child&gt;
+    &lt;object class="GtkLabel"/&gt;
+    &lt;packing&gt;
+      &lt;property name="pack-type"&gt;start&lt;/property&gt;
+    &lt;/packing&gt;
+  &lt;/child&gt;
+&lt;/object&gt;
+]]&gt;&lt;/programlisting&gt;
+&lt;/example&gt;
+Since 2.16, child properties can also be marked as translatable using
+the same "translatable", "comments" and "context" attributes that are used
+for regular properties.
+&lt;/para&gt;
+&lt;/refsect2&gt;</p>
+<div class="synopsis"><div class="inner">
+<div class="title title-synopsis"><h2><span class="title">Hierarchy</span></h2></div>
+<div class="region"><div class="contents"><div class="tree"><div class="inner"><div class="region"><ul class="tree"><li class="tree">
+<div>
+        <span class=" code">GObject.Object</span>
+      
+      </div>
+<ul class="tree"><li class="tree">
+<div>
+        <span class=" code">GObject.InitiallyUnowned</span>
+      
+      </div>
+<ul class="tree"><li class="tree">
+<div>
+        <span class=" code">Gtk.Widget</span>
+      
+      </div>
+<ul class="tree"><li class="tree"><div>
+        <span class=" code">Gtk.Container</span>
+      </div></li></ul>
+</li></ul>
+</li></ul>
+</li></ul></div></div></div></div></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Methods</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.Container.add.html" title="Gtk.Container.prototype.add">Gtk.Container.prototype.add</a></li>
+<li class="links "><a href="Gtk.Container.check_resize.html" title="Gtk.Container.prototype.check_resize">Gtk.Container.prototype.check_resize</a></li>
+<li class="links "><a href="Gtk.Container.child_get_property.html" title="Gtk.Container.prototype.child_get_property">Gtk.Container.prototype.child_get_property</a></li>
+<li class="links "><a href="Gtk.Container.child_notify.html" title="Gtk.Container.prototype.child_notify">Gtk.Container.prototype.child_notify</a></li>
+<li class="links "><a href="Gtk.Container.child_set_property.html" title="Gtk.Container.prototype.child_set_property">Gtk.Container.prototype.child_set_property</a></li>
+<li class="links "><a href="Gtk.Container.child_type.html" title="Gtk.Container.prototype.child_type">Gtk.Container.prototype.child_type</a></li>
+<li class="links "><a href="Gtk.Container.forall.html" title="Gtk.Container.prototype.forall">Gtk.Container.prototype.forall</a></li>
+<li class="links "><a href="Gtk.Container.foreach.html" title="Gtk.Container.prototype.foreach">Gtk.Container.prototype.foreach</a></li>
+<li class="links "><a href="Gtk.Container.get_border_width.html" title="Gtk.Container.prototype.get_border_width">Gtk.Container.prototype.get_border_width</a></li>
+<li class="links "><a href="Gtk.Container.get_children.html" title="Gtk.Container.prototype.get_children">Gtk.Container.prototype.get_children</a></li>
+<li class="links "><a href="Gtk.Container.get_focus_chain.html" title="Gtk.Container.prototype.get_focus_chain">Gtk.Container.prototype.get_focus_chain</a></li>
+<li class="links "><a href="Gtk.Container.get_focus_child.html" title="Gtk.Container.prototype.get_focus_child">Gtk.Container.prototype.get_focus_child</a></li>
+<li class="links "><a href="Gtk.Container.get_focus_hadjustment.html" title="Gtk.Container.prototype.get_focus_hadjustment">Gtk.Container.prototype.get_focus_hadjustment</a></li>
+<li class="links "><a href="Gtk.Container.get_focus_vadjustment.html" title="Gtk.Container.prototype.get_focus_vadjustment">Gtk.Container.prototype.get_focus_vadjustment</a></li>
+<li class="links "><a href="Gtk.Container.get_path_for_child.html" title="Gtk.Container.prototype.get_path_for_child">Gtk.Container.prototype.get_path_for_child</a></li>
+<li class="links "><a href="Gtk.Container.get_resize_mode.html" title="Gtk.Container.prototype.get_resize_mode">Gtk.Container.prototype.get_resize_mode</a></li>
+<li class="links "><a href="Gtk.Container.propagate_draw.html" title="Gtk.Container.prototype.propagate_draw">Gtk.Container.prototype.propagate_draw</a></li>
+<li class="links "><a href="Gtk.Container.remove.html" title="Gtk.Container.prototype.remove">Gtk.Container.prototype.remove</a></li>
+<li class="links "><a href="Gtk.Container.resize_children.html" title="Gtk.Container.prototype.resize_children">Gtk.Container.prototype.resize_children</a></li>
+<li class="links "><a href="Gtk.Container.set_border_width.html" title="Gtk.Container.prototype.set_border_width">Gtk.Container.prototype.set_border_width</a></li>
+<li class="links "><a href="Gtk.Container.set_focus_chain.html" title="Gtk.Container.prototype.set_focus_chain">Gtk.Container.prototype.set_focus_chain</a></li>
+<li class="links "><a href="Gtk.Container.set_focus_child.html" title="Gtk.Container.prototype.set_focus_child">Gtk.Container.prototype.set_focus_child</a></li>
+<li class="links "><a href="Gtk.Container.set_focus_hadjustment.html" title="Gtk.Container.prototype.set_focus_hadjustment">Gtk.Container.prototype.set_focus_hadjustment</a></li>
+<li class="links "><a href="Gtk.Container.set_focus_vadjustment.html" title="Gtk.Container.prototype.set_focus_vadjustment">Gtk.Container.prototype.set_focus_vadjustment</a></li>
+<li class="links "><a href="Gtk.Container.set_reallocate_redraws.html" title="Gtk.Container.prototype.set_reallocate_redraws">Gtk.Container.prototype.set_reallocate_redraws</a></li>
+<li class="links "><a href="Gtk.Container.set_resize_mode.html" title="Gtk.Container.prototype.set_resize_mode">Gtk.Container.prototype.set_resize_mode</a></li>
+<li class="links "><a href="Gtk.Container.unset_focus_chain.html" title="Gtk.Container.prototype.unset_focus_chain">Gtk.Container.prototype.unset_focus_chain</a></li>
+</ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Properties</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.Container-border-width.html" title="Gtk.Container:border-width">border-width</a></li>
+<li class="links "><a href="Gtk.Container-child.html" title="Gtk.Container:child">child</a></li>
+<li class="links "><a href="Gtk.Container-resize-mode.html" title="Gtk.Container:resize-mode">resize-mode</a></li>
+</ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Signals</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.Container-add.html" title="Gtk.Container::add">add</a></li>
+<li class="links "><a href="Gtk.Container-check-resize.html" title="Gtk.Container::check-resize">check-resize</a></li>
+<li class="links "><a href="Gtk.Container-remove.html" title="Gtk.Container::remove">remove</a></li>
+<li class="links "><a href="Gtk.Container-set-focus-child.html" title="Gtk.Container::set-focus-child">set-focus-child</a></li>
+</ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Virtual functions</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.Container-check_resize.html" title="Gtk.Container::check_resize">Gtk.Container::check_resize</a></li>
+<li class="links "><a href="Gtk.Container-child_type.html" title="Gtk.Container::child_type">Gtk.Container::child_type</a></li>
+<li class="links "><a href="Gtk.Container-composite_name.html" title="Gtk.Container::composite_name">Gtk.Container::composite_name</a></li>
+<li class="links "><a href="Gtk.Container-forall.html" title="Gtk.Container::forall">Gtk.Container::forall</a></li>
+<li class="links "><a href="Gtk.Container-get_child_property.html" title="Gtk.Container::get_child_property">Gtk.Container::get_child_property</a></li>
+<li class="links "><a href="Gtk.Container-get_path_for_child.html" title="Gtk.Container::get_path_for_child">Gtk.Container::get_path_for_child</a></li>
+<li class="links "><a href="Gtk.Container-set_child_property.html" title="Gtk.Container::set_child_property">Gtk.Container::set_child_property</a></li>
+<li class="links "><a href="Gtk.Container-set_focus_child.html" title="Gtk.Container::set_focus_child">Gtk.Container::set_focus_child</a></li>
+</ul></div>
+</div></div>
+</div>
+<div class="sect sect-links" role="navigation">
+<div class="hgroup"></div>
+<div class="contents"><div class="links guidelinks"><div class="inner">
+<div class="title"><h2><span class="title">More Information</span></h2></div>
+<div class="region"><ul><li class="links "><a href="index.html" title="Index">Index</a></li></ul></div>
+</div></div></div>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="footer"></div>
+</div></body>
+</html>

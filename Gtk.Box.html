@@ -1,0 +1,131 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Gtk.Box</title>
+<link rel="stylesheet" type="text/css" href="C.css">
+<script type="text/javascript" src="jquery.js"></script><script type="text/javascript" src="jquery.syntax.js"></script><script type="text/javascript" src="yelp.js"></script>
+</head>
+<body><div class="page" role="main">
+<div class="header"><div class="trails" role="navigation"><div class="trail">
+<a class="trail" href="index.html" title="Index">Index</a> » </div></div></div>
+<div class="body">
+<div class="hgroup"><h1 class="title"><span class="title">Gtk.Box</span></h1></div>
+<div class="region">
+<div class="contents">
+<div class="synopsis"><div class="inner"><div class="region"><div class="contents"><div class="code"><pre class="contents ">const Gtk = imports.gi.Gtk;
+
+let box = new Gtk.Box({
+    <span class=" link"><a href="Gtk.Box-baseline-position.html" title="Gtk.Box:baseline-position">baseline_position</a></span>: value,
+    <span class=" link"><a href="Gtk.Box-homogeneous.html" title="Gtk.Box:homogeneous">homogeneous</a></span>: value,
+    <span class=" link"><a href="Gtk.Box-spacing.html" title="Gtk.Box:spacing">spacing</a></span>: value,
+});
+  </pre></div></div></div></div></div>
+<p class="p">The GtkBox widget organizes child widgets into a rectangular area.</p>
+<p class="p">The rectangular area of a GtkBox is organized into either a single row
+or a single column of child widgets depending upon the orientation.
+Thus, all children of a GtkBox are allocated one dimension in common,
+which is the height of a row, or the width of a column.</p>
+<p class="p">GtkBox uses a notion of &lt;emphasis&gt;packing&lt;/emphasis&gt;. Packing refers
+to adding widgets with reference to a particular position in a
+<span class=" link"><a href="Gtk.Container.html" title="Gtk.Container">Gtk.Container</a></span>. For a GtkBox, there are two reference positions: the
+&lt;emphasis&gt;start&lt;/emphasis&gt; and the &lt;emphasis&gt;end&lt;/emphasis&gt; of the box.
+For a vertical <span class=" link"><a href="Gtk.Box.html" title="Gtk.Box">Gtk.Box</a></span>, the start is defined as the top of the box and
+the end is defined as the bottom. For a horizontal <span class=" link"><a href="Gtk.Box.html" title="Gtk.Box">Gtk.Box</a></span> the start
+is defined as the left side and the end is defined as the right side.</p>
+<p class="p">Use repeated calls to <span class=" link"><a href="Gtk.pack_start.html" title="Gtk.pack_start">Gtk.pack_start</a></span> to pack widgets into a
+GtkBox from start to end. Use <span class=" link"><a href="Gtk.pack_end.html" title="Gtk.pack_end">Gtk.pack_end</a></span> to add widgets from
+end to start. You may intersperse these calls and add widgets from
+both ends of the same GtkBox.</p>
+<p class="p">Because GtkBox is a <span class=" link"><a href="Gtk.Container.html" title="Gtk.Container">Gtk.Container</a></span>, you may also use <span class=" link"><a href="Gtk.add.html" title="Gtk.add">Gtk.add</a></span>
+to insert widgets into the box, and they will be packed with the default
+values for #GtkBox:expand and #GtkBox:fill. Use <span class=" link"><a href="Gtk.remove.html" title="Gtk.remove">Gtk.remove</a></span>
+to remove widgets from the GtkBox.</p>
+<p class="p">Use <span class=" link"><a href="Gtk.set_homogeneous.html" title="Gtk.set_homogeneous">Gtk.set_homogeneous</a></span> to specify whether or not all children
+of the GtkBox are forced to get the same amount of space.</p>
+<p class="p">Use <span class=" link"><a href="Gtk.set_spacing.html" title="Gtk.set_spacing">Gtk.set_spacing</a></span> to determine how much space will be
+minimally placed between all children in the GtkBox. Note that
+spacing is added &lt;emphasis&gt;between&lt;/emphasis&gt; the children, while
+padding added by <span class=" link"><a href="Gtk.pack_start.html" title="Gtk.pack_start">Gtk.pack_start</a></span> or <span class=" link"><a href="Gtk.pack_end.html" title="Gtk.pack_end">Gtk.pack_end</a></span> is added
+&lt;emphasis&gt;on either side&lt;/emphasis&gt; of the widget it belongs to.</p>
+<p class="p">Use <span class=" link"><a href="Gtk.reorder_child.html" title="Gtk.reorder_child">Gtk.reorder_child</a></span> to move a GtkBox child to a different
+place in the box.</p>
+<p class="p">Use <span class=" link"><a href="Gtk.set_child_packing.html" title="Gtk.set_child_packing">Gtk.set_child_packing</a></span> to reset the #GtkBox:expand,
+#GtkBox:fill and #GtkBox:padding child properties.
+Use <span class=" link"><a href="Gtk.query_child_packing.html" title="Gtk.query_child_packing">Gtk.query_child_packing</a></span> to query these fields.</p>
+<p class="p">&lt;note&gt;&lt;para&gt;
+Note that a single-row or single-column <span class=" link"><a href="Gtk.Grid.html" title="Gtk.Grid">Gtk.Grid</a></span> provides exactly
+the same functionality as <span class=" link"><a href="Gtk.Box.html" title="Gtk.Box">Gtk.Box</a></span>.
+&lt;/para&gt;&lt;/note&gt;</p>
+<div class="synopsis"><div class="inner">
+<div class="title title-synopsis"><h2><span class="title">Hierarchy</span></h2></div>
+<div class="region"><div class="contents"><div class="tree"><div class="inner"><div class="region"><ul class="tree"><li class="tree">
+<div>
+        <span class=" code">GObject.Object</span>
+      
+      </div>
+<ul class="tree"><li class="tree">
+<div>
+        <span class=" code">GObject.InitiallyUnowned</span>
+      
+      </div>
+<ul class="tree"><li class="tree">
+<div>
+        <span class=" code">Gtk.Widget</span>
+      
+      </div>
+<ul class="tree"><li class="tree">
+<div>
+        <span class=" code">Gtk.Container</span>
+      
+      </div>
+<ul class="tree"><li class="tree"><div>
+        <span class=" code">Gtk.Box</span>
+      </div></li></ul>
+</li></ul>
+</li></ul>
+</li></ul>
+</li></ul></div></div></div></div></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Methods</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.Box.get_baseline_position.html" title="Gtk.Box.prototype.get_baseline_position">Gtk.Box.prototype.get_baseline_position</a></li>
+<li class="links "><a href="Gtk.Box.get_homogeneous.html" title="Gtk.Box.prototype.get_homogeneous">Gtk.Box.prototype.get_homogeneous</a></li>
+<li class="links "><a href="Gtk.Box.get_spacing.html" title="Gtk.Box.prototype.get_spacing">Gtk.Box.prototype.get_spacing</a></li>
+<li class="links "><a href="Gtk.Box.pack_end.html" title="Gtk.Box.prototype.pack_end">Gtk.Box.prototype.pack_end</a></li>
+<li class="links "><a href="Gtk.Box.pack_start.html" title="Gtk.Box.prototype.pack_start">Gtk.Box.prototype.pack_start</a></li>
+<li class="links "><a href="Gtk.Box.query_child_packing.html" title="Gtk.Box.prototype.query_child_packing">Gtk.Box.prototype.query_child_packing</a></li>
+<li class="links "><a href="Gtk.Box.reorder_child.html" title="Gtk.Box.prototype.reorder_child">Gtk.Box.prototype.reorder_child</a></li>
+<li class="links "><a href="Gtk.Box.set_baseline_position.html" title="Gtk.Box.prototype.set_baseline_position">Gtk.Box.prototype.set_baseline_position</a></li>
+<li class="links "><a href="Gtk.Box.set_child_packing.html" title="Gtk.Box.prototype.set_child_packing">Gtk.Box.prototype.set_child_packing</a></li>
+<li class="links "><a href="Gtk.Box.set_homogeneous.html" title="Gtk.Box.prototype.set_homogeneous">Gtk.Box.prototype.set_homogeneous</a></li>
+<li class="links "><a href="Gtk.Box.set_spacing.html" title="Gtk.Box.prototype.set_spacing">Gtk.Box.prototype.set_spacing</a></li>
+</ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Properties</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.Box-baseline-position.html" title="Gtk.Box:baseline-position">baseline-position</a></li>
+<li class="links "><a href="Gtk.Box-homogeneous.html" title="Gtk.Box:homogeneous">homogeneous</a></li>
+<li class="links "><a href="Gtk.Box-spacing.html" title="Gtk.Box:spacing">spacing</a></li>
+</ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Other</span></h2></div>
+<div class="region"><ul><li class="links "><a href="Gtk.Box.new.html" title="Gtk.Box.new">Gtk.Box.new</a></li></ul></div>
+</div></div>
+</div>
+<div class="sect sect-links" role="navigation">
+<div class="hgroup"></div>
+<div class="contents"><div class="links guidelinks"><div class="inner">
+<div class="title"><h2><span class="title">More Information</span></h2></div>
+<div class="region"><ul><li class="links "><a href="index.html" title="Index">Index</a></li></ul></div>
+</div></div></div>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="footer"></div>
+</div></body>
+</html>

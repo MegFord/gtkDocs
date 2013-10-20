@@ -1,0 +1,98 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Gtk.CellRendererPixbuf</title>
+<link rel="stylesheet" type="text/css" href="C.css">
+<script type="text/javascript" src="jquery.js"></script><script type="text/javascript" src="jquery.syntax.js"></script><script type="text/javascript" src="yelp.js"></script>
+</head>
+<body><div class="page" role="main">
+<div class="header"><div class="trails" role="navigation"><div class="trail">
+<a class="trail" href="index.html" title="Index">Index</a> » </div></div></div>
+<div class="body">
+<div class="hgroup"><h1 class="title"><span class="title">Gtk.CellRendererPixbuf</span></h1></div>
+<div class="region">
+<div class="contents">
+<div class="synopsis"><div class="inner"><div class="region"><div class="contents"><div class="code"><pre class="contents ">const Gtk = imports.gi.Gtk;
+
+let cell_renderer_pixbuf = new Gtk.CellRendererPixbuf({
+    <span class=" link"><a href="Gtk.CellRendererPixbuf-follow-state.html" title="Gtk.CellRendererPixbuf:follow-state">follow_state</a></span>: value,
+    <span class=" link"><a href="Gtk.CellRendererPixbuf-gicon.html" title="Gtk.CellRendererPixbuf:gicon">gicon</a></span>: value,
+    <span class=" link"><a href="Gtk.CellRendererPixbuf-icon-name.html" title="Gtk.CellRendererPixbuf:icon-name">icon_name</a></span>: value,
+    <span class=" link"><a href="Gtk.CellRendererPixbuf-pixbuf.html" title="Gtk.CellRendererPixbuf:pixbuf">pixbuf</a></span>: value,
+    <span class=" link"><a href="Gtk.CellRendererPixbuf-pixbuf-expander-closed.html" title="Gtk.CellRendererPixbuf:pixbuf-expander-closed">pixbuf_expander_closed</a></span>: value,
+    <span class=" link"><a href="Gtk.CellRendererPixbuf-pixbuf-expander-open.html" title="Gtk.CellRendererPixbuf:pixbuf-expander-open">pixbuf_expander_open</a></span>: value,
+    <span class=" link"><a href="Gtk.CellRendererPixbuf-stock-detail.html" title="Gtk.CellRendererPixbuf:stock-detail">stock_detail</a></span>: value,
+    <span class=" link"><a href="Gtk.CellRendererPixbuf-stock-id.html" title="Gtk.CellRendererPixbuf:stock-id">stock_id</a></span>: value,
+    <span class=" link"><a href="Gtk.CellRendererPixbuf-stock-size.html" title="Gtk.CellRendererPixbuf:stock-size">stock_size</a></span>: value,
+    <span class=" link"><a href="Gtk.CellRendererPixbuf-surface.html" title="Gtk.CellRendererPixbuf:surface">surface</a></span>: value,
+});
+  </pre></div></div></div></div></div>
+<p class="p">A <span class=" link"><a href="Gtk.CellRendererPixbuf.html" title="Gtk.CellRendererPixbuf">Gtk.CellRendererPixbuf</a></span> can be used to render an image in a cell. It allows
+to render either a given <span class=" link"><a href="GdkPixbuf.Pixbuf.html" title="GdkPixbuf.Pixbuf">GdkPixbuf.Pixbuf</a></span> (set via the
+<span class=" link"><a href="Gtk.pixbuf.html" title="Gtk.pixbuf">Gtk.pixbuf</a></span> property) or a named icon (set via the
+<span class=" link"><a href="Gtk.icon-name.html" title="Gtk.icon-name">Gtk.icon-name</a></span> property).</p>
+<p class="p">To support the tree view, <span class=" link"><a href="Gtk.CellRendererPixbuf.html" title="Gtk.CellRendererPixbuf">Gtk.CellRendererPixbuf</a></span> also supports rendering two
+alternative pixbufs, when the <span class=" link"><a href="Gtk.CellRenderer-is-expander.html" title="Gtk.CellRenderer:is-expander">Gtk.CellRenderer:is-expander</a></span> property is <span class=" code">true</span>.
+If the <span class=" link"><a href="Gtk.CellRenderer-is-expanded.html" title="Gtk.CellRenderer:is-expanded">Gtk.CellRenderer:is-expanded</a></span> property is <span class=" code">true</span> and the
+<span class=" link"><a href="Gtk.pixbuf-expander-open.html" title="Gtk.pixbuf-expander-open">Gtk.pixbuf-expander-open</a></span> property is set to a pixbuf, it
+renders that pixbuf, if the <span class=" link"><a href="Gtk.CellRenderer-is-expanded.html" title="Gtk.CellRenderer:is-expanded">Gtk.CellRenderer:is-expanded</a></span> property is <span class=" code">false</span>
+and the <span class=" link"><a href="Gtk.pixbuf-expander-closed.html" title="Gtk.pixbuf-expander-closed">Gtk.pixbuf-expander-closed</a></span> property is set to a
+pixbuf, it renders that one.</p>
+<div class="synopsis"><div class="inner">
+<div class="title title-synopsis"><h2><span class="title">Hierarchy</span></h2></div>
+<div class="region"><div class="contents"><div class="tree"><div class="inner"><div class="region"><ul class="tree"><li class="tree">
+<div>
+        <span class=" code">GObject.Object</span>
+      
+      </div>
+<ul class="tree"><li class="tree">
+<div>
+        <span class=" code">GObject.InitiallyUnowned</span>
+      
+      </div>
+<ul class="tree"><li class="tree">
+<div>
+        <span class=" code">Gtk.CellRenderer</span>
+      
+      </div>
+<ul class="tree"><li class="tree"><div>
+        <span class=" code">Gtk.CellRendererPixbuf</span>
+      </div></li></ul>
+</li></ul>
+</li></ul>
+</li></ul></div></div></div></div></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Properties</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.CellRendererPixbuf-follow-state.html" title="Gtk.CellRendererPixbuf:follow-state">follow-state</a></li>
+<li class="links "><a href="Gtk.CellRendererPixbuf-gicon.html" title="Gtk.CellRendererPixbuf:gicon">gicon</a></li>
+<li class="links "><a href="Gtk.CellRendererPixbuf-icon-name.html" title="Gtk.CellRendererPixbuf:icon-name">icon-name</a></li>
+<li class="links "><a href="Gtk.CellRendererPixbuf-pixbuf.html" title="Gtk.CellRendererPixbuf:pixbuf">pixbuf</a></li>
+<li class="links "><a href="Gtk.CellRendererPixbuf-pixbuf-expander-closed.html" title="Gtk.CellRendererPixbuf:pixbuf-expander-closed">pixbuf-expander-closed</a></li>
+<li class="links "><a href="Gtk.CellRendererPixbuf-pixbuf-expander-open.html" title="Gtk.CellRendererPixbuf:pixbuf-expander-open">pixbuf-expander-open</a></li>
+<li class="links "><a href="Gtk.CellRendererPixbuf-stock-detail.html" title="Gtk.CellRendererPixbuf:stock-detail">stock-detail</a></li>
+<li class="links "><a href="Gtk.CellRendererPixbuf-stock-id.html" title="Gtk.CellRendererPixbuf:stock-id">stock-id</a></li>
+<li class="links "><a href="Gtk.CellRendererPixbuf-stock-size.html" title="Gtk.CellRendererPixbuf:stock-size">stock-size</a></li>
+<li class="links "><a href="Gtk.CellRendererPixbuf-surface.html" title="Gtk.CellRendererPixbuf:surface">surface</a></li>
+</ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Other</span></h2></div>
+<div class="region"><ul><li class="links "><a href="Gtk.CellRendererPixbuf.new.html" title="Gtk.CellRendererPixbuf.new">Gtk.CellRendererPixbuf.new</a></li></ul></div>
+</div></div>
+</div>
+<div class="sect sect-links" role="navigation">
+<div class="hgroup"></div>
+<div class="contents"><div class="links guidelinks"><div class="inner">
+<div class="title"><h2><span class="title">More Information</span></h2></div>
+<div class="region"><ul><li class="links "><a href="index.html" title="Index">Index</a></li></ul></div>
+</div></div></div>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="footer"></div>
+</div></body>
+</html>

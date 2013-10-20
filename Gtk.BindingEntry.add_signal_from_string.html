@@ -1,0 +1,57 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>add_signal_from_string</title>
+<link rel="stylesheet" type="text/css" href="C.css">
+<script type="text/javascript" src="jquery.js"></script><script type="text/javascript" src="jquery.syntax.js"></script><script type="text/javascript" src="yelp.js"></script>
+</head>
+<body><div class="page" role="main">
+<div class="header"><div class="trails" role="navigation"><div class="trail">
+<a class="trail" href="index.html" title="Index">Index</a> » <a class="trail" href="Gtk.BindingEntry.html" title="Gtk.BindingEntry">Gtk.BindingEntry</a> » </div></div></div>
+<div class="body">
+<div class="hgroup"><h1 class="title"><span class="title">add_signal_from_string</span></h1></div>
+<div class="region">
+<div class="contents">
+<div class="synopsis"><div class="inner"><div class="region"><div class="contents"><div class="code"><pre class="contents ">function add_signal_from_string(binding_set:Gtk.BindingSet, signal_desc:String):GLib.TokenType {
+    // Gjs wrapper for gtk_binding_entry_add_signal_from_string()
+}</pre></div></div></div></div></div>
+<p class="p">Parses a signal description from <span class=" code">signal_desc</span> and incorporates
+it into <span class=" code">binding_set</span>.</p>
+<p class="p">Signal descriptions may either bind a key combination to
+one or more signals:
+&lt;informalexample&gt;&lt;programlisting&gt;
+  bind "key" {
+    "signalname" (param, ...)
+    ...
+  }
+&lt;/programlisting&gt;&lt;/informalexample&gt;</p>
+<p class="p">Or they may also unbind a key combination:
+&lt;informalexample&gt;&lt;programlisting&gt;
+  unbind "key"
+&lt;/programlisting&gt;&lt;/informalexample&gt;</p>
+<p class="p">Key combinations must be in a format that can be parsed by
+<span class=" link"><a href="Gtk.accelerator_parse.html" title="accelerator_parse">accelerator_parse</a></span>.</p>
+<p class="p">Since 3.0</p>
+<div class="terms"><div class="inner"><div class="region"><dl class="terms">
+<dt class="terms"><span class=" code">binding_set</span></dt>
+<dd class="terms"><p class="p">a <span class=" link"><a href="Gtk.BindingSet.html" title="Gtk.BindingSet">Gtk.BindingSet</a></span></p></dd>
+<dt class="terms"><span class=" code">signal_desc</span></dt>
+<dd class="terms"><p class="p">a signal description</p></dd>
+<dt class="terms"><span class=" code">Returns</span></dt>
+<dd class="terms"><p class="p">%G_TOKEN_NONE if the signal was successfully parsed and added, the expected token otherwise</p></dd>
+</dl></div></div></div>
+</div>
+<div class="sect sect-links" role="navigation">
+<div class="hgroup"></div>
+<div class="contents"><div class="links guidelinks"><div class="inner">
+<div class="title"><h2><span class="title">More Information</span></h2></div>
+<div class="region"><ul><li class="links "><a href="Gtk.BindingEntry.html" title="Gtk.BindingEntry">Gtk.BindingEntry</a></li></ul></div>
+</div></div></div>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="footer"></div>
+</div></body>
+</html>

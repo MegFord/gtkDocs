@@ -1,0 +1,170 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Gtk.CellLayout</title>
+<link rel="stylesheet" type="text/css" href="C.css">
+<script type="text/javascript" src="jquery.js"></script><script type="text/javascript" src="jquery.syntax.js"></script><script type="text/javascript" src="yelp.js"></script>
+</head>
+<body><div class="page" role="main">
+<div class="header"><div class="trails" role="navigation"><div class="trail">
+<a class="trail" href="index.html" title="Index">Index</a> » </div></div></div>
+<div class="body">
+<div class="hgroup"><h1 class="title"><span class="title">Gtk.CellLayout</span></h1></div>
+<div class="region">
+<div class="contents">
+<div class="synopsis"><div class="inner"><div class="region"><div class="contents"><div class="code"><pre class="contents ">const Gtk = imports.gi.Gtk;
+
+let cell_layout = new Gtk.CellLayout();
+  </pre></div></div></div></div></div>
+<p class="p"><span class=" link"><a href="Gtk.CellLayout.html" title="Gtk.CellLayout">Gtk.CellLayout</a></span> is an interface to be implemented by all objects which
+want to provide a <span class=" link"><a href="Gtk.TreeViewColumn.html" title="Gtk.TreeViewColumn">Gtk.TreeViewColumn</a></span>&lt;!-- --&gt;-like API for packing cells, setting
+attributes and data funcs.</p>
+<p class="p">One of the notable features provided by implementations of GtkCellLayout
+are &lt;emphasis&gt;attributes&lt;/emphasis&gt;. Attributes let you set the properties
+in flexible ways. They can just be set to constant values like regular
+properties. But they can also be mapped to a column of the underlying
+tree model with <span class=" link"><a href="Gtk.set_attributes.html" title="Gtk.set_attributes">Gtk.set_attributes</a></span>, which means that the value
+of the attribute can change from cell to cell as they are rendered by the
+cell renderer. Finally, it is possible to specify a function with
+<span class=" link"><a href="Gtk.set_cell_data_func.html" title="Gtk.set_cell_data_func">Gtk.set_cell_data_func</a></span> that is called to determine the value
+of the attribute for each cell that is rendered.</p>
+<p class="p">&lt;refsect2 id="GtkCellLayout-BUILDER-UI"&gt;
+&lt;title&gt;GtkCellLayouts as GtkBuildable&lt;/title&gt;
+&lt;para&gt;
+Implementations of GtkCellLayout which also implement the GtkBuildable
+interface (<span class=" link"><a href="Gtk.CellView.html" title="Gtk.CellView">Gtk.CellView</a></span>, <span class=" link"><a href="Gtk.IconView.html" title="Gtk.IconView">Gtk.IconView</a></span>, <span class=" link"><a href="Gtk.ComboBox.html" title="Gtk.ComboBox">Gtk.ComboBox</a></span>,
+<span class=" link"><a href="Gtk.EntryCompletion.html" title="Gtk.EntryCompletion">Gtk.EntryCompletion</a></span>, <span class=" link"><a href="Gtk.TreeViewColumn.html" title="Gtk.TreeViewColumn">Gtk.TreeViewColumn</a></span>) accept GtkCellRenderer objects
+as &amp;lt;child&amp;gt; elements in UI definitions. They support a custom
+&amp;lt;attributes&amp;gt; element for their children, which can contain
+multiple &amp;lt;attribute&amp;gt; elements. Each &amp;lt;attribute&amp;gt; element has
+a name attribute which specifies a property of the cell renderer; the
+content of the element is the attribute value.</p>
+<p class="p">&lt;example&gt;
+&lt;title&gt;A UI definition fragment specifying attributes&lt;/title&gt;
+&lt;programlisting&gt;&lt;![CDATA[
+&lt;object class="GtkCellView"&gt;
+  &lt;child&gt;
+    &lt;object class="GtkCellRendererText"/&gt;
+    &lt;attributes&gt;
+      &lt;attribute name="text"&gt;0&lt;/attribute&gt;
+    &lt;/attributes&gt;
+  &lt;/child&gt;"
+&lt;/object&gt;
+]]&gt;&lt;/programlisting&gt;
+&lt;/example&gt;</p>
+<p class="p">Furthermore for implementations of GtkCellLayout that use a <span class=" link"><a href="Gtk.CellArea.html" title="Gtk.CellArea">Gtk.CellArea</a></span>
+to lay out cells (all GtkCellLayouts in GTK+ use a GtkCellArea)
+&lt;link linkend="cell-properties"&gt;cell properties&lt;/link&gt; can also be defined
+in the format by specifying the custom &amp;lt;cell-packing&amp;gt; attribute which
+can contain multiple &amp;lt;property&amp;gt; elements defined in the normal way.
+&lt;example&gt;
+&lt;title&gt;A UI definition fragment specifying cell properties&lt;/title&gt;
+&lt;programlisting&gt;&lt;![CDATA[
+&lt;object class="GtkTreeViewColumn"&gt;
+  &lt;child&gt;
+    &lt;object class="GtkCellRendererText"/&gt;
+    &lt;cell-packing&gt;
+      &lt;property name="align"&gt;True&lt;/property&gt;
+      &lt;property name="expand"&gt;False&lt;/property&gt;
+    &lt;/cell-packing&gt;
+  &lt;/child&gt;"
+&lt;/object&gt;
+]]&gt;&lt;/programlisting&gt;
+&lt;/example&gt;
+&lt;/para&gt;
+&lt;/refsect2&gt;</p>
+<p class="p">&lt;refsect2&gt;
+&lt;title&gt;Subclassing GtkCellLayout implementations&lt;/title&gt;
+&lt;para&gt;
+When subclassing a widget that implements <span class=" link"><a href="Gtk.CellLayout.html" title="Gtk.CellLayout">Gtk.CellLayout</a></span> like
+<span class=" link"><a href="Gtk.IconView.html" title="Gtk.IconView">Gtk.IconView</a></span> or <span class=" link"><a href="Gtk.ComboBox.html" title="Gtk.ComboBox">Gtk.ComboBox</a></span>, there are some considerations related
+to the fact that these widgets internally use a <span class=" link"><a href="Gtk.CellArea.html" title="Gtk.CellArea">Gtk.CellArea</a></span>.
+The cell area is exposed as a construct-only property by these
+widgets. This means that it is possible to e.g. do
+&lt;informalexample&gt;&lt;programlisting&gt;
+combo = g_object_new (GTK_TYPE_COMBO_BOX, "cell-area", my_cell_area, NULL);
+&lt;/programlisting&gt;&lt;/informalexample&gt;
+to use a custom cell area with a combo box. But construct properties
+are only initialized &lt;emphasis&gt;after&lt;/emphasis&gt; instance init()
+functions have run, which means that using functions which rely on
+the existence of the cell area in your subclass' init() function will
+cause the default cell area to be instantiated. In this case, a provided
+construct property value will be ignored (with a warning, to alert
+you to the problem).
+&lt;informalexample&gt;&lt;programlisting&gt;
+static void
+my_combo_box_init (MyComboBox *b)
+{
+  GtkCellRenderer *cell;</p>
+<p class="p">  cell = gtk_cell_renderer_pixbuf_new ();
+  /&amp;ast; The following call causes the default cell area for combo boxes,
+   &amp;ast; a GtkCellAreaBox, to be instantiated
+   &amp;ast;/
+  gtk_cell_layout_pack_start (GTK_CELL_LAYOUT (b), cell, FALSE);
+  ...
+}</p>
+<p class="p">GtkWidget *
+my_combo_box_new (GtkCellArea *area)
+{
+  /&amp;ast; This call is going to cause a warning
+   &amp;ast; about area being ignored
+   &amp;ast;/
+  return g_object_new (MY_TYPE_COMBO_BOX, "cell-area", area, NULL);
+}
+&lt;/programlisting&gt;&lt;/informalexample&gt;
+If supporting alternative cell areas with your derived widget is
+not important, then this does not have to concern you. If you want
+to support alternative cell areas, you can do so by moving the
+problematic calls out of init() and into a constructor()
+for your class.
+&lt;/para&gt;
+&lt;/refsect2&gt;</p>
+<div class="synopsis"><div class="inner">
+<div class="title title-synopsis"><h2><span class="title">Hierarchy</span></h2></div>
+<div class="region"><div class="contents"><div class="tree"><div class="inner"><div class="region"><ul class="tree"><li class="tree"><div>
+        <span class=" code">Gtk.CellLayout</span>
+      </div></li></ul></div></div></div></div></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Methods</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.CellLayout.add_attribute.html" title="Gtk.CellLayout.prototype.add_attribute">Gtk.CellLayout.prototype.add_attribute</a></li>
+<li class="links "><a href="Gtk.CellLayout.clear.html" title="Gtk.CellLayout.prototype.clear">Gtk.CellLayout.prototype.clear</a></li>
+<li class="links "><a href="Gtk.CellLayout.clear_attributes.html" title="Gtk.CellLayout.prototype.clear_attributes">Gtk.CellLayout.prototype.clear_attributes</a></li>
+<li class="links "><a href="Gtk.CellLayout.get_area.html" title="Gtk.CellLayout.prototype.get_area">Gtk.CellLayout.prototype.get_area</a></li>
+<li class="links "><a href="Gtk.CellLayout.get_cells.html" title="Gtk.CellLayout.prototype.get_cells">Gtk.CellLayout.prototype.get_cells</a></li>
+<li class="links "><a href="Gtk.CellLayout.pack_end.html" title="Gtk.CellLayout.prototype.pack_end">Gtk.CellLayout.prototype.pack_end</a></li>
+<li class="links "><a href="Gtk.CellLayout.pack_start.html" title="Gtk.CellLayout.prototype.pack_start">Gtk.CellLayout.prototype.pack_start</a></li>
+<li class="links "><a href="Gtk.CellLayout.reorder.html" title="Gtk.CellLayout.prototype.reorder">Gtk.CellLayout.prototype.reorder</a></li>
+<li class="links "><a href="Gtk.CellLayout.set_cell_data_func.html" title="Gtk.CellLayout.prototype.set_cell_data_func">Gtk.CellLayout.prototype.set_cell_data_func</a></li>
+</ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Virtual functions</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.CellLayout-add_attribute.html" title="Gtk.CellLayout::add_attribute">Gtk.CellLayout::add_attribute</a></li>
+<li class="links "><a href="Gtk.CellLayout-clear.html" title="Gtk.CellLayout::clear">Gtk.CellLayout::clear</a></li>
+<li class="links "><a href="Gtk.CellLayout-clear_attributes.html" title="Gtk.CellLayout::clear_attributes">Gtk.CellLayout::clear_attributes</a></li>
+<li class="links "><a href="Gtk.CellLayout-get_area.html" title="Gtk.CellLayout::get_area">Gtk.CellLayout::get_area</a></li>
+<li class="links "><a href="Gtk.CellLayout-get_cells.html" title="Gtk.CellLayout::get_cells">Gtk.CellLayout::get_cells</a></li>
+<li class="links "><a href="Gtk.CellLayout-pack_end.html" title="Gtk.CellLayout::pack_end">Gtk.CellLayout::pack_end</a></li>
+<li class="links "><a href="Gtk.CellLayout-pack_start.html" title="Gtk.CellLayout::pack_start">Gtk.CellLayout::pack_start</a></li>
+<li class="links "><a href="Gtk.CellLayout-reorder.html" title="Gtk.CellLayout::reorder">Gtk.CellLayout::reorder</a></li>
+<li class="links "><a href="Gtk.CellLayout-set_cell_data_func.html" title="Gtk.CellLayout::set_cell_data_func">Gtk.CellLayout::set_cell_data_func</a></li>
+</ul></div>
+</div></div>
+</div>
+<div class="sect sect-links" role="navigation">
+<div class="hgroup"></div>
+<div class="contents"><div class="links guidelinks"><div class="inner">
+<div class="title"><h2><span class="title">More Information</span></h2></div>
+<div class="region"><ul><li class="links "><a href="index.html" title="Index">Index</a></li></ul></div>
+</div></div></div>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="footer"></div>
+</div></body>
+</html>
