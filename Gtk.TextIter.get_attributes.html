@@ -1,0 +1,43 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Gtk.TextIter.prototype.get_attributes</title>
+<link rel="stylesheet" type="text/css" href="C.css">
+<script type="text/javascript" src="jquery.js"></script><script type="text/javascript" src="jquery.syntax.js"></script><script type="text/javascript" src="yelp.js"></script>
+</head>
+<body><div class="page" role="main">
+<div class="header"><div class="trails" role="navigation"><div class="trail">
+<a class="trail" href="index.html" title="Index">Index</a> » <a class="trail" href="Gtk.TextIter.html" title="Gtk.TextIter">Gtk.TextIter</a> » </div></div></div>
+<div class="body">
+<div class="hgroup"><h1 class="title"><span class="title">Gtk.TextIter.prototype.get_attributes</span></h1></div>
+<div class="region">
+<div class="contents">
+<div class="synopsis"><div class="inner"><div class="region"><div class="contents"><div class="code"><pre class="contents ">function get_attributes():Boolean {
+    // Gjs wrapper for gtk_text_iter_get_attributes()
+}</pre></div></div></div></div></div>
+<p class="p">Computes the effect of any tags applied to this spot in the
+text. The <span class=" code">values</span> parameter should be initialized to the default
+settings you wish to use if no tags are in effect. You'd typically
+obtain the defaults from <span class=" link"><a href="Gtk.get_default_attributes.html" title="Gtk.get_default_attributes">Gtk.get_default_attributes</a></span>.</p>
+<p class="p">gtk_text_iter_get_attributes () will modify <span class=" code">values</span>, applying the
+effects of any tags present at <span class=" code">iter</span>. If any tags affected <span class=" code">values</span>,
+the function returns <span class=" code">true</span>.</p>
+<div class="terms"><div class="inner"><div class="region"><dl class="terms">
+<dt class="terms"><span class=" code">Returns</span></dt>
+<dd class="terms"><p class="p"><span class=" code">true</span> if <span class=" code">values</span> was modified</p></dd>
+</dl></div></div></div>
+</div>
+<div class="sect sect-links" role="navigation">
+<div class="hgroup"></div>
+<div class="contents"><div class="links guidelinks"><div class="inner">
+<div class="title"><h2><span class="title">More Information</span></h2></div>
+<div class="region"><ul><li class="links "><a href="Gtk.TextIter.html" title="Gtk.TextIter">Gtk.TextIter</a></li></ul></div>
+</div></div></div>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="footer"></div>
+</div></body>
+</html>

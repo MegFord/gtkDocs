@@ -1,0 +1,206 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Gtk.TextTag</title>
+<link rel="stylesheet" type="text/css" href="C.css">
+<script type="text/javascript" src="jquery.js"></script><script type="text/javascript" src="jquery.syntax.js"></script><script type="text/javascript" src="yelp.js"></script>
+</head>
+<body><div class="page" role="main">
+<div class="header"><div class="trails" role="navigation"><div class="trail">
+<a class="trail" href="index.html" title="Index">Index</a> » </div></div></div>
+<div class="body">
+<div class="hgroup"><h1 class="title"><span class="title">Gtk.TextTag</span></h1></div>
+<div class="region">
+<div class="contents">
+<div class="synopsis"><div class="inner"><div class="region"><div class="contents"><div class="code"><pre class="contents ">const Gtk = imports.gi.Gtk;
+
+let text_tag = new Gtk.TextTag({
+    <span class=" link"><a href="Gtk.TextTag-accumulative-margin.html" title="Gtk.TextTag:accumulative-margin">accumulative_margin</a></span>: value,
+    <span class=" link"><a href="Gtk.TextTag-background.html" title="Gtk.TextTag:background">background</a></span>: value,
+    <span class=" link"><a href="Gtk.TextTag-background-full-height.html" title="Gtk.TextTag:background-full-height">background_full_height</a></span>: value,
+    <span class=" link"><a href="Gtk.TextTag-background-full-height-set.html" title="Gtk.TextTag:background-full-height-set">background_full_height_set</a></span>: value,
+    <span class=" link"><a href="Gtk.TextTag-background-gdk.html" title="Gtk.TextTag:background-gdk">background_gdk</a></span>: value,
+    <span class=" link"><a href="Gtk.TextTag-background-rgba.html" title="Gtk.TextTag:background-rgba">background_rgba</a></span>: value,
+    <span class=" link"><a href="Gtk.TextTag-background-set.html" title="Gtk.TextTag:background-set">background_set</a></span>: value,
+    <span class=" link"><a href="Gtk.TextTag-direction.html" title="Gtk.TextTag:direction">direction</a></span>: value,
+    <span class=" link"><a href="Gtk.TextTag-editable.html" title="Gtk.TextTag:editable">editable</a></span>: value,
+    <span class=" link"><a href="Gtk.TextTag-editable-set.html" title="Gtk.TextTag:editable-set">editable_set</a></span>: value,
+    <span class=" link"><a href="Gtk.TextTag-family.html" title="Gtk.TextTag:family">family</a></span>: value,
+    <span class=" link"><a href="Gtk.TextTag-family-set.html" title="Gtk.TextTag:family-set">family_set</a></span>: value,
+    <span class=" link"><a href="Gtk.TextTag-font.html" title="Gtk.TextTag:font">font</a></span>: value,
+    <span class=" link"><a href="Gtk.TextTag-font-desc.html" title="Gtk.TextTag:font-desc">font_desc</a></span>: value,
+    <span class=" link"><a href="Gtk.TextTag-foreground.html" title="Gtk.TextTag:foreground">foreground</a></span>: value,
+    <span class=" link"><a href="Gtk.TextTag-foreground-gdk.html" title="Gtk.TextTag:foreground-gdk">foreground_gdk</a></span>: value,
+    <span class=" link"><a href="Gtk.TextTag-foreground-rgba.html" title="Gtk.TextTag:foreground-rgba">foreground_rgba</a></span>: value,
+    <span class=" link"><a href="Gtk.TextTag-foreground-set.html" title="Gtk.TextTag:foreground-set">foreground_set</a></span>: value,
+    <span class=" link"><a href="Gtk.TextTag-indent.html" title="Gtk.TextTag:indent">indent</a></span>: value,
+    <span class=" link"><a href="Gtk.TextTag-indent-set.html" title="Gtk.TextTag:indent-set">indent_set</a></span>: value,
+    <span class=" link"><a href="Gtk.TextTag-invisible.html" title="Gtk.TextTag:invisible">invisible</a></span>: value,
+    <span class=" link"><a href="Gtk.TextTag-invisible-set.html" title="Gtk.TextTag:invisible-set">invisible_set</a></span>: value,
+    <span class=" link"><a href="Gtk.TextTag-justification.html" title="Gtk.TextTag:justification">justification</a></span>: value,
+    <span class=" link"><a href="Gtk.TextTag-justification-set.html" title="Gtk.TextTag:justification-set">justification_set</a></span>: value,
+    <span class=" link"><a href="Gtk.TextTag-language.html" title="Gtk.TextTag:language">language</a></span>: value,
+    <span class=" link"><a href="Gtk.TextTag-language-set.html" title="Gtk.TextTag:language-set">language_set</a></span>: value,
+    <span class=" link"><a href="Gtk.TextTag-left-margin.html" title="Gtk.TextTag:left-margin">left_margin</a></span>: value,
+    <span class=" link"><a href="Gtk.TextTag-left-margin-set.html" title="Gtk.TextTag:left-margin-set">left_margin_set</a></span>: value,
+    <span class=" link"><a href="Gtk.TextTag-name.html" title="Gtk.TextTag:name">name</a></span>: value,
+    <span class=" link"><a href="Gtk.TextTag-paragraph-background.html" title="Gtk.TextTag:paragraph-background">paragraph_background</a></span>: value,
+    <span class=" link"><a href="Gtk.TextTag-paragraph-background-gdk.html" title="Gtk.TextTag:paragraph-background-gdk">paragraph_background_gdk</a></span>: value,
+    <span class=" link"><a href="Gtk.TextTag-paragraph-background-rgba.html" title="Gtk.TextTag:paragraph-background-rgba">paragraph_background_rgba</a></span>: value,
+    <span class=" link"><a href="Gtk.TextTag-paragraph-background-set.html" title="Gtk.TextTag:paragraph-background-set">paragraph_background_set</a></span>: value,
+    <span class=" link"><a href="Gtk.TextTag-pixels-above-lines.html" title="Gtk.TextTag:pixels-above-lines">pixels_above_lines</a></span>: value,
+    <span class=" link"><a href="Gtk.TextTag-pixels-above-lines-set.html" title="Gtk.TextTag:pixels-above-lines-set">pixels_above_lines_set</a></span>: value,
+    <span class=" link"><a href="Gtk.TextTag-pixels-below-lines.html" title="Gtk.TextTag:pixels-below-lines">pixels_below_lines</a></span>: value,
+    <span class=" link"><a href="Gtk.TextTag-pixels-below-lines-set.html" title="Gtk.TextTag:pixels-below-lines-set">pixels_below_lines_set</a></span>: value,
+    <span class=" link"><a href="Gtk.TextTag-pixels-inside-wrap.html" title="Gtk.TextTag:pixels-inside-wrap">pixels_inside_wrap</a></span>: value,
+    <span class=" link"><a href="Gtk.TextTag-pixels-inside-wrap-set.html" title="Gtk.TextTag:pixels-inside-wrap-set">pixels_inside_wrap_set</a></span>: value,
+    <span class=" link"><a href="Gtk.TextTag-right-margin.html" title="Gtk.TextTag:right-margin">right_margin</a></span>: value,
+    <span class=" link"><a href="Gtk.TextTag-right-margin-set.html" title="Gtk.TextTag:right-margin-set">right_margin_set</a></span>: value,
+    <span class=" link"><a href="Gtk.TextTag-rise.html" title="Gtk.TextTag:rise">rise</a></span>: value,
+    <span class=" link"><a href="Gtk.TextTag-rise-set.html" title="Gtk.TextTag:rise-set">rise_set</a></span>: value,
+    <span class=" link"><a href="Gtk.TextTag-scale.html" title="Gtk.TextTag:scale">scale</a></span>: value,
+    <span class=" link"><a href="Gtk.TextTag-scale-set.html" title="Gtk.TextTag:scale-set">scale_set</a></span>: value,
+    <span class=" link"><a href="Gtk.TextTag-size.html" title="Gtk.TextTag:size">size</a></span>: value,
+    <span class=" link"><a href="Gtk.TextTag-size-points.html" title="Gtk.TextTag:size-points">size_points</a></span>: value,
+    <span class=" link"><a href="Gtk.TextTag-size-set.html" title="Gtk.TextTag:size-set">size_set</a></span>: value,
+    <span class=" link"><a href="Gtk.TextTag-stretch.html" title="Gtk.TextTag:stretch">stretch</a></span>: value,
+    <span class=" link"><a href="Gtk.TextTag-stretch-set.html" title="Gtk.TextTag:stretch-set">stretch_set</a></span>: value,
+    <span class=" link"><a href="Gtk.TextTag-strikethrough.html" title="Gtk.TextTag:strikethrough">strikethrough</a></span>: value,
+    <span class=" link"><a href="Gtk.TextTag-strikethrough-set.html" title="Gtk.TextTag:strikethrough-set">strikethrough_set</a></span>: value,
+    <span class=" link"><a href="Gtk.TextTag-style.html" title="Gtk.TextTag:style">style</a></span>: value,
+    <span class=" link"><a href="Gtk.TextTag-style-set.html" title="Gtk.TextTag:style-set">style_set</a></span>: value,
+    <span class=" link"><a href="Gtk.TextTag-tabs.html" title="Gtk.TextTag:tabs">tabs</a></span>: value,
+    <span class=" link"><a href="Gtk.TextTag-tabs-set.html" title="Gtk.TextTag:tabs-set">tabs_set</a></span>: value,
+    <span class=" link"><a href="Gtk.TextTag-underline.html" title="Gtk.TextTag:underline">underline</a></span>: value,
+    <span class=" link"><a href="Gtk.TextTag-underline-set.html" title="Gtk.TextTag:underline-set">underline_set</a></span>: value,
+    <span class=" link"><a href="Gtk.TextTag-variant.html" title="Gtk.TextTag:variant">variant</a></span>: value,
+    <span class=" link"><a href="Gtk.TextTag-variant-set.html" title="Gtk.TextTag:variant-set">variant_set</a></span>: value,
+    <span class=" link"><a href="Gtk.TextTag-weight.html" title="Gtk.TextTag:weight">weight</a></span>: value,
+    <span class=" link"><a href="Gtk.TextTag-weight-set.html" title="Gtk.TextTag:weight-set">weight_set</a></span>: value,
+    <span class=" link"><a href="Gtk.TextTag-wrap-mode.html" title="Gtk.TextTag:wrap-mode">wrap_mode</a></span>: value,
+    <span class=" link"><a href="Gtk.TextTag-wrap-mode-set.html" title="Gtk.TextTag:wrap-mode-set">wrap_mode_set</a></span>: value,
+});
+  </pre></div></div></div></div></div>
+<p class="p">You may wish to begin by reading the &lt;link linkend="TextWidget"&gt;text widget
+conceptual overview&lt;/link&gt; which gives an overview of all the objects and
+data types related to the text widget and how they work together.</p>
+<p class="p">Tags should be in the <span class=" link"><a href="Gtk.TextTagTable.html" title="Gtk.TextTagTable">Gtk.TextTagTable</a></span> for a given <span class=" link"><a href="Gtk.TextBuffer.html" title="Gtk.TextBuffer">Gtk.TextBuffer</a></span>
+before using them with that buffer.</p>
+<p class="p"><span class=" link"><a href="Gtk.create_tag.html" title="Gtk.create_tag">Gtk.create_tag</a></span> is the best way to create tags.
+See &lt;application&gt;gtk3-demo&lt;/application&gt; for numerous examples.</p>
+<p class="p">For each property of <span class=" link"><a href="Gtk.TextTag.html" title="Gtk.TextTag">Gtk.TextTag</a></span>, there is a "set" property, e.g.
+"font-set" corresponds to "font". These "set" properties reflect
+whether a property has been set or not.
+They are maintained by GTK+ and you should not set them independently.</p>
+<div class="synopsis"><div class="inner">
+<div class="title title-synopsis"><h2><span class="title">Hierarchy</span></h2></div>
+<div class="region"><div class="contents"><div class="tree"><div class="inner"><div class="region"><ul class="tree"><li class="tree">
+<div>
+        <span class=" code">GObject.Object</span>
+      
+      </div>
+<ul class="tree"><li class="tree"><div>
+        <span class=" code">Gtk.TextTag</span>
+      </div></li></ul>
+</li></ul></div></div></div></div></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Methods</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.TextTag.event.html" title="Gtk.TextTag.prototype.event">Gtk.TextTag.prototype.event</a></li>
+<li class="links "><a href="Gtk.TextTag.get_priority.html" title="Gtk.TextTag.prototype.get_priority">Gtk.TextTag.prototype.get_priority</a></li>
+<li class="links "><a href="Gtk.TextTag.set_priority.html" title="Gtk.TextTag.prototype.set_priority">Gtk.TextTag.prototype.set_priority</a></li>
+</ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Properties</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.TextTag-accumulative-margin.html" title="Gtk.TextTag:accumulative-margin">accumulative-margin</a></li>
+<li class="links "><a href="Gtk.TextTag-background.html" title="Gtk.TextTag:background">background</a></li>
+<li class="links "><a href="Gtk.TextTag-background-full-height.html" title="Gtk.TextTag:background-full-height">background-full-height</a></li>
+<li class="links "><a href="Gtk.TextTag-background-full-height-set.html" title="Gtk.TextTag:background-full-height-set">background-full-height-set</a></li>
+<li class="links "><a href="Gtk.TextTag-background-gdk.html" title="Gtk.TextTag:background-gdk">background-gdk</a></li>
+<li class="links "><a href="Gtk.TextTag-background-rgba.html" title="Gtk.TextTag:background-rgba">background-rgba</a></li>
+<li class="links "><a href="Gtk.TextTag-background-set.html" title="Gtk.TextTag:background-set">background-set</a></li>
+<li class="links "><a href="Gtk.TextTag-direction.html" title="Gtk.TextTag:direction">direction</a></li>
+<li class="links "><a href="Gtk.TextTag-editable.html" title="Gtk.TextTag:editable">editable</a></li>
+<li class="links "><a href="Gtk.TextTag-editable-set.html" title="Gtk.TextTag:editable-set">editable-set</a></li>
+<li class="links "><a href="Gtk.TextTag-family.html" title="Gtk.TextTag:family">family</a></li>
+<li class="links "><a href="Gtk.TextTag-family-set.html" title="Gtk.TextTag:family-set">family-set</a></li>
+<li class="links "><a href="Gtk.TextTag-font.html" title="Gtk.TextTag:font">font</a></li>
+<li class="links "><a href="Gtk.TextTag-font-desc.html" title="Gtk.TextTag:font-desc">font-desc</a></li>
+<li class="links "><a href="Gtk.TextTag-foreground.html" title="Gtk.TextTag:foreground">foreground</a></li>
+<li class="links "><a href="Gtk.TextTag-foreground-gdk.html" title="Gtk.TextTag:foreground-gdk">foreground-gdk</a></li>
+<li class="links "><a href="Gtk.TextTag-foreground-rgba.html" title="Gtk.TextTag:foreground-rgba">foreground-rgba</a></li>
+<li class="links "><a href="Gtk.TextTag-foreground-set.html" title="Gtk.TextTag:foreground-set">foreground-set</a></li>
+<li class="links "><a href="Gtk.TextTag-indent.html" title="Gtk.TextTag:indent">indent</a></li>
+<li class="links "><a href="Gtk.TextTag-indent-set.html" title="Gtk.TextTag:indent-set">indent-set</a></li>
+<li class="links "><a href="Gtk.TextTag-invisible.html" title="Gtk.TextTag:invisible">invisible</a></li>
+<li class="links "><a href="Gtk.TextTag-invisible-set.html" title="Gtk.TextTag:invisible-set">invisible-set</a></li>
+<li class="links "><a href="Gtk.TextTag-justification.html" title="Gtk.TextTag:justification">justification</a></li>
+<li class="links "><a href="Gtk.TextTag-justification-set.html" title="Gtk.TextTag:justification-set">justification-set</a></li>
+<li class="links "><a href="Gtk.TextTag-language.html" title="Gtk.TextTag:language">language</a></li>
+<li class="links "><a href="Gtk.TextTag-language-set.html" title="Gtk.TextTag:language-set">language-set</a></li>
+<li class="links "><a href="Gtk.TextTag-left-margin.html" title="Gtk.TextTag:left-margin">left-margin</a></li>
+<li class="links "><a href="Gtk.TextTag-left-margin-set.html" title="Gtk.TextTag:left-margin-set">left-margin-set</a></li>
+<li class="links "><a href="Gtk.TextTag-name.html" title="Gtk.TextTag:name">name</a></li>
+<li class="links "><a href="Gtk.TextTag-paragraph-background.html" title="Gtk.TextTag:paragraph-background">paragraph-background</a></li>
+<li class="links "><a href="Gtk.TextTag-paragraph-background-gdk.html" title="Gtk.TextTag:paragraph-background-gdk">paragraph-background-gdk</a></li>
+<li class="links "><a href="Gtk.TextTag-paragraph-background-rgba.html" title="Gtk.TextTag:paragraph-background-rgba">paragraph-background-rgba</a></li>
+<li class="links "><a href="Gtk.TextTag-paragraph-background-set.html" title="Gtk.TextTag:paragraph-background-set">paragraph-background-set</a></li>
+<li class="links "><a href="Gtk.TextTag-pixels-above-lines.html" title="Gtk.TextTag:pixels-above-lines">pixels-above-lines</a></li>
+<li class="links "><a href="Gtk.TextTag-pixels-above-lines-set.html" title="Gtk.TextTag:pixels-above-lines-set">pixels-above-lines-set</a></li>
+<li class="links "><a href="Gtk.TextTag-pixels-below-lines.html" title="Gtk.TextTag:pixels-below-lines">pixels-below-lines</a></li>
+<li class="links "><a href="Gtk.TextTag-pixels-below-lines-set.html" title="Gtk.TextTag:pixels-below-lines-set">pixels-below-lines-set</a></li>
+<li class="links "><a href="Gtk.TextTag-pixels-inside-wrap.html" title="Gtk.TextTag:pixels-inside-wrap">pixels-inside-wrap</a></li>
+<li class="links "><a href="Gtk.TextTag-pixels-inside-wrap-set.html" title="Gtk.TextTag:pixels-inside-wrap-set">pixels-inside-wrap-set</a></li>
+<li class="links "><a href="Gtk.TextTag-right-margin.html" title="Gtk.TextTag:right-margin">right-margin</a></li>
+<li class="links "><a href="Gtk.TextTag-right-margin-set.html" title="Gtk.TextTag:right-margin-set">right-margin-set</a></li>
+<li class="links "><a href="Gtk.TextTag-rise.html" title="Gtk.TextTag:rise">rise</a></li>
+<li class="links "><a href="Gtk.TextTag-rise-set.html" title="Gtk.TextTag:rise-set">rise-set</a></li>
+<li class="links "><a href="Gtk.TextTag-scale.html" title="Gtk.TextTag:scale">scale</a></li>
+<li class="links "><a href="Gtk.TextTag-scale-set.html" title="Gtk.TextTag:scale-set">scale-set</a></li>
+<li class="links "><a href="Gtk.TextTag-size.html" title="Gtk.TextTag:size">size</a></li>
+<li class="links "><a href="Gtk.TextTag-size-points.html" title="Gtk.TextTag:size-points">size-points</a></li>
+<li class="links "><a href="Gtk.TextTag-size-set.html" title="Gtk.TextTag:size-set">size-set</a></li>
+<li class="links "><a href="Gtk.TextTag-stretch.html" title="Gtk.TextTag:stretch">stretch</a></li>
+<li class="links "><a href="Gtk.TextTag-stretch-set.html" title="Gtk.TextTag:stretch-set">stretch-set</a></li>
+<li class="links "><a href="Gtk.TextTag-strikethrough.html" title="Gtk.TextTag:strikethrough">strikethrough</a></li>
+<li class="links "><a href="Gtk.TextTag-strikethrough-set.html" title="Gtk.TextTag:strikethrough-set">strikethrough-set</a></li>
+<li class="links "><a href="Gtk.TextTag-style.html" title="Gtk.TextTag:style">style</a></li>
+<li class="links "><a href="Gtk.TextTag-style-set.html" title="Gtk.TextTag:style-set">style-set</a></li>
+<li class="links "><a href="Gtk.TextTag-tabs.html" title="Gtk.TextTag:tabs">tabs</a></li>
+<li class="links "><a href="Gtk.TextTag-tabs-set.html" title="Gtk.TextTag:tabs-set">tabs-set</a></li>
+<li class="links "><a href="Gtk.TextTag-underline.html" title="Gtk.TextTag:underline">underline</a></li>
+<li class="links "><a href="Gtk.TextTag-underline-set.html" title="Gtk.TextTag:underline-set">underline-set</a></li>
+<li class="links "><a href="Gtk.TextTag-variant.html" title="Gtk.TextTag:variant">variant</a></li>
+<li class="links "><a href="Gtk.TextTag-variant-set.html" title="Gtk.TextTag:variant-set">variant-set</a></li>
+<li class="links "><a href="Gtk.TextTag-weight.html" title="Gtk.TextTag:weight">weight</a></li>
+<li class="links "><a href="Gtk.TextTag-weight-set.html" title="Gtk.TextTag:weight-set">weight-set</a></li>
+<li class="links "><a href="Gtk.TextTag-wrap-mode.html" title="Gtk.TextTag:wrap-mode">wrap-mode</a></li>
+<li class="links "><a href="Gtk.TextTag-wrap-mode-set.html" title="Gtk.TextTag:wrap-mode-set">wrap-mode-set</a></li>
+</ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Signals</span></h2></div>
+<div class="region"><ul><li class="links "><a href="Gtk.TextTag-event.html" title="Gtk.TextTag::event">event</a></li></ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Other</span></h2></div>
+<div class="region"><ul><li class="links "><a href="Gtk.TextTag.new.html" title="Gtk.TextTag.new">Gtk.TextTag.new</a></li></ul></div>
+</div></div>
+</div>
+<div class="sect sect-links" role="navigation">
+<div class="hgroup"></div>
+<div class="contents"><div class="links guidelinks"><div class="inner">
+<div class="title"><h2><span class="title">More Information</span></h2></div>
+<div class="region"><ul><li class="links "><a href="index.html" title="Index">Index</a></li></ul></div>
+</div></div></div>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="footer"></div>
+</div></body>
+</html>

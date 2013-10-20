@@ -1,0 +1,47 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Gtk.TextTag.prototype.set_priority</title>
+<link rel="stylesheet" type="text/css" href="C.css">
+<script type="text/javascript" src="jquery.js"></script><script type="text/javascript" src="jquery.syntax.js"></script><script type="text/javascript" src="yelp.js"></script>
+</head>
+<body><div class="page" role="main">
+<div class="header"><div class="trails" role="navigation"><div class="trail">
+<a class="trail" href="index.html" title="Index">Index</a> » <a class="trail" href="Gtk.TextTag.html" title="Gtk.TextTag">Gtk.TextTag</a> » </div></div></div>
+<div class="body">
+<div class="hgroup"><h1 class="title"><span class="title">Gtk.TextTag.prototype.set_priority</span></h1></div>
+<div class="region">
+<div class="contents">
+<div class="synopsis"><div class="inner"><div class="region"><div class="contents"><div class="code"><pre class="contents ">function set_priority(priority:Number):void {
+    // Gjs wrapper for gtk_text_tag_set_priority()
+}</pre></div></div></div></div></div>
+<p class="p">Sets the priority of a <span class=" link"><a href="Gtk.TextTag.html" title="Gtk.TextTag">Gtk.TextTag</a></span>. Valid priorities are
+start at 0 and go to one less than <span class=" link"><a href="Gtk.get_size.html" title="Gtk.get_size">Gtk.get_size</a></span>.
+Each tag in a table has a unique priority; setting the priority
+of one tag shifts the priorities of all the other tags in the
+table to maintain a unique priority for each tag. Higher priority
+tags "win" if two tags both set the same text attribute. When adding
+a tag to a tag table, it will be assigned the highest priority in
+the table by default; so normally the precedence of a set of tags
+is the order in which they were added to the table, or created with
+<span class=" link"><a href="Gtk.create_tag.html" title="Gtk.create_tag">Gtk.create_tag</a></span>, which adds the tag to the buffer's table
+automatically.</p>
+<div class="terms"><div class="inner"><div class="region"><dl class="terms">
+<dt class="terms"><span class=" code">priority</span></dt>
+<dd class="terms"><p class="p">the new priority</p></dd>
+</dl></div></div></div>
+</div>
+<div class="sect sect-links" role="navigation">
+<div class="hgroup"></div>
+<div class="contents"><div class="links guidelinks"><div class="inner">
+<div class="title"><h2><span class="title">More Information</span></h2></div>
+<div class="region"><ul><li class="links "><a href="Gtk.TextTag.html" title="Gtk.TextTag">Gtk.TextTag</a></li></ul></div>
+</div></div></div>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="footer"></div>
+</div></body>
+</html>

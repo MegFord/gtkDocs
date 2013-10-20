@@ -1,0 +1,44 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Gtk.TextIter.prototype.backward_visible_line</title>
+<link rel="stylesheet" type="text/css" href="C.css">
+<script type="text/javascript" src="jquery.js"></script><script type="text/javascript" src="jquery.syntax.js"></script><script type="text/javascript" src="yelp.js"></script>
+</head>
+<body><div class="page" role="main">
+<div class="header"><div class="trails" role="navigation"><div class="trail">
+<a class="trail" href="index.html" title="Index">Index</a> » <a class="trail" href="Gtk.TextIter.html" title="Gtk.TextIter">Gtk.TextIter</a> » </div></div></div>
+<div class="body">
+<div class="hgroup"><h1 class="title"><span class="title">Gtk.TextIter.prototype.backward_visible_line</span></h1></div>
+<div class="region">
+<div class="contents">
+<div class="synopsis"><div class="inner"><div class="region"><div class="contents"><div class="code"><pre class="contents ">function backward_visible_line():Boolean {
+    // Gjs wrapper for gtk_text_iter_backward_visible_line()
+}</pre></div></div></div></div></div>
+<p class="p">Moves <span class=" code">iter</span> to the start of the previous visible line. Returns <span class=" code">true</span> if
+<span class=" code">iter</span> could be moved; i.e. if <span class=" code">iter</span> was at character offset 0, this
+function returns <span class=" code">false</span>. Therefore if <span class=" code">iter</span> was already on line 0,
+but not at the start of the line, <span class=" code">iter</span> is snapped to the start of
+the line and the function returns <span class=" code">true</span>. (Note that this implies that
+in a loop calling this function, the line number may not change on
+every iteration, if your first iteration is on line 0.)</p>
+<p class="p">Since 2.8</p>
+<div class="terms"><div class="inner"><div class="region"><dl class="terms">
+<dt class="terms"><span class=" code">Returns</span></dt>
+<dd class="terms"><p class="p">whether <span class=" code">iter</span> moved</p></dd>
+</dl></div></div></div>
+</div>
+<div class="sect sect-links" role="navigation">
+<div class="hgroup"></div>
+<div class="contents"><div class="links guidelinks"><div class="inner">
+<div class="title"><h2><span class="title">More Information</span></h2></div>
+<div class="region"><ul><li class="links "><a href="Gtk.TextIter.html" title="Gtk.TextIter">Gtk.TextIter</a></li></ul></div>
+</div></div></div>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="footer"></div>
+</div></body>
+</html>
