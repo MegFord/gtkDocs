@@ -1,0 +1,110 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Gtk.RecentChooserMenu</title>
+<link rel="stylesheet" type="text/css" href="C.css">
+<script type="text/javascript" src="jquery.js"></script><script type="text/javascript" src="jquery.syntax.js"></script><script type="text/javascript" src="yelp.js"></script>
+</head>
+<body><div class="page" role="main">
+<div class="header"><div class="trails" role="navigation"><div class="trail">
+<a class="trail" href="index.html" title="Index">Index</a> » </div></div></div>
+<div class="body">
+<div class="hgroup"><h1 class="title"><span class="title">Gtk.RecentChooserMenu</span></h1></div>
+<div class="region">
+<div class="contents">
+<div class="synopsis"><div class="inner"><div class="region"><div class="contents"><div class="code"><pre class="contents ">const Gtk = imports.gi.Gtk;
+
+let recent_chooser_menu = new Gtk.RecentChooserMenu({
+    <span class=" link"><a href="Gtk.RecentChooserMenu-show-numbers.html" title="Gtk.RecentChooserMenu:show-numbers">show_numbers</a></span>: value,
+});
+  </pre></div></div></div></div></div>
+<p class="p"><span class=" link"><a href="Gtk.RecentChooserMenu.html" title="Gtk.RecentChooserMenu">Gtk.RecentChooserMenu</a></span> is a widget suitable for displaying recently used files
+inside a menu.  It can be used to set a sub-menu of a <span class=" link"><a href="Gtk.MenuItem.html" title="Gtk.MenuItem">Gtk.MenuItem</a></span> using
+<span class=" link"><a href="Gtk.MenuItem.set_submenu.html" title="Gtk.MenuItem.prototype.set_submenu">Gtk.MenuItem.prototype.set_submenu</a></span>, or as the menu of a <span class=" link"><a href="Gtk.MenuToolButton.html" title="Gtk.MenuToolButton">Gtk.MenuToolButton</a></span>.</p>
+<p class="p">Note that <span class=" link"><a href="Gtk.RecentChooserMenu.html" title="Gtk.RecentChooserMenu">Gtk.RecentChooserMenu</a></span> does not have any methods of its own. Instead,
+you should use the functions that work on a <span class=" link"><a href="Gtk.RecentChooser.html" title="Gtk.RecentChooser">Gtk.RecentChooser</a></span>.</p>
+<p class="p">Note also that <span class=" link"><a href="Gtk.RecentChooserMenu.html" title="Gtk.RecentChooserMenu">Gtk.RecentChooserMenu</a></span> does not support multiple filters, as it
+has no way to let the user choose between them as the <span class=" link"><a href="Gtk.RecentChooserWidget.html" title="Gtk.RecentChooserWidget">Gtk.RecentChooserWidget</a></span>
+and <span class=" link"><a href="Gtk.RecentChooserDialog.html" title="Gtk.RecentChooserDialog">Gtk.RecentChooserDialog</a></span> widgets do. Thus using <span class=" link"><a href="Gtk.RecentChooser.add_filter.html" title="Gtk.RecentChooser.prototype.add_filter">Gtk.RecentChooser.prototype.add_filter</a></span>
+on a <span class=" link"><a href="Gtk.RecentChooserMenu.html" title="Gtk.RecentChooserMenu">Gtk.RecentChooserMenu</a></span> widget will yield the same effects as using
+<span class=" link"><a href="Gtk.RecentChooser.set_filter.html" title="Gtk.RecentChooser.prototype.set_filter">Gtk.RecentChooser.prototype.set_filter</a></span>, replacing any currently set filter
+with the supplied filter; <span class=" link"><a href="Gtk.RecentChooser.remove_filter.html" title="Gtk.RecentChooser.prototype.remove_filter">Gtk.RecentChooser.prototype.remove_filter</a></span> will remove
+any currently set <span class=" link"><a href="Gtk.RecentFilter.html" title="Gtk.RecentFilter">Gtk.RecentFilter</a></span> object and will unset the current filter;
+<span class=" link"><a href="Gtk.RecentChooser.list_filters.html" title="Gtk.RecentChooser.prototype.list_filters">Gtk.RecentChooser.prototype.list_filters</a></span> will return a list containing a single
+<span class=" link"><a href="Gtk.RecentFilter.html" title="Gtk.RecentFilter">Gtk.RecentFilter</a></span> object.</p>
+<p class="p">Recently used files are supported since GTK+ 2.10.</p>
+<div class="synopsis"><div class="inner">
+<div class="title title-synopsis"><h2><span class="title">Hierarchy</span></h2></div>
+<div class="region"><div class="contents"><div class="tree"><div class="inner"><div class="region"><ul class="tree"><li class="tree">
+<div>
+        <span class=" code">GObject.Object</span>
+      
+      </div>
+<ul class="tree"><li class="tree">
+<div>
+        <span class=" code">GObject.InitiallyUnowned</span>
+      
+      </div>
+<ul class="tree"><li class="tree">
+<div>
+        <span class=" code">Gtk.Widget</span>
+      
+      </div>
+<ul class="tree"><li class="tree">
+<div>
+        <span class=" code">Gtk.Container</span>
+      
+      </div>
+<ul class="tree"><li class="tree">
+<div>
+        <span class=" code">Gtk.MenuShell</span>
+      
+      </div>
+<ul class="tree"><li class="tree">
+<div>
+        <span class=" code">Gtk.Menu</span>
+      
+      </div>
+<ul class="tree"><li class="tree"><div>
+        <span class=" code">Gtk.RecentChooserMenu</span>
+      </div></li></ul>
+</li></ul>
+</li></ul>
+</li></ul>
+</li></ul>
+</li></ul>
+</li></ul></div></div></div></div></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Methods</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.RecentChooserMenu.get_show_numbers.html" title="Gtk.RecentChooserMenu.prototype.get_show_numbers">Gtk.RecentChooserMenu.prototype.get_show_numbers</a></li>
+<li class="links "><a href="Gtk.RecentChooserMenu.set_show_numbers.html" title="Gtk.RecentChooserMenu.prototype.set_show_numbers">Gtk.RecentChooserMenu.prototype.set_show_numbers</a></li>
+</ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Properties</span></h2></div>
+<div class="region"><ul><li class="links "><a href="Gtk.RecentChooserMenu-show-numbers.html" title="Gtk.RecentChooserMenu:show-numbers">show-numbers</a></li></ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Other</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.RecentChooserMenu.new.html" title="Gtk.RecentChooserMenu.new">Gtk.RecentChooserMenu.new</a></li>
+<li class="links "><a href="Gtk.RecentChooserMenu.new_for_manager.html" title="Gtk.RecentChooserMenu.new_for_manager">Gtk.RecentChooserMenu.new_for_manager</a></li>
+</ul></div>
+</div></div>
+</div>
+<div class="sect sect-links" role="navigation">
+<div class="hgroup"></div>
+<div class="contents"><div class="links guidelinks"><div class="inner">
+<div class="title"><h2><span class="title">More Information</span></h2></div>
+<div class="region"><ul><li class="links "><a href="index.html" title="Index">Index</a></li></ul></div>
+</div></div></div>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="footer"></div>
+</div></body>
+</html>

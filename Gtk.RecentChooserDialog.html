@@ -1,0 +1,110 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Gtk.RecentChooserDialog</title>
+<link rel="stylesheet" type="text/css" href="C.css">
+<script type="text/javascript" src="jquery.js"></script><script type="text/javascript" src="jquery.syntax.js"></script><script type="text/javascript" src="yelp.js"></script>
+</head>
+<body><div class="page" role="main">
+<div class="header"><div class="trails" role="navigation"><div class="trail">
+<a class="trail" href="index.html" title="Index">Index</a> » </div></div></div>
+<div class="body">
+<div class="hgroup"><h1 class="title"><span class="title">Gtk.RecentChooserDialog</span></h1></div>
+<div class="region">
+<div class="contents">
+<div class="synopsis"><div class="inner"><div class="region"><div class="contents"><div class="code"><pre class="contents ">const Gtk = imports.gi.Gtk;
+
+let recent_chooser_dialog = new Gtk.RecentChooserDialog();
+  </pre></div></div></div></div></div>
+<p class="p"><span class=" link"><a href="Gtk.RecentChooserDialog.html" title="Gtk.RecentChooserDialog">Gtk.RecentChooserDialog</a></span> is a dialog box suitable for displaying the recently
+used documents.  This widgets works by putting a <span class=" link"><a href="Gtk.RecentChooserWidget.html" title="Gtk.RecentChooserWidget">Gtk.RecentChooserWidget</a></span> inside
+a <span class=" link"><a href="Gtk.Dialog.html" title="Gtk.Dialog">Gtk.Dialog</a></span>.  It exposes the <span class=" link"><a href="Gtk.RecentChooserIface.html" title="Gtk.RecentChooserIface">Gtk.RecentChooserIface</a></span> interface, so you can use
+all the <span class=" link"><a href="Gtk.RecentChooser.html" title="Gtk.RecentChooser">Gtk.RecentChooser</a></span> functions on the recent chooser dialog as well as
+those for <span class=" link"><a href="Gtk.Dialog.html" title="Gtk.Dialog">Gtk.Dialog</a></span>.</p>
+<p class="p">Note that <span class=" link"><a href="Gtk.RecentChooserDialog.html" title="Gtk.RecentChooserDialog">Gtk.RecentChooserDialog</a></span> does not have any methods of its own.
+Instead, you should use the functions that work on a <span class=" link"><a href="Gtk.RecentChooser.html" title="Gtk.RecentChooser">Gtk.RecentChooser</a></span>.</p>
+<p class="p">&lt;example id="gtkrecentchooser-typical-usage"&gt;
+&lt;title&gt;Typical usage&lt;/title&gt;
+In the simplest of cases, you can use the following code to use
+a <span class=" link"><a href="Gtk.RecentChooserDialog.html" title="Gtk.RecentChooserDialog">Gtk.RecentChooserDialog</a></span> to select a recently used file:
+&lt;programlisting&gt;
+GtkWidget *dialog;</p>
+<p class="p">dialog = gtk_recent_chooser_dialog_new ("Recent Documents",
+                                        parent_window,
+                                        _("_Cancel"), GTK_RESPONSE_CANCEL,
+                                        _("_Open"), GTK_RESPONSE_ACCEPT,
+                                        NULL);</p>
+<p class="p">if (gtk_dialog_run (GTK_DIALOG (dialog)) == GTK_RESPONSE_ACCEPT)
+  {
+    GtkRecentInfo *info;</p>
+<p class="p">    info = gtk_recent_chooser_get_current_item (GTK_RECENT_CHOOSER (dialog));
+    open_file (gtk_recent_info_get_uri (info));
+    gtk_recent_info_unref (info);
+  }</p>
+<p class="p">gtk_widget_destroy (dialog);
+&lt;/programlisting&gt;
+&lt;/example&gt;</p>
+<p class="p">Recently used files are supported since GTK+ 2.10.</p>
+<div class="synopsis"><div class="inner">
+<div class="title title-synopsis"><h2><span class="title">Hierarchy</span></h2></div>
+<div class="region"><div class="contents"><div class="tree"><div class="inner"><div class="region"><ul class="tree"><li class="tree">
+<div>
+        <span class=" code">GObject.Object</span>
+      
+      </div>
+<ul class="tree"><li class="tree">
+<div>
+        <span class=" code">GObject.InitiallyUnowned</span>
+      
+      </div>
+<ul class="tree"><li class="tree">
+<div>
+        <span class=" code">Gtk.Widget</span>
+      
+      </div>
+<ul class="tree"><li class="tree">
+<div>
+        <span class=" code">Gtk.Container</span>
+      
+      </div>
+<ul class="tree"><li class="tree">
+<div>
+        <span class=" code">Gtk.Bin</span>
+      
+      </div>
+<ul class="tree"><li class="tree">
+<div>
+        <span class=" code">Gtk.Window</span>
+      
+      </div>
+<ul class="tree"><li class="tree">
+<div>
+        <span class=" code">Gtk.Dialog</span>
+      
+      </div>
+<ul class="tree"><li class="tree"><div>
+        <span class=" code">Gtk.RecentChooserDialog</span>
+      </div></li></ul>
+</li></ul>
+</li></ul>
+</li></ul>
+</li></ul>
+</li></ul>
+</li></ul>
+</li></ul></div></div></div></div></div>
+</div></div>
+</div>
+<div class="sect sect-links" role="navigation">
+<div class="hgroup"></div>
+<div class="contents"><div class="links guidelinks"><div class="inner">
+<div class="title"><h2><span class="title">More Information</span></h2></div>
+<div class="region"><ul><li class="links "><a href="index.html" title="Index">Index</a></li></ul></div>
+</div></div></div>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="footer"></div>
+</div></body>
+</html>

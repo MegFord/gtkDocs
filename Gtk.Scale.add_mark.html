@@ -1,0 +1,47 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Gtk.Scale.prototype.add_mark</title>
+<link rel="stylesheet" type="text/css" href="C.css">
+<script type="text/javascript" src="jquery.js"></script><script type="text/javascript" src="jquery.syntax.js"></script><script type="text/javascript" src="yelp.js"></script>
+</head>
+<body><div class="page" role="main">
+<div class="header"><div class="trails" role="navigation"><div class="trail">
+<a class="trail" href="index.html" title="Index">Index</a> » <a class="trail" href="Gtk.Scale.html" title="Gtk.Scale">Gtk.Scale</a> » </div></div></div>
+<div class="body">
+<div class="hgroup"><h1 class="title"><span class="title">Gtk.Scale.prototype.add_mark</span></h1></div>
+<div class="region">
+<div class="contents">
+<div class="synopsis"><div class="inner"><div class="region"><div class="contents"><div class="code"><pre class="contents ">function add_mark(value:Number, position:Gtk.PositionType, markup:String):void {
+    // Gjs wrapper for gtk_scale_add_mark()
+}</pre></div></div></div></div></div>
+<p class="p">Adds a mark at <span class=" code">value</span>.</p>
+<p class="p">A mark is indicated visually by drawing a tick mark next to the scale,
+and GTK+ makes it easy for the user to position the scale exactly at the
+marks value.</p>
+<p class="p">If <span class=" code">markup</span> is not <span class=" code">null</span>, text is shown next to the tick mark.</p>
+<p class="p">To remove marks from a scale, use <span class=" link"><a href="Gtk.clear_marks.html" title="Gtk.clear_marks">Gtk.clear_marks</a></span>.</p>
+<p class="p">Since 2.16</p>
+<div class="terms"><div class="inner"><div class="region"><dl class="terms">
+<dt class="terms"><span class=" code">value</span></dt>
+<dd class="terms"><p class="p">the value at which the mark is placed, must be between the lower and upper limits of the scales' adjustment</p></dd>
+<dt class="terms"><span class=" code">position</span></dt>
+<dd class="terms"><p class="p">where to draw the mark. For a horizontal scale, #GTK_POS_TOP and <span class=" link"><a href="Gtk.PositionType.html" title="Gtk.PositionType">Gtk.PositionType</a></span>.left are drawn above the scale, anything else below. For a vertical scale, #GTK_POS_LEFT and <span class=" link"><a href="Gtk.PositionType.html" title="Gtk.PositionType">Gtk.PositionType</a></span>.top are drawn to the left of the scale, anything else to the right.</p></dd>
+<dt class="terms"><span class=" code">markup</span></dt>
+<dd class="terms"><p class="p">Text to be shown at the mark, using &lt;link linkend="PangoMarkupFormat"&gt;Pango markup&lt;/link&gt;, or <span class=" code">null</span></p></dd>
+</dl></div></div></div>
+</div>
+<div class="sect sect-links" role="navigation">
+<div class="hgroup"></div>
+<div class="contents"><div class="links guidelinks"><div class="inner">
+<div class="title"><h2><span class="title">More Information</span></h2></div>
+<div class="region"><ul><li class="links "><a href="Gtk.Scale.html" title="Gtk.Scale">Gtk.Scale</a></li></ul></div>
+</div></div></div>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="footer"></div>
+</div></body>
+</html>

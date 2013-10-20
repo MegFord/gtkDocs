@@ -1,0 +1,62 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Gtk.SearchBar.prototype.handle_event</title>
+<link rel="stylesheet" type="text/css" href="C.css">
+<script type="text/javascript" src="jquery.js"></script><script type="text/javascript" src="jquery.syntax.js"></script><script type="text/javascript" src="yelp.js"></script>
+</head>
+<body><div class="page" role="main">
+<div class="header"><div class="trails" role="navigation"><div class="trail">
+<a class="trail" href="index.html" title="Index">Index</a> » <a class="trail" href="Gtk.SearchBar.html" title="Gtk.SearchBar">Gtk.SearchBar</a> » </div></div></div>
+<div class="body">
+<div class="hgroup"><h1 class="title"><span class="title">Gtk.SearchBar.prototype.handle_event</span></h1></div>
+<div class="region">
+<div class="contents">
+<div class="synopsis"><div class="inner"><div class="region"><div class="contents"><div class="code"><pre class="contents ">function handle_event(event:Gdk.Event):Boolean {
+    // Gjs wrapper for gtk_search_bar_handle_event()
+}</pre></div></div></div></div></div>
+<p class="p">This function should be called when the top-level
+window which contains the search bar received a key event.</p>
+<p class="p">If the key event is handled by the search bar, the bar will
+be shown, the entry populated with the entered text and %GDK_EVENT_STOP
+will be returned. The caller should ensure that events are
+not propagated further.</p>
+<p class="p">If no entry has been connected to the search bar, using
+<span class=" link"><a href="Gtk.SearchBar.connect_entry.html" title="Gtk.SearchBar.prototype.connect_entry">Gtk.SearchBar.prototype.connect_entry</a></span>, this function will return
+immediately with a warning.</p>
+<p class="p">&lt;example&gt;
+&lt;title&gt;Showing the search bar on key presses&lt;/title&gt;
+&lt;programlisting&gt;&lt;![CDATA[
+static gboolean
+window_key_press_event_cb (GtkWidget *widget,
+                           GdkEvent  *event,
+                           gpointer   user_data)
+{
+  return gtk_search_bar_handle_event (GTK_SEARCH_BAR (user_data), event);
+}</p>
+<p class="p">g_signal_connect (window, "key-press-event",
+                  G_CALLBACK (window_key_press_event_cb), search_bar);
+]]&gt;&lt;/programlisting&gt;
+&lt;/example&gt;</p>
+<p class="p">Since 3.10</p>
+<div class="terms"><div class="inner"><div class="region"><dl class="terms">
+<dt class="terms"><span class=" code">event</span></dt>
+<dd class="terms"><p class="p">a <span class=" link"><a href="Gdk.Event.html" title="Gdk.Event">Gdk.Event</a></span> containing key press events</p></dd>
+<dt class="terms"><span class=" code">Returns</span></dt>
+<dd class="terms"><p class="p">%GDK_EVENT_STOP if the key press event resulted in text being entered in the search entry (and revealing the search bar if necessary), %GDK_EVENT_PROPAGATE otherwise.</p></dd>
+</dl></div></div></div>
+</div>
+<div class="sect sect-links" role="navigation">
+<div class="hgroup"></div>
+<div class="contents"><div class="links guidelinks"><div class="inner">
+<div class="title"><h2><span class="title">More Information</span></h2></div>
+<div class="region"><ul><li class="links "><a href="Gtk.SearchBar.html" title="Gtk.SearchBar">Gtk.SearchBar</a></li></ul></div>
+</div></div></div>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="footer"></div>
+</div></body>
+</html>

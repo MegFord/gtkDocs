@@ -1,0 +1,46 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Gtk.ScrolledWindow.prototype.set_capture_button_press</title>
+<link rel="stylesheet" type="text/css" href="C.css">
+<script type="text/javascript" src="jquery.js"></script><script type="text/javascript" src="jquery.syntax.js"></script><script type="text/javascript" src="yelp.js"></script>
+</head>
+<body><div class="page" role="main">
+<div class="header"><div class="trails" role="navigation"><div class="trail">
+<a class="trail" href="index.html" title="Index">Index</a> » <a class="trail" href="Gtk.ScrolledWindow.html" title="Gtk.ScrolledWindow">Gtk.ScrolledWindow</a> » </div></div></div>
+<div class="body">
+<div class="hgroup"><h1 class="title"><span class="title">Gtk.ScrolledWindow.prototype.set_capture_button_press</span></h1></div>
+<div class="region">
+<div class="contents">
+<div class="synopsis"><div class="inner"><div class="region"><div class="contents"><div class="code"><pre class="contents ">function set_capture_button_press(capture_button_press:Boolean):void {
+    // Gjs wrapper for gtk_scrolled_window_set_capture_button_press()
+}</pre></div></div></div></div></div>
+<p class="p">Changes the behaviour of <span class=" code">scrolled_window</span> wrt. to the initial
+event that possibly starts kinetic scrolling. When <span class=" code">capture_button_press</span>
+is set to <span class=" code">true</span>, the event is captured by the scrolled window, and
+then later replayed if it is meant to go to the child widget.</p>
+<p class="p">This should be enabled if any child widgets perform non-reversible
+actions on <span class=" link"><a href="Gtk.button-press-event.html" title="Gtk.button-press-event">Gtk.button-press-event</a></span>. If they don't, and handle
+additionally handle <span class=" link"><a href="Gtk.grab-broken-event.html" title="Gtk.grab-broken-event">Gtk.grab-broken-event</a></span>, it might be better
+to set <span class=" code">capture_button_press</span> to <span class=" code">false</span>.</p>
+<p class="p">This setting only has an effect if kinetic scrolling is enabled.</p>
+<p class="p">Since 3.4</p>
+<div class="terms"><div class="inner"><div class="region"><dl class="terms">
+<dt class="terms"><span class=" code">capture_button_press</span></dt>
+<dd class="terms"><p class="p"><span class=" code">true</span> to capture button presses</p></dd>
+</dl></div></div></div>
+</div>
+<div class="sect sect-links" role="navigation">
+<div class="hgroup"></div>
+<div class="contents"><div class="links guidelinks"><div class="inner">
+<div class="title"><h2><span class="title">More Information</span></h2></div>
+<div class="region"><ul><li class="links "><a href="Gtk.ScrolledWindow.html" title="Gtk.ScrolledWindow">Gtk.ScrolledWindow</a></li></ul></div>
+</div></div></div>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="footer"></div>
+</div></body>
+</html>

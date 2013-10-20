@@ -1,0 +1,131 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Gtk.Scale</title>
+<link rel="stylesheet" type="text/css" href="C.css">
+<script type="text/javascript" src="jquery.js"></script><script type="text/javascript" src="jquery.syntax.js"></script><script type="text/javascript" src="yelp.js"></script>
+</head>
+<body><div class="page" role="main">
+<div class="header"><div class="trails" role="navigation"><div class="trail">
+<a class="trail" href="index.html" title="Index">Index</a> » </div></div></div>
+<div class="body">
+<div class="hgroup"><h1 class="title"><span class="title">Gtk.Scale</span></h1></div>
+<div class="region">
+<div class="contents">
+<div class="synopsis"><div class="inner"><div class="region"><div class="contents"><div class="code"><pre class="contents ">const Gtk = imports.gi.Gtk;
+
+let scale = new Gtk.Scale({
+    <span class=" link"><a href="Gtk.Scale-digits.html" title="Gtk.Scale:digits">digits</a></span>: value,
+    <span class=" link"><a href="Gtk.Scale-draw-value.html" title="Gtk.Scale:draw-value">draw_value</a></span>: value,
+    <span class=" link"><a href="Gtk.Scale-has-origin.html" title="Gtk.Scale:has-origin">has_origin</a></span>: value,
+    <span class=" link"><a href="Gtk.Scale-value-pos.html" title="Gtk.Scale:value-pos">value_pos</a></span>: value,
+});
+  </pre></div></div></div></div></div>
+<p class="p">A GtkScale is a slider control used to select a numeric value. 
+To use it, you'll probably want to investigate the methods on
+its base class, <span class=" link"><a href="Gtk.Range.html" title="Gtk.Range">Gtk.Range</a></span>, in addition to the methods for GtkScale itself.
+To set the value of a scale, you would normally use <span class=" link"><a href="Gtk.Range.set_value.html" title="Gtk.Range.prototype.set_value">Gtk.Range.prototype.set_value</a></span>.
+To detect changes to the value, you would normally use the
+<span class=" link"><a href="Gtk.Range-value-changed.html" title="Gtk.Range::value-changed">Gtk.Range::value-changed</a></span> signal.</p>
+<p class="p">Note that using the same upper and lower bounds for the <span class=" link"><a href="Gtk.Scale.html" title="Gtk.Scale">Gtk.Scale</a></span> (through
+the <span class=" link"><a href="Gtk.Range.html" title="Gtk.Range">Gtk.Range</a></span> methods) will hide the slider itself. This is useful for
+applications that want to show an undeterminate value on the scale, without
+changing the layout of the application (such as movie or music players).</p>
+<p class="p">&lt;refsect2 id="GtkScale-BUILDER-UI"&gt;&lt;title&gt;GtkScale as GtkBuildable&lt;/title&gt;
+GtkScale supports a custom &amp;lt;marks&amp;gt; element, which
+can contain multiple &amp;lt;mark&amp;gt; elements. The "value" and "position"
+attributes have the same meaning as <span class=" link"><a href="Gtk.add_mark.html" title="Gtk.add_mark">Gtk.add_mark</a></span> parameters of the
+same name. If the element is not empty, its content is taken as the markup
+to show at the mark. It can be translated with the usual "translatable and
+"context" attributes.
+&lt;/refsect2&gt;</p>
+<div class="synopsis"><div class="inner">
+<div class="title title-synopsis"><h2><span class="title">Hierarchy</span></h2></div>
+<div class="region"><div class="contents"><div class="tree"><div class="inner"><div class="region"><ul class="tree"><li class="tree">
+<div>
+        <span class=" code">GObject.Object</span>
+      
+      </div>
+<ul class="tree"><li class="tree">
+<div>
+        <span class=" code">GObject.InitiallyUnowned</span>
+      
+      </div>
+<ul class="tree"><li class="tree">
+<div>
+        <span class=" code">Gtk.Widget</span>
+      
+      </div>
+<ul class="tree"><li class="tree">
+<div>
+        <span class=" code">Gtk.Range</span>
+      
+      </div>
+<ul class="tree"><li class="tree"><div>
+        <span class=" code">Gtk.Scale</span>
+      </div></li></ul>
+</li></ul>
+</li></ul>
+</li></ul>
+</li></ul></div></div></div></div></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Methods</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.Scale.add_mark.html" title="Gtk.Scale.prototype.add_mark">Gtk.Scale.prototype.add_mark</a></li>
+<li class="links "><a href="Gtk.Scale.clear_marks.html" title="Gtk.Scale.prototype.clear_marks">Gtk.Scale.prototype.clear_marks</a></li>
+<li class="links "><a href="Gtk.Scale.get_digits.html" title="Gtk.Scale.prototype.get_digits">Gtk.Scale.prototype.get_digits</a></li>
+<li class="links "><a href="Gtk.Scale.get_draw_value.html" title="Gtk.Scale.prototype.get_draw_value">Gtk.Scale.prototype.get_draw_value</a></li>
+<li class="links "><a href="Gtk.Scale.get_has_origin.html" title="Gtk.Scale.prototype.get_has_origin">Gtk.Scale.prototype.get_has_origin</a></li>
+<li class="links "><a href="Gtk.Scale.get_layout.html" title="Gtk.Scale.prototype.get_layout">Gtk.Scale.prototype.get_layout</a></li>
+<li class="links "><a href="Gtk.Scale.get_layout_offsets.html" title="Gtk.Scale.prototype.get_layout_offsets">Gtk.Scale.prototype.get_layout_offsets</a></li>
+<li class="links "><a href="Gtk.Scale.get_value_pos.html" title="Gtk.Scale.prototype.get_value_pos">Gtk.Scale.prototype.get_value_pos</a></li>
+<li class="links "><a href="Gtk.Scale.set_digits.html" title="Gtk.Scale.prototype.set_digits">Gtk.Scale.prototype.set_digits</a></li>
+<li class="links "><a href="Gtk.Scale.set_draw_value.html" title="Gtk.Scale.prototype.set_draw_value">Gtk.Scale.prototype.set_draw_value</a></li>
+<li class="links "><a href="Gtk.Scale.set_has_origin.html" title="Gtk.Scale.prototype.set_has_origin">Gtk.Scale.prototype.set_has_origin</a></li>
+<li class="links "><a href="Gtk.Scale.set_value_pos.html" title="Gtk.Scale.prototype.set_value_pos">Gtk.Scale.prototype.set_value_pos</a></li>
+</ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Properties</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.Scale-digits.html" title="Gtk.Scale:digits">digits</a></li>
+<li class="links "><a href="Gtk.Scale-draw-value.html" title="Gtk.Scale:draw-value">draw-value</a></li>
+<li class="links "><a href="Gtk.Scale-has-origin.html" title="Gtk.Scale:has-origin">has-origin</a></li>
+<li class="links "><a href="Gtk.Scale-value-pos.html" title="Gtk.Scale:value-pos">value-pos</a></li>
+</ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Signals</span></h2></div>
+<div class="region"><ul><li class="links "><a href="Gtk.Scale-format-value.html" title="Gtk.Scale::format-value">format-value</a></li></ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Virtual functions</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.Scale-draw_value.html" title="Gtk.Scale::draw_value">Gtk.Scale::draw_value</a></li>
+<li class="links "><a href="Gtk.Scale-format_value.html" title="Gtk.Scale::format_value">Gtk.Scale::format_value</a></li>
+<li class="links "><a href="Gtk.Scale-get_layout_offsets.html" title="Gtk.Scale::get_layout_offsets">Gtk.Scale::get_layout_offsets</a></li>
+</ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Other</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.Scale.new.html" title="Gtk.Scale.new">Gtk.Scale.new</a></li>
+<li class="links "><a href="Gtk.Scale.new_with_range.html" title="Gtk.Scale.new_with_range">Gtk.Scale.new_with_range</a></li>
+</ul></div>
+</div></div>
+</div>
+<div class="sect sect-links" role="navigation">
+<div class="hgroup"></div>
+<div class="contents"><div class="links guidelinks"><div class="inner">
+<div class="title"><h2><span class="title">More Information</span></h2></div>
+<div class="region"><ul><li class="links "><a href="index.html" title="Index">Index</a></li></ul></div>
+</div></div></div>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="footer"></div>
+</div></body>
+</html>

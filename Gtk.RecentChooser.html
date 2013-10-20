@@ -1,0 +1,116 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Gtk.RecentChooser</title>
+<link rel="stylesheet" type="text/css" href="C.css">
+<script type="text/javascript" src="jquery.js"></script><script type="text/javascript" src="jquery.syntax.js"></script><script type="text/javascript" src="yelp.js"></script>
+</head>
+<body><div class="page" role="main">
+<div class="header"><div class="trails" role="navigation"><div class="trail">
+<a class="trail" href="index.html" title="Index">Index</a> » </div></div></div>
+<div class="body">
+<div class="hgroup"><h1 class="title"><span class="title">Gtk.RecentChooser</span></h1></div>
+<div class="region">
+<div class="contents">
+<div class="synopsis"><div class="inner"><div class="region"><div class="contents"><div class="code"><pre class="contents ">const Gtk = imports.gi.Gtk;
+
+let recent_chooser = new Gtk.RecentChooser({
+    <span class=" link"><a href="Gtk.RecentChooser-filter.html" title="Gtk.RecentChooser-filter">filter</a></span>: value,
+    <span class=" link"><a href="Gtk.RecentChooser-limit.html" title="Gtk.RecentChooser-limit">limit</a></span>: value,
+    <span class=" link"><a href="Gtk.RecentChooser-local-only.html" title="Gtk.RecentChooser-local-only">local_only</a></span>: value,
+    <span class=" link"><a href="Gtk.RecentChooser-recent-manager.html" title="Gtk.RecentChooser-recent-manager">recent_manager</a></span>: value,
+    <span class=" link"><a href="Gtk.RecentChooser-select-multiple.html" title="Gtk.RecentChooser-select-multiple">select_multiple</a></span>: value,
+    <span class=" link"><a href="Gtk.RecentChooser-show-icons.html" title="Gtk.RecentChooser-show-icons">show_icons</a></span>: value,
+    <span class=" link"><a href="Gtk.RecentChooser-show-not-found.html" title="Gtk.RecentChooser-show-not-found">show_not_found</a></span>: value,
+    <span class=" link"><a href="Gtk.RecentChooser-show-private.html" title="Gtk.RecentChooser-show-private">show_private</a></span>: value,
+    <span class=" link"><a href="Gtk.RecentChooser-show-tips.html" title="Gtk.RecentChooser-show-tips">show_tips</a></span>: value,
+    <span class=" link"><a href="Gtk.RecentChooser-sort-type.html" title="Gtk.RecentChooser-sort-type">sort_type</a></span>: value,
+});
+  </pre></div></div></div></div></div>
+<p class="p"><span class=" link"><a href="Gtk.RecentChooser.html" title="Gtk.RecentChooser">Gtk.RecentChooser</a></span> is an interface that can be implemented by widgets
+displaying the list of recently used files.  In GTK+, the main objects
+that implement this interface are <span class=" link"><a href="Gtk.RecentChooserWidget.html" title="Gtk.RecentChooserWidget">Gtk.RecentChooserWidget</a></span>,
+<span class=" link"><a href="Gtk.RecentChooserDialog.html" title="Gtk.RecentChooserDialog">Gtk.RecentChooserDialog</a></span> and <span class=" link"><a href="Gtk.RecentChooserMenu.html" title="Gtk.RecentChooserMenu">Gtk.RecentChooserMenu</a></span>.</p>
+<p class="p">Recently used files are supported since GTK+ 2.10.</p>
+<div class="synopsis"><div class="inner">
+<div class="title title-synopsis"><h2><span class="title">Hierarchy</span></h2></div>
+<div class="region"><div class="contents"><div class="tree"><div class="inner"><div class="region"><ul class="tree"><li class="tree"><div>
+        <span class=" code">Gtk.RecentChooser</span>
+      </div></li></ul></div></div></div></div></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Methods</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.RecentChooser.add_filter.html" title="Gtk.RecentChooser.prototype.add_filter">Gtk.RecentChooser.prototype.add_filter</a></li>
+<li class="links "><a href="Gtk.RecentChooser.get_current_item.html" title="Gtk.RecentChooser.prototype.get_current_item">Gtk.RecentChooser.prototype.get_current_item</a></li>
+<li class="links "><a href="Gtk.RecentChooser.get_current_uri.html" title="Gtk.RecentChooser.prototype.get_current_uri">Gtk.RecentChooser.prototype.get_current_uri</a></li>
+<li class="links "><a href="Gtk.RecentChooser.get_filter.html" title="Gtk.RecentChooser.prototype.get_filter">Gtk.RecentChooser.prototype.get_filter</a></li>
+<li class="links "><a href="Gtk.RecentChooser.get_items.html" title="Gtk.RecentChooser.prototype.get_items">Gtk.RecentChooser.prototype.get_items</a></li>
+<li class="links "><a href="Gtk.RecentChooser.get_limit.html" title="Gtk.RecentChooser.prototype.get_limit">Gtk.RecentChooser.prototype.get_limit</a></li>
+<li class="links "><a href="Gtk.RecentChooser.get_local_only.html" title="Gtk.RecentChooser.prototype.get_local_only">Gtk.RecentChooser.prototype.get_local_only</a></li>
+<li class="links "><a href="Gtk.RecentChooser.get_select_multiple.html" title="Gtk.RecentChooser.prototype.get_select_multiple">Gtk.RecentChooser.prototype.get_select_multiple</a></li>
+<li class="links "><a href="Gtk.RecentChooser.get_show_icons.html" title="Gtk.RecentChooser.prototype.get_show_icons">Gtk.RecentChooser.prototype.get_show_icons</a></li>
+<li class="links "><a href="Gtk.RecentChooser.get_show_not_found.html" title="Gtk.RecentChooser.prototype.get_show_not_found">Gtk.RecentChooser.prototype.get_show_not_found</a></li>
+<li class="links "><a href="Gtk.RecentChooser.get_show_private.html" title="Gtk.RecentChooser.prototype.get_show_private">Gtk.RecentChooser.prototype.get_show_private</a></li>
+<li class="links "><a href="Gtk.RecentChooser.get_show_tips.html" title="Gtk.RecentChooser.prototype.get_show_tips">Gtk.RecentChooser.prototype.get_show_tips</a></li>
+<li class="links "><a href="Gtk.RecentChooser.get_sort_type.html" title="Gtk.RecentChooser.prototype.get_sort_type">Gtk.RecentChooser.prototype.get_sort_type</a></li>
+<li class="links "><a href="Gtk.RecentChooser.get_uris.html" title="Gtk.RecentChooser.prototype.get_uris">Gtk.RecentChooser.prototype.get_uris</a></li>
+<li class="links "><a href="Gtk.RecentChooser.list_filters.html" title="Gtk.RecentChooser.prototype.list_filters">Gtk.RecentChooser.prototype.list_filters</a></li>
+<li class="links "><a href="Gtk.RecentChooser.remove_filter.html" title="Gtk.RecentChooser.prototype.remove_filter">Gtk.RecentChooser.prototype.remove_filter</a></li>
+<li class="links "><a href="Gtk.RecentChooser.select_all.html" title="Gtk.RecentChooser.prototype.select_all">Gtk.RecentChooser.prototype.select_all</a></li>
+<li class="links "><a href="Gtk.RecentChooser.select_uri.html" title="Gtk.RecentChooser.prototype.select_uri">Gtk.RecentChooser.prototype.select_uri</a></li>
+<li class="links "><a href="Gtk.RecentChooser.set_current_uri.html" title="Gtk.RecentChooser.prototype.set_current_uri">Gtk.RecentChooser.prototype.set_current_uri</a></li>
+<li class="links "><a href="Gtk.RecentChooser.set_filter.html" title="Gtk.RecentChooser.prototype.set_filter">Gtk.RecentChooser.prototype.set_filter</a></li>
+<li class="links "><a href="Gtk.RecentChooser.set_limit.html" title="Gtk.RecentChooser.prototype.set_limit">Gtk.RecentChooser.prototype.set_limit</a></li>
+<li class="links "><a href="Gtk.RecentChooser.set_local_only.html" title="Gtk.RecentChooser.prototype.set_local_only">Gtk.RecentChooser.prototype.set_local_only</a></li>
+<li class="links "><a href="Gtk.RecentChooser.set_select_multiple.html" title="Gtk.RecentChooser.prototype.set_select_multiple">Gtk.RecentChooser.prototype.set_select_multiple</a></li>
+<li class="links "><a href="Gtk.RecentChooser.set_show_icons.html" title="Gtk.RecentChooser.prototype.set_show_icons">Gtk.RecentChooser.prototype.set_show_icons</a></li>
+<li class="links "><a href="Gtk.RecentChooser.set_show_not_found.html" title="Gtk.RecentChooser.prototype.set_show_not_found">Gtk.RecentChooser.prototype.set_show_not_found</a></li>
+<li class="links "><a href="Gtk.RecentChooser.set_show_private.html" title="Gtk.RecentChooser.prototype.set_show_private">Gtk.RecentChooser.prototype.set_show_private</a></li>
+<li class="links "><a href="Gtk.RecentChooser.set_show_tips.html" title="Gtk.RecentChooser.prototype.set_show_tips">Gtk.RecentChooser.prototype.set_show_tips</a></li>
+<li class="links "><a href="Gtk.RecentChooser.set_sort_func.html" title="Gtk.RecentChooser.prototype.set_sort_func">Gtk.RecentChooser.prototype.set_sort_func</a></li>
+<li class="links "><a href="Gtk.RecentChooser.set_sort_type.html" title="Gtk.RecentChooser.prototype.set_sort_type">Gtk.RecentChooser.prototype.set_sort_type</a></li>
+<li class="links "><a href="Gtk.RecentChooser.unselect_all.html" title="Gtk.RecentChooser.prototype.unselect_all">Gtk.RecentChooser.prototype.unselect_all</a></li>
+<li class="links "><a href="Gtk.RecentChooser.unselect_uri.html" title="Gtk.RecentChooser.prototype.unselect_uri">Gtk.RecentChooser.prototype.unselect_uri</a></li>
+</ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Signals</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.RecentChooser-item-activated.html" title="Gtk.RecentChooser::item-activated">item-activated</a></li>
+<li class="links "><a href="Gtk.RecentChooser-selection-changed.html" title="Gtk.RecentChooser::selection-changed">selection-changed</a></li>
+</ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Virtual functions</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.RecentChooser-add_filter.html" title="Gtk.RecentChooser::add_filter">Gtk.RecentChooser::add_filter</a></li>
+<li class="links "><a href="Gtk.RecentChooser-get_current_uri.html" title="Gtk.RecentChooser::get_current_uri">Gtk.RecentChooser::get_current_uri</a></li>
+<li class="links "><a href="Gtk.RecentChooser-get_items.html" title="Gtk.RecentChooser::get_items">Gtk.RecentChooser::get_items</a></li>
+<li class="links "><a href="Gtk.RecentChooser-item_activated.html" title="Gtk.RecentChooser::item_activated">Gtk.RecentChooser::item_activated</a></li>
+<li class="links "><a href="Gtk.RecentChooser-list_filters.html" title="Gtk.RecentChooser::list_filters">Gtk.RecentChooser::list_filters</a></li>
+<li class="links "><a href="Gtk.RecentChooser-remove_filter.html" title="Gtk.RecentChooser::remove_filter">Gtk.RecentChooser::remove_filter</a></li>
+<li class="links "><a href="Gtk.RecentChooser-select_all.html" title="Gtk.RecentChooser::select_all">Gtk.RecentChooser::select_all</a></li>
+<li class="links "><a href="Gtk.RecentChooser-select_uri.html" title="Gtk.RecentChooser::select_uri">Gtk.RecentChooser::select_uri</a></li>
+<li class="links "><a href="Gtk.RecentChooser-selection_changed.html" title="Gtk.RecentChooser::selection_changed">Gtk.RecentChooser::selection_changed</a></li>
+<li class="links "><a href="Gtk.RecentChooser-set_current_uri.html" title="Gtk.RecentChooser::set_current_uri">Gtk.RecentChooser::set_current_uri</a></li>
+<li class="links "><a href="Gtk.RecentChooser-set_sort_func.html" title="Gtk.RecentChooser::set_sort_func">Gtk.RecentChooser::set_sort_func</a></li>
+<li class="links "><a href="Gtk.RecentChooser-unselect_all.html" title="Gtk.RecentChooser::unselect_all">Gtk.RecentChooser::unselect_all</a></li>
+<li class="links "><a href="Gtk.RecentChooser-unselect_uri.html" title="Gtk.RecentChooser::unselect_uri">Gtk.RecentChooser::unselect_uri</a></li>
+</ul></div>
+</div></div>
+</div>
+<div class="sect sect-links" role="navigation">
+<div class="hgroup"></div>
+<div class="contents"><div class="links guidelinks"><div class="inner">
+<div class="title"><h2><span class="title">More Information</span></h2></div>
+<div class="region"><ul><li class="links "><a href="index.html" title="Index">Index</a></li></ul></div>
+</div></div></div>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="footer"></div>
+</div></body>
+</html>

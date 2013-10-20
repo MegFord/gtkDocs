@@ -1,0 +1,128 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Gtk.RecentManager</title>
+<link rel="stylesheet" type="text/css" href="C.css">
+<script type="text/javascript" src="jquery.js"></script><script type="text/javascript" src="jquery.syntax.js"></script><script type="text/javascript" src="yelp.js"></script>
+</head>
+<body><div class="page" role="main">
+<div class="header"><div class="trails" role="navigation"><div class="trail">
+<a class="trail" href="index.html" title="Index">Index</a> » </div></div></div>
+<div class="body">
+<div class="hgroup"><h1 class="title"><span class="title">Gtk.RecentManager</span></h1></div>
+<div class="region">
+<div class="contents">
+<div class="synopsis"><div class="inner"><div class="region"><div class="contents"><div class="code"><pre class="contents ">const Gtk = imports.gi.Gtk;
+
+let recent_manager = new Gtk.RecentManager({
+    <span class=" link"><a href="Gtk.RecentManager-filename.html" title="Gtk.RecentManager:filename">filename</a></span>: value,
+});
+  </pre></div></div></div></div></div>
+<p class="p"><span class=" link"><a href="Gtk.RecentManager.html" title="Gtk.RecentManager">Gtk.RecentManager</a></span> provides a facility for adding, removing and
+looking up recently used files. Each recently used file is
+identified by its URI, and has meta-data associated to it, like
+the names and command lines of the applications that have
+registered it, the number of time each application has registered
+the same file, the mime type of the file and whether the file
+should be displayed only by the applications that have
+registered it.</p>
+<p class="p">&lt;note&gt;&lt;para&gt;The recently used files list is per user.&lt;/para&gt;&lt;/note&gt;</p>
+<p class="p">The <span class=" link"><a href="Gtk.RecentManager.html" title="Gtk.RecentManager">Gtk.RecentManager</a></span> acts like a database of all the recently
+used files. You can create new <span class=" link"><a href="Gtk.RecentManager.html" title="Gtk.RecentManager">Gtk.RecentManager</a></span> objects, but
+it is more efficient to use the default manager created by GTK+.</p>
+<p class="p">Adding a new recently used file is as simple as:</p>
+<p class="p">|[
+GtkRecentManager *manager;</p>
+<p class="p">manager = gtk_recent_manager_get_default ();
+gtk_recent_manager_add_item (manager, file_uri);
+]|</p>
+<p class="p">The <span class=" link"><a href="Gtk.RecentManager.html" title="Gtk.RecentManager">Gtk.RecentManager</a></span> will try to gather all the needed information
+from the file itself through GIO.</p>
+<p class="p">Looking up the meta-data associated with a recently used file
+given its URI requires calling <span class=" link"><a href="Gtk.lookup_item.html" title="Gtk.lookup_item">Gtk.lookup_item</a></span>:</p>
+<p class="p">|[
+GtkRecentManager *manager;
+GtkRecentInfo *info;
+GError *error = NULL;</p>
+<p class="p">manager = gtk_recent_manager_get_default ();
+info = gtk_recent_manager_lookup_item (manager, file_uri, &amp;amp;error);
+if (error)
+  {
+    g_warning ("Could not find the file: &amp;percnt;s", error-&amp;gt;message);
+    g_error_free (error);
+  }
+else
+ {
+   /&amp;ast; Use the info object &amp;ast;/
+   gtk_recent_info_unref (info);
+ }
+]|</p>
+<p class="p">In order to retrieve the list of recently used files, you can use
+<span class=" link"><a href="Gtk.get_items.html" title="Gtk.get_items">Gtk.get_items</a></span>, which returns a list of <span class=" link"><a href="Gtk.RecentInfo.html" title="Gtk.RecentInfo">Gtk.RecentInfo</a></span>
+structures.</p>
+<p class="p">A <span class=" link"><a href="Gtk.RecentManager.html" title="Gtk.RecentManager">Gtk.RecentManager</a></span> is the model used to populate the contents of
+one, or more <span class=" link"><a href="Gtk.RecentChooser.html" title="Gtk.RecentChooser">Gtk.RecentChooser</a></span> implementations.</p>
+<p class="p">&lt;note&gt;&lt;para&gt;The maximum age of the recently used files list is
+controllable through the <span class=" link"><a href="Gtk.gtk-recent-files-max-age.html" title="Gtk.gtk-recent-files-max-age">Gtk.gtk-recent-files-max-age</a></span>
+property.&lt;/para&gt;&lt;/note&gt;</p>
+<p class="p">Recently used files are supported since GTK+ 2.10.</p>
+<p class="p">Since 2.10</p>
+<div class="synopsis"><div class="inner">
+<div class="title title-synopsis"><h2><span class="title">Hierarchy</span></h2></div>
+<div class="region"><div class="contents"><div class="tree"><div class="inner"><div class="region"><ul class="tree"><li class="tree">
+<div>
+        <span class=" code">GObject.Object</span>
+      
+      </div>
+<ul class="tree"><li class="tree"><div>
+        <span class=" code">Gtk.RecentManager</span>
+      </div></li></ul>
+</li></ul></div></div></div></div></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Methods</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.RecentManager.add_full.html" title="Gtk.RecentManager.prototype.add_full">Gtk.RecentManager.prototype.add_full</a></li>
+<li class="links "><a href="Gtk.RecentManager.add_item.html" title="Gtk.RecentManager.prototype.add_item">Gtk.RecentManager.prototype.add_item</a></li>
+<li class="links "><a href="Gtk.RecentManager.get_items.html" title="Gtk.RecentManager.prototype.get_items">Gtk.RecentManager.prototype.get_items</a></li>
+<li class="links "><a href="Gtk.RecentManager.has_item.html" title="Gtk.RecentManager.prototype.has_item">Gtk.RecentManager.prototype.has_item</a></li>
+<li class="links "><a href="Gtk.RecentManager.lookup_item.html" title="Gtk.RecentManager.prototype.lookup_item">Gtk.RecentManager.prototype.lookup_item</a></li>
+<li class="links "><a href="Gtk.RecentManager.move_item.html" title="Gtk.RecentManager.prototype.move_item">Gtk.RecentManager.prototype.move_item</a></li>
+<li class="links "><a href="Gtk.RecentManager.purge_items.html" title="Gtk.RecentManager.prototype.purge_items">Gtk.RecentManager.prototype.purge_items</a></li>
+<li class="links "><a href="Gtk.RecentManager.remove_item.html" title="Gtk.RecentManager.prototype.remove_item">Gtk.RecentManager.prototype.remove_item</a></li>
+</ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Functions</span></h2></div>
+<div class="region"><ul><li class="links "><a href="Gtk.RecentManager.get_default.html" title="get_default">get_default</a></li></ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Properties</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.RecentManager-filename.html" title="Gtk.RecentManager:filename">filename</a></li>
+<li class="links "><a href="Gtk.RecentManager-size.html" title="Gtk.RecentManager:size">size</a></li>
+</ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Signals</span></h2></div>
+<div class="region"><ul><li class="links "><a href="Gtk.RecentManager-changed.html" title="Gtk.RecentManager::changed">changed</a></li></ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Other</span></h2></div>
+<div class="region"><ul><li class="links "><a href="Gtk.RecentManager.new.html" title="Gtk.RecentManager.new">Gtk.RecentManager.new</a></li></ul></div>
+</div></div>
+</div>
+<div class="sect sect-links" role="navigation">
+<div class="hgroup"></div>
+<div class="contents"><div class="links guidelinks"><div class="inner">
+<div class="title"><h2><span class="title">More Information</span></h2></div>
+<div class="region"><ul><li class="links "><a href="index.html" title="Index">Index</a></li></ul></div>
+</div></div></div>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="footer"></div>
+</div></body>
+</html>

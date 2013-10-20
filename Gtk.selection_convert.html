@@ -1,0 +1,46 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>selection_convert</title>
+<link rel="stylesheet" type="text/css" href="C.css">
+<script type="text/javascript" src="jquery.js"></script><script type="text/javascript" src="jquery.syntax.js"></script><script type="text/javascript" src="yelp.js"></script>
+</head>
+<body><div class="page" role="main">
+<div class="header"><div class="trails" role="navigation"><div class="trail">
+<a class="trail" href="index.html" title="Index">Index</a> » </div></div></div>
+<div class="body">
+<div class="hgroup"><h1 class="title"><span class="title">selection_convert</span></h1></div>
+<div class="region">
+<div class="contents">
+<div class="synopsis"><div class="inner"><div class="region"><div class="contents"><div class="code"><pre class="contents ">function selection_convert(widget:Gtk.Widget, selection:Gdk.Atom, target:Gdk.Atom, time_:guint32):Boolean {
+    // Gjs wrapper for gtk_selection_convert()
+}</pre></div></div></div></div></div>
+<p class="p">Requests the contents of a selection. When received, 
+a "selection-received" signal will be generated.</p>
+<div class="terms"><div class="inner"><div class="region"><dl class="terms">
+<dt class="terms"><span class=" code">widget</span></dt>
+<dd class="terms"><p class="p">The widget which acts as requestor</p></dd>
+<dt class="terms"><span class=" code">selection</span></dt>
+<dd class="terms"><p class="p">Which selection to get</p></dd>
+<dt class="terms"><span class=" code">target</span></dt>
+<dd class="terms"><p class="p">Form of information desired (e.g., STRING)</p></dd>
+<dt class="terms"><span class=" code">time_</span></dt>
+<dd class="terms"><p class="p">Time of request (usually of triggering event) In emergency, you could use #GDK_CURRENT_TIME</p></dd>
+<dt class="terms"><span class=" code">Returns</span></dt>
+<dd class="terms"><p class="p"><span class=" code">true</span> if requested succeeded. <span class=" code">false</span> if we could not process request. (e.g., there was already a request in process for this widget).</p></dd>
+</dl></div></div></div>
+</div>
+<div class="sect sect-links" role="navigation">
+<div class="hgroup"></div>
+<div class="contents"><div class="links guidelinks"><div class="inner">
+<div class="title"><h2><span class="title">More Information</span></h2></div>
+<div class="region"><ul><li class="links "><a href="index.html" title="Index">Index</a></li></ul></div>
+</div></div></div>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="footer"></div>
+</div></body>
+</html>

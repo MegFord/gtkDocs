@@ -1,0 +1,98 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Gtk.Scrollable</title>
+<link rel="stylesheet" type="text/css" href="C.css">
+<script type="text/javascript" src="jquery.js"></script><script type="text/javascript" src="jquery.syntax.js"></script><script type="text/javascript" src="yelp.js"></script>
+</head>
+<body><div class="page" role="main">
+<div class="header"><div class="trails" role="navigation"><div class="trail">
+<a class="trail" href="index.html" title="Index">Index</a> » </div></div></div>
+<div class="body">
+<div class="hgroup"><h1 class="title"><span class="title">Gtk.Scrollable</span></h1></div>
+<div class="region">
+<div class="contents">
+<div class="synopsis"><div class="inner"><div class="region"><div class="contents"><div class="code"><pre class="contents ">const Gtk = imports.gi.Gtk;
+
+let scrollable = new Gtk.Scrollable({
+    <span class=" link"><a href="Gtk.Scrollable-hadjustment.html" title="Gtk.Scrollable-hadjustment">hadjustment</a></span>: value,
+    <span class=" link"><a href="Gtk.Scrollable-hscroll-policy.html" title="Gtk.Scrollable-hscroll-policy">hscroll_policy</a></span>: value,
+    <span class=" link"><a href="Gtk.Scrollable-vadjustment.html" title="Gtk.Scrollable-vadjustment">vadjustment</a></span>: value,
+    <span class=" link"><a href="Gtk.Scrollable-vscroll-policy.html" title="Gtk.Scrollable-vscroll-policy">vscroll_policy</a></span>: value,
+});
+  </pre></div></div></div></div></div>
+<p class="p"><span class=" link"><a href="Gtk.Scrollable.html" title="Gtk.Scrollable">Gtk.Scrollable</a></span> is an interface that is implemented by widgets with native
+scrolling ability.</p>
+<p class="p">To implement this interface you should override the
+<span class=" link"><a href="Gtk.hadjustment.html" title="Gtk.hadjustment">Gtk.hadjustment</a></span> and <span class=" link"><a href="Gtk.vadjustment.html" title="Gtk.vadjustment">Gtk.vadjustment</a></span> properties.</p>
+<p class="p">&lt;refsect2&gt;
+&lt;title&gt;Creating a scrollable widget&lt;/title&gt;
+&lt;para&gt;
+All scrollable widgets should do the following.</p>
+<p class="p">&lt;orderedlist&gt;
+  &lt;listitem&gt;
+    &lt;para&gt;
+      When a parent widget sets the scrollable child widget's adjustments, the widget should populate the adjustments'
+      <span class=" link"><a href="Gtk.Adjustment-lower.html" title="Gtk.Adjustment:lower">Gtk.Adjustment:lower</a></span>, <span class=" link"><a href="Gtk.Adjustment-upper.html" title="Gtk.Adjustment:upper">Gtk.Adjustment:upper</a></span>,
+      <span class=" link"><a href="Gtk.Adjustment-step-increment.html" title="Gtk.Adjustment:step-increment">Gtk.Adjustment:step-increment</a></span>, <span class=" link"><a href="Gtk.Adjustment-page-increment.html" title="Gtk.Adjustment:page-increment">Gtk.Adjustment:page-increment</a></span> and
+      <span class=" link"><a href="Gtk.Adjustment-page-size.html" title="Gtk.Adjustment:page-size">Gtk.Adjustment:page-size</a></span> properties and connect to the
+      <span class=" link"><a href="Gtk.Adjustment-value-changed.html" title="Gtk.Adjustment::value-changed">Gtk.Adjustment::value-changed</a></span> signal.
+    &lt;/para&gt;
+  &lt;/listitem&gt;
+  &lt;listitem&gt;
+    &lt;para&gt;
+      Because its preferred size is the size for a fully expanded widget,
+      the scrollable widget must be able to cope with underallocations.
+      This means that it must accept any value passed to its
+      <span class=" link"><a href="Gtk.WidgetClass.html" title="Gtk.WidgetClass">Gtk.WidgetClass</a></span>.size_allocate() function.
+    &lt;/para&gt;
+  &lt;/listitem&gt;
+  &lt;listitem&gt;
+    &lt;para&gt;
+      When the parent allocates space to the scrollable child widget, the widget should update
+      the adjustments' properties with new values.
+    &lt;/para&gt;
+  &lt;/listitem&gt;
+  &lt;listitem&gt;
+    &lt;para&gt;
+      When any of the adjustments emits the <span class=" link"><a href="Gtk.Adjustment-value-changed.html" title="Gtk.Adjustment::value-changed">Gtk.Adjustment::value-changed</a></span> signal,
+      the scrollable widget should scroll its contents.
+    &lt;/para&gt;
+  &lt;/listitem&gt;
+&lt;/orderedlist&gt;
+&lt;/para&gt;
+&lt;/refsect2&gt;</p>
+<div class="synopsis"><div class="inner">
+<div class="title title-synopsis"><h2><span class="title">Hierarchy</span></h2></div>
+<div class="region"><div class="contents"><div class="tree"><div class="inner"><div class="region"><ul class="tree"><li class="tree"><div>
+        <span class=" code">Gtk.Scrollable</span>
+      </div></li></ul></div></div></div></div></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Methods</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.Scrollable.get_hadjustment.html" title="Gtk.Scrollable.prototype.get_hadjustment">Gtk.Scrollable.prototype.get_hadjustment</a></li>
+<li class="links "><a href="Gtk.Scrollable.get_hscroll_policy.html" title="Gtk.Scrollable.prototype.get_hscroll_policy">Gtk.Scrollable.prototype.get_hscroll_policy</a></li>
+<li class="links "><a href="Gtk.Scrollable.get_vadjustment.html" title="Gtk.Scrollable.prototype.get_vadjustment">Gtk.Scrollable.prototype.get_vadjustment</a></li>
+<li class="links "><a href="Gtk.Scrollable.get_vscroll_policy.html" title="Gtk.Scrollable.prototype.get_vscroll_policy">Gtk.Scrollable.prototype.get_vscroll_policy</a></li>
+<li class="links "><a href="Gtk.Scrollable.set_hadjustment.html" title="Gtk.Scrollable.prototype.set_hadjustment">Gtk.Scrollable.prototype.set_hadjustment</a></li>
+<li class="links "><a href="Gtk.Scrollable.set_hscroll_policy.html" title="Gtk.Scrollable.prototype.set_hscroll_policy">Gtk.Scrollable.prototype.set_hscroll_policy</a></li>
+<li class="links "><a href="Gtk.Scrollable.set_vadjustment.html" title="Gtk.Scrollable.prototype.set_vadjustment">Gtk.Scrollable.prototype.set_vadjustment</a></li>
+<li class="links "><a href="Gtk.Scrollable.set_vscroll_policy.html" title="Gtk.Scrollable.prototype.set_vscroll_policy">Gtk.Scrollable.prototype.set_vscroll_policy</a></li>
+</ul></div>
+</div></div>
+</div>
+<div class="sect sect-links" role="navigation">
+<div class="hgroup"></div>
+<div class="contents"><div class="links guidelinks"><div class="inner">
+<div class="title"><h2><span class="title">More Information</span></h2></div>
+<div class="region"><ul><li class="links "><a href="index.html" title="Index">Index</a></li></ul></div>
+</div></div></div>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="footer"></div>
+</div></body>
+</html>

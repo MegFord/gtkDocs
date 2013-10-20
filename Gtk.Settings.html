@@ -1,0 +1,249 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Gtk.Settings</title>
+<link rel="stylesheet" type="text/css" href="C.css">
+<script type="text/javascript" src="jquery.js"></script><script type="text/javascript" src="jquery.syntax.js"></script><script type="text/javascript" src="yelp.js"></script>
+</head>
+<body><div class="page" role="main">
+<div class="header"><div class="trails" role="navigation"><div class="trail">
+<a class="trail" href="index.html" title="Index">Index</a> » </div></div></div>
+<div class="body">
+<div class="hgroup"><h1 class="title"><span class="title">Gtk.Settings</span></h1></div>
+<div class="region">
+<div class="contents">
+<div class="synopsis"><div class="inner"><div class="region"><div class="contents"><div class="code"><pre class="contents ">const Gtk = imports.gi.Gtk;
+
+let settings = new Gtk.Settings({
+    <span class=" link"><a href="Gtk.Settings-gtk-alternative-button-order.html" title="Gtk.Settings:gtk-alternative-button-order">gtk_alternative_button_order</a></span>: value,
+    <span class=" link"><a href="Gtk.Settings-gtk-alternative-sort-arrows.html" title="Gtk.Settings:gtk-alternative-sort-arrows">gtk_alternative_sort_arrows</a></span>: value,
+    <span class=" link"><a href="Gtk.Settings-gtk-application-prefer-dark-theme.html" title="Gtk.Settings:gtk-application-prefer-dark-theme">gtk_application_prefer_dark_theme</a></span>: value,
+    <span class=" link"><a href="Gtk.Settings-gtk-auto-mnemonics.html" title="Gtk.Settings:gtk-auto-mnemonics">gtk_auto_mnemonics</a></span>: value,
+    <span class=" link"><a href="Gtk.Settings-gtk-button-images.html" title="Gtk.Settings:gtk-button-images">gtk_button_images</a></span>: value,
+    <span class=" link"><a href="Gtk.Settings-gtk-can-change-accels.html" title="Gtk.Settings:gtk-can-change-accels">gtk_can_change_accels</a></span>: value,
+    <span class=" link"><a href="Gtk.Settings-gtk-color-palette.html" title="Gtk.Settings:gtk-color-palette">gtk_color_palette</a></span>: value,
+    <span class=" link"><a href="Gtk.Settings-gtk-color-scheme.html" title="Gtk.Settings:gtk-color-scheme">gtk_color_scheme</a></span>: value,
+    <span class=" link"><a href="Gtk.Settings-gtk-cursor-blink.html" title="Gtk.Settings:gtk-cursor-blink">gtk_cursor_blink</a></span>: value,
+    <span class=" link"><a href="Gtk.Settings-gtk-cursor-blink-time.html" title="Gtk.Settings:gtk-cursor-blink-time">gtk_cursor_blink_time</a></span>: value,
+    <span class=" link"><a href="Gtk.Settings-gtk-cursor-blink-timeout.html" title="Gtk.Settings:gtk-cursor-blink-timeout">gtk_cursor_blink_timeout</a></span>: value,
+    <span class=" link"><a href="Gtk.Settings-gtk-cursor-theme-name.html" title="Gtk.Settings:gtk-cursor-theme-name">gtk_cursor_theme_name</a></span>: value,
+    <span class=" link"><a href="Gtk.Settings-gtk-cursor-theme-size.html" title="Gtk.Settings:gtk-cursor-theme-size">gtk_cursor_theme_size</a></span>: value,
+    <span class=" link"><a href="Gtk.Settings-gtk-dnd-drag-threshold.html" title="Gtk.Settings:gtk-dnd-drag-threshold">gtk_dnd_drag_threshold</a></span>: value,
+    <span class=" link"><a href="Gtk.Settings-gtk-double-click-distance.html" title="Gtk.Settings:gtk-double-click-distance">gtk_double_click_distance</a></span>: value,
+    <span class=" link"><a href="Gtk.Settings-gtk-double-click-time.html" title="Gtk.Settings:gtk-double-click-time">gtk_double_click_time</a></span>: value,
+    <span class=" link"><a href="Gtk.Settings-gtk-enable-accels.html" title="Gtk.Settings:gtk-enable-accels">gtk_enable_accels</a></span>: value,
+    <span class=" link"><a href="Gtk.Settings-gtk-enable-animations.html" title="Gtk.Settings:gtk-enable-animations">gtk_enable_animations</a></span>: value,
+    <span class=" link"><a href="Gtk.Settings-gtk-enable-event-sounds.html" title="Gtk.Settings:gtk-enable-event-sounds">gtk_enable_event_sounds</a></span>: value,
+    <span class=" link"><a href="Gtk.Settings-gtk-enable-input-feedback-sounds.html" title="Gtk.Settings:gtk-enable-input-feedback-sounds">gtk_enable_input_feedback_sounds</a></span>: value,
+    <span class=" link"><a href="Gtk.Settings-gtk-enable-mnemonics.html" title="Gtk.Settings:gtk-enable-mnemonics">gtk_enable_mnemonics</a></span>: value,
+    <span class=" link"><a href="Gtk.Settings-gtk-enable-primary-paste.html" title="Gtk.Settings:gtk-enable-primary-paste">gtk_enable_primary_paste</a></span>: value,
+    <span class=" link"><a href="Gtk.Settings-gtk-enable-tooltips.html" title="Gtk.Settings:gtk-enable-tooltips">gtk_enable_tooltips</a></span>: value,
+    <span class=" link"><a href="Gtk.Settings-gtk-entry-password-hint-timeout.html" title="Gtk.Settings:gtk-entry-password-hint-timeout">gtk_entry_password_hint_timeout</a></span>: value,
+    <span class=" link"><a href="Gtk.Settings-gtk-entry-select-on-focus.html" title="Gtk.Settings:gtk-entry-select-on-focus">gtk_entry_select_on_focus</a></span>: value,
+    <span class=" link"><a href="Gtk.Settings-gtk-error-bell.html" title="Gtk.Settings:gtk-error-bell">gtk_error_bell</a></span>: value,
+    <span class=" link"><a href="Gtk.Settings-gtk-fallback-icon-theme.html" title="Gtk.Settings:gtk-fallback-icon-theme">gtk_fallback_icon_theme</a></span>: value,
+    <span class=" link"><a href="Gtk.Settings-gtk-file-chooser-backend.html" title="Gtk.Settings:gtk-file-chooser-backend">gtk_file_chooser_backend</a></span>: value,
+    <span class=" link"><a href="Gtk.Settings-gtk-font-name.html" title="Gtk.Settings:gtk-font-name">gtk_font_name</a></span>: value,
+    <span class=" link"><a href="Gtk.Settings-gtk-fontconfig-timestamp.html" title="Gtk.Settings:gtk-fontconfig-timestamp">gtk_fontconfig_timestamp</a></span>: value,
+    <span class=" link"><a href="Gtk.Settings-gtk-icon-sizes.html" title="Gtk.Settings:gtk-icon-sizes">gtk_icon_sizes</a></span>: value,
+    <span class=" link"><a href="Gtk.Settings-gtk-icon-theme-name.html" title="Gtk.Settings:gtk-icon-theme-name">gtk_icon_theme_name</a></span>: value,
+    <span class=" link"><a href="Gtk.Settings-gtk-im-module.html" title="Gtk.Settings:gtk-im-module">gtk_im_module</a></span>: value,
+    <span class=" link"><a href="Gtk.Settings-gtk-im-preedit-style.html" title="Gtk.Settings:gtk-im-preedit-style">gtk_im_preedit_style</a></span>: value,
+    <span class=" link"><a href="Gtk.Settings-gtk-im-status-style.html" title="Gtk.Settings:gtk-im-status-style">gtk_im_status_style</a></span>: value,
+    <span class=" link"><a href="Gtk.Settings-gtk-key-theme-name.html" title="Gtk.Settings:gtk-key-theme-name">gtk_key_theme_name</a></span>: value,
+    <span class=" link"><a href="Gtk.Settings-gtk-keynav-cursor-only.html" title="Gtk.Settings:gtk-keynav-cursor-only">gtk_keynav_cursor_only</a></span>: value,
+    <span class=" link"><a href="Gtk.Settings-gtk-keynav-wrap-around.html" title="Gtk.Settings:gtk-keynav-wrap-around">gtk_keynav_wrap_around</a></span>: value,
+    <span class=" link"><a href="Gtk.Settings-gtk-label-select-on-focus.html" title="Gtk.Settings:gtk-label-select-on-focus">gtk_label_select_on_focus</a></span>: value,
+    <span class=" link"><a href="Gtk.Settings-gtk-menu-bar-accel.html" title="Gtk.Settings:gtk-menu-bar-accel">gtk_menu_bar_accel</a></span>: value,
+    <span class=" link"><a href="Gtk.Settings-gtk-menu-bar-popup-delay.html" title="Gtk.Settings:gtk-menu-bar-popup-delay">gtk_menu_bar_popup_delay</a></span>: value,
+    <span class=" link"><a href="Gtk.Settings-gtk-menu-images.html" title="Gtk.Settings:gtk-menu-images">gtk_menu_images</a></span>: value,
+    <span class=" link"><a href="Gtk.Settings-gtk-menu-popdown-delay.html" title="Gtk.Settings:gtk-menu-popdown-delay">gtk_menu_popdown_delay</a></span>: value,
+    <span class=" link"><a href="Gtk.Settings-gtk-menu-popup-delay.html" title="Gtk.Settings:gtk-menu-popup-delay">gtk_menu_popup_delay</a></span>: value,
+    <span class=" link"><a href="Gtk.Settings-gtk-modules.html" title="Gtk.Settings:gtk-modules">gtk_modules</a></span>: value,
+    <span class=" link"><a href="Gtk.Settings-gtk-primary-button-warps-slider.html" title="Gtk.Settings:gtk-primary-button-warps-slider">gtk_primary_button_warps_slider</a></span>: value,
+    <span class=" link"><a href="Gtk.Settings-gtk-print-backends.html" title="Gtk.Settings:gtk-print-backends">gtk_print_backends</a></span>: value,
+    <span class=" link"><a href="Gtk.Settings-gtk-print-preview-command.html" title="Gtk.Settings:gtk-print-preview-command">gtk_print_preview_command</a></span>: value,
+    <span class=" link"><a href="Gtk.Settings-gtk-recent-files-enabled.html" title="Gtk.Settings:gtk-recent-files-enabled">gtk_recent_files_enabled</a></span>: value,
+    <span class=" link"><a href="Gtk.Settings-gtk-recent-files-limit.html" title="Gtk.Settings:gtk-recent-files-limit">gtk_recent_files_limit</a></span>: value,
+    <span class=" link"><a href="Gtk.Settings-gtk-recent-files-max-age.html" title="Gtk.Settings:gtk-recent-files-max-age">gtk_recent_files_max_age</a></span>: value,
+    <span class=" link"><a href="Gtk.Settings-gtk-scrolled-window-placement.html" title="Gtk.Settings:gtk-scrolled-window-placement">gtk_scrolled_window_placement</a></span>: value,
+    <span class=" link"><a href="Gtk.Settings-gtk-shell-shows-app-menu.html" title="Gtk.Settings:gtk-shell-shows-app-menu">gtk_shell_shows_app_menu</a></span>: value,
+    <span class=" link"><a href="Gtk.Settings-gtk-shell-shows-menubar.html" title="Gtk.Settings:gtk-shell-shows-menubar">gtk_shell_shows_menubar</a></span>: value,
+    <span class=" link"><a href="Gtk.Settings-gtk-show-input-method-menu.html" title="Gtk.Settings:gtk-show-input-method-menu">gtk_show_input_method_menu</a></span>: value,
+    <span class=" link"><a href="Gtk.Settings-gtk-show-unicode-menu.html" title="Gtk.Settings:gtk-show-unicode-menu">gtk_show_unicode_menu</a></span>: value,
+    <span class=" link"><a href="Gtk.Settings-gtk-sound-theme-name.html" title="Gtk.Settings:gtk-sound-theme-name">gtk_sound_theme_name</a></span>: value,
+    <span class=" link"><a href="Gtk.Settings-gtk-split-cursor.html" title="Gtk.Settings:gtk-split-cursor">gtk_split_cursor</a></span>: value,
+    <span class=" link"><a href="Gtk.Settings-gtk-theme-name.html" title="Gtk.Settings:gtk-theme-name">gtk_theme_name</a></span>: value,
+    <span class=" link"><a href="Gtk.Settings-gtk-timeout-expand.html" title="Gtk.Settings:gtk-timeout-expand">gtk_timeout_expand</a></span>: value,
+    <span class=" link"><a href="Gtk.Settings-gtk-timeout-initial.html" title="Gtk.Settings:gtk-timeout-initial">gtk_timeout_initial</a></span>: value,
+    <span class=" link"><a href="Gtk.Settings-gtk-timeout-repeat.html" title="Gtk.Settings:gtk-timeout-repeat">gtk_timeout_repeat</a></span>: value,
+    <span class=" link"><a href="Gtk.Settings-gtk-toolbar-icon-size.html" title="Gtk.Settings:gtk-toolbar-icon-size">gtk_toolbar_icon_size</a></span>: value,
+    <span class=" link"><a href="Gtk.Settings-gtk-toolbar-style.html" title="Gtk.Settings:gtk-toolbar-style">gtk_toolbar_style</a></span>: value,
+    <span class=" link"><a href="Gtk.Settings-gtk-tooltip-browse-mode-timeout.html" title="Gtk.Settings:gtk-tooltip-browse-mode-timeout">gtk_tooltip_browse_mode_timeout</a></span>: value,
+    <span class=" link"><a href="Gtk.Settings-gtk-tooltip-browse-timeout.html" title="Gtk.Settings:gtk-tooltip-browse-timeout">gtk_tooltip_browse_timeout</a></span>: value,
+    <span class=" link"><a href="Gtk.Settings-gtk-tooltip-timeout.html" title="Gtk.Settings:gtk-tooltip-timeout">gtk_tooltip_timeout</a></span>: value,
+    <span class=" link"><a href="Gtk.Settings-gtk-touchscreen-mode.html" title="Gtk.Settings:gtk-touchscreen-mode">gtk_touchscreen_mode</a></span>: value,
+    <span class=" link"><a href="Gtk.Settings-gtk-visible-focus.html" title="Gtk.Settings:gtk-visible-focus">gtk_visible_focus</a></span>: value,
+    <span class=" link"><a href="Gtk.Settings-gtk-xft-antialias.html" title="Gtk.Settings:gtk-xft-antialias">gtk_xft_antialias</a></span>: value,
+    <span class=" link"><a href="Gtk.Settings-gtk-xft-dpi.html" title="Gtk.Settings:gtk-xft-dpi">gtk_xft_dpi</a></span>: value,
+    <span class=" link"><a href="Gtk.Settings-gtk-xft-hinting.html" title="Gtk.Settings:gtk-xft-hinting">gtk_xft_hinting</a></span>: value,
+    <span class=" link"><a href="Gtk.Settings-gtk-xft-hintstyle.html" title="Gtk.Settings:gtk-xft-hintstyle">gtk_xft_hintstyle</a></span>: value,
+    <span class=" link"><a href="Gtk.Settings-gtk-xft-rgba.html" title="Gtk.Settings:gtk-xft-rgba">gtk_xft_rgba</a></span>: value,
+});
+  </pre></div></div></div></div></div>
+<p class="p">GtkSettings provide a mechanism to share global settings between
+applications.</p>
+<p class="p">On the X window system, this sharing is realized by an
+&lt;ulink url="http://www.freedesktop.org/wiki/Specifications/xsettings-spec"&gt;XSettings&lt;/ulink&gt;
+manager that is usually part of the desktop environment, along with
+utilities that let the user change these settings. In the absence of
+an Xsettings manager, GTK+ reads default values for settings from
+&lt;filename&gt;settings.ini&lt;/filename&gt; files in
+&lt;filename&gt;/etc/gtk-3.0&lt;/filename&gt;, &lt;filename&gt;$XDG_CONFIG_DIRS/gtk-3.0&lt;/filename&gt;
+and &lt;filename&gt;$XDG_CONFIG_HOME/gtk-3.0&lt;/filename&gt;.
+These files must be valid key files (see <span class=" link"><a href="GLib.KeyFile.html" title="GLib.KeyFile">GLib.KeyFile</a></span>), and have
+a section called Settings. Themes can also provide default values
+for settings by installing a &lt;filename&gt;settings.ini&lt;/filename&gt; file
+next to their &lt;filename&gt;gtk.css&lt;/filename&gt; file.</p>
+<p class="p">Applications can override system-wide settings with
+<span class=" link"><a href="Gtk.set_string_property.html" title="Gtk.set_string_property">Gtk.set_string_property</a></span>, <span class=" link"><a href="Gtk.set_long_property.html" title="Gtk.set_long_property">Gtk.set_long_property</a></span>,
+etc. This should be restricted to special cases though; GtkSettings are
+not meant as an application configuration facility. When doing so, you
+need to be aware that settings that are specific to individual widgets
+may not be available before the widget type has been realized at least
+once. The following example demonstrates a way to do this:
+&lt;informalexample&gt;&lt;programlisting&gt;
+  gtk_init (&amp;argc, &amp;argv);</p>
+<p class="p">  /&amp;ast; make sure the type is realized &amp;ast;/
+  g_type_class_unref (g_type_class_ref (GTK_TYPE_IMAGE_MENU_ITEM));</p>
+<p class="p">  g_object_set (gtk_settings_get_default (), "gtk-enable-animations", FALSE, NULL);
+&lt;/programlisting&gt;&lt;/informalexample&gt;</p>
+<p class="p">There is one GtkSettings instance per screen. It can be obtained with
+<span class=" link"><a href="Gtk.get_for_screen.html" title="Gtk.get_for_screen">Gtk.get_for_screen</a></span>, but in many cases, it is more convenient
+to use <span class=" link"><a href="Gtk.get_settings.html" title="Gtk.get_settings">Gtk.get_settings</a></span>. <span class=" link"><a href="Gtk.get_default.html" title="Gtk.get_default">Gtk.get_default</a></span> returns the
+GtkSettings instance for the default screen.</p>
+<div class="synopsis"><div class="inner">
+<div class="title title-synopsis"><h2><span class="title">Hierarchy</span></h2></div>
+<div class="region"><div class="contents"><div class="tree"><div class="inner"><div class="region"><ul class="tree"><li class="tree">
+<div>
+        <span class=" code">GObject.Object</span>
+      
+      </div>
+<ul class="tree"><li class="tree"><div>
+        <span class=" code">Gtk.Settings</span>
+      </div></li></ul>
+</li></ul></div></div></div></div></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Methods</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.Settings.set_double_property.html" title="Gtk.Settings.prototype.set_double_property">Gtk.Settings.prototype.set_double_property</a></li>
+<li class="links "><a href="Gtk.Settings.set_long_property.html" title="Gtk.Settings.prototype.set_long_property">Gtk.Settings.prototype.set_long_property</a></li>
+<li class="links "><a href="Gtk.Settings.set_property_value.html" title="Gtk.Settings.prototype.set_property_value">Gtk.Settings.prototype.set_property_value</a></li>
+<li class="links "><a href="Gtk.Settings.set_string_property.html" title="Gtk.Settings.prototype.set_string_property">Gtk.Settings.prototype.set_string_property</a></li>
+</ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Functions</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.Settings.get_default.html" title="get_default">get_default</a></li>
+<li class="links "><a href="Gtk.Settings.get_for_screen.html" title="get_for_screen">get_for_screen</a></li>
+<li class="links "><a href="Gtk.Settings.install_property.html" title="install_property">install_property</a></li>
+<li class="links "><a href="Gtk.Settings.install_property_parser.html" title="install_property_parser">install_property_parser</a></li>
+</ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Properties</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.Settings-color-hash.html" title="Gtk.Settings:color-hash">color-hash</a></li>
+<li class="links "><a href="Gtk.Settings-gtk-alternative-button-order.html" title="Gtk.Settings:gtk-alternative-button-order">gtk-alternative-button-order</a></li>
+<li class="links "><a href="Gtk.Settings-gtk-alternative-sort-arrows.html" title="Gtk.Settings:gtk-alternative-sort-arrows">gtk-alternative-sort-arrows</a></li>
+<li class="links "><a href="Gtk.Settings-gtk-application-prefer-dark-theme.html" title="Gtk.Settings:gtk-application-prefer-dark-theme">gtk-application-prefer-dark-theme</a></li>
+<li class="links "><a href="Gtk.Settings-gtk-auto-mnemonics.html" title="Gtk.Settings:gtk-auto-mnemonics">gtk-auto-mnemonics</a></li>
+<li class="links "><a href="Gtk.Settings-gtk-button-images.html" title="Gtk.Settings:gtk-button-images">gtk-button-images</a></li>
+<li class="links "><a href="Gtk.Settings-gtk-can-change-accels.html" title="Gtk.Settings:gtk-can-change-accels">gtk-can-change-accels</a></li>
+<li class="links "><a href="Gtk.Settings-gtk-color-palette.html" title="Gtk.Settings:gtk-color-palette">gtk-color-palette</a></li>
+<li class="links "><a href="Gtk.Settings-gtk-color-scheme.html" title="Gtk.Settings:gtk-color-scheme">gtk-color-scheme</a></li>
+<li class="links "><a href="Gtk.Settings-gtk-cursor-blink.html" title="Gtk.Settings:gtk-cursor-blink">gtk-cursor-blink</a></li>
+<li class="links "><a href="Gtk.Settings-gtk-cursor-blink-time.html" title="Gtk.Settings:gtk-cursor-blink-time">gtk-cursor-blink-time</a></li>
+<li class="links "><a href="Gtk.Settings-gtk-cursor-blink-timeout.html" title="Gtk.Settings:gtk-cursor-blink-timeout">gtk-cursor-blink-timeout</a></li>
+<li class="links "><a href="Gtk.Settings-gtk-cursor-theme-name.html" title="Gtk.Settings:gtk-cursor-theme-name">gtk-cursor-theme-name</a></li>
+<li class="links "><a href="Gtk.Settings-gtk-cursor-theme-size.html" title="Gtk.Settings:gtk-cursor-theme-size">gtk-cursor-theme-size</a></li>
+<li class="links "><a href="Gtk.Settings-gtk-dnd-drag-threshold.html" title="Gtk.Settings:gtk-dnd-drag-threshold">gtk-dnd-drag-threshold</a></li>
+<li class="links "><a href="Gtk.Settings-gtk-double-click-distance.html" title="Gtk.Settings:gtk-double-click-distance">gtk-double-click-distance</a></li>
+<li class="links "><a href="Gtk.Settings-gtk-double-click-time.html" title="Gtk.Settings:gtk-double-click-time">gtk-double-click-time</a></li>
+<li class="links "><a href="Gtk.Settings-gtk-enable-accels.html" title="Gtk.Settings:gtk-enable-accels">gtk-enable-accels</a></li>
+<li class="links "><a href="Gtk.Settings-gtk-enable-animations.html" title="Gtk.Settings:gtk-enable-animations">gtk-enable-animations</a></li>
+<li class="links "><a href="Gtk.Settings-gtk-enable-event-sounds.html" title="Gtk.Settings:gtk-enable-event-sounds">gtk-enable-event-sounds</a></li>
+<li class="links "><a href="Gtk.Settings-gtk-enable-input-feedback-sounds.html" title="Gtk.Settings:gtk-enable-input-feedback-sounds">gtk-enable-input-feedback-sounds</a></li>
+<li class="links "><a href="Gtk.Settings-gtk-enable-mnemonics.html" title="Gtk.Settings:gtk-enable-mnemonics">gtk-enable-mnemonics</a></li>
+<li class="links "><a href="Gtk.Settings-gtk-enable-primary-paste.html" title="Gtk.Settings:gtk-enable-primary-paste">gtk-enable-primary-paste</a></li>
+<li class="links "><a href="Gtk.Settings-gtk-enable-tooltips.html" title="Gtk.Settings:gtk-enable-tooltips">gtk-enable-tooltips</a></li>
+<li class="links "><a href="Gtk.Settings-gtk-entry-password-hint-timeout.html" title="Gtk.Settings:gtk-entry-password-hint-timeout">gtk-entry-password-hint-timeout</a></li>
+<li class="links "><a href="Gtk.Settings-gtk-entry-select-on-focus.html" title="Gtk.Settings:gtk-entry-select-on-focus">gtk-entry-select-on-focus</a></li>
+<li class="links "><a href="Gtk.Settings-gtk-error-bell.html" title="Gtk.Settings:gtk-error-bell">gtk-error-bell</a></li>
+<li class="links "><a href="Gtk.Settings-gtk-fallback-icon-theme.html" title="Gtk.Settings:gtk-fallback-icon-theme">gtk-fallback-icon-theme</a></li>
+<li class="links "><a href="Gtk.Settings-gtk-file-chooser-backend.html" title="Gtk.Settings:gtk-file-chooser-backend">gtk-file-chooser-backend</a></li>
+<li class="links "><a href="Gtk.Settings-gtk-font-name.html" title="Gtk.Settings:gtk-font-name">gtk-font-name</a></li>
+<li class="links "><a href="Gtk.Settings-gtk-fontconfig-timestamp.html" title="Gtk.Settings:gtk-fontconfig-timestamp">gtk-fontconfig-timestamp</a></li>
+<li class="links "><a href="Gtk.Settings-gtk-icon-sizes.html" title="Gtk.Settings:gtk-icon-sizes">gtk-icon-sizes</a></li>
+<li class="links "><a href="Gtk.Settings-gtk-icon-theme-name.html" title="Gtk.Settings:gtk-icon-theme-name">gtk-icon-theme-name</a></li>
+<li class="links "><a href="Gtk.Settings-gtk-im-module.html" title="Gtk.Settings:gtk-im-module">gtk-im-module</a></li>
+<li class="links "><a href="Gtk.Settings-gtk-im-preedit-style.html" title="Gtk.Settings:gtk-im-preedit-style">gtk-im-preedit-style</a></li>
+<li class="links "><a href="Gtk.Settings-gtk-im-status-style.html" title="Gtk.Settings:gtk-im-status-style">gtk-im-status-style</a></li>
+<li class="links "><a href="Gtk.Settings-gtk-key-theme-name.html" title="Gtk.Settings:gtk-key-theme-name">gtk-key-theme-name</a></li>
+<li class="links "><a href="Gtk.Settings-gtk-keynav-cursor-only.html" title="Gtk.Settings:gtk-keynav-cursor-only">gtk-keynav-cursor-only</a></li>
+<li class="links "><a href="Gtk.Settings-gtk-keynav-wrap-around.html" title="Gtk.Settings:gtk-keynav-wrap-around">gtk-keynav-wrap-around</a></li>
+<li class="links "><a href="Gtk.Settings-gtk-label-select-on-focus.html" title="Gtk.Settings:gtk-label-select-on-focus">gtk-label-select-on-focus</a></li>
+<li class="links "><a href="Gtk.Settings-gtk-menu-bar-accel.html" title="Gtk.Settings:gtk-menu-bar-accel">gtk-menu-bar-accel</a></li>
+<li class="links "><a href="Gtk.Settings-gtk-menu-bar-popup-delay.html" title="Gtk.Settings:gtk-menu-bar-popup-delay">gtk-menu-bar-popup-delay</a></li>
+<li class="links "><a href="Gtk.Settings-gtk-menu-images.html" title="Gtk.Settings:gtk-menu-images">gtk-menu-images</a></li>
+<li class="links "><a href="Gtk.Settings-gtk-menu-popdown-delay.html" title="Gtk.Settings:gtk-menu-popdown-delay">gtk-menu-popdown-delay</a></li>
+<li class="links "><a href="Gtk.Settings-gtk-menu-popup-delay.html" title="Gtk.Settings:gtk-menu-popup-delay">gtk-menu-popup-delay</a></li>
+<li class="links "><a href="Gtk.Settings-gtk-modules.html" title="Gtk.Settings:gtk-modules">gtk-modules</a></li>
+<li class="links "><a href="Gtk.Settings-gtk-primary-button-warps-slider.html" title="Gtk.Settings:gtk-primary-button-warps-slider">gtk-primary-button-warps-slider</a></li>
+<li class="links "><a href="Gtk.Settings-gtk-print-backends.html" title="Gtk.Settings:gtk-print-backends">gtk-print-backends</a></li>
+<li class="links "><a href="Gtk.Settings-gtk-print-preview-command.html" title="Gtk.Settings:gtk-print-preview-command">gtk-print-preview-command</a></li>
+<li class="links "><a href="Gtk.Settings-gtk-recent-files-enabled.html" title="Gtk.Settings:gtk-recent-files-enabled">gtk-recent-files-enabled</a></li>
+<li class="links "><a href="Gtk.Settings-gtk-recent-files-limit.html" title="Gtk.Settings:gtk-recent-files-limit">gtk-recent-files-limit</a></li>
+<li class="links "><a href="Gtk.Settings-gtk-recent-files-max-age.html" title="Gtk.Settings:gtk-recent-files-max-age">gtk-recent-files-max-age</a></li>
+<li class="links "><a href="Gtk.Settings-gtk-scrolled-window-placement.html" title="Gtk.Settings:gtk-scrolled-window-placement">gtk-scrolled-window-placement</a></li>
+<li class="links "><a href="Gtk.Settings-gtk-shell-shows-app-menu.html" title="Gtk.Settings:gtk-shell-shows-app-menu">gtk-shell-shows-app-menu</a></li>
+<li class="links "><a href="Gtk.Settings-gtk-shell-shows-menubar.html" title="Gtk.Settings:gtk-shell-shows-menubar">gtk-shell-shows-menubar</a></li>
+<li class="links "><a href="Gtk.Settings-gtk-show-input-method-menu.html" title="Gtk.Settings:gtk-show-input-method-menu">gtk-show-input-method-menu</a></li>
+<li class="links "><a href="Gtk.Settings-gtk-show-unicode-menu.html" title="Gtk.Settings:gtk-show-unicode-menu">gtk-show-unicode-menu</a></li>
+<li class="links "><a href="Gtk.Settings-gtk-sound-theme-name.html" title="Gtk.Settings:gtk-sound-theme-name">gtk-sound-theme-name</a></li>
+<li class="links "><a href="Gtk.Settings-gtk-split-cursor.html" title="Gtk.Settings:gtk-split-cursor">gtk-split-cursor</a></li>
+<li class="links "><a href="Gtk.Settings-gtk-theme-name.html" title="Gtk.Settings:gtk-theme-name">gtk-theme-name</a></li>
+<li class="links "><a href="Gtk.Settings-gtk-timeout-expand.html" title="Gtk.Settings:gtk-timeout-expand">gtk-timeout-expand</a></li>
+<li class="links "><a href="Gtk.Settings-gtk-timeout-initial.html" title="Gtk.Settings:gtk-timeout-initial">gtk-timeout-initial</a></li>
+<li class="links "><a href="Gtk.Settings-gtk-timeout-repeat.html" title="Gtk.Settings:gtk-timeout-repeat">gtk-timeout-repeat</a></li>
+<li class="links "><a href="Gtk.Settings-gtk-toolbar-icon-size.html" title="Gtk.Settings:gtk-toolbar-icon-size">gtk-toolbar-icon-size</a></li>
+<li class="links "><a href="Gtk.Settings-gtk-toolbar-style.html" title="Gtk.Settings:gtk-toolbar-style">gtk-toolbar-style</a></li>
+<li class="links "><a href="Gtk.Settings-gtk-tooltip-browse-mode-timeout.html" title="Gtk.Settings:gtk-tooltip-browse-mode-timeout">gtk-tooltip-browse-mode-timeout</a></li>
+<li class="links "><a href="Gtk.Settings-gtk-tooltip-browse-timeout.html" title="Gtk.Settings:gtk-tooltip-browse-timeout">gtk-tooltip-browse-timeout</a></li>
+<li class="links "><a href="Gtk.Settings-gtk-tooltip-timeout.html" title="Gtk.Settings:gtk-tooltip-timeout">gtk-tooltip-timeout</a></li>
+<li class="links "><a href="Gtk.Settings-gtk-touchscreen-mode.html" title="Gtk.Settings:gtk-touchscreen-mode">gtk-touchscreen-mode</a></li>
+<li class="links "><a href="Gtk.Settings-gtk-visible-focus.html" title="Gtk.Settings:gtk-visible-focus">gtk-visible-focus</a></li>
+<li class="links "><a href="Gtk.Settings-gtk-xft-antialias.html" title="Gtk.Settings:gtk-xft-antialias">gtk-xft-antialias</a></li>
+<li class="links "><a href="Gtk.Settings-gtk-xft-dpi.html" title="Gtk.Settings:gtk-xft-dpi">gtk-xft-dpi</a></li>
+<li class="links "><a href="Gtk.Settings-gtk-xft-hinting.html" title="Gtk.Settings:gtk-xft-hinting">gtk-xft-hinting</a></li>
+<li class="links "><a href="Gtk.Settings-gtk-xft-hintstyle.html" title="Gtk.Settings:gtk-xft-hintstyle">gtk-xft-hintstyle</a></li>
+<li class="links "><a href="Gtk.Settings-gtk-xft-rgba.html" title="Gtk.Settings:gtk-xft-rgba">gtk-xft-rgba</a></li>
+</ul></div>
+</div></div>
+</div>
+<div class="sect sect-links" role="navigation">
+<div class="hgroup"></div>
+<div class="contents"><div class="links guidelinks"><div class="inner">
+<div class="title"><h2><span class="title">More Information</span></h2></div>
+<div class="region"><ul><li class="links "><a href="index.html" title="Index">Index</a></li></ul></div>
+</div></div></div>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="footer"></div>
+</div></body>
+</html>

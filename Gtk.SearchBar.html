@@ -1,0 +1,123 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Gtk.SearchBar</title>
+<link rel="stylesheet" type="text/css" href="C.css">
+<script type="text/javascript" src="jquery.js"></script><script type="text/javascript" src="jquery.syntax.js"></script><script type="text/javascript" src="yelp.js"></script>
+</head>
+<body><div class="page" role="main">
+<div class="header"><div class="trails" role="navigation"><div class="trail">
+<a class="trail" href="index.html" title="Index">Index</a> » </div></div></div>
+<div class="body">
+<div class="hgroup"><h1 class="title"><span class="title">Gtk.SearchBar</span></h1></div>
+<div class="region">
+<div class="contents">
+<div class="synopsis"><div class="inner"><div class="region"><div class="contents"><div class="code"><pre class="contents ">const Gtk = imports.gi.Gtk;
+
+let search_bar = new Gtk.SearchBar({
+    <span class=" link"><a href="Gtk.SearchBar-search-mode-enabled.html" title="Gtk.SearchBar:search-mode-enabled">search_mode_enabled</a></span>: value,
+    <span class=" link"><a href="Gtk.SearchBar-show-close-button.html" title="Gtk.SearchBar:show-close-button">show_close_button</a></span>: value,
+});
+  </pre></div></div></div></div></div>
+<p class="p"><span class=" link"><a href="Gtk.SearchBar.html" title="Gtk.SearchBar">Gtk.SearchBar</a></span> is a container made to have a search entry (possibly
+with additional connex widgets, such as drop-down menus, or buttons)
+built-in. The search bar would appear when a search is started through
+typing on the keyboard, or the application's search mode is toggled on.</p>
+<p class="p">For keyboard presses to start a search, events will need to be
+forwarded from the top-level window that contains the search bar.
+See <span class=" link"><a href="Gtk.handle_event.html" title="Gtk.handle_event">Gtk.handle_event</a></span> for example code. Common shortcuts
+such as Ctrl+F should be handled as an application action, or through
+the menu items.</p>
+<p class="p">You will also need to tell the search bar about which entry you
+are using as your search entry using <span class=" link"><a href="Gtk.connect_entry.html" title="Gtk.connect_entry">Gtk.connect_entry</a></span>.
+The following example shows you how to create a more complex search
+entry.</p>
+<p class="p">&lt;example&gt;
+&lt;title&gt;Creating a search bar&lt;/title&gt;
+&lt;programlisting&gt;&lt;![CDATA[
+bar = gtk_search_bar_new ();</p>
+<p class="p">/&lt;!----&gt;* Create a box for the search entry and related widgets *&lt;----&gt;/
+entry = gtk_search_entry_new ();
+box = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 6);
+gtk_box_pack_start (GTK_BOX (box), entry, TRUE, TRUE, 0);
+/&lt;!----&gt;* Add a menu button to select the category of the search *&lt;----&gt;/
+menu_button = gtk_menu_button_new ();
+gtk_box_pack_start (GTK_BOX (box), menu_button, FALSE, FALSE, 0);
+gtk_container_add (GTK_CONTAINER (searchbar), box);</p>
+<p class="p">/&lt;!----&gt;* And tell the search bar about the search entry *&lt;----&gt;/
+gtk_search_bar_set_search_entry (GTK_SEARCH_BAR (bar), entry);
+]]&gt;&lt;/programlisting&gt;
+&lt;/example&gt;</p>
+<div class="synopsis"><div class="inner">
+<div class="title title-synopsis"><h2><span class="title">Hierarchy</span></h2></div>
+<div class="region"><div class="contents"><div class="tree"><div class="inner"><div class="region"><ul class="tree"><li class="tree">
+<div>
+        <span class=" code">GObject.Object</span>
+      
+      </div>
+<ul class="tree"><li class="tree">
+<div>
+        <span class=" code">GObject.InitiallyUnowned</span>
+      
+      </div>
+<ul class="tree"><li class="tree">
+<div>
+        <span class=" code">Gtk.Widget</span>
+      
+      </div>
+<ul class="tree"><li class="tree">
+<div>
+        <span class=" code">Gtk.Container</span>
+      
+      </div>
+<ul class="tree"><li class="tree">
+<div>
+        <span class=" code">Gtk.Bin</span>
+      
+      </div>
+<ul class="tree"><li class="tree"><div>
+        <span class=" code">Gtk.SearchBar</span>
+      </div></li></ul>
+</li></ul>
+</li></ul>
+</li></ul>
+</li></ul>
+</li></ul></div></div></div></div></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Methods</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.SearchBar.connect_entry.html" title="Gtk.SearchBar.prototype.connect_entry">Gtk.SearchBar.prototype.connect_entry</a></li>
+<li class="links "><a href="Gtk.SearchBar.get_search_mode.html" title="Gtk.SearchBar.prototype.get_search_mode">Gtk.SearchBar.prototype.get_search_mode</a></li>
+<li class="links "><a href="Gtk.SearchBar.get_show_close_button.html" title="Gtk.SearchBar.prototype.get_show_close_button">Gtk.SearchBar.prototype.get_show_close_button</a></li>
+<li class="links "><a href="Gtk.SearchBar.handle_event.html" title="Gtk.SearchBar.prototype.handle_event">Gtk.SearchBar.prototype.handle_event</a></li>
+<li class="links "><a href="Gtk.SearchBar.set_search_mode.html" title="Gtk.SearchBar.prototype.set_search_mode">Gtk.SearchBar.prototype.set_search_mode</a></li>
+<li class="links "><a href="Gtk.SearchBar.set_show_close_button.html" title="Gtk.SearchBar.prototype.set_show_close_button">Gtk.SearchBar.prototype.set_show_close_button</a></li>
+</ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Properties</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.SearchBar-search-mode-enabled.html" title="Gtk.SearchBar:search-mode-enabled">search-mode-enabled</a></li>
+<li class="links "><a href="Gtk.SearchBar-show-close-button.html" title="Gtk.SearchBar:show-close-button">show-close-button</a></li>
+</ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Other</span></h2></div>
+<div class="region"><ul><li class="links "><a href="Gtk.SearchBar.new.html" title="Gtk.SearchBar.new">Gtk.SearchBar.new</a></li></ul></div>
+</div></div>
+</div>
+<div class="sect sect-links" role="navigation">
+<div class="hgroup"></div>
+<div class="contents"><div class="links guidelinks"><div class="inner">
+<div class="title"><h2><span class="title">More Information</span></h2></div>
+<div class="region"><ul><li class="links "><a href="index.html" title="Index">Index</a></li></ul></div>
+</div></div></div>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="footer"></div>
+</div></body>
+</html>

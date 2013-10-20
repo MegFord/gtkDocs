@@ -1,0 +1,170 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Gtk.ScrolledWindow</title>
+<link rel="stylesheet" type="text/css" href="C.css">
+<script type="text/javascript" src="jquery.js"></script><script type="text/javascript" src="jquery.syntax.js"></script><script type="text/javascript" src="yelp.js"></script>
+</head>
+<body><div class="page" role="main">
+<div class="header"><div class="trails" role="navigation"><div class="trail">
+<a class="trail" href="index.html" title="Index">Index</a> » </div></div></div>
+<div class="body">
+<div class="hgroup"><h1 class="title"><span class="title">Gtk.ScrolledWindow</span></h1></div>
+<div class="region">
+<div class="contents">
+<div class="synopsis"><div class="inner"><div class="region"><div class="contents"><div class="code"><pre class="contents ">const Gtk = imports.gi.Gtk;
+
+let scrolled_window = new Gtk.ScrolledWindow({
+    <span class=" link"><a href="Gtk.ScrolledWindow-hadjustment.html" title="Gtk.ScrolledWindow:hadjustment">hadjustment</a></span>: value,
+    <span class=" link"><a href="Gtk.ScrolledWindow-hscrollbar-policy.html" title="Gtk.ScrolledWindow:hscrollbar-policy">hscrollbar_policy</a></span>: value,
+    <span class=" link"><a href="Gtk.ScrolledWindow-kinetic-scrolling.html" title="Gtk.ScrolledWindow:kinetic-scrolling">kinetic_scrolling</a></span>: value,
+    <span class=" link"><a href="Gtk.ScrolledWindow-min-content-height.html" title="Gtk.ScrolledWindow:min-content-height">min_content_height</a></span>: value,
+    <span class=" link"><a href="Gtk.ScrolledWindow-min-content-width.html" title="Gtk.ScrolledWindow:min-content-width">min_content_width</a></span>: value,
+    <span class=" link"><a href="Gtk.ScrolledWindow-shadow-type.html" title="Gtk.ScrolledWindow:shadow-type">shadow_type</a></span>: value,
+    <span class=" link"><a href="Gtk.ScrolledWindow-vadjustment.html" title="Gtk.ScrolledWindow:vadjustment">vadjustment</a></span>: value,
+    <span class=" link"><a href="Gtk.ScrolledWindow-vscrollbar-policy.html" title="Gtk.ScrolledWindow:vscrollbar-policy">vscrollbar_policy</a></span>: value,
+    <span class=" link"><a href="Gtk.ScrolledWindow-window-placement.html" title="Gtk.ScrolledWindow:window-placement">window_placement</a></span>: value,
+    <span class=" link"><a href="Gtk.ScrolledWindow-window-placement-set.html" title="Gtk.ScrolledWindow:window-placement-set">window_placement_set</a></span>: value,
+});
+  </pre></div></div></div></div></div>
+<p class="p"><span class=" link"><a href="Gtk.ScrolledWindow.html" title="Gtk.ScrolledWindow">Gtk.ScrolledWindow</a></span> is a <span class=" link"><a href="Gtk.Bin.html" title="Gtk.Bin">Gtk.Bin</a></span> subclass: it's a container
+the accepts a single child widget. <span class=" link"><a href="Gtk.ScrolledWindow.html" title="Gtk.ScrolledWindow">Gtk.ScrolledWindow</a></span> adds scrollbars
+to the child widget and optionally draws a beveled frame around the
+child widget.</p>
+<p class="p">The scrolled window can work in two ways. Some widgets have native
+scrolling support; these widgets implement the <span class=" link"><a href="Gtk.Scrollable.html" title="Gtk.Scrollable">Gtk.Scrollable</a></span> interface.
+Widgets with native scroll support include <span class=" link"><a href="Gtk.TreeView.html" title="Gtk.TreeView">Gtk.TreeView</a></span>, <span class=" link"><a href="Gtk.TextView.html" title="Gtk.TextView">Gtk.TextView</a></span>,
+and <span class=" link"><a href="Gtk.Layout.html" title="Gtk.Layout">Gtk.Layout</a></span>.</p>
+<p class="p">For widgets that lack native scrolling support, the <span class=" link"><a href="Gtk.Viewport.html" title="Gtk.Viewport">Gtk.Viewport</a></span>
+widget acts as an adaptor class, implementing scrollability for child
+widgets that lack their own scrolling capabilities. Use <span class=" link"><a href="Gtk.Viewport.html" title="Gtk.Viewport">Gtk.Viewport</a></span>
+to scroll child widgets such as <span class=" link"><a href="Gtk.Grid.html" title="Gtk.Grid">Gtk.Grid</a></span>, <span class=" link"><a href="Gtk.Box.html" title="Gtk.Box">Gtk.Box</a></span>, and so on.</p>
+<p class="p">If a widget has native scrolling abilities, it can be added to the
+<span class=" link"><a href="Gtk.ScrolledWindow.html" title="Gtk.ScrolledWindow">Gtk.ScrolledWindow</a></span> with <span class=" link"><a href="Gtk.Container.add.html" title="Gtk.Container.prototype.add">Gtk.Container.prototype.add</a></span>. If a widget does not, you
+must first add the widget to a <span class=" link"><a href="Gtk.Viewport.html" title="Gtk.Viewport">Gtk.Viewport</a></span>, then add the <span class=" link"><a href="Gtk.Viewport.html" title="Gtk.Viewport">Gtk.Viewport</a></span>
+to the scrolled window. <span class=" link"><a href="Gtk.Container.add.html" title="Gtk.Container.prototype.add">Gtk.Container.prototype.add</a></span> will do this for you for
+widgets that don't implement <span class=" link"><a href="Gtk.Scrollable.html" title="Gtk.Scrollable">Gtk.Scrollable</a></span> natively, so you can
+ignore the presence of the viewport.</p>
+<p class="p">The position of the scrollbars is controlled by the scroll
+adjustments. See <span class=" link"><a href="Gtk.Adjustment.html" title="Gtk.Adjustment">Gtk.Adjustment</a></span> for the fields in an adjustment - for
+<span class=" link"><a href="Gtk.Scrollbar.html" title="Gtk.Scrollbar">Gtk.Scrollbar</a></span>, used by <span class=" link"><a href="Gtk.ScrolledWindow.html" title="Gtk.ScrolledWindow">Gtk.ScrolledWindow</a></span>, the "value" field
+represents the position of the scrollbar, which must be between the
+"lower" field and "upper - page_size." The "page_size" field
+represents the size of the visible scrollable area. The
+"step_increment" and "page_increment" fields are used when the user
+asks to step down (using the small stepper arrows) or page down (using
+for example the PageDown key).</p>
+<p class="p">If a <span class=" link"><a href="Gtk.ScrolledWindow.html" title="Gtk.ScrolledWindow">Gtk.ScrolledWindow</a></span> doesn't behave quite as you would like, or
+doesn't have exactly the right layout, it's very possible to set up
+your own scrolling with <span class=" link"><a href="Gtk.Scrollbar.html" title="Gtk.Scrollbar">Gtk.Scrollbar</a></span> and for example a <span class=" link"><a href="Gtk.Grid.html" title="Gtk.Grid">Gtk.Grid</a></span>.</p>
+<div class="synopsis"><div class="inner">
+<div class="title title-synopsis"><h2><span class="title">Hierarchy</span></h2></div>
+<div class="region"><div class="contents"><div class="tree"><div class="inner"><div class="region"><ul class="tree"><li class="tree">
+<div>
+        <span class=" code">GObject.Object</span>
+      
+      </div>
+<ul class="tree"><li class="tree">
+<div>
+        <span class=" code">GObject.InitiallyUnowned</span>
+      
+      </div>
+<ul class="tree"><li class="tree">
+<div>
+        <span class=" code">Gtk.Widget</span>
+      
+      </div>
+<ul class="tree"><li class="tree">
+<div>
+        <span class=" code">Gtk.Container</span>
+      
+      </div>
+<ul class="tree"><li class="tree">
+<div>
+        <span class=" code">Gtk.Bin</span>
+      
+      </div>
+<ul class="tree"><li class="tree"><div>
+        <span class=" code">Gtk.ScrolledWindow</span>
+      </div></li></ul>
+</li></ul>
+</li></ul>
+</li></ul>
+</li></ul>
+</li></ul></div></div></div></div></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Methods</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.ScrolledWindow.add_with_viewport.html" title="Gtk.ScrolledWindow.prototype.add_with_viewport">Gtk.ScrolledWindow.prototype.add_with_viewport</a></li>
+<li class="links "><a href="Gtk.ScrolledWindow.get_capture_button_press.html" title="Gtk.ScrolledWindow.prototype.get_capture_button_press">Gtk.ScrolledWindow.prototype.get_capture_button_press</a></li>
+<li class="links "><a href="Gtk.ScrolledWindow.get_hadjustment.html" title="Gtk.ScrolledWindow.prototype.get_hadjustment">Gtk.ScrolledWindow.prototype.get_hadjustment</a></li>
+<li class="links "><a href="Gtk.ScrolledWindow.get_hscrollbar.html" title="Gtk.ScrolledWindow.prototype.get_hscrollbar">Gtk.ScrolledWindow.prototype.get_hscrollbar</a></li>
+<li class="links "><a href="Gtk.ScrolledWindow.get_kinetic_scrolling.html" title="Gtk.ScrolledWindow.prototype.get_kinetic_scrolling">Gtk.ScrolledWindow.prototype.get_kinetic_scrolling</a></li>
+<li class="links "><a href="Gtk.ScrolledWindow.get_min_content_height.html" title="Gtk.ScrolledWindow.prototype.get_min_content_height">Gtk.ScrolledWindow.prototype.get_min_content_height</a></li>
+<li class="links "><a href="Gtk.ScrolledWindow.get_min_content_width.html" title="Gtk.ScrolledWindow.prototype.get_min_content_width">Gtk.ScrolledWindow.prototype.get_min_content_width</a></li>
+<li class="links "><a href="Gtk.ScrolledWindow.get_placement.html" title="Gtk.ScrolledWindow.prototype.get_placement">Gtk.ScrolledWindow.prototype.get_placement</a></li>
+<li class="links "><a href="Gtk.ScrolledWindow.get_policy.html" title="Gtk.ScrolledWindow.prototype.get_policy">Gtk.ScrolledWindow.prototype.get_policy</a></li>
+<li class="links "><a href="Gtk.ScrolledWindow.get_shadow_type.html" title="Gtk.ScrolledWindow.prototype.get_shadow_type">Gtk.ScrolledWindow.prototype.get_shadow_type</a></li>
+<li class="links "><a href="Gtk.ScrolledWindow.get_vadjustment.html" title="Gtk.ScrolledWindow.prototype.get_vadjustment">Gtk.ScrolledWindow.prototype.get_vadjustment</a></li>
+<li class="links "><a href="Gtk.ScrolledWindow.get_vscrollbar.html" title="Gtk.ScrolledWindow.prototype.get_vscrollbar">Gtk.ScrolledWindow.prototype.get_vscrollbar</a></li>
+<li class="links "><a href="Gtk.ScrolledWindow.set_capture_button_press.html" title="Gtk.ScrolledWindow.prototype.set_capture_button_press">Gtk.ScrolledWindow.prototype.set_capture_button_press</a></li>
+<li class="links "><a href="Gtk.ScrolledWindow.set_hadjustment.html" title="Gtk.ScrolledWindow.prototype.set_hadjustment">Gtk.ScrolledWindow.prototype.set_hadjustment</a></li>
+<li class="links "><a href="Gtk.ScrolledWindow.set_kinetic_scrolling.html" title="Gtk.ScrolledWindow.prototype.set_kinetic_scrolling">Gtk.ScrolledWindow.prototype.set_kinetic_scrolling</a></li>
+<li class="links "><a href="Gtk.ScrolledWindow.set_min_content_height.html" title="Gtk.ScrolledWindow.prototype.set_min_content_height">Gtk.ScrolledWindow.prototype.set_min_content_height</a></li>
+<li class="links "><a href="Gtk.ScrolledWindow.set_min_content_width.html" title="Gtk.ScrolledWindow.prototype.set_min_content_width">Gtk.ScrolledWindow.prototype.set_min_content_width</a></li>
+<li class="links "><a href="Gtk.ScrolledWindow.set_placement.html" title="Gtk.ScrolledWindow.prototype.set_placement">Gtk.ScrolledWindow.prototype.set_placement</a></li>
+<li class="links "><a href="Gtk.ScrolledWindow.set_policy.html" title="Gtk.ScrolledWindow.prototype.set_policy">Gtk.ScrolledWindow.prototype.set_policy</a></li>
+<li class="links "><a href="Gtk.ScrolledWindow.set_shadow_type.html" title="Gtk.ScrolledWindow.prototype.set_shadow_type">Gtk.ScrolledWindow.prototype.set_shadow_type</a></li>
+<li class="links "><a href="Gtk.ScrolledWindow.set_vadjustment.html" title="Gtk.ScrolledWindow.prototype.set_vadjustment">Gtk.ScrolledWindow.prototype.set_vadjustment</a></li>
+<li class="links "><a href="Gtk.ScrolledWindow.unset_placement.html" title="Gtk.ScrolledWindow.prototype.unset_placement">Gtk.ScrolledWindow.prototype.unset_placement</a></li>
+</ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Properties</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.ScrolledWindow-hadjustment.html" title="Gtk.ScrolledWindow:hadjustment">hadjustment</a></li>
+<li class="links "><a href="Gtk.ScrolledWindow-hscrollbar-policy.html" title="Gtk.ScrolledWindow:hscrollbar-policy">hscrollbar-policy</a></li>
+<li class="links "><a href="Gtk.ScrolledWindow-kinetic-scrolling.html" title="Gtk.ScrolledWindow:kinetic-scrolling">kinetic-scrolling</a></li>
+<li class="links "><a href="Gtk.ScrolledWindow-min-content-height.html" title="Gtk.ScrolledWindow:min-content-height">min-content-height</a></li>
+<li class="links "><a href="Gtk.ScrolledWindow-min-content-width.html" title="Gtk.ScrolledWindow:min-content-width">min-content-width</a></li>
+<li class="links "><a href="Gtk.ScrolledWindow-shadow-type.html" title="Gtk.ScrolledWindow:shadow-type">shadow-type</a></li>
+<li class="links "><a href="Gtk.ScrolledWindow-vadjustment.html" title="Gtk.ScrolledWindow:vadjustment">vadjustment</a></li>
+<li class="links "><a href="Gtk.ScrolledWindow-vscrollbar-policy.html" title="Gtk.ScrolledWindow:vscrollbar-policy">vscrollbar-policy</a></li>
+<li class="links "><a href="Gtk.ScrolledWindow-window-placement.html" title="Gtk.ScrolledWindow:window-placement">window-placement</a></li>
+<li class="links "><a href="Gtk.ScrolledWindow-window-placement-set.html" title="Gtk.ScrolledWindow:window-placement-set">window-placement-set</a></li>
+</ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Signals</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.ScrolledWindow-move-focus-out.html" title="Gtk.ScrolledWindow::move-focus-out">move-focus-out</a></li>
+<li class="links "><a href="Gtk.ScrolledWindow-scroll-child.html" title="Gtk.ScrolledWindow::scroll-child">scroll-child</a></li>
+</ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Virtual functions</span></h2></div>
+<div class="region"><ul>
+<li class="links "><a href="Gtk.ScrolledWindow-move_focus_out.html" title="Gtk.ScrolledWindow::move_focus_out">Gtk.ScrolledWindow::move_focus_out</a></li>
+<li class="links "><a href="Gtk.ScrolledWindow-scroll_child.html" title="Gtk.ScrolledWindow::scroll_child">Gtk.ScrolledWindow::scroll_child</a></li>
+</ul></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Other</span></h2></div>
+<div class="region"><ul><li class="links "><a href="Gtk.ScrolledWindow.new.html" title="Gtk.ScrolledWindow.new">Gtk.ScrolledWindow.new</a></li></ul></div>
+</div></div>
+</div>
+<div class="sect sect-links" role="navigation">
+<div class="hgroup"></div>
+<div class="contents"><div class="links guidelinks"><div class="inner">
+<div class="title"><h2><span class="title">More Information</span></h2></div>
+<div class="region"><ul><li class="links "><a href="index.html" title="Index">Index</a></li></ul></div>
+</div></div></div>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="footer"></div>
+</div></body>
+</html>
